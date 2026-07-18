@@ -1,0 +1,120 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>手法カード＆プロジェクト 設定要領</title>
+<style>
+:root{color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:#0d1b1e;color:#e6f4f1;font-family:-apple-system,'Hiragino Sans','Noto Sans JP',sans-serif;line-height:1.7}
+.wrap{max-width:900px;margin:0 auto;padding:22px 16px 80px}
+h1{font-size:22px;margin:6px 0 2px}
+.sub{color:#8fb3ad;font-size:13px;margin-bottom:18px}
+.lead{background:#12292e;border:1px solid #1d3a40;border-radius:12px;padding:14px 16px;color:#7fe3d6;font-size:14px;margin-bottom:22px}
+h2{font-size:17px;color:#7fe3d6;border-bottom:1px solid #1d3a40;padding-bottom:6px;margin:28px 0 12px}
+.step{background:#12292e;border:1px solid #1d3a40;border-left:4px solid #1fb6a6;border-radius:12px;padding:14px 16px;margin-bottom:14px}
+.snum{display:inline-block;background:#1fb6a6;color:#0d1b1e;width:26px;height:26px;text-align:center;line-height:26px;border-radius:8px;font-weight:700;margin-right:8px}
+.stitle{font-size:15px;font-weight:700;vertical-align:middle}
+.step p{margin:10px 0 0;font-size:14px}
+.warn{background:#2a2410;border:1px solid #5c4a1e;border-left:4px solid #e8c766;border-radius:12px;padding:14px 16px;margin:14px 0}
+.warn .wt{color:#e8c766;font-weight:700;font-size:15px}
+.warn p{margin:8px 0 0;font-size:14px;color:#f0dfa0}
+.bad{color:#e59a9a;font-weight:700}
+.good{color:#5be0b0;font-weight:700}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
+td,th{border:1px solid #1d3a40;padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#0f2429;color:#7fe3d6}
+.key{font-family:ui-monospace,monospace;color:#7fe3d6;font-size:12.5px;background:#0f2429;padding:1px 6px;border-radius:5px}
+.field-ng{background:#2e1a1a;border:1px solid #6b2f2f;color:#e59a9a;padding:2px 8px;border-radius:6px;font-weight:700;font-size:12px}
+.field-ok{background:#123d33;border:1px solid #1f6b57;color:#5be0b0;padding:2px 8px;border-radius:6px;font-weight:700;font-size:12px}
+.anti{background:#12292e;border:1px solid #6b2f2f;border-radius:10px;padding:12px 14px;margin-bottom:10px}
+.anti .h{color:#e59a9a;font-weight:700;font-size:14px}
+.anti .fix{color:#5be0b0;font-size:13px;margin-top:6px}
+code.block{display:block;white-space:pre-wrap;background:#0f2429;border:1px solid #1d3a40;border-radius:8px;padding:12px;font-size:12.5px;color:#cfeee8;margin-top:8px}
+.emoji{font-size:16px}
+footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:34px}
+</style></head><body><div class="wrap">
+
+<h1>手法カード＆プロジェクト 設定要領</h1>
+<div class="sub">5大手法スコアリング運用のセットアップ手順（間違い防止版）</div>
+
+<div class="lead">
+考え方はシンプルです。<b>採点基準は1か所（master.jsonのscoring_spec）にだけ置き、5つのプロジェクトには「薄いカード」を貼る</b>。
+カードは基準を参照するだけなので、精度を直すときはmaster.jsonの1か所を編集するだけで全手法に効きます。
+以下の順番どおりに進めれば迷いません。
+</div>
+
+<h2>いちばん大事な原則（ここだけは間違えない）</h2>
+<div class="warn">
+<div class="wt">⚠ カードは必ず「指示（カスタム指示）」欄に貼る</div>
+<p>プロジェクトには <span class="field-ng">説明</span> 欄と <span class="field-ok">指示を追加</span> 欄があります。
+カード本文は必ず <span class="field-ok">指示を追加</span> 欄へ。<span class="field-ng">説明</span> 欄はメモ扱いで、AIの動作には反映されません。
+以前うまく効かなかったのは、ここに貼っていたのが原因です。</p>
+</div>
+
+<h2>セットアップ手順</h2>
+
+<div class="step">
+<span class="snum">1</span><span class="stitle">基準マスターを保管場所に置く</span>
+<p><span class="key">scoring_spec.json</span> の中身を、Google Drive上の <span class="key">master.json</span> に <span class="key">scoring_spec</span> ブロックとして統合します。
+これが全手法が読む「唯一の正」。5つのセッションは互いのチャットを読めないので、この共有ファイルだけが手法をつなぐ橋になります。</p>
+</div>
+
+<div class="step">
+<span class="snum">2</span><span class="stitle">5つのプロジェクトを用意する</span>
+<p>手法ごとに1プロジェクト。すでにある曜日別セッション（月〜金）をそのまま使ってもOK。
+下の対応表のとおり、1手法＝1カードで割り当てます。</p>
+</div>
+
+<div class="step">
+<span class="snum">3</span><span class="stitle">対応するカードを「指示を追加」欄に貼る</span>
+<p><span class="key">method_cards.md</span> の中から該当する手法の「```」で囲まれたブロックだけをコピーし、
+そのプロジェクトの <span class="field-ok">指示を追加</span> 欄に貼り付けて保存します。共通テンプレートの見出しごとコピーする必要はありません。1手法につき1ブロックです。</p>
+</div>
+
+<div class="step">
+<span class="snum">4</span><span class="stitle">効いているか動作テストする</span>
+<p>保存後、そのプロジェクトで新規チャットを開き、下の一文を送って確認します。指示が読めていれば内容を要約して返します。</p>
+<code class="block">この指示で参照する採点基準のキーと、担当手法・満点・判定閾値を答えて。実際の分析はまだしなくていい。</code>
+<p>期待する答えの例（決算モメンタムなら）：「scoring_spec.methods["kenmo_momentum"]を参照。7項目21点満点。18〜21で🚀確変=BUY_NOW…」と返ってくれば設定成功です。的外れな返答なら、貼る欄を間違えている可能性が高いので手順3を見直してください。</p>
+</div>
+
+<h2>カード ↔ プロジェクト 対応表</h2>
+<table>
+<thead><tr><th>曜日</th><th>手法（プロジェクト名）</th><th>貼るカード</th><th>参照キー</th></tr></thead>
+<tbody>
+<tr><td>🔵 Mon</td><td>kenmo式 決算モメンタム</td><td>カード①</td><td class="key">kenmo_momentum</td></tr>
+<tr><td>🟢 Tue</td><td>kenmo式 新高値ブレイク</td><td>カード②</td><td class="key">kenmo_newhigh</td></tr>
+<tr><td>🟠 Wed</td><td>ちょる子式 大型株リバーサル</td><td>カード③</td><td class="key">choruko_reversal</td></tr>
+<tr><td>🟣 Fri</td><td>STF式 確変初動</td><td>カード④</td><td class="key">stf_kakuhen</td></tr>
+<tr><td>🟡 Thu</td><td>テンバガー投資家X式</td><td>カード⑤</td><td class="key">tenbagger_x</td></tr>
+</tbody>
+</table>
+
+<h2>やってはいけない3つ（アンチパターン）</h2>
+
+<div class="anti">
+<div class="h">✗ カードを「説明」欄に貼る</div>
+<div class="fix">→ 必ず <span class="field-ok">指示を追加</span> 欄に貼る。説明欄はAIの動作に反映されない。</div>
+</div>
+
+<div class="anti">
+<div class="h">✗ カードの中に採点基準（点数表）を丸ごと書き込む</div>
+<div class="fix">→ 基準はmaster.jsonのscoring_specにだけ置く。カードは「参照するだけ」。両方に書くと食い違いの元になり、直すときに二度手間。</div>
+</div>
+
+<div class="anti">
+<div class="h">✗ 精度を直したいときにカード側を編集する</div>
+<div class="fix">→ 閾値変更・項目追加・基準の微調整は <b>master.jsonのscoring_specを1か所だけ</b> 編集し、閲覧用HTMLを再生成する。5枚のカードは触らない。</div>
+</div>
+
+<h2>精度を上げたくなったら（日々の運用）</h2>
+<table>
+<thead><tr><th>やりたいこと</th><th>触る場所</th></tr></thead>
+<tbody>
+<tr><td>閾値や点数基準を変えたい</td><td class="key">master.json の scoring_spec</td></tr>
+<tr><td>手法の役割・出力形式を変えたい</td><td>該当カード（指示欄）1枚だけ</td></tr>
+<tr><td>その日の地合いで新規を絞りたい</td><td class="key">master.json の market.latest / method_guidance</td></tr>
+</tbody>
+</table>
+
+<footer>この手順書は運用の入口用メモ。基準の中身は scoring_master.html（閲覧用マスター）を参照。</footer>
+</div></body></html>

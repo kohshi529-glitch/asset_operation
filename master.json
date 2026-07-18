@@ -1346,5 +1346,326 @@
     "watch_bottoming": []
   },
   "positions": [],
-  "action_log": []
+  "action_log": [],
+  "system_status": {
+    "version": "2026-07-18",
+    "description": "3層実行体制のタスクマップ（唯一の正）。各タスクにowner層とstatusを持たせ、二重実行を構造的に排除する。将来のダッシュボード6タブ目『システム』はここを描画する。",
+    "legend": {
+      "layers": {
+        "L1": "Claude Codeルーティン（無人スケジュール実行→リポジトリ蓄積）",
+        "L2": "Cowork（プロジェクト＋ファイル処理＋スケジュールタスク）",
+        "L3": "対話セッション（ライブ判断・当面継続）"
+      },
+      "status": {
+        "active": "稼働中",
+        "planned": "移植/着手予定",
+        "on_hold": "保留（未解決の課題あり）",
+        "under_review": "要検討",
+        "needs_confirmation": "所有者確定待ち（二重実行防止）",
+        "done_once": "初回完了→定型化へ"
+      }
+    },
+    "tasks": [
+      {
+        "id": "compass_morning",
+        "code": "⑤",
+        "name": "モーニングコンパス（市場モード判定+BB期限アラート）",
+        "layer": "L1",
+        "schedule": "平日 07:00",
+        "status": "active",
+        "depends_on": [],
+        "wave": 1,
+        "notes": "BB期限アラート修正反映後。稼働中。"
+      },
+      {
+        "id": "tenbagger_ipo",
+        "code": "①-4",
+        "name": "テンバガーX IPOチェック",
+        "layer": "L1",
+        "schedule": "平日 21:30",
+        "status": "active",
+        "depends_on": [],
+        "wave": 1,
+        "notes": "稼働中。"
+      },
+      {
+        "id": "kenmo_momentum_night",
+        "code": "①-1",
+        "name": "Kenmoモメンタム夜間本採点",
+        "layer": "L1",
+        "schedule": "平日 20:00",
+        "status": "planned",
+        "depends_on": [],
+        "wave": 2,
+        "notes": "プロンプト検証済。第2弾移植候補。"
+      },
+      {
+        "id": "stf_kakuhen_night",
+        "code": "①-5",
+        "name": "STF確変初動",
+        "layer": "L1",
+        "schedule": "平日 20:15",
+        "status": "planned",
+        "depends_on": [
+          "kenmo_momentum_night"
+        ],
+        "wave": 2,
+        "notes": "①-1のJSON出力に依存。鮮度ガード必須。"
+      },
+      {
+        "id": "kenmo_newhigh_night",
+        "code": "①-2",
+        "name": "Kenmo新高値（Yahoo!ランキング+鮮度検証）",
+        "layer": "L1",
+        "schedule": "平日 20:30",
+        "status": "planned",
+        "depends_on": [],
+        "wave": 2,
+        "notes": ""
+      },
+      {
+        "id": "choruko_revalue",
+        "code": "①-3",
+        "name": "ちょる子値洗い（21銘柄±3%変動のみ深掘り）",
+        "layer": "L1",
+        "schedule": "平日 20:45",
+        "status": "planned",
+        "depends_on": [],
+        "wave": 2,
+        "notes": ""
+      },
+      {
+        "id": "us_stage1",
+        "code": "③-1",
+        "name": "米国株Stage1（NO_TRADE自動スキップ付）",
+        "layer": "L1",
+        "schedule": "平日 21:00",
+        "status": "planned",
+        "depends_on": [],
+        "wave": 3,
+        "notes": ""
+      },
+      {
+        "id": "us_stage2",
+        "code": "③-2",
+        "name": "米国株Stage2（NO_TRADE自動スキップ付）",
+        "layer": "L1",
+        "schedule": "平日 22:00",
+        "status": "planned",
+        "depends_on": [
+          "us_stage1"
+        ],
+        "wave": 3,
+        "notes": ""
+      },
+      {
+        "id": "granville",
+        "code": "②-2",
+        "name": "グランビル",
+        "layer": "L1",
+        "schedule": "平日 22:30",
+        "status": "on_hold",
+        "depends_on": [],
+        "wave": null,
+        "notes": "データ鮮度問題が未解決のため保留。"
+      },
+      {
+        "id": "pts_screening",
+        "code": "②-1",
+        "name": "PTSスクリーニング",
+        "layer": "L1",
+        "schedule": "平日 06:10",
+        "status": "under_review",
+        "depends_on": [],
+        "wave": null,
+        "notes": "インデックス遅延の吸収設計後に判断。"
+      },
+      {
+        "id": "sbi_csv_sync",
+        "code": "M1",
+        "name": "SBI CSV→positions同期",
+        "layer": "L2",
+        "project": "ポジション株モニタ",
+        "schedule": "毎週 土曜（定型化予定）",
+        "status": "done_once",
+        "depends_on": [],
+        "notes": "初回完了。誤記1件発見の実績。毎週土曜の定型化へ。"
+      },
+      {
+        "id": "position_revalue",
+        "code": "④-4",
+        "name": "ポジション値洗い（水・土）",
+        "layer": "L2",
+        "project": "ポジション株モニタ",
+        "schedule": "水・土",
+        "status": "planned",
+        "depends_on": [
+          "sbi_csv_sync"
+        ],
+        "notes": "CSV同期に統合予定。"
+      },
+      {
+        "id": "weekend_catchup",
+        "code": "M2",
+        "name": "週末材料キャッチアップ",
+        "layer": "L2",
+        "project": "モーニングコンパス",
+        "schedule": "月曜 21:00",
+        "status": "needs_confirmation",
+        "depends_on": [],
+        "notes": "Cowork側にスケジュール登録済みの認識。所有者がCoworkで確定ならL3手動実行は停止する。登録内容の共有待ち（未確定①）。"
+      },
+      {
+        "id": "sat_csv_reminder",
+        "code": "",
+        "name": "土曜朝のCSV同期リマインド",
+        "layer": "L2",
+        "project": "モーニングコンパス",
+        "schedule": "土曜 朝",
+        "status": "needs_confirmation",
+        "depends_on": [],
+        "notes": "登録内容の共有待ち。"
+      },
+      {
+        "id": "screening_project",
+        "code": "M3",
+        "name": "場中の銘柄深掘り・スコアリング対話の移設先",
+        "layer": "L2",
+        "project": "手法別スクリーニング",
+        "schedule": "場中随時",
+        "status": "planned",
+        "depends_on": [],
+        "notes": "ミッション3（プロジェクト作成）待ち。着手順の第一候補。"
+      },
+      {
+        "id": "daytrade_ifdoco",
+        "code": "",
+        "name": "IFD-OCO設計対話の移設先",
+        "layer": "L2",
+        "project": "完全不関与デイトレ",
+        "schedule": "発注前",
+        "status": "planned",
+        "depends_on": [],
+        "notes": "ミッション3待ち。"
+      },
+      {
+        "id": "us_stage3_dialog",
+        "code": "",
+        "name": "Stage3リアルタイム対話の移設先",
+        "layer": "L2",
+        "project": "米国株デイトレ",
+        "schedule": "米国場中",
+        "status": "planned",
+        "depends_on": [],
+        "notes": "ミッション3待ち。"
+      },
+      {
+        "id": "weekly_observation",
+        "code": "④-1/2/3",
+        "name": "AI特需/SaaS耐力/カタリスト/週次レポート",
+        "layer": "L2",
+        "project": "週次定点観測",
+        "schedule": "週次",
+        "status": "planned",
+        "depends_on": [],
+        "notes": "当面は第3層で実施→安定後に移設判断。"
+      },
+      {
+        "id": "sbi_screener_op",
+        "code": "M4",
+        "name": "SBIスクリーナー実操作（Chrome連携）",
+        "layer": "L2",
+        "project": "デスクトップ",
+        "schedule": "PC環境が使える日",
+        "status": "planned",
+        "depends_on": [],
+        "notes": "成功すれば全スクリーニングが本来の複合条件精度に。"
+      },
+      {
+        "id": "board_judgment",
+        "code": "",
+        "name": "セミコン・ミニスイングのボード判定/押し目・売り時/急騰即時分析",
+        "layer": "L3",
+        "schedule": "場中随時",
+        "status": "active",
+        "depends_on": [],
+        "notes": ""
+      },
+      {
+        "id": "order_pricing",
+        "code": "",
+        "name": "IFD-OCO・OCOの価格設定戦略（サインポスト型）",
+        "layer": "L3",
+        "schedule": "発注前",
+        "status": "active",
+        "depends_on": [],
+        "notes": ""
+      },
+      {
+        "id": "weekly_batch_l3",
+        "code": "④-1..3",
+        "name": "週次バッチ（④-1〜3+統合レポート）",
+        "layer": "L3",
+        "schedule": "土曜 朝",
+        "status": "active",
+        "depends_on": [],
+        "notes": "初回完了。ルーティン化までの暫定担当。安定後にL2週次定点観測へ移設判断。"
+      },
+      {
+        "id": "event_ops",
+        "code": "",
+        "name": "CPI等の結果確認/緊急モード判定/損切り・利確の実行記録",
+        "layer": "L3",
+        "schedule": "イベント時",
+        "status": "active",
+        "depends_on": [],
+        "notes": ""
+      }
+    ],
+    "open_questions": [
+      {
+        "no": 1,
+        "topic": "月曜21:00キャッチアップの担当",
+        "detail": "Cowork登録内容の共有をもって確定（二重実行防止）。確定後は weekend_catchup.status を active に、L3手動は停止。",
+        "status": "open",
+        "blocks": [
+          "weekend_catchup",
+          "sat_csv_reminder"
+        ]
+      },
+      {
+        "no": 2,
+        "topic": "第2弾ルーティン（①系4本）の移植タイミング",
+        "detail": "⑤・①-4の安定を来週1週間確認後が推奨。ただし本当のゲートは known_risks の master.json 書き込み競合の解決。",
+        "status": "open",
+        "blocks": [
+          "kenmo_momentum_night",
+          "stf_kakuhen_night",
+          "kenmo_newhigh_night",
+          "choruko_revalue"
+        ]
+      },
+      {
+        "no": 3,
+        "topic": "ミッション3（プロジェクト作成）の着手順",
+        "detail": "場中対話が最多の『手法別スクリーニング』から作るのが効果大。",
+        "status": "open",
+        "blocks": [
+          "screening_project"
+        ]
+      }
+    ],
+    "known_risks": [
+      {
+        "id": "master_write_contention",
+        "title": "L1第2弾のmaster.json同時書き込み・依存チェーン",
+        "detail": "20:00〜20:45に4ルーティンが連続し①-5は①-1のJSONに依存。同時commitはGit衝突、依存は鮮度前提の破綻を招く。対策案：各ルーティンは自分のcandidates[method]キーのみを最新pull後に書く／依存チェーンに鮮度ガード（①-1出力タイムスタンプ確認後に①-5起動）を入れる。移植の前に確定させる。",
+        "severity": "high",
+        "related": [
+          "kenmo_momentum_night",
+          "stf_kakuhen_night"
+        ]
+      }
+    ]
+  }
 }

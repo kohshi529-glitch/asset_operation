@@ -1,0 +1,1350 @@
+{
+  "meta": {
+    "version": "2026-07-18",
+    "description": "投資ボードの唯一の正(Single Source of Truth)。scoring_specが採点基準マスター。各手法セッションはこのファイルを参照して採点・出力する。",
+    "files": {
+      "reference_html": "scoring_master.html",
+      "setup_guide": "setup_guide.html"
+    }
+  },
+  "scoring_spec": {
+    "version": "2026-07-18",
+    "description": "5大手法スコアリング基準マスター（唯一の正/Single Source of Truth）。手法別カードはここを参照するだけで、基準本体を複製しない。基準変更はこのファイルでのみ行う。",
+    "common": {
+      "max_score": 21,
+      "grade_points": {
+        "◎": 3,
+        "○": 2,
+        "△": 1,
+        "✗": 0
+      },
+      "actions": {
+        "BUY_NOW": "エントリー条件・損切りライン・目標株価を設定して打診買いを開始する。",
+        "WATCH": "株価・指標を継続観測し、スコア上昇でBUY_NOWへ格上げを検討する。",
+        "AVOID": "今回のサイクルでは見送り。再スクリーニング時に再評価する（アクションログには記録しない/ノイズ排除）。"
+      },
+      "precision_tags": {
+        "✓実数値": "IR資料・決算短信の実数値に基づくスコア。信頼度高。",
+        "（推定値）": "スクリーニング速報・一般情報からの推定スコア。次回決算後に実数値で更新要。確定値と平均3〜5点ブレる可能性あり。"
+      }
+    },
+    "methods": {
+      "kenmo_momentum": {
+        "name": "kenmo式 決算モメンタム",
+        "emoji": "🔵",
+        "session": "Mon",
+        "status": "complete",
+        "philosophy": "業績×株価モメンタムの一致を重視。良い業績の銘柄が適切に動いているかを7軸で複合評価し、単一指標依存を排除する。決算が良く・株価も反応し・テーマも旬で・機関も注目している銘柄だけが18点以上に到達する設計。",
+        "notice": "整合性解消済み（案A / 2026-07-18）：項目6『機関投資家・大口』に◎(3点)を新設し、7項目すべてが最大3点＝真の21点満点に統一。到達上限=21点。",
+        "screening": null,
+        "screening_note": "本手法固有のSBIスクリーナー事前条件は未提供（取得不可）。必要なら別途定義する。",
+        "items": [
+          {
+            "no": 1,
+            "name": "売上成長率（YoY）",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "+30%以上"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "+20〜30%"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "+10〜20%"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "+10%未満 または マイナス"
+              }
+            ],
+            "note": "累計ベースを優先。M&A・決算期変更で比較対象が変わる場合は実質成長率で判断。一時的な大型案件反動は来期予想で補正可。"
+          },
+          {
+            "no": 2,
+            "name": "営業利益成長率 または 黒字転換",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "+50%以上 または 赤字→黒字転換"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "+30〜50%"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "+10〜30%"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "+10%未満 または 赤字継続"
+              }
+            ],
+            "note": "一時費用（訴訟和解・のれん償却）の剥落による増益は実力ベースを推定して採点。意図的な先行投資による利益圧迫は通期予想で補正可。"
+          },
+          {
+            "no": 3,
+            "name": "上方修正 or 来期強気ガイダンス",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "通期上方修正あり または 来期ガイダンスが前期比+30%超"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "通期進捗が季節平均を大幅超過（上方修正余地大）"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "修正なし・据え置き"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "下方修正 または ガイダンス未達"
+              }
+            ],
+            "note": "1Q進捗率が通常25%のところ30%超なら上方修正余地ありとして○〜◎。"
+          },
+          {
+            "no": 4,
+            "name": "新高値ブレイクアウト（52週）",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "52週新高値を更新中 または 直近ブレイクアウト"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "直近高値付近（-5%以内）で上昇基調"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "高値から-10〜30%の調整局面"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "高値から-30%超 または 下落トレンド継続中"
+              }
+            ],
+            "note": "地合い急落（日経-1,800円超）時はチャート評価を一段階甘く読み、押し目圏を△〜○で許容。"
+          },
+          {
+            "no": 5,
+            "name": "出来高急増",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "直近5日平均の2倍以上の急増"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "直近5日平均の1.3〜2倍"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "標準的な出来高水準"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "出来高が細っている（注目度低下）"
+              }
+            ],
+            "note": "小型株（日次売買代金3億円未満）は流動性リスクとして評価を一段階下げることを検討。"
+          },
+          {
+            "no": 6,
+            "name": "機関投資家・大口の買い確認",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "大量保有5%超の新規報告 + 複数機関の同時参入"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "大量保有報告1件 または JPX指数採用"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "情報不明・確認できず"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "機関の売り・持ち株比率低下"
+              }
+            ],
+            "note": "案A適用（2026-07-18）：従来は◎なしの最大2点設計だったが、◎(3点)を新設して真の21点満点に統一。"
+          },
+          {
+            "no": 7,
+            "name": "テーマ性",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "AI・半導体・DC・量子・宇宙等の最前線テーマ"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "SaaS・D2C・フィンテック・ウェルネス等の成長テーマ"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "内需・バリュー的業種だがニッチトップ性あり"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "テーマ性なし・構造的逆風業種"
+              }
+            ],
+            "note": "2026年時点ではAI・DC・半導体インフラ・婚活×少子化国策なども◎水準として扱う。"
+          }
+        ],
+        "thresholds": [
+          {
+            "range": "18〜21",
+            "verdict": "🚀 確変",
+            "action": "BUY_NOW",
+            "meaning": "即エントリー検討。押し目で仕込む。"
+          },
+          {
+            "range": "15〜17",
+            "verdict": "🔥 強注目",
+            "action": "BUY_NOW",
+            "meaning": "条件付きエントリー。次の確認材料待ちも可。"
+          },
+          {
+            "range": "12〜14",
+            "verdict": "⚡ 注目",
+            "action": "WATCH",
+            "meaning": "ウォッチ継続。上方修正・出来高急増で格上げ。"
+          },
+          {
+            "range": "9〜11",
+            "verdict": "👀 監視",
+            "action": "WATCH",
+            "meaning": "消極的監視。判断材料が揃うまで静観。"
+          },
+          {
+            "range": "0〜8",
+            "verdict": "⚪ 対象外",
+            "action": "AVOID",
+            "meaning": "スクリーニング対象外。ボードに残すが売買しない。"
+          }
+        ],
+        "operation": [
+          "エントリー検討はスコア12点以上。注文標準：押し目=現在値±5%以内の指値／利確(TP)=+20%／損切り(SL)=-10%／RR比=2.0固定／注文形式=IFD-OCO推奨。",
+          "格上げトリガー（再採点）：上方修正IR／1Q進捗率が通常水準+5pt以上超過／出来高5日平均3倍超／大量保有報告(新規5%超)／新高値更新。",
+          "格下げトリガー：下方修正IR／出来高を伴う急落(-10%超)／営業利益の前期割れ確認／競合参入・テーマ終焉IR。"
+        ]
+      },
+      "kenmo_newhigh": {
+        "name": "kenmo式 新高値ブレイク",
+        "emoji": "🟢",
+        "session": "Tue",
+        "status": "complete",
+        "philosophy": "業績軸(①②③)と需給軸(④⑤⑥⑦)を各3点で採点し、業績の裏付けを伴う新高値ブレイク候補を捉える21点手法。業績3軸で『上がる理由』、需給4軸で『上がっている事実』を同時に確認する。",
+        "screening": null,
+        "screening_note": "STEP0のSBIスクリーナー入口条件11項目（市場・時価総額・売買代金・売上/経常/EPS増減率・52週高値・MA・乖離率・出来高増加率）の設定値は未提供。採点自体はスクリーナー通過後の銘柄に対して以下の7項目で行う。入口条件の実値が必要なら別途取得する。",
+        "items": [
+          {
+            "no": 1,
+            "name": "EPS増減率（予想）",
+            "axis": "業績軸",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "+30%以上"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "+20〜30%"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "+10〜20%"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "+10%未満"
+              }
+            ],
+            "note": "CB転換・新株発行による希薄化、特別利益の混入を確認。"
+          },
+          {
+            "no": 2,
+            "name": "売上高増減率（予想）",
+            "axis": "業績軸",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "+30%以上"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "+20〜30%"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "+10〜20%"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "+10%未満・減収"
+              }
+            ],
+            "note": "M&Aによる売上増は有機成長と分離して評価。"
+          },
+          {
+            "no": 3,
+            "name": "経常利益増減率（予想）",
+            "axis": "業績軸",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "+50%以上"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "+30〜50%"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "+10〜30%"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "+10%未満・減益"
+              }
+            ],
+            "note": "金融業はROE・ROAで代替評価。デリバティブ損益の混入に注意。"
+          },
+          {
+            "no": 4,
+            "name": "52週高値更新",
+            "axis": "需給軸",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "直近5営業日以内に更新"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "直近20営業日以内に更新"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "52週高値圏（-10%以内）だが更新なし"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "52週高値から-10%超下落"
+              }
+            ],
+            "note": "終値ベースでの更新を優先。ザラ場のみの更新は信頼性が低い。"
+          },
+          {
+            "no": 5,
+            "name": "移動平均線位置",
+            "axis": "需給軸",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "株価が75日線・200日線の両方を上回っている"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "75日線以上だが200日線は下回っている"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "25日線以上だが75日線は下回っている"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "25日線も下回っている（全線以下）"
+              }
+            ],
+            "note": "200日線自体が上向きかも確認。横ばい・下向きの場合は◎でも評価を一段下げる。"
+          },
+          {
+            "no": 6,
+            "name": "25日MA乖離率",
+            "axis": "需給軸",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "+5%〜+15%"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "0〜+5% または +15〜+20%"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "-5〜0%"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "-5%未満（下方乖離大） または +20%超（過熱）"
+              }
+            ],
+            "note": "計算式：（現在株価−25日MA）÷25日MA×100。+20%超は利確シグナル。スクリーナーの「+15%以内」条件と連動。"
+          },
+          {
+            "no": 7,
+            "name": "売買代金増加率（20日平均比）",
+            "axis": "需給軸",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "20日平均比 200%以上"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "20日平均比 150〜200%"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "20日平均比 100〜150%"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "20日平均比 100%未満"
+              }
+            ],
+            "note": "増加率が高くても絶対額が3億円未満なら流動性リスクあり。両方同時に確認。"
+          }
+        ],
+        "thresholds": [
+          {
+            "range": "18〜21",
+            "verdict": "🚀 確変ブレイク",
+            "action": "BUY_NOW",
+            "meaning": "業績・需給の全軸が揃った最優先。"
+          },
+          {
+            "range": "14〜17",
+            "verdict": "🔥 強注目",
+            "action": "BUY_NOW",
+            "meaning": "エントリー検討段階。"
+          },
+          {
+            "range": "10〜13",
+            "verdict": "⚡ 注目",
+            "action": "WATCH",
+            "meaning": "監視継続。"
+          },
+          {
+            "range": "6〜9",
+            "verdict": "👀 監視",
+            "action": "WATCH",
+            "meaning": "ウォッチリスト。"
+          },
+          {
+            "range": "0〜5",
+            "verdict": "⚪ 対象外",
+            "action": "AVOID",
+            "meaning": "見送り。"
+          }
+        ],
+        "operation_note": "STEP3のエントリー・リスク管理6原則（成行禁止／損切り-7〜10%／利確条件／ポジションサイズ／再エントリー禁止／並び順ルール）の実値は未提供。必要なら別途取得して埋める。"
+      },
+      "choruko_reversal": {
+        "name": "ちょる子式 大型株リバーサル",
+        "emoji": "🟠",
+        "session": "Wed",
+        "status": "complete",
+        "philosophy": "東証プライムの大型株が短期的に売られ過ぎた局面を定量的に捉え、業績・需給・テーマ性で選別して逆張り仕込みを行う。大型株の流動性とファンダに裏打ちされた回帰力を武器にする。",
+        "screening": {
+          "note": "SBIスクリーナー②設定値。以下を満たす銘柄のみ分析対象。",
+          "conditions": [
+            {
+              "label": "市場",
+              "value": "東証プライム"
+            },
+            {
+              "label": "時価総額",
+              "value": "1,000億円以上"
+            },
+            {
+              "label": "売買代金",
+              "value": "10億円以上/日"
+            },
+            {
+              "label": "25日騰落率",
+              "value": "−15%〜−5%"
+            },
+            {
+              "label": "RSI（14日）",
+              "value": "30以下"
+            },
+            {
+              "label": "25日移動平均乖離率",
+              "value": "−10%以下"
+            },
+            {
+              "label": "信用倍率",
+              "value": "5倍以下"
+            },
+            {
+              "label": "営業利益成長率（予想）",
+              "value": "0%以上"
+            },
+            {
+              "label": "並び順",
+              "value": "RSI昇順 → 25日乖離率昇順 → 売買代金降順"
+            }
+          ]
+        },
+        "items": [
+          {
+            "no": 1,
+            "name": "RSI（14日）― テクニカル過熱度",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "RSI ≤ 25（極端な売られすぎ）"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "RSI 26〜30"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "RSI 31〜40"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "RSI > 40"
+              }
+            ]
+          },
+          {
+            "no": 2,
+            "name": "25日移動平均乖離率 ― 価格の歪み",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "−15%以下"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "−10〜−15%"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "−5〜−10%"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "−5%より上"
+              }
+            ]
+          },
+          {
+            "no": 3,
+            "name": "時価総額（プライム大型）― 規模の安心感",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "5,000億円以上"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "2,000〜5,000億円"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "1,000〜2,000億円"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "1,000億円未満"
+              }
+            ]
+          },
+          {
+            "no": 4,
+            "name": "売買代金・流動性 ― 出口の確保",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "50億円以上/日"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "20〜50億円/日"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "10〜20億円/日"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "10億円未満/日"
+              }
+            ]
+          },
+          {
+            "no": 5,
+            "name": "テーマ・セクター注目度 ― 資金流入の引力",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "半導体・AI・防衛（市場の最注目テーマ）"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "金融・インフラ・素材・鉄鋼"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "その他プライム一般"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "テーマ性の低いセクター"
+              }
+            ]
+          },
+          {
+            "no": 6,
+            "name": "信用倍率（需給）― 踏み上げ余地",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "1倍以下（売り方優勢）"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "1〜3倍"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "3〜5倍"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "5倍超（買い方過多、整理リスク）"
+              }
+            ]
+          },
+          {
+            "no": 7,
+            "name": "営業利益成長率（予想）― 戻る理由",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "+20%以上"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "+5〜+20%"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "0〜+5%"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "マイナス（減益予想）"
+              }
+            ]
+          }
+        ],
+        "thresholds": [
+          {
+            "range": "18〜21",
+            "verdict": "🚀 強力買い",
+            "action": "BUY_NOW",
+            "meaning": "全条件が揃った最優先仕込み場。"
+          },
+          {
+            "range": "14〜17",
+            "verdict": "🔥 強注目",
+            "action": "BUY_NOW",
+            "meaning": "押し目打診を開始する。"
+          },
+          {
+            "range": "10〜13",
+            "verdict": "⚡ 注目",
+            "action": "WATCH",
+            "meaning": "条件改善を確認しながら監視。"
+          },
+          {
+            "range": "6〜9",
+            "verdict": "👀 監視",
+            "action": "WATCH",
+            "meaning": "ウォッチリストに入れる。"
+          },
+          {
+            "range": "0〜5",
+            "verdict": "⚪ 対象外",
+            "action": "AVOID",
+            "meaning": "今回はスキップ。"
+          }
+        ],
+        "operation": [
+          "エントリー：スコア14点以上 + RSI30以下 + 乖離率−10%以下の3条件が同時成立したタイミングで第1打診。",
+          "損切：長期MA(200日)を大幅に下回って継続した場合。目安は建値から−8〜−15%（流動性・ボラに応じ設定）。",
+          "利確：短期MA回復(+5〜8%)で半値利確、中期MA回復(+12〜15%)で全額利確。スコア下落でBUY_NOWを外れたら撤退シグナル。",
+          "再スクリーニング：毎週1回(週末) + 日経平均が−2%超の下落日には即実行。"
+        ]
+      },
+      "stf_kakuhen": {
+        "name": "STF式 確変初動",
+        "emoji": "🟣",
+        "session": "Fri",
+        "status": "complete",
+        "philosophy": "決算の内訳に現れた非連続な成長を、市場が織り込む前に発見する。全社成長率でなくセグメント別の構造変化・受注残高の変化率・ガイダンス修正率を中心に据える。新高値更新を必須条件にしない点が最大の差別化。成長ドライバーの構造変化を市場認識前に捉える第3の独立手法。",
+        "screening": {
+          "note": "Step1 一次抽出（SBI証券スクリーナー）。",
+          "conditions": [
+            {
+              "label": "売上成長率",
+              "value": "+20%以上"
+            },
+            {
+              "label": "経常利益成長率",
+              "value": "+30%以上"
+            },
+            {
+              "label": "時価総額",
+              "value": "100〜3,000億円"
+            },
+            {
+              "label": "日平均売買代金",
+              "value": "1億円以上"
+            },
+            {
+              "label": "PER",
+              "value": "10〜80倍"
+            },
+            {
+              "label": "52週高値比",
+              "value": "-10〜0%"
+            }
+          ]
+        },
+        "items": [
+          {
+            "no": 1,
+            "name": "セグメント成長率",
+            "max": 4,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 4,
+                "criteria": "セグメント単体で前年比+50%以上（異常値）"
+              },
+              {
+                "grade": "○",
+                "points": 3,
+                "criteria": "+30〜50%"
+              },
+              {
+                "grade": "△",
+                "points": 2,
+                "criteria": "+10〜30%"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "+10%未満 または 全社数値のみ"
+              }
+            ],
+            "note": "情報源：TDnet決算短信「セグメント情報」／決算説明資料。単一セグメント企業（電線商社・M&A仲介・SaaS等）は全社売上成長率で代替するが最大2点に制限。"
+          },
+          {
+            "no": 2,
+            "name": "受注残高成長率",
+            "max": 4,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 4,
+                "criteria": "前年比+30%以上（爆発的拡大）"
+              },
+              {
+                "grade": "○",
+                "points": 3,
+                "criteria": "+20〜30%"
+              },
+              {
+                "grade": "△",
+                "points": 2,
+                "criteria": "+10〜20%"
+              },
+              {
+                "grade": "維持",
+                "points": 1,
+                "criteria": "高水準維持（前年比▲でも絶対値が高い）"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "開示なし・商社/仲介/SaaSで概念不在"
+              }
+            ],
+            "note": "情報源：決算短信「受注高・受注残高」欄。電線商社・M&A仲介・SaaS・消費財メーカー等は概念不在のため0点固定。工事会社・製造装置メーカー・プラントエンジニアリングは開示率が高く最重要項目。"
+          },
+          {
+            "no": 3,
+            "name": "ガイダンス上方修正率",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "営業利益ベースで+10%以上の上方修正（大幅修正）"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "+5〜10%（中程度修正）"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "修正あり（+5%未満）または期初予想が前期比+20%超"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "修正なし・下方修正"
+              }
+            ],
+            "note": "情報源：TDnet「業績予想の修正」／株探「業績修正」タブ。修正のない期は期初予想の成長率で代替判断。2.7倍等の特別大幅増益は満点3点。"
+          },
+          {
+            "no": 4,
+            "name": "新成長事業売上比率",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "新成長事業が売上構成比で+10pt以上上昇、または主力事業を逆転"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "構成比+5〜10pt上昇"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "構成比+5pt未満だが明確な拡大方向"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "単一事業・新事業なし・構成比変化なし"
+              }
+            ],
+            "note": "情報源：決算説明資料の事業別売上構成グラフ。典型例：扶桑化学（電子材料48%→54%）、MTG（リテールストア+55.7%）。"
+          },
+          {
+            "no": 5,
+            "name": "AI/DC関連売上比率",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "AI/DC向けが全社売上の主要ドライバー、かつ明確に拡大中"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "AI/DC向けが一部存在し成長方向"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "間接的な恩恵・テーマ関連として言及あり"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "AI/DC関連なし"
+              }
+            ],
+            "note": "SaaS・AI系銘柄への特則：単一セグメントでAI/DC直接売上の測定が困難な場合はRule of 40で代替。R40=ARR成長率(%)+営業利益率(%)。R40≥60→3点／40〜59→2点／25〜39→1点／25未満→0点。rationale欄に「ai_dc_exposure: R40代替(R40=XX)」と明記。"
+          },
+          {
+            "no": 6,
+            "name": "売上高成長率・予",
+            "max": 2,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 2,
+                "criteria": "+20%以上"
+              },
+              {
+                "grade": "○",
+                "points": 1,
+                "criteria": "+10〜20%"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "+10%未満"
+              }
+            ]
+          },
+          {
+            "no": 7,
+            "name": "経常利益成長率・予",
+            "max": 2,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 2,
+                "criteria": "+30%以上"
+              },
+              {
+                "grade": "○",
+                "points": 1,
+                "criteria": "+10〜30%"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "+10%未満"
+              }
+            ]
+          }
+        ],
+        "thresholds": [
+          {
+            "range": "17〜21",
+            "verdict": "🚀 確変",
+            "action": "BUY_NOW",
+            "meaning": "全軸で構造変化が数値確認済み。即ウォッチリスト最上位。"
+          },
+          {
+            "range": "13〜16",
+            "verdict": "🔥 強注目",
+            "action": "BUY_NOW",
+            "meaning": "複数指標で構造変化を確認。エントリー検討段階。"
+          },
+          {
+            "range": "9〜12",
+            "verdict": "⚡ 注目",
+            "action": "WATCH",
+            "meaning": "一部指標で変化を確認。継続監視対象。"
+          },
+          {
+            "range": "5〜8",
+            "verdict": "👀 監視",
+            "action": "WATCH",
+            "meaning": "業績は堅調だがSTF的構造変化は限定的。"
+          },
+          {
+            "range": "0〜4",
+            "verdict": "⚪ 対象外",
+            "action": "AVOID",
+            "meaning": "STF手法での評価対象外。"
+          }
+        ],
+        "operation": [
+          "情報収集4ステップ：①SBIスクリーナー一次抽出 → ②TDnetで決算短信PDF(セグメント/受注残高) → ③各社IRで決算説明資料PDF(事業別構成/AI・DC言及) → ④株探で修正情報・予想成長率。",
+          "スコア精度は✓実数値と（推定値）を区別して管理。推定は確定と平均3〜5点ブレる（例：泉州電業 推定17→確定8、扶桑化学 推定14→確定18）。IR実数値確認が不可欠。"
+        ],
+        "weak_models": [
+          {
+            "model": "電線・部品商社",
+            "reason": "単一セグメント・受注残高不在",
+            "alt": "業績モメンタム"
+          },
+          {
+            "model": "M&A仲介",
+            "reason": "単一セグメント・受注残高不在・AI/DC不在",
+            "alt": "業績モメンタム"
+          },
+          {
+            "model": "地方銀行",
+            "reason": "セグメント分析不可・AI/DC不在",
+            "alt": "バリュー投資"
+          },
+          {
+            "model": "SaaS（国内）",
+            "reason": "受注残高不在・AI/DC間接的",
+            "alt": "Rule of 40・ARRトラッキング"
+          },
+          {
+            "model": "消費財メーカー",
+            "reason": "受注残高不在・AI/DC不在",
+            "alt": "ブランド評価・市場シェア"
+          }
+        ]
+      },
+      "tenbagger_x": {
+        "name": "テンバガー投資家X式",
+        "emoji": "🟡",
+        "session": "Thu",
+        "status": "complete",
+        "philosophy": "将来のテンバガー候補を、成長性・収益性・割安性・株価位置・流動性の複合で早期に捉える。7項目21点で機械的に優先順位づけする。",
+        "screening": null,
+        "screening_note": "対象ユニバースの前提条件6項目はガイドHTML側に定義。実数の6条件が必要ならユーザーから別途取得する。",
+        "items": [
+          {
+            "no": 1,
+            "name": "売上高成長率（予想）",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "40%以上"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "30〜40%"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "15〜30%"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "15%未満"
+              }
+            ]
+          },
+          {
+            "no": 2,
+            "name": "EPS成長率（予想）",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "40%以上"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "30〜40%"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "15〜30% または 黒字転換予想"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "15%未満 または 赤字継続"
+              }
+            ],
+            "note": "隙間修正：従来△は黒字転換のみで『黒字だが+15〜30%』が未定義だったため、△に『15〜30%』を追加、✗に『15%未満』を追加して連続化（売上高成長率と同段階に整合）。"
+          },
+          {
+            "no": 3,
+            "name": "ROE",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "20%以上"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "10〜20%"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "5〜10%"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "5%未満"
+              }
+            ]
+          },
+          {
+            "no": 4,
+            "name": "PSR（株価売上高倍率）",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "5倍以下"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "5〜10倍"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "10〜20倍"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "20倍超"
+              }
+            ]
+          },
+          {
+            "no": 5,
+            "name": "営業利益率",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "10%以上"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "5〜10% または 黒字転換"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "0〜5%（低いプラス） または 赤字縮小中"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "赤字拡大"
+              }
+            ],
+            "note": "隙間修正：従来△は赤字縮小のみで『黒字だが利益率0〜5%』が未定義だったため、△に『0〜5%』を追加して連続化。"
+          },
+          {
+            "no": 6,
+            "name": "株価位置（上場来高値比）",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "−10%以内"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "−10〜−30%"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "−30〜−50%"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "−50%超"
+              }
+            ]
+          },
+          {
+            "no": 7,
+            "name": "流動性（日次売買代金）",
+            "max": 3,
+            "grades": [
+              {
+                "grade": "◎",
+                "points": 3,
+                "criteria": "5億円以上"
+              },
+              {
+                "grade": "○",
+                "points": 2,
+                "criteria": "1〜5億円"
+              },
+              {
+                "grade": "△",
+                "points": 1,
+                "criteria": "0.5〜1億円"
+              },
+              {
+                "grade": "✗",
+                "points": 0,
+                "criteria": "0.5億円未満"
+              }
+            ]
+          }
+        ],
+        "thresholds": [
+          {
+            "range": "18〜21",
+            "verdict": "🚀 テンバガー候補",
+            "action": "BUY_NOW",
+            "meaning": "最優先。"
+          },
+          {
+            "range": "14〜17",
+            "verdict": "🔥 強注目",
+            "action": "BUY_NOW",
+            "meaning": "エントリー検討。"
+          },
+          {
+            "range": "10〜13",
+            "verdict": "⚡ 注目",
+            "action": "WATCH",
+            "meaning": "監視。"
+          },
+          {
+            "range": "6〜9",
+            "verdict": "👀 監視継続",
+            "action": "WATCH",
+            "meaning": "ウォッチリスト。"
+          },
+          {
+            "range": "0〜5",
+            "verdict": "⚪ 対象外",
+            "action": "AVOID",
+            "meaning": "見送り。"
+          }
+        ],
+        "operation": [
+          "データ不足項目はすべて△（1点）として採点（値そのものが定義段階に当てはまらないケースは上記の連続化済み基準で判定する）。",
+          "AVOID判定はアクションログに記録しない。",
+          "Claude APIは本基準のsystem promptを受け取りJSONで採点結果を返す。再分析のたびに最新スコアへ上書きし、過去5件まで履歴保存。"
+        ]
+      }
+    }
+  },
+  "market": {
+    "latest": {
+      "date": null,
+      "market_mode": null,
+      "method_guidance": {}
+    },
+    "history": []
+  },
+  "candidates": {
+    "kenmo_momentum": [],
+    "kenmo_newhigh": [],
+    "choruko_reversal": [],
+    "stf_kakuhen": [],
+    "tenbagger_x": [],
+    "watch_bottoming": []
+  },
+  "positions": [],
+  "action_log": []
+}

@@ -1,0 +1,152 @@
+<!doctype html><html lang='ja'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>システム — 3層実行体制マップ</title><style>
+:root{color-scheme:dark}*{box-sizing:border-box}
+body{margin:0;background:#0d1b1e;color:#e6f4f1;font-family:-apple-system,'Hiragino Sans','Noto Sans JP',sans-serif;line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding:20px 16px 80px}
+h1{font-size:22px;margin:6px 0 2px}
+.ver{color:#8fb3ad;font-size:13px;margin-bottom:14px}
+.ver b{color:#7fe3d6;font-weight:600}
+.src{font-size:12px;color:#8fb3ad;margin-bottom:16px}
+.src .live{color:#48e0b0}.src .snap{color:#e8c766}
+.nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.nav a{background:#12292e;border:1px solid #1d3a40;color:#e6f4f1;text-decoration:none;padding:7px 12px;border-radius:999px;font-size:13px}
+.nav a.here{border-color:#1fb6a6;color:#7fe3d6}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:22px}
+.kpi{background:#12292e;border:1px solid #1d3a40;border-radius:12px;padding:12px 14px}
+.kpi .n{font-size:26px;font-weight:700;color:#7fe3d6;line-height:1.1}
+.kpi .l{font-size:12px;color:#8fb3ad;margin-top:2px}
+.kpi.warn .n{color:#f0b866}
+.cols{display:grid;grid-template-columns:1fr;gap:18px}
+@media(min-width:820px){.cols{grid-template-columns:repeat(3,1fr)}}
+.col{background:#0f2429;border:1px solid #1d3a40;border-radius:14px;padding:14px 12px}
+.col h2{font-size:15px;margin:0 0 3px;display:flex;align-items:center;gap:8px}
+.col .sub{font-size:11.5px;color:#8fb3ad;margin-bottom:12px}
+.col .dot{width:10px;height:10px;border-radius:3px;display:inline-block}
+.L1 .dot{background:#1fb6a6}.L2 .dot{background:#c9a24a}.L3 .dot{background:#5bb2e6}
+.card{background:#12292e;border:1px solid #1d3a40;border-left:3px solid #1fb6a6;border-radius:10px;padding:10px 11px;margin-bottom:10px}
+.L1 .card{border-left-color:#1fb6a6}.L2 .card{border-left-color:#c9a24a}.L3 .card{border-left-color:#5bb2e6}
+.card .top{display:flex;align-items:center;gap:7px;margin-bottom:5px;flex-wrap:wrap}
+.code{font-size:11px;color:#0d1b1e;background:#8fb3ad;border-radius:5px;padding:1px 6px;font-weight:700}
+.sched{font-size:11px;color:#8fb3ad;margin-left:auto;white-space:nowrap}
+.cname{font-size:13.5px;font-weight:600;flex-basis:100%;margin-top:2px}
+.proj{font-size:11px;color:#7fe3d6;margin-top:3px}
+.badge{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;border:1px solid}
+.b-active{background:#123d33;color:#48e0b0;border-color:#1f6b57}
+.b-done_once{background:#10322c;color:#5fd6be;border-color:#1f6b57}
+.b-planned{background:#123047;color:#5bb2e6;border-color:#1f5079}
+.b-needs_confirmation{background:#3a2a12;color:#f0b866;border-color:#6b4f1e}
+.b-on_hold{background:#2a2410;color:#e8c766;border-color:#5c4a1e}
+.b-under_review{background:#241a2e;color:#b98fe0;border-color:#432f6b}
+.dep{margin-top:6px;font-size:11px;color:#8fb3ad}
+.dep .chip{display:inline-block;background:#0f2429;border:1px solid #1d3a40;border-radius:5px;padding:1px 6px;margin-left:4px;color:#7fe3d6}
+.wave{font-size:10.5px;color:#8fb3ad;border:1px solid #1d3a40;border-radius:5px;padding:1px 5px}
+.note{font-size:11.5px;color:#8fb3ad;margin-top:6px;padding:6px 8px;background:#0f2429;border-radius:6px}
+.sec{margin-top:26px}
+.sec h2{font-size:16px;margin:0 0 10px;color:#e6f4f1;border-bottom:1px solid #1d3a40;padding-bottom:6px}
+.q{background:#12292e;border:1px solid #1d3a40;border-left:3px solid #f0b866;border-radius:10px;padding:11px 12px;margin-bottom:10px}
+.q .qt{font-size:14px;font-weight:600;margin-bottom:4px}
+.q .qt .no{color:#f0b866;margin-right:6px}
+.q .qd{font-size:12.5px;color:#8fb3ad}
+.q .blk{margin-top:6px;font-size:11px;color:#8fb3ad}
+.q .blk .chip{display:inline-block;background:#0f2429;border:1px solid #1d3a40;border-radius:5px;padding:1px 6px;margin-left:4px;color:#7fe3d6}
+.risk{background:#241416;border:1px solid #5c2f2f;border-left:3px solid #c98a8a;border-radius:10px;padding:11px 12px;margin-bottom:10px}
+.risk .rt{font-size:14px;font-weight:600;color:#e6b3b3;margin-bottom:4px}
+.risk .rt .sev{font-size:10.5px;background:#6b2f2f;color:#f0c9c9;border-radius:5px;padding:1px 7px;margin-left:6px}
+.risk .rd{font-size:12.5px;color:#c9a9a9}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:34px}
+</style></head><body><div class='wrap'>
+<h1>🖥 システム — 3層実行体制マップ</h1>
+<div class='ver'>version <b id='ver'>—</b> ／ master.json <code>system_status</code> を描画</div>
+<div class='src' id='src'>データ取得中…</div>
+<div class='nav'>
+<a href='./index.html'>📊 スコアリング基準</a>
+<a href='./setup_guide.html'>🛠 設定要領</a>
+<a class='here' href='./system.html'>🖥 システム</a>
+</div>
+<div class='kpis' id='kpis'></div>
+<div class='cols' id='cols'></div>
+<div class='sec' id='q-sec'></div>
+<div class='sec' id='r-sec'></div>
+<div class='legend' id='legend'></div>
+<footer>docs/system.html ／ 唯一の正 master.json から描画。タスクの追加・状態変更は master.json の system_status を編集する。</footer>
+</div>
+<script>
+const RAW_URL = "https://raw.githubusercontent.com/kohshi529-glitch/asset_operation/main/master.json";
+const EMBEDDED = {"version": "2026-07-18", "description": "3層実行体制のタスクマップ（唯一の正）。各タスクにowner層とstatusを持たせ、二重実行を構造的に排除する。将来のダッシュボード6タブ目『システム』はここを描画する。", "legend": {"layers": {"L1": "Claude Codeルーティン（無人スケジュール実行→リポジトリ蓄積）", "L2": "Cowork（プロジェクト＋ファイル処理＋スケジュールタスク）", "L3": "対話セッション（ライブ判断・当面継続）"}, "status": {"active": "稼働中", "planned": "移植/着手予定", "on_hold": "保留（未解決の課題あり）", "under_review": "要検討", "needs_confirmation": "所有者確定待ち（二重実行防止）", "done_once": "初回完了→定型化へ"}}, "tasks": [{"id": "compass_morning", "code": "⑤", "name": "モーニングコンパス（市場モード判定+BB期限アラート）", "layer": "L1", "schedule": "平日 07:00", "status": "active", "depends_on": [], "wave": 1, "notes": "BB期限アラート修正反映後。稼働中。"}, {"id": "tenbagger_ipo", "code": "①-4", "name": "テンバガーX IPOチェック", "layer": "L1", "schedule": "平日 21:30", "status": "active", "depends_on": [], "wave": 1, "notes": "稼働中。"}, {"id": "kenmo_momentum_night", "code": "①-1", "name": "Kenmoモメンタム夜間本採点", "layer": "L1", "schedule": "平日 20:00", "status": "planned", "depends_on": [], "wave": 2, "notes": "プロンプト検証済。第2弾移植候補。"}, {"id": "stf_kakuhen_night", "code": "①-5", "name": "STF確変初動", "layer": "L1", "schedule": "平日 20:15", "status": "planned", "depends_on": ["kenmo_momentum_night"], "wave": 2, "notes": "①-1のJSON出力に依存。鮮度ガード必須。"}, {"id": "kenmo_newhigh_night", "code": "①-2", "name": "Kenmo新高値（Yahoo!ランキング+鮮度検証）", "layer": "L1", "schedule": "平日 20:30", "status": "planned", "depends_on": [], "wave": 2, "notes": ""}, {"id": "choruko_revalue", "code": "①-3", "name": "ちょる子値洗い（21銘柄±3%変動のみ深掘り）", "layer": "L1", "schedule": "平日 20:45", "status": "planned", "depends_on": [], "wave": 2, "notes": ""}, {"id": "us_stage1", "code": "③-1", "name": "米国株Stage1（NO_TRADE自動スキップ付）", "layer": "L1", "schedule": "平日 21:00", "status": "planned", "depends_on": [], "wave": 3, "notes": ""}, {"id": "us_stage2", "code": "③-2", "name": "米国株Stage2（NO_TRADE自動スキップ付）", "layer": "L1", "schedule": "平日 22:00", "status": "planned", "depends_on": ["us_stage1"], "wave": 3, "notes": ""}, {"id": "granville", "code": "②-2", "name": "グランビル", "layer": "L1", "schedule": "平日 22:30", "status": "on_hold", "depends_on": [], "wave": null, "notes": "データ鮮度問題が未解決のため保留。"}, {"id": "pts_screening", "code": "②-1", "name": "PTSスクリーニング", "layer": "L1", "schedule": "平日 06:10", "status": "under_review", "depends_on": [], "wave": null, "notes": "インデックス遅延の吸収設計後に判断。"}, {"id": "sbi_csv_sync", "code": "M1", "name": "SBI CSV→positions同期", "layer": "L2", "project": "ポジション株モニタ", "schedule": "毎週 土曜（定型化予定）", "status": "done_once", "depends_on": [], "notes": "初回完了。誤記1件発見の実績。毎週土曜の定型化へ。"}, {"id": "position_revalue", "code": "④-4", "name": "ポジション値洗い（水・土）", "layer": "L2", "project": "ポジション株モニタ", "schedule": "水・土", "status": "planned", "depends_on": ["sbi_csv_sync"], "notes": "CSV同期に統合予定。"}, {"id": "weekend_catchup", "code": "M2", "name": "週末材料キャッチアップ", "layer": "L2", "project": "モーニングコンパス", "schedule": "月曜 21:00", "status": "needs_confirmation", "depends_on": [], "notes": "Cowork側にスケジュール登録済みの認識。所有者がCoworkで確定ならL3手動実行は停止する。登録内容の共有待ち（未確定①）。"}, {"id": "sat_csv_reminder", "code": "", "name": "土曜朝のCSV同期リマインド", "layer": "L2", "project": "モーニングコンパス", "schedule": "土曜 朝", "status": "needs_confirmation", "depends_on": [], "notes": "登録内容の共有待ち。"}, {"id": "screening_project", "code": "M3", "name": "場中の銘柄深掘り・スコアリング対話の移設先", "layer": "L2", "project": "手法別スクリーニング", "schedule": "場中随時", "status": "planned", "depends_on": [], "notes": "ミッション3（プロジェクト作成）待ち。着手順の第一候補。"}, {"id": "daytrade_ifdoco", "code": "", "name": "IFD-OCO設計対話の移設先", "layer": "L2", "project": "完全不関与デイトレ", "schedule": "発注前", "status": "planned", "depends_on": [], "notes": "ミッション3待ち。"}, {"id": "us_stage3_dialog", "code": "", "name": "Stage3リアルタイム対話の移設先", "layer": "L2", "project": "米国株デイトレ", "schedule": "米国場中", "status": "planned", "depends_on": [], "notes": "ミッション3待ち。"}, {"id": "weekly_observation", "code": "④-1/2/3", "name": "AI特需/SaaS耐力/カタリスト/週次レポート", "layer": "L2", "project": "週次定点観測", "schedule": "週次", "status": "planned", "depends_on": [], "notes": "当面は第3層で実施→安定後に移設判断。"}, {"id": "sbi_screener_op", "code": "M4", "name": "SBIスクリーナー実操作（Chrome連携）", "layer": "L2", "project": "デスクトップ", "schedule": "PC環境が使える日", "status": "planned", "depends_on": [], "notes": "成功すれば全スクリーニングが本来の複合条件精度に。"}, {"id": "board_judgment", "code": "", "name": "セミコン・ミニスイングのボード判定/押し目・売り時/急騰即時分析", "layer": "L3", "schedule": "場中随時", "status": "active", "depends_on": [], "notes": ""}, {"id": "order_pricing", "code": "", "name": "IFD-OCO・OCOの価格設定戦略（サインポスト型）", "layer": "L3", "schedule": "発注前", "status": "active", "depends_on": [], "notes": ""}, {"id": "weekly_batch_l3", "code": "④-1..3", "name": "週次バッチ（④-1〜3+統合レポート）", "layer": "L3", "schedule": "土曜 朝", "status": "active", "depends_on": [], "notes": "初回完了。ルーティン化までの暫定担当。安定後にL2週次定点観測へ移設判断。"}, {"id": "event_ops", "code": "", "name": "CPI等の結果確認/緊急モード判定/損切り・利確の実行記録", "layer": "L3", "schedule": "イベント時", "status": "active", "depends_on": [], "notes": ""}], "open_questions": [{"no": 1, "topic": "月曜21:00キャッチアップの担当", "detail": "Cowork登録内容の共有をもって確定（二重実行防止）。確定後は weekend_catchup.status を active に、L3手動は停止。", "status": "open", "blocks": ["weekend_catchup", "sat_csv_reminder"]}, {"no": 2, "topic": "第2弾ルーティン（①系4本）の移植タイミング", "detail": "⑤・①-4の安定を来週1週間確認後が推奨。ただし本当のゲートは known_risks の master.json 書き込み競合の解決。", "status": "open", "blocks": ["kenmo_momentum_night", "stf_kakuhen_night", "kenmo_newhigh_night", "choruko_revalue"]}, {"no": 3, "topic": "ミッション3（プロジェクト作成）の着手順", "detail": "場中対話が最多の『手法別スクリーニング』から作るのが効果大。", "status": "open", "blocks": ["screening_project"]}], "known_risks": [{"id": "master_write_contention", "title": "L1第2弾のmaster.json同時書き込み・依存チェーン", "detail": "20:00〜20:45に4ルーティンが連続し①-5は①-1のJSONに依存。同時commitはGit衝突、依存は鮮度前提の破綻を招く。対策案：各ルーティンは自分のcandidates[method]キーのみを最新pull後に書く／依存チェーンに鮮度ガード（①-1出力タイムスタンプ確認後に①-5起動）を入れる。移植の前に確定させる。", "severity": "high", "related": ["kenmo_momentum_night", "stf_kakuhen_night"]}]};
+const STATUS_LABEL = {active:"稼働中",planned:"予定",on_hold:"保留",under_review:"要検討",needs_confirmation:"確定待ち",done_once:"初回完了"};
+const LAYER_META = {L1:{name:"L1 Claude Codeルーティン",sub:"無人スケジュール実行→リポジトリ蓄積"},L2:{name:"L2 Cowork",sub:"プロジェクト＋ファイル処理＋スケジュールタスク"},L3:{name:"L3 対話セッション",sub:"ライブ判断・当面継続"}};
+function esc(s){return (s==null?"":String(s)).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));}
+
+function render(ss, live){
+  document.getElementById('ver').textContent = ss.version || "—";
+  const src = document.getElementById('src');
+  src.innerHTML = live
+    ? "<span class='live'>● LIVE</span> GitHub の最新 master.json を表示中"
+    : "<span class='snap'>● SNAPSHOT</span> 取得失敗のため生成時点の内蔵データを表示中";
+  const tasks = ss.tasks||[];
+  const idMap = {}; tasks.forEach(t=>idMap[t.id]=t);
+
+  // KPI
+  const byLayer = {L1:0,L2:0,L3:0}, byStatus={};
+  tasks.forEach(t=>{byLayer[t.layer]=(byLayer[t.layer]||0)+1;byStatus[t.status]=(byStatus[t.status]||0)+1;});
+  const kpis=[
+    {n:tasks.length,l:"総タスク"},
+    {n:byStatus.active||0,l:"稼働中"},
+    {n:byStatus.planned||0,l:"予定"},
+    {n:(ss.open_questions||[]).length,l:"未確定",warn:true},
+    {n:(ss.known_risks||[]).length,l:"リスク",warn:true},
+  ];
+  document.getElementById('kpis').innerHTML = kpis.map(k=>
+    `<div class='kpi ${k.warn?'warn':''}'><div class='n'>${k.n}</div><div class='l'>${esc(k.l)}</div></div>`).join('');
+
+  // 層別カラム
+  const order=["L1","L2","L3"];
+  document.getElementById('cols').innerHTML = order.map(L=>{
+    const meta=LAYER_META[L];
+    const list=tasks.filter(t=>t.layer===L);
+    const cards=list.map(t=>{
+      const deps=(t.depends_on||[]).map(d=>`<span class='chip'>${esc((idMap[d]&&(idMap[d].code||idMap[d].name))||d)}</span>`).join('');
+      return `<div class='card'>
+        <div class='top'>
+          ${t.code?`<span class='code'>${esc(t.code)}</span>`:''}
+          <span class='badge b-${t.status}'>${esc(STATUS_LABEL[t.status]||t.status)}</span>
+          ${t.wave?`<span class='wave'>第${t.wave}弾</span>`:''}
+          <span class='sched'>${esc(t.schedule||'')}</span>
+          <span class='cname'>${esc(t.name)}</span>
+        </div>
+        ${t.project?`<div class='proj'>▸ ${esc(t.project)}</div>`:''}
+        ${deps?`<div class='dep'>依存:${deps}</div>`:''}
+        ${t.notes?`<div class='note'>${esc(t.notes)}</div>`:''}
+      </div>`;
+    }).join('');
+    return `<div class='col ${L}'><h2><span class='dot'></span>${esc(meta.name)}</h2><div class='sub'>${esc(meta.sub)}</div>${cards}</div>`;
+  }).join('');
+
+  // 未確定
+  const qs=ss.open_questions||[];
+  document.getElementById('q-sec').innerHTML = "<h2>⚠️ 未確定事項</h2>"+qs.map(q=>{
+    const blk=(q.blocks||[]).map(b=>`<span class='chip'>${esc((idMap[b]&&(idMap[b].code||idMap[b].name))||b)}</span>`).join('');
+    return `<div class='q'><div class='qt'><span class='no'>#${q.no}</span>${esc(q.topic)}</div>
+      <div class='qd'>${esc(q.detail)}</div>
+      ${blk?`<div class='blk'>影響先:${blk}</div>`:''}</div>`;
+  }).join('');
+
+  // リスク
+  const rs=ss.known_risks||[];
+  document.getElementById('r-sec').innerHTML = "<h2>🚧 既知リスク</h2>"+rs.map(r=>
+    `<div class='risk'><div class='rt'>${esc(r.title)}<span class='sev'>${esc(r.severity||'')}</span></div>
+     <div class='rd'>${esc(r.detail)}</div></div>`).join('');
+
+  // 凡例
+  document.getElementById('legend').innerHTML = Object.keys(STATUS_LABEL).map(k=>
+    `<span class='badge b-${k}'>${esc(STATUS_LABEL[k])}</span>`).join('');
+}
+
+render(EMBEDDED, false);
+fetch(RAW_URL, {cache:"no-store"}).then(r=>r.ok?r.json():Promise.reject()).then(j=>{
+  if(j && j.system_status){ render(j.system_status, true); }
+}).catch(()=>{ /* フォールバックのまま */ });
+</script>
+</body></html>

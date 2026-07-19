@@ -67,6 +67,9 @@ body{{margin:0;background:{BG};color:{TXT};font-family:-apple-system,'Hiragino S
 .lead{{background:{CARD};border:1px solid {BORDER};border-radius:12px;padding:14px 16px;color:{ACCENT2};font-size:14px;margin-bottom:18px}}
 .nav{{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}}
 .nav a{{background:{CARD};border:1px solid {BORDER};color:{TXT};text-decoration:none;padding:7px 12px;border-radius:999px;font-size:13px}}
+.tabs{{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}}
+.tabs a{{background:{CARD};border:1px solid {BORDER};color:{TXT};text-decoration:none;padding:7px 12px;border-radius:999px;font-size:13px}}
+.tabs a.here{{border-color:{ACCENT};color:{ACCENT2}}}
 .common{{background:{CARD};border:1px solid {BORDER};border-radius:12px;padding:14px 16px;margin-bottom:22px}}
 .common .gp{{font-size:15px;color:{ACCENT2};margin-bottom:10px}}
 section.method{{background:{CARD};border:1px solid {BORDER};border-left:4px solid {ACCENT};border-radius:12px;padding:16px 16px 6px;margin-bottom:20px}}
@@ -97,11 +100,12 @@ footer{{color:{SUB};font-size:12px;text-align:center;margin-top:30px}}
 </style></head><body><div class='wrap'>
 <h1>5大手法 スコアリング基準マスター</h1>
 <div class='ver'>version {esc(spec['version'])} ／ 唯一の正（master.json から自動生成）</div>
+<div class='tabs'><a class='here' href='./index.html'>📊 スコアリング基準</a><a href='./setup_guide.html'>🛠 設定要領</a><a href='./system.html'>🖥 システム</a></div>
 <div class='lead'>{esc(spec['description'])}</div>
 <div class='common'><div class='gp'>共通配点：{esc(gp)}　／　満点 {esc(common['max_score'])}点</div>
 <div class='sub'>アクション定義</div><table><tbody>{acts}</tbody></table></div>
 <div class='nav'>{nav}</div>{sections}
-<footer>docs/index.html は scripts/render_master.py が master.json から生成。基準変更は master.json を編集し再生成すること。</footer>
+<footer>index.html は scripts/render_master.py が master.json から生成。基準変更は master.json を編集し再生成すること。</footer>
 </div></body></html>"""
 
 with open(os.path.join(ROOT, "docs", "index.html"), "w", encoding="utf-8") as f:

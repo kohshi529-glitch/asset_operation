@@ -1644,7 +1644,7 @@
       {
         "no": 2,
         "topic": "第2弾ルーティン（①系4本）の移植タイミング",
-        "detail": "⑤・①-4の安定を来週1週間確認後が推奨。ただし本当のゲートは known_risks の master.json 書き込み競合の解決。",
+        "detail": "⑤・①-4の安定を来週1週間確認後が推奨。ただし本当のゲートは known_risks の master.json 書き込み競合の解決。　→【2026-07-19 更新】書き込み競合の設計は確定（pipeline.write_protocol参照）。残るゲートは⑤・①-4の1週間安定確認と、オーケストレータへのscore_*実装のみ。",
         "status": "open",
         "blocks": [
           "kenmo_momentum_night",
@@ -1667,8 +1667,8 @@
       {
         "id": "master_write_contention",
         "title": "L1第2弾のmaster.json同時書き込み・依存チェーン",
-        "detail": "20:00〜20:45に4ルーティンが連続し①-5は①-1のJSONに依存。同時commitはGit衝突、依存は鮮度前提の破綻を招く。対策案：各ルーティンは自分のcandidates[method]キーのみを最新pull後に書く／依存チェーンに鮮度ガード（①-1出力タイムスタンプ確認後に①-5起動）を入れる。移植の前に確定させる。",
-        "severity": "high",
+        "detail": "【設計確定 2026-07-19】調査の結果、現行⑤・①-4はmaster.jsonへ書き込んでいない（market.history空・candidates空・自動コミット痕跡なし）＝既存互換の制約なし。標準を新規定義：(1)全writerは safe_update（Contents API楽観ロックSHA+409リトライ）で自分のキーのみ更新。(2)①系wave2は20:00単一オーケストレータで逐次実行・1コミット（依存①-1→①-5は順序で担保、鮮度ガード不要）。(3)分離運用する場合のみ pipeline.runs の鮮度ガード require_fresh を使用。残作業：wave2移植時に score_* 実装を骨格へ差し込み、GITHUB_TOKEN を実行環境に設定。",
+        "severity": "design_fixed",
         "related": [
           "kenmo_momentum_night",
           "stf_kakuhen_night"
@@ -1686,5 +1686,40 @@
         ]
       }
     ]
+  },
+  "pipeline": {
+    "write_protocol": "【標準・2026-07-19確定】master.jsonへの全自動書き込みは safe_update（GitHub Contents APIの楽観ロックSHA＋409リトライ、scripts/mj_safe_write.py）を用いる。各writerは自分のcandidates[method]（⑤はmarket）のみ更新し、他セクションに触れない。①系夜間(wave2)は20:00の単一オーケストレータで ①-1→①-5→①-2→①-3 を逐次実行し1コミット（scripts/nightly_orchestrator_skeleton.py）。現時点の自動書き込みはゼロ（⑤・①-4は通知のみ）のため、既存機構との互換問題なし。",
+    "runs": {
+      "kenmo_momentum": {
+        "generated_at": null,
+        "trading_day": null,
+        "status": "idle",
+        "count": 0
+      },
+      "kenmo_newhigh": {
+        "generated_at": null,
+        "trading_day": null,
+        "status": "idle",
+        "count": 0
+      },
+      "choruko_reversal": {
+        "generated_at": null,
+        "trading_day": null,
+        "status": "idle",
+        "count": 0
+      },
+      "stf_kakuhen": {
+        "generated_at": null,
+        "trading_day": null,
+        "status": "idle",
+        "count": 0
+      },
+      "tenbagger_x": {
+        "generated_at": null,
+        "trading_day": null,
+        "status": "idle",
+        "count": 0
+      }
+    }
   }
 }

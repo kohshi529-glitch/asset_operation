@@ -1348,7 +1348,7 @@
   "positions": [],
   "action_log": [],
   "system_status": {
-    "version": "2026-07-18",
+    "version": "2026-07-19",
     "description": "3層実行体制のタスクマップ（唯一の正）。各タスクにowner層とstatusを持たせ、二重実行を構造的に排除する。将来のダッシュボード6タブ目『システム』はここを描画する。",
     "legend": {
       "layers": {
@@ -1510,10 +1510,10 @@
         "name": "週末材料キャッチアップ",
         "layer": "L2",
         "project": "モーニングコンパス",
-        "schedule": "月曜 21:00",
-        "status": "needs_confirmation",
+        "schedule": "日曜 21:00（祝日時は翌営業日前夜へ振替）",
+        "status": "active",
         "depends_on": [],
-        "notes": "Cowork側にスケジュール登録済みの認識。所有者がCoworkで確定ならL3手動実行は停止する。登録内容の共有待ち（未確定①）。"
+        "notes": "Cowork登録のスケジュールタスク（新規セッション）。所有者=L2で確定、L3手動実行は停止。通常は日曜夜、祝日週は翌営業日前夜へ振替（例：2026-07-20(月・海の日)休場のため今週は月曜21:00）。※参照リポジトリが旧名のまま→known_risks: stale_repo_reference 参照。"
       },
       {
         "id": "sat_csv_reminder",
@@ -1521,10 +1521,10 @@
         "name": "土曜朝のCSV同期リマインド",
         "layer": "L2",
         "project": "モーニングコンパス",
-        "schedule": "土曜 朝",
-        "status": "needs_confirmation",
+        "schedule": "土曜 06:30",
+        "status": "active",
         "depends_on": [],
-        "notes": "登録内容の共有待ち。"
+        "notes": "Cowork登録のスケジュールタスク（新規セッション）。所有者=L2で確定。SBI保有証券CSV＋取引履歴CSVをDrive『SBI』へ保存→『同期』送信でpositions更新版master.jsonを返す。sbi_csv_sync(M1)の起動リマインド。※参照リポジトリが旧名のまま→known_risks: stale_repo_reference 参照。"
       },
       {
         "id": "screening_project",
@@ -1626,8 +1626,8 @@
       {
         "no": 1,
         "topic": "月曜21:00キャッチアップの担当",
-        "detail": "Cowork登録内容の共有をもって確定（二重実行防止）。確定後は weekend_catchup.status を active に、L3手動は停止。",
-        "status": "open",
+        "detail": "Cowork登録内容の共有をもって確定（二重実行防止）。確定後は weekend_catchup.status を active に、L3手動は停止。　→【2026-07-19 確定】両タスクともCowork(L2)所有と判明。weekend_catchup・sat_csv_reminderをactive化、L3手動停止。",
+        "status": "resolved",
         "blocks": [
           "weekend_catchup",
           "sat_csv_reminder"
@@ -1664,6 +1664,17 @@
         "related": [
           "kenmo_momentum_night",
           "stf_kakuhen_night"
+        ]
+      },
+      {
+        "id": "stale_repo_reference",
+        "title": "Coworkスケジュールの参照リポジトリ/パス/スキーマが旧仕様のまま",
+        "detail": "『週末材料キャッチアップ』『週次ポジション同期』の両プロンプトが旧 kohshi529-glitch/investment-research の data/master.json を参照。リポジトリは asset_operation にリネーム済みで、正はルート直下 master.json （raw: https://raw.githubusercontent.com/kohshi529-glitch/asset_operation/main/master.json）。両スケジュールのプロンプトを新リポジトリ/パスに更新するまで、タスクが誤リポジトリを読む。加えて旧プロンプトは market/catalyst_schedule/ipo/candidates や holdings 構造の positions を前提とするが、現行 asset_operation/master.json は positions=[] / candidates 空 / catalyst_schedule・ipo セクション無し。スキーマの突き合わせ（現行を旧スキーマへ拡張するか、プロンプトを現行スキーマへ書き換えるか）が必要。",
+        "severity": "high",
+        "related": [
+          "weekend_catchup",
+          "sat_csv_reminder",
+          "sbi_csv_sync"
         ]
       }
     ]

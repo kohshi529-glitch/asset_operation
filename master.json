@@ -1345,7 +1345,15 @@
     "tenbagger_x": [],
     "watch_bottoming": []
   },
-  "positions": [],
+  "positions": {
+    "holdings": [],
+    "closed_trades_summary": {
+      "total": 0,
+      "wins": 0,
+      "realized_pnl": 0
+    },
+    "recent_closed": []
+  },
   "action_log": [],
   "system_status": {
     "version": "2026-07-19",
@@ -1669,8 +1677,8 @@
       {
         "id": "stale_repo_reference",
         "title": "Coworkスケジュールの参照リポジトリ/パス/スキーマが旧仕様のまま",
-        "detail": "『週末材料キャッチアップ』『週次ポジション同期』の両プロンプトが旧 kohshi529-glitch/investment-research の data/master.json を参照。リポジトリは asset_operation にリネーム済みで、正はルート直下 master.json （raw: https://raw.githubusercontent.com/kohshi529-glitch/asset_operation/main/master.json）。両スケジュールのプロンプトを新リポジトリ/パスに更新するまで、タスクが誤リポジトリを読む。加えて旧プロンプトは market/catalyst_schedule/ipo/candidates や holdings 構造の positions を前提とするが、現行 asset_operation/master.json は positions=[] / candidates 空 / catalyst_schedule・ipo セクション無し。スキーマの突き合わせ（現行を旧スキーマへ拡張するか、プロンプトを現行スキーマへ書き換えるか）が必要。",
-        "severity": "high",
+        "detail": "【解決済 2026-07-19】両スケジュールのプロンプトを asset_operation/root master.json 参照へ更新済み（①②とも反映確認）。旧 investment-research は廃止。スキーマ差異は asset_operation 新設計に一本化し、catalyst_schedule/ipo 依存を排除、positions は {holdings/closed_trades_summary/recent_closed} 雛形を導入。",
+        "severity": "resolved",
         "related": [
           "weekend_catchup",
           "sat_csv_reminder",

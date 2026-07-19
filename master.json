@@ -1537,13 +1537,13 @@
       {
         "id": "screening_project",
         "code": "M3",
-        "name": "場中の銘柄深掘り・スコアリング対話の移設先",
+        "name": "場中の銘柄深掘り・スコアリング対話（移設完了）",
         "layer": "L2",
         "project": "手法別スクリーニング",
         "schedule": "場中随時",
-        "status": "planned",
+        "status": "active",
         "depends_on": [],
-        "notes": "ミッション3（プロジェクト作成）待ち。着手順の第一候補。"
+        "notes": "【2026-07-19 稼働開始】Coworkプロジェクト作成・指示文投入・初回採点テスト成功。採点基準はraw master.jsonのscoring_specを毎セッション参照（薄いカード）。ボード登録はファイル返却→手動コミット方式。candidatesエントリ形式はscreening_project_instructions.mdで定義（wave2も同形式を採用予定）。L3での場中スコアリング対話は本プロジェクトへ移設。"
       },
       {
         "id": "daytrade_ifdoco",
@@ -1656,8 +1656,8 @@
       {
         "no": 3,
         "topic": "ミッション3（プロジェクト作成）の着手順",
-        "detail": "場中対話が最多の『手法別スクリーニング』から作るのが効果大。",
-        "status": "open",
+        "detail": "場中対話が最多の『手法別スクリーニング』から作るのが効果大。　→【2026-07-19 確定】手法別スクリーニングPJを作成・稼働開始。残るミッション3対象（完全不関与デイトレ／米国株デイトレ）は必要になった時点で同パターンで作成。",
+        "status": "resolved",
         "blocks": [
           "screening_project"
         ]

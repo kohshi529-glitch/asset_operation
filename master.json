@@ -1445,7 +1445,52 @@
     "history": []
   },
   "candidates": {
-    "kenmo_momentum": [],
+    "kenmo_momentum": [
+      {
+        "code": "146A",
+        "name": "コロンビア・ワークス",
+        "score": 9,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": "7/0/0",
+        "scored_at": "2026-07-20T19:57:56+09:00",
+        "source": "nightly_wave2",
+        "summary": "独自テーマ型不動産開発。今期経常+30%予想(2026/2/12据置)だが52週高値から-32%で戻り待ち、出来高も標準水準。"
+      },
+      {
+        "code": "276A",
+        "name": "ククレブ・アドバイザーズ",
+        "score": 13,
+        "verdict": "⚡ 注目",
+        "action": "WATCH",
+        "precision": "7/0/0",
+        "scored_at": "2026-07-20T19:57:56+09:00",
+        "source": "nightly_wave2",
+        "summary": "AI活用プロップテック(CRE)。7/14に経常利益予想を上方修正・最高益更新も、52週高値から-56%と出遅れ。"
+      },
+      {
+        "code": "4377",
+        "name": "ワンキャリア",
+        "score": 11,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": "7/0/0",
+        "scored_at": "2026-07-20T19:57:56+09:00",
+        "source": "nightly_wave2",
+        "summary": "キャリアデータSaaS。今期経常+40%予想、出来高5日平均の1.8倍だが52週高値から-30%圏で調整継続。"
+      },
+      {
+        "code": "4412",
+        "name": "サイエンスアーツ",
+        "score": 13,
+        "verdict": "⚡ 注目",
+        "action": "WATCH",
+        "precision": "7/0/0",
+        "scored_at": "2026-07-20T19:57:56+09:00",
+        "source": "nightly_wave2",
+        "summary": "フロントラインSaaS「Buddycom」。7/15に通期営業益を上方修正(3Q累計2.6倍)、楽天G等が大量保有も高値-53%。"
+      }
+    ],
     "kenmo_newhigh": [],
     "choruko_reversal": [],
     "stf_kakuhen": [],
@@ -1799,10 +1844,11 @@
     "write_protocol": "【正式確定 2026-07-20・実証済み(PR #6)】L1ルーティンの書き込みはPR方式：自セッションブランチにcommit/push→mainへのPRを自動作成→ユーザーが翌朝ワンタップでマージ。mainへの直接pushはgitプロキシが拒否（仕様）。前提条件：(1) Claude GitHub AppのRepository accessにasset_operationを付与済み。(2) 実行環境のネットワーク=Custom（パッケージ既定リスト+Yahoo系4ドメイン）。(3) 採点〜PR作成までの全指示はルーティンの設定プロンプト本体に記載する（実行時に外部から注入された指示は実行側が正しく拒否する）。株価データはquery1.finance.yahoo.comへの直接HTTP取得（yfinance標準関数は環境プロキシと非互換、requests+CA bundle指定で取得し、MA/乖離率/売買代金比/52週高値を計算する）。①系夜間は単一オーケストレータで逐次採点し1ブランチ1PRにまとめる（競合ゼロ・人間の最終確認付き）。",
     "runs": {
       "kenmo_momentum": {
-        "generated_at": null,
-        "trading_day": null,
-        "status": "idle",
-        "count": 0
+        "generated_at": "2026-07-20T19:57:56+09:00",
+        "trading_day": "2026-07-17",
+        "status": "done",
+        "count": 4,
+        "source": "nightly_wave2"
       },
       "kenmo_newhigh": {
         "generated_at": "2026-07-20T09:49:55Z",

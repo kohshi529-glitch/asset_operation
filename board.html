@@ -1,0 +1,109 @@
+<!doctype html><html lang='ja'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>候補ボード — 手法別スクリーニング結果</title><style>
+:root{color-scheme:dark}*{box-sizing:border-box}
+body{margin:0;background:#0d1b1e;color:#e6f4f1;font-family:-apple-system,'Hiragino Sans','Noto Sans JP',sans-serif;line-height:1.55}
+.wrap{max-width:980px;margin:0 auto;padding:20px 16px 80px}
+h1{font-size:22px;margin:6px 0 2px}
+.ver{color:#8fb3ad;font-size:13px;margin-bottom:6px}
+.src{font-size:12px;color:#8fb3ad;margin-bottom:14px}
+.src .live{color:#48e0b0}.src .snap{color:#e8c766}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.tabs a{background:#12292e;border:1px solid #1d3a40;color:#e6f4f1;text-decoration:none;padding:7px 12px;border-radius:999px;font-size:13px}
+.tabs a.here{border-color:#1fb6a6;color:#7fe3d6}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-bottom:20px}
+.kpi{background:#12292e;border:1px solid #1d3a40;border-radius:12px;padding:12px 14px}
+.kpi .n{font-size:26px;font-weight:700;color:#7fe3d6;line-height:1.1}
+.kpi.buy .n{color:#48e0b0}
+.kpi .l{font-size:12px;color:#8fb3ad;margin-top:2px}
+section.mth{background:#12292e;border:1px solid #1d3a40;border-left:4px solid #1fb6a6;border-radius:12px;padding:14px 14px 6px;margin-bottom:16px}
+.mhead{display:flex;align-items:center;gap:8px;margin-bottom:4px;flex-wrap:wrap}
+.mname{font-size:16px;font-weight:700}
+.fresh{margin-left:auto;font-size:11.5px;color:#8fb3ad}
+.fresh b{color:#7fe3d6;font-weight:600}
+.empty{color:#8fb3ad;font-size:13px;padding:6px 0 10px}
+.cand{background:#0f2429;border:1px solid #1d3a40;border-radius:10px;padding:10px 12px;margin-bottom:10px}
+.crow{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.code{font-size:12px;color:#0d1b1e;background:#8fb3ad;border-radius:5px;padding:1px 6px;font-weight:700}
+.cname{font-size:14.5px;font-weight:600}
+.score{margin-left:auto;font-size:18px;font-weight:700;color:#7fe3d6;white-space:nowrap}
+.score small{font-size:11px;color:#8fb3ad;font-weight:400}
+.vd{font-size:13px;margin-top:3px}
+.act{display:inline-block;padding:1px 8px;border-radius:6px;font-size:11.5px;font-weight:700;border:1px solid;margin-left:6px}
+.act-BUY_NOW{background:#123d33;color:#48e0b0;border-color:#1f6b57}
+.act-WATCH{background:#123047;color:#5bb2e6;border-color:#1f5079}
+.act-AVOID{background:#2e1a1a;color:#c98a8a;border-color:#6b2f2f}
+.meta{font-size:11.5px;color:#8fb3ad;margin-top:5px}
+.sum{font-size:12.5px;color:#b7d6d0;margin-top:5px}
+footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
+</style></head><body><div class='wrap'>
+<h1>📋 候補ボード</h1>
+<div class='ver'>master.json candidates ／ 各手法の夜間採点・手動登録の最新候補</div>
+<div class='src' id='src'>データ取得中…</div>
+<div class='tabs'>
+<a href='./index.html'>📊 スコアリング基準</a>
+<a href='./setup_guide.html'>🛠 設定要領</a>
+<a class='here' href='./board.html'>📋 候補ボード</a>
+<a href='./system.html'>🖥 システム</a>
+</div>
+<div class='kpis' id='kpis'></div>
+<div id='mths'></div>
+<footer>board.html ／ 唯一の正 master.json から描画。候補は各手法ルーティンのPRマージで更新される。</footer>
+</div>
+<script>
+const RAW_URL = "https://raw.githubusercontent.com/kohshi529-glitch/asset_operation/main/master.json";
+const EMBEDDED = null; // スナップショット無し（LIVE専用。取得失敗時はメッセージ表示）
+const ORDER = ["kenmo_momentum","kenmo_newhigh","choruko_reversal","stf_kakuhen","tenbagger_x","watch_bottoming"];
+function esc(s){return (s==null?"":String(s)).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));}
+
+function render(d){
+  const spec=(d.scoring_spec&&d.scoring_spec.methods)||{};
+  const cands=d.candidates||{};
+  const runs=(d.pipeline&&d.pipeline.runs)||{};
+  document.getElementById('src').innerHTML="<span class='live'>● LIVE</span> GitHubの最新 master.json を表示中";
+
+  // KPI
+  let total=0,buy=0,methodsWithData=0,latest=null;
+  ORDER.forEach(k=>{
+    const list=cands[k]||[];
+    total+=list.length;
+    if(list.length)methodsWithData++;
+    buy+=list.filter(c=>c.action==="BUY_NOW").length;
+    const r=runs[k];
+    if(r&&r.trading_day&&(!latest||r.trading_day>latest))latest=r.trading_day;
+  });
+  document.getElementById('kpis').innerHTML=[
+    {n:total,l:"候補合計"},
+    {n:buy,l:"BUY_NOW",cls:"buy"},
+    {n:methodsWithData,l:"データあり手法"},
+    {n:latest||"—",l:"最新trading_day"},
+  ].map(k=>`<div class='kpi ${k.cls||''}'><div class='n'>${esc(k.n)}</div><div class='l'>${esc(k.l)}</div></div>`).join('');
+
+  // 手法別
+  document.getElementById('mths').innerHTML=ORDER.map(k=>{
+    const m=spec[k]||{name:k,emoji:"📌"};
+    const list=(cands[k]||[]).slice().sort((a,b)=>(b.score||0)-(a.score||0));
+    const r=runs[k];
+    const fresh=r&&r.status==="done"
+      ? `最終実行 <b>${esc(r.trading_day)}</b> ／ ${esc(r.count)}件 ／ ${esc(r.source||'')}`
+      : "未実行";
+    const body=list.length? list.map(c=>`
+      <div class='cand'>
+        <div class='crow'>
+          <span class='code'>${esc(c.code)}</span>
+          <span class='cname'>${esc(c.name)}</span>
+          <span class='score'>${esc(c.score)}<small>/21</small></span>
+        </div>
+        <div class='vd'>${esc(c.verdict||'')}<span class='act act-${esc(c.action)}'>${esc(c.action||'')}</span></div>
+        ${c.summary?`<div class='sum'>${esc(c.summary)}</div>`:''}
+        <div class='meta'>精度: ${esc(c.precision||'—')}　採点: ${esc((c.scored_at||'').slice(0,16).replace('T',' '))}　源: ${esc(c.source||'—')}</div>
+      </div>`).join('')
+      : "<div class='empty'>候補なし</div>";
+    return `<section class='mth'><div class='mhead'><span>${esc(m.emoji||'📌')}</span><span class='mname'>${esc(m.name||k)}</span><span class='fresh'>${fresh}</span></div>${body}</section>`;
+  }).join('');
+}
+
+fetch(RAW_URL,{cache:"no-store"}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(render)
+.catch(e=>{document.getElementById('src').innerHTML="<span class='snap'>● 取得失敗</span> master.jsonを取得できませんでした。再読み込みしてください。("+esc(e)+")";});
+</script>
+</body></html>

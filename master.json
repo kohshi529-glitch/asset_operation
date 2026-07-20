@@ -1445,7 +1445,118 @@
     "history": []
   },
   "candidates": {
-    "kenmo_momentum": [],
+    "kenmo_momentum": [
+      {
+        "code": "4412",
+        "name": "Science Arts, Inc.",
+        "score": 14,
+        "verdict": "⚡ 注目",
+        "action": "WATCH",
+        "precision": "実数値7/推定0/不可0",
+        "scored_at": "2026-07-20T21:52:49+09:00",
+        "source": "nightly_wave2",
+        "summary": "Buddycom提供、7月通期上方修正・楽天とJVCケンウッド大量保有と機関材料は最良だが高値から-52.6%。"
+      },
+      {
+        "code": "5574",
+        "name": "ABEJA,Inc.",
+        "score": 13,
+        "verdict": "⚡ 注目",
+        "action": "WATCH",
+        "precision": "実数値6/推定1/不可0",
+        "scored_at": "2026-07-20T21:52:49+09:00",
+        "source": "nightly_wave2",
+        "summary": "AI DXプラットフォーム、7/15通期上方修正・営利+59.6%だが高値からは-49.7%と出遅れ感。"
+      },
+      {
+        "code": "421A",
+        "name": "Movin' Strategic Career CO.,LTD.",
+        "score": 12,
+        "verdict": "⚡ 注目",
+        "action": "WATCH",
+        "precision": "実数値5/推定2/不可0",
+        "scored_at": "2026-07-20T21:52:49+09:00",
+        "source": "nightly_wave2",
+        "summary": "コンサル特化人材紹介、増収+52.7%・営利+50.9%で高値からも-6.6%と近接。"
+      },
+      {
+        "code": "4477",
+        "name": "BASE, Inc.",
+        "score": 11,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": "実数値5/推定2/不可0",
+        "scored_at": "2026-07-20T21:52:49+09:00",
+        "source": "nightly_wave2",
+        "summary": "ECプラットフォーム、増収+36.9%・営利+34.6%と堅調だがモメンタム材料は乏しい。"
+      },
+      {
+        "code": "276A",
+        "name": "CCReB Advisors Inc.",
+        "score": 11,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": "実数値5/推定2/不可0",
+        "scored_at": "2026-07-20T21:52:49+09:00",
+        "source": "nightly_wave2",
+        "summary": "AI活用の不動産テック、売上+174%・営利+79.7%の高成長だが高値からは-56.3%。"
+      },
+      {
+        "code": "505A",
+        "name": "Geekly,Inc.",
+        "score": 11,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": "実数値6/推定1/不可0",
+        "scored_at": "2026-07-20T21:52:49+09:00",
+        "source": "nightly_wave2",
+        "summary": "IT/Web/ゲーム特化人材紹介、大量保有報告1件・出来高1.43倍とやや動意。"
+      },
+      {
+        "code": "7047",
+        "name": "PORT INC.",
+        "score": 11,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": "実数値5/推定2/不可0",
+        "scored_at": "2026-07-20T21:52:49+09:00",
+        "source": "nightly_wave2",
+        "summary": "成果報酬型マッチング＋蓄電所事業参入、増収+34%・52週高値-9.5%とやや近い。"
+      },
+      {
+        "code": "4165",
+        "name": "PLAID Inc.",
+        "score": 10,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": "実数値5/推定2/不可0",
+        "scored_at": "2026-07-20T21:52:49+09:00",
+        "source": "nightly_wave2",
+        "summary": "CXプラットフォームKARTE、増収+53.6%・営利+52.6%だが出来高細り・高値-53%で見送り感。"
+      },
+      {
+        "code": "2980",
+        "name": "SRE Holdings Corp.",
+        "score": 9,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": "実数値5/推定2/不可0",
+        "scored_at": "2026-07-20T21:52:49+09:00",
+        "source": "nightly_wave2",
+        "summary": "AIクラウド×不動産DX、増収増益も52週高値から-39.9%で出来高も平常水準。"
+      },
+      {
+        "code": "146A",
+        "name": "Columbia Works Inc.",
+        "score": 9,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": "実数値6/推定1/不可0",
+        "scored_at": "2026-07-20T21:52:49+09:00",
+        "source": "nightly_wave2",
+        "summary": "ニッチ不動産開発、1Q売上+87%と進捗超過も高値から-31.8%で出遅れ。"
+      }
+    ],
     "kenmo_newhigh": [],
     "choruko_reversal": [],
     "stf_kakuhen": [],
@@ -1799,10 +1910,11 @@
     "write_protocol": "【正式確定 2026-07-20・実証済み(PR #6)】L1ルーティンの書き込みはPR方式：自セッションブランチにcommit/push→mainへのPRを自動作成→ユーザーが翌朝ワンタップでマージ。mainへの直接pushはgitプロキシが拒否（仕様）。前提条件：(1) Claude GitHub AppのRepository accessにasset_operationを付与済み。(2) 実行環境のネットワーク=Custom（パッケージ既定リスト+Yahoo系4ドメイン）。(3) 採点〜PR作成までの全指示はルーティンの設定プロンプト本体に記載する（実行時に外部から注入された指示は実行側が正しく拒否する）。株価データはquery1.finance.yahoo.comへの直接HTTP取得（yfinance標準関数は環境プロキシと非互換、requests+CA bundle指定で取得し、MA/乖離率/売買代金比/52週高値を計算する）。①系夜間は単一オーケストレータで逐次採点し1ブランチ1PRにまとめる（競合ゼロ・人間の最終確認付き）。",
     "runs": {
       "kenmo_momentum": {
-        "generated_at": null,
-        "trading_day": null,
-        "status": "idle",
-        "count": 0
+        "generated_at": "2026-07-20T21:52:49+09:00",
+        "trading_day": "2026-07-17",
+        "status": "done",
+        "count": 10,
+        "source": "nightly_wave2"
       },
       "kenmo_newhigh": {
         "generated_at": "2026-07-20T09:49:55Z",

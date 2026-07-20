@@ -1445,7 +1445,118 @@
     "history": []
   },
   "candidates": {
-    "kenmo_momentum": [],
+    "kenmo_momentum": [
+      {
+        "code": "5574",
+        "name": "ABEJA",
+        "score": 15,
+        "verdict": "🔥 強注目",
+        "action": "BUY_NOW",
+        "precision": "実数値7/推定0/不可0",
+        "scored_at": "2026-07-20T11:58:51Z",
+        "source": "nightly_wave2",
+        "summary": "AI実装基盤。経常+60.8%上方修正×複数機関5%超保有が確認できるが、株価は52週高値から-42.7%の深い調整局面。"
+      },
+      {
+        "code": "276A",
+        "name": "CCReB Advisors",
+        "score": 13,
+        "verdict": "⚡ 注目",
+        "action": "WATCH",
+        "precision": "実数値6/推定0/不可1",
+        "scored_at": "2026-07-20T11:58:51Z",
+        "source": "nightly_wave2",
+        "summary": "AI活用の不動産テック。売上+174%・経常+75%で上方修正済みだが、機関保有情報は確認不可、高値から-55.3%の深い調整。"
+      },
+      {
+        "code": "4412",
+        "name": "サイエンスアーツ",
+        "score": 13,
+        "verdict": "⚡ 注目",
+        "action": "WATCH",
+        "precision": "実数値7/推定0/不可0",
+        "scored_at": "2026-07-20T11:58:51Z",
+        "source": "nightly_wave2",
+        "summary": "Buddycom音声DX。経常+137%上方修正・複数機関の保有報告ありも、株価は高値から-52.2%の押し目局面。"
+      },
+      {
+        "code": "4165",
+        "name": "PLAID",
+        "score": 12,
+        "verdict": "⚡ 注目",
+        "action": "WATCH",
+        "precision": "実数値7/推定0/不可0",
+        "scored_at": "2026-07-20T11:58:51Z",
+        "source": "nightly_wave2",
+        "summary": "顧客データSaaS(KARTE)。売上+53.6%・経常+52.0%の高成長、機関保有も確認できるが高値から-52.2%の調整中。"
+      },
+      {
+        "code": "4377",
+        "name": "ONE CAREER",
+        "score": 12,
+        "verdict": "⚡ 注目",
+        "action": "WATCH",
+        "precision": "実数値6/推定0/不可1",
+        "scored_at": "2026-07-20T11:58:51Z",
+        "source": "nightly_wave2",
+        "summary": "新卒・転職HR-techプラットフォーム。売上+38.6%・経常+40.2%で堅調、出来高も増加も機関保有情報は不明。"
+      },
+      {
+        "code": "5027",
+        "name": "AnyMind Group",
+        "score": 11,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": "実数値6/推定0/不可1",
+        "scored_at": "2026-07-20T11:58:51Z",
+        "source": "nightly_wave2",
+        "summary": "東南アジア中心のD2C/ソーシャルコマース支援。売上+38.1%・経常+75.8%だが機関情報不明、高値から-34.2%調整中。"
+      },
+      {
+        "code": "4477",
+        "name": "BASE",
+        "score": 10,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": "実数値7/推定0/不可0",
+        "scored_at": "2026-07-20T11:58:51Z",
+        "source": "nightly_wave2",
+        "summary": "ノーコードEC構築SaaS。売上+36.9%・経常+23.4%成長も、大株主マルイグループの持ち株比率低下がマイナス材料。"
+      },
+      {
+        "code": "146A",
+        "name": "Columbia Works",
+        "score": 9,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": "実数値6/推定0/不可1",
+        "scored_at": "2026-07-20T11:58:51Z",
+        "source": "nightly_wave2",
+        "summary": "首都圏レジデンス開発。売上+49.4%・経常+30.2%成長もテーマ性・機関保有情報ともに材料薄。"
+      },
+      {
+        "code": "3798",
+        "name": "ULSグループ",
+        "score": 9,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": "実数値6/推定0/不可1",
+        "scored_at": "2026-07-20T11:58:51Z",
+        "source": "nightly_wave2",
+        "summary": "金融・官公庁向けITコンサル。売上+21.7%・経常+20.8%、出来高5日平均比2.4倍と急増も高値から-33.1%。"
+      },
+      {
+        "code": "7678",
+        "name": "あさくま",
+        "score": 9,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": "実数値6/推定0/不可1",
+        "scored_at": "2026-07-20T11:58:51Z",
+        "source": "nightly_wave2",
+        "summary": "ステーキ・居酒屋チェーン。売上+22.5%・経常+27.4%で高値近辺(-3.7%)だが外食業態はテーマ性に乏しい。"
+      }
+    ],
     "kenmo_newhigh": [],
     "choruko_reversal": [],
     "stf_kakuhen": [],
@@ -1799,10 +1910,11 @@
     "write_protocol": "【正式確定 2026-07-20・実証済み(PR #6)】L1ルーティンの書き込みはPR方式：自セッションブランチにcommit/push→mainへのPRを自動作成→ユーザーが翌朝ワンタップでマージ。mainへの直接pushはgitプロキシが拒否（仕様）。前提条件：(1) Claude GitHub AppのRepository accessにasset_operationを付与済み。(2) 実行環境のネットワーク=Custom（パッケージ既定リスト+Yahoo系4ドメイン）。(3) 採点〜PR作成までの全指示はルーティンの設定プロンプト本体に記載する（実行時に外部から注入された指示は実行側が正しく拒否する）。株価データはquery1.finance.yahoo.comへの直接HTTP取得（yfinance標準関数は環境プロキシと非互換、requests+CA bundle指定で取得し、MA/乖離率/売買代金比/52週高値を計算する）。①系夜間は単一オーケストレータで逐次採点し1ブランチ1PRにまとめる（競合ゼロ・人間の最終確認付き）。",
     "runs": {
       "kenmo_momentum": {
-        "generated_at": null,
-        "trading_day": null,
-        "status": "idle",
-        "count": 0
+        "generated_at": "2026-07-20T11:58:51Z",
+        "trading_day": "2026-07-17",
+        "status": "done",
+        "count": 10,
+        "source": "nightly_wave2"
       },
       "kenmo_newhigh": {
         "generated_at": "2026-07-20T09:49:55Z",

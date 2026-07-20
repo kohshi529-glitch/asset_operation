@@ -1339,69 +1339,14 @@
   },
   "candidates": {
     "kenmo_momentum": [],
-    "kenmo_newhigh": [
-      {
-        "code": "9831",
-        "name": "ヤマダホールディングス",
-        "score": 18,
-        "verdict": "🚀 確変ブレイク BUY_NOW",
-        "action": "BUY_NOW",
-        "precision": "実数値7/推定0/不可0",
-        "scored_at": "2026-07-20T06:13:04Z",
-        "source": "nightly_wave2",
-        "summary": "2027年3月期(会社予想) EPS◎/売上✗/経常◎、52週高値更新◎・MA位置◎・25日乖離5.6%◎・売買代金比206%◎"
-      },
-      {
-        "code": "2354",
-        "name": "YE DIGITAL(旧:安川情報システム)",
-        "score": 12,
-        "verdict": "⚡ 注目 WATCH",
-        "action": "WATCH",
-        "precision": "実数値7/推定0/不可0",
-        "scored_at": "2026-07-20T06:13:04Z",
-        "source": "nightly_wave2",
-        "summary": "2027年2月期(会社予想) EPS○/売上✗/経常△、52週高値更新◎・MA位置◎・25日乖離22.9%✗・売買代金比3913%◎"
-      },
-      {
-        "code": "7389",
-        "name": "あいちフィナンシャルグループ",
-        "score": 12,
-        "verdict": "⚡ 注目 WATCH",
-        "action": "WATCH",
-        "precision": "実数値6/推定0/不可1",
-        "scored_at": "2026-07-20T06:13:04Z",
-        "source": "nightly_wave2",
-        "summary": "2027年3月期(会社予想) EPS✗/売上△/経常✗、52週高値更新◎・MA位置◎・25日乖離16.0%○・売買代金比248%◎"
-      },
-      {
-        "code": "7581",
-        "name": "サイゼリヤ",
-        "score": 11,
-        "verdict": "⚡ 注目 WATCH",
-        "action": "WATCH",
-        "precision": "実数値7/推定0/不可0",
-        "scored_at": "2026-07-20T06:13:04Z",
-        "source": "nightly_wave2",
-        "summary": "2026年8月期(会社予想、3Q時点) EPS✗/売上△/経常△、52週高値更新◎・MA位置◎・25日乖離35.8%✗・売買代金比1593%◎"
-      },
-      {
-        "code": "9433",
-        "name": "KDDI",
-        "score": 11,
-        "verdict": "⚡ 注目 WATCH",
-        "action": "WATCH",
-        "precision": "実数値5/推定0/不可2",
-        "scored_at": "2026-07-20T06:13:04Z",
-        "source": "nightly_wave2",
-        "summary": "2027年3月期(会社予想) EPS△/売上✗/経常△、52週高値更新◎・MA位置◎・25日乖離4.5%○・売買代金比119%△"
-      }
-    ],
+    "kenmo_newhigh": [],
     "choruko_reversal": [],
     "stf_kakuhen": [],
     "tenbagger_x": [],
     "watch_bottoming": []
   },
   "positions": {
+    "storage_note": "【分離方針 2026-07-20確定】ポジション実データ（保有・損益）は個人金融データのため公開リポジトリに置かない。唯一の正は Google Drive『SBI』フォルダの非公開 positions.json。この公開master.jsonのpositionsは空雛形を維持する。閲覧・更新はCoworkセッション（Driveコネクタ認証付き）のみ。",
     "holdings": [],
     "closed_trades_summary": {
       "total": 0,
@@ -1482,10 +1427,10 @@
         "name": "Kenmo新高値（Yahoo!ランキング+鮮度検証）",
         "layer": "L1",
         "schedule": "平日 20:30",
-        "status": "planned",
+        "status": "active",
         "depends_on": [],
         "wave": 2,
-        "notes": ""
+        "notes": "プロンプト検証済→【2026-07-20】リハーサル成功（PR #7・5銘柄・査読合格・マージ済み）。ルーティン正式登録済み（平日20:30・PR方式）。初回実戦は7/21予定。2〜3晩の安定確認後にactive化。"
       },
       {
         "id": "choruko_revalue",
@@ -1553,7 +1498,7 @@
         "schedule": "毎週 土曜（定型化予定）",
         "status": "done_once",
         "depends_on": [],
-        "notes": "初回完了。誤記1件発見の実績。毎週土曜の定型化へ。"
+        "notes": "初回完了（誤記1件発見の実績）。【2026-07-20】保存先をDrive非公開positions.jsonへ分離確定。公開master.jsonには書かない。プロンプトはposition_sync_prompt_drive.md版に更新。"
       },
       {
         "id": "position_revalue",
@@ -1566,7 +1511,7 @@
         "depends_on": [
           "sbi_csv_sync"
         ],
-        "notes": "CSV同期に統合予定。"
+        "notes": "CSV同期に統合予定。値洗い結果もDriveのpositions.jsonへ（公開リポジトリに触れない）。"
       },
       {
         "id": "weekend_catchup",
@@ -1753,11 +1698,10 @@
         "count": 0
       },
       "kenmo_newhigh": {
-        "generated_at": "2026-07-20T06:13:04Z",
-        "trading_day": "2026-07-17",
-        "status": "done",
-        "count": 5,
-        "source": "nightly_wave2"
+        "generated_at": null,
+        "trading_day": null,
+        "status": "idle",
+        "count": 0
       },
       "choruko_reversal": {
         "generated_at": null,

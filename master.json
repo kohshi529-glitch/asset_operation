@@ -1438,11 +1438,37 @@
   },
   "market": {
     "latest": {
-      "date": null,
-      "market_mode": null,
-      "method_guidance": {}
+      "date": "2026-07-20",
+      "market_mode": "レンジ様子見",
+      "method_guidance": {
+        "kenmo_momentum": "慎重＋地政学リスクで急激なボラ拡大、値幅の乱高下に警戒",
+        "kenmo_newhigh": "見送り＋SOXが弱気相場入りし半導体主導で新高値環境が悪化",
+        "choruko_reversal": "慎重＋戻り狙いは可だがヘッドライン次第で逆流リスクあり",
+        "tenbagger_x": "慎重＋市場全体のリスクオフが新興・IPO株にも波及する恐れ",
+        "stf_kakuhen": "慎重＋地政学ショック時は初動シグナルの信頼性低下、小さめサイズ推奨",
+        "daytrade": "通常＋方針通り市場モードにかかわらず不関与を継続",
+        "semicon_miniswing": "見送り＋SOXが直近高値から20%超下落し弱気相場入り、個別リスク過大"
+      },
+      "pattern": "地政学ショック型",
+      "note": "週末に米イラン戦闘とホルムズ海峡封鎖宣言で原油続伸、大取ナイトは高いが寄り高値掴みに厳重警戒"
     },
-    "history": []
+    "history": [
+      {
+        "date": "2026-07-20",
+        "market_mode": "レンジ様子見",
+        "method_guidance": {
+          "kenmo_momentum": "慎重＋地政学リスクで急激なボラ拡大、値幅の乱高下に警戒",
+          "kenmo_newhigh": "見送り＋SOXが弱気相場入りし半導体主導で新高値環境が悪化",
+          "choruko_reversal": "慎重＋戻り狙いは可だがヘッドライン次第で逆流リスクあり",
+          "tenbagger_x": "慎重＋市場全体のリスクオフが新興・IPO株にも波及する恐れ",
+          "stf_kakuhen": "慎重＋地政学ショック時は初動シグナルの信頼性低下、小さめサイズ推奨",
+          "daytrade": "通常＋方針通り市場モードにかかわらず不関与を継続",
+          "semicon_miniswing": "見送り＋SOXが直近高値から20%超下落し弱気相場入り、個別リスク過大"
+        },
+        "pattern": "地政学ショック型",
+        "note": "週末に米イラン戦闘とホルムズ海峡封鎖宣言で原油続伸、大取ナイトは高いが寄り高値掴みに厳重警戒"
+      }
+    ]
   },
   "candidates": {
     "kenmo_momentum": [

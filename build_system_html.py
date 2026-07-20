@@ -82,6 +82,7 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:34px}
 <div class='nav'>
 <a href='./index.html'>📊 スコアリング基準</a>
 <a href='./setup_guide.html'>🛠 設定要領</a>
+<a href='./board.html'>📋 候補ボード</a>
 <a class='here' href='./system.html'>🖥 システム</a>
 </div>
 <div class='kpis' id='kpis'></div>

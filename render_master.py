@@ -100,7 +100,7 @@ footer{{color:{SUB};font-size:12px;text-align:center;margin-top:30px}}
 </style></head><body><div class='wrap'>
 <h1>5大手法 スコアリング基準マスター</h1>
 <div class='ver'>version {esc(spec['version'])} ／ 唯一の正（master.json から自動生成）</div>
-<div class='tabs'><a class='here' href='./index.html'>📊 スコアリング基準</a><a href='./setup_guide.html'>🛠 設定要領</a><a href='./system.html'>🖥 システム</a></div>
+<div class='tabs'><a class='here' href='./index.html'>📊 スコアリング基準</a><a href='./setup_guide.html'>🛠 設定要領</a><a href='./board.html'>📋 候補ボード</a><a href='./system.html'>🖥 システム</a></div>
 <div class='lead'>{esc(spec['description'])}</div>
 <div class='common'><div class='gp'>共通配点：{esc(gp)}　／　満点 {esc(common['max_score'])}点</div>
 <div class='sub'>アクション定義</div><table><tbody>{acts}</tbody></table></div>

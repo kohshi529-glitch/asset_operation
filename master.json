@@ -1356,7 +1356,7 @@
   },
   "action_log": [],
   "system_status": {
-    "version": "2026-07-19",
+    "version": "2026-07-20",
     "description": "3層実行体制のタスクマップ（唯一の正）。各タスクにowner層とstatusを持たせ、二重実行を構造的に排除する。将来のダッシュボード6タブ目『システム』はここを描画する。",
     "legend": {
       "layers": {
@@ -1644,7 +1644,7 @@
       {
         "no": 2,
         "topic": "第2弾ルーティン（①系4本）の移植タイミング",
-        "detail": "⑤・①-4の安定を来週1週間確認後が推奨。ただし本当のゲートは known_risks の master.json 書き込み競合の解決。　→【2026-07-19 更新】書き込み競合の設計は確定（pipeline.write_protocol参照）。残るゲートは⑤・①-4の1週間安定確認と、オーケストレータへのscore_*実装のみ。",
+        "detail": "⑤・①-4の安定を来週1週間確認後が推奨。ただし本当のゲートは known_risks の master.json 書き込み競合の解決。　→【2026-07-19 更新】書き込み競合の設計は確定（pipeline.write_protocol参照）。残るゲートは⑤・①-4の1週間安定確認と、オーケストレータへのscore_*実装のみ。　→【2026-07-20 更新】配管は全実証完了（書き込み=PR方式/価格=query1直接HTTP）。残るゲートは①-2ルーティン本実装と⑤・①-4の安定確認（〜7/25）のみ。",
         "status": "open",
         "blocks": [
           "kenmo_momentum_night",
@@ -1667,8 +1667,8 @@
       {
         "id": "master_write_contention",
         "title": "L1第2弾のmaster.json同時書き込み・依存チェーン",
-        "detail": "【設計確定 2026-07-19】調査の結果、現行⑤・①-4はmaster.jsonへ書き込んでいない（market.history空・candidates空・自動コミット痕跡なし）＝既存互換の制約なし。標準を新規定義：(1)全writerは safe_update（Contents API楽観ロックSHA+409リトライ）で自分のキーのみ更新。(2)①系wave2は20:00単一オーケストレータで逐次実行・1コミット（依存①-1→①-5は順序で担保、鮮度ガード不要）。(3)分離運用する場合のみ pipeline.runs の鮮度ガード require_fresh を使用。残作業：wave2移植時に score_* 実装を骨格へ差し込み、GITHUB_TOKEN を実行環境に設定。",
-        "severity": "design_fixed",
+        "detail": "【解決 2026-07-20】書き込みはPR方式で実証確定（pipeline.write_protocol参照）。単一オーケストレータ+1晩1PR+人間マージにより、同時書き込み競合と依存チェーン破綻は構造的に消滅。旧設計のContents API直接書き込みは環境のgitプロキシ仕様により不採用。",
+        "severity": "resolved",
         "related": [
           "kenmo_momentum_night",
           "stf_kakuhen_night"
@@ -1688,7 +1688,7 @@
     ]
   },
   "pipeline": {
-    "write_protocol": "【標準・2026-07-19確定】master.jsonへの全自動書き込みは safe_update（GitHub Contents APIの楽観ロックSHA＋409リトライ、scripts/mj_safe_write.py）を用いる。各writerは自分のcandidates[method]（⑤はmarket）のみ更新し、他セクションに触れない。①系夜間(wave2)は20:00の単一オーケストレータで ①-1→①-5→①-2→①-3 を逐次実行し1コミット（scripts/nightly_orchestrator_skeleton.py）。現時点の自動書き込みはゼロ（⑤・①-4は通知のみ）のため、既存機構との互換問題なし。",
+    "write_protocol": "【正式確定 2026-07-20・実証済み(PR #6)】L1ルーティンの書き込みはPR方式：自セッションブランチにcommit/push→mainへのPRを自動作成→ユーザーが翌朝ワンタップでマージ。mainへの直接pushはgitプロキシが拒否（仕様）。前提条件：(1) Claude GitHub AppのRepository accessにasset_operationを付与済み。(2) 実行環境のネットワーク=Custom（パッケージ既定リスト+Yahoo系4ドメイン）。(3) 採点〜PR作成までの全指示はルーティンの設定プロンプト本体に記載する（実行時に外部から注入された指示は実行側が正しく拒否する）。株価データはquery1.finance.yahoo.comへの直接HTTP取得（yfinance標準関数は環境プロキシと非互換、requests+CA bundle指定で取得し、MA/乖離率/売買代金比/52週高値を計算する）。①系夜間は単一オーケストレータで逐次採点し1ブランチ1PRにまとめる（競合ゼロ・人間の最終確認付き）。",
     "runs": {
       "kenmo_momentum": {
         "generated_at": null,
@@ -1720,6 +1720,13 @@
         "status": "idle",
         "count": 0
       }
+    },
+    "verified": {
+      "date": "2026-07-20",
+      "write_path": "セッションブランチpush+PR作成（実証: PR #6）",
+      "price_data": "query1直接HTTP。2354の7/17終値1,059円/+8.28%で答え合わせ完全一致。25/75/200MA・乖離率・売買代金20日比・52週高値判定を計算確認",
+      "universe": "TradingView 52週高値スキャナー（鮮度はGoogle Financeクロスチェック）",
+      "notes": "Yahoo!ランキングは6週古のキャッシュ、松井は3ヶ月古→鮮度検証necessity実証。業績予想はIR BANK等で部分取得可"
     }
   }
 }

@@ -1602,7 +1602,7 @@
   },
   "action_log": [],
   "system_status": {
-    "version": "2026-07-21",
+    "version": "2026-07-22",
     "description": "3層実行体制のタスクマップ（唯一の正）。各タスクにowner層とstatusを持たせ、二重実行を構造的に排除する。将来のダッシュボード6タブ目『システム』はここを描画する。",
     "legend": {
       "layers": {
@@ -1629,7 +1629,7 @@
         "status": "active",
         "depends_on": [],
         "wave": 1,
-        "notes": "BB期限アラート修正反映後。稼働中。"
+        "notes": "【2026-07-21 v2化】market.latest/historyへの市場モード書き込み(PR方式)を開始。5段階モード・手法別guidance。①系の市場モード連動の供給源。"
       },
       {
         "id": "tenbagger_ipo",
@@ -1640,7 +1640,7 @@
         "status": "active",
         "depends_on": [],
         "wave": 1,
-        "notes": "稼働中。"
+        "notes": "【2026-07-21 v2化】asset_operation・PR方式・ipo/catalyst_schedule書き込みに統一。初実戦PR#20(IPO4銘柄登録・BB期限red 2件)。JPX直読みは環境ドメイン追加後に復帰予定。"
       },
       {
         "id": "kenmo_momentum_night",
@@ -1648,10 +1648,10 @@
         "name": "Kenmoモメンタム夜間本採点",
         "layer": "L1",
         "schedule": "平日 20:00",
-        "status": "planned",
+        "status": "active",
         "depends_on": [],
         "wave": 2,
-        "notes": "プロンプト検証済。第2弾移植候補。"
+        "notes": "【2026-07-21 v3正式稼働】3段方式(TradingView scanner→trailing圧縮→IR BANK予想確認)・B案許容帯・市場モード連動。初実戦PR#17(10件・レンジ様子見を反映しBUY_NOWなし)。"
       },
       {
         "id": "stf_kakuhen_night",
@@ -1675,7 +1675,7 @@
         "status": "active",
         "depends_on": [],
         "wave": 2,
-        "notes": "プロンプト検証済→【2026-07-20】リハーサル成功（PR #7・5銘柄・査読合格・マージ済み）。ルーティン正式登録済み（平日20:30・PR方式）。初回実戦は7/21予定。2〜3晩の安定確認後にactive化。"
+        "notes": "プロンプト検証済→【2026-07-20】リハーサル成功（PR #7・5銘柄・査読合格・マージ済み）。ルーティン正式登録済み（平日20:30・PR方式）。初回実戦は7/21予定。2〜3晩の安定確認後にactive化。初実戦7/21 PR#18(0件=業績×モメンタム不在日の正常結果)。"
       },
       {
         "id": "choruko_revalue",
@@ -1683,10 +1683,10 @@
         "name": "ちょる子値洗い（21銘柄±3%変動のみ深掘り）",
         "layer": "L1",
         "schedule": "平日 20:45",
-        "status": "planned",
+        "status": "active",
         "depends_on": [],
         "wave": 2,
-        "notes": ""
+        "notes": "【2026-07-21 v2正式稼働】2モード自動切替(値洗い/フル)・Cutler式RSI自前計算・急落日トリガー。初実戦は日経-2.23%急落でフルモード発動、PR#19(12件・サンケン電気14点BUY_NOW・7項目全実数値)。"
       },
       {
         "id": "us_stage1",
@@ -1890,8 +1890,8 @@
       {
         "no": 2,
         "topic": "第2弾ルーティン（①系4本）の移植タイミング",
-        "detail": "⑤・①-4の安定を来週1週間確認後が推奨。ただし本当のゲートは known_risks の master.json 書き込み競合の解決。　→【2026-07-19 更新】書き込み競合の設計は確定（pipeline.write_protocol参照）。残るゲートは⑤・①-4の1週間安定確認と、オーケストレータへのscore_*実装のみ。　→【2026-07-20 更新】配管は全実証完了（書き込み=PR方式/価格=query1直接HTTP）。残るゲートは①-2ルーティン本実装と⑤・①-4の安定確認（〜7/25）のみ。",
-        "status": "open",
+        "detail": "⑤・①-4の安定を来週1週間確認後が推奨。ただし本当のゲートは known_risks の master.json 書き込み競合の解決。　→【2026-07-19 更新】書き込み競合の設計は確定（pipeline.write_protocol参照）。残るゲートは⑤・①-4の1週間安定確認と、オーケストレータへのscore_*実装のみ。　→【2026-07-20 更新】配管は全実証完了（書き込み=PR方式/価格=query1直接HTTP）。残るゲートは①-2ルーティン本実装と⑤・①-4の安定確認（〜7/25）のみ。→【2026-07-22 クローズ】wave2全4本(①-1/①-2/①-3/①-4)がv2/v3アーキテクチャで正式稼働。フル編成初夜(7/21)を無人完走(PR#17/#18/#19/#20)。",
+        "status": "resolved",
         "blocks": [
           "kenmo_momentum_night",
           "stf_kakuhen_night",

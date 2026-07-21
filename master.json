@@ -1736,7 +1736,10 @@
     ],
     "stf_kakuhen": [],
     "tenbagger_x": [],
-    "watch_bottoming": []
+    "watch_bottoming": [],
+    "granville_tenkan": [],
+    "granville_oshime": [],
+    "granville_rebound": []
   },
   "positions": {
     "storage_note": "【分離方針 2026-07-20確定】ポジション実データ（保有・損益）は個人金融データのため公開リポジトリに置かない。唯一の正は Google Drive『SBI』フォルダの非公開 positions.json。この公開master.jsonのpositionsは空雛形を維持する。閲覧・更新はCoworkセッション（Driveコネクタ認証付き）のみ。",
@@ -1750,7 +1753,7 @@
   },
   "action_log": [],
   "system_status": {
-    "version": "2026-07-22",
+    "version": "2026-07-23",
     "description": "3層実行体制のタスクマップ（唯一の正）。各タスクにowner層とstatusを持たせ、二重実行を構造的に排除する。将来のダッシュボード6タブ目『システム』はここを描画する。",
     "legend": {
       "layers": {
@@ -2022,6 +2025,15 @@
         "status": "active",
         "depends_on": [],
         "notes": ""
+      },
+      {
+        "id": "granville_night",
+        "layer": "L1",
+        "name": "①-6 グランビル3区分チャートエントリー(夜間)",
+        "owner": "Claude Codeルーティン",
+        "schedule": "平日 22:00",
+        "status": "testing",
+        "notes": "【2026-07-23新設】転換初動/押し目/リバーサルの3ブランチ統合・1PR方式。検証A(2段方式成立・2178銘柄完走)→GT診断(7/21凍結・A19/23→雲gap-1.5%緩和で23/23、B8/8、C4/4)を経て入口v2確定。分類(①-1〜①-5)・該当手法採点・各ブランチtop10登録。書き込み先はcandidates.granville_*のみ(1キー1オーナー)。"
       }
     ],
     "open_questions": [
@@ -2319,5 +2331,44 @@
         "source": "株探(2026-07-21時点)"
       }
     ]
+  },
+  "granville_spec": {
+    "version": "2026-07-23",
+    "note": "グランビルの法則ベースのチャートエントリー3区分。SBIユーザー設定を原意とし、GT照合(2026-07-21終値・SBI 23/9/4件)で校正した入口v2。指標は全て日足からの自前計算(Cutler式RSI14・25/75/200日SMA乖離・一目均衡表9/26/52 雲=26日先行)。書き込みは①-6ルーティンのみが担当。",
+    "branches": {
+      "tenkan": {
+        "label": "グランビル転換初動",
+        "rule": "法則①",
+        "entrance": "終値200〜2000円 ∧ 200日乖離±10% ∧ 75日乖離±5% ∧ 25日乖離-3〜+8% ∧ 雲gap≥-1.5%(終値が雲上限の-1.5%以内または上) ∧ CutlerRSI14 40〜68",
+        "note": "雲gap-1.5%はB案(GT23/23捕捉優先・SBI原意の雲抜け上より緩め)。件数膨張は分類・採点・top10選抜で規律。GX25/75日はSBI原設定でOFF→採点材料へ"
+      },
+      "oshime": {
+        "label": "グランビル上昇トレンド押し目",
+        "rule": "法則②③",
+        "entrance": "終値200〜2000円 ∧ 200日乖離0〜+300% ∧ 75日乖離+3〜+200% ∧ 25日乖離-10〜+3% ∧ CutlerRSI14 30〜58 ∧ 時価総額60〜3500億円",
+        "note": "時価総額帯はGT分布からの校正値(GT8/8捕捉・103→71件)。SBI設定画面上部の隠れ条件は未確認のため暫定プロキシ。BB-2σ〜-1σはSBI原設定でOFF→採点材料へ"
+      },
+      "rebound": {
+        "label": "グランビル下げすぎリバーサル",
+        "rule": "法則④",
+        "entrance": "終値200〜2000円 ∧ 200日乖離0〜+300% ∧ 出来高前日比1.2〜100倍 ∧ CutlerRSI14 20〜35",
+        "note": "RSI上限35はGT校正値(SBI帯20〜40だがGT-Cは全て≤35に収束、15→10件)。出来高増加率は前日比が正解(5日平均比だとGT脱落)。25日乖離-15〜-8はSBI原設定でOFF→採点材料へ"
+      }
+    },
+    "selection": {
+      "top_n_per_branch": 10,
+      "presort": "既存手法への分類マッチあり優先→売買代金降順で10件仮選抜→採点後にスコア降順で確定",
+      "classification_priority": [
+        "choruko_reversal",
+        "kenmo_newhigh",
+        "kenmo_momentum",
+        "stf_kakuhen",
+        "tenbagger_x"
+      ]
+    },
+    "fit_score": {
+      "status": "未実装",
+      "note": "グランビル法則定義への合致率スコア(❹)は検証先行。成立確認後にプロンプト改訂で追加予定"
+    }
   }
 }

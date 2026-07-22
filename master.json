@@ -3116,7 +3116,7 @@
     },
     "selection": {
       "top_n_per_branch": 10,
-      "presort": "既存手法への分類マッチあり優先→売買代金降順で10件仮選抜→採点後にスコア降順で確定",
+      "presort": "既存手法への分類マッチあり優先→売買代金降順で各ブランチ10件を仮選抜→全仮選抜銘柄にfund_score算出+分類ありは正式採点→fund_score降順(同点は正式スコア降順→売買代金降順)で確定",
       "classification_priority": [
         "choruko_reversal",
         "kenmo_newhigh",
@@ -3124,6 +3124,10 @@
         "stf_kakuhen",
         "tenbagger_x"
       ]
+    },
+    "fund_score": {
+      "status": "active",
+      "note": "全登録銘柄に付与する共通のファンダ簡易スコア(横並び比較軸)。scoring_spec.methods.kenmo_momentum.scoringの業績項目のうち決算数値だけで機械判定できるもの(売上・利益成長率、修正動向等)を代用適用し、IR BANKの今期会社予想・直近実績で算出。取得不可項目は分母から除外し満点をfund_score_maxに記録。手法別の正式21点採点(scoreフィールド)とは別物であり、点が高くても買い時を意味しない。2026-07-23導入。"
     },
     "fit_score": {
       "status": "未実装",

@@ -33,7 +33,16 @@ section.mth{background:#12292e;border:1px solid #1d3a40;border-left:4px solid #1
 .act-BUY_NOW{background:#123d33;color:#48e0b0;border-color:#1f6b57}
 .act-WATCH{background:#123047;color:#5bb2e6;border-color:#1f5079}
 .act-AVOID{background:#2e1a1a;color:#c98a8a;border-color:#6b2f2f}
+.act-CHART_WATCH{background:#2a2340;color:#b39ddb;border-color:#4a3f6b}
 .meta{font-size:11.5px;color:#8fb3ad;margin-top:5px}
+section.gblock{background:#12292e;border:1px solid #1d3a40;border-left:4px solid #b39ddb;border-radius:12px;padding:14px 14px 8px;margin-bottom:16px}
+.gnote{font-size:11px;color:#8fb3ad;background:#0f2429;border:1px solid #1d3a40;border-radius:8px;padding:6px 10px;margin:8px 0 12px}
+.gframe{margin-bottom:14px}
+.gftitle{font-size:14px;font-weight:700;color:#c9b8e8;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #1d3a40}
+.gfn{font-size:12px;color:#8fb3ad;font-weight:400;margin-left:4px}
+.mbadge{font-size:11px;font-weight:600;color:#7fe3d6;background:#123d33;border:1px solid #1f6b57;border-radius:5px;padding:1px 6px;margin-left:2px}
+.mbadge.chart{color:#b39ddb;background:#2a2340;border-color:#4a3f6b}
+.score.na{font-size:13px;color:#8fb3ad;font-weight:600}
 .sum{font-size:12.5px;color:#b7d6d0;margin-top:5px}
 footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 </style></head><body><div class='wrap'>
@@ -54,7 +63,23 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 const RAW_URL = "https://raw.githubusercontent.com/kohshi529-glitch/asset_operation/main/master.json";
 const EMBEDDED = null; // スナップショット無し（LIVE専用。取得失敗時はメッセージ表示）
 const ORDER = ["kenmo_momentum","kenmo_newhigh","choruko_reversal","stf_kakuhen","tenbagger_x","watch_bottoming"];
+// グランビル3枠（法則ベースのチャートエントリー）。共通ルーティン granville_night が毎晩洗い替え。
+const GRANVILLE = [
+  {key:"granville_tenkan", label:"転換初動（法則①）",             extra:"cloud", rc:"tenkan"},
+  {key:"granville_oshime", label:"上昇トレンド押し目（法則②③）", extra:"cloud", rc:"oshime"},
+  {key:"granville_rebound",label:"下げすぎリバーサル（法則④）",   extra:"vol",   rc:"rebound"},
+];
+// classified_method → バッジ用の短い和名（scoring_spec.methods の名称に対応）
+const METHOD_SHORT = {
+  kenmo_momentum:"kenmo式モメンタム",
+  kenmo_newhigh:"kenmo式新高値",
+  choruko_reversal:"ちょる子式",
+  stf_kakuhen:"STF式確変",
+  tenbagger_x:"テンバガーX式",
+};
 function esc(s){return (s==null?"":String(s)).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));}
+// 欠損フィールドは「-」表示。0 や false は有効値として扱う。
+function fld(v){return (v==null||v==="")?"-":v;}
 
 function render(d){
   const spec=(d.scoring_spec&&d.scoring_spec.methods)||{};
@@ -72,15 +97,21 @@ function render(d){
     const r=runs[k];
     if(r&&r.trading_day&&(!latest||r.trading_day>latest))latest=r.trading_day;
   });
+  // グランビル3枠の件数
+  const gcount={};
+  GRANVILLE.forEach(g=>{gcount[g.key]=(cands[g.key]||[]).length;});
   document.getElementById('kpis').innerHTML=[
     {n:total,l:"候補合計"},
     {n:buy,l:"BUY_NOW",cls:"buy"},
     {n:methodsWithData,l:"データあり手法"},
     {n:latest||"—",l:"最新trading_day"},
+    {n:gcount.granville_tenkan,l:"📐転換初動"},
+    {n:gcount.granville_oshime,l:"📐押し目"},
+    {n:gcount.granville_rebound,l:"📐リバーサル"},
   ].map(k=>`<div class='kpi ${k.cls||''}'><div class='n'>${esc(k.n)}</div><div class='l'>${esc(k.l)}</div></div>`).join('');
 
   // 手法別
-  document.getElementById('mths').innerHTML=ORDER.map(k=>{
+  const methodsHTML=ORDER.map(k=>{
     const m=spec[k]||{name:k,emoji:"📌"};
     const list=(cands[k]||[]).slice().sort((a,b)=>(b.score||0)-(a.score||0));
     const r=runs[k];
@@ -101,6 +132,64 @@ function render(d){
       : "<div class='empty'>候補なし</div>";
     return `<section class='mth'><div class='mhead'><span>${esc(m.emoji||'📌')}</span><span class='mname'>${esc(m.name||k)}</span><span class='fresh'>${fresh}</span></div>${body}</section>`;
   }).join('');
+
+  document.getElementById('mths').innerHTML=methodsHTML+renderGranville(cands,spec,runs);
+}
+
+// 📐 グランビル・チャートエントリー（3枠）。既存手法カードの配色・構造を流用。
+function gcard(c,extra,spec){
+  // classified_method バッジ：和名で表示。null は「チャート単独」。
+  const badge=c.classified_method
+    ? `<span class='mbadge'>${esc(METHOD_SHORT[c.classified_method]||((spec[c.classified_method]||{}).name)||c.classified_method)}</span>`
+    : `<span class='mbadge chart'>チャート単独</span>`;
+  // score=null は「未採点」表示。
+  const score=(c.score==null)
+    ? `<span class='score na'>未採点</span>`
+    : `<span class='score'>${esc(c.score)}<small>/21</small></span>`;
+  // 指標行：終値／25日乖離／CutlerRSI（＋枠別に雲gap or 出来高前日比）
+  let ind=`終値 ${esc(fld(c.close))}円　25日乖離 ${esc(fld(c.dev25))}%　CutlerRSI ${esc(fld(c.rsi_cutler))}`;
+  if(extra==="cloud") ind+=`　雲gap ${esc(fld(c.cloud_gap))}%`;
+  else if(extra==="vol") ind+=`　出来高前日比 ${esc(fld(c.vol_ratio_prev))}倍`;
+  // verdict / action（採点済みは verdict+バッジ、未採点はバッジのみ）
+  const vd=(c.verdict||c.action)
+    ? `<div class='vd'>${esc(c.verdict||'')}<span class='act act-${esc(c.action||'')}'>${esc(c.action||'')}</span></div>`
+    : '';
+  return `
+    <div class='cand'>
+      <div class='crow'>
+        <span class='code'>${esc(fld(c.code))}</span>
+        <span class='cname'>${esc(fld(c.name))}</span>
+        ${badge}
+        ${score}
+      </div>
+      <div class='meta'>${ind}</div>
+      ${vd}
+      ${c.summary?`<div class='sum'>${esc(c.summary)}</div>`:''}
+      <div class='meta'>採点: ${esc(fld((c.scored_at||'').slice(0,16).replace('T',' ')||null))}</div>
+    </div>`;
+}
+
+function renderGranville(cands,spec,runs){
+  const gr=runs["granville_night"];
+  // 鮮度表示：他ルーティンと同じ「最終実行 <b>日付</b> ／ … ／ 源」形式。
+  const rc=(gr&&gr.registered_counts)||{};
+  const gfresh=(gr&&gr.status==="done")
+    ? `最終実行 <b>${esc(gr.trading_day)}</b> ／ 登録 ${esc(fld(rc.tenkan))}/${esc(fld(rc.oshime))}/${esc(fld(rc.rebound))}件 ／ ${esc(gr.source||'granville_night')}`
+    : "未実行";
+  const gday=(gr&&gr.trading_day)||'—';
+  const frames=GRANVILLE.map(g=>{
+    const list=(cands[g.key]||[]).slice().sort((a,b)=>(b.score||0)-(a.score||0));
+    // 防御的描画：キー欠損・空配列は 0件（最終実行日付付き）表示。
+    const body=list.length
+      ? list.map(c=>gcard(c,g.extra,spec)).join('')
+      : `<div class='empty'>0件（最終実行: ${esc(gday)}）</div>`;
+    return `<div class='gframe'><div class='gftitle'>${esc(g.label)}<span class='gfn'>${list.length}件</span></div>${body}</div>`;
+  }).join('');
+  return `<section class='gblock'>
+    <div class='mhead'><span>📐</span><span class='mname'>グランビル・チャートエントリー</span><span class='fresh'>${gfresh}</span></div>
+    <div class='gnote'>分類はテクニカル・サイズ条件のみの機械判定（ファンダ未検証）。グランビル枠は毎晩洗い替え</div>
+    ${frames}
+  </section>`;
 }
 
 fetch(RAW_URL,{cache:"no-store"}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(render)

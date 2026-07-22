@@ -43,6 +43,11 @@ section.gblock{background:#12292e;border:1px solid #1d3a40;border-left:4px solid
 .mbadge{font-size:11px;font-weight:600;color:#7fe3d6;background:#123d33;border:1px solid #1f6b57;border-radius:5px;padding:1px 6px;margin-left:2px}
 .mbadge.chart{color:#b39ddb;background:#2a2340;border-color:#4a3f6b}
 .score.na{font-size:13px;color:#8fb3ad;font-weight:600}
+.fund{display:inline-flex;align-items:baseline;gap:3px;font-size:12.5px;font-weight:700;color:#e8c766;background:#2e2a17;border:1px solid #5c5324;border-radius:6px;padding:2px 9px;margin-top:6px}
+.fund b{font-size:14.5px;line-height:1}
+.fund .fmax{font-size:11px;color:#b3a86a;font-weight:600}
+.fund .fprec{font-size:10.5px;color:#8fb3ad;font-weight:400;margin-left:4px}
+.fund.na{color:#8fb3ad;background:#0f2429;border-color:#1d3a40}
 .sum{font-size:12.5px;color:#b7d6d0;margin-top:5px}
 footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 </style></head><body><div class='wrap'>
@@ -146,6 +151,11 @@ function gcard(c,extra,spec){
   const score=(c.score==null)
     ? `<span class='score na'>未採点</span>`
     : `<span class='score'>${esc(c.score)}<small>/21</small></span>`;
+  // fund_score：全銘柄共通の横並び比較軸として目立つ位置に「ファンダ◯/◯点」表示。
+  // fund_score系は2026-07-23導入のため欠損に強く（null/未定義は「-」）。
+  const fund=(c.fund_score==null)
+    ? `<div class='fund na'>ファンダ <b>-</b></div>`
+    : `<div class='fund'>ファンダ <b>${esc(c.fund_score)}</b><span class='fmax'>/${esc(fld(c.fund_score_max))}点</span>${c.fund_precision?`<span class='fprec'>${esc(c.fund_precision)}</span>`:''}</div>`;
   // 指標行：終値／25日乖離／CutlerRSI（＋枠別に雲gap or 出来高前日比）
   let ind=`終値 ${esc(fld(c.close))}円　25日乖離 ${esc(fld(c.dev25))}%　CutlerRSI ${esc(fld(c.rsi_cutler))}`;
   if(extra==="cloud") ind+=`　雲gap ${esc(fld(c.cloud_gap))}%`;
@@ -162,6 +172,7 @@ function gcard(c,extra,spec){
         ${badge}
         ${score}
       </div>
+      ${fund}
       <div class='meta'>${ind}</div>
       ${vd}
       ${c.summary?`<div class='sum'>${esc(c.summary)}</div>`:''}
@@ -187,7 +198,7 @@ function renderGranville(cands,spec,runs){
   }).join('');
   return `<section class='gblock'>
     <div class='mhead'><span>📐</span><span class='mname'>グランビル・チャートエントリー</span><span class='fresh'>${gfresh}</span></div>
-    <div class='gnote'>分類はテクニカル・サイズ条件のみの機械判定（ファンダ未検証）。グランビル枠は毎晩洗い替え</div>
+    <div class='gnote'>ファンダ簡易スコアはケンモメ手法の業績項目を代用した横並び比較用の参考値（正式21点採点とは別物）。分類はテクニカル・サイズ条件の機械判定。グランビル枠は毎晩洗い替え</div>
     ${frames}
   </section>`;
 }

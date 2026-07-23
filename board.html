@@ -49,6 +49,21 @@ section.gblock{background:#12292e;border:1px solid #1d3a40;border-left:4px solid
 .fund .fprec{font-size:10.5px;color:#8fb3ad;font-weight:400;margin-left:4px}
 .fund.na{color:#8fb3ad;background:#0f2429;border-color:#1d3a40}
 .sum{font-size:12.5px;color:#b7d6d0;margin-top:5px}
+section.iblock{background:#12292e;border:1px solid #1d3a40;border-left:4px solid #e8a35b;border-radius:12px;padding:14px 14px 8px;margin-bottom:16px}
+.inote{font-size:11px;color:#8fb3ad;background:#0f2429;border:1px solid #1d3a40;border-radius:8px;padding:6px 10px;margin:8px 0 12px}
+.ivd{display:inline-block;padding:1px 8px;border-radius:6px;font-size:11.5px;font-weight:700;border:1px solid}
+.iv-kakuhen{background:#123d33;color:#48e0b0;border-color:#1f6b57}
+.iv-strong{background:#3d2817;color:#e8a35b;border-color:#6b4a24}
+.iv-note{background:#123047;color:#5bb2e6;border-color:#1f5079}
+.iv-watch{background:#1d3a40;color:#8fb3ad;border-color:#33565c}
+.iv-none{background:#0f2429;color:#8fb3ad;border-color:#1d3a40}
+.ewatch{display:inline-block;font-size:11px;font-weight:700;color:#0d1b1e;background:#e8c766;border-radius:5px;padding:1px 7px;margin-bottom:6px}
+.bbdl{display:inline-block;font-size:11px;font-weight:600;color:#5bb2e6;background:#123047;border:1px solid #1f5079;border-radius:5px;padding:1px 7px;margin-left:6px}
+.bbdl.red{color:#e88a8a;background:#2e1a1a;border-color:#6b2f2f}
+.istat{font-size:12px;color:#b7d6d0;margin-top:2px}
+.ihist{margin-top:8px;font-size:12px;color:#8fb3ad}
+.ihist summary{cursor:pointer;color:#7fe3d6}
+.ihist .hrow{padding:3px 0;border-bottom:1px solid #1d3a40}
 footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 </style></head><body><div class='wrap'>
 <h1>📋 候補ボード</h1>
@@ -105,6 +120,8 @@ function render(d){
   // グランビル3枠の件数
   const gcount={};
   GRANVILLE.forEach(g=>{gcount[g.key]=(cands[g.key]||[]).length;});
+  // 🚀 IPOウォッチ件数（①-4テンバガーX）。防御的に空配列扱い。
+  const ipoCount=((d.ipo&&d.ipo.watchlist)||[]).length;
   document.getElementById('kpis').innerHTML=[
     {n:total,l:"候補合計"},
     {n:buy,l:"BUY_NOW",cls:"buy"},
@@ -113,6 +130,7 @@ function render(d){
     {n:gcount.granville_tenkan,l:"📐転換初動"},
     {n:gcount.granville_oshime,l:"📐押し目"},
     {n:gcount.granville_rebound,l:"📐リバーサル"},
+    {n:ipoCount,l:"🚀IPOウォッチ"},
   ].map(k=>`<div class='kpi ${k.cls||''}'><div class='n'>${esc(k.n)}</div><div class='l'>${esc(k.l)}</div></div>`).join('');
 
   // 手法別
@@ -138,7 +156,7 @@ function render(d){
     return `<section class='mth'><div class='mhead'><span>${esc(m.emoji||'📌')}</span><span class='mname'>${esc(m.name||k)}</span><span class='fresh'>${fresh}</span></div>${body}</section>`;
   }).join('');
 
-  document.getElementById('mths').innerHTML=methodsHTML+renderGranville(cands,spec,runs);
+  document.getElementById('mths').innerHTML=methodsHTML+renderGranville(cands,spec,runs)+renderIPO(d.ipo||{},runs);
 }
 
 // 📐 グランビル・チャートエントリー（3枠）。既存手法カードの配色・構造を流用。
@@ -200,6 +218,70 @@ function renderGranville(cands,spec,runs){
     <div class='mhead'><span>📐</span><span class='mname'>グランビル・チャートエントリー</span><span class='fresh'>${gfresh}</span></div>
     <div class='gnote'>ファンダ簡易スコアはケンモメ手法の業績項目を代用した横並び比較用の参考値（正式21点採点とは別物）。分類はテクニカル・サイズ条件の機械判定。グランビル枠は毎晩洗い替え</div>
     ${frames}
+  </section>`;
+}
+
+// 🚀 IPOウォッチ（テンバガーX ①-4）。ipo.watchlist を描画。既存カードの配色・構造を流用。
+// verdict の色分け：🚀確変級=iv-kakuhen／🔥強注目=iv-strong／⚡注目=iv-note／👀様子見=iv-watch。
+function ipoVerdictClass(v){
+  const s=v||"";
+  if(s.indexOf('確変')>=0) return 'iv-kakuhen';
+  if(s.indexOf('強注目')>=0) return 'iv-strong';   // 「強注目」を「注目」より先に判定
+  if(s.indexOf('注目')>=0) return 'iv-note';
+  if(s.indexOf('様子見')>=0) return 'iv-watch';
+  return 'iv-none';
+}
+function ipoCard(w){
+  // score（21点満点）。数値なら score/score_max、非数値（"取得不可"等）はそのまま表示。欠損は「-」。
+  const smax=w.score_max||21;
+  const score=(typeof w.score==='number')
+    ? `<span class='score'>${esc(w.score)}<small>/${esc(smax)}</small></span>`
+    : `<span class='score na'>${esc(fld(w.score))}</span>`;
+  // verdict バッジ（色分け）。
+  const vd=w.verdict?`<span class='ivd ${ipoVerdictClass(w.verdict)}'>${esc(w.verdict)}</span>`:'';
+  // entry_watch フラグが立つ銘柄はカード冒頭に「👀エントリー検討」バッジ。
+  const ew=w.entry_watch?`<div class='ewatch'>👀エントリー検討</div>`:'';
+  // bb_deadline：あれば表示。urgency:"red" は赤バッジで強調（防御的にフィールド欠損も許容）。
+  const bb=w.bb_deadline
+    ? `<span class='bbdl ${w.urgency==='red'?'red':''}'>BB期限 ${esc(w.bb_deadline)}</span>`
+    : '';
+  return `
+    <div class='cand'>
+      ${ew}
+      <div class='crow'>
+        <span class='code'>${esc(fld(w.code))}</span>
+        <span class='cname'>${esc(fld(w.name))}</span>
+        ${score}
+      </div>
+      <div class='istat'>${esc(fld(w.status))}${bb}</div>
+      <div class='meta'>上場日: ${esc(fld(w.list_date))}${vd?'　':''}${vd}</div>
+      ${w.summary?`<div class='sum'>${esc(w.summary)}</div>`:''}
+    </div>`;
+}
+function renderIPO(ipo,runs){
+  const list=(ipo&&ipo.watchlist)||[];
+  // 鮮度：①-4のrunキー（ipo系）があれば参照、無ければ watchlist の last_updated 最新、それも無ければ「—」。
+  const ir=runs["ipo"]||runs["tenbagger_ipo"]||runs["ipo_check"]||null;
+  let iday=(ir&&ir.trading_day)||null;
+  if(!iday){ list.forEach(w=>{ if(w.last_updated&&(!iday||w.last_updated>iday)) iday=w.last_updated; }); }
+  iday=iday||'—';
+  const ifresh=(ir&&ir.status==="done")
+    ? `最終実行 <b>${esc(ir.trading_day)}</b> ／ ${esc(fld(ir.count))}件 ／ ${esc(ir.source||'')}`
+    : `最終更新 <b>${esc(iday)}</b> ／ ${esc(list.length)}件`;
+  // 防御的描画：watchlist 欠損・空配列はエラーにせず 0件（最終実行日付付き）表示。
+  const body=list.length
+    ? list.slice().sort((a,b)=>((typeof b.score==='number'?b.score:-1))-((typeof a.score==='number'?a.score:-1))).map(ipoCard).join('')
+    : `<div class='empty'>0件（最終実行: ${esc(iday)}）</div>`;
+  // ipo.history があれば末尾に折りたたみで「上場済み・観察終了」簡易一覧（任意）。
+  const hist=(ipo&&ipo.history)||[];
+  const histHTML=hist.length
+    ? `<details class='ihist'><summary>上場済み・観察終了（${hist.length}件）</summary>${hist.map(h=>`<div class='hrow'><span class='code'>${esc(fld(h.code))}</span> ${esc(fld(h.name))}　初値比 ${esc(fld(h.first_trade_vs_offer_pct))}</div>`).join('')}</details>`
+    : '';
+  return `<section class='iblock'>
+    <div class='mhead'><span>🚀</span><span class='mname'>IPOウォッチ（テンバガーX ①-4）</span><span class='fresh'>${ifresh}</span></div>
+    <div class='inote'>①-4テンバガーXが毎営業日更新。BB期限・上場日は要最新確認</div>
+    ${body}
+    ${histHTML}
   </section>`;
 }
 

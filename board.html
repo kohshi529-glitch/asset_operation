@@ -3,25 +3,43 @@
 <title>候補ボード — 手法別スクリーニング結果</title><style>
 :root{color-scheme:dark}*{box-sizing:border-box}
 body{margin:0;background:#0d1b1e;color:#e6f4f1;font-family:-apple-system,'Hiragino Sans','Noto Sans JP',sans-serif;line-height:1.55}
-.wrap{max-width:980px;margin:0 auto;padding:20px 16px 80px}
+.wrap{max-width:980px;margin:0 auto;padding:20px 16px 90px}
 h1{font-size:22px;margin:6px 0 2px}
-.ver{color:#8fb3ad;font-size:13px;margin-bottom:6px}
-.src{font-size:12px;color:#8fb3ad;margin-bottom:14px}
+.ver{color:#8fb3ad;font-size:13px;margin-bottom:8px}
+.modebadge{display:inline-block;font-size:12.5px;font-weight:700;border-radius:6px;padding:2px 10px;border:1px solid;vertical-align:middle}
+.modebadge.warn{background:#2e1a1a;color:#e88a8a;border-color:#6b2f2f}
+.modebadge.good{background:#123d33;color:#48e0b0;border-color:#1f6b57}
+.modebadge.neu{background:#123047;color:#5bb2e6;border-color:#1f5079}
+.freshline{font-size:11.5px;color:#8fb3ad;margin:8px 0 10px;line-height:1.9}
+.freshline .fx{margin-right:2px;white-space:nowrap}
+.freshline b{color:#7fe3d6;font-weight:600}
+.src{font-size:12px;color:#8fb3ad;margin-bottom:12px}
 .src .live{color:#48e0b0}.src .snap{color:#e8c766}
-.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
 .tabs a{background:#12292e;border:1px solid #1d3a40;color:#e6f4f1;text-decoration:none;padding:7px 12px;border-radius:999px;font-size:13px}
 .tabs a.here{border-color:#1fb6a6;color:#7fe3d6}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-bottom:20px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-bottom:16px}
 .kpi{background:#12292e;border:1px solid #1d3a40;border-radius:12px;padding:12px 14px}
 .kpi .n{font-size:26px;font-weight:700;color:#7fe3d6;line-height:1.1}
 .kpi.buy .n{color:#48e0b0}
 .kpi .l{font-size:12px;color:#8fb3ad;margin-top:2px}
+/* メインタブバー（JS切替・ページ遷移なし）。スクロールしても上部に残す。 */
+.maintabs{position:sticky;top:0;z-index:20;display:flex;gap:8px;background:#0d1b1e;padding:10px 0;border-bottom:1px solid #1d3a40;margin-bottom:14px}
+.maintabs button{flex:1;background:#12292e;border:1px solid #1d3a40;color:#e6f4f1;padding:10px 12px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:background .12s,border-color .12s}
+.maintabs button.active{background:#123d33;border-color:#1fb6a6;color:#7fe3d6}
+.panel{display:none}.panel.active{display:block}
+/* ジャンプボタン行（横スクロール可のチップ型） */
+.jump{display:flex;gap:8px;overflow-x:auto;padding:2px 0 14px;-webkit-overflow-scrolling:touch}
+.jump button{white-space:nowrap;background:#12292e;border:1px solid #1d3a40;color:#7fe3d6;padding:6px 13px;border-radius:999px;font-size:13px;cursor:pointer;flex:0 0 auto}
+.jump button:active{background:#123d33;border-color:#1fb6a6}
 section.mth{background:#12292e;border:1px solid #1d3a40;border-left:4px solid #1fb6a6;border-radius:12px;padding:14px 14px 6px;margin-bottom:16px}
 .mhead{display:flex;align-items:center;gap:8px;margin-bottom:4px;flex-wrap:wrap}
 .mname{font-size:16px;font-weight:700}
+.cnt{font-size:12px;color:#8fb3ad;font-weight:600}
 .fresh{margin-left:auto;font-size:11.5px;color:#8fb3ad}
 .fresh b{color:#7fe3d6;font-weight:600}
 .empty{color:#8fb3ad;font-size:13px;padding:6px 0 10px}
+.err{color:#e88a8a;font-size:12.5px;padding:6px 0 10px}
 .cand{background:#0f2429;border:1px solid #1d3a40;border-radius:10px;padding:10px 12px;margin-bottom:10px}
 .crow{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
 .code{font-size:12px;color:#0d1b1e;background:#8fb3ad;border-radius:5px;padding:1px 6px;font-weight:700}
@@ -35,6 +53,7 @@ section.mth{background:#12292e;border:1px solid #1d3a40;border-left:4px solid #1
 .act-AVOID{background:#2e1a1a;color:#c98a8a;border-color:#6b2f2f}
 .act-CHART_WATCH{background:#2a2340;color:#b39ddb;border-color:#4a3f6b}
 .meta{font-size:11.5px;color:#8fb3ad;margin-top:5px}
+.totop{display:inline-block;font-size:11.5px;color:#7fe3d6;cursor:pointer;text-decoration:none;margin:2px 2px 8px}
 section.gblock{background:#12292e;border:1px solid #1d3a40;border-left:4px solid #b39ddb;border-radius:12px;padding:14px 14px 8px;margin-bottom:16px}
 .gnote{font-size:11px;color:#8fb3ad;background:#0f2429;border:1px solid #1d3a40;border-radius:8px;padding:6px 10px;margin:8px 0 12px}
 .gframe{margin-bottom:14px}
@@ -49,6 +68,7 @@ section.gblock{background:#12292e;border:1px solid #1d3a40;border-left:4px solid
 .fund .fprec{font-size:10.5px;color:#8fb3ad;font-weight:400;margin-left:4px}
 .fund.na{color:#8fb3ad;background:#0f2429;border-color:#1d3a40}
 .sum{font-size:12.5px;color:#b7d6d0;margin-top:5px}
+/* ④テンバガーIPO（旧IPOウォッチ）。オレンジ枠。 */
 section.iblock{background:#12292e;border:1px solid #1d3a40;border-left:4px solid #e8a35b;border-radius:12px;padding:14px 14px 8px;margin-bottom:16px}
 .inote{font-size:11px;color:#8fb3ad;background:#0f2429;border:1px solid #1d3a40;border-radius:8px;padding:6px 10px;margin:8px 0 12px}
 .ivd{display:inline-block;padding:1px 8px;border-radius:6px;font-size:11.5px;font-weight:700;border:1px solid}
@@ -64,10 +84,17 @@ section.iblock{background:#12292e;border:1px solid #1d3a40;border-left:4px solid
 .ihist{margin-top:8px;font-size:12px;color:#8fb3ad}
 .ihist summary{cursor:pointer;color:#7fe3d6}
 .ihist .hrow{padding:3px 0;border-bottom:1px solid #1d3a40}
+.legacy{margin-top:10px;border-top:1px dashed #33565c;padding-top:10px}
+.legacy .lt{font-size:12px;color:#8fb3ad;margin-bottom:8px}
+/* 固定フローティング「↑」ボタン */
+.fab{position:fixed;right:16px;bottom:18px;z-index:30;width:46px;height:46px;border-radius:50%;background:#123d33;border:1px solid #1fb6a6;color:#7fe3d6;font-size:22px;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center}
+/* スティッキーなタブバー分のアンカーオフセット */
+section.mth[id],section.iblock[id],.gframe[id]{scroll-margin-top:66px}
 footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 </style></head><body><div class='wrap'>
 <h1>📋 候補ボード</h1>
-<div class='ver'>master.json candidates ／ 各手法の夜間採点・手動登録の最新候補</div>
+<div class='ver'>master.json candidates ／ 各手法の夜間採点・手動登録の最新候補　<span id='mode'></span></div>
+<div class='freshline' id='freshline'></div>
 <div class='src' id='src'>データ取得中…</div>
 <div class='tabs'>
 <a href='./index.html'>📊 スコアリング基準</a>
@@ -76,18 +103,26 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 <a href='./system.html'>🖥 システム</a>
 </div>
 <div class='kpis' id='kpis'></div>
-<div id='mths'></div>
+<!-- メインタブバー -->
+<div class='maintabs'>
+<button id='tab-methods' class='active' onclick="switchTab('methods')">📋 手法別ボード</button>
+<button id='tab-granville' onclick="switchTab('granville')">📐 グランビルエントリー</button>
+</div>
+<div id='panel-methods' class='panel active'></div>
+<div id='panel-granville' class='panel'></div>
 <footer>board.html ／ 唯一の正 master.json から描画。候補は各手法ルーティンのPRマージで更新される。</footer>
 </div>
+<button class='fab' onclick='scrollTop()' aria-label='ページトップへ'>↑</button>
 <script>
 const RAW_URL = "https://raw.githubusercontent.com/kohshi529-glitch/asset_operation/main/master.json";
 const EMBEDDED = null; // スナップショット無し（LIVE専用。取得失敗時はメッセージ表示）
+// タブ1・手法別セクションの並び。④はIPO（ipo.watchlist）、⑤はSTF。
 const ORDER = ["kenmo_momentum","kenmo_newhigh","choruko_reversal","stf_kakuhen","tenbagger_x","watch_bottoming"];
 // グランビル3枠（法則ベースのチャートエントリー）。共通ルーティン granville_night が毎晩洗い替え。
 const GRANVILLE = [
-  {key:"granville_tenkan", label:"転換初動（法則①）",             extra:"cloud", rc:"tenkan"},
-  {key:"granville_oshime", label:"上昇トレンド押し目（法則②③）", extra:"cloud", rc:"oshime"},
-  {key:"granville_rebound",label:"下げすぎリバーサル（法則④）",   extra:"vol",   rc:"rebound"},
+  {key:"granville_tenkan", label:"転換初動（法則①）",             extra:"cloud", rc:"tenkan", id:"sec-tenkan"},
+  {key:"granville_oshime", label:"上昇トレンド押し目（法則②③）", extra:"cloud", rc:"oshime", id:"sec-oshime"},
+  {key:"granville_rebound",label:"下げすぎリバーサル（法則④）",   extra:"vol",   rc:"rebound",id:"sec-rebound"},
 ];
 // classified_method → バッジ用の短い和名（scoring_spec.methods の名称に対応）
 const METHOD_SHORT = {
@@ -101,65 +136,171 @@ function esc(s){return (s==null?"":String(s)).replace(/[&<>]/g,c=>({"&":"&amp;",
 // 欠損フィールドは「-」表示。0 や false は有効値として扱う。
 function fld(v){return (v==null||v==="")?"-":v;}
 
-function render(d){
-  const spec=(d.scoring_spec&&d.scoring_spec.methods)||{};
-  const cands=d.candidates||{};
-  const runs=(d.pipeline&&d.pipeline.runs)||{};
-  document.getElementById('src').innerHTML="<span class='live'>● LIVE</span> GitHubの最新 master.json を表示中";
-
-  // KPI
-  let total=0,buy=0,methodsWithData=0,latest=null;
-  ORDER.forEach(k=>{
-    const list=cands[k]||[];
-    total+=list.length;
-    if(list.length)methodsWithData++;
-    buy+=list.filter(c=>c.action==="BUY_NOW").length;
-    const r=runs[k];
-    if(r&&r.trading_day&&(!latest||r.trading_day>latest))latest=r.trading_day;
+// ===== タブ切替・スクロール（ページ遷移なし） =====
+function switchTab(which){
+  ['methods','granville'].forEach(t=>{
+    const p=document.getElementById('panel-'+t), b=document.getElementById('tab-'+t);
+    if(!p||!b)return;
+    const on=(t===which);
+    p.classList.toggle('active',on);
+    b.classList.toggle('active',on);
   });
-  // グランビル3枠の件数
-  const gcount={};
-  GRANVILLE.forEach(g=>{gcount[g.key]=(cands[g.key]||[]).length;});
-  // 🚀 IPOウォッチ件数（①-4テンバガーX）。防御的に空配列扱い。
-  const ipoCount=((d.ipo&&d.ipo.watchlist)||[]).length;
-  document.getElementById('kpis').innerHTML=[
-    {n:total,l:"候補合計"},
-    {n:buy,l:"BUY_NOW",cls:"buy"},
-    {n:methodsWithData,l:"データあり手法"},
-    {n:latest||"—",l:"最新trading_day"},
-    {n:gcount.granville_tenkan,l:"📐転換初動"},
-    {n:gcount.granville_oshime,l:"📐押し目"},
-    {n:gcount.granville_rebound,l:"📐リバーサル"},
-    {n:ipoCount,l:"🚀IPOウォッチ"},
-  ].map(k=>`<div class='kpi ${k.cls||''}'><div class='n'>${esc(k.n)}</div><div class='l'>${esc(k.l)}</div></div>`).join('');
+  scrollTop();
+}
+function scrollToSec(id){
+  const el=document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function scrollTop(){ window.scrollTo({top:0,behavior:'smooth'}); }
 
-  // 手法別
-  const methodsHTML=ORDER.map(k=>{
-    const m=spec[k]||{name:k,emoji:"📌"};
-    const list=(cands[k]||[]).slice().sort((a,b)=>(b.score||0)-(a.score||0));
-    const r=runs[k];
-    const fresh=r&&r.status==="done"
-      ? `最終実行 <b>${esc(r.trading_day)}</b> ／ ${esc(r.count)}件 ／ ${esc(r.source||'')}`
-      : "未実行";
-    const body=list.length? list.map(c=>`
-      <div class='cand'>
+// ===== 市場モードバッジ =====
+function modeClass(mode){
+  const s=mode||'';
+  if(/軟調|弱気|悪化|警戒|リスク|下落|急落/.test(s)) return 'warn';
+  if(/堅調|強気|良好|好転|上昇|活況/.test(s)) return 'good';
+  return 'neu';
+}
+
+// ===== 手法カード（①②③⑤／レガシー枠 共通） =====
+function methodCard(c){
+  return `<div class='cand'>
         <div class='crow'>
-          <span class='code'>${esc(c.code)}</span>
-          <span class='cname'>${esc(c.name)}</span>
-          <span class='score'>${esc(c.score)}<small>/21</small></span>
+          <span class='code'>${esc(fld(c.code))}</span>
+          <span class='cname'>${esc(fld(c.name))}</span>
+          <span class='score'>${esc(fld(c.score))}<small>/21</small></span>
         </div>
         <div class='vd'>${esc(c.verdict||'')}<span class='act act-${esc(c.action)}'>${esc(c.action||'')}</span></div>
         ${c.summary?`<div class='sum'>${esc(c.summary)}</div>`:''}
         <div class='meta'>精度: ${esc(c.precision||'—')}　採点: ${esc((c.scored_at||'').slice(0,16).replace('T',' '))}　源: ${esc(c.source||'—')}</div>
-      </div>`).join('')
-      : "<div class='empty'>候補なし</div>";
-    return `<section class='mth'><div class='mhead'><span>${esc(m.emoji||'📌')}</span><span class='mname'>${esc(m.name||k)}</span><span class='fresh'>${fresh}</span></div>${body}</section>`;
-  }).join('');
-
-  document.getElementById('mths').innerHTML=methodsHTML+renderGranville(cands,spec,runs)+renderIPO(d.ipo||{},runs);
+      </div>`;
 }
 
-// 📐 グランビル・チャートエントリー（3枠）。既存手法カードの配色・構造を流用。
+// セクション外殻（見出し＝絵文字＋名前＋件数＋鮮度、末尾に「↑トップへ」）
+function sectionShell(id,emoji,title,count,fresh,body){
+  return `<section class='mth' id='${id}'>
+    <div class='mhead'><span>${esc(emoji||'📌')}</span><span class='mname'>${esc(title)}</span><span class='cnt'>${esc(count)}件</span><span class='fresh'>${fresh}</span></div>
+    ${body}
+    <a class='totop' onclick='scrollTop()'>↑ トップへ</a>
+  </section>`;
+}
+// セクション単位 try-catch：1セクションが失敗しても他の描画を止めない。
+function safeSection(id,label,fn){
+  try{ return fn(); }
+  catch(e){ return `<section class='mth' id='${id}'>
+    <div class='mhead'><span>⚠</span><span class='mname'>${esc(label)}</span></div>
+    <div class='err'>このセクションの描画でエラーが発生しました（他セクションは正常表示）: ${esc((e&&e.message)||e)}</div>
+    <a class='totop' onclick='scrollTop()'>↑ トップへ</a></section>`; }
+}
+
+// ①②③（通常の手法カードセクション）
+function renderMethodSection(id,prefix,k,spec,cands,runs){
+  return safeSection(id,prefix,()=>{
+    const m=spec[k]||{name:k,emoji:'📌'};
+    const list=(cands[k]||[]).slice().sort((a,b)=>(b.score||0)-(a.score||0));
+    const r=runs[k];
+    const fresh=(r&&r.status==="done")
+      ? `最終実行 <b>${esc(r.trading_day)}</b> ／ ${esc(r.count)}件 ／ ${esc(r.source||'')}`
+      : "未実行";
+    // 防御的描画：キー欠損・空配列は「0件（最終実行日）」。
+    const body=list.length
+      ? list.map(methodCard).join('')
+      : `<div class='empty'>0件（最終実行: ${esc((r&&r.trading_day)||'—')}）</div>`;
+    return sectionShell(id,m.emoji,`${prefix} ${m.name||k}`,list.length,fresh,body);
+  });
+}
+
+// ⑤STF（ルーティン未実装のため通常空。「未稼働（①-5実装待ち）」を正常扱いで表示）
+function renderStfSection(id,prefix,spec,cands,runs){
+  return safeSection(id,prefix,()=>{
+    const k="stf_kakuhen";
+    const m=spec[k]||{name:k,emoji:'🟣'};
+    const list=(cands[k]||[]).slice().sort((a,b)=>(b.score||0)-(a.score||0));
+    const r=runs[k];
+    const fresh=(r&&r.status==="done")
+      ? `最終実行 <b>${esc(r.trading_day)}</b> ／ ${esc(r.count)}件 ／ ${esc(r.source||'')}`
+      : "未実行";
+    const body=list.length
+      ? list.map(methodCard).join('')
+      : `<div class='empty'>未稼働（①-5実装待ち）</div>`;
+    return sectionShell(id,m.emoji,`${prefix} ${m.name||k}`,list.length,fresh,body);
+  });
+}
+
+// ===== ④テンバガーIPO（ipo.watchlist を描画。旧「IPOウォッチ」を統合） =====
+// verdict の色分け：🚀確変級=iv-kakuhen／🔥強注目=iv-strong／⚡注目=iv-note／👀様子見=iv-watch。
+function ipoVerdictClass(v){
+  const s=v||"";
+  if(s.indexOf('確変')>=0) return 'iv-kakuhen';
+  if(s.indexOf('強注目')>=0) return 'iv-strong';   // 「強注目」を「注目」より先に判定
+  if(s.indexOf('注目')>=0) return 'iv-note';
+  if(s.indexOf('様子見')>=0) return 'iv-watch';
+  return 'iv-none';
+}
+function ipoCard(w){
+  // score（21点満点）。数値なら score/score_max、非数値（"取得不可"等）はそのまま表示。欠損は「-」。
+  const smax=w.score_max||21;
+  const score=(typeof w.score==='number')
+    ? `<span class='score'>${esc(w.score)}<small>/${esc(smax)}</small></span>`
+    : `<span class='score na'>${esc(fld(w.score))}</span>`;
+  // verdict バッジ（色分け）。
+  const vd=w.verdict?`<span class='ivd ${ipoVerdictClass(w.verdict)}'>${esc(w.verdict)}</span>`:'';
+  // entry_watch フラグが立つ銘柄はカード冒頭に「👀エントリー検討」バッジ。
+  const ew=w.entry_watch?`<div class='ewatch'>👀エントリー検討</div>`:'';
+  // bb_deadline：あれば表示。urgency:"red" は赤バッジで強調（防御的にフィールド欠損も許容）。
+  const bb=w.bb_deadline
+    ? `<span class='bbdl ${w.urgency==='red'?'red':''}'>BB期限 ${esc(w.bb_deadline)}</span>`
+    : '';
+  return `
+    <div class='cand'>
+      ${ew}
+      <div class='crow'>
+        <span class='code'>${esc(fld(w.code))}</span>
+        <span class='cname'>${esc(fld(w.name))}</span>
+        ${score}
+      </div>
+      <div class='istat'>${esc(fld(w.status))}${bb}</div>
+      <div class='meta'>上場日: ${esc(fld(w.list_date))}${vd?'　':''}${vd}</div>
+      ${w.summary?`<div class='sum'>${esc(w.summary)}</div>`:''}
+    </div>`;
+}
+function renderIpoSection(id,prefix,d,runs){
+  return safeSection(id,prefix,()=>{
+    const ipo=d.ipo||{};
+    const list=(ipo&&ipo.watchlist)||[];
+    // 鮮度：①-4のrunキー（ipo系）があれば参照、無ければ watchlist の last_updated 最新、それも無ければ「—」。
+    const ir=runs["ipo"]||runs["tenbagger_ipo"]||runs["ipo_check"]||null;
+    let iday=(ir&&ir.trading_day)||null;
+    if(!iday){ list.forEach(w=>{ if(w.last_updated&&(!iday||w.last_updated>iday)) iday=w.last_updated; }); }
+    iday=iday||'—';
+    const fresh=(ir&&ir.status==="done")
+      ? `最終実行 <b>${esc(ir.trading_day)}</b> ／ ${esc(fld(ir.count))}件 ／ ${esc(ir.source||'')}`
+      : `最終更新 <b>${esc(iday)}</b> ／ ${esc(list.length)}件`;
+    // 防御的描画：watchlist 欠損・空配列はエラーにせず 0件（最終実行日付付き）表示。
+    const body=list.length
+      ? list.slice().sort((a,b)=>((typeof b.score==='number'?b.score:-1))-((typeof a.score==='number'?a.score:-1))).map(ipoCard).join('')
+      : `<div class='empty'>0件（最終実行: ${esc(iday)}）</div>`;
+    // candidates.tenbagger_x（レガシー枠）は通常空。空でない場合のみ④内下部に補助表示。
+    const legacy=(d.candidates&&d.candidates.tenbagger_x)||[];
+    const legacyHTML=legacy.length
+      ? `<div class='legacy'><div class='lt'>補助表示：candidates.tenbagger_x（レガシー枠 ${legacy.length}件）</div>${legacy.slice().sort((a,b)=>(b.score||0)-(a.score||0)).map(methodCard).join('')}</div>`
+      : '';
+    // ipo.history があれば末尾に折りたたみで「上場済み・観察終了」簡易一覧（任意）。
+    const hist=(ipo&&ipo.history)||[];
+    const histHTML=hist.length
+      ? `<details class='ihist'><summary>上場済み・観察終了（${hist.length}件）</summary>${hist.map(h=>`<div class='hrow'><span class='code'>${esc(fld(h.code))}</span> ${esc(fld(h.name))}　初値比 ${esc(fld(h.first_trade_vs_offer_pct))}</div>`).join('')}</details>`
+      : '';
+    return `<section class='iblock' id='${id}'>
+      <div class='mhead'><span>🟡</span><span class='mname'>${esc(prefix)} テンバガーIPO（①-4）</span><span class='cnt'>${esc(list.length)}件</span><span class='fresh'>${fresh}</span></div>
+      <div class='inote'>①-4テンバガーXが毎営業日更新（データ源: ipo.watchlist）。BB期限・上場日は要最新確認</div>
+      ${body}
+      ${legacyHTML}
+      ${histHTML}
+      <a class='totop' onclick='scrollTop()'>↑ トップへ</a>
+    </section>`;
+  });
+}
+
+// ===== 📐 グランビル・チャートエントリー（3枠。既存カードの配色・構造を流用。ロジック不変） =====
 function gcard(c,extra,spec){
   // classified_method バッジ：和名で表示。null は「チャート単独」。
   const badge=c.classified_method
@@ -206,14 +347,14 @@ function renderGranville(cands,spec,runs){
     ? `最終実行 <b>${esc(gr.trading_day)}</b> ／ 登録 ${esc(fld(rc.tenkan))}/${esc(fld(rc.oshime))}/${esc(fld(rc.rebound))}件 ／ ${esc(gr.source||'granville_night')}`
     : "未実行";
   const gday=(gr&&gr.trading_day)||'—';
-  const frames=GRANVILLE.map(g=>{
+  const frames=GRANVILLE.map(g=>safeSection(g.id,g.label,()=>{
     const list=(cands[g.key]||[]).slice().sort((a,b)=>(b.score||0)-(a.score||0));
     // 防御的描画：キー欠損・空配列は 0件（最終実行日付付き）表示。
     const body=list.length
       ? list.map(c=>gcard(c,g.extra,spec)).join('')
       : `<div class='empty'>0件（最終実行: ${esc(gday)}）</div>`;
-    return `<div class='gframe'><div class='gftitle'>${esc(g.label)}<span class='gfn'>${list.length}件</span></div>${body}</div>`;
-  }).join('');
+    return `<div class='gframe' id='${g.id}'><div class='gftitle'>${esc(g.label)}<span class='gfn'>${list.length}件</span></div>${body}<a class='totop' onclick='scrollTop()'>↑ トップへ</a></div>`;
+  })).join('');
   return `<section class='gblock'>
     <div class='mhead'><span>📐</span><span class='mname'>グランビル・チャートエントリー</span><span class='fresh'>${gfresh}</span></div>
     <div class='gnote'>ファンダ簡易スコアはケンモメ手法の業績項目を代用した横並び比較用の参考値（正式21点採点とは別物）。分類はテクニカル・サイズ条件の機械判定。グランビル枠は毎晩洗い替え</div>
@@ -221,68 +362,92 @@ function renderGranville(cands,spec,runs){
   </section>`;
 }
 
-// 🚀 IPOウォッチ（テンバガーX ①-4）。ipo.watchlist を描画。既存カードの配色・構造を流用。
-// verdict の色分け：🚀確変級=iv-kakuhen／🔥強注目=iv-strong／⚡注目=iv-note／👀様子見=iv-watch。
-function ipoVerdictClass(v){
-  const s=v||"";
-  if(s.indexOf('確変')>=0) return 'iv-kakuhen';
-  if(s.indexOf('強注目')>=0) return 'iv-strong';   // 「強注目」を「注目」より先に判定
-  if(s.indexOf('注目')>=0) return 'iv-note';
-  if(s.indexOf('様子見')>=0) return 'iv-watch';
-  return 'iv-none';
-}
-function ipoCard(w){
-  // score（21点満点）。数値なら score/score_max、非数値（"取得不可"等）はそのまま表示。欠損は「-」。
-  const smax=w.score_max||21;
-  const score=(typeof w.score==='number')
-    ? `<span class='score'>${esc(w.score)}<small>/${esc(smax)}</small></span>`
-    : `<span class='score na'>${esc(fld(w.score))}</span>`;
-  // verdict バッジ（色分け）。
-  const vd=w.verdict?`<span class='ivd ${ipoVerdictClass(w.verdict)}'>${esc(w.verdict)}</span>`:'';
-  // entry_watch フラグが立つ銘柄はカード冒頭に「👀エントリー検討」バッジ。
-  const ew=w.entry_watch?`<div class='ewatch'>👀エントリー検討</div>`:'';
-  // bb_deadline：あれば表示。urgency:"red" は赤バッジで強調（防御的にフィールド欠損も許容）。
-  const bb=w.bb_deadline
-    ? `<span class='bbdl ${w.urgency==='red'?'red':''}'>BB期限 ${esc(w.bb_deadline)}</span>`
-    : '';
-  return `
-    <div class='cand'>
-      ${ew}
-      <div class='crow'>
-        <span class='code'>${esc(fld(w.code))}</span>
-        <span class='cname'>${esc(fld(w.name))}</span>
-        ${score}
-      </div>
-      <div class='istat'>${esc(fld(w.status))}${bb}</div>
-      <div class='meta'>上場日: ${esc(fld(w.list_date))}${vd?'　':''}${vd}</div>
-      ${w.summary?`<div class='sum'>${esc(w.summary)}</div>`:''}
-    </div>`;
-}
-function renderIPO(ipo,runs){
-  const list=(ipo&&ipo.watchlist)||[];
-  // 鮮度：①-4のrunキー（ipo系）があれば参照、無ければ watchlist の last_updated 最新、それも無ければ「—」。
-  const ir=runs["ipo"]||runs["tenbagger_ipo"]||runs["ipo_check"]||null;
-  let iday=(ir&&ir.trading_day)||null;
-  if(!iday){ list.forEach(w=>{ if(w.last_updated&&(!iday||w.last_updated>iday)) iday=w.last_updated; }); }
-  iday=iday||'—';
-  const ifresh=(ir&&ir.status==="done")
-    ? `最終実行 <b>${esc(ir.trading_day)}</b> ／ ${esc(fld(ir.count))}件 ／ ${esc(ir.source||'')}`
-    : `最終更新 <b>${esc(iday)}</b> ／ ${esc(list.length)}件`;
-  // 防御的描画：watchlist 欠損・空配列はエラーにせず 0件（最終実行日付付き）表示。
-  const body=list.length
-    ? list.slice().sort((a,b)=>((typeof b.score==='number'?b.score:-1))-((typeof a.score==='number'?a.score:-1))).map(ipoCard).join('')
-    : `<div class='empty'>0件（最終実行: ${esc(iday)}）</div>`;
-  // ipo.history があれば末尾に折りたたみで「上場済み・観察終了」簡易一覧（任意）。
-  const hist=(ipo&&ipo.history)||[];
-  const histHTML=hist.length
-    ? `<details class='ihist'><summary>上場済み・観察終了（${hist.length}件）</summary>${hist.map(h=>`<div class='hrow'><span class='code'>${esc(fld(h.code))}</span> ${esc(fld(h.name))}　初値比 ${esc(fld(h.first_trade_vs_offer_pct))}</div>`).join('')}</details>`
-    : '';
-  return `<section class='iblock'>
-    <div class='mhead'><span>🚀</span><span class='mname'>IPOウォッチ（テンバガーX ①-4）</span><span class='fresh'>${ifresh}</span></div>
-    <div class='inote'>①-4テンバガーXが毎営業日更新。BB期限・上場日は要最新確認</div>
-    ${body}
-    ${histHTML}
-  </section>`;
+// ===== メイン描画 =====
+function render(d){
+  const spec=(d.scoring_spec&&d.scoring_spec.methods)||{};
+  const cands=d.candidates||{};
+  const runs=(d.pipeline&&d.pipeline.runs)||{};
+  document.getElementById('src').innerHTML="<span class='live'>● LIVE</span> GitHubの最新 master.json を表示中";
+
+  // 市場モードバッジ（date付き）
+  try{
+    const ml=(d.market&&d.market.latest)||{};
+    const mode=ml.market_mode, date=ml.date;
+    document.getElementById('mode').innerHTML = mode
+      ? `<span class='modebadge ${modeClass(mode)}'>市場 ${esc(mode)}（${esc(fld(date))}）</span>`
+      : `<span class='modebadge neu'>市場 -</span>`;
+  }catch(e){ document.getElementById('mode').innerHTML=''; }
+
+  // データ鮮度1行（pipeline.runs の各ルーティン最終実行日）
+  try{
+    const rd=(r)=>(r&&r.status==="done"&&r.trading_day)?esc(r.trading_day):"未実行";
+    // IPOは runキー無しのため watchlist の last_updated 最新で代用。
+    let ipoDay=null;
+    ((d.ipo&&d.ipo.watchlist)||[]).forEach(w=>{ if(w.last_updated&&(!ipoDay||w.last_updated>ipoDay)) ipoDay=w.last_updated; });
+    const items=[
+      ['①ケンモメ',rd(runs.kenmo_momentum)],
+      ['②新高値',rd(runs.kenmo_newhigh)],
+      ['③ちょる子',rd(runs.choruko_reversal)],
+      ['④IPO',esc(ipoDay||'—')],
+      ['⑤STF',rd(runs.stf_kakuhen)],
+      ['📐グランビル',rd(runs.granville_night)],
+    ];
+    document.getElementById('freshline').innerHTML='鮮度 ｜ '+items.map(it=>`<span class='fx'><b>${it[0]}</b> ${it[1]}</span>`).join('　');
+  }catch(e){ document.getElementById('freshline').innerHTML=''; }
+
+  // KPI（既存の集計ロジックを流用）
+  try{
+    let total=0,buy=0,methodsWithData=0,latest=null;
+    ORDER.forEach(k=>{
+      const list=cands[k]||[];
+      total+=list.length;
+      if(list.length)methodsWithData++;
+      buy+=list.filter(c=>c.action==="BUY_NOW").length;
+      const r=runs[k];
+      if(r&&r.trading_day&&(!latest||r.trading_day>latest))latest=r.trading_day;
+    });
+    const gcount={};
+    GRANVILLE.forEach(g=>{gcount[g.key]=(cands[g.key]||[]).length;});
+    const ipoCount=((d.ipo&&d.ipo.watchlist)||[]).length;
+    document.getElementById('kpis').innerHTML=[
+      {n:total,l:"候補合計"},
+      {n:buy,l:"BUY_NOW",cls:"buy"},
+      {n:methodsWithData,l:"データあり手法"},
+      {n:latest||"—",l:"最新trading_day"},
+      {n:gcount.granville_tenkan,l:"📐転換初動"},
+      {n:gcount.granville_oshime,l:"📐押し目"},
+      {n:gcount.granville_rebound,l:"📐リバーサル"},
+      {n:ipoCount,l:"🚀IPOウォッチ"},
+    ].map(k=>`<div class='kpi ${k.cls||''}'><div class='n'>${esc(k.n)}</div><div class='l'>${esc(k.l)}</div></div>`).join('');
+  }catch(e){ document.getElementById('kpis').innerHTML=''; }
+
+  // ===== タブ1: 手法別ボード =====
+  const jump1=`<div class='jump'>
+    <button onclick="scrollToSec('sec-kenmo')">①ケンモメ</button>
+    <button onclick="scrollToSec('sec-newhigh')">②新高値</button>
+    <button onclick="scrollToSec('sec-choruko')">③ちょる子</button>
+    <button onclick="scrollToSec('sec-ipo')">④IPO</button>
+    <button onclick="scrollToSec('sec-stf')">⑤STF</button>
+  </div>`;
+  const sections1=[
+    renderMethodSection('sec-kenmo','①','kenmo_momentum',spec,cands,runs),
+    renderMethodSection('sec-newhigh','②','kenmo_newhigh',spec,cands,runs),
+    renderMethodSection('sec-choruko','③','choruko_reversal',spec,cands,runs),
+    renderIpoSection('sec-ipo','④',d,runs),
+    renderStfSection('sec-stf','⑤',spec,cands,runs),
+  ].join('');
+  document.getElementById('panel-methods').innerHTML=jump1+sections1;
+
+  // ===== タブ2: グランビルエントリー =====
+  const jump2=`<div class='jump'>
+    <button onclick="scrollToSec('sec-tenkan')">転換初動</button>
+    <button onclick="scrollToSec('sec-oshime')">押し目</button>
+    <button onclick="scrollToSec('sec-rebound')">リバーサル</button>
+  </div>`;
+  let g;
+  try{ g=renderGranville(cands,spec,runs); }
+  catch(e){ g=`<section class='gblock'><div class='err'>グランビル枠の描画でエラー: ${esc((e&&e.message)||e)}</div></section>`; }
+  document.getElementById('panel-granville').innerHTML=jump2+g;
 }
 
 fetch(RAW_URL,{cache:"no-store"}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(render)

@@ -1866,7 +1866,24 @@
         "summary": "新規入口通過。RSI(Cutler)26.47・乖離-6.14%。時価総額926.1億・売買代金1.41億(いずれも実数値)。テーマ△(抵抗溶接機器(自動車関連機械、その他プライム一般))。信用倍率2.81倍。営業利益成長率-5.1%。"
       }
     ],
-    "stf_kakuhen": [],
+    "stf_kakuhen": [
+      {
+        "code": "3091",
+        "name": "ブロンコビリー",
+        "close": 2540.0,
+        "score": 9,
+        "verdict": "⚡ 注目",
+        "action": "WATCH",
+        "precision": "実数値5/代替2/不可0",
+        "発表日": "2026-07-22",
+        "窓残り営業日": 13,
+        "lead_seg": "単一セグメント(飲食店業・全社成長率で代替)",
+        "seg_yoy": 12.7,
+        "scored_at": "2026-07-26T14:02:45+09:00",
+        "source": "stf_weekly",
+        "summary": "通期経常利益ガイダンスを+31.8%上方修正(30.5億→40.2億円、前期30.2億円)。既存店売上高前年比107.7%と増配(21円→30円)が確変初動の根拠。"
+      }
+    ],
     "tenbagger_x": [],
     "watch_bottoming": [],
     "granville_tenkan": [
@@ -3423,51 +3440,32 @@
         "source": "granville_night"
       },
       "stf_weekly": {
-        "generated_at": "2026-07-26T09:48:26+09:00",
-        "scheduled_for": "2026-07-25 (Sat 07:30 JST)",
-        "executed_at_note": "2026-07-26(Sun) JST実行。前回のスケジュール時刻(土曜7:30)からの遅延実行だが、対象トレーディングデー(2026-07-24金)や実行軸判定には影響なし。",
-        "trading_day_covered": "2026-07-24",
+        "generated_at": "2026-07-26T14:02:45+09:00",
+        "trading_day": "2026-07-24",
         "status": "done",
-        "axes_executed": [
-          "I",
-          "II",
-          "IV"
+        "run_axes": "I+II+IV",
+        "lookback_business_days": [
+          "2026-07-21",
+          "2026-07-22",
+          "2026-07-23",
+          "2026-07-24"
         ],
-        "run_seq": 1,
-        "note": "①-5 STF確変初動の初回実行(stf_log.snapshots初期状態=空のため前回実行なし。決算集中期(7/24-8/14)初日分を対象)。",
-        "announced_count": 25,
-        "announced_breakdown": {
-          "intraday_2026-07-24": 8,
-          "after_close_2026-07-24": 17
+        "lookback_note": "2026-07-20(月)は海の日で休場・開示0件(確認済み)。stf_log.snapshots初回のためcarryover銘柄なし。",
+        "funnel": {
+          "決算短信_発表": 33,
+          "E2_増収増益_pass": 13,
+          "E4_時価総額流動性_pass": 11,
+          "E3_右肩上がり_pass": 5,
+          "採点対象": 5,
+          "score7以上_新規候補": 1
         },
-        "prefilter_funnel": {
-          "announced": 25,
-          "E2_zoushuu_zoueki_sales_yoy_ge10pct": 4,
-          "E4_mktcap_10_5000oku_and_tv_ge_0.5oku": 3,
-          "E3_close_gt_25ma_gt_75ma": 2
+        "fetch_success": {
+          "kabutan_finance": "33/33",
+          "kabutan_stock_page": "13/13",
+          "yahoo_chart": "11/11"
         },
-        "prefilter_dropped": {
-          "E2": 21,
-          "E4": 1,
-          "E3": 1
-        },
-        "scored_count": 2,
-        "scored_codes": [
-          "8707",
-          "9029"
-        ],
-        "score_results": {
-          "8707": 4,
-          "9029": 2
-        },
-        "threshold": 7,
-        "new_snapshots": 0,
-        "active_candidates": 0,
-        "fetch_success_rate": {
-          "kabutan_main_and_finance": "25/25 (100%)",
-          "yahoo_query1_chart": "3/3 (100%)",
-          "irbank_segment_quarterly_latest": "0/2 (0%) - 無料枠は四半期セグメント表が過去期どまりで最新四半期非表示(構造的制約)"
-        },
+        "new_snapshots": 1,
+        "active_candidates": 1,
         "source": "stf_weekly"
       }
     },
@@ -3734,7 +3732,70 @@
   },
   "stf_log": {
     "note": "①-5 STF確変初動の運用ログ(append-only)。snapshots=採用時スナップショット(後日の的中評価・校正用に凍結。項目: code/name/発表日/採点日/7項目点/合計/実数・推定内訳/採点時終値/52週高値比/時価総額/lead_segとseg_YoY/売上YoY/market_mode)。reviews=月次・四半期校正の結果(date/type(monthly/quarterly)/成熟標本数/ヒット率/項目寄与/改訂提案)。書き込みは①-5ルーティンのみ。過去エントリの書き換え禁止(追記のみ)。",
-    "snapshots": [],
+    "snapshots": [
+      {
+        "code": "3091",
+        "name": "ブロンコビリー",
+        "発表日": "2026-07-22",
+        "採点日": "2026-07-26",
+        "items": {
+          "1_セグメント成長率": {
+            "points": 2,
+            "max": 4,
+            "basis": "代替",
+            "detail": "単一セグメント(飲食店業)のため全社売上高成長率(四半期YoY+12.7%)で代替、上限2点"
+          },
+          "2_受注残高成長率": {
+            "points": 0,
+            "max": 4,
+            "basis": "実数値",
+            "detail": "飲食店業のため受注残高の概念不在"
+          },
+          "3_ガイダンス上方修正率": {
+            "points": 3,
+            "max": 3,
+            "basis": "実数値",
+            "detail": "通期経常利益を30.5億円→40.2億円に+31.8%上方修正(会社発表)"
+          },
+          "4_新成長事業売上比率": {
+            "points": 1,
+            "max": 3,
+            "basis": "代替",
+            "detail": "2026年4月子会社化した朝日ミートを26年下期から連結に含める方針に言及(明確な拡大方向)。売上構成比の実数値は取得不可のため保守的に1点"
+          },
+          "5_AI_DC関連売上比率": {
+            "points": 0,
+            "max": 3,
+            "basis": "実数値",
+            "detail": "AI/DC関連の言及なし(飲食店業)"
+          },
+          "6_売上高成長率_予": {
+            "points": 1,
+            "max": 2,
+            "basis": "実数値",
+            "detail": "通期売上高計画 30,219→34,000百万円 (+12.5%)"
+          },
+          "7_経常利益成長率_予": {
+            "points": 2,
+            "max": 2,
+            "basis": "実数値",
+            "detail": "通期経常利益計画 3,025→4,020百万円 (+32.9%)"
+          }
+        },
+        "合計": 9,
+        "実数値_代替_不可": "実数値5/代替2/不可0",
+        "採点時終値": 2540.0,
+        "52週高値比pct": -1.3,
+        "時価総額億円": 766,
+        "lead_seg": "単一セグメント(飲食店業)",
+        "seg_yoy_pct": 12.7,
+        "売上YoY_pct": 12.7,
+        "market_mode": "軟調",
+        "verdict": "⚡ 注目",
+        "action": "WATCH",
+        "source": "stf_weekly"
+      }
+    ],
     "reviews": []
   }
 }

@@ -3421,6 +3421,54 @@
           "fail": 0
         },
         "source": "granville_night"
+      },
+      "stf_weekly": {
+        "generated_at": "2026-07-26T09:48:26+09:00",
+        "scheduled_for": "2026-07-25 (Sat 07:30 JST)",
+        "executed_at_note": "2026-07-26(Sun) JST実行。前回のスケジュール時刻(土曜7:30)からの遅延実行だが、対象トレーディングデー(2026-07-24金)や実行軸判定には影響なし。",
+        "trading_day_covered": "2026-07-24",
+        "status": "done",
+        "axes_executed": [
+          "I",
+          "II",
+          "IV"
+        ],
+        "run_seq": 1,
+        "note": "①-5 STF確変初動の初回実行(stf_log.snapshots初期状態=空のため前回実行なし。決算集中期(7/24-8/14)初日分を対象)。",
+        "announced_count": 25,
+        "announced_breakdown": {
+          "intraday_2026-07-24": 8,
+          "after_close_2026-07-24": 17
+        },
+        "prefilter_funnel": {
+          "announced": 25,
+          "E2_zoushuu_zoueki_sales_yoy_ge10pct": 4,
+          "E4_mktcap_10_5000oku_and_tv_ge_0.5oku": 3,
+          "E3_close_gt_25ma_gt_75ma": 2
+        },
+        "prefilter_dropped": {
+          "E2": 21,
+          "E4": 1,
+          "E3": 1
+        },
+        "scored_count": 2,
+        "scored_codes": [
+          "8707",
+          "9029"
+        ],
+        "score_results": {
+          "8707": 4,
+          "9029": 2
+        },
+        "threshold": 7,
+        "new_snapshots": 0,
+        "active_candidates": 0,
+        "fetch_success_rate": {
+          "kabutan_main_and_finance": "25/25 (100%)",
+          "yahoo_query1_chart": "3/3 (100%)",
+          "irbank_segment_quarterly_latest": "0/2 (0%) - 無料枠は四半期セグメント表が過去期どまりで最新四半期非表示(構造的制約)"
+        },
+        "source": "stf_weekly"
       }
     },
     "verified": {

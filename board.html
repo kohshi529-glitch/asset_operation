@@ -53,6 +53,10 @@ section.mth{background:#12292e;border:1px solid #1d3a40;border-left:4px solid #1
 .act-AVOID{background:#2e1a1a;color:#c98a8a;border-color:#6b2f2f}
 .act-CHART_WATCH{background:#2a2340;color:#b39ddb;border-color:#4a3f6b}
 .meta{font-size:11.5px;color:#8fb3ad;margin-top:5px}
+/* ①ケンモメ専用：連日選定バッジ🔁（アンバー系＝既存.fundと同系統）＋補欠バッジ（グレー系＝既存.iv-watchと同系統）。既存チップ書式に準拠し、ケンモメ以外のカードには一切適用されない。 */
+.streak{font-size:11px;font-weight:600;color:#e8c766;background:#2e2a17;border:1px solid #5c5324;border-radius:5px;padding:1px 6px;margin-left:2px}
+.altbadge{font-size:11px;font-weight:600;color:#8fb3ad;background:#1d3a40;border:1px solid #33565c;border-radius:5px;padding:1px 6px;margin-left:2px}
+.cand.alt{opacity:.85}
 .totop{display:inline-block;font-size:11.5px;color:#7fe3d6;cursor:pointer;text-decoration:none;margin:2px 2px 8px}
 section.gblock{background:#12292e;border:1px solid #1d3a40;border-left:4px solid #b39ddb;border-radius:12px;padding:14px 14px 8px;margin-bottom:16px}
 .gnote{font-size:11px;color:#8fb3ad;background:#0f2429;border:1px solid #1d3a40;border-radius:8px;padding:6px 10px;margin:8px 0 12px}
@@ -204,6 +208,49 @@ function renderMethodSection(id,prefix,k,spec,cands,runs){
     // 防御的描画：キー欠損・空配列は「0件（最終実行日）」。
     const body=list.length
       ? list.map(methodCard).join('')
+      : `<div class='empty'>0件（最終実行: ${esc((r&&r.trading_day)||'—')}）</div>`;
+    return sectionShell(id,m.emoji,`${prefix} ${m.name||k}`,list.length,fresh,body);
+  });
+}
+
+// ===== ①ケンモメ専用カード／セクション（①-1 v3で導入の streak/role に対応） =====
+// methodCard を基に streak≥2 の「🔁N日」チップと role==="alternate" の「補欠」チップ＋カード減光を追加。
+// streak/role が無い旧形式エントリは何も足さず methodCard と同一の描画（後方互換）。undefined参照はガード済み。
+function kenmoCard(c){
+  // 連日選定バッジ：数値かつ2以上のときのみ表示。欠損/1以下（旧形式含む）は非表示。
+  const st=(typeof c.streak==='number' && c.streak>=2)
+    ? `<span class='streak'>🔁${esc(c.streak)}日</span>` : '';
+  // 補欠：role==="alternate" のときだけグレーチップ＋カード減光。欠損/その他は正規扱い。
+  const isAlt=(c&&c.role==='alternate');
+  const alt=isAlt ? `<span class='altbadge'>補欠</span>` : '';
+  return `<div class='cand${isAlt?' alt':''}'>
+        <div class='crow'>
+          <span class='code'>${esc(fld(c.code))}</span>
+          <span class='cname'>${esc(fld(c.name))}</span>${st}${alt}
+          <span class='score'>${esc(fld(c.score))}<small>/21</small></span>
+        </div>
+        <div class='vd'>${esc(c.verdict||'')}<span class='act act-${esc(c.action)}'>${esc(c.action||'')}</span></div>
+        ${c.summary?`<div class='sum'>${esc(c.summary)}</div>`:''}
+        <div class='meta'>精度: ${esc(c.precision||'—')}　採点: ${esc((c.scored_at||'').slice(0,16).replace('T',' '))}　源: ${esc(c.source||'—')}</div>
+      </div>`;
+}
+// renderMethodSection と同一構造。カード描画のみ kenmoCard を使用し、正規→補欠の順に並べる
+// （role欠損＝正規(0)扱いのため、旧形式データはスコア降順の従来並びと完全一致＝後方互換）。
+function renderKenmoSection(id,prefix,spec,cands,runs){
+  return safeSection(id,prefix,()=>{
+    const k="kenmo_momentum";
+    const m=spec[k]||{name:k,emoji:'🔵'};
+    const list=(cands[k]||[]).slice().sort((a,b)=>{
+      const ra=(a&&a.role==='alternate')?1:0, rb=(b&&b.role==='alternate')?1:0;
+      if(ra!==rb) return ra-rb;                 // 正規(0)→補欠(1)
+      return (b.score||0)-(a.score||0);          // 同グループ内は従来どおりスコア降順
+    });
+    const r=runs[k];
+    const fresh=(r&&r.status==="done")
+      ? `最終実行 <b>${esc(r.trading_day)}</b> ／ ${esc(r.count)}件 ／ ${esc(r.source||'')}`
+      : "未実行";
+    const body=list.length
+      ? list.map(kenmoCard).join('')
       : `<div class='empty'>0件（最終実行: ${esc((r&&r.trading_day)||'—')}）</div>`;
     return sectionShell(id,m.emoji,`${prefix} ${m.name||k}`,list.length,fresh,body);
   });
@@ -430,7 +477,7 @@ function render(d){
     <button onclick="scrollToSec('sec-stf')">⑤STF</button>
   </div>`;
   const sections1=[
-    renderMethodSection('sec-kenmo','①','kenmo_momentum',spec,cands,runs),
+    renderKenmoSection('sec-kenmo','①',spec,cands,runs),
     renderMethodSection('sec-newhigh','②','kenmo_newhigh',spec,cands,runs),
     renderMethodSection('sec-choruko','③','choruko_reversal',spec,cands,runs),
     renderIpoSection('sec-ipo','④',d,runs),

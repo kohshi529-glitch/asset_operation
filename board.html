@@ -90,6 +90,19 @@ section.iblock{background:#12292e;border:1px solid #1d3a40;border-left:4px solid
 .ihist .hrow{padding:3px 0;border-bottom:1px solid #1d3a40}
 .legacy{margin-top:10px;border-top:1px dashed #33565c;padding-top:10px}
 .legacy .lt{font-size:12px;color:#8fb3ad;margin-bottom:8px}
+/* IPOカード三層スキーマ表示（主表示は1〜2行に固定）。 */
+.ewchip{display:inline-block;font-size:12px;font-weight:800;color:#0d1b1e;background:#f0c94b;border-radius:6px;padding:2px 10px;margin-bottom:7px;box-shadow:0 0 0 1px #b9962f,0 2px 6px rgba(240,201,75,.25)}
+.iband{font-size:13px;font-weight:700;color:#d6efe9;margin-top:6px;letter-spacing:.2px}
+.iband.pre{color:#8fb3ad;font-weight:600}
+.iband .bsep{color:#4f7b74;font-weight:400;margin:0 4px}
+.imeta{font-size:11.5px;color:#8fb3ad;margin-top:5px}
+.ilog{margin-top:8px;font-size:12px}
+.ilog summary{cursor:pointer;color:#7fe3d6;font-size:12px;font-weight:600;padding:2px 0}
+.ilog .lgrow{display:flex;gap:8px;padding:3px 0;border-bottom:1px solid #163137}
+.ilog .lgd{flex:0 0 auto;color:#7fe3d6;font-variant-numeric:tabular-nums;font-weight:600}
+.ilog .lgt{color:#b7d6d0}
+.idigest{margin-top:7px;font-size:11.5px;color:#6f9992;line-height:1.55}
+.idigest.solo{margin-top:6px}
 /* 固定フローティング「↑」ボタン */
 .fab{position:fixed;right:16px;bottom:18px;z-index:30;width:46px;height:46px;border-radius:50%;background:#123d33;border:1px solid #1fb6a6;color:#7fe3d6;font-size:22px;font-weight:700;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center}
 /* スティッキーなタブバー分のアンカーオフセット */
@@ -283,31 +296,65 @@ function ipoVerdictClass(v){
   if(s.indexOf('様子見')>=0) return 'iv-watch';
   return 'iv-none';
 }
+// live 帯のパーセント整形：null/空は「—」、数値は符号付き＋「%」。
+function ipoPct(n){ return (n==null||n==='')?'—':((typeof n==='number'&&n>0?'+':'')+n+'%'); }
+// live 値の取得：新スキーマ w.live を優先。旧形式は既存フィールドから代替算出（undefined 参照ガード）。
+function ipoLive(w){
+  if(w.live&&typeof w.live==='object'){
+    return {close:w.live.close, vsF:w.live.vs_first_pct, vsO:w.live.vs_offer_pct,
+            updated:w.live.updated_at||null, entry:!!w.live.entry_watch, vt:w.live.volume_trend||null, isNew:true};
+  }
+  const num=v=>(typeof v==='number')?v:null;
+  const lc=num(w.latest_close), fp=num(w.first_trade_price), op=num(w.offer_price);
+  const rp=(a,b)=>(a!=null&&b!=null&&b!==0)?Math.round((a-b)/b*1000)/10:null;
+  return {close:lc, vsF:rp(lc,fp), vsO:rp(lc,op),
+          updated:w.last_updated||null, entry:!!w.entry_watch, vt:null, isNew:false};
+}
 function ipoCard(w){
   // score（21点満点）。数値なら score/score_max、非数値（"取得不可"等）はそのまま表示。欠損は「-」。
   const smax=w.score_max||21;
   const score=(typeof w.score==='number')
-    ? `<span class='score'>${esc(w.score)}<small>/${esc(smax)}</small></span>`
-    : `<span class='score na'>${esc(fld(w.score))}</span>`;
-  // verdict バッジ（色分け）。
+    ? `<span class='score'>スコア ${esc(w.score)}<small>/${esc(smax)}</small></span>`
+    : `<span class='score na'>スコア ${esc(fld(w.score))}</span>`;
+  // verdict バッジ（絵文字＋色分け）。
   const vd=w.verdict?`<span class='ivd ${ipoVerdictClass(w.verdict)}'>${esc(w.verdict)}</span>`:'';
-  // entry_watch フラグが立つ銘柄はカード冒頭に「👀エントリー検討」バッジ。
-  const ew=w.entry_watch?`<div class='ewatch'>👀エントリー検討</div>`:'';
-  // bb_deadline：あれば表示。urgency:"red" は赤バッジで強調（防御的にフィールド欠損も許容）。
-  const bb=w.bb_deadline
-    ? `<span class='bbdl ${w.urgency==='red'?'red':''}'>BB期限 ${esc(w.bb_deadline)}</span>`
-    : '';
+  const lv=ipoLive(w);
+  // (a) entry_watch チップ（目立つ）。
+  const ew=lv.entry?`<div class='ewchip'>🎯エントリー検討</div>`:'';
+  // (a) live 数値の帯。close 等が全て無い＝上場前は簡略表示。
+  const band=(lv.close==null&&lv.vsF==null&&lv.vsO==null)
+    ? `<div class='iband pre'>上場前${lv.updated?`（${esc(lv.updated)}時点）`:''}</div>`
+    : `<div class='iband'>終値${esc(lv.close==null?'—':lv.close)}<span class='bsep'>｜</span>初値比${ipoPct(lv.vsF)}<span class='bsep'>｜</span>公募比${ipoPct(lv.vsO)}${lv.updated?`<span class='bsep'>｜</span>${esc(lv.updated)}時点`:''}</div>`;
+  // 補足メタ（1行・薄色）：ステータス／上場日／出来高傾向／（旧形式のみ）BB期限。
+  const listed=w.listed_date||w.list_date;
+  const bb=w.bb_deadline?`<span class='bbdl ${w.urgency==='red'?'red':''}'>BB期限 ${esc(w.bb_deadline)}</span>`:'';
+  const meta=`<div class='imeta'>${esc(fld(w.status))}${listed?`　上場日 ${esc(listed)}`:''}${lv.vt?`　出来高 ${esc(lv.vt)}`:''}${bb}</div>`;
+  // (b) log 折りたたみ（開くと新しい順）。digest があれば log 末尾に薄色で表示。
+  let logHTML='';
+  const log=(w.log&&w.log.length)?w.log:null;
+  const digest=w.digest||'';
+  if(log){
+    const rows=log.slice().reverse().map(l=>`<div class='lgrow'><span class='lgd'>${esc(fld(l.d))}</span><span class='lgt'>${esc(fld(l.t))}</span></div>`).join('');
+    const dg=digest?`<div class='idigest'>${esc(digest)}</div>`:'';
+    logHTML=`<details class='ilog'><summary>経過ログ（${esc(log.length)}件）</summary>${rows}${dg}</details>`;
+  } else if(digest){
+    logHTML=`<div class='idigest solo'>${esc(digest)}</div>`;
+  }
+  // (c) 旧形式（live/log/digest 無し）は従来どおり summary を表示して落ちないようにする。
+  const oldSum=(!lv.isNew&&w.summary)?`<div class='sum'>${esc(w.summary)}</div>`:'';
   return `
-    <div class='cand'>
+    <div class='cand ipo'>
       ${ew}
       <div class='crow'>
         <span class='code'>${esc(fld(w.code))}</span>
         <span class='cname'>${esc(fld(w.name))}</span>
+        ${vd}
         ${score}
       </div>
-      <div class='istat'>${esc(fld(w.status))}${bb}</div>
-      <div class='meta'>上場日: ${esc(fld(w.list_date))}${vd?'　':''}${vd}</div>
-      ${w.summary?`<div class='sum'>${esc(w.summary)}</div>`:''}
+      ${band}
+      ${meta}
+      ${logHTML}
+      ${oldSum}
     </div>`;
 }
 function renderIpoSection(id,prefix,d,runs){

@@ -3730,6 +3730,40 @@
         "new_snapshots": 5,
         "active_candidates": 6,
         "source": "stf_weekly"
+      },
+      "changepoint_watch": {
+        "generated_at": "2026-08-03T19:24:00+09:00",
+        "trading_day": "2026-08-03",
+        "status": "done",
+        "pool_counts": {
+          "shinne_w": 14,
+          "ipo_secondary_w": 24,
+          "stf_w": 19,
+          "saas_w": 20
+        },
+        "unique_codes": 74,
+        "evaluated": 73,
+        "stale_or_unavailable": 1,
+        "stale_detail": [
+          "7317(ipo_secondary_w): 2026-07-16以降closeが欠損(実質1営業日分のみ取得)につき取得不可・スキップ"
+        ],
+        "fetch_retry_exhausted": [],
+        "signals": {
+          "bell_bell": 3,
+          "bell": 2,
+          "sub_signal_only": 3
+        },
+        "earnings_radar_run": true,
+        "earnings_radar_note": "月曜のためsaas_w全20銘柄で実施",
+        "earnings_radar_karte_suggest_10to20bd": 0,
+        "earnings_radar_approaching_le3bd": 2,
+        "associative_propagation": {
+          "triggered_today": false,
+          "active": false,
+          "reason": "本日saas_wで🔔🔔の発火なし"
+        },
+        "nikkei_allmarket_filter_checked": false,
+        "source": "changepoint_watch"
       }
     },
     "verified": {
@@ -5030,7 +5064,205 @@
       ],
       "saas_w": "REF:theme_watch"
     },
-    "results": [],
-    "log": []
+    "results": [
+      {
+        "code": "8704",
+        "name": "Traders Holdings Co.,Ltd.",
+        "close": 1325.0,
+        "detectors": [
+          "D1",
+          "D2",
+          "D4"
+        ],
+        "signal": "🔔🔔",
+        "vol_ratio": 3.232,
+        "dev25": 6.228,
+        "w52_pos": 98.594,
+        "note": "出来高3.2倍陽線(D1)+60日高値更新(D2)+寄りギャップ高値圏引け(D4)の複合発火、当日+6.3%",
+        "scored_at": "2026-08-03"
+      },
+      {
+        "code": "6080",
+        "name": "M&A Capital Partners Co.,Ltd.",
+        "close": 4020.0,
+        "detectors": [
+          "D2",
+          "D3"
+        ],
+        "signal": "🔔🔔",
+        "vol_ratio": 2.585,
+        "dev25": 9.501,
+        "w52_pos": 95.837,
+        "note": "60日高値更新(D2)+スクイーズ放れ(D3、過去120日下位6.7%水準)の複合発火、当日+3.5%",
+        "scored_at": "2026-08-03"
+      },
+      {
+        "code": "8084",
+        "name": "Ryoden Corporation",
+        "close": 4500.0,
+        "detectors": [
+          "D1",
+          "D2"
+        ],
+        "signal": "🔔🔔",
+        "vol_ratio": 3.382,
+        "dev25": 12.675,
+        "w52_pos": 92.393,
+        "note": "出来高3.4倍陽線(D1)+60日高値更新(D2)の複合発火、当日+3.2%",
+        "scored_at": "2026-08-03"
+      },
+      {
+        "code": "5582",
+        "name": "GRID Inc.",
+        "close": 1950.0,
+        "detectors": [
+          "D3"
+        ],
+        "signal": "🔔",
+        "vol_ratio": 1.788,
+        "dev25": 1.548,
+        "w52_pos": 18.188,
+        "note": "スクイーズ放れ(D3、過去120日下位10.0%水準)単独発火、当日+3.0%",
+        "scored_at": "2026-08-03"
+      },
+      {
+        "code": "4483",
+        "name": "JMDC Inc.",
+        "close": 3000.0,
+        "detectors": [
+          "D3"
+        ],
+        "signal": "🔔",
+        "vol_ratio": 0.955,
+        "dev25": -4.664,
+        "w52_pos": 24.448,
+        "note": "スクイーズ放れ(D3、過去120日下位15.8%水準)単独発火だが当日-4.2%と下落方向。決算発表2026-08-05(2営業日後)接近中",
+        "scored_at": "2026-08-03"
+      }
+    ],
+    "log": [
+      {
+        "trading_day": "2026-08-03",
+        "code": "8704",
+        "pool": "shinne_w",
+        "detectors": [
+          "D1",
+          "D2",
+          "D4"
+        ],
+        "signal": "🔔🔔"
+      },
+      {
+        "trading_day": "2026-08-03",
+        "code": "9308",
+        "pool": "shinne_w",
+        "detectors": [
+          "D2"
+        ],
+        "signal": "-",
+        "note": "D2単独は記録のみ"
+      },
+      {
+        "trading_day": "2026-08-03",
+        "code": "9888",
+        "pool": "shinne_w",
+        "detectors": [
+          "D2"
+        ],
+        "signal": "-",
+        "note": "D2単独は記録のみ"
+      },
+      {
+        "trading_day": "2026-08-03",
+        "code": "5582",
+        "pool": "ipo_secondary_w",
+        "detectors": [
+          "D3"
+        ],
+        "signal": "🔔"
+      },
+      {
+        "trading_day": "2026-08-03",
+        "code": "6597",
+        "pool": "ipo_secondary_w",
+        "detectors": [
+          "D4"
+        ],
+        "signal": "-",
+        "note": "D4単独は記録のみ"
+      },
+      {
+        "trading_day": "2026-08-03",
+        "code": "6080",
+        "pool": "stf_w",
+        "detectors": [
+          "D2",
+          "D3"
+        ],
+        "signal": "🔔🔔"
+      },
+      {
+        "trading_day": "2026-08-03",
+        "code": "8084",
+        "pool": "stf_w",
+        "detectors": [
+          "D1",
+          "D2"
+        ],
+        "signal": "🔔🔔"
+      },
+      {
+        "trading_day": "2026-08-03",
+        "code": "4483",
+        "pool": "saas_w",
+        "detectors": [
+          "D3"
+        ],
+        "signal": "🔔"
+      },
+      {
+        "trading_day": "2026-08-03",
+        "type": "earnings_calendar",
+        "pool": "saas_w",
+        "note": "月曜のみ実施。kabutan.jp/stock/finance参照。",
+        "results": {
+          "479A": "2026-08-13",
+          "478A": "2026-08-12",
+          "4478": "2026-08-13",
+          "4011": "2026-08-14",
+          "4259": "2026-08-12",
+          "4418": "2026-08-14",
+          "4488": "2026-08-12",
+          "5574": "日程不明",
+          "4493": "2026-08-14",
+          "4475": "2026-08-04",
+          "4382": "日程不明",
+          "4165": "2026-08-13",
+          "4443": "日程不明",
+          "3993": "2026-08-13",
+          "4483": "2026-08-05",
+          "3994": "日程不明",
+          "4071": "2026-08-12",
+          "4375": "日程不明",
+          "4180": "2026-08-13",
+          "3923": "2026-08-14"
+        },
+        "karte_suggest_10to20bd": [],
+        "approaching_le3bd": [
+          {
+            "code": "4475",
+            "name": "Hennge K.K.",
+            "date": "2026-08-04",
+            "business_days": 1
+          },
+          {
+            "code": "4483",
+            "name": "JMDC Inc.",
+            "date": "2026-08-05",
+            "business_days": 2
+          }
+        ]
+      }
+    ]
   }
 }

@@ -3748,8 +3748,8 @@
         "source": "stf_weekly"
       },
       "changepoint_watch": {
-        "generated_at": "2026-08-03T19:24:00+09:00",
-        "trading_day": "2026-08-03",
+        "generated_at": "2026-08-04T19:20:34+09:00",
+        "trading_day": "2026-08-04",
         "status": "done",
         "pool_counts": {
           "shinne_w": 14,
@@ -3765,14 +3765,12 @@
         ],
         "fetch_retry_exhausted": [],
         "signals": {
-          "bell_bell": 3,
-          "bell": 2,
+          "bell_bell": 1,
+          "bell": 5,
           "sub_signal_only": 3
         },
-        "earnings_radar_run": true,
-        "earnings_radar_note": "月曜のためsaas_w全20銘柄で実施",
-        "earnings_radar_karte_suggest_10to20bd": 0,
-        "earnings_radar_approaching_le3bd": 2,
+        "earnings_radar_run": false,
+        "earnings_radar_note": "火曜のため未実施(月曜のみ実施)",
         "associative_propagation": {
           "triggered_today": false,
           "active": false,
@@ -5094,78 +5092,90 @@
     },
     "results": [
       {
-        "code": "8704",
-        "name": "Traders Holdings Co.,Ltd.",
-        "close": 1325.0,
+        "code": "3374",
+        "name": "Naigai Tec Corporation",
+        "close": 3590.0,
         "detectors": [
-          "D1",
           "D2",
+          "D4",
+          "D5"
+        ],
+        "signal": "🔔🔔",
+        "vol_ratio": 2.571,
+        "dev25": 9.342,
+        "w52_pos": 100.0,
+        "note": "60日高値更新(D2)+寄りギャップ+2.5%高値圏引け(D4)+25日線を下抜けから上抜け(D5)の複合発火、当日+13.1%",
+        "scored_at": "2026-08-04"
+      },
+      {
+        "code": "4419",
+        "name": "Finatext Holdings Ltd.",
+        "close": 1573.0,
+        "detectors": [
+          "D3"
+        ],
+        "signal": "🔔",
+        "vol_ratio": 0.682,
+        "dev25": 1.647,
+        "w52_pos": 85.169,
+        "note": "スクイーズ放れ(D3、過去120日下位10.0%水準)単独発火、当日+5.6%",
+        "scored_at": "2026-08-04"
+      },
+      {
+        "code": "9211",
+        "name": "f-code Inc.",
+        "close": 1398.0,
+        "detectors": [
+          "D3"
+        ],
+        "signal": "🔔",
+        "vol_ratio": 1.284,
+        "dev25": 1.249,
+        "w52_pos": 6.494,
+        "note": "スクイーズ放れ(D3、過去120日下位2.5%水準)単独発火、当日+3.4%",
+        "scored_at": "2026-08-04"
+      },
+      {
+        "code": "6284",
+        "name": "Nissei ASB Machine Co., Ltd.",
+        "close": 9390.0,
+        "detectors": [
+          "D3"
+        ],
+        "signal": "🔔",
+        "vol_ratio": 1.176,
+        "dev25": 0.081,
+        "w52_pos": 80.189,
+        "note": "スクイーズ放れ(D3、過去120日下位12.5%水準)単独発火、当日+3.6%",
+        "scored_at": "2026-08-04"
+      },
+      {
+        "code": "3696",
+        "name": "Ceres Inc.",
+        "close": 2047.0,
+        "detectors": [
+          "D3"
+        ],
+        "signal": "🔔",
+        "vol_ratio": 1.034,
+        "dev25": -3.665,
+        "w52_pos": 47.54,
+        "note": "スクイーズ放れ(D3、過去120日下位1.7%水準)単独発火だが当日-3.6%と下落方向",
+        "scored_at": "2026-08-04"
+      },
+      {
+        "code": "4259",
+        "name": "ExaWizards Inc.",
+        "close": 805.0,
+        "detectors": [
           "D4"
         ],
-        "signal": "🔔🔔",
-        "vol_ratio": 3.232,
-        "dev25": 6.228,
-        "w52_pos": 98.594,
-        "note": "出来高3.2倍陽線(D1)+60日高値更新(D2)+寄りギャップ高値圏引け(D4)の複合発火、当日+6.3%",
-        "scored_at": "2026-08-03"
-      },
-      {
-        "code": "6080",
-        "name": "M&A Capital Partners Co.,Ltd.",
-        "close": 4020.0,
-        "detectors": [
-          "D2",
-          "D3"
-        ],
-        "signal": "🔔🔔",
-        "vol_ratio": 2.585,
-        "dev25": 9.501,
-        "w52_pos": 95.837,
-        "note": "60日高値更新(D2)+スクイーズ放れ(D3、過去120日下位6.7%水準)の複合発火、当日+3.5%",
-        "scored_at": "2026-08-03"
-      },
-      {
-        "code": "8084",
-        "name": "Ryoden Corporation",
-        "close": 4500.0,
-        "detectors": [
-          "D1",
-          "D2"
-        ],
-        "signal": "🔔🔔",
-        "vol_ratio": 3.382,
-        "dev25": 12.675,
-        "w52_pos": 92.393,
-        "note": "出来高3.4倍陽線(D1)+60日高値更新(D2)の複合発火、当日+3.2%",
-        "scored_at": "2026-08-03"
-      },
-      {
-        "code": "5582",
-        "name": "GRID Inc.",
-        "close": 1950.0,
-        "detectors": [
-          "D3"
-        ],
         "signal": "🔔",
-        "vol_ratio": 1.788,
-        "dev25": 1.548,
-        "w52_pos": 18.188,
-        "note": "スクイーズ放れ(D3、過去120日下位10.0%水準)単独発火、当日+3.0%",
-        "scored_at": "2026-08-03"
-      },
-      {
-        "code": "4483",
-        "name": "JMDC Inc.",
-        "close": 3000.0,
-        "detectors": [
-          "D3"
-        ],
-        "signal": "🔔",
-        "vol_ratio": 0.955,
-        "dev25": -4.664,
-        "w52_pos": 24.448,
-        "note": "スクイーズ放れ(D3、過去120日下位15.8%水準)単独発火だが当日-4.2%と下落方向。決算発表2026-08-05(2営業日後)接近中",
-        "scored_at": "2026-08-03"
+        "vol_ratio": 0.458,
+        "dev25": -2.726,
+        "w52_pos": 38.339,
+        "note": "寄付ギャップ+3.2%・当日レンジ上位1/3引け(D4)単独発火(saas_w規則)、当日+3.6%",
+        "scored_at": "2026-08-04"
       }
     ],
     "log": [
@@ -5290,6 +5300,92 @@
             "business_days": 2
           }
         ]
+      },
+      {
+        "trading_day": "2026-08-04",
+        "code": "3374",
+        "pool": "shinne_w",
+        "detectors": [
+          "D2",
+          "D4",
+          "D5"
+        ],
+        "signal": "🔔🔔"
+      },
+      {
+        "trading_day": "2026-08-04",
+        "code": "4419",
+        "pool": "shinne_w",
+        "detectors": [
+          "D3"
+        ],
+        "signal": "🔔"
+      },
+      {
+        "trading_day": "2026-08-04",
+        "code": "9308",
+        "pool": "shinne_w",
+        "detectors": [
+          "D2"
+        ],
+        "signal": "-",
+        "note": "D2単独は記録のみ"
+      },
+      {
+        "trading_day": "2026-08-04",
+        "code": "9888",
+        "pool": "shinne_w",
+        "detectors": [
+          "D2"
+        ],
+        "signal": "-",
+        "note": "D2単独は記録のみ"
+      },
+      {
+        "trading_day": "2026-08-04",
+        "code": "9211",
+        "pool": "ipo_secondary_w",
+        "detectors": [
+          "D3"
+        ],
+        "signal": "🔔"
+      },
+      {
+        "trading_day": "2026-08-04",
+        "code": "546A",
+        "pool": "ipo_secondary_w",
+        "detectors": [
+          "D2"
+        ],
+        "signal": "-",
+        "note": "D2単独は記録のみ・短縮判定対象(取得84日分)"
+      },
+      {
+        "trading_day": "2026-08-04",
+        "code": "6284",
+        "pool": "stf_w",
+        "detectors": [
+          "D3"
+        ],
+        "signal": "🔔"
+      },
+      {
+        "trading_day": "2026-08-04",
+        "code": "3696",
+        "pool": "stf_w",
+        "detectors": [
+          "D3"
+        ],
+        "signal": "🔔"
+      },
+      {
+        "trading_day": "2026-08-04",
+        "code": "4259",
+        "pool": "saas_w",
+        "detectors": [
+          "D4"
+        ],
+        "signal": "🔔"
       }
     ]
   }

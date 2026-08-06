@@ -3980,8 +3980,8 @@
         "source": "stf_weekly"
       },
       "changepoint_watch": {
-        "generated_at": "2026-08-05T19:23:32+09:00",
-        "trading_day": "2026-08-05",
+        "generated_at": "2026-08-06T19:28:00+09:00",
+        "trading_day": "2026-08-06",
         "status": "done",
         "pool_counts": {
           "shinne_w": 14,
@@ -3993,23 +3993,24 @@
         "evaluated": 73,
         "stale_or_unavailable": 1,
         "stale_detail": [
-          "7317(ipo_secondary_w): 最新足がtrading_day(2026-08-05)でないためステイル・スキップ"
+          "7317(ipo_secondary_w): 最新足が2026-07-16でtrading_day(2026-08-06)と不一致のためステイル・スキップ(薄商い銘柄)"
         ],
         "fetch_retry_exhausted": [],
         "signals": {
-          "bell_bell": 6,
-          "bell": 8,
-          "sub_signal_only": 13
+          "bell_bell": 4,
+          "bell": 2,
+          "sub_signal_only": 7
         },
         "earnings_radar_run": false,
-        "earnings_radar_note": "水曜のため未実施(月曜のみ実施)",
+        "earnings_radar_note": "木曜のため未実施(月曜のみ実施)",
         "associative_propagation": {
           "triggered_today": true,
-          "active": false,
-          "reason": "saas_wで4011(Headwaters)が🔔🔔発火したが、全面高フィルタ該当(日経平均 ^N225 当日+3.66%>+2%)のため連想強化を発動せず(2026-08-02剖検: 全面高日の見かけの連鎖は市場β要因でSaaS固有の連想でないため)"
+          "active": true,
+          "reason": "saas_wで4483(JMDC)が🔔🔔発火・日経平均当日-0.93%(全面高フィルタ+2%超に非該当)のため連想強化を発動。2026-08-07〜2026-08-14の間、saas_w全銘柄の🔔閾値をD3/D4/D5いずれかに緩和(logのassoc_propagationエントリ参照)"
         },
         "nikkei_allmarket_filter_checked": true,
-        "nikkei_return_pct": 3.663,
+        "nikkei_return_pct": -0.931,
+        "market_context": "平常日",
         "source": "changepoint_watch"
       },
       "night_gate": {
@@ -5356,203 +5357,110 @@
     },
     "results": [
       {
-        "code": "3374",
-        "name": "Naigai Tec Corporation",
-        "close": 3680.0,
+        "code": "4483",
+        "name": "JMDC Inc.",
+        "close": 3565.0,
         "detectors": [
-          "D2"
-        ],
-        "signal": "🔔🔔",
-        "vol_ratio": 1.1,
-        "dev25": 11.627,
-        "w52_pos": 100.0,
-        "note": "本日はD2単独発火だが、直近5営業日以内(08-04)にD2∧D4∧D5の複合発火実績がありログ参照で複合発火扱い(🔔🔔)、当日+2.5%。90日高値圏(w52=100)で推移継続",
-        "scored_at": "2026-08-05"
-      },
-      {
-        "code": "4011",
-        "name": "Headwaters Co.,Ltd",
-        "close": 2040.0,
-        "detectors": [
-          "D3",
-          "D5"
-        ],
-        "signal": "🔔🔔",
-        "vol_ratio": 1.112,
-        "dev25": 1.239,
-        "w52_pos": 7.727,
-        "note": "D3(スクイーズ放れ)+D5(25日線上抜け)の同日複合発火(saas規則)、当日+4.6%",
-        "scored_at": "2026-08-05"
-      },
-      {
-        "code": "6785",
-        "name": "Suzuki Co.,Ltd.",
-        "close": 3265.0,
-        "detectors": [
-          "D4",
-          "D5"
-        ],
-        "signal": "🔔🔔",
-        "vol_ratio": 0.949,
-        "dev25": 4.797,
-        "w52_pos": 88.994,
-        "note": "寄付ギャップ+2%超・当日レンジ上位1/3引け(D4)+25日線を下抜けから上抜け(D5)の同日複合発火、当日+6.4%",
-        "scored_at": "2026-08-05"
-      },
-      {
-        "code": "8084",
-        "name": "Ryoden Corporation",
-        "close": 4645.0,
-        "detectors": [
-          "D2"
-        ],
-        "signal": "🔔🔔",
-        "vol_ratio": 1.375,
-        "dev25": 14.975,
-        "w52_pos": 100.0,
-        "note": "本日はD2単独発火だが、直近5営業日以内(08-03)にD1∧D2の複合発火実績がありログ参照で複合発火扱い(🔔🔔)、当日+4.2%",
-        "scored_at": "2026-08-05"
-      },
-      {
-        "code": "8697",
-        "name": "Japan Exchange Group, Inc.",
-        "close": 2292.0,
-        "detectors": [
+          "D1",
           "D2",
+          "D3",
           "D4"
         ],
         "signal": "🔔🔔",
-        "vol_ratio": 1.024,
-        "dev25": 4.146,
-        "w52_pos": 100.0,
-        "note": "D2(60日高値更新)+D4(寄付ギャップ+終値上位1/3)の同日複合発火、当日+4.5%",
-        "scored_at": "2026-08-05"
-      },
-      {
-        "code": "8704",
-        "name": "Traders Holdings Co.,Ltd.",
-        "close": 1329.0,
-        "detectors": [
-          "D2"
-        ],
-        "signal": "🔔🔔",
-        "vol_ratio": 0.718,
-        "dev25": 5.506,
-        "w52_pos": 100.0,
-        "note": "本日はD2(60日高値更新)単独発火だが、直近5営業日以内(08-03)にD1∧D2∧D4の複合発火実績がありログ参照で複合発火扱い(🔔🔔)、当日+1.9%",
-        "scored_at": "2026-08-05"
+        "vol_ratio": 4.158,
+        "dev25": 11.882,
+        "w52_pos": 45.421,
+        "excess_pct": 17.055,
+        "beta_context": false,
+        "earnings_within": null,
+        "note": "決算翌営業日(前日08-05発表)の急伸+16.1%・出来高324万株。D3+D4同日複合で🔔🔔(D1∧D2の組合せはSaaSでは無効ルールのため判定から除外)。次回決算日は未掲載(直近決算のPEAD反応中)",
+        "scored_at": "2026-08-06"
       },
       {
         "code": "3993",
         "name": "PKSHA Technology Inc.",
-        "close": 2956.0,
+        "close": 2865.0,
         "detectors": [
           "D3"
         ],
         "signal": "🔔",
-        "vol_ratio": 0.992,
-        "dev25": 5.007,
-        "w52_pos": 22.618,
-        "note": "スクイーズ放れ(D3、saas規則)単独発火、当日+3.2%",
-        "scored_at": "2026-08-05"
+        "vol_ratio": 0.901,
+        "dev25": 1.45,
+        "w52_pos": 17.983,
+        "excess_pct": -2.147,
+        "beta_context": false,
+        "earnings_within": 4,
+        "note": "スクイーズ放れ(D3)単独発火・当日-3.1%の下方向。決算まで4営業日(08-13)で決算前ラン文脈に該当するが下方向のため紙ログ対象外",
+        "scored_at": "2026-08-06"
       },
       {
         "code": "4419",
         "name": "Finatext Holdings Ltd.",
-        "close": 1662.0,
+        "close": 1588.0,
         "detectors": [
           "D3"
         ],
         "signal": "🔔",
-        "vol_ratio": 0.724,
-        "dev25": 6.566,
-        "w52_pos": 94.597,
-        "note": "スクイーズ放れ(D3、過去120日下位水準)単独発火、当日+5.7%。08-04にもD3単独発火済みで同一検知器の連続発火(複合カウント対象外)",
-        "scored_at": "2026-08-05"
+        "vol_ratio": 0.615,
+        "dev25": 1.237,
+        "w52_pos": 86.758,
+        "excess_pct": -3.521,
+        "beta_context": false,
+        "earnings_within": 3,
+        "note": "スクイーズ放れ(D3)単独発火・当日-4.5%の下方向、直近2営業日連続でD3発火。決算まで3営業日(08-12)で⚠決算直前(教訓⑲天井リスク)に該当するが下方向のため紙ログ対象外",
+        "scored_at": "2026-08-06"
       },
       {
-        "code": "4478",
-        "name": "freee K.K.",
-        "close": 2663.0,
+        "code": "6080",
+        "name": "M&A Capital Partners Co.,Ltd.",
+        "close": 4040.0,
         "detectors": [
-          "D3"
+          "D2"
         ],
-        "signal": "🔔",
-        "vol_ratio": 0.839,
-        "dev25": 11.411,
-        "w52_pos": 33.722,
-        "note": "スクイーズ放れ(D3、saas規則)単独発火、当日+4.4%",
-        "scored_at": "2026-08-05"
+        "signal": "🔔🔔",
+        "vol_ratio": 1.01,
+        "dev25": 7.975,
+        "w52_pos": 100.0,
+        "excess_pct": 1.931,
+        "beta_context": false,
+        "earnings_within": null,
+        "note": "本日はD2単独発火だが直近5営業日以内(08-03)にD2∧D3の複合発火実績がありログ参照で複合発火扱い(🔔🔔)。52週高値圏(w52=100)で推移。次回決算日程は取得不可",
+        "scored_at": "2026-08-06"
       },
       {
-        "code": "5590",
-        "name": "NETSTARS Co.,Ltd.",
-        "close": 698.0,
+        "code": "8697",
+        "name": "Japan Exchange Group, Inc.",
+        "close": 2294.0,
         "detectors": [
-          "D3"
+          "D2"
         ],
-        "signal": "🔔",
-        "vol_ratio": 0.823,
-        "dev25": 2.13,
-        "w52_pos": 12.185,
-        "note": "スクイーズ放れ(D3)単独発火、当日+4.0%",
-        "scored_at": "2026-08-05"
+        "signal": "🔔🔔",
+        "vol_ratio": 0.782,
+        "dev25": 3.811,
+        "w52_pos": 100.0,
+        "excess_pct": 1.018,
+        "beta_context": false,
+        "earnings_within": null,
+        "note": "本日はD2単独発火だが直近5営業日以内(08-05)にD2∧D4の複合発火実績がありログ参照で複合発火扱い(🔔🔔)。52週高値圏。stf_kakuhen候補(score8・通期上方修正)と整合。次回決算日程は取得不可",
+        "scored_at": "2026-08-06"
       },
       {
-        "code": "584A",
-        "name": "LINKX INC",
-        "close": 2299.0,
+        "code": "9343",
+        "name": "ibis inc.",
+        "close": 814.0,
         "detectors": [
+          "D1",
           "D3"
         ],
-        "signal": "🔔",
-        "vol_ratio": 0.183,
-        "dev25": -21.086,
-        "w52_pos": 34.033,
-        "note": "スクイーズ放れ(D3)単独発火、当日+5.0%。上場浅くデータ31日分のみにつき短縮判定",
-        "scored_at": "2026-08-05"
-      },
-      {
-        "code": "5892",
-        "name": "YUTORI  INC",
-        "close": 2213.0,
-        "detectors": [
-          "D3"
-        ],
-        "signal": "🔔",
-        "vol_ratio": 0.926,
-        "dev25": 6.952,
-        "w52_pos": 7.243,
-        "note": "スクイーズ放れ(D3)単独発火、当日+4.0%",
-        "scored_at": "2026-08-05"
-      },
-      {
-        "code": "6284",
-        "name": "Nissei ASB Machine Co., Ltd.",
-        "close": 9780.0,
-        "detectors": [
-          "D3"
-        ],
-        "signal": "🔔",
-        "vol_ratio": 0.988,
-        "dev25": 3.919,
-        "w52_pos": 89.387,
-        "note": "スクイーズ放れ(D3)単独発火、当日+4.2%。08-04にもD3単独発火済みで同一検知器の連続発火(複合カウント対象外)",
-        "scored_at": "2026-08-05"
-      },
-      {
-        "code": "9211",
-        "name": "f-code Inc.",
-        "close": 1475.0,
-        "detectors": [
-          "D3"
-        ],
-        "signal": "🔔",
-        "vol_ratio": 2.379,
-        "dev25": 6.345,
-        "w52_pos": 11.494,
-        "note": "スクイーズ放れ(D3)単独発火、当日+5.5%。08-04にもD3単独発火済みで同一検知器の連続発火(複合カウント対象外)",
-        "scored_at": "2026-08-05"
+        "signal": "🔔🔔",
+        "vol_ratio": 4.49,
+        "dev25": 4.295,
+        "w52_pos": 97.436,
+        "excess_pct": 4.493,
+        "beta_context": false,
+        "earnings_within": 2,
+        "note": "D1(出来高3倍超・陽線)+D3(スクイーズ放れ)の同日複合発火、当日+3.6%・52週高値圏。決算まで2営業日(08-10)で⚠決算直前(教訓⑲天井リスク)",
+        "scored_at": "2026-08-06"
       }
     ],
     "log": [
@@ -6023,6 +5931,157 @@
           "D3"
         ],
         "signal": "🔔"
+      },
+      {
+        "trading_day": "2026-08-06",
+        "code": "4483",
+        "pool": "saas_w",
+        "detectors": [
+          "D1",
+          "D2",
+          "D3",
+          "D4"
+        ],
+        "signal": "🔔🔔",
+        "note": "D1∧D2の組合せはSaaSで無効のため判定除外、D3+D4の複合で🔔🔔。決算翌営業日の急伸+16.1%"
+      },
+      {
+        "trading_day": "2026-08-06",
+        "code": "3993",
+        "pool": "saas_w",
+        "detectors": [
+          "D3"
+        ],
+        "signal": "🔔"
+      },
+      {
+        "trading_day": "2026-08-06",
+        "code": "4419",
+        "pool": "shinne_w",
+        "detectors": [
+          "D3"
+        ],
+        "signal": "🔔"
+      },
+      {
+        "trading_day": "2026-08-06",
+        "code": "5574",
+        "pool": "ipo_secondary_w",
+        "detectors": [
+          "D2"
+        ],
+        "signal": "-"
+      },
+      {
+        "trading_day": "2026-08-06",
+        "code": "5574",
+        "pool": "saas_w",
+        "detectors": [
+          "D2"
+        ],
+        "signal": "-"
+      },
+      {
+        "trading_day": "2026-08-06",
+        "code": "6080",
+        "pool": "stf_w",
+        "detectors": [
+          "D2"
+        ],
+        "signal": "🔔🔔",
+        "note": "08-03のD2∧D3複合実績によりログ参照で複合発火扱い"
+      },
+      {
+        "trading_day": "2026-08-06",
+        "code": "7381",
+        "pool": "shinne_w",
+        "detectors": [
+          "D2"
+        ],
+        "signal": "-"
+      },
+      {
+        "trading_day": "2026-08-06",
+        "code": "8151",
+        "pool": "shinne_w",
+        "detectors": [
+          "D1"
+        ],
+        "signal": "-"
+      },
+      {
+        "trading_day": "2026-08-06",
+        "code": "8388",
+        "pool": "stf_w",
+        "detectors": [
+          "D2"
+        ],
+        "signal": "-"
+      },
+      {
+        "trading_day": "2026-08-06",
+        "code": "8697",
+        "pool": "stf_w",
+        "detectors": [
+          "D2"
+        ],
+        "signal": "🔔🔔",
+        "note": "08-05のD2∧D4複合実績によりログ参照で複合発火扱い"
+      },
+      {
+        "trading_day": "2026-08-06",
+        "code": "9218",
+        "pool": "ipo_secondary_w",
+        "detectors": [
+          "D2"
+        ],
+        "signal": "-"
+      },
+      {
+        "trading_day": "2026-08-06",
+        "code": "9308",
+        "pool": "shinne_w",
+        "detectors": [
+          "D2"
+        ],
+        "signal": "-"
+      },
+      {
+        "trading_day": "2026-08-06",
+        "code": "9343",
+        "pool": "ipo_secondary_w",
+        "detectors": [
+          "D1",
+          "D3"
+        ],
+        "signal": "🔔🔔"
+      },
+      {
+        "trading_day": "2026-08-06",
+        "code": "9888",
+        "pool": "shinne_w",
+        "detectors": [
+          "D2"
+        ],
+        "signal": "-"
+      },
+      {
+        "trading_day": "2026-08-06",
+        "type": "assoc_propagation",
+        "pool": "saas_w",
+        "trigger_code": "4483",
+        "nikkei_return_pct": -0.931,
+        "active_from": "2026-08-07",
+        "active_through": "2026-08-14",
+        "active_trading_days": [
+          "2026-08-07",
+          "2026-08-10",
+          "2026-08-12",
+          "2026-08-13",
+          "2026-08-14"
+        ],
+        "relaxed_rule": "saas_w全銘柄の🔔閾値をD3またはD4またはD5のいずれかに緩和",
+        "note": "saas_wで4483(JMDC)が🔔🔔発火・日経平均当日-0.93%(全面高フィルタ+2%超に非該当)のため連想強化を発動"
       }
     ]
   },

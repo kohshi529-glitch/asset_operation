@@ -3835,15 +3835,15 @@
         "source": "changepoint_watch"
       },
       "night_gate": {
-        "generated_at": "2026-08-06T20:30:00+09:00",
-        "trading_day": "2026-08-06",
+        "generated_at": "2026-08-07T20:30:00+09:00",
+        "trading_day": "2026-08-07",
         "status": "done",
-        "pool_size": 96,
-        "evaluated": 96,
-        "pass": 27,
-        "pass_doji": 1,
-        "fail_uwahige": 31,
-        "fail_insen": 37,
+        "pool_size": 125,
+        "evaluated": 125,
+        "pass": 25,
+        "pass_doji": 0,
+        "fail_uwahige": 38,
+        "fail_insen": 62,
         "skip": 0,
         "deregistered": 0,
         "unmerged_pr_candidates": 0,
@@ -5966,7 +5966,8 @@
           "kenmo_newhigh"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "4826": {
         "name": "ＣＩＪ",
@@ -5974,7 +5975,8 @@
           "granville_tenkan"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "262A": {
         "name": "INTERMESTIC INC.",
@@ -5982,7 +5984,8 @@
           "kenmo_momentum"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "4483": {
         "name": "JMDC Inc.",
@@ -5990,7 +5993,8 @@
           "変化点🔔🔔"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "changepoint"
       },
       "7956": {
         "name": "ピジョン",
@@ -5998,7 +6002,8 @@
           "granville_oshime"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "6718": {
         "name": "アイホン",
@@ -6006,7 +6011,8 @@
           "granville_tenkan"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "4420": {
         "name": "イーソル",
@@ -6014,7 +6020,8 @@
           "granville_rebound"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "4848": {
         "name": "フルキャストホールディングス",
@@ -6022,7 +6029,8 @@
           "granville_tenkan"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "8084": {
         "name": "ＲＹＯＤＥＮ",
@@ -6030,7 +6038,8 @@
           "stf_kakuhen"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
       },
       "3915": {
         "name": "TerraSky Co., Ltd.",
@@ -6038,7 +6047,8 @@
           "kenmo_momentum"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "8697": {
         "name": "日本取引所グループ",
@@ -6047,7 +6057,8 @@
           "変化点🔔🔔"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
       },
       "8081": {
         "name": "カナデン",
@@ -6055,7 +6066,8 @@
           "granville_rebound"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "8388": {
         "name": "阿波銀行",
@@ -6063,7 +6075,8 @@
           "stf_kakuhen"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
       },
       "8276": {
         "name": "平和堂",
@@ -6071,7 +6084,8 @@
           "granville_tenkan"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
       },
       "8056": {
         "name": "ＢＩＰＲＯＧＹ",
@@ -6079,16 +6093,18 @@
           "granville_tenkan"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "9211": {
         "name": "f-code Inc.",
         "branches": [
-          "granville_tenkan",
-          "kenmo_momentum"
+          "kenmo_momentum",
+          "granville_tenkan"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
       },
       "3880": {
         "name": "大王製紙",
@@ -6096,7 +6112,8 @@
           "granville_tenkan"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "456A": {
         "name": "ＨＵＭＡＮ　ＭＡＤＥ",
@@ -6104,7 +6121,8 @@
           "choruko_reversal"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "8511": {
         "name": "日本証券金融",
@@ -6112,7 +6130,8 @@
           "granville_oshime"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "276A": {
         "name": "CCReB Advisors Inc.",
@@ -6120,7 +6139,8 @@
           "kenmo_momentum"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "4063": {
         "name": "信越化学工業",
@@ -6128,7 +6148,8 @@
           "granville_rebound"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "1980": {
         "name": "ダイダン",
@@ -6136,7 +6157,8 @@
           "choruko_reversal"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "8707": {
         "name": "岩井コスモホールディングス",
@@ -6144,7 +6166,8 @@
           "granville_oshime"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "9962": {
         "name": "ミスミグループ本社",
@@ -6152,7 +6175,8 @@
           "stf_kakuhen"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
       },
       "5574": {
         "name": "ABEJA,Inc.",
@@ -6160,7 +6184,8 @@
           "kenmo_momentum"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
       },
       "6590": {
         "name": "芝浦メカトロニクス",
@@ -6168,7 +6193,8 @@
           "granville_oshime"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "7085": {
         "name": "カーブスホールディングス",
@@ -6176,7 +6202,8 @@
           "granville_oshime"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "6656": {
         "name": "インスペック",
@@ -6184,7 +6211,8 @@
           "granville_rebound"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
       },
       "7731": {
         "name": "ニコン",
@@ -6193,7 +6221,8 @@
           "granville_rebound"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "7730": {
         "name": "マニー",
@@ -6201,7 +6230,8 @@
           "choruko_reversal"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "5301": {
         "name": "東海カーボン",
@@ -6209,7 +6239,8 @@
           "choruko_reversal"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "5892": {
         "name": "yutori,Inc.",
@@ -6217,7 +6248,8 @@
           "kenmo_momentum"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
       },
       "8367": {
         "name": "南都銀行",
@@ -6225,7 +6257,8 @@
           "granville_oshime"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "9031": {
         "name": "西日本鉄道",
@@ -6233,7 +6266,8 @@
           "granville_oshime"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "9274": {
         "name": "ＫＰＰグループホールディングス",
@@ -6241,15 +6275,18 @@
           "granville_oshime"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "5254": {
         "name": "Arent, Inc.",
         "branches": [
-          "kenmo_momentum"
+          "kenmo_momentum",
+          "granville_oshime"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
       },
       "9627": {
         "name": "アインホールディングス",
@@ -6257,7 +6294,8 @@
           "granville_tenkan"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
       },
       "6327": {
         "name": "北川精機",
@@ -6265,7 +6303,8 @@
           "granville_rebound"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "2175": {
         "name": "エス・エム・エス",
@@ -6273,7 +6312,8 @@
           "granville_oshime"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "8098": {
         "name": "稲畑産業",
@@ -6281,7 +6321,8 @@
           "granville_tenkan"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "4165": {
         "name": "PLAID Inc.",
@@ -6289,7 +6330,8 @@
           "kenmo_momentum"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
       },
       "2602": {
         "name": "日清オイリオグループ",
@@ -6297,7 +6339,8 @@
           "granville_oshime"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "9869": {
         "name": "加藤産業",
@@ -6305,7 +6348,8 @@
           "granville_tenkan"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "3989": {
         "name": "シェアリングテクノロジー",
@@ -6313,7 +6357,8 @@
           "granville_oshime"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "8570": {
         "name": "イオンフィナンシャルサービス",
@@ -6321,7 +6366,8 @@
           "granville_tenkan"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "7611": {
         "name": "ハイデイ日高",
@@ -6329,7 +6375,8 @@
           "granville_tenkan"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "7409": {
         "name": "AeroEdge Co.,Ltd",
@@ -6337,7 +6384,8 @@
           "kenmo_momentum"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
       },
       "3776": {
         "name": "ブロードバンドタワー",
@@ -6345,7 +6393,8 @@
           "granville_rebound"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "6613": {
         "name": "Ｇ−ＱＤレーザ",
@@ -6353,7 +6402,8 @@
           "granville_rebound"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "7685": {
         "name": "ＢＵＹＳＥＬＬ　ＴＥＣＨＮＯＬＯＧＩＥＳ",
@@ -6362,7 +6412,8 @@
           "granville_rebound"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
       },
       "6857": {
         "name": "アドバンテスト",
@@ -6370,7 +6421,8 @@
           "stf_kakuhen"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
       },
       "7318": {
         "name": "SERENDIP HOLDINGS Co. Ltd.",
@@ -6378,7 +6430,8 @@
           "kenmo_momentum"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "2980": {
         "name": "SRE Holdings Corp.",
@@ -6386,7 +6439,8 @@
           "kenmo_momentum"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "4477": {
         "name": "BASE, Inc.",
@@ -6395,7 +6449,8 @@
           "kenmo_momentum"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "8361": {
         "name": "大垣共立銀行",
@@ -6403,7 +6458,8 @@
           "granville_oshime"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "9147": {
         "name": "ＮＩＰＰＯＮ　ＥＸＰＲＥＳＳ　ホールディングス",
@@ -6411,7 +6467,8 @@
           "granville_rebound"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "5537": {
         "name": "AlbaLink Co.,Ltd.",
@@ -6419,7 +6476,8 @@
           "kenmo_momentum"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
       },
       "3491": {
         "name": "ＧＡ　ｔｅｃｈｎｏｌｏｇｉｅｓ",
@@ -6427,7 +6485,8 @@
           "granville_tenkan"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "9343": {
         "name": "ibis inc.",
@@ -6435,7 +6494,8 @@
           "変化点🔔🔔"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "changepoint"
       },
       "7047": {
         "name": "PORT INC.",
@@ -6443,7 +6503,8 @@
           "kenmo_momentum"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
       },
       "8876": {
         "name": "リログループ",
@@ -6451,7 +6512,8 @@
           "granville_oshime"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "5027": {
         "name": "AnyMind Group Inc.",
@@ -6459,7 +6521,8 @@
           "kenmo_momentum"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "8366": {
         "name": "滋賀銀行",
@@ -6467,7 +6530,8 @@
           "choruko_reversal"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "9101": {
         "name": "日本郵船",
@@ -6475,7 +6539,8 @@
           "granville_tenkan"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "9854": {
         "name": "愛眼",
@@ -6483,7 +6548,8 @@
           "granville_rebound"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "4419": {
         "name": "Ｆｉｎａｔｅｘｔホールディングス",
@@ -6492,7 +6558,8 @@
           "変化点🔔"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
       },
       "6135": {
         "name": "牧野フライス製作所",
@@ -6500,7 +6567,8 @@
           "choruko_reversal"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "212A": {
         "name": "FIT EASY Inc.",
@@ -6508,7 +6576,8 @@
           "kenmo_momentum"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
       },
       "8141": {
         "name": "新光商事",
@@ -6516,7 +6585,8 @@
           "granville_rebound"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
       },
       "341A": {
         "name": "TOYOKOH Inc.",
@@ -6524,15 +6594,18 @@
           "kenmo_momentum"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "1979": {
         "name": "大気社",
         "branches": [
-          "choruko_reversal"
+          "choruko_reversal",
+          "granville_rebound"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
       },
       "5076": {
         "name": "インフロニアＨＤ",
@@ -6540,7 +6613,8 @@
           "granville_rebound"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "3091": {
         "name": "ブロンコビリー",
@@ -6548,7 +6622,8 @@
           "stf_kakuhen"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
       },
       "4320": {
         "name": "ＣＥホールディングス",
@@ -6556,7 +6631,8 @@
           "granville_rebound"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "4249": {
         "name": "森六",
@@ -6564,7 +6640,8 @@
           "kenmo_newhigh"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "8242": {
         "name": "エイチ・ツー・オー　リテイリング",
@@ -6572,7 +6649,8 @@
           "granville_oshime"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
       },
       "5189": {
         "name": "櫻護謨",
@@ -6580,7 +6658,8 @@
           "granville_rebound"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "9072": {
         "name": "ニッコンホールディングス",
@@ -6588,7 +6667,8 @@
           "choruko_reversal"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "7970": {
         "name": "信越ポリマー",
@@ -6596,7 +6676,8 @@
           "granville_oshime"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "7231": {
         "name": "トピー工業",
@@ -6604,7 +6685,8 @@
           "granville_tenkan"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "9552": {
         "name": "Quants Research Institute Holdings, Inc.",
@@ -6612,7 +6694,8 @@
           "kenmo_momentum"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
       },
       "4847": {
         "name": "インテリジェント　ウェイブ",
@@ -6620,7 +6703,8 @@
           "granville_tenkan"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "7806": {
         "name": "ＭＴＧ",
@@ -6628,7 +6712,8 @@
           "granville_oshime"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "3374": {
         "name": "内外テック",
@@ -6636,7 +6721,8 @@
           "kenmo_newhigh"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "5590": {
         "name": "NETSTARS Co.,Ltd.",
@@ -6644,7 +6730,8 @@
           "kenmo_momentum"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "1975": {
         "name": "朝日工業社",
@@ -6652,7 +6739,8 @@
           "choruko_reversal"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "1898": {
         "name": "世紀東急工業",
@@ -6660,7 +6748,8 @@
           "granville_tenkan"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "6071": {
         "name": "ＩＢＪ",
@@ -6668,7 +6757,8 @@
           "granville_rebound"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "6080": {
         "name": "M&A Capital Partners Co.,Ltd.",
@@ -6676,7 +6766,8 @@
           "変化点🔔🔔"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "changepoint"
       },
       "9517": {
         "name": "イーレックス",
@@ -6684,7 +6775,8 @@
           "granville_oshime"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "3993": {
         "name": "PKSHA Technology Inc.",
@@ -6692,7 +6784,8 @@
           "変化点🔔"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "changepoint"
       },
       "4536": {
         "name": "参天製薬",
@@ -6700,7 +6793,8 @@
           "choruko_reversal"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "6785": {
         "name": "Suzuki Co., Ltd.",
@@ -6708,7 +6802,8 @@
           "kenmo_momentum"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
       },
       "8844": {
         "name": "コスモスイニシア",
@@ -6716,7 +6811,8 @@
           "granville_rebound"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "granville"
       },
       "543A": {
         "name": "ＡＲＣＨＩＯＮ",
@@ -6724,7 +6820,8 @@
           "choruko_reversal"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-06",
+        "branch_type": "method"
       },
       "5757": {
         "name": "CK San-Etsu Co., Ltd.",
@@ -6732,7 +6829,270 @@
           "kenmo_momentum"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06"
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
+      },
+      "5243": {
+        "name": "note inc.",
+        "branches": [
+          "kenmo_momentum"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
+      },
+      "6562": {
+        "name": "Geniee, Inc.",
+        "branches": [
+          "kenmo_momentum"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
+      },
+      "9302": {
+        "name": "三井倉庫ホールディングス",
+        "branches": [
+          "choruko_reversal"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
+      },
+      "9533": {
+        "name": "東邦瓦斯",
+        "branches": [
+          "choruko_reversal"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
+      },
+      "6632": {
+        "name": "ＪＶＣケンウッド",
+        "branches": [
+          "choruko_reversal"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
+      },
+      "4516": {
+        "name": "日本新薬",
+        "branches": [
+          "choruko_reversal"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
+      },
+      "547A": {
+        "name": "ムニノバホールディングス（ムニノバＨＤ）",
+        "branches": [
+          "granville_tenkan"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
+      },
+      "9037": {
+        "name": "ハマキョウレックス（ハマキョウ）",
+        "branches": [
+          "granville_tenkan"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
+      },
+      "5406": {
+        "name": "神戸製鋼所（神戸鋼）",
+        "branches": [
+          "granville_tenkan"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
+      },
+      "2982": {
+        "name": "ＡＤワークスグループ（ＡＤＷＧ）",
+        "branches": [
+          "granville_tenkan"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
+      },
+      "2659": {
+        "name": "サンエー",
+        "branches": [
+          "granville_tenkan"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
+      },
+      "3865": {
+        "name": "北越コーポレーション（北越コーポ）",
+        "branches": [
+          "granville_tenkan"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
+      },
+      "1925": {
+        "name": "大和ハウス工業（大和ハウス）",
+        "branches": [
+          "granville_tenkan"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
+      },
+      "4413": {
+        "name": "ボードルア",
+        "branches": [
+          "granville_oshime",
+          "granville_rebound"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
+      },
+      "8522": {
+        "name": "名古屋銀行（名古屋銀）",
+        "branches": [
+          "granville_oshime"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
+      },
+      "8008": {
+        "name": "ヨンドシーホールディングス（４℃ホールデ）",
+        "branches": [
+          "granville_oshime"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
+      },
+      "9882": {
+        "name": "イエローハット（イエロハット）",
+        "branches": [
+          "granville_oshime"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
+      },
+      "3151": {
+        "name": "バイタルケーエスケー・ホールディングス（バイタルＫＳ）",
+        "branches": [
+          "granville_oshime"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
+      },
+      "9324": {
+        "name": "安田倉庫（安田倉）",
+        "branches": [
+          "granville_oshime"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
+      },
+      "8628": {
+        "name": "松井証券（松井）",
+        "branches": [
+          "granville_oshime"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
+      },
+      "254A": {
+        "name": "ＡＩフュージョンキャピタルグループ（ＡＩＦＣＧ）",
+        "branches": [
+          "granville_rebound"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
+      },
+      "421A": {
+        "name": "ムービン・ストラテジック・キャリア（ムービン）",
+        "branches": [
+          "granville_rebound"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
+      },
+      "9519": {
+        "name": "レノバ",
+        "branches": [
+          "granville_rebound"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
+      },
+      "205A": {
+        "name": "ロゴスホールディングス（ロゴスＨＤ）",
+        "branches": [
+          "granville_rebound"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
+      },
+      "5989": {
+        "name": "エイチワン",
+        "branches": [
+          "granville_rebound"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
+      },
+      "6266": {
+        "name": "タツモ",
+        "branches": [
+          "granville_rebound"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "granville"
+      },
+      "4498": {
+        "name": "Cybertrust Japan Co., Ltd.",
+        "branches": [
+          "変化点🔔🔔"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "changepoint"
+      },
+      "4375": {
+        "name": "Safie Inc.",
+        "branches": [
+          "変化点🔔"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "changepoint"
+      },
+      "6284": {
+        "name": "Nissei ASB Machine Co., Ltd.",
+        "branches": [
+          "変化点🔔"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "changepoint"
       }
     },
     "results": [
@@ -6742,15 +7102,39 @@
         "branch": [
           "granville_tenkan"
         ],
+        "branch_type": "granville",
+        "verdict": "FAIL_INSEN",
+        "tags": [],
+        "close": 1447.0,
+        "uwahige_ratio": 0.6,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "1925",
+        "name": "大和ハウス工業（大和ハウス）",
+        "branch": [
+          "granville_tenkan"
+        ],
+        "branch_type": "granville",
         "verdict": "PASS",
         "tags": [],
-        "close": 1449.0,
-        "uwahige_ratio": 0.25,
-        "order_hint": "逆指値 1454.0円(当日高値+1呼値)・上限1468.5円(+1%)",
-        "sl_hint": "SL候補 1365.8円(高値-6%)",
+        "close": 4587.0,
+        "uwahige_ratio": 0.1875,
+        "order_hint": "逆指値 4604.0円(当日高値+1呼値)・上限4650.0円(+1%)",
+        "sl_hint": "SL候補 4323.1円(高値-6%)・想定損失幅6.1%",
+        "order_status": "✅即時可",
+        "deviation_pct": 0.4,
         "earnings_flag": "日程不明",
+        "headline": "【業態】建設業(業種分類。詳細な事業内容はkabutan有料会員限定のため取得不可)。\n【いま】陽線で反発、直近5営業日-1.9%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】堅調(経常前年同期比+9.9%、直近四半期実績ベース)\n【戦略】上抜けトリガーの逆指値で当夜即時検討可、SL接近/25日線割れなら見切り。",
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "1975",
@@ -6758,31 +7142,40 @@
         "branch": [
           "choruko_reversal"
         ],
+        "branch_type": "method",
         "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 3945.0,
-        "uwahige_ratio": 0.8485,
+        "close": 3785.0,
+        "uwahige_ratio": 0.0,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "1979",
         "name": "大気社",
         "branch": [
-          "choruko_reversal"
+          "choruko_reversal",
+          "granville_rebound"
         ],
+        "branch_type": "method",
         "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 4365.0,
-        "uwahige_ratio": 0.5385,
+        "close": 4055.0,
+        "uwahige_ratio": 0.02,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "1980",
@@ -6790,15 +7183,39 @@
         "branch": [
           "choruko_reversal"
         ],
+        "branch_type": "method",
         "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 2649.0,
-        "uwahige_ratio": 0.1839,
+        "close": 2511.0,
+        "uwahige_ratio": 0.1317,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "205A",
+        "name": "ロゴスホールディングス（ロゴスＨＤ）",
+        "branch": [
+          "granville_rebound"
+        ],
+        "branch_type": "granville",
+        "verdict": "FAIL_INSEN",
+        "tags": [],
+        "close": 1755.0,
+        "uwahige_ratio": 0.0,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "212A",
@@ -6806,15 +7223,21 @@
         "branch": [
           "kenmo_momentum"
         ],
+        "branch_type": "method",
         "verdict": "FAIL_UWAHIGE",
-        "tags": [],
-        "close": 2958.0,
-        "uwahige_ratio": 0.291,
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 3005.0,
+        "uwahige_ratio": 0.2198,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "2175",
@@ -6822,16 +7245,39 @@
         "branch": [
           "granville_oshime"
         ],
+        "branch_type": "granville",
+        "verdict": "FAIL_INSEN",
+        "tags": [],
+        "close": 2293.0,
+        "uwahige_ratio": 0.1831,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "254A",
+        "name": "ＡＩフュージョンキャピタルグループ（ＡＩＦＣＧ）",
+        "branch": [
+          "granville_rebound"
+        ],
+        "branch_type": "granville",
         "verdict": "PASS",
         "tags": [],
-        "close": 2302.0,
-        "uwahige_ratio": 0.1446,
-        "order_hint": "指値 2359.9円(=max(25日線2348.12,押し安値2075.0)+0.5%)・寄り前GD-2%超で取消",
-        "sl_hint": "SL候補 25日線(2348.12円)割れ",
+        "close": 1177.0,
+        "uwahige_ratio": 0.0465,
+        "order_hint": "指値 1177.0円(当日終値以下)",
+        "sl_hint": "SL候補 1132.0円(直近5日安値)・想定損失幅3.8%",
+        "order_status": "✅即時可",
+        "deviation_pct": 0.0,
         "earnings_flag": "日程不明",
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00",
-        "headline": "【業態】介護・医療業界向け人材紹介。事業・経営支援や資格情報事業も展開。(サービス業/人材紹介・医療支援)\n【いま】直近は陽線で前日比+2.9%の値動き。個別材料は取得できず材料未確認。\n【調子】堅調(経常益前期比+0.1%、売上高+11.0%・経常益+0.1%)\n【戦略】押し目を待つ型で指値 2359.9円(=max(25日線2348.12,押し安値2075.0)+0.5%)・寄り前GD-2%超で取消、SL候補 25日線(2348.12円)割れ。"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "2602",
@@ -6839,18 +7285,19 @@
         "branch": [
           "granville_oshime"
         ],
-        "verdict": "PASS",
-        "tags": [
-          "⚠決算接近"
-        ],
-        "close": 1856.0,
-        "uwahige_ratio": 0.093,
-        "order_hint": "指値 1917.5円(=max(25日線1907.92,押し安値1802.0)+0.5%)・寄り前GD-2%超で取消",
-        "sl_hint": "SL候補 25日線(1907.92円)割れ",
-        "earnings_flag": "2026-08-07(1営業日後)",
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
+        "tags": [],
+        "close": 1924.0,
+        "uwahige_ratio": 0.2826,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00",
-        "headline": "【業態】食用油大手。日清、リノール、ニッコーが統合。家庭用高シェア。美容、健康、介護食品も。(食料品/食用油・調味料)\n【いま】直近は陽線で前日比+2.3%の値動き。個別材料は取得できず材料未確認。\n【調子】堅調(経常益前期比+12.3%、売上高+6.4%・経常益+12.3%・最終益-50.0%・1株益-48.4%)\n【戦略】押し目を待つ型で指値 1917.5円(=max(25日線1907.92,押し安値1802.0)+0.5%)・寄り前GD-2%超で取消、SL候補 25日線(1907.92円)割れ(⚠決算接近)。"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "262A",
@@ -6858,15 +7305,41 @@
         "branch": [
           "kenmo_momentum"
         ],
+        "branch_type": "method",
         "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 2013.0,
-        "uwahige_ratio": 0.1579,
+        "close": 1862.0,
+        "uwahige_ratio": 0.4444,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "2659",
+        "name": "サンエー",
+        "branch": [
+          "granville_tenkan"
+        ],
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 3355.0,
+        "uwahige_ratio": 0.4211,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "276A",
@@ -6874,15 +7347,19 @@
         "branch": [
           "kenmo_momentum"
         ],
-        "verdict": "FAIL_UWAHIGE",
+        "branch_type": "method",
+        "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 3505.0,
-        "uwahige_ratio": 0.5,
+        "close": 3400.0,
+        "uwahige_ratio": 0.0833,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "2980",
@@ -6890,15 +7367,39 @@
         "branch": [
           "kenmo_momentum"
         ],
+        "branch_type": "method",
         "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 2545.0,
-        "uwahige_ratio": 0.076,
+        "close": 2501.0,
+        "uwahige_ratio": 0.0,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "2982",
+        "name": "ＡＤワークスグループ（ＡＤＷＧ）",
+        "branch": [
+          "granville_tenkan"
+        ],
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
+        "tags": [],
+        "close": 400.0,
+        "uwahige_ratio": 0.3077,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "3091",
@@ -6906,15 +7407,39 @@
         "branch": [
           "stf_kakuhen"
         ],
+        "branch_type": "method",
         "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 2581.0,
-        "uwahige_ratio": 0.0843,
+        "close": 2569.0,
+        "uwahige_ratio": 0.5165,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "3151",
+        "name": "バイタルケーエスケー・ホールディングス（バイタルＫＳ）",
+        "branch": [
+          "granville_oshime"
+        ],
+        "branch_type": "granville",
+        "verdict": "PASS",
+        "tags": [],
+        "close": 1586.0,
+        "uwahige_ratio": 0.2174,
+        "order_hint": "型不一致: 既に支持帯以下（押し目待ちの前提が崩れている）。25日線割れなら前提消滅=rulebook C_management準拠で見送り。リバ系として狙うなら別途判断",
+        "sl_hint": null,
+        "order_status": "⛔型不一致",
+        "deviation_pct": 2.5,
+        "earnings_flag": "日程不明",
+        "headline": "【業態】卸売業(業種分類。詳細な事業内容はkabutan有料会員限定のため取得不可)。\n【いま】陽線で反発、直近5営業日-5.4%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】減速(経常前年同期比-16.1%、直近四半期実績ベース)\n【戦略】押し目系判定だが型不一致/要確認のため当夜の新規発注は見送り、翌営業日以降に再判定。",
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "3374",
@@ -6922,15 +7447,21 @@
         "branch": [
           "kenmo_newhigh"
         ],
+        "branch_type": "method",
         "verdict": "FAIL_INSEN",
-        "tags": [],
-        "close": 3610.0,
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 3510.0,
         "uwahige_ratio": 0.0,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "341A",
@@ -6938,15 +7469,19 @@
         "branch": [
           "kenmo_momentum"
         ],
-        "verdict": "FAIL_UWAHIGE",
+        "branch_type": "method",
+        "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 1921.0,
-        "uwahige_ratio": 0.5818,
+        "close": 1905.0,
+        "uwahige_ratio": 0.3167,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "3491",
@@ -6954,15 +7489,19 @@
         "branch": [
           "granville_tenkan"
         ],
+        "branch_type": "granville",
         "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 1490.0,
-        "uwahige_ratio": 0.1058,
+        "close": 1482.0,
+        "uwahige_ratio": 0.1463,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "3776",
@@ -6970,15 +7509,39 @@
         "branch": [
           "granville_rebound"
         ],
-        "verdict": "FAIL_INSEN",
+        "branch_type": "granville",
+        "verdict": "PASS",
         "tags": [],
-        "close": 238.0,
-        "uwahige_ratio": 0.3,
+        "close": 252.0,
+        "uwahige_ratio": 0.0,
+        "order_hint": "指値 252.0円(当日終値以下)",
+        "sl_hint": "SL候補 230.0円(直近5日安値)・想定損失幅8.7%",
+        "order_status": "✅即時可",
+        "deviation_pct": 0.0,
+        "earnings_flag": "日程不明",
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "3865",
+        "name": "北越コーポレーション（北越コーポ）",
+        "branch": [
+          "granville_tenkan"
+        ],
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
+        "tags": [],
+        "close": 930.0,
+        "uwahige_ratio": 0.3333,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "3880",
@@ -6986,15 +7549,21 @@
         "branch": [
           "granville_tenkan"
         ],
-        "verdict": "FAIL_INSEN",
-        "tags": [],
-        "close": 972.0,
-        "uwahige_ratio": 0.5814,
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 990.0,
+        "uwahige_ratio": 0.2308,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "3915",
@@ -7002,15 +7571,19 @@
         "branch": [
           "kenmo_momentum"
         ],
+        "branch_type": "method",
         "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 2256.0,
-        "uwahige_ratio": 0.0656,
+        "close": 2218.0,
+        "uwahige_ratio": 0.1039,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "3989",
@@ -7018,31 +7591,39 @@
         "branch": [
           "granville_oshime"
         ],
-        "verdict": "FAIL_UWAHIGE",
+        "branch_type": "granville",
+        "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 1392.0,
-        "uwahige_ratio": 0.3333,
+        "close": 1396.0,
+        "uwahige_ratio": 0.0769,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "3993",
         "name": "PKSHA Technology Inc.",
-        "branch": [],
-        "verdict": "FAIL_INSEN",
-        "tags": [
+        "branch": [
           "変化点🔔"
         ],
-        "close": 2865.0,
-        "uwahige_ratio": 0.4318,
+        "branch_type": "changepoint",
+        "verdict": "FAIL_UWAHIGE",
+        "tags": [],
+        "close": 2861.0,
+        "uwahige_ratio": 0.6286,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "4063",
@@ -7050,15 +7631,19 @@
         "branch": [
           "granville_rebound"
         ],
-        "verdict": "FAIL_UWAHIGE",
+        "branch_type": "granville",
+        "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 6167.0,
-        "uwahige_ratio": 0.4653,
+        "close": 6116.0,
+        "uwahige_ratio": 0.3205,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "4165",
@@ -7066,16 +7651,39 @@
         "branch": [
           "kenmo_momentum"
         ],
-        "verdict": "PASS",
+        "branch_type": "method",
+        "verdict": "FAIL_INSEN",
         "tags": [],
         "close": 585.0,
-        "uwahige_ratio": 0.0909,
-        "order_hint": "逆指値 588.0円(当日高値+1呼値)・上限593.9円(+1%)",
-        "sl_hint": "SL候補 551.8円(高値-6%)",
-        "earnings_flag": "2026-08-13(4営業日後)",
+        "uwahige_ratio": 0.0,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00",
-        "headline": "【業態】クラウド型CX(顧客体験)プラットフォーム「KARTE」を提供。グーグルと提携。(情報・通信業/ソフト・システム開発・デジタルトランスフォーメーション)\n【いま】直近は陽線で前日比+1.2%の値動き。個別材料は取得できず材料未確認。\n【調子】業績データ乏しい(前期比データ取得不可)\n【戦略】上抜け追随の型で逆指値 588.0円(当日高値+1呼値)・上限593.9円(+1%)、SL候補 551.8円(高値-6%)。"
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "421A",
+        "name": "ムービン・ストラテジック・キャリア（ムービン）",
+        "branch": [
+          "granville_rebound"
+        ],
+        "branch_type": "granville",
+        "verdict": "FAIL_INSEN",
+        "tags": [],
+        "close": 3420.0,
+        "uwahige_ratio": 0.0,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "4249",
@@ -7083,15 +7691,21 @@
         "branch": [
           "kenmo_newhigh"
         ],
-        "verdict": "FAIL_UWAHIGE",
-        "tags": [],
-        "close": 2710.0,
-        "uwahige_ratio": 0.181,
-        "order_hint": null,
-        "sl_hint": null,
-        "earnings_flag": null,
+        "branch_type": "method",
+        "verdict": "PASS",
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 2833.0,
+        "uwahige_ratio": 0.0952,
+        "order_hint": "逆指値 2842.0円(当日高値+1呼値)・上限2870.4円(+1%)",
+        "sl_hint": "SL候補 2670.5円(高値-6%)・想定損失幅6.0%",
+        "order_status": "✅即時可",
+        "deviation_pct": 0.3,
+        "earnings_flag": "日程不明",
+        "headline": "【業態】化学(業種分類。詳細な事業内容はkabutan有料会員限定のため取得不可)。\n【いま】陽線で反発、60日高値圏での上抜けを試す動き、直近5営業日+12.6%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】好調(経常前年同期比+150.0%、直近四半期実績ベース)\n【戦略】上抜けトリガーの逆指値で当夜即時検討可、SL接近/25日線割れなら見切り。",
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "4320",
@@ -7099,33 +7713,81 @@
         "branch": [
           "granville_rebound"
         ],
-        "verdict": "PASS",
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
         "tags": [],
-        "close": 1649.0,
-        "uwahige_ratio": 0.1667,
-        "order_hint": "指値 1649.0円以下",
-        "sl_hint": "SL候補 1625.0円(直近5日安値)",
-        "earnings_flag": "日程不明",
+        "close": 1651.0,
+        "uwahige_ratio": 0.5,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "4375",
+        "name": "Safie Inc.",
+        "branch": [
+          "変化点🔔"
+        ],
+        "branch_type": "changepoint",
+        "verdict": "FAIL_INSEN",
+        "tags": [],
+        "close": 639.0,
+        "uwahige_ratio": 0.2881,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "4413",
+        "name": "ボードルア",
+        "branch": [
+          "granville_oshime",
+          "granville_rebound"
+        ],
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
+        "tags": [],
+        "close": 2698.0,
+        "uwahige_ratio": 0.2844,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "4419",
         "name": "Ｆｉｎａｔｅｘｔホールディングス",
         "branch": [
-          "granville_oshime"
-        ],
-        "verdict": "FAIL_INSEN",
-        "tags": [
+          "granville_oshime",
           "変化点🔔"
         ],
-        "close": 1588.0,
-        "uwahige_ratio": 0.3824,
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
+        "tags": [],
+        "close": 1598.0,
+        "uwahige_ratio": 0.3953,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "4420",
@@ -7133,15 +7795,19 @@
         "branch": [
           "granville_rebound"
         ],
+        "branch_type": "granville",
         "verdict": "FAIL_UWAHIGE",
         "tags": [],
-        "close": 753.0,
-        "uwahige_ratio": 0.32,
+        "close": 755.0,
+        "uwahige_ratio": 0.5,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "4477",
@@ -7150,32 +7816,84 @@
           "granville_rebound",
           "kenmo_momentum"
         ],
+        "branch_type": "method",
         "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 283.0,
-        "uwahige_ratio": 0.7692,
+        "close": 281.0,
+        "uwahige_ratio": 0.4,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "4483",
         "name": "JMDC Inc.",
-        "branch": [],
+        "branch": [
+          "変化点🔔🔔"
+        ],
+        "branch_type": "changepoint",
+        "verdict": "FAIL_INSEN",
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 3375.0,
+        "uwahige_ratio": 0.2174,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "4498",
+        "name": "Cybertrust Japan Co., Ltd.",
+        "branch": [
+          "変化点🔔🔔"
+        ],
+        "branch_type": "changepoint",
         "verdict": "PASS",
         "tags": [
-          "変化点🔔🔔",
+          "抵抗圏(60日高値98%超)",
           "🔒実弾封印中"
         ],
-        "close": 3565.0,
+        "close": 1265.0,
         "uwahige_ratio": 0.0,
-        "order_hint": "指値 3565.0円(発火日終値・追撃禁止)",
-        "sl_hint": "SL候補 2985.0円(直近5日安値)",
+        "order_hint": "指値 1265.0円(発火日終値・追撃禁止)",
+        "sl_hint": "SL候補 1165.0円(直近5日安値)・想定損失幅7.9%",
+        "order_status": "✅即時可",
+        "deviation_pct": 0.0,
         "earnings_flag": "日程不明",
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "4516",
+        "name": "日本新薬",
+        "branch": [
+          "choruko_reversal"
+        ],
+        "branch_type": "method",
+        "verdict": "PASS",
+        "tags": [],
+        "close": 3579.0,
+        "uwahige_ratio": 0.1695,
+        "order_hint": "指値 3579.0円(当日終値以下)",
+        "sl_hint": "SL候補 3376.0円(直近5日安値)・想定損失幅5.7%",
+        "order_status": "✅即時可",
+        "deviation_pct": 0.0,
+        "earnings_flag": "日程不明",
+        "headline": "【業態】医薬品。\n【いま】陽線で反発、直近5営業日+5.3%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】好調(経常前年同期比+23.4%、直近四半期実績ベース)\n【戦略】リバウンド狙いの指値で当夜即時検討可、SL接近/25日線割れなら見切り。",
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "4536",
@@ -7183,15 +7901,19 @@
         "branch": [
           "choruko_reversal"
         ],
-        "verdict": "FAIL_UWAHIGE",
+        "branch_type": "method",
+        "verdict": "PASS",
         "tags": [],
-        "close": 1876.0,
-        "uwahige_ratio": 0.5812,
-        "order_hint": null,
-        "sl_hint": null,
-        "earnings_flag": null,
+        "close": 1933.0,
+        "uwahige_ratio": 0.0076,
+        "order_hint": "指値 1933.0円(当日終値以下)",
+        "sl_hint": "SL候補 1803.0円(直近5日安値)・想定損失幅6.7%",
+        "order_status": "✅即時可",
+        "deviation_pct": 0.0,
+        "earnings_flag": "日程不明",
+        "headline": "【業態】医薬品(業種分類。詳細な事業内容はkabutan有料会員限定のため取得不可)。\n【いま】陽線で反発、直近5営業日+2.6%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】堅調(経常前年同期比+11.9%、直近四半期実績ベース)\n【戦略】リバウンド狙いの指値で当夜即時検討可、SL接近/25日線割れなら見切り。",
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "456A",
@@ -7199,15 +7921,19 @@
         "branch": [
           "choruko_reversal"
         ],
-        "verdict": "FAIL_UWAHIGE",
+        "branch_type": "method",
+        "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 1393.0,
-        "uwahige_ratio": 0.2642,
+        "close": 1385.0,
+        "uwahige_ratio": 0.0465,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "4826",
@@ -7215,15 +7941,21 @@
         "branch": [
           "granville_tenkan"
         ],
-        "verdict": "PASS",
-        "tags": [],
-        "close": 519.0,
-        "uwahige_ratio": 0.12,
-        "order_hint": "逆指値 523.0円(当日高値+1呼値)・上限528.2円(+1%)",
-        "sl_hint": "SL候補 490.7円(高値-6%)",
-        "earnings_flag": "日程不明",
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 525.0,
+        "uwahige_ratio": 0.3125,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "4847",
@@ -7231,15 +7963,21 @@
         "branch": [
           "granville_tenkan"
         ],
-        "verdict": "PASS",
-        "tags": [],
-        "close": 1267.0,
-        "uwahige_ratio": 0.047,
-        "order_hint": "逆指値 1283.0円(当日高値+1呼値)・上限1295.8円(+1%)",
-        "sl_hint": "SL候補 1205.1円(高値-6%)",
-        "earnings_flag": "日程不明",
+        "branch_type": "granville",
+        "verdict": "FAIL_INSEN",
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 1236.0,
+        "uwahige_ratio": 0.3782,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "4848",
@@ -7247,16 +7985,19 @@
         "branch": [
           "granville_tenkan"
         ],
+        "branch_type": "granville",
         "verdict": "PASS",
         "tags": [],
-        "close": 1655.0,
-        "uwahige_ratio": 0.0,
-        "order_hint": "逆指値 1656.0円(当日高値+1呼値)・上限1672.6円(+1%)",
-        "sl_hint": "SL候補 1555.7円(高値-6%)",
+        "close": 1680.0,
+        "uwahige_ratio": 0.0513,
+        "order_hint": "逆指値 1683.0円(当日高値+1呼値)・上限1699.8円(+1%)",
+        "sl_hint": "SL候補 1581.1円(高値-6%)・想定損失幅6.1%",
+        "order_status": "✅即時可",
+        "deviation_pct": 0.2,
         "earnings_flag": "日程不明",
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00",
-        "headline": "【業態】日雇い派遣からアルバイト紹介・給与管理代行に転換。警備請負、ラーメンチェーンも。(サービス業/人材紹介・ビジネス・プロセス・アウトソーシング)\n【いま】直近は陽線で前日比+1.0%の値動き。個別材料は取得できず材料未確認。\n【調子】堅調(経常益前期比+12.9%、売上高+35.6%・経常益+12.9%・最終益+13.5%・1株益+14.0%)\n【戦略】上抜け追随の型で逆指値 1656.0円(当日高値+1呼値)・上限1672.6円(+1%)、SL候補 1555.7円(高値-6%)。"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "5027",
@@ -7264,15 +8005,21 @@
         "branch": [
           "kenmo_momentum"
         ],
-        "verdict": "FAIL_INSEN",
-        "tags": [],
-        "close": 566.0,
-        "uwahige_ratio": 0.4286,
+        "branch_type": "method",
+        "verdict": "FAIL_UWAHIGE",
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 568.0,
+        "uwahige_ratio": 0.5714,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "5076",
@@ -7280,17 +8027,19 @@
         "branch": [
           "granville_rebound"
         ],
-        "verdict": "PASS",
-        "tags": [
-          "⚠決算接近"
-        ],
-        "close": 2549.0,
-        "uwahige_ratio": 0.2353,
-        "order_hint": "指値 2549.0円以下",
-        "sl_hint": "SL候補 2496.0円(直近5日安値)",
-        "earnings_flag": "2026-08-07(1営業日後)",
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
+        "tags": [],
+        "close": 2613.5,
+        "uwahige_ratio": 0.6782,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "5189",
@@ -7298,34 +8047,60 @@
         "branch": [
           "granville_rebound"
         ],
-        "verdict": "FAIL_INSEN",
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
         "tags": [],
-        "close": 3205.0,
-        "uwahige_ratio": 0.0,
+        "close": 3240.0,
+        "uwahige_ratio": 0.6471,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "5243",
+        "name": "note inc.",
+        "branch": [
+          "kenmo_momentum"
+        ],
+        "branch_type": "method",
+        "verdict": "FAIL_INSEN",
+        "tags": [],
+        "close": 2274.0,
+        "uwahige_ratio": 0.1069,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "5254",
         "name": "Arent, Inc.",
         "branch": [
-          "kenmo_momentum"
+          "kenmo_momentum",
+          "granville_oshime"
         ],
-        "verdict": "PASS",
-        "tags": [
-          "⚠決算接近"
-        ],
-        "close": 4630.0,
-        "uwahige_ratio": 0.0769,
-        "order_hint": "逆指値 4650.0円(当日高値+1呼値)・上限4696.5円(+1%)",
-        "sl_hint": "SL候補 4366.3円(高値-6%)",
-        "earnings_flag": "2026-08-06(0営業日後)",
+        "branch_type": "method",
+        "verdict": "FAIL_INSEN",
+        "tags": [],
+        "close": 4050.0,
+        "uwahige_ratio": 0.1515,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00",
-        "headline": "【業態】建設・プラント業界を中心にDXコンサルティング、システム開発、システム販売。自社製品も。(情報・通信業/ソフト・システム開発・デジタルトランスフォーメーション)\n【いま】本日陽線で前日比+3.0%、本日決算発表(材料あり)。\n【調子】好調(経常益前期比+81.9%、売上高+45.2%・経常益+81.9%・最終益-33.0%・1株益-34.1%)\n【戦略】上抜け追随の型で逆指値 4650.0円(当日高値+1呼値)・上限4696.5円(+1%)、SL候補 4366.3円(高値-6%)(⚠決算接近)。"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "5301",
@@ -7333,15 +8108,41 @@
         "branch": [
           "choruko_reversal"
         ],
+        "branch_type": "method",
         "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 1757.0,
-        "uwahige_ratio": 0.4781,
+        "close": 1734.0,
+        "uwahige_ratio": 0.0735,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "5406",
+        "name": "神戸製鋼所（神戸鋼）",
+        "branch": [
+          "granville_tenkan"
+        ],
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 2040.0,
+        "uwahige_ratio": 0.5728,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "543A",
@@ -7349,15 +8150,39 @@
         "branch": [
           "choruko_reversal"
         ],
+        "branch_type": "method",
         "verdict": "FAIL_UWAHIGE",
         "tags": [],
-        "close": 269.0,
-        "uwahige_ratio": 0.4286,
+        "close": 277.0,
+        "uwahige_ratio": 0.5294,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "547A",
+        "name": "ムニノバホールディングス（ムニノバＨＤ）",
+        "branch": [
+          "granville_tenkan"
+        ],
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
+        "tags": [],
+        "close": 465.0,
+        "uwahige_ratio": 0.3077,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "5537",
@@ -7365,15 +8190,19 @@
         "branch": [
           "kenmo_momentum"
         ],
+        "branch_type": "method",
         "verdict": "PASS",
         "tags": [],
-        "close": 2990.0,
-        "uwahige_ratio": 0.2381,
-        "order_hint": "逆指値 3045.0円(当日高値+1呼値)・上限3075.4円(+1%)",
-        "sl_hint": "SL候補 2857.6円(高値-6%)",
-        "earnings_flag": "2026-08-13(4営業日後)",
+        "close": 3055.0,
+        "uwahige_ratio": 0.0893,
+        "order_hint": "逆指値 3070.0円(当日高値+1呼値)・上限3100.7円(+1%)",
+        "sl_hint": "SL候補 2881.1円(高値-6%)・想定損失幅6.2%",
+        "order_status": "✅即時可",
+        "deviation_pct": 0.5,
+        "earnings_flag": "次回決算2026-08-13(4営業日後)",
+        "headline": "【業態】空き家・訳あり不動産の買取再生事業。\n【いま】陽線で反発、直近5営業日+18.4%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】業績データ乏しい(前年同期比データなし・新規上場等)\n【戦略】上抜けトリガーの逆指値で当夜即時検討可、SL接近/25日線割れなら見切り。",
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "5574",
@@ -7381,15 +8210,19 @@
         "branch": [
           "kenmo_momentum"
         ],
-        "verdict": "FAIL_UWAHIGE",
+        "branch_type": "method",
+        "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 2853.0,
-        "uwahige_ratio": 0.2639,
+        "close": 2728.0,
+        "uwahige_ratio": 0.1608,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "5590",
@@ -7397,15 +8230,19 @@
         "branch": [
           "kenmo_momentum"
         ],
-        "verdict": "FAIL_INSEN",
+        "branch_type": "method",
+        "verdict": "PASS",
         "tags": [],
-        "close": 688.0,
-        "uwahige_ratio": 0.4783,
-        "order_hint": null,
-        "sl_hint": null,
-        "earnings_flag": null,
+        "close": 694.0,
+        "uwahige_ratio": 0.0714,
+        "order_hint": "逆指値 696.0円(当日高値+1呼値)・上限703.0円(+1%)",
+        "sl_hint": "SL候補 653.3円(高値-6%)・想定損失幅6.1%",
+        "order_status": "✅即時可",
+        "deviation_pct": 0.3,
+        "earnings_flag": "次回決算2026-08-13(4営業日後)",
+        "headline": "【業態】情報・通信業(業種分類。詳細な事業内容はkabutan有料会員限定のため取得不可)。\n【いま】陽線で反発、直近5営業日+3.9%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】好調(経常前年同期比+210.0%、直近四半期実績ベース)\n【戦略】上抜けトリガーの逆指値で当夜即時検討可、SL接近/25日線割れなら見切り。",
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "5757",
@@ -7413,15 +8250,19 @@
         "branch": [
           "kenmo_momentum"
         ],
+        "branch_type": "method",
         "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 5300.0,
-        "uwahige_ratio": 0.44,
+        "close": 5340.0,
+        "uwahige_ratio": 0.5,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "5892",
@@ -7429,15 +8270,39 @@
         "branch": [
           "kenmo_momentum"
         ],
-        "verdict": "FAIL_UWAHIGE",
+        "branch_type": "method",
+        "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 2226.0,
-        "uwahige_ratio": 0.4821,
+        "close": 2173.0,
+        "uwahige_ratio": 0.0,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "5989",
+        "name": "エイチワン",
+        "branch": [
+          "granville_rebound"
+        ],
+        "branch_type": "granville",
+        "verdict": "FAIL_INSEN",
+        "tags": [],
+        "close": 1418.0,
+        "uwahige_ratio": 0.1176,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "6071",
@@ -7445,31 +8310,41 @@
         "branch": [
           "granville_rebound"
         ],
-        "verdict": "FAIL_UWAHIGE",
+        "branch_type": "granville",
+        "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 818.0,
-        "uwahige_ratio": 0.5625,
+        "close": 827.0,
+        "uwahige_ratio": 0.1111,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "6080",
         "name": "M&A Capital Partners Co.,Ltd.",
-        "branch": [],
-        "verdict": "FAIL_INSEN",
-        "tags": [
+        "branch": [
           "変化点🔔🔔"
         ],
-        "close": 4040.0,
-        "uwahige_ratio": 0.2353,
+        "branch_type": "changepoint",
+        "verdict": "FAIL_INSEN",
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 4020.0,
+        "uwahige_ratio": 0.2857,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "6135",
@@ -7477,15 +8352,59 @@
         "branch": [
           "choruko_reversal"
         ],
+        "branch_type": "method",
         "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 15070.0,
-        "uwahige_ratio": 0.2059,
+        "close": 14600.0,
+        "uwahige_ratio": 0.0435,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "6266",
+        "name": "タツモ",
+        "branch": [
+          "granville_rebound"
+        ],
+        "branch_type": "granville",
+        "verdict": "FAIL_INSEN",
+        "tags": [],
+        "close": 3370.0,
+        "uwahige_ratio": 0.0463,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "6284",
+        "name": "Nissei ASB Machine Co., Ltd.",
+        "branch": [
+          "変化点🔔"
+        ],
+        "branch_type": "changepoint",
+        "verdict": "FAIL_INSEN",
+        "tags": [],
+        "close": 9260.0,
+        "uwahige_ratio": 0.0,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "6327",
@@ -7493,15 +8412,41 @@
         "branch": [
           "granville_rebound"
         ],
-        "verdict": "PASS",
+        "branch_type": "granville",
+        "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 3350.0,
-        "uwahige_ratio": 0.1087,
-        "order_hint": "指値 3350.0円以下",
-        "sl_hint": "SL候補 2660.0円(直近5日安値)",
-        "earnings_flag": "2026-08-18(7営業日後)",
+        "close": 3215.0,
+        "uwahige_ratio": 0.0635,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "6562",
+        "name": "Geniee, Inc.",
+        "branch": [
+          "kenmo_momentum"
+        ],
+        "branch_type": "method",
+        "verdict": "PASS",
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 1078.0,
+        "uwahige_ratio": 0.0,
+        "order_hint": "逆指値 1079.0円(当日高値+1呼値)・上限1089.8円(+1%)",
+        "sl_hint": "SL候補 1013.3円(高値-6%)・想定損失幅6.1%",
+        "order_status": "✅即時可",
+        "deviation_pct": 0.1,
+        "earnings_flag": "次回決算2026-08-14(5営業日後)",
+        "headline": "【業態】広告技術(AdTech)SSP/DSPプラットフォーム。\n【いま】陽線で反発、60日高値圏での上抜けを試す動き、直近5営業日+7.4%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】業績データ乏しい(kabutan四半期進捗データ取得不可)\n【戦略】上抜けトリガーの逆指値で当夜即時検討可、SL接近/25日線割れなら見切り。",
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "6590",
@@ -7509,15 +8454,19 @@
         "branch": [
           "granville_oshime"
         ],
-        "verdict": "FAIL_UWAHIGE",
+        "branch_type": "granville",
+        "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 4980.0,
-        "uwahige_ratio": 0.4545,
+        "close": 4310.0,
+        "uwahige_ratio": 0.0506,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "6613",
@@ -7525,15 +8474,39 @@
         "branch": [
           "granville_rebound"
         ],
-        "verdict": "FAIL_UWAHIGE",
+        "branch_type": "granville",
+        "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 1766.0,
-        "uwahige_ratio": 0.3048,
+        "close": 1744.0,
+        "uwahige_ratio": 0.0704,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "6632",
+        "name": "ＪＶＣケンウッド",
+        "branch": [
+          "choruko_reversal"
+        ],
+        "branch_type": "method",
+        "verdict": "FAIL_UWAHIGE",
+        "tags": [],
+        "close": 991.0999755859375,
+        "uwahige_ratio": 0.2921,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "6656",
@@ -7541,15 +8514,19 @@
         "branch": [
           "granville_rebound"
         ],
+        "branch_type": "granville",
         "verdict": "FAIL_UWAHIGE",
         "tags": [],
-        "close": 866.0,
-        "uwahige_ratio": 0.4286,
+        "close": 907.0,
+        "uwahige_ratio": 0.8074,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "6718",
@@ -7557,15 +8534,21 @@
         "branch": [
           "granville_tenkan"
         ],
-        "verdict": "PASS",
-        "tags": [],
-        "close": 2820.0,
-        "uwahige_ratio": 0.0,
-        "order_hint": "逆指値 2821.0円(当日高値+1呼値)・上限2849.2円(+1%)",
-        "sl_hint": "SL候補 2650.8円(高値-6%)",
-        "earnings_flag": "日程不明",
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 2829.0,
+        "uwahige_ratio": 0.25,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "6785",
@@ -7573,15 +8556,19 @@
         "branch": [
           "kenmo_momentum"
         ],
+        "branch_type": "method",
         "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 3150.0,
-        "uwahige_ratio": 0.4762,
+        "close": 3145.0,
+        "uwahige_ratio": 0.1667,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "6857",
@@ -7589,16 +8576,19 @@
         "branch": [
           "stf_kakuhen"
         ],
-        "verdict": "PASS",
+        "branch_type": "method",
+        "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 32930.0,
-        "uwahige_ratio": 0.2093,
+        "close": 32190.0,
+        "uwahige_ratio": 0.1176,
         "order_hint": null,
         "sl_hint": null,
-        "earnings_flag": "日程不明",
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00",
-        "headline": "【業態】半導体試験装置で世界大手。DRAM用トップ。テストシステム、電子ビーム技術に強み。(電気機器/TOPIXコア30・半導体製造装置)\n【いま】直近は陽線で前日比-2.3%の値動き。個別材料は取得できず材料未確認。\n【調子】好調(経常益前期比+72.4%、売上高+51.9%・経常益+72.4%・最終益+75.8%・1株益+77.4%)\n【戦略】手法チップのみで提案なし。"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "7047",
@@ -7606,15 +8596,19 @@
         "branch": [
           "kenmo_momentum"
         ],
+        "branch_type": "method",
         "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 2589.0,
-        "uwahige_ratio": 0.5862,
+        "close": 2593.0,
+        "uwahige_ratio": 0.3559,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "7085",
@@ -7622,15 +8616,19 @@
         "branch": [
           "granville_oshime"
         ],
-        "verdict": "FAIL_UWAHIGE",
+        "branch_type": "granville",
+        "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 930.0,
-        "uwahige_ratio": 0.4167,
+        "close": 938.0,
+        "uwahige_ratio": 0.1667,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "7089",
@@ -7639,15 +8637,19 @@
           "kenmo_momentum",
           "kenmo_newhigh"
         ],
+        "branch_type": "method",
         "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 1738.0,
-        "uwahige_ratio": 0.1935,
+        "close": 1572.0,
+        "uwahige_ratio": 0.4658,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "7231",
@@ -7655,15 +8657,21 @@
         "branch": [
           "granville_tenkan"
         ],
-        "verdict": "FAIL_INSEN",
-        "tags": [],
-        "close": 2896.0,
-        "uwahige_ratio": 0.381,
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 2932.0,
+        "uwahige_ratio": 0.3077,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "7318",
@@ -7671,15 +8679,19 @@
         "branch": [
           "kenmo_momentum"
         ],
+        "branch_type": "method",
         "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 1988.0,
-        "uwahige_ratio": 0.1905,
+        "close": 1947.0,
+        "uwahige_ratio": 0.2656,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "7409",
@@ -7687,15 +8699,19 @@
         "branch": [
           "kenmo_momentum"
         ],
-        "verdict": "FAIL_INSEN",
+        "branch_type": "method",
+        "verdict": "PASS",
         "tags": [],
-        "close": 1621.0,
-        "uwahige_ratio": 0.127,
-        "order_hint": null,
-        "sl_hint": null,
-        "earnings_flag": null,
+        "close": 1615.0,
+        "uwahige_ratio": 0.225,
+        "order_hint": "逆指値 1634.0円(当日高値+1呼値)・上限1650.3円(+1%)",
+        "sl_hint": "SL候補 1535.0円(高値-6%)・想定損失幅6.1%",
+        "order_status": "✅即時可",
+        "deviation_pct": 1.2,
+        "earnings_flag": "次回決算2026-08-13(4営業日後)",
+        "headline": "【業態】航空機エンジン部品の精密加工。\n【いま】陽線で反発、直近5営業日+3.3%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】好調(経常前年同期比+81.5%、直近四半期実績ベース)\n【戦略】上抜けトリガーの逆指値で当夜即時検討可、SL接近/25日線割れなら見切り。",
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "7611",
@@ -7703,15 +8719,19 @@
         "branch": [
           "granville_tenkan"
         ],
-        "verdict": "PASS",
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
         "tags": [],
-        "close": 2820.0,
-        "uwahige_ratio": 0.1667,
-        "order_hint": "逆指値 2833.0円(当日高値+1呼値)・上限2861.3円(+1%)",
-        "sl_hint": "SL候補 2662.1円(高値-6%)",
-        "earnings_flag": "日程不明",
+        "close": 2845.0,
+        "uwahige_ratio": 0.5818,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "7685",
@@ -7720,15 +8740,19 @@
           "choruko_reversal",
           "granville_rebound"
         ],
-        "verdict": "FAIL_INSEN",
+        "branch_type": "method",
+        "verdict": "PASS",
         "tags": [],
-        "close": 3100.0,
-        "uwahige_ratio": 0.3939,
-        "order_hint": null,
-        "sl_hint": null,
-        "earnings_flag": null,
+        "close": 3060.0,
+        "uwahige_ratio": 0.0,
+        "order_hint": "指値 3060.0円(当日終値以下)",
+        "sl_hint": "SL候補 2910.0円(直近5日安値)・想定損失幅4.9%",
+        "order_status": "✅即時可",
+        "deviation_pct": 0.0,
+        "earnings_flag": "次回決算2026-08-14(5営業日後)",
+        "headline": "【業態】リユース関連。\n【いま】陽線で反発、直近5営業日+3.0%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】好調(経常前年同期比+120.0%、直近四半期実績ベース)\n【戦略】リバウンド狙いの指値で当夜即時検討可、SL接近/25日線割れなら見切り。",
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "7730",
@@ -7736,15 +8760,19 @@
         "branch": [
           "choruko_reversal"
         ],
+        "branch_type": "method",
         "verdict": "FAIL_UWAHIGE",
         "tags": [],
-        "close": 1521.0,
-        "uwahige_ratio": 0.5185,
+        "close": 1524.0,
+        "uwahige_ratio": 0.3077,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "7731",
@@ -7753,15 +8781,19 @@
           "choruko_reversal",
           "granville_rebound"
         ],
-        "verdict": "FAIL_UWAHIGE",
+        "branch_type": "method",
+        "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 1996.0,
-        "uwahige_ratio": 0.3597,
+        "close": 2001.5,
+        "uwahige_ratio": 0.0268,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "7806",
@@ -7769,15 +8801,19 @@
         "branch": [
           "granville_oshime"
         ],
-        "verdict": "FAIL_UWAHIGE",
+        "branch_type": "granville",
+        "verdict": "PASS",
         "tags": [],
-        "close": 7710.0,
-        "uwahige_ratio": 0.5,
-        "order_hint": null,
-        "sl_hint": null,
-        "earnings_flag": null,
+        "close": 8170.0,
+        "uwahige_ratio": 0.0299,
+        "order_hint": "指値 7729.7円(=max(25日線7691.20,押し安値7110.0)+0.5%)・寄り前GD-2%超で取消",
+        "sl_hint": "SL候補 7691.2円(25日線)・想定損失幅0.5%",
+        "order_status": "✅即時可",
+        "deviation_pct": -5.4,
+        "earnings_flag": "日程不明",
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "7956",
@@ -7785,17 +8821,21 @@
         "branch": [
           "granville_oshime"
         ],
+        "branch_type": "granville",
         "verdict": "PASS",
         "tags": [
-          "⚠決算接近"
+          "抵抗圏(60日高値98%超)"
         ],
-        "close": 2032.5,
-        "uwahige_ratio": 0.1667,
-        "order_hint": "指値 2043.7円(=max(25日線2033.56,押し安値1938.5)+0.5%)・寄り前GD-2%超で取消",
-        "sl_hint": "SL候補 25日線(2033.56円)割れ",
-        "earnings_flag": "2026-08-06(0営業日後)",
+        "close": 2092.5,
+        "uwahige_ratio": 0.0211,
+        "order_hint": "指値 2043.4円(=max(25日線2033.20,押し安値1938.5)+0.5%)・寄り前GD-2%超で取消",
+        "sl_hint": "SL候補 2033.2円(25日線)・想定損失幅0.5%",
+        "order_status": "✅即時可",
+        "deviation_pct": -2.3,
+        "earnings_flag": "日程不明",
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "7970",
@@ -7803,15 +8843,39 @@
         "branch": [
           "granville_oshime"
         ],
-        "verdict": "FAIL_UWAHIGE",
+        "branch_type": "granville",
+        "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 2318.0,
-        "uwahige_ratio": 0.2698,
+        "close": 2264.0,
+        "uwahige_ratio": 0.1875,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "8008",
+        "name": "ヨンドシーホールディングス（４℃ホールデ）",
+        "branch": [
+          "granville_oshime"
+        ],
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
+        "tags": [],
+        "close": 2055.0,
+        "uwahige_ratio": 0.3333,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "8056",
@@ -7819,15 +8883,19 @@
         "branch": [
           "granville_tenkan"
         ],
-        "verdict": "PASS",
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
         "tags": [],
-        "close": 4168.0,
-        "uwahige_ratio": 0.2096,
-        "order_hint": "逆指値 4208.0円(当日高値+1呼値)・上限4250.1円(+1%)",
-        "sl_hint": "SL候補 3950.8円(高値-6%)",
-        "earnings_flag": "日程不明",
+        "close": 4305.0,
+        "uwahige_ratio": 0.483,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "8081",
@@ -7835,15 +8903,19 @@
         "branch": [
           "granville_rebound"
         ],
-        "verdict": "FAIL_UWAHIGE",
+        "branch_type": "granville",
+        "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 2412.0,
-        "uwahige_ratio": 0.26,
+        "close": 2394.0,
+        "uwahige_ratio": 0.0,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "8084",
@@ -7851,15 +8923,21 @@
         "branch": [
           "stf_kakuhen"
         ],
+        "branch_type": "method",
         "verdict": "FAIL_INSEN",
-        "tags": [],
-        "close": 4640.0,
-        "uwahige_ratio": 0.4286,
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 4560.0,
+        "uwahige_ratio": 0.0,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "8098",
@@ -7867,15 +8945,21 @@
         "branch": [
           "granville_tenkan"
         ],
+        "branch_type": "granville",
         "verdict": "FAIL_UWAHIGE",
-        "tags": [],
-        "close": 4015.0,
-        "uwahige_ratio": 0.2353,
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 4050.0,
+        "uwahige_ratio": 0.2,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "8141",
@@ -7883,15 +8967,19 @@
         "branch": [
           "granville_rebound"
         ],
+        "branch_type": "granville",
         "verdict": "FAIL_INSEN",
         "tags": [],
         "close": 1566.0,
-        "uwahige_ratio": 0.6,
+        "uwahige_ratio": 0.5,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "8242",
@@ -7899,15 +8987,19 @@
         "branch": [
           "granville_oshime"
         ],
+        "branch_type": "granville",
         "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 2776.0,
-        "uwahige_ratio": 0.1778,
+        "close": 2791.0,
+        "uwahige_ratio": 0.1868,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "8276",
@@ -7915,15 +9007,19 @@
         "branch": [
           "granville_tenkan"
         ],
+        "branch_type": "granville",
         "verdict": "FAIL_UWAHIGE",
         "tags": [],
-        "close": 2651.0,
-        "uwahige_ratio": 0.2955,
+        "close": 2689.0,
+        "uwahige_ratio": 0.449,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "8361",
@@ -7931,15 +9027,19 @@
         "branch": [
           "granville_oshime"
         ],
-        "verdict": "FAIL_UWAHIGE",
+        "branch_type": "granville",
+        "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 7630.0,
-        "uwahige_ratio": 0.7419,
+        "close": 7560.0,
+        "uwahige_ratio": 0.1579,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "8366",
@@ -7947,15 +9047,19 @@
         "branch": [
           "choruko_reversal"
         ],
-        "verdict": "FAIL_UWAHIGE",
+        "branch_type": "method",
+        "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 2631.0,
-        "uwahige_ratio": 0.5393,
+        "close": 2553.0,
+        "uwahige_ratio": 0.2683,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "8367",
@@ -7963,15 +9067,19 @@
         "branch": [
           "granville_oshime"
         ],
-        "verdict": "PASS",
+        "branch_type": "granville",
+        "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 1841.0,
-        "uwahige_ratio": 0.1077,
-        "order_hint": "指値 1847.8円(=max(25日線1838.56,押し安値1671.0)+0.5%)・寄り前GD-2%超で取消",
-        "sl_hint": "SL候補 25日線(1838.56円)割れ",
-        "earnings_flag": "日程不明",
+        "close": 1808.0,
+        "uwahige_ratio": 0.0952,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "8388",
@@ -7979,16 +9087,21 @@
         "branch": [
           "stf_kakuhen"
         ],
-        "verdict": "PASS",
-        "tags": [],
-        "close": 8980.0,
-        "uwahige_ratio": 0.1714,
+        "branch_type": "method",
+        "verdict": "FAIL_INSEN",
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 8930.0,
+        "uwahige_ratio": 0.3704,
         "order_hint": null,
         "sl_hint": null,
-        "earnings_flag": "日程不明",
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00",
-        "headline": "【業態】徳島地盤の地銀で県内シェア首位。中小企業金融に注力。野村證券と提携。(銀行業/地方銀行・銀行)\n【いま】直近は陽線で前日比+3.5%の値動き。個別材料は取得できず材料未確認。\n【調子】好調(経常益前期比+19.1%、売上高+23.3%・経常益+19.1%・最終益+13.4%・1株益+14.1%)\n【戦略】手法チップのみで提案なし。"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "8511",
@@ -7996,15 +9109,41 @@
         "branch": [
           "granville_oshime"
         ],
+        "branch_type": "granville",
         "verdict": "FAIL_UWAHIGE",
-        "tags": [],
-        "close": 2484.0,
-        "uwahige_ratio": 0.3043,
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 2550.0,
+        "uwahige_ratio": 0.3551,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "8522",
+        "name": "名古屋銀行（名古屋銀）",
+        "branch": [
+          "granville_oshime"
+        ],
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
+        "tags": [],
+        "close": 6450.0,
+        "uwahige_ratio": 0.4667,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "8570",
@@ -8012,34 +9151,64 @@
         "branch": [
           "granville_tenkan"
         ],
+        "branch_type": "granville",
         "verdict": "PASS",
-        "tags": [],
-        "close": 1594.5,
-        "uwahige_ratio": 0.0783,
-        "order_hint": "逆指値 1600.0円(当日高値+1呼値)・上限1616.0円(+1%)",
-        "sl_hint": "SL候補 1503.1円(高値-6%)",
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 1618.0,
+        "uwahige_ratio": 0.0921,
+        "order_hint": "逆指値 1622.5円(当日高値+1呼値)・上限1638.7円(+1%)",
+        "sl_hint": "SL候補 1524.2円(高値-6%)・想定損失幅6.1%",
+        "order_status": "✅即時可",
+        "deviation_pct": 0.3,
         "earnings_flag": "日程不明",
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00",
-        "headline": "【業態】イオン系の金融事業会社。カードや銀行、保険、ポイントサービスも。アジアで展開。(その他金融業/クレジットカード・銀行)\n【いま】直近は陽線で前日比+3.1%の値動き。個別材料は取得できず材料未確認。\n【調子】減速(経常益前期比-25.9%、売上高+5.4%・経常益-25.9%・最終益-28.9%・1株益-28.9%)\n【戦略】上抜け追随の型で逆指値 1600.0円(当日高値+1呼値)・上限1616.0円(+1%)、SL候補 1503.1円(高値-6%)。"
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "8628",
+        "name": "松井証券（松井）",
+        "branch": [
+          "granville_oshime"
+        ],
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
+        "tags": [],
+        "close": 1074.0,
+        "uwahige_ratio": 0.3636,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "8697",
         "name": "日本取引所グループ",
         "branch": [
-          "stf_kakuhen"
-        ],
-        "verdict": "FAIL_UWAHIGE",
-        "tags": [
+          "stf_kakuhen",
           "変化点🔔🔔"
         ],
-        "close": 2294.0,
-        "uwahige_ratio": 0.3763,
+        "branch_type": "method",
+        "verdict": "FAIL_INSEN",
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 2264.0,
+        "uwahige_ratio": 0.0727,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "8707",
@@ -8047,15 +9216,21 @@
         "branch": [
           "granville_oshime"
         ],
-        "verdict": "FAIL_UWAHIGE",
-        "tags": [],
-        "close": 4360.0,
-        "uwahige_ratio": 0.3846,
+        "branch_type": "granville",
+        "verdict": "FAIL_INSEN",
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 4305.0,
+        "uwahige_ratio": 0.0,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "8844",
@@ -8063,15 +9238,19 @@
         "branch": [
           "granville_rebound"
         ],
-        "verdict": "PASS",
+        "branch_type": "granville",
+        "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 1257.0,
-        "uwahige_ratio": 0.1207,
-        "order_hint": "指値 1257.0円以下",
-        "sl_hint": "SL候補 1206.0円(直近5日安値)",
-        "earnings_flag": "日程不明",
+        "close": 1209.0,
+        "uwahige_ratio": 0.0,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "8876",
@@ -8079,15 +9258,19 @@
         "branch": [
           "granville_oshime"
         ],
-        "verdict": "FAIL_INSEN",
+        "branch_type": "granville",
+        "verdict": "PASS",
         "tags": [],
-        "close": 2005.5,
-        "uwahige_ratio": 0.5283,
-        "order_hint": null,
-        "sl_hint": null,
-        "earnings_flag": null,
+        "close": 2132.5,
+        "uwahige_ratio": 0.0494,
+        "order_hint": "指値 2059.8円(=max(25日線2049.60,押し安値1948.5)+0.5%)・寄り前GD-2%超で取消",
+        "sl_hint": "SL候補 2049.6円(25日線)・想定損失幅0.5%",
+        "order_status": "✅即時可",
+        "deviation_pct": -3.4,
+        "earnings_flag": "日程不明",
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "9031",
@@ -8095,18 +9278,39 @@
         "branch": [
           "granville_oshime"
         ],
-        "verdict": "PASS",
-        "tags": [
-          "⚠決算接近"
-        ],
-        "close": 2956.0,
-        "uwahige_ratio": 0.1299,
-        "order_hint": "指値 3074.1円(=max(25日線3058.78,押し安値2903.5)+0.5%)・寄り前GD-2%超で取消",
-        "sl_hint": "SL候補 25日線(3058.78円)割れ",
-        "earnings_flag": "2026-08-06(0営業日後)",
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
+        "tags": [],
+        "close": 2993.0,
+        "uwahige_ratio": 0.8191,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00",
-        "headline": "【業態】北九州地盤の電鉄大手。バスが主力で日本最大級。航空貨物など多角化。(陸運業/鉄道関連・バス)\n【いま】本日陽線で前日比+1.4%、本日決算発表(材料あり)。\n【調子】悪化(経常益前期比-34.2%、売上高+7.6%・経常益-34.2%・最終益-30.0%・1株益-29.6%)\n【戦略】押し目を待つ型で指値 3074.1円(=max(25日線3058.78,押し安値2903.5)+0.5%)・寄り前GD-2%超で取消、SL候補 25日線(3058.78円)割れ(⚠決算接近)。"
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "9037",
+        "name": "ハマキョウレックス（ハマキョウ）",
+        "branch": [
+          "granville_tenkan"
+        ],
+        "branch_type": "granville",
+        "verdict": "PASS",
+        "tags": [],
+        "close": 1840.0,
+        "uwahige_ratio": 0.25,
+        "order_hint": "逆指値 1854.0円(当日高値+1呼値)・上限1872.5円(+1%)",
+        "sl_hint": "SL候補 1741.8円(高値-6%)・想定損失幅6.1%",
+        "order_status": "✅即時可",
+        "deviation_pct": 0.8,
+        "earnings_flag": "日程不明",
+        "headline": "【業態】陸運業(業種分類。詳細な事業内容はkabutan有料会員限定のため取得不可)。\n【いま】陽線で反発、直近5営業日+0.3%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】好調(経常前年同期比+23.3%、直近四半期実績ベース)\n【戦略】上抜けトリガーの逆指値で当夜即時検討可、SL接近/25日線割れなら見切り。",
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "9072",
@@ -8114,15 +9318,19 @@
         "branch": [
           "choruko_reversal"
         ],
-        "verdict": "FAIL_INSEN",
+        "branch_type": "method",
+        "verdict": "PASS",
         "tags": [],
-        "close": 5243.0,
-        "uwahige_ratio": 0.3333,
-        "order_hint": null,
-        "sl_hint": null,
-        "earnings_flag": null,
+        "close": 5338.0,
+        "uwahige_ratio": 0.1759,
+        "order_hint": "指値 5338.0円(当日終値以下)",
+        "sl_hint": "SL候補 4910.0円(直近5日安値)・想定損失幅8.0%",
+        "order_status": "✅即時可",
+        "deviation_pct": 0.0,
+        "earnings_flag": "日程不明",
+        "headline": "【業態】陸運業(業種分類。詳細な事業内容はkabutan有料会員限定のため取得不可)。\n【いま】陽線で反発、直近5営業日+5.8%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】踊り場(経常前年同期比-5.1%、直近四半期実績ベース)\n【戦略】リバウンド狙いの指値で当夜即時検討可、SL接近/25日線割れなら見切り。",
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "9101",
@@ -8130,15 +9338,21 @@
         "branch": [
           "granville_tenkan"
         ],
+        "branch_type": "granville",
         "verdict": "PASS",
-        "tags": [],
-        "close": 5931.0,
-        "uwahige_ratio": 0.0884,
-        "order_hint": "逆指値 5960.0円(当日高値+1呼値)・上限6019.6円(+1%)",
-        "sl_hint": "SL候補 5593.0円(高値-6%)",
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 6115.0,
+        "uwahige_ratio": 0.0265,
+        "order_hint": "逆指値 6129.0円(当日高値+1呼値)・上限6190.3円(+1%)",
+        "sl_hint": "SL候補 5751.9円(高値-6%)・想定損失幅6.2%",
+        "order_status": "✅即時可",
+        "deviation_pct": 0.2,
         "earnings_flag": "日程不明",
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "9147",
@@ -8146,32 +9360,40 @@
         "branch": [
           "granville_rebound"
         ],
-        "verdict": "FAIL_INSEN",
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
         "tags": [],
-        "close": 5080.0,
-        "uwahige_ratio": 0.1982,
+        "close": 5200.0,
+        "uwahige_ratio": 0.3425,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "9211",
         "name": "f-code Inc.",
         "branch": [
-          "granville_tenkan",
-          "kenmo_momentum"
+          "kenmo_momentum",
+          "granville_tenkan"
         ],
+        "branch_type": "method",
         "verdict": "FAIL_UWAHIGE",
         "tags": [],
-        "close": 1484.0,
-        "uwahige_ratio": 0.3409,
+        "close": 1496.0,
+        "uwahige_ratio": 0.4505,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "9274",
@@ -8179,31 +9401,83 @@
         "branch": [
           "granville_oshime"
         ],
-        "verdict": "FAIL_INSEN",
+        "branch_type": "granville",
+        "verdict": "PASS",
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 1118.0,
+        "uwahige_ratio": 0.08,
+        "order_hint": "指値 1082.5円(=max(25日線1077.08,押し安値1076.0)+0.5%)・寄り前GD-2%超で取消",
+        "sl_hint": "SL候補 1077.1円(25日線)・想定損失幅0.5%",
+        "order_status": "✅即時可",
+        "deviation_pct": -3.2,
+        "earnings_flag": "日程不明",
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "9302",
+        "name": "三井倉庫ホールディングス",
+        "branch": [
+          "choruko_reversal"
+        ],
+        "branch_type": "method",
+        "verdict": "FAIL_UWAHIGE",
         "tags": [],
-        "close": 1094.0,
-        "uwahige_ratio": 0.45,
+        "close": 3248.0,
+        "uwahige_ratio": 0.2989,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "9324",
+        "name": "安田倉庫（安田倉）",
+        "branch": [
+          "granville_oshime"
+        ],
+        "branch_type": "granville",
+        "verdict": "PASS",
+        "tags": [],
+        "close": 2474.0,
+        "uwahige_ratio": 0.1974,
+        "order_hint": "型不一致: 既に支持帯以下（押し目待ちの前提が崩れている）。25日線割れなら前提消滅=rulebook C_management準拠で見送り。リバ系として狙うなら別途判断",
+        "sl_hint": null,
+        "order_status": "⛔型不一致",
+        "deviation_pct": 1.8,
+        "earnings_flag": "日程不明",
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "9343",
         "name": "ibis inc.",
-        "branch": [],
-        "verdict": "FAIL_UWAHIGE",
-        "tags": [
+        "branch": [
           "変化点🔔🔔"
         ],
-        "close": 814.0,
-        "uwahige_ratio": 0.3273,
+        "branch_type": "changepoint",
+        "verdict": "FAIL_INSEN",
+        "tags": [
+          "抵抗圏(60日高値98%超)"
+        ],
+        "close": 820.0,
+        "uwahige_ratio": 0.0,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "9517",
@@ -8211,18 +9485,59 @@
         "branch": [
           "granville_oshime"
         ],
+        "branch_type": "granville",
         "verdict": "PASS",
-        "tags": [
-          "⚠決算接近"
-        ],
-        "close": 856.0,
-        "uwahige_ratio": 0.2286,
-        "order_hint": "指値 838.3円(=max(25日線834.16,押し安値811.0)+0.5%)・寄り前GD-2%超で取消",
-        "sl_hint": "SL候補 25日線(834.16円)割れ",
-        "earnings_flag": "2026-08-10(2営業日後)",
+        "tags": [],
+        "close": 865.0,
+        "uwahige_ratio": 0.0476,
+        "order_hint": "指値 842.7円(=max(25日線838.48,押し安値811.0)+0.5%)・寄り前GD-2%超で取消",
+        "sl_hint": "SL候補 838.5円(25日線)・想定損失幅0.5%",
+        "order_status": "✅即時可",
+        "deviation_pct": -2.6,
+        "earnings_flag": "⚠決算接近(2026-08-10)",
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00",
-        "headline": "【業態】電力買取り、工場・家庭に販売。ガス小売りも。自社でバイオマス発電。海外進出。(電気・ガス/特定規模電気事業者・再生可能エネルギー)\n【いま】直近は陽線で前日比+2.4%の値動き。個別材料は取得できず材料未確認。\n【調子】堅調(経常益前期比+3.5%、売上高+42.3%・経常益+3.5%・最終益+1.4%・1株益+1.2%)\n【戦略】押し目を待つ型で指値 838.3円(=max(25日線834.16,押し安値811.0)+0.5%)・寄り前GD-2%超で取消、SL候補 25日線(834.16円)割れ(⚠決算接近)。"
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "9519",
+        "name": "レノバ",
+        "branch": [
+          "granville_rebound"
+        ],
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
+        "tags": [],
+        "close": 884.0,
+        "uwahige_ratio": 0.4286,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "9533",
+        "name": "東邦瓦斯",
+        "branch": [
+          "choruko_reversal"
+        ],
+        "branch_type": "method",
+        "verdict": "FAIL_INSEN",
+        "tags": [],
+        "close": 1128.5,
+        "uwahige_ratio": 0.4884,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "9552",
@@ -8230,16 +9545,19 @@
         "branch": [
           "kenmo_momentum"
         ],
-        "verdict": "PASS",
+        "branch_type": "method",
+        "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 980.0,
-        "uwahige_ratio": 0.2353,
-        "order_hint": "逆指値 989.0円(当日高値+1呼値)・上限998.9円(+1%)",
-        "sl_hint": "SL候補 928.7円(高値-6%)",
-        "earnings_flag": "2026-08-14(5営業日後)",
+        "close": 977.0,
+        "uwahige_ratio": 0.2857,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00",
-        "headline": "【業態】M&A仲介事業。デジタルトランスフォーメーションとAI活用のマッチングシステムに強み。(サービス業/M&A・マッチングサービス)\n【いま】直近は陽線で前日比+0.8%の値動き。個別材料は取得できず材料未確認。\n【調子】好調(経常益前期比+18.9%、売上高+34.3%・経常益+18.9%・最終益+24.0%・1株益+41.4%)\n【戦略】上抜け追随の型で逆指値 989.0円(当日高値+1呼値)・上限998.9円(+1%)、SL候補 928.7円(高値-6%)。"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "9627",
@@ -8247,15 +9565,19 @@
         "branch": [
           "granville_tenkan"
         ],
-        "verdict": "PASS_DOJI",
+        "branch_type": "granville",
+        "verdict": "PASS",
         "tags": [],
-        "close": 5780.0,
-        "uwahige_ratio": 0.5643,
-        "order_hint": "逆指値 5874.0円(当日高値+1呼値)・上限5932.7円(+1%)",
-        "sl_hint": "SL候補 5512.2円(高値-6%)",
+        "close": 5918.0,
+        "uwahige_ratio": 0.0326,
+        "order_hint": "逆指値 5934.0円(当日高値+1呼値)・上限5993.3円(+1%)",
+        "sl_hint": "SL候補 5568.6円(高値-6%)・想定損失幅6.2%",
+        "order_status": "✅即時可",
+        "deviation_pct": 0.3,
         "earnings_flag": "日程不明",
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "9854",
@@ -8263,15 +9585,19 @@
         "branch": [
           "granville_rebound"
         ],
+        "branch_type": "granville",
         "verdict": "FAIL_INSEN",
         "tags": [],
-        "close": 278.0,
-        "uwahige_ratio": 0.2222,
+        "close": 279.0,
+        "uwahige_ratio": 0.5,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "9869",
@@ -8279,18 +9605,41 @@
         "branch": [
           "granville_tenkan"
         ],
-        "verdict": "PASS",
+        "branch_type": "granville",
+        "verdict": "FAIL_UWAHIGE",
         "tags": [
-          "⚠決算接近"
+          "抵抗圏(60日高値98%超)"
         ],
-        "close": 6330.0,
-        "uwahige_ratio": 0.1,
-        "order_hint": "逆指値 6350.0円(当日高値+1呼値)・上限6413.5円(+1%)",
-        "sl_hint": "SL候補 5959.6円(高値-6%)",
-        "earnings_flag": "2026-08-07(1営業日後)",
+        "close": 6420.0,
+        "uwahige_ratio": 0.5,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00",
-        "headline": "【業態】加工食品卸の大手。自社ブランド持つ。常温流通品に強み。海外進出志向。(卸売業/専門商社・食品卸)\n【いま】直近は陽線で前日比+1.8%の値動き。個別材料は取得できず材料未確認。\n【調子】踊り場(経常益前期比-3.0%、売上高+3.1%・経常益-3.0%・最終益+8.1%・1株益+11.3%)\n【戦略】上抜け追随の型で逆指値 6350.0円(当日高値+1呼値)・上限6413.5円(+1%)、SL候補 5959.6円(高値-6%)(⚠決算接近)。"
+        "scored_at": "2026-08-07T20:30:00+09:00"
+      },
+      {
+        "code": "9882",
+        "name": "イエローハット（イエロハット）",
+        "branch": [
+          "granville_oshime"
+        ],
+        "branch_type": "granville",
+        "verdict": "FAIL_INSEN",
+        "tags": [],
+        "close": 1745.0,
+        "uwahige_ratio": 0.5769,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-07T20:30:00+09:00"
       },
       {
         "code": "9962",
@@ -8298,15 +9647,19 @@
         "branch": [
           "stf_kakuhen"
         ],
-        "verdict": "FAIL_INSEN",
+        "branch_type": "method",
+        "verdict": "FAIL_UWAHIGE",
         "tags": [],
-        "close": 3806.0,
-        "uwahige_ratio": 0.5632,
+        "close": 3748.0,
+        "uwahige_ratio": 0.4264,
         "order_hint": null,
         "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
         "earnings_flag": null,
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-06T20:30:00+09:00"
+        "scored_at": "2026-08-07T20:30:00+09:00"
       }
     ],
     "log": [
@@ -8703,6 +10056,517 @@
           {
             "code": "9962",
             "verdict": "FAIL_INSEN"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-07",
+        "evaluated": 125,
+        "counts": {
+          "FAIL_INSEN": 62,
+          "PASS": 25,
+          "FAIL_UWAHIGE": 38
+        },
+        "entries": [
+          {
+            "code": "1898",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "1925",
+            "verdict": "PASS"
+          },
+          {
+            "code": "1975",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "1979",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "1980",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "205A",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "212A",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "2175",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "254A",
+            "verdict": "PASS"
+          },
+          {
+            "code": "2602",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "262A",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "2659",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "276A",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "2980",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "2982",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "3091",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "3151",
+            "verdict": "PASS"
+          },
+          {
+            "code": "3374",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "341A",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "3491",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "3776",
+            "verdict": "PASS"
+          },
+          {
+            "code": "3865",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "3880",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "3915",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "3989",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "3993",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "4063",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "4165",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "421A",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "4249",
+            "verdict": "PASS"
+          },
+          {
+            "code": "4320",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "4375",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "4413",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "4419",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "4420",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "4477",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "4483",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "4498",
+            "verdict": "PASS"
+          },
+          {
+            "code": "4516",
+            "verdict": "PASS"
+          },
+          {
+            "code": "4536",
+            "verdict": "PASS"
+          },
+          {
+            "code": "456A",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "4826",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "4847",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "4848",
+            "verdict": "PASS"
+          },
+          {
+            "code": "5027",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "5076",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "5189",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "5243",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "5254",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "5301",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "5406",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "543A",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "547A",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "5537",
+            "verdict": "PASS"
+          },
+          {
+            "code": "5574",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "5590",
+            "verdict": "PASS"
+          },
+          {
+            "code": "5757",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "5892",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "5989",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "6071",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "6080",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "6135",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "6266",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "6284",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "6327",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "6562",
+            "verdict": "PASS"
+          },
+          {
+            "code": "6590",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "6613",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "6632",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "6656",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "6718",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "6785",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "6857",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "7047",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "7085",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "7089",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "7231",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "7318",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "7409",
+            "verdict": "PASS"
+          },
+          {
+            "code": "7611",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "7685",
+            "verdict": "PASS"
+          },
+          {
+            "code": "7730",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "7731",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "7806",
+            "verdict": "PASS"
+          },
+          {
+            "code": "7956",
+            "verdict": "PASS"
+          },
+          {
+            "code": "7970",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "8008",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "8056",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "8081",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "8084",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "8098",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "8141",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "8242",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "8276",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "8361",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "8366",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "8367",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "8388",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "8511",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "8522",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "8570",
+            "verdict": "PASS"
+          },
+          {
+            "code": "8628",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "8697",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "8707",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "8844",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "8876",
+            "verdict": "PASS"
+          },
+          {
+            "code": "9031",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "9037",
+            "verdict": "PASS"
+          },
+          {
+            "code": "9072",
+            "verdict": "PASS"
+          },
+          {
+            "code": "9101",
+            "verdict": "PASS"
+          },
+          {
+            "code": "9147",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "9211",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "9274",
+            "verdict": "PASS"
+          },
+          {
+            "code": "9302",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "9324",
+            "verdict": "PASS"
+          },
+          {
+            "code": "9343",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "9517",
+            "verdict": "PASS"
+          },
+          {
+            "code": "9519",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "9533",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "9552",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "9627",
+            "verdict": "PASS"
+          },
+          {
+            "code": "9854",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "9869",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "9882",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "9962",
+            "verdict": "FAIL_UWAHIGE"
           }
         ]
       }

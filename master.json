@@ -3978,18 +3978,20 @@
         "source": "changepoint_watch"
       },
       "night_gate": {
-        "generated_at": "2026-08-07T20:30:00+09:00",
+        "generated_at": "2026-08-09T08:30:00+09:00",
         "trading_day": "2026-08-07",
+        "mode": "week_prep(Sunday)",
         "status": "done",
-        "pool_size": 125,
-        "evaluated": 125,
-        "pass": 25,
+        "pool_size": 133,
+        "evaluated": 133,
+        "pass": 26,
         "pass_doji": 0,
-        "fail_uwahige": 38,
-        "fail_insen": 62,
+        "fail_uwahige": 39,
+        "fail_insen": 68,
         "skip": 0,
         "deregistered": 0,
         "unmerged_pr_candidates": 0,
+        "headlines_generated": 12,
         "source": "night_gate"
       }
     },
@@ -6809,8 +6811,8 @@
       "9211": {
         "name": "f-code Inc.",
         "branches": [
-          "kenmo_momentum",
-          "granville_tenkan"
+          "granville_tenkan",
+          "kenmo_momentum"
         ],
         "first_seen": "2026-08-06",
         "last_seen": "2026-08-07",
@@ -6991,8 +6993,8 @@
       "5254": {
         "name": "Arent, Inc.",
         "branches": [
-          "kenmo_momentum",
-          "granville_oshime"
+          "granville_oshime",
+          "kenmo_momentum"
         ],
         "first_seen": "2026-08-06",
         "last_seen": "2026-08-07",
@@ -7347,10 +7349,11 @@
       "4249": {
         "name": "森六",
         "branches": [
-          "kenmo_newhigh"
+          "kenmo_newhigh",
+          "stf_kakuhen"
         ],
         "first_seen": "2026-08-06",
-        "last_seen": "2026-08-06",
+        "last_seen": "2026-08-07",
         "branch_type": "method"
       },
       "8242": {
@@ -7803,6 +7806,78 @@
         "first_seen": "2026-08-07",
         "last_seen": "2026-08-07",
         "branch_type": "changepoint"
+      },
+      "6324": {
+        "name": "ハーモニック・ドライブ・システムズ（ハーモニック）",
+        "branches": [
+          "stf_kakuhen"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
+      },
+      "9308": {
+        "name": "乾汽船",
+        "branches": [
+          "stf_kakuhen"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
+      },
+      "6134": {
+        "name": "ＦＵＪＩ",
+        "branches": [
+          "stf_kakuhen"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
+      },
+      "7480": {
+        "name": "スズデン",
+        "branches": [
+          "stf_kakuhen"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
+      },
+      "3036": {
+        "name": "アルコニックス（アルコニクス）",
+        "branches": [
+          "stf_kakuhen"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
+      },
+      "7267": {
+        "name": "ホンダ",
+        "branches": [
+          "stf_kakuhen"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
+      },
+      "6490": {
+        "name": "ＰＩＬＬＡＲ",
+        "branches": [
+          "stf_kakuhen"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
+      },
+      "7637": {
+        "name": "白銅",
+        "branches": [
+          "stf_kakuhen"
+        ],
+        "first_seen": "2026-08-07",
+        "last_seen": "2026-08-07",
+        "branch_type": "method"
       }
     },
     "results": [
@@ -7822,9 +7897,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "1925",
@@ -7838,13 +7916,18 @@
         "close": 4587.0,
         "uwahige_ratio": 0.1875,
         "order_hint": "逆指値 4604.0円(当日高値+1呼値)・上限4650.0円(+1%)",
-        "sl_hint": "SL候補 4323.1円(高値-6%)・想定損失幅6.1%",
+        "sl_hint": "SL候補 4323.1円(高値-6%)",
         "order_status": "✅即時可",
         "deviation_pct": 0.4,
         "earnings_flag": "日程不明",
-        "headline": "【業態】建設業(業種分類。詳細な事業内容はkabutan有料会員限定のため取得不可)。\n【いま】陽線で反発、直近5営業日-1.9%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】堅調(経常前年同期比+9.9%、直近四半期実績ベース)\n【戦略】上抜けトリガーの逆指値で当夜即時検討可、SL接近/25日線割れなら見切り。",
+        "gyoseki_grade": "🔻悪化",
+        "gyoseki_score": 3,
+        "gyoseki_flags": [
+          "質注意"
+        ],
+        "headline": "【業態】建設業(業種分類。詳細な事業内容はkabutan有料会員限定のため取得不可)。\n【いま】陽線で反発も直近5営業日-2.0%。個別ニュースは取得不可・材料未確認。\n【調子】🔻悪化（3/13）— 経常-29.7%の大幅減益でオーバーライド。⚠業績基調が下向き\n【戦略】モメ系、高値超えの逆指値4,604円(SL4,323円)で✅即時可だが業績基調の悪化に留意。",
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "1975",
@@ -7862,9 +7945,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "1979",
@@ -7883,9 +7969,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "1980",
@@ -7903,9 +7992,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "205A",
@@ -7923,9 +8015,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "212A",
@@ -7935,9 +8030,7 @@
         ],
         "branch_type": "method",
         "verdict": "FAIL_UWAHIGE",
-        "tags": [
-          "抵抗圏(60日高値98%超)"
-        ],
+        "tags": [],
         "close": 3005.0,
         "uwahige_ratio": 0.2198,
         "order_hint": null,
@@ -7945,9 +8038,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "2175",
@@ -7965,9 +8061,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "254A",
@@ -7981,13 +8080,19 @@
         "close": 1177.0,
         "uwahige_ratio": 0.0465,
         "order_hint": "指値 1177.0円(当日終値以下)",
-        "sl_hint": "SL候補 1132.0円(直近5日安値)・想定損失幅3.8%",
+        "sl_hint": "SL候補 1132.0円(直近5日安値)",
         "order_status": "✅即時可",
         "deviation_pct": 0.0,
         "earnings_flag": "日程不明",
-        "headline": null,
+        "gyoseki_grade": "⚡好調",
+        "gyoseki_score": 7,
+        "gyoseki_flags": [
+          "レバレッジ比算出不可(黒字転換)",
+          "C軸データ不足(0点扱い)"
+        ],
+        "headline": "【業態】証券・商品分類の企業(業種分類。詳細な事業内容はkabutan有料会員限定のため取得不可)。\n【いま】陽線でグランビル下げすぎリバーサル局面、直近5営業日+0.1%とほぼ横ばい。直近四半期は売上前年比-39.9%と急減速。個別ニュースは取得不可・材料未確認。\n【調子】⚡好調（7/13）— 通期は売上+290%・黒字転換予想も直近Qは前年比-39.9%と急減速(D=0)\n【戦略】リバ系、当日終値以下の指値1,177円(SL1,132円)で✅即時可。通期予想と直近Qの乖離が大きく前提の再確認を推奨。",
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "2602",
@@ -8005,9 +8110,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "262A",
@@ -8025,9 +8133,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "2659",
@@ -8037,9 +8148,7 @@
         ],
         "branch_type": "granville",
         "verdict": "FAIL_UWAHIGE",
-        "tags": [
-          "抵抗圏(60日高値98%超)"
-        ],
+        "tags": [],
         "close": 3355.0,
         "uwahige_ratio": 0.4211,
         "order_hint": null,
@@ -8047,9 +8156,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "276A",
@@ -8067,9 +8179,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "2980",
@@ -8087,9 +8202,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "2982",
@@ -8107,9 +8225,35 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
+      },
+      {
+        "code": "3036",
+        "name": "アルコニックス（アルコニクス）",
+        "branch": [
+          "stf_kakuhen"
+        ],
+        "branch_type": "method",
+        "verdict": "FAIL_INSEN",
+        "tags": [],
+        "close": 3520.0,
+        "uwahige_ratio": 0.48,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "3091",
@@ -8127,9 +8271,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "3151",
@@ -8142,14 +8289,19 @@
         "tags": [],
         "close": 1586.0,
         "uwahige_ratio": 0.2174,
-        "order_hint": "型不一致: 既に支持帯以下（押し目待ちの前提が崩れている）。25日線割れなら前提消滅=rulebook C_management準拠で見送り。リバ系として狙うなら別途判断",
-        "sl_hint": null,
+        "order_hint": "指値 1625.6円(max(25日線1617.5,押し安値1492.0)+0.5%)・寄り前GD-2%超で取消",
+        "sl_hint": "SL候補 1617.5円(25日線)",
         "order_status": "⛔型不一致",
         "deviation_pct": 2.5,
         "earnings_flag": "日程不明",
-        "headline": "【業態】卸売業(業種分類。詳細な事業内容はkabutan有料会員限定のため取得不可)。\n【いま】陽線で反発、直近5営業日-5.4%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】減速(経常前年同期比-16.1%、直近四半期実績ベース)\n【戦略】押し目系判定だが型不一致/要確認のため当夜の新規発注は見送り、翌営業日以降に再判定。",
+        "gyoseki_grade": "🔻悪化",
+        "gyoseki_score": 1,
+        "gyoseki_flags": [
+          "質注意"
+        ],
+        "headline": "【業態】卸売業分類の企業(業種分類。詳細な事業内容はkabutan有料会員限定のため取得不可)。\n【いま】グランビル押し目局面だが直近5営業日-5.4%と下押し。個別ニュースは取得不可・材料未確認。\n【調子】🔻悪化（1/13）— 経常-36.1%の大幅減益でオーバーライド。⚠業績基調が下向き\n【戦略】⛔型不一致・押し目の支持帯(25日線1,617.5円)を既に下回り前提崩れ。25日線割れなら見送り、発注対象外。",
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "3374",
@@ -8159,9 +8311,7 @@
         ],
         "branch_type": "method",
         "verdict": "FAIL_INSEN",
-        "tags": [
-          "抵抗圏(60日高値98%超)"
-        ],
+        "tags": [],
         "close": 3510.0,
         "uwahige_ratio": 0.0,
         "order_hint": null,
@@ -8169,9 +8319,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "341A",
@@ -8189,9 +8342,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "3491",
@@ -8209,9 +8365,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "3776",
@@ -8225,13 +8384,19 @@
         "close": 252.0,
         "uwahige_ratio": 0.0,
         "order_hint": "指値 252.0円(当日終値以下)",
-        "sl_hint": "SL候補 230.0円(直近5日安値)・想定損失幅8.7%",
+        "sl_hint": "SL候補 230.0円(直近5日安値)",
         "order_status": "✅即時可",
         "deviation_pct": 0.0,
         "earnings_flag": "日程不明",
+        "gyoseki_grade": "⚠減速",
+        "gyoseki_score": 2,
+        "gyoseki_flags": [
+          "減収のため上限=減速",
+          "質注意"
+        ],
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "3865",
@@ -8249,9 +8414,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "3880",
@@ -8261,9 +8429,7 @@
         ],
         "branch_type": "granville",
         "verdict": "FAIL_UWAHIGE",
-        "tags": [
-          "抵抗圏(60日高値98%超)"
-        ],
+        "tags": [],
         "close": 990.0,
         "uwahige_ratio": 0.2308,
         "order_hint": null,
@@ -8271,9 +8437,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "3915",
@@ -8291,9 +8460,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "3989",
@@ -8311,9 +8483,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "3993",
@@ -8331,9 +8506,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "4063",
@@ -8351,9 +8529,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "4165",
@@ -8371,9 +8552,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "421A",
@@ -8391,31 +8575,38 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "4249",
         "name": "森六",
         "branch": [
-          "kenmo_newhigh"
+          "kenmo_newhigh",
+          "stf_kakuhen"
         ],
         "branch_type": "method",
         "verdict": "PASS",
         "tags": [
-          "抵抗圏(60日高値98%超)"
+          "抵抗圏厳格"
         ],
         "close": 2833.0,
         "uwahige_ratio": 0.0952,
         "order_hint": "逆指値 2842.0円(当日高値+1呼値)・上限2870.4円(+1%)",
-        "sl_hint": "SL候補 2670.5円(高値-6%)・想定損失幅6.0%",
+        "sl_hint": "SL候補 2670.5円(高値-6%)",
         "order_status": "✅即時可",
         "deviation_pct": 0.3,
         "earnings_flag": "日程不明",
-        "headline": "【業態】化学(業種分類。詳細な事業内容はkabutan有料会員限定のため取得不可)。\n【いま】陽線で反発、60日高値圏での上抜けを試す動き、直近5営業日+12.6%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】好調(経常前年同期比+150.0%、直近四半期実績ベース)\n【戦略】上抜けトリガーの逆指値で当夜即時検討可、SL接近/25日線割れなら見切り。",
+        "gyoseki_grade": "🚀絶好調",
+        "gyoseki_score": 9,
+        "gyoseki_flags": [],
+        "headline": "【業態】自動車部品・化成品を手がける化学メーカー。\n【いま】抵抗圏での陽線(60日高値近辺)、直近5営業日+12.6%。4-6月期経常利益が前年同期比+154%。個別ニュースは取得不可・材料未確認。\n【調子】🚀絶好調（9/13）— 売上+45.4%・経常+40.2%で加速\n【戦略】モメ系、高値超えの逆指値2,842円(SL2,671円)で✅即時可。",
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "4320",
@@ -8433,9 +8624,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "4375",
@@ -8453,9 +8647,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "4413",
@@ -8474,9 +8671,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "4419",
@@ -8495,9 +8695,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "4420",
@@ -8515,9 +8718,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "4477",
@@ -8536,9 +8742,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "4483",
@@ -8548,9 +8757,7 @@
         ],
         "branch_type": "changepoint",
         "verdict": "FAIL_INSEN",
-        "tags": [
-          "抵抗圏(60日高値98%超)"
-        ],
+        "tags": [],
         "close": 3375.0,
         "uwahige_ratio": 0.2174,
         "order_hint": null,
@@ -8558,9 +8765,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "4498",
@@ -8571,19 +8781,21 @@
         "branch_type": "changepoint",
         "verdict": "PASS",
         "tags": [
-          "抵抗圏(60日高値98%超)",
-          "🔒実弾封印中"
+          "抵抗圏厳格"
         ],
         "close": 1265.0,
         "uwahige_ratio": 0.0,
-        "order_hint": "指値 1265.0円(発火日終値・追撃禁止)",
-        "sl_hint": "SL候補 1165.0円(直近5日安値)・想定損失幅7.9%",
+        "order_hint": "指値 1265.0円(発火日終値)・🔒実弾封印中(PL3紙ログ収集中・昇格判定前)",
+        "sl_hint": "SL候補 1165.0円(直近5日安値)",
         "order_status": "✅即時可",
         "deviation_pct": 0.0,
         "earnings_flag": "日程不明",
+        "gyoseki_grade": "✅順調",
+        "gyoseki_score": 4,
+        "gyoseki_flags": [],
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "4516",
@@ -8597,13 +8809,18 @@
         "close": 3579.0,
         "uwahige_ratio": 0.1695,
         "order_hint": "指値 3579.0円(当日終値以下)",
-        "sl_hint": "SL候補 3376.0円(直近5日安値)・想定損失幅5.7%",
+        "sl_hint": "SL候補 3376.0円(直近5日安値)",
         "order_status": "✅即時可",
         "deviation_pct": 0.0,
         "earnings_flag": "日程不明",
-        "headline": "【業態】医薬品。\n【いま】陽線で反発、直近5営業日+5.3%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】好調(経常前年同期比+23.4%、直近四半期実績ベース)\n【戦略】リバウンド狙いの指値で当夜即時検討可、SL接近/25日線割れなら見切り。",
+        "gyoseki_grade": "⚡好調",
+        "gyoseki_score": 6,
+        "gyoseki_flags": [
+          "質注意"
+        ],
+        "headline": "【業態】医薬品メーカー(業種分類。詳細な事業内容はkabutan有料会員限定のため取得不可)。\n【いま】陽線で反発、直近5営業日+5.3%。個別ニュースは取得不可・材料未確認。\n【調子】⚡好調（6/13）— 経常+5.9%とA軸(売上+17.1%)に比べ利益の伸びが鈍い(質注意)\n【戦略】リバ系、当日終値以下の指値3,579円(SL3,376円)で✅即時可。",
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "4536",
@@ -8617,13 +8834,18 @@
         "close": 1933.0,
         "uwahige_ratio": 0.0076,
         "order_hint": "指値 1933.0円(当日終値以下)",
-        "sl_hint": "SL候補 1803.0円(直近5日安値)・想定損失幅6.7%",
+        "sl_hint": "SL候補 1803.0円(直近5日安値)",
         "order_status": "✅即時可",
         "deviation_pct": 0.0,
         "earnings_flag": "日程不明",
-        "headline": "【業態】医薬品(業種分類。詳細な事業内容はkabutan有料会員限定のため取得不可)。\n【いま】陽線で反発、直近5営業日+2.6%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】堅調(経常前年同期比+11.9%、直近四半期実績ベース)\n【戦略】リバウンド狙いの指値で当夜即時検討可、SL接近/25日線割れなら見切り。",
+        "gyoseki_grade": "✅順調",
+        "gyoseki_score": 3,
+        "gyoseki_flags": [
+          "税引前代替"
+        ],
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "456A",
@@ -8641,9 +8863,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "4826",
@@ -8653,9 +8878,7 @@
         ],
         "branch_type": "granville",
         "verdict": "FAIL_UWAHIGE",
-        "tags": [
-          "抵抗圏(60日高値98%超)"
-        ],
+        "tags": [],
         "close": 525.0,
         "uwahige_ratio": 0.3125,
         "order_hint": null,
@@ -8663,9 +8886,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "4847",
@@ -8675,9 +8901,7 @@
         ],
         "branch_type": "granville",
         "verdict": "FAIL_INSEN",
-        "tags": [
-          "抵抗圏(60日高値98%超)"
-        ],
+        "tags": [],
         "close": 1236.0,
         "uwahige_ratio": 0.3782,
         "order_hint": null,
@@ -8685,9 +8909,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "4848",
@@ -8701,13 +8928,18 @@
         "close": 1680.0,
         "uwahige_ratio": 0.0513,
         "order_hint": "逆指値 1683.0円(当日高値+1呼値)・上限1699.8円(+1%)",
-        "sl_hint": "SL候補 1581.1円(高値-6%)・想定損失幅6.1%",
+        "sl_hint": "SL候補 1581.1円(高値-6%)",
         "order_status": "✅即時可",
         "deviation_pct": 0.2,
         "earnings_flag": "日程不明",
+        "gyoseki_grade": "⚡好調",
+        "gyoseki_score": 6,
+        "gyoseki_flags": [
+          "質注意"
+        ],
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "5027",
@@ -8717,9 +8949,7 @@
         ],
         "branch_type": "method",
         "verdict": "FAIL_UWAHIGE",
-        "tags": [
-          "抵抗圏(60日高値98%超)"
-        ],
+        "tags": [],
         "close": 568.0,
         "uwahige_ratio": 0.5714,
         "order_hint": null,
@@ -8727,9 +8957,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "5076",
@@ -8747,9 +8980,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "5189",
@@ -8767,9 +9003,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "5243",
@@ -8787,16 +9026,19 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "5254",
         "name": "Arent, Inc.",
         "branch": [
-          "kenmo_momentum",
-          "granville_oshime"
+          "granville_oshime",
+          "kenmo_momentum"
         ],
         "branch_type": "method",
         "verdict": "FAIL_INSEN",
@@ -8808,9 +9050,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "5301",
@@ -8828,9 +9073,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "5406",
@@ -8840,9 +9088,7 @@
         ],
         "branch_type": "granville",
         "verdict": "FAIL_UWAHIGE",
-        "tags": [
-          "抵抗圏(60日高値98%超)"
-        ],
+        "tags": [],
         "close": 2040.0,
         "uwahige_ratio": 0.5728,
         "order_hint": null,
@@ -8850,9 +9096,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "543A",
@@ -8870,9 +9119,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "547A",
@@ -8890,9 +9142,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "5537",
@@ -8906,13 +9161,18 @@
         "close": 3055.0,
         "uwahige_ratio": 0.0893,
         "order_hint": "逆指値 3070.0円(当日高値+1呼値)・上限3100.7円(+1%)",
-        "sl_hint": "SL候補 2881.1円(高値-6%)・想定損失幅6.2%",
+        "sl_hint": "SL候補 2881.1円(高値-6%)",
         "order_status": "✅即時可",
         "deviation_pct": 0.5,
         "earnings_flag": "次回決算2026-08-13(4営業日後)",
-        "headline": "【業態】空き家・訳あり不動産の買取再生事業。\n【いま】陽線で反発、直近5営業日+18.4%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】業績データ乏しい(前年同期比データなし・新規上場等)\n【戦略】上抜けトリガーの逆指値で当夜即時検討可、SL接近/25日線割れなら見切り。",
+        "gyoseki_grade": "判定保留(IPO直後・前年同期比較データなし)",
+        "gyoseki_score": null,
+        "gyoseki_flags": [
+          "D軸データ不足(0点扱い)"
+        ],
+        "headline": "【業態】空き家・訳あり不動産を買い取り再生して販売する不動産会社。\n【いま】陽線で続伸、直近5営業日+18.4%。個別ニュースは取得不可・材料未確認。\n【調子】判定保留(IPO直後・前年同期比較データなし) — 通期予想は売上+31.6%・経常+36.5%\n【戦略】モメ系、高値超えの逆指値3,070円(SL2,881円)で✅即時可。決算8/13が4営業日後、IPO直後で参考データが薄い点に留意。",
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "5574",
@@ -8930,9 +9190,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "5590",
@@ -8946,13 +9209,16 @@
         "close": 694.0,
         "uwahige_ratio": 0.0714,
         "order_hint": "逆指値 696.0円(当日高値+1呼値)・上限703.0円(+1%)",
-        "sl_hint": "SL候補 653.3円(高値-6%)・想定損失幅6.1%",
+        "sl_hint": "SL候補 653.3円(高値-6%)",
         "order_status": "✅即時可",
         "deviation_pct": 0.3,
         "earnings_flag": "次回決算2026-08-13(4営業日後)",
-        "headline": "【業態】情報・通信業(業種分類。詳細な事業内容はkabutan有料会員限定のため取得不可)。\n【いま】陽線で反発、直近5営業日+3.9%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】好調(経常前年同期比+210.0%、直近四半期実績ベース)\n【戦略】上抜けトリガーの逆指値で当夜即時検討可、SL接近/25日線割れなら見切り。",
+        "gyoseki_grade": "🚀絶好調",
+        "gyoseki_score": 9,
+        "gyoseki_flags": [],
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "5757",
@@ -8970,9 +9236,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "5892",
@@ -8990,9 +9259,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "5989",
@@ -9010,9 +9282,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "6071",
@@ -9030,9 +9305,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "6080",
@@ -9042,9 +9320,7 @@
         ],
         "branch_type": "changepoint",
         "verdict": "FAIL_INSEN",
-        "tags": [
-          "抵抗圏(60日高値98%超)"
-        ],
+        "tags": [],
         "close": 4020.0,
         "uwahige_ratio": 0.2857,
         "order_hint": null,
@@ -9052,9 +9328,35 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
+      },
+      {
+        "code": "6134",
+        "name": "ＦＵＪＩ",
+        "branch": [
+          "stf_kakuhen"
+        ],
+        "branch_type": "method",
+        "verdict": "FAIL_INSEN",
+        "tags": [],
+        "close": 7909.0,
+        "uwahige_ratio": 0.0361,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "6135",
@@ -9072,9 +9374,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "6266",
@@ -9092,9 +9397,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "6284",
@@ -9112,9 +9420,35 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
+      },
+      {
+        "code": "6324",
+        "name": "ハーモニック・ドライブ・システムズ（ハーモニック）",
+        "branch": [
+          "stf_kakuhen"
+        ],
+        "branch_type": "method",
+        "verdict": "PASS",
+        "tags": [],
+        "close": 7160.0,
+        "uwahige_ratio": 0.22,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": "日程不明",
+        "gyoseki_grade": "🚀絶好調",
+        "gyoseki_score": 10,
+        "gyoseki_flags": [],
+        "headline": "【業態】ロボット向け精密減速機を手がける機械メーカー。\n【いま】陽線、直近5営業日+16.6%。4-6月期経常利益が前年同期比+13.1倍と急拡大。個別ニュースは取得不可・材料未確認。\n【調子】🚀絶好調（10/13）— 経常+220%(3.2倍)、レバレッジ・進捗とも良好\n【戦略】手法チップ(STF)のみで押し目系/モメ系/リバ系いずれにも該当せず、提案は省略。",
+        "source": "main",
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "6327",
@@ -9132,9 +9466,35 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
+      },
+      {
+        "code": "6490",
+        "name": "ＰＩＬＬＡＲ",
+        "branch": [
+          "stf_kakuhen"
+        ],
+        "branch_type": "method",
+        "verdict": "FAIL_INSEN",
+        "tags": [],
+        "close": 10280.0,
+        "uwahige_ratio": 0.1286,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "6562",
@@ -9145,18 +9505,21 @@
         "branch_type": "method",
         "verdict": "PASS",
         "tags": [
-          "抵抗圏(60日高値98%超)"
+          "抵抗圏厳格"
         ],
         "close": 1078.0,
         "uwahige_ratio": 0.0,
         "order_hint": "逆指値 1079.0円(当日高値+1呼値)・上限1089.8円(+1%)",
-        "sl_hint": "SL候補 1013.3円(高値-6%)・想定損失幅6.1%",
+        "sl_hint": "SL候補 1013.3円(高値-6%)",
         "order_status": "✅即時可",
         "deviation_pct": 0.1,
         "earnings_flag": "次回決算2026-08-14(5営業日後)",
-        "headline": "【業態】広告技術(AdTech)SSP/DSPプラットフォーム。\n【いま】陽線で反発、60日高値圏での上抜けを試す動き、直近5営業日+7.4%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】業績データ乏しい(kabutan四半期進捗データ取得不可)\n【戦略】上抜けトリガーの逆指値で当夜即時検討可、SL接近/25日線割れなら見切り。",
+        "gyoseki_grade": "🚀絶好調",
+        "gyoseki_score": 8,
+        "gyoseki_flags": [],
+        "headline": "【業態】広告配信テクノロジー(SSP/DSP)を提供するアドテク企業。\n【いま】抵抗圏での陽線(60日高値近辺)、直近5営業日+7.4%。個別ニュースは取得不可・材料未確認。\n【調子】🚀絶好調（8/13）— 経常+72.8%、レバレッジ比C=2で利益が売上以上に伸長\n【戦略】モメ系、高値超えの逆指値1,079円(SL1,013円)で✅即時可。決算8/14が5営業日後。",
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "6590",
@@ -9174,9 +9537,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "6613",
@@ -9194,9 +9560,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "6632",
@@ -9214,9 +9583,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "6656",
@@ -9234,9 +9606,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "6718",
@@ -9246,9 +9621,7 @@
         ],
         "branch_type": "granville",
         "verdict": "FAIL_UWAHIGE",
-        "tags": [
-          "抵抗圏(60日高値98%超)"
-        ],
+        "tags": [],
         "close": 2829.0,
         "uwahige_ratio": 0.25,
         "order_hint": null,
@@ -9256,9 +9629,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "6785",
@@ -9276,9 +9652,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "6857",
@@ -9296,9 +9675,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "7047",
@@ -9316,9 +9698,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "7085",
@@ -9336,9 +9721,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "7089",
@@ -9357,9 +9745,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "7231",
@@ -9369,9 +9760,7 @@
         ],
         "branch_type": "granville",
         "verdict": "FAIL_UWAHIGE",
-        "tags": [
-          "抵抗圏(60日高値98%超)"
-        ],
+        "tags": [],
         "close": 2932.0,
         "uwahige_ratio": 0.3077,
         "order_hint": null,
@@ -9379,9 +9768,35 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
+      },
+      {
+        "code": "7267",
+        "name": "ホンダ",
+        "branch": [
+          "stf_kakuhen"
+        ],
+        "branch_type": "method",
+        "verdict": "FAIL_UWAHIGE",
+        "tags": [],
+        "close": 1683.0,
+        "uwahige_ratio": 0.1875,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "7318",
@@ -9399,9 +9814,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "7409",
@@ -9415,13 +9833,39 @@
         "close": 1615.0,
         "uwahige_ratio": 0.225,
         "order_hint": "逆指値 1634.0円(当日高値+1呼値)・上限1650.3円(+1%)",
-        "sl_hint": "SL候補 1535.0円(高値-6%)・想定損失幅6.1%",
+        "sl_hint": "SL候補 1535.0円(高値-6%)",
         "order_status": "✅即時可",
         "deviation_pct": 1.2,
         "earnings_flag": "次回決算2026-08-13(4営業日後)",
-        "headline": "【業態】航空機エンジン部品の精密加工。\n【いま】陽線で反発、直近5営業日+3.3%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】好調(経常前年同期比+81.5%、直近四半期実績ベース)\n【戦略】上抜けトリガーの逆指値で当夜即時検討可、SL接近/25日線割れなら見切り。",
+        "gyoseki_grade": "🔥確変",
+        "gyoseki_score": 11,
+        "gyoseki_flags": [],
+        "headline": "【業態】航空機エンジン部品を精密加工する防衛・航空機部品メーカー。\n【いま】陽線で25日線上を維持、直近5営業日+3.3%。個別ニュースはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】🔥確変（11/13）— 売上+40.2%・経常+78.8%で加速、レバレッジも高水準\n【戦略】モメ系、高値超えの逆指値1,634円(SL1,535円)で✅即時可。決算8/13が4営業日後のため深追い注意。",
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
+      },
+      {
+        "code": "7480",
+        "name": "スズデン",
+        "branch": [
+          "stf_kakuhen"
+        ],
+        "branch_type": "method",
+        "verdict": "FAIL_INSEN",
+        "tags": [],
+        "close": 3385.0,
+        "uwahige_ratio": 0.186,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "7611",
@@ -9439,9 +9883,35 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
+      },
+      {
+        "code": "7637",
+        "name": "白銅",
+        "branch": [
+          "stf_kakuhen"
+        ],
+        "branch_type": "method",
+        "verdict": "FAIL_INSEN",
+        "tags": [],
+        "close": 3610.0,
+        "uwahige_ratio": 0.0263,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "7685",
@@ -9456,13 +9926,16 @@
         "close": 3060.0,
         "uwahige_ratio": 0.0,
         "order_hint": "指値 3060.0円(当日終値以下)",
-        "sl_hint": "SL候補 2910.0円(直近5日安値)・想定損失幅4.9%",
+        "sl_hint": "SL候補 2910.0円(直近5日安値)",
         "order_status": "✅即時可",
         "deviation_pct": 0.0,
         "earnings_flag": "次回決算2026-08-14(5営業日後)",
-        "headline": "【業態】リユース関連。\n【いま】陽線で反発、直近5営業日+3.0%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】好調(経常前年同期比+120.0%、直近四半期実績ベース)\n【戦略】リバウンド狙いの指値で当夜即時検討可、SL接近/25日線割れなら見切り。",
+        "gyoseki_grade": "🔥確変",
+        "gyoseki_score": 11,
+        "gyoseki_flags": [],
+        "headline": "【業態】リユース(買取・販売)関連事業を展開する企業(業種分類は卸売業)。\n【いま】陽線、直近5営業日+3.0%。個別ニュースは取得不可・材料未確認。\n【調子】🔥確変（11/13）— 売上+39.1%・経常+79.1%で加速\n【戦略】リバ系、当日終値以下の指値3,060円(SL2,910円)で✅即時可。決算8/14が5営業日後。",
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "7730",
@@ -9480,9 +9953,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "7731",
@@ -9501,9 +9977,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "7806",
@@ -9516,14 +9995,17 @@
         "tags": [],
         "close": 8170.0,
         "uwahige_ratio": 0.0299,
-        "order_hint": "指値 7729.7円(=max(25日線7691.20,押し安値7110.0)+0.5%)・寄り前GD-2%超で取消",
-        "sl_hint": "SL候補 7691.2円(25日線)・想定損失幅0.5%",
+        "order_hint": "指値 7729.7円(max(25日線7691.2,押し安値7110.0)+0.5%)・寄り前GD-2%超で取消",
+        "sl_hint": "SL候補 7691.2円(25日線)",
         "order_status": "✅即時可",
         "deviation_pct": -5.4,
         "earnings_flag": "日程不明",
+        "gyoseki_grade": "🚀絶好調",
+        "gyoseki_score": 10,
+        "gyoseki_flags": [],
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "7956",
@@ -9534,18 +10016,21 @@
         "branch_type": "granville",
         "verdict": "PASS",
         "tags": [
-          "抵抗圏(60日高値98%超)"
+          "抵抗圏厳格"
         ],
         "close": 2092.5,
-        "uwahige_ratio": 0.0211,
-        "order_hint": "指値 2043.4円(=max(25日線2033.20,押し安値1938.5)+0.5%)・寄り前GD-2%超で取消",
-        "sl_hint": "SL候補 2033.2円(25日線)・想定損失幅0.5%",
+        "uwahige_ratio": 0.0212,
+        "order_hint": "指値 2043.4円(max(25日線2033.2,押し安値1931.0)+0.5%)・寄り前GD-2%超で取消",
+        "sl_hint": "SL候補 2033.2円(25日線)",
         "order_status": "✅即時可",
         "deviation_pct": -2.3,
         "earnings_flag": "日程不明",
+        "gyoseki_grade": "✅順調",
+        "gyoseki_score": 3,
+        "gyoseki_flags": [],
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "7970",
@@ -9563,9 +10048,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "8008",
@@ -9583,9 +10071,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "8056",
@@ -9603,9 +10094,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "8081",
@@ -9623,9 +10117,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "8084",
@@ -9635,9 +10132,7 @@
         ],
         "branch_type": "method",
         "verdict": "FAIL_INSEN",
-        "tags": [
-          "抵抗圏(60日高値98%超)"
-        ],
+        "tags": [],
         "close": 4560.0,
         "uwahige_ratio": 0.0,
         "order_hint": null,
@@ -9645,9 +10140,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "8098",
@@ -9657,9 +10155,7 @@
         ],
         "branch_type": "granville",
         "verdict": "FAIL_UWAHIGE",
-        "tags": [
-          "抵抗圏(60日高値98%超)"
-        ],
+        "tags": [],
         "close": 4050.0,
         "uwahige_ratio": 0.2,
         "order_hint": null,
@@ -9667,9 +10163,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "8141",
@@ -9687,9 +10186,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "8242",
@@ -9707,9 +10209,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "8276",
@@ -9727,9 +10232,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "8361",
@@ -9747,9 +10255,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "8366",
@@ -9767,9 +10278,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "8367",
@@ -9787,9 +10301,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "8388",
@@ -9799,9 +10316,7 @@
         ],
         "branch_type": "method",
         "verdict": "FAIL_INSEN",
-        "tags": [
-          "抵抗圏(60日高値98%超)"
-        ],
+        "tags": [],
         "close": 8930.0,
         "uwahige_ratio": 0.3704,
         "order_hint": null,
@@ -9809,9 +10324,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "8511",
@@ -9821,9 +10339,7 @@
         ],
         "branch_type": "granville",
         "verdict": "FAIL_UWAHIGE",
-        "tags": [
-          "抵抗圏(60日高値98%超)"
-        ],
+        "tags": [],
         "close": 2550.0,
         "uwahige_ratio": 0.3551,
         "order_hint": null,
@@ -9831,9 +10347,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "8522",
@@ -9851,9 +10370,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "8570",
@@ -9864,18 +10386,23 @@
         "branch_type": "granville",
         "verdict": "PASS",
         "tags": [
-          "抵抗圏(60日高値98%超)"
+          "抵抗圏厳格"
         ],
         "close": 1618.0,
         "uwahige_ratio": 0.0921,
         "order_hint": "逆指値 1622.5円(当日高値+1呼値)・上限1638.7円(+1%)",
-        "sl_hint": "SL候補 1524.2円(高値-6%)・想定損失幅6.1%",
+        "sl_hint": "SL候補 1524.2円(高値-6%)",
         "order_status": "✅即時可",
         "deviation_pct": 0.3,
         "earnings_flag": "日程不明",
+        "gyoseki_grade": "🔻悪化",
+        "gyoseki_score": 3,
+        "gyoseki_flags": [
+          "質注意"
+        ],
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "8628",
@@ -9893,9 +10420,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "8697",
@@ -9906,9 +10436,7 @@
         ],
         "branch_type": "method",
         "verdict": "FAIL_INSEN",
-        "tags": [
-          "抵抗圏(60日高値98%超)"
-        ],
+        "tags": [],
         "close": 2264.0,
         "uwahige_ratio": 0.0727,
         "order_hint": null,
@@ -9916,9 +10444,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "8707",
@@ -9928,9 +10459,7 @@
         ],
         "branch_type": "granville",
         "verdict": "FAIL_INSEN",
-        "tags": [
-          "抵抗圏(60日高値98%超)"
-        ],
+        "tags": [],
         "close": 4305.0,
         "uwahige_ratio": 0.0,
         "order_hint": null,
@@ -9938,9 +10467,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "8844",
@@ -9958,9 +10490,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "8876",
@@ -9973,14 +10508,17 @@
         "tags": [],
         "close": 2132.5,
         "uwahige_ratio": 0.0494,
-        "order_hint": "指値 2059.8円(=max(25日線2049.60,押し安値1948.5)+0.5%)・寄り前GD-2%超で取消",
-        "sl_hint": "SL候補 2049.6円(25日線)・想定損失幅0.5%",
+        "order_hint": "指値 2059.8円(max(25日線2049.6,押し安値1948.5)+0.5%)・寄り前GD-2%超で取消",
+        "sl_hint": "SL候補 2049.6円(25日線)",
         "order_status": "✅即時可",
         "deviation_pct": -3.4,
         "earnings_flag": "日程不明",
+        "gyoseki_grade": "✅順調",
+        "gyoseki_score": 3,
+        "gyoseki_flags": [],
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "9031",
@@ -9998,9 +10536,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "9037",
@@ -10014,13 +10555,16 @@
         "close": 1840.0,
         "uwahige_ratio": 0.25,
         "order_hint": "逆指値 1854.0円(当日高値+1呼値)・上限1872.5円(+1%)",
-        "sl_hint": "SL候補 1741.8円(高値-6%)・想定損失幅6.1%",
+        "sl_hint": "SL候補 1741.8円(高値-6%)",
         "order_status": "✅即時可",
         "deviation_pct": 0.8,
         "earnings_flag": "日程不明",
-        "headline": "【業態】陸運業(業種分類。詳細な事業内容はkabutan有料会員限定のため取得不可)。\n【いま】陽線で反発、直近5営業日+0.3%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】好調(経常前年同期比+23.3%、直近四半期実績ベース)\n【戦略】上抜けトリガーの逆指値で当夜即時検討可、SL接近/25日線割れなら見切り。",
+        "gyoseki_grade": "⚡好調",
+        "gyoseki_score": 5,
+        "gyoseki_flags": [],
+        "headline": "【業態】陸運業(業種分類。詳細な事業内容はkabutan有料会員限定のため取得不可)。\n【いま】グランビル転換初動局面の陽線、直近5営業日+0.3%とほぼ横ばい。個別ニュースは取得不可・材料未確認。\n【調子】⚡好調（5/13）— 経常+7.0%・直近Q加速(+3.8pt)ありも成長率自体は平凡\n【戦略】モメ系、高値超えの逆指値1,854円(SL1,742円)で✅即時可。",
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "9072",
@@ -10034,13 +10578,16 @@
         "close": 5338.0,
         "uwahige_ratio": 0.1759,
         "order_hint": "指値 5338.0円(当日終値以下)",
-        "sl_hint": "SL候補 4910.0円(直近5日安値)・想定損失幅8.0%",
+        "sl_hint": "SL候補 4910.0円(直近5日安値)",
         "order_status": "✅即時可",
         "deviation_pct": 0.0,
         "earnings_flag": "日程不明",
-        "headline": "【業態】陸運業(業種分類。詳細な事業内容はkabutan有料会員限定のため取得不可)。\n【いま】陽線で反発、直近5営業日+5.8%、直近ニュース見出しはkabutan有料会員限定のため取得不可・材料未確認。\n【調子】踊り場(経常前年同期比-5.1%、直近四半期実績ベース)\n【戦略】リバウンド狙いの指値で当夜即時検討可、SL接近/25日線割れなら見切り。",
+        "gyoseki_grade": "⚡好調",
+        "gyoseki_score": 5,
+        "gyoseki_flags": [],
+        "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "9101",
@@ -10051,18 +10598,21 @@
         "branch_type": "granville",
         "verdict": "PASS",
         "tags": [
-          "抵抗圏(60日高値98%超)"
+          "抵抗圏厳格"
         ],
         "close": 6115.0,
         "uwahige_ratio": 0.0265,
         "order_hint": "逆指値 6129.0円(当日高値+1呼値)・上限6190.3円(+1%)",
-        "sl_hint": "SL候補 5751.9円(高値-6%)・想定損失幅6.2%",
+        "sl_hint": "SL候補 5751.9円(高値-6%)",
         "order_status": "✅即時可",
         "deviation_pct": 0.2,
         "earnings_flag": "日程不明",
+        "gyoseki_grade": "✅順調",
+        "gyoseki_score": 4,
+        "gyoseki_flags": [],
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "9147",
@@ -10080,16 +10630,19 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "9211",
         "name": "f-code Inc.",
         "branch": [
-          "kenmo_momentum",
-          "granville_tenkan"
+          "granville_tenkan",
+          "kenmo_momentum"
         ],
         "branch_type": "method",
         "verdict": "FAIL_UWAHIGE",
@@ -10101,9 +10654,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "9274",
@@ -10114,18 +10670,21 @@
         "branch_type": "granville",
         "verdict": "PASS",
         "tags": [
-          "抵抗圏(60日高値98%超)"
+          "抵抗圏厳格"
         ],
         "close": 1118.0,
         "uwahige_ratio": 0.08,
-        "order_hint": "指値 1082.5円(=max(25日線1077.08,押し安値1076.0)+0.5%)・寄り前GD-2%超で取消",
-        "sl_hint": "SL候補 1077.1円(25日線)・想定損失幅0.5%",
+        "order_hint": "指値 1082.5円(max(25日線1077.1,押し安値1076.0)+0.5%)・寄り前GD-2%超で取消",
+        "sl_hint": "SL候補 1077.1円(25日線)",
         "order_status": "✅即時可",
         "deviation_pct": -3.2,
         "earnings_flag": "日程不明",
+        "gyoseki_grade": "✅順調",
+        "gyoseki_score": 3,
+        "gyoseki_flags": [],
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "9302",
@@ -10143,9 +10702,35 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
+      },
+      {
+        "code": "9308",
+        "name": "乾汽船",
+        "branch": [
+          "stf_kakuhen"
+        ],
+        "branch_type": "method",
+        "verdict": "FAIL_INSEN",
+        "tags": [],
+        "close": 1936.0,
+        "uwahige_ratio": 0.2819,
+        "order_hint": null,
+        "sl_hint": null,
+        "order_status": null,
+        "deviation_pct": null,
+        "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
+        "headline": null,
+        "source": "main",
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "9324",
@@ -10158,14 +10743,19 @@
         "tags": [],
         "close": 2474.0,
         "uwahige_ratio": 0.1974,
-        "order_hint": "型不一致: 既に支持帯以下（押し目待ちの前提が崩れている）。25日線割れなら前提消滅=rulebook C_management準拠で見送り。リバ系として狙うなら別途判断",
-        "sl_hint": null,
+        "order_hint": "指値 2518.3円(max(25日線2505.8,押し安値2347.0)+0.5%)・寄り前GD-2%超で取消",
+        "sl_hint": "SL候補 2505.8円(25日線)",
         "order_status": "⛔型不一致",
         "deviation_pct": 1.8,
         "earnings_flag": "日程不明",
-        "headline": null,
+        "gyoseki_grade": "⚠減速",
+        "gyoseki_score": 1,
+        "gyoseki_flags": [
+          "質注意"
+        ],
+        "headline": "【業態】倉庫・運輸業(業種分類。詳細な事業内容はkabutan有料会員限定のため取得不可)。\n【いま】グランビル押し目局面だが直近5営業日-2.7%と軟調。個別ニュースは取得不可・材料未確認。\n【調子】⚠減速（1/13）— 経常-10.7%の減益。⚠業績基調が下向き\n【戦略】⛔型不一致・押し目の支持帯(25日線2,505.8円)を既に下回り前提崩れ。発注対象外。",
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "9343",
@@ -10175,9 +10765,7 @@
         ],
         "branch_type": "changepoint",
         "verdict": "FAIL_INSEN",
-        "tags": [
-          "抵抗圏(60日高値98%超)"
-        ],
+        "tags": [],
         "close": 820.0,
         "uwahige_ratio": 0.0,
         "order_hint": null,
@@ -10185,9 +10773,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "9517",
@@ -10200,14 +10791,19 @@
         "tags": [],
         "close": 865.0,
         "uwahige_ratio": 0.0476,
-        "order_hint": "指値 842.7円(=max(25日線838.48,押し安値811.0)+0.5%)・寄り前GD-2%超で取消",
-        "sl_hint": "SL候補 838.5円(25日線)・想定損失幅0.5%",
+        "order_hint": "指値 842.7円(max(25日線838.5,押し安値811.0)+0.5%)・寄り前GD-2%超で取消",
+        "sl_hint": "SL候補 838.5円(25日線)",
         "order_status": "✅即時可",
         "deviation_pct": -2.6,
         "earnings_flag": "⚠決算接近(2026-08-10)",
+        "gyoseki_grade": "✅順調",
+        "gyoseki_score": 4,
+        "gyoseki_flags": [
+          "質注意"
+        ],
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "9519",
@@ -10225,9 +10821,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "9533",
@@ -10245,9 +10844,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "9552",
@@ -10265,9 +10867,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "9627",
@@ -10281,13 +10886,18 @@
         "close": 5918.0,
         "uwahige_ratio": 0.0326,
         "order_hint": "逆指値 5934.0円(当日高値+1呼値)・上限5993.3円(+1%)",
-        "sl_hint": "SL候補 5568.6円(高値-6%)・想定損失幅6.2%",
+        "sl_hint": "SL候補 5568.6円(高値-6%)",
         "order_status": "✅即時可",
         "deviation_pct": 0.3,
         "earnings_flag": "日程不明",
+        "gyoseki_grade": "✅順調",
+        "gyoseki_score": 4,
+        "gyoseki_flags": [
+          "質注意"
+        ],
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "9854",
@@ -10305,9 +10915,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "9869",
@@ -10317,9 +10930,7 @@
         ],
         "branch_type": "granville",
         "verdict": "FAIL_UWAHIGE",
-        "tags": [
-          "抵抗圏(60日高値98%超)"
-        ],
+        "tags": [],
         "close": 6420.0,
         "uwahige_ratio": 0.5,
         "order_hint": null,
@@ -10327,9 +10938,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "9882",
@@ -10347,9 +10961,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       },
       {
         "code": "9962",
@@ -10367,9 +10984,12 @@
         "order_status": null,
         "deviation_pct": null,
         "earnings_flag": null,
+        "gyoseki_grade": null,
+        "gyoseki_score": null,
+        "gyoseki_flags": null,
         "headline": null,
         "source": "main",
-        "scored_at": "2026-08-07T20:30:00+09:00"
+        "scored_at": "2026-08-09T08:30:00+09:00"
       }
     ],
     "log": [
@@ -10771,11 +11391,11 @@
       },
       {
         "date": "2026-08-07",
-        "evaluated": 125,
+        "evaluated": 133,
         "counts": {
-          "FAIL_INSEN": 62,
-          "PASS": 25,
-          "FAIL_UWAHIGE": 38
+          "FAIL_INSEN": 68,
+          "PASS": 26,
+          "FAIL_UWAHIGE": 39
         },
         "entries": [
           {
@@ -10837,6 +11457,10 @@
           {
             "code": "2982",
             "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "3036",
+            "verdict": "FAIL_INSEN"
           },
           {
             "code": "3091",
@@ -11023,6 +11647,10 @@
             "verdict": "FAIL_INSEN"
           },
           {
+            "code": "6134",
+            "verdict": "FAIL_INSEN"
+          },
+          {
             "code": "6135",
             "verdict": "FAIL_INSEN"
           },
@@ -11035,7 +11663,15 @@
             "verdict": "FAIL_INSEN"
           },
           {
+            "code": "6324",
+            "verdict": "PASS"
+          },
+          {
             "code": "6327",
+            "verdict": "FAIL_INSEN"
+          },
+          {
+            "code": "6490",
             "verdict": "FAIL_INSEN"
           },
           {
@@ -11087,6 +11723,10 @@
             "verdict": "FAIL_UWAHIGE"
           },
           {
+            "code": "7267",
+            "verdict": "FAIL_UWAHIGE"
+          },
+          {
             "code": "7318",
             "verdict": "FAIL_INSEN"
           },
@@ -11095,8 +11735,16 @@
             "verdict": "PASS"
           },
           {
+            "code": "7480",
+            "verdict": "FAIL_INSEN"
+          },
+          {
             "code": "7611",
             "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "7637",
+            "verdict": "FAIL_INSEN"
           },
           {
             "code": "7685",
@@ -11233,6 +11881,10 @@
           {
             "code": "9302",
             "verdict": "FAIL_UWAHIGE"
+          },
+          {
+            "code": "9308",
+            "verdict": "FAIL_INSEN"
           },
           {
             "code": "9324",
@@ -11385,5 +12037,424 @@
       "質注意フラグの発火率。ゼロ続きなら緩め、乱発するなら基準を再考する"
     ]
   },
-  "gyoseki_cache": {}
+  "gyoseki_cache": {
+    "1925": {
+      "grade": "🔻悪化",
+      "score": 3,
+      "breakdown": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 2,
+        "E": 0
+      },
+      "flags": [
+        "質注意"
+      ],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": null
+    },
+    "254A": {
+      "grade": "⚡好調",
+      "score": 7,
+      "breakdown": {
+        "A": 4,
+        "B": 3,
+        "C": null,
+        "D": 0,
+        "E": 0
+      },
+      "flags": [
+        "レバレッジ比算出不可(黒字転換)",
+        "C軸データ不足(0点扱い)"
+      ],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": null
+    },
+    "3151": {
+      "grade": "🔻悪化",
+      "score": 1,
+      "breakdown": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 1,
+        "E": 0
+      },
+      "flags": [
+        "質注意"
+      ],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": null
+    },
+    "3776": {
+      "grade": "⚠減速",
+      "score": 2,
+      "breakdown": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 1,
+        "E": 1
+      },
+      "flags": [
+        "減収のため上限=減速",
+        "質注意"
+      ],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": null
+    },
+    "4249": {
+      "grade": "🚀絶好調",
+      "score": 9,
+      "breakdown": {
+        "A": 4,
+        "B": 3,
+        "C": 0,
+        "D": 1,
+        "E": 1
+      },
+      "flags": [],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": null
+    },
+    "4498": {
+      "grade": "✅順調",
+      "score": 4,
+      "breakdown": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 1,
+        "E": 0
+      },
+      "flags": [],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": null
+    },
+    "4516": {
+      "grade": "⚡好調",
+      "score": 6,
+      "breakdown": {
+        "A": 2,
+        "B": 1,
+        "C": 0,
+        "D": 2,
+        "E": 1
+      },
+      "flags": [
+        "質注意"
+      ],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": null
+    },
+    "4536": {
+      "grade": "✅順調",
+      "score": 3,
+      "breakdown": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 0,
+        "E": 0
+      },
+      "flags": [
+        "税引前代替"
+      ],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": null
+    },
+    "4848": {
+      "grade": "⚡好調",
+      "score": 6,
+      "breakdown": {
+        "A": 3,
+        "B": 1,
+        "C": 0,
+        "D": 2,
+        "E": 0
+      },
+      "flags": [
+        "質注意"
+      ],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": null
+    },
+    "5537": {
+      "grade": "判定保留(IPO直後・前年同期比較データなし)",
+      "score": null,
+      "breakdown": {
+        "A": 3,
+        "B": 3,
+        "C": 1,
+        "D": null,
+        "E": 0
+      },
+      "flags": [
+        "D軸データ不足(0点扱い)"
+      ],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": "2026-08-13"
+    },
+    "5590": {
+      "grade": "🚀絶好調",
+      "score": 9,
+      "breakdown": {
+        "A": 2,
+        "B": 3,
+        "C": 2,
+        "D": 2,
+        "E": 0
+      },
+      "flags": [],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": "2026-08-13"
+    },
+    "6324": {
+      "grade": "🚀絶好調",
+      "score": 10,
+      "breakdown": {
+        "A": 2,
+        "B": 4,
+        "C": 2,
+        "D": 1,
+        "E": 1
+      },
+      "flags": [],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": null
+    },
+    "6562": {
+      "grade": "🚀絶好調",
+      "score": 8,
+      "breakdown": {
+        "A": 2,
+        "B": 4,
+        "C": 2,
+        "D": 0,
+        "E": 0
+      },
+      "flags": [],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": "2026-08-14"
+    },
+    "7409": {
+      "grade": "🔥確変",
+      "score": 11,
+      "breakdown": {
+        "A": 4,
+        "B": 4,
+        "C": 2,
+        "D": 0,
+        "E": 1
+      },
+      "flags": [],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": "2026-08-13"
+    },
+    "7685": {
+      "grade": "🔥確変",
+      "score": 11,
+      "breakdown": {
+        "A": 3,
+        "B": 4,
+        "C": 2,
+        "D": 1,
+        "E": 1
+      },
+      "flags": [],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": "2026-08-14"
+    },
+    "7806": {
+      "grade": "🚀絶好調",
+      "score": 10,
+      "breakdown": {
+        "A": 4,
+        "B": 3,
+        "C": 1,
+        "D": 2,
+        "E": 0
+      },
+      "flags": [],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": null
+    },
+    "7956": {
+      "grade": "✅順調",
+      "score": 3,
+      "breakdown": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 2,
+        "E": 1
+      },
+      "flags": [],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": null
+    },
+    "8570": {
+      "grade": "🔻悪化",
+      "score": 3,
+      "breakdown": {
+        "A": 1,
+        "B": 0,
+        "C": 0,
+        "D": 2,
+        "E": 0
+      },
+      "flags": [
+        "質注意"
+      ],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": null
+    },
+    "8876": {
+      "grade": "✅順調",
+      "score": 3,
+      "breakdown": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 1,
+        "E": 0
+      },
+      "flags": [],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": null
+    },
+    "9037": {
+      "grade": "⚡好調",
+      "score": 5,
+      "breakdown": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 2,
+        "E": 0
+      },
+      "flags": [],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": null
+    },
+    "9072": {
+      "grade": "⚡好調",
+      "score": 5,
+      "breakdown": {
+        "A": 1,
+        "B": 1,
+        "C": 2,
+        "D": 1,
+        "E": 0
+      },
+      "flags": [],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": null
+    },
+    "9101": {
+      "grade": "✅順調",
+      "score": 4,
+      "breakdown": {
+        "A": 2,
+        "B": 1,
+        "C": 0,
+        "D": 1,
+        "E": 0
+      },
+      "flags": [],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": null
+    },
+    "9274": {
+      "grade": "✅順調",
+      "score": 3,
+      "breakdown": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 1,
+        "E": 0
+      },
+      "flags": [],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": null
+    },
+    "9324": {
+      "grade": "⚠減速",
+      "score": 1,
+      "breakdown": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 1
+      },
+      "flags": [
+        "質注意"
+      ],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": null
+    },
+    "9517": {
+      "grade": "✅順調",
+      "score": 4,
+      "breakdown": {
+        "A": 4,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "flags": [
+        "質注意"
+      ],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": "2026-08-10"
+    },
+    "9627": {
+      "grade": "✅順調",
+      "score": 4,
+      "breakdown": {
+        "A": 1,
+        "B": 1,
+        "C": 0,
+        "D": 2,
+        "E": 0
+      },
+      "flags": [
+        "質注意"
+      ],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": null
+    },
+    "9304": {
+      "grade": "⚡好調",
+      "score": 5,
+      "breakdown": {
+        "A": 1,
+        "B": 2,
+        "C": 2,
+        "D": 0,
+        "E": 0
+      },
+      "flags": [],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": null
+    },
+    "3407": {
+      "grade": "⚡好調",
+      "score": 6,
+      "breakdown": {
+        "A": 1,
+        "B": 1,
+        "C": 1,
+        "D": 2,
+        "E": 1
+      },
+      "flags": [],
+      "calculated_at": "2026-08-09T08:30:00+09:00",
+      "next_earnings": null
+    }
+  }
 }

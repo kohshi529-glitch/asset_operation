@@ -189,7 +189,7 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 <button id='tab-granville' onclick="switchTab('granville')">📐グランビル</button>
 </div>
 <!-- 業績グレードの凡例（全タブ共通。既定は畳んでスペースを食わない） -->
-<details class='gylegend'><summary>📊 業績グレードの凡例</summary><div class='gylegendbody'>🔥確変11-13 / 🚀絶好調8-10 / ⚡好調5-7 / ✅順調3-4 / ➖横ばい2 / ⚠減速0-1 / 🔻悪化(減益20%超・赤字転落) — 13点満点。売上成長・利益成長・営業レバレッジ・直近Q加速・進捗率の5軸。業績の状態のみを示し株価の割高割安は見ていない</div></details>
+<details class='gylegend'><summary>📊 業績グレードの凡例</summary><div class='gylegendbody'>🚀確変11-13 / 🔥絶好調8-10 / ⚡好調5-7 / ✅順調3-4 / ➖横ばい2 / ⚠減速0-1 / 🔻悪化(減益20%超・赤字転落) — 13点満点。売上成長・利益成長・営業レバレッジ・直近Q加速・進捗率の5軸。業績の状態のみを示し株価の割高割安は見ていない</div></details>
 <div id='panel-nightgate' class='panel active'></div>
 <div id='panel-changepoint' class='panel'></div>
 <div id='panel-methods' class='panel'></div>
@@ -225,8 +225,8 @@ function fld(v){return (v==null||v==="")?"-":v;}
 let GYOSEKI = {};
 // グレード名 → 絵文字・配色クラス。絶好調を好調より先に判定する（「好調」は「絶好調」の部分文字列のため）。
 const GY_CATS = [
-  {name:'確変',  emoji:'🔥', cls:'gy-1'},
-  {name:'絶好調', emoji:'🚀', cls:'gy-1'},
+  {name:'確変',  emoji:'🚀', cls:'gy-1'},
+  {name:'絶好調', emoji:'🔥', cls:'gy-1'},
   {name:'好調',  emoji:'⚡', cls:'gy-2'},
   {name:'順調',  emoji:'✅', cls:'gy-3'},
   {name:'横ばい', emoji:'➖', cls:'gy-4'},
@@ -735,7 +735,7 @@ function ngPassCard(c){
   let hl='';
   if(c.headline){
     const lines=String(c.headline).split('\n').slice(0,4).join('\n');
-    hl=`<details class='headline'><summary>📌ヘッドライン</summary><div class='hlbody'>${esc(lines)}</div></details>`;
+    hl=`<details open class='headline'><summary>📌ヘッドライン</summary><div class='hlbody'>${esc(lines)}</div></details>`;
   }
   return `<div class='cand${isOrderBad(c)?' order-bad':''}'>
       <div class='crow'>

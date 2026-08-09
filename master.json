@@ -12539,7 +12539,7 @@
       "kabutan_finance": "https://kabutan.jp/stock/finance?code={code} → EPS・通期予想売上高(または経常収益)・通期予想経常利益・前期経常利益・ROE(『収益性』テーブル。実績年/予想年とも%表記・検証98銘柄で取得率100%)",
       "yahoo_query1": "https://query1.finance.yahoo.com/v8/finance/chart/{code}.T?range=1y&interval=1d → 52週高安(①-8が既に取得しているものを再利用)"
     },
-    "cache_rule": "成長率系(V1の分母)は業績グレードと同じ再計算条件(未キャッシュ / next_earnings経過 / calculated_at 100日以上前)でよいが、株価系(V4・PER・PBR)は株価が動けば値頃感も動くため毎回再取得する",
+    "cache_rule": "2層構造。(静的層)EPS・BPS・ROE・発行済株式数・単元株数・通期予想売上/経常・前期経常・next_earnings は決算にしか動かないので業績グレードと同じ再計算条件(未キャッシュ / next_earnings経過 / calculated_at 100日以上前)でkabutanから取得しstaticに保存する。(動的層)PER=現値÷EPS、PBR=現値÷BPS、時価総額=現値×発行済株式数、52週位置、単元金額 は毎回query1の株価から再計算する。これによりkabutanへのアクセスは決算跨ぎ銘柄だけで済み、毎回の取得はquery1のみになる",
     "target_distribution": "監視ボード母集団での目安: 割安5-15% / 値頃15-25% / 妥当25-35% / やや割高20-30% / 過熱10-20%",
     "watch_items": [
       "過熱の予測値21.4%が目標上限20%を1.4pt超過。実運用で20%台後半に膨らむならV4の75%ラインを80%へ緩める",

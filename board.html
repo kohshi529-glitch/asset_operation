@@ -156,16 +156,40 @@ details.cfold>summary{cursor:pointer;color:#7fe3d6;font-size:12.5px;font-weight:
 .gychip.gy-none{color:#8fb3ad;background:#0f2429;border-color:#1d3a40}
 .gyflag{font-size:10px;font-weight:400;color:#8fb3ad;margin-left:2px;white-space:nowrap}
 .gychip .gymini{display:none}
-/* 業績グレード凡例（常時は畳む） */
-.gylegend{margin:0 0 12px;font-size:12px}
-.gylegend>summary{cursor:pointer;color:#7fe3d6;font-weight:600;padding:3px 0}
-.gylegendbody{color:#b7d6d0;line-height:1.7;margin-top:5px;background:#0f2429;border:1px solid #1d3a40;border-radius:8px;padding:8px 10px}
-/* モバイル幅：業績チップは絵文字＋スコアまで縮める（絵文字とスコアは必ず残す） */
+/* ===== 値頃感（水準）チップ（valuation_cache 由来。業績グレードのすぐ右隣に描画。改修2） =====
+   配色は既存チップ語彙を流用し新規カラーは増やさない：
+   val-cheap緑(割安/値頃)・val-fair灰(妥当=中間色)・val-rich黄(やや割高)・val-hot赤(過熱)・val-none灰(未評価/判定不能) */
+.valchip{display:inline-block;font-size:11px;font-weight:700;border-radius:5px;padding:1px 7px;border:1px solid;white-space:nowrap;vertical-align:middle}
+.valchip.val-cheap{color:#48e0b0;background:#123d33;border-color:#1f6b57}
+.valchip.val-fair{color:#8fb3ad;background:#1d3a40;border-color:#33565c}
+.valchip.val-rich{color:#e8c766;background:#2e2a17;border-color:#5c5324}
+.valchip.val-hot{color:#e88a8a;background:#2e1a1a;border-color:#6b2f2f}
+.valchip.val-none{color:#8fb3ad;background:#0f2429;border-color:#1d3a40}
+.valflag{font-size:10px;font-weight:400;color:#8fb3ad;margin-left:2px;white-space:nowrap}
+.valchip .valmini{display:none}
+/* 業績・値頃感グレード凡例（常時は畳む） */
+.gylegend,.vallegend{margin:0 0 12px;font-size:12px}
+.gylegend>summary,.vallegend>summary{cursor:pointer;color:#7fe3d6;font-weight:600;padding:3px 0}
+.gylegendbody,.vallegendbody{color:#b7d6d0;line-height:1.7;margin-top:5px;background:#0f2429;border:1px solid #1d3a40;border-radius:8px;padding:8px 10px}
+/* モバイル幅：業績・値頃感チップは絵文字＋スコアまで縮める（絵文字とスコアは必ず残す） */
 @media (max-width:480px){
   .gychip .gyfull{display:none}
   .gychip .gymini{display:inline}
   .gyflag{display:none}
+  .valchip .valfull{display:none}
+  .valchip .valmini{display:inline}
+  .valflag{display:none}
 }
+/* ===== ナイトゲート銘柄行：ゲート判定の直前で必ず改行（改修3） =====
+   1行目=コード｜名｜手法/型チップ｜業績｜値頃感／2行目=ゲート判定｜決算/タグ｜終値｜単元｜提案。
+   ngbreak（flex-basis:100%）で境目を固定。各チップは nowrap でチップ途中の折り返しを禁止。 */
+.ngrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.ngrow>span{white-space:nowrap}
+.ngrow .ngbreak{flex-basis:100%;height:0;margin:0;padding:0;border:0}
+.ngrow .ngclose{font-size:13px;font-weight:700;color:#7fe3d6}
+.ngrow .ngtan{font-size:12px;font-weight:600;color:#8fb3ad}
+.ngrow .ngprop{flex:1 1 100%;white-space:normal;font-size:12px;color:#b7d6d0;margin-top:2px}
+.ngrow .ngprop .hl{color:#7fe3d6;font-weight:600}
 /* ⛔（型不一致・要確認）カードは発注対象外として枠線色を変える */
 .cand.order-bad{border-color:#6b2f2f;border-left:3px solid #e88a8a;background:#2a1a1a}
 footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
@@ -190,6 +214,8 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 </div>
 <!-- 業績グレードの凡例（全タブ共通。既定は畳んでスペースを食わない） -->
 <details class='gylegend'><summary>📊 業績グレードの凡例</summary><div class='gylegendbody'>🚀確変11-13 / 🔥絶好調8-10 / ⚡好調5-7 / ✅順調3-4 / ➖横ばい2 / ⚠減速0-1 / 🔻悪化(減益20%超・赤字転落) — 13点満点。売上成長・利益成長・営業レバレッジ・直近Q加速・進捗率の5軸。業績の状態のみを示し株価の割高割安は見ていない</div></details>
+<!-- 値頃感（水準）の凡例（業績グレードの直下。既定は畳む。改修2） -->
+<details class='vallegend'><summary>💠 値頃感（水準）の凡例</summary><div class='vallegendbody'>💎割安6-7 / 🟢値頃5 / ⚪妥当3-4 / 🟡やや割高2 / 🔴過熱0-1 — 7点満点。PEG・ROE対比PBR・52週位置の3軸。株価の水準のみを示し会社の調子（業績グレード）とは独立した別軸</div></details>
 <div id='panel-nightgate' class='panel active'></div>
 <div id='panel-changepoint' class='panel'></div>
 <div id='panel-methods' class='panel'></div>
@@ -269,6 +295,104 @@ function gyosekiChip(code){
        + `</span>${flagTxt}`;
 }
 
+// ===== ヘッドライン【調子】マークの表示時正規化（改修1。master.json は書き換えない） =====
+// ①-8生成時点の文字列には絵文字を入れ替える前の古い組み合わせ（🔥確変・🚀絶好調 等）が混ざる。
+// 描画直前に「グレード名の直前の絵文字」を正しい対応へ置換（無ければ挿入）する。表示専用。
+const CHOUSHI_MAP={'絶好調':'🔥','確変':'🚀','好調':'⚡','順調':'✅','横ばい':'➖','減速':'⚠','悪化':'🔻'};
+// 「絶好調」は「好調」を部分文字列に含むため、長い語から先に処理し、置換済みの区間は再処理しない。
+const CHOUSHI_ORDER=['絶好調','確変','好調','順調','横ばい','減速','悪化'];
+const CHOUSHI_EMOJIS=['🚀','🔥','⚡','✅','➖','⚠','🔻'];
+// 1行分の正規化。グレード名の直前にある任意の対象絵文字を正しいものへ置換／無ければ挿入。
+function normalizeChoushiLine(line){
+  const s=String(line==null?'':line);
+  const consumed=[]; // 置換済みの [start,end) 区間（UTF-16インデックス）
+  const ops=[];      // {start,end,text}：s[start,end) を text へ置換
+  const overlaps=(a,b)=>{ for(let i=0;i<consumed.length;i++){ if(a<consumed[i][1]&&consumed[i][0]<b) return true; } return false; };
+  for(let oi=0;oi<CHOUSHI_ORDER.length;oi++){
+    const name=CHOUSHI_ORDER[oi], correct=CHOUSHI_MAP[name];
+    let from=0, idx;
+    while((idx=s.indexOf(name,from))>=0){
+      const gStart=idx, gEnd=idx+name.length;
+      from=gEnd;
+      if(overlaps(gStart,gEnd)) continue; // 上位（長い）グレードで処理済みの箇所は触らない
+      // 直前の対象絵文字を検出（無ければ挿入位置＝グレード名の直前）。
+      let emoStart=gStart;
+      for(let ei=0;ei<CHOUSHI_EMOJIS.length;ei++){
+        const em=CHOUSHI_EMOJIS[ei];
+        if(gStart-em.length>=0 && s.substr(gStart-em.length,em.length)===em){ emoStart=gStart-em.length; break; }
+      }
+      ops.push({start:emoStart,end:gStart,text:correct}); // 旧絵文字(空なら挿入)を正しい絵文字へ
+      consumed.push([emoStart,gEnd]);
+    }
+  }
+  if(!ops.length) return s;
+  ops.sort((a,b)=>b.start-a.start); // 末尾から適用してインデックスずれを防ぐ
+  let out=s;
+  for(let i=0;i<ops.length;i++){ out=out.slice(0,ops[i].start)+ops[i].text+out.slice(ops[i].end); }
+  return out;
+}
+// ヘッドライン全体の正規化。【調子】ラベルを含む行のみ加工し、他の行（業態/いま/水準/戦略）は素通し。
+function normalizeHeadline(text){
+  if(text==null) return text;
+  return String(text).split('\n').map(function(line){
+    return line.indexOf('【調子】')>=0 ? normalizeChoushiLine(line) : line;
+  }).join('\n');
+}
+
+// ===== 値頃感（水準）チップ（valuation_cache 由来。業績グレードのすぐ右隣。改修2） =====
+// master.json の valuation_cache（code → {grade,score,flags,metrics,...}）を render() で格納。未取得時は空。
+let VALUATION={};
+// グレード名 → 絵文字・配色クラス（既存チップ配色を流用）。
+const VAL_CATS=[
+  {name:'割安',    emoji:'💎', cls:'val-cheap'},
+  {name:'値頃',    emoji:'🟢', cls:'val-cheap'},
+  {name:'妥当',    emoji:'⚪', cls:'val-fair'},
+  {name:'やや割高', emoji:'🟡', cls:'val-rich'},
+  {name:'過熱',    emoji:'🔴', cls:'val-hot'},
+  {name:'判定不能', emoji:'⏸', cls:'val-none'},
+];
+// チップ後方に小さく併記する表示専用フラグ。バリュートラップ疑いは短縮表記。
+const VAL_FLAGS_SHOW=['バリュートラップ疑い','PSR代替','ROE欠損','減益でPEG無効'];
+const VAL_FLAG_LABEL={'バリュートラップ疑い':'トラップ疑い'};
+// スコア整形：整数はそのまま、小数は1桁。
+function valScoreTxt(s){
+  if(typeof s!=='number') return '';
+  return Number.isInteger(s)?String(s):String(Math.round(s*10)/10);
+}
+// 銘柄コード→値頃感チップHTML。該当なし＝「－未評価」（グレー）。①-9 v2初回実行で埋まる。
+function valuationChip(code){
+  const key=(code==null)?'':String(code);
+  const v=VALUATION&&VALUATION[key];
+  if(!v){ return `<span class='valchip val-none' title='値頃感 未評価（次回①-9 v2実行で評価）'>－未評価</span>`; }
+  const grade=String(v.grade==null?'':v.grade);
+  let cat=null;
+  for(let i=0;i<VAL_CATS.length;i++){ if(grade.indexOf(VAL_CATS[i].name)>=0){ cat=VAL_CATS[i]; break; } }
+  const score=(typeof v.score==='number')?v.score:null;
+  const scoreNum=valScoreTxt(score);
+  // 表示専用フラグを小さく併記（バリュートラップ疑いは短縮）。
+  const flags=Array.isArray(v.flags)?v.flags:[];
+  const shown=flags.filter(f=>VAL_FLAGS_SHOW.indexOf(f)>=0).map(f=>VAL_FLAG_LABEL[f]||f);
+  const flagTxt=shown.length?`<span class='valflag'>(${esc(shown.join('・'))})</span>`:'';
+  if(!cat){ // 未知グレード：素通し（空なら未評価扱い）
+    return grade
+      ? `<span class='valchip val-none' title='${esc(grade)}'>${esc(grade)}${score==null?'':' '+scoreNum+'/7'}</span>${flagTxt}`
+      : `<span class='valchip val-none'>－未評価</span>`;
+  }
+  const scoreTxt=(score==null)?'':` ${scoreNum}/7`;
+  return `<span class='valchip ${cat.cls}' title='値頃感 ${esc(cat.name)}${score==null?'':' '+scoreNum+'/7'}'>`
+       + `<span class='valfull'>${cat.emoji}${esc(cat.name)}${esc(scoreTxt)}</span>`
+       + `<span class='valmini'>${cat.emoji}${esc(scoreNum)}</span>`
+       + `</span>${flagTxt}`;
+}
+// 単元金額チップ（valuation_cache.metrics.tan_yen があれば「💰N万円」。無ければ非表示）。改修3の2行目用。
+function tanYenChip(code){
+  const key=(code==null)?'':String(code);
+  const v=VALUATION&&VALUATION[key];
+  const y=v&&v.metrics&&v.metrics.tan_yen;
+  if(typeof y!=='number'||!(y>0)) return '';
+  return `<span class='ngtan'>💰${esc(Math.round(y/10000))}万円</span>`;
+}
+
 // ===== タブ切替・スクロール（ページ遷移なし） =====
 // 固定ヘッダは無い（タブバー自体が sticky）ため、着地は「タブバーが画面上端に来る位置」。
 const TAB_OFFSET=8; // タブバー上端に確保する余白（固定ヘッダがあればその高さに置き換える）。
@@ -334,7 +458,7 @@ function methodCard(c){
           <span class='cname'>${esc(fld(c.name))}</span>
           <span class='score'>${esc(fld(c.score))}<small>/21</small></span>
         </div>
-        <div class='chipwrap'>${gyosekiChip(c.code)}</div>
+        <div class='chipwrap'>${gyosekiChip(c.code)}${valuationChip(c.code)}</div>
         <div class='vd'>${esc(c.verdict||'')}<span class='act act-${esc(c.action)}'>${esc(c.action||'')}</span></div>
         ${c.summary?`<div class='sum'>${esc(c.summary)}</div>`:''}
         <div class='meta'>精度: ${esc(c.precision||'—')}　採点: ${esc((c.scored_at||'').slice(0,16).replace('T',' '))}　源: ${esc(c.source||'—')}</div>
@@ -391,7 +515,7 @@ function kenmoCard(c){
           <span class='cname'>${esc(fld(c.name))}</span>${st}${alt}
           <span class='score'>${esc(fld(c.score))}<small>/21</small></span>
         </div>
-        <div class='chipwrap'>${gyosekiChip(c.code)}</div>
+        <div class='chipwrap'>${gyosekiChip(c.code)}${valuationChip(c.code)}</div>
         <div class='vd'>${esc(c.verdict||'')}<span class='act act-${esc(c.action)}'>${esc(c.action||'')}</span></div>
         ${c.summary?`<div class='sum'>${esc(c.summary)}</div>`:''}
         <div class='meta'>精度: ${esc(c.precision||'—')}　採点: ${esc((c.scored_at||'').slice(0,16).replace('T',' '))}　源: ${esc(c.source||'—')}</div>
@@ -501,7 +625,7 @@ function ipoCard(w){
         ${vd}
         ${score}
       </div>
-      <div class='chipwrap'>${gyosekiChip(w.code)}</div>
+      <div class='chipwrap'>${gyosekiChip(w.code)}${valuationChip(w.code)}</div>
       ${band}
       ${meta}
       ${logHTML}
@@ -576,7 +700,7 @@ function gcard(c,extra,spec){
         ${badge}
         ${score}
       </div>
-      <div class='chipwrap'>${gyosekiChip(c.code)}</div>
+      <div class='chipwrap'>${gyosekiChip(c.code)}${valuationChip(c.code)}</div>
       ${fund}
       <div class='meta'>${ind}</div>
       ${vd}
@@ -720,31 +844,34 @@ function isOrderBad(c){ return !!(c&&c.order_status&&String(c.order_status).inde
 // 通過（PASS/PASS_DOJI）カード。1銘柄1カード。
 function ngPassCard(c){
   const branches=(c.branch||[]).map(branchChip).join('');
-  // 並び：手法チップ｜ゲート判定｜【業績グレード】｜決算/タグチップ（earnings_flag は ngTagChips 末尾）。
-  const chips=`<div class='chipwrap'>${branches}${ngVerdictChip(c)}${gyosekiChip(c.code)}${ngTagChips(c)}</div>`;
   // 発注ステータス・乖離は「提案指値の直後」に表示（新フィールドのみ／SLより前）。
   const os=orderStatusChip(c), dv=deviationChip(c);
   const hasHint=(c.order_hint||c.sl_hint||os||dv);
   const propose=c.order_hint
     ? `<span class='hl'>提案</span> ${esc(c.order_hint)}${os}${dv}`
     : `${os}${dv}`;
+  // 提案（指値/逆指値・SL候補・order_status・乖離率）は2行目の末尾に置く。長ければ内部で折り返す。
   const hint=hasHint
-    ? `<div class='hint'>${propose}${c.sl_hint?`　<span class='hl'>SL</span> ${esc(c.sl_hint)}`:''}</div>`
+    ? `<span class='ngprop'>${propose}${c.sl_hint?`　<span class='hl'>SL</span> ${esc(c.sl_hint)}`:''}</span>`
     : '';
-  // headline は改行区切りの先頭4行を <details> で表示。
+  const closeChip=`<span class='ngclose'>終値 ${esc(fld(c.close))}円</span>`;
+  const tanChip=tanYenChip(c.code);
+  // headline は改行区切りの先頭4行を <details> で表示。【調子】行の調子マークは描画直前に正規化（改修1）。
   let hl='';
   if(c.headline){
-    const lines=String(c.headline).split('\n').slice(0,4).join('\n');
+    const lines=normalizeHeadline(String(c.headline)).split('\n').slice(0,4).join('\n');
     hl=`<details open class='headline'><summary>📌ヘッドライン</summary><div class='hlbody'>${esc(lines)}</div></details>`;
   }
+  // 改修3：ゲート判定チップの直前で必ず改行。ngbreak（flex-basis:100%）で境目を固定。
+  //  1行目＝コード｜名｜手法/型チップ｜業績グレード｜値頃感／2行目＝ゲート判定｜決算・タグ｜終値｜単元｜提案。
   return `<div class='cand${isOrderBad(c)?' order-bad':''}'>
-      <div class='crow'>
+      <div class='ngrow'>
         <span class='code'>${esc(fld(c.code))}</span>
         <span class='cname'>${esc(fld(c.name))}</span>
-        <span class='score'>終値 ${esc(fld(c.close))}<small>円</small></span>
+        ${branches}${gyosekiChip(c.code)}${valuationChip(c.code)}
+        <span class='ngbreak'></span>
+        ${ngVerdictChip(c)}${ngTagChips(c)}${closeChip}${tanChip}${hint}
       </div>
-      ${chips}
-      ${hint}
       ${hl}
     </div>`;
 }
@@ -783,9 +910,9 @@ function renderNightGate(d,runs){
     // 型グループ順（①5手法→②グランビル→③変化点→型不明）に並べ替え。グループ内は従来どおり（＝元の並び＝判定別）。
     const negs=results.filter(r=>!(r.verdict==='PASS'||r.verdict==='PASS_DOJI'));
     const negSorted=sortByTypeGroup(negs); // withinCmp 無し＝安定ソートで従来の並びを保持
-    const negRows=negSorted.map(n=>`<tr><td>${entryMarkChips(n)}</td><td><span class='code'>${esc(fld(n.code))}</span></td><td>${esc(fld(n.name))}</td><td>${esc(fld(n.verdict))}</td><td>${gyosekiChip(n.code)}</td><td>${esc(fld(n.close))}</td></tr>`).join('');
+    const negRows=negSorted.map(n=>`<tr><td>${entryMarkChips(n)}</td><td><span class='code'>${esc(fld(n.code))}</span></td><td>${esc(fld(n.name))}</td><td>${esc(fld(n.verdict))}</td><td>${gyosekiChip(n.code)}</td><td>${valuationChip(n.code)}</td><td>${esc(fld(n.close))}</td></tr>`).join('');
     const negHTML=negs.length
-      ? `<details class='cfold'><summary>否定・SKIP銘柄（${negs.length}件）</summary><table class='ctable'><thead><tr><th>型</th><th>コード</th><th>名前</th><th>判定</th><th>業績</th><th>終値</th></tr></thead><tbody>${negRows}</tbody></table></details>`
+      ? `<details class='cfold'><summary>否定・SKIP銘柄（${negs.length}件）</summary><table class='ctable'><thead><tr><th>型</th><th>コード</th><th>名前</th><th>判定</th><th>業績</th><th>値頃</th><th>終値</th></tr></thead><tbody>${negRows}</tbody></table></details>`
       : '';
     // pool 在籍一覧（型/コード/first_seen/last_seen/在籍日数）。
     // 型グループ順に並べ替え、グループ内は従来どおり在籍日数の降順。
@@ -794,9 +921,9 @@ function renderNightGate(d,runs){
     const dNum=(a,b)=>{ const v=daysInPool(a,b); return (typeof v==='number')?v:0; };
     const poolArr=pcodes.map(code=>Object.assign({code},pool[code]||{}));
     const poolSorted=sortByTypeGroup(poolArr,(a,b)=>dNum(b.first_seen,b.last_seen)-dNum(a.first_seen,a.last_seen));
-    const poolRows=poolSorted.map(p=>`<tr><td>${entryMarkChips(p)}</td><td><span class='code'>${esc(fld(p.code))}</span></td><td>${esc(fld(p.name))}</td><td>${gyosekiChip(p.code)}</td><td>${esc(fld(p.first_seen))}</td><td>${esc(fld(p.last_seen))}</td><td>${esc(daysInPool(p.first_seen,p.last_seen))}</td></tr>`).join('');
+    const poolRows=poolSorted.map(p=>`<tr><td>${entryMarkChips(p)}</td><td><span class='code'>${esc(fld(p.code))}</span></td><td>${esc(fld(p.name))}</td><td>${gyosekiChip(p.code)}</td><td>${valuationChip(p.code)}</td><td>${esc(fld(p.first_seen))}</td><td>${esc(fld(p.last_seen))}</td><td>${esc(daysInPool(p.first_seen,p.last_seen))}</td></tr>`).join('');
     const poolHTML=pcodes.length
-      ? `<details class='cfold'><summary>pool在籍一覧（${pcodes.length}件）</summary><table class='ctable'><thead><tr><th>型</th><th>コード</th><th>名前</th><th>業績</th><th>first_seen</th><th>last_seen</th><th>在籍日数</th></tr></thead><tbody>${poolRows}</tbody></table></details>`
+      ? `<details class='cfold'><summary>pool在籍一覧（${pcodes.length}件）</summary><table class='ctable'><thead><tr><th>型</th><th>コード</th><th>名前</th><th>業績</th><th>値頃</th><th>first_seen</th><th>last_seen</th><th>在籍日数</th></tr></thead><tbody>${poolRows}</tbody></table></details>`
       : '';
     return `<section class='mth' id='sec-ng'>
       <div class='mhead'><span>🚪</span><span class='mname'>🚪 ナイトゲート</span><span class='cnt'>${passes.length}通過</span></div>
@@ -823,7 +950,7 @@ function cpCard(c){
         <span class='cname'>${esc(fld(c.name))}</span>
         ${sig}
       </div>
-      <div class='chipwrap'>${dets}${gyosekiChip(c.code)}${beta}${earn}</div>
+      <div class='chipwrap'>${dets}${gyosekiChip(c.code)}${valuationChip(c.code)}${beta}${earn}</div>
       <div class='meta'>終値 ${esc(fld(c.close))}円　市場超過 ${cpPct(c.excess_pct)}　vol比 ${esc(fld(c.vol_ratio))}倍　25日乖離 ${esc(fld(c.dev25))}%</div>
       ${c.note?`<div class='sum'>${esc(c.note)}</div>`:''}
     </div>`;
@@ -877,6 +1004,8 @@ function render(d){
   const runs=(d.pipeline&&d.pipeline.runs)||{};
   // 業績グレードチップ用キャッシュ（欠如・空でも耐える。gyosekiChip が未評価表示にフォールバック）。
   GYOSEKI=(d&&d.gyoseki_cache&&typeof d.gyoseki_cache==='object')?d.gyoseki_cache:{};
+  // 値頃感チップ用キャッシュ（欠如・空でも耐える。valuationChip が未評価表示にフォールバック）。
+  VALUATION=(d&&d.valuation_cache&&typeof d.valuation_cache==='object')?d.valuation_cache:{};
   document.getElementById('src').innerHTML="<span class='live'>● LIVE</span> GitHubの最新 master.json を表示中";
 
   // 市場モードバッジ（date付き）

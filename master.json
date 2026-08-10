@@ -3959,8 +3959,8 @@
         "source": "stf_weekly"
       },
       "changepoint_watch": {
-        "generated_at": "2026-08-07T19:16:00+09:00",
-        "trading_day": "2026-08-07",
+        "generated_at": "2026-08-10T19:15:00+09:00",
+        "trading_day": "2026-08-10",
         "status": "done",
         "pool_counts": {
           "shinne_w": 14,
@@ -3969,27 +3969,29 @@
           "saas_w": 20
         },
         "unique_codes": 74,
-        "evaluated": 73,
-        "stale_or_unavailable": 1,
+        "evaluated": 71,
+        "stale_or_unavailable": 3,
         "stale_detail": [
-          "7317(ipo_secondary_w): IPO(2026-07-16)直後で有効な終値データがほぼ欠測(取得16件中有効1件)・最新有効足がtrading_day(2026-08-07)と不一致のためステイル・スキップ(取得不可)"
+          "593A(ipo_secondary_w): IPO(2026-07-22)直後で有効データ14本のみ・検知器計算(20/60/25/120日等)に不足のため評価対象外(取得不可)",
+          "598A(ipo_secondary_w): IPO(2026-07-16)直後で有効データ17本のみ・検知器計算に不足のため評価対象外(取得不可)",
+          "7317(ipo_secondary_w): IPO(2026-07-16)直後で有効な終値データがほぼ欠測(取得17件中有効1件)のため評価対象外(取得不可)"
         ],
         "fetch_retry_exhausted": [],
         "signals": {
-          "bell_bell": 2,
-          "bell": 2,
-          "sub_signal_only": 4
+          "bell_bell": 4,
+          "bell": 1,
+          "sub_signal_only": 7
         },
-        "earnings_radar_run": false,
-        "earnings_radar_note": "金曜のため未実施(月曜のみ実施)",
+        "earnings_radar_run": true,
+        "earnings_radar_note": "月曜のため実施。saas_w全20銘柄中14銘柄で日程取得、6銘柄は日程不明(取得不可)。10〜20営業日先の該当は0件、3営業日以内の該当は13銘柄(08-12〜08-14に集中)",
         "associative_propagation": {
           "triggered_today": false,
           "active": true,
-          "reason": "08-06の4483(JMDC)🔔🔔発火を起点とする連想強化が継続中(active_through 2026-08-14)。本日はsaas_w内で新規🔔🔔は発火せず(4375は🔔単独)、緩和ルール(D3/D4/D5いずれか)は本日も適用したが新規トリガーはなし"
+          "reason": "saas_wで5574が本日🔔🔔発火したが日経平均+2.078%(全面高フィルタ+2%超)のため新規の連想強化は非発動。08-06の4483起点の既存連想強化(active_through 2026-08-14)は本日も適用日として継続、残り適用日は08-12/08-13/08-14"
         },
         "nikkei_allmarket_filter_checked": true,
-        "nikkei_return_pct": -0.117,
-        "market_context": "平常日",
+        "nikkei_return_pct": 2.078,
+        "market_context": "全面高の日",
         "source": "changepoint_watch"
       },
       "night_gate": {
@@ -5912,73 +5914,91 @@
     },
     "results": [
       {
-        "code": "4498",
-        "name": "Cybertrust Japan Co., Ltd.",
-        "close": 1265.0,
-        "detectors": [
-          "D2",
-          "D3"
-        ],
-        "signal": "🔔🔔",
-        "vol_ratio": 1.316,
-        "dev25": 4.594,
-        "w52_pos": 44.221,
-        "excess_pct": 4.147,
-        "beta_context": false,
-        "earnings_within": null,
-        "note": "D2(60日高値更新)+D3(スクイーズ放れ)の同日複合発火で🔔🔔、当日+4.0%・市場超過+4.1pt。次回決算日程はkabutan未掲載(取得不可)",
-        "scored_at": "2026-08-07"
-      },
-      {
-        "code": "9343",
-        "name": "ibis inc.",
-        "close": 820.0,
+        "code": "3374",
+        "name": "Naigai Tec Corporation",
+        "close": 4210.0,
         "detectors": [
           "D2"
         ],
         "signal": "🔔🔔",
-        "vol_ratio": 1.816,
-        "dev25": 4.758,
+        "vol_ratio": 0.557,
+        "dev25": 26.022,
         "w52_pos": 100.0,
-        "excess_pct": 0.854,
-        "beta_context": false,
-        "earnings_within": 1,
-        "note": "本日はD2(60日高値更新)単独発火だが直近5営業日以内(08-06)のD1∧D3複合発火実績によりログ参照で🔔🔔。52週高値圏(w52=100)。決算まで1営業日(08-10)で⚠決算直前(教訓⑲天井リスク)",
-        "scored_at": "2026-08-07"
-      },
-      {
-        "code": "4375",
-        "name": "Safie Inc.",
-        "close": 639.0,
-        "detectors": [
-          "D3"
-        ],
-        "signal": "🔔",
-        "vol_ratio": 3.934,
-        "dev25": -2.828,
-        "w52_pos": 7.76,
-        "excess_pct": -2.918,
-        "beta_context": false,
-        "earnings_within": 0,
-        "note": "D3(スクイーズ放れ)単独発火・当日-3.0%の下方向、52週安値圏(w52=7.8%)。本日が決算発表予定日(⚠決算直前=実質当日)で発表前の売り圧力の可能性、下方向のため紙ログ対象外",
-        "scored_at": "2026-08-07"
-      },
-      {
-        "code": "6284",
-        "name": "Nissei ASB Machine Co., Ltd.",
-        "close": 9260.0,
-        "detectors": [
-          "D3"
-        ],
-        "signal": "🔔",
-        "vol_ratio": 2.992,
-        "dev25": -1.957,
-        "w52_pos": 77.123,
-        "excess_pct": -7.56,
+        "excess_pct": 17.865,
         "beta_context": false,
         "earnings_within": null,
-        "note": "D3(スクイーズ放れ)単独発火だが当日-7.7%の急落方向(前日08-06決算発表のPEAD反応・ギャップダウン)。市場超過-7.6ptと個別性は強いが下方向のため紙ログ対象外",
-        "scored_at": "2026-08-07"
+        "note": "本日はD2(60日高値更新)単独発火だが値幅制限一杯のストップ高(寄付=引け=4210円、レンジ0で当日はD4判定不可)。直近5営業日以内(08-04にD2∧D4∧D5複合発火実績)によりログ参照で🔔🔔。当日+19.9%・市場超過+17.9pt(日経+2.1%)で明確な個別性。決算日程はkabutan未掲載(取得不可)",
+        "scored_at": "2026-08-10"
+      },
+      {
+        "code": "9888",
+        "name": "UEX, Ltd.",
+        "close": 1227.0,
+        "detectors": [
+          "D2",
+          "D4"
+        ],
+        "signal": "🔔🔔",
+        "vol_ratio": 2.724,
+        "dev25": 18.647,
+        "w52_pos": 100.0,
+        "excess_pct": 7.086,
+        "beta_context": false,
+        "earnings_within": null,
+        "note": "D2(60日高値更新)∧D4(寄付ギャップ+早期警戒・上位レンジ引け)の同日複合発火で🔔🔔。当日+9.2%・市場超過+7.1pt(日経+2.1%)で個別性あり。決算日程はkabutan未掲載(取得不可)",
+        "scored_at": "2026-08-10"
+      },
+      {
+        "code": "4498",
+        "name": "Cybertrust Japan Co., Ltd.",
+        "close": 1272.0,
+        "detectors": [
+          "D2"
+        ],
+        "signal": "🔔🔔",
+        "vol_ratio": 0.817,
+        "dev25": 4.933,
+        "w52_pos": 45.628,
+        "excess_pct": -1.525,
+        "beta_context": true,
+        "earnings_within": null,
+        "note": "本日はD2(60日高値更新)単独発火。直近5営業日以内(08-07にD2∧D3複合発火実績)によりログ参照で🔔🔔。当日+0.6%は日経+2.1%を下回り市場超過-1.5ptで市場β文脈(全面高日の随伴の可能性、額面通りの個別性とは言い切れない)。決算日程はkabutan未掲載(取得不可、08-07スコアリング時と同様)",
+        "scored_at": "2026-08-10"
+      },
+      {
+        "code": "5574",
+        "name": "ABEJA, Inc.",
+        "close": 2894.0,
+        "detectors": [
+          "D2",
+          "D4"
+        ],
+        "signal": "🔔🔔",
+        "vol_ratio": 0.713,
+        "dev25": 17.001,
+        "w52_pos": 50.647,
+        "excess_pct": 4.007,
+        "beta_context": false,
+        "earnings_within": null,
+        "note": "D2(60日高値更新)∧D4(寄付ギャップ+上位レンジ引け)の同日複合発火で🔔🔔。ipo_secondary_w/saas_w両プール該当(判定は両規則で一致)。当日+6.1%・市場超過+4.0pt(日経+2.1%)で個別性あり。決算日程はkabutan未掲載(取得不可)",
+        "scored_at": "2026-08-10"
+      },
+      {
+        "code": "3923",
+        "name": "ラクス",
+        "close": 1085.0,
+        "detectors": [
+          "D3"
+        ],
+        "signal": "🔔",
+        "vol_ratio": 0.979,
+        "dev25": 5.271,
+        "w52_pos": 54.153,
+        "excess_pct": 1.01,
+        "beta_context": true,
+        "earnings_within": 3,
+        "note": "D3(スクイーズ放れ)単独発火・当日+3.1%だが市場超過+1.0ptで日経+2.1%の全面高日のため市場β文脈。決算まで3営業日(08-14)で⚠決算接近(教訓⑲天井リスク)。上方向だが決算3営業日以内のためPL3対象から除外",
+        "scored_at": "2026-08-10"
       }
     ],
     "log": [
@@ -6688,6 +6708,257 @@
         "signal": "🔔",
         "note": "当日-3.0%の下方向発火、本日決算発表予定日。連想緩和(assoc_propagation)適用日",
         "beta_context": false
+      },
+      {
+        "trading_day": "2026-08-10",
+        "code": "9308",
+        "pool": "shinne_w",
+        "detectors": [
+          "D2"
+        ],
+        "signal": "-",
+        "note": "D2単独は記録のみ",
+        "beta_context": false
+      },
+      {
+        "trading_day": "2026-08-10",
+        "code": "8704",
+        "pool": "shinne_w",
+        "detectors": [
+          "D2"
+        ],
+        "signal": "-",
+        "note": "D2単独は記録のみ",
+        "beta_context": true
+      },
+      {
+        "trading_day": "2026-08-10",
+        "code": "9888",
+        "pool": "shinne_w",
+        "detectors": [
+          "D2",
+          "D4"
+        ],
+        "signal": "🔔🔔",
+        "beta_context": false
+      },
+      {
+        "trading_day": "2026-08-10",
+        "code": "3374",
+        "pool": "shinne_w",
+        "detectors": [
+          "D2"
+        ],
+        "signal": "🔔🔔",
+        "note": "08-04のD2∧D4∧D5複合実績によりログ参照で複合発火扱い",
+        "beta_context": false
+      },
+      {
+        "trading_day": "2026-08-10",
+        "code": "4667",
+        "pool": "shinne_w",
+        "detectors": [
+          "D4"
+        ],
+        "signal": "-",
+        "note": "D4単独は記録のみ",
+        "beta_context": false
+      },
+      {
+        "trading_day": "2026-08-10",
+        "code": "5574",
+        "pool": "ipo_secondary_w",
+        "detectors": [
+          "D2",
+          "D4"
+        ],
+        "signal": "🔔🔔",
+        "beta_context": false
+      },
+      {
+        "trading_day": "2026-08-10",
+        "code": "286A",
+        "pool": "ipo_secondary_w",
+        "detectors": [
+          "D2"
+        ],
+        "signal": "-",
+        "note": "D2単独は記録のみ",
+        "beta_context": true
+      },
+      {
+        "trading_day": "2026-08-10",
+        "code": "9218",
+        "pool": "ipo_secondary_w",
+        "detectors": [
+          "D2"
+        ],
+        "signal": "-",
+        "note": "D2単独は記録のみ",
+        "beta_context": true
+      },
+      {
+        "trading_day": "2026-08-10",
+        "code": "4498",
+        "pool": "ipo_secondary_w",
+        "detectors": [
+          "D2"
+        ],
+        "signal": "🔔🔔",
+        "note": "08-07のD2∧D3複合実績によりログ参照で複合発火扱い",
+        "beta_context": true
+      },
+      {
+        "trading_day": "2026-08-10",
+        "code": "6857",
+        "pool": "stf_w",
+        "detectors": [
+          "D4"
+        ],
+        "signal": "-",
+        "note": "D4単独は記録のみ",
+        "beta_context": false
+      },
+      {
+        "trading_day": "2026-08-10",
+        "code": "5574",
+        "pool": "saas_w",
+        "detectors": [
+          "D2",
+          "D4"
+        ],
+        "signal": "🔔🔔",
+        "beta_context": false
+      },
+      {
+        "trading_day": "2026-08-10",
+        "code": "3923",
+        "pool": "saas_w",
+        "detectors": [
+          "D3"
+        ],
+        "signal": "🔔",
+        "beta_context": true,
+        "earnings_within": 3,
+        "earnings_conflict": true,
+        "note": "決算3営業日前(08-14)のためPL3対象から除外(教訓⑲)"
+      },
+      {
+        "trading_day": "2026-08-10",
+        "type": "assoc_propagation",
+        "pool": "saas_w",
+        "triggered_today": false,
+        "nikkei_return_pct": 2.078,
+        "reason": "saas_wで5574(ABEJA)が本日D2∧D4で🔔🔔発火したが、日経平均+2.078%(全面高フィルタ+2%超に該当)のため新規の連想強化は非発動。既存の連想強化(08-06の4483起点、active_through 2026-08-14)は独自スケジュールのまま継続、本日(08-10)も適用日、残り適用日は08-12/08-13/08-14。"
+      },
+      {
+        "trading_day": "2026-08-10",
+        "type": "earnings_calendar",
+        "pool": "saas_w",
+        "note": "月曜のみ実施。kabutan.jp/stock/finance参照。",
+        "results": {
+          "479A": "2026-08-13",
+          "478A": "2026-08-12",
+          "4478": "2026-08-13",
+          "4011": "2026-08-14",
+          "4259": "2026-08-12",
+          "4418": "2026-08-14",
+          "4488": "2026-08-12",
+          "5574": "日程不明",
+          "4493": "2026-08-14",
+          "4475": "日程不明",
+          "4382": "2026-09-11",
+          "4165": "2026-08-13",
+          "4443": "日程不明",
+          "3993": "2026-08-13",
+          "4483": "日程不明",
+          "3994": "日程不明",
+          "4071": "2026-08-12",
+          "4375": "日程不明",
+          "4180": "2026-08-13",
+          "3923": "2026-08-14"
+        },
+        "karte_suggest_10to20bd": [],
+        "approaching_le3bd": [
+          {
+            "code": "478A",
+            "name": "フツパー",
+            "date": "2026-08-12",
+            "business_days": 1
+          },
+          {
+            "code": "4259",
+            "name": "エクサウィザーズ",
+            "date": "2026-08-12",
+            "business_days": 1
+          },
+          {
+            "code": "4488",
+            "name": "AI inside",
+            "date": "2026-08-12",
+            "business_days": 1
+          },
+          {
+            "code": "4071",
+            "name": "プラスアルファ・コンサルティング",
+            "date": "2026-08-12",
+            "business_days": 1
+          },
+          {
+            "code": "479A",
+            "name": "PRONI",
+            "date": "2026-08-13",
+            "business_days": 2
+          },
+          {
+            "code": "4478",
+            "name": "フリー",
+            "date": "2026-08-13",
+            "business_days": 2
+          },
+          {
+            "code": "4165",
+            "name": "プレイド",
+            "date": "2026-08-13",
+            "business_days": 2
+          },
+          {
+            "code": "3993",
+            "name": "PKSHA Technology",
+            "date": "2026-08-13",
+            "business_days": 2
+          },
+          {
+            "code": "4180",
+            "name": "Appier Group",
+            "date": "2026-08-13",
+            "business_days": 2
+          },
+          {
+            "code": "4011",
+            "name": "ヘッドウォータース",
+            "date": "2026-08-14",
+            "business_days": 3
+          },
+          {
+            "code": "4418",
+            "name": "JDSC",
+            "date": "2026-08-14",
+            "business_days": 3
+          },
+          {
+            "code": "4493",
+            "name": "サイバーセキュリティクラウド",
+            "date": "2026-08-14",
+            "business_days": 3
+          },
+          {
+            "code": "3923",
+            "name": "ラクス",
+            "date": "2026-08-14",
+            "business_days": 3
+          }
+        ]
       }
     ]
   },

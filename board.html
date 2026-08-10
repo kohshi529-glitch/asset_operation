@@ -183,18 +183,39 @@ details.cfold>summary{cursor:pointer;color:#7fe3d6;font-size:12.5px;font-weight:
   .valchip .valmini{display:inline}
   .valflag{display:none}
 }
-/* ===== ナイトゲート銘柄行：ゲート判定の直前で必ず改行（改修3） =====
-   1行目=コード｜名｜手法/型チップ｜業績｜値頃感／2行目=ゲート判定｜決算/タグ｜終値｜単元｜提案。
-   ngbreak（flex-basis:100%）で境目を固定。各チップは nowrap でチップ途中の折り返しを禁止。 */
-.ngrow{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
-.ngrow>span{white-space:nowrap}
-.ngrow .ngbreak{flex-basis:100%;height:0;margin:0;padding:0;border:0}
-.ngrow .ngclose{font-size:13px;font-weight:700;color:#7fe3d6}
-.ngrow .ngtan{font-size:12px;font-weight:600;color:#8fb3ad}
-.ngrow .ngprop{flex:1 1 100%;white-space:normal;font-size:12px;color:#b7d6d0;margin-top:2px}
-.ngrow .ngprop .hl{color:#7fe3d6;font-weight:600}
-/* ⛔（型不一致・要確認）カードは発注対象外として枠線色を変える */
+/* ⛔（型不一致・要確認）カードは発注対象外として枠線色を変える（旧.candカード用に残置） */
 .cand.order-bad{border-color:#6b2f2f;border-left:3px solid #e88a8a;background:#2a1a1a}
+/* ===== 統一5行銘柄カード（改修1）。全タブ共通。
+   各行は独立ブロック（div.srow）＝行区切りは画面幅に依存せず固定。折り返しは行内部のみ。
+   新規カラー変数は増やさず既存チップ配色を流用する。 */
+.scard{padding:11px 12px;border-bottom:1px solid #1d3a40}
+.scard:last-child{border-bottom:0}
+.scard.dim{opacity:.82}
+.scard.order-bad{border:1px solid #6b2f2f;border-left:3px solid #e88a8a;background:#2a1a1a;border-radius:10px;margin-bottom:8px}
+.scard .srow{display:flex;flex-wrap:wrap;align-items:baseline;gap:5px 8px;margin-top:5px}
+.scard .srow:first-child{margin-top:0}
+/* 1行目：コード＋名を左、株価を右寄せ。名前は行内で折り返し、株価は常に右上に残す。 */
+.scard .s1{flex-wrap:nowrap;align-items:baseline}
+.scard .s1 .code{flex:0 0 auto}
+.scard .s1 .cname{flex:1 1 auto;min-width:0;overflow-wrap:anywhere;font-size:14.5px;font-weight:600}
+.scard .sprice{flex:0 0 auto;margin-left:auto;font-size:1.2em;font-weight:700;font-variant-numeric:tabular-nums;color:#7fe3d6;white-space:nowrap}
+.scard .sprice .yen{font-size:.72em;font-weight:600;color:#8fb3ad;margin-left:1px}
+.scard .sprice.na{font-size:14px;color:#8fb3ad;font-weight:600}
+/* 4行目：判定／業績／値頃感の3つを横並び。区切りはスラッシュ。 */
+.scard .s4 .ssep{color:#4f7b74;font-weight:400}
+.scard .s4 .vtxt{font-size:12.5px;color:#b7d6d0}
+/* 5行目：提案（指値/逆指値・乖離・SL）。行内で折り返す。 */
+.scard .s5{margin-top:4px}
+.scard .sprop{flex:1 1 100%;white-space:normal;font-size:12px;color:#b7d6d0;line-height:1.6}
+.scard .sprop .hl{color:#7fe3d6;font-weight:600}
+.scard .smeta{flex:1 1 100%;white-space:normal;font-size:11.5px;color:#8fb3ad;margin-top:4px}
+.scard .sum{font-size:12.5px;color:#b7d6d0;margin-top:6px}
+.scard .headline{margin-top:7px}
+/* 決算チップ（改修3。1銘柄1個）。既存配色を流用：warn=warnchip橙／karte=amber中間色／unknown=灰。 */
+.earnchip{display:inline-block;font-size:11px;font-weight:600;border-radius:5px;padding:1px 7px;border:1px solid;white-space:nowrap}
+.earnchip.warn{color:#e8a35b;background:#3d2817;border-color:#6b4a24}
+.earnchip.karte{color:#e8c766;background:#2e2a17;border-color:#5c5324}
+.earnchip.unknown{color:#8fb3ad;background:#1d3a40;border-color:#33565c}
 footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 </style></head><body><div class='wrap'>
 <h1>📋 候補ボード</h1>
@@ -219,6 +240,8 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 <details class='gylegend'><summary>📊 業績グレードの凡例</summary><div class='gylegendbody'>🚀確変11-13 / 🔥絶好調8-10 / ⚡好調5-7 / ✅順調3-4 / ➖横ばい2 / ⚠減速0-1 / 🔻悪化(減益20%超・赤字転落) — 13点満点。売上成長・利益成長・営業レバレッジ・直近Q加速・進捗率の5軸。業績の状態のみを示し株価の割高割安は見ていない</div></details>
 <!-- 値頃感（水準）の凡例（業績グレードの直下。既定は畳む。改修2） -->
 <details class='vallegend'><summary>💠 値頃感（水準）の凡例</summary><div class='vallegendbody'>💎割安6-7 / 🟢値頃5 / ⚪妥当3-4 / 🟡やや割高2 / 🔴過熱0-1 — 7点満点。PEG・ROE対比PBR・52週位置の3軸。株価の水準のみを示し会社の調子（業績グレード）とは独立した別軸</div></details>
+<!-- ゲート判定・乖離率の凡例（既定は畳む。改修7） -->
+<details class='vallegend'><summary>🚪 ゲート判定・乖離率の凡例</summary><div class='vallegendbody'>✅陽線=当日終値&gt;始値かつ上髭が小さい／✅十字線反転=実体極小で直近5日-5%以上下落＝下げ後の反転期待／✅S高=値幅ゼロで前日比プラス／❌上髭=陽線だが上値を叩かれた形／❌陰線=当日終値が始値を下回った＝需給が売り優勢でゲートの前提を満たさない／－SKIP=当日分の株価データが取れず判定不能。判定は当日足の形だけを見ており業績・株価水準は別軸<br>乖離率=提案価格が当日終値からどれだけ離れているか。押し目系はマイナス(到達待ち)、モメ系はプラス(上抜け待ち)。リバ系・変化点系は指値＝当日終値のため表示しない</div></details>
 <div id='panel-nightgate' class='panel active'></div>
 <div id='panel-changepoint' class='panel'></div>
 <div id='panel-methods' class='panel'></div>
@@ -334,11 +357,20 @@ function normalizeChoushiLine(line){
   for(let i=0;i<ops.length;i++){ out=out.slice(0,ops[i].start)+ops[i].text+out.slice(ops[i].end); }
   return out;
 }
-// ヘッドライン全体の正規化。【調子】ラベルを含む行のみ加工し、他の行（業態/いま/水準/戦略）は素通し。
+// 表示専用の除去（改修2）：💰単元…と✅即時可はヘッドライン本文からも消す（master.jsonは書き換えない）。
+function stripLegacyMarks(line){
+  var s=String(line==null?'':line);
+  s=s.replace(/\s*[／\/]?\s*💰単元[^／\/（）()\n]*/g,''); // 「／ 💰単元16万円」等
+  s=s.replace(/✅即時可[・･]?/g,'');                    // 「✅即時可・」等
+  s=s.replace(/（\s*[・･]\s*/g,'（');                    // 除去後の「（・乖離…」→「（乖離…」
+  return s;
+}
+// ヘッドライン全体の正規化。全行から旧マークを除去し、【調子】行のみ調子マークを正規化。
 function normalizeHeadline(text){
   if(text==null) return text;
   return String(text).split('\n').map(function(line){
-    return line.indexOf('【調子】')>=0 ? normalizeChoushiLine(line) : line;
+    var l=stripLegacyMarks(line);
+    return l.indexOf('【調子】')>=0 ? normalizeChoushiLine(l) : l;
   }).join('\n');
 }
 
@@ -387,14 +419,7 @@ function valuationChip(code){
        + `<span class='valmini'>${cat.emoji}${esc(scoreNum)}</span>`
        + `</span>${flagTxt}`;
 }
-// 単元金額チップ（valuation_cache.metrics.tan_yen があれば「💰N万円」。無ければ非表示）。改修3の2行目用。
-function tanYenChip(code){
-  const key=(code==null)?'':String(code);
-  const v=VALUATION&&VALUATION[key];
-  const y=v&&v.metrics&&v.metrics.tan_yen;
-  if(typeof y!=='number'||!(y>0)) return '';
-  return `<span class='ngtan'>💰${esc(Math.round(y/10000))}万円</span>`;
-}
+// （単元金額チップは改修2aで廃止。valuation_cache.metrics.tan_yen は不使用。）
 
 // ===== タブ切替・スクロール（ページ遷移なし） =====
 // 固定ヘッダは無い（タブバー自体が sticky）ため、着地は「タブバーが画面上端に来る位置」。
@@ -453,19 +478,112 @@ function modeClass(mode){
   return 'neu';
 }
 
-// ===== 手法カード（①②③⑤／レガシー枠 共通） =====
-function methodCard(c){
-  return `<div class='cand'>
-        <div class='crow'>
-          <span class='code'>${esc(fld(c.code))}</span>
-          <span class='cname'>${esc(fld(c.name))}</span>
-          <span class='score'>${esc(fld(c.score))}<small>/21</small></span>
-        </div>
-        <div class='chipwrap'>${gyosekiChip(c.code)}${valuationChip(c.code)}</div>
-        <div class='vd'>${esc(c.verdict||'')}<span class='act act-${esc(c.action)}'>${esc(c.action||'')}</span></div>
-        ${c.summary?`<div class='sum'>${esc(c.summary)}</div>`:''}
-        <div class='meta'>精度: ${esc(c.precision||'—')}　採点: ${esc((c.scored_at||'').slice(0,16).replace('T',' '))}　源: ${esc(c.source||'—')}</div>
-      </div>`;
+// ===== 統一5行銘柄カード（改修1） =====
+// 3桁区切り＋末尾「円」。整数はそのまま、小数は1桁まで。
+function fmtPrice(n){
+  const x=(typeof n==='number')?n:Number(n);
+  if(!isFinite(x)) return null;
+  const r=Math.round(x*10)/10;
+  const s=Number.isInteger(r)?String(r):r.toFixed(1);
+  const p=s.split('.');
+  p[0]=p[0].replace(/\B(?=(\d{3})+(?!\d))/g,',');
+  return p.join('.');
+}
+// 終値の解決：エントリの close を優先、無ければ valuation_cache.metrics.price を代替に使う（kenmo等）。
+function resolveClose(c){
+  if(c&&typeof c.close==='number') return c.close;
+  const code=(c&&c.code!=null)?String(c.code):'';
+  const v=VALUATION&&VALUATION[code];
+  const p=v&&v.metrics&&v.metrics.price;
+  return (typeof p==='number')?p:null;
+}
+// 1行目右寄せの株価チップ。数値解決不可は「—」（灰）。
+function priceChip(c){
+  const close=resolveClose(c);
+  const f=(close==null)?null:fmtPrice(close);
+  return (f==null)
+    ? `<span class='sprice na'>—</span>`
+    : `<span class='sprice'>${esc(f)}<span class='yen'>円</span></span>`;
+}
+// 4行目：判定チップ／業績グレード＋スコア／値頃感グレード＋スコア の3つを横並び（スラッシュ区切り）。
+function judgeRow(verdictHtml,code){
+  const sep=`<span class='ssep'>/</span>`;
+  return `<div class='srow s4'>${verdictHtml||''}${sep}${gyosekiChip(code)}${sep}${valuationChip(code)}</div>`;
+}
+// ===== 決算チップの一本化（改修3。1銘柄1個。残営業日数で排他）。master.json は書き換えない。 =====
+// 複数フィールド（earnings_flag / earnings_within / 発表日+窓残り営業日）から {n, mmdd, unknown, fallback} を抽出。
+function earningsInfo(c){
+  if(!c) return null;
+  const f=c.earnings_flag;
+  if(typeof f==='string'&&f){
+    if(f.indexOf('日程不明')>=0) return {unknown:true};
+    const dm=f.match(/(\d{4})-(\d{2})-(\d{2})/);
+    const mmdd=dm?`${dm[2]}/${dm[3]}`:null;
+    const nm=f.match(/残\s*(\d+)\s*営業日/);
+    const n=nm?parseInt(nm[1],10):null;
+    if(n==null&&mmdd==null){ return (f.indexOf('決算')>=0)?{fallback:true}:null; }
+    // 残営業日が取れない（日付のみ）→ 範囲判定不能。決算語ありなら接近優先で畳む、無ければ出さない。
+    if(n==null) return {fallback:true, mmdd:mmdd};
+    return {n:n, mmdd:mmdd};
+  }
+  if(typeof c.earnings_within==='number') return {n:c.earnings_within, mmdd:null};
+  const wd=c['窓残り営業日'];
+  if(typeof wd==='number'){
+    let mmdd=null; const hp=c['発表日'];
+    if(typeof hp==='string'){ const dm=hp.match(/(\d{4})-(\d{2})-(\d{2})/); if(dm) mmdd=`${dm[2]}/${dm[3]}`; }
+    return {n:wd, mmdd:mmdd};
+  }
+  return null;
+}
+// 決算チップHTML（1個 or 空文字）。3営業日以内=⚠決算／10〜20=📋カルテ窓／それ以外=空／日程不明=⚠日程不明。
+function earningsChip(c){
+  const info=earningsInfo(c);
+  if(!info) return '';
+  if(info.unknown) return `<span class='earnchip unknown' title='決算日程不明'>⚠日程不明</span>`;
+  // 残営業日が取れない古いエントリ：⚠決算接近を優先し 📋カルテ窓 は出さない（改修3）。
+  if(info.fallback){ return `<span class='earnchip warn' title='決算接近（残営業日不明）'>⚠決算接近</span>`; }
+  const n=info.n, dt=info.mmdd?` ${info.mmdd}`:'';
+  if(n==null) return '';
+  if(n<=3)          return `<span class='earnchip warn'>⚠決算${esc(dt)}(残${esc(n)}営業日)</span>`;
+  if(n>=10&&n<=20)  return `<span class='earnchip karte'>📋カルテ窓${esc(dt)}(残${esc(n)}営業日)</span>`;
+  return ''; // 4〜9営業日・21営業日以上 → 出さない（3行目ごと省略）
+}
+// 統一5行カード。v = {code,name,close,methodHtml,earnHtml,judgeHtml,propHtml,bodyHtml,dim,bad}
+function card5(v){
+  const r1=`<div class='srow s1'><span class='code'>${esc(fld(v.code))}</span><span class='cname'>${esc(fld(v.name))}</span>${priceChip(v)}</div>`;
+  const r2=(v.methodHtml)?`<div class='srow s2'>${v.methodHtml}</div>`:`<div class='srow s2'></div>`;
+  const r3=v.earnHtml?`<div class='srow s3'>${v.earnHtml}</div>`:''; // 該当なしは行ごと省略
+  const r4=v.judgeHtml||'';
+  const r5=v.propHtml?`<div class='srow s5'>${v.propHtml}</div>`:''; // 提案なしは行ごと省略
+  const r6=v.bodyHtml||'';
+  return `<div class='scard${v.dim?' dim':''}${v.bad?' order-bad':''}'>${r1}${r2}${r3}${r4}${r5}${r6}</div>`;
+}
+// 手法ラベルチップ（5手法名）。
+function methodLabelChip(key){
+  const isG=(''+key).indexOf('granville')===0;
+  return `<span class='brchip${isG?' chart':''}'>${esc(branchLabel(key))}</span>`;
+}
+// verdict テキスト＋action チップ（③5手法・④グランビルの判定表示）。
+function verdictActionHtml(c){
+  const v=(c&&c.verdict)?`<span class='vtxt'>${esc(c.verdict)}</span>`:'';
+  const a=(c&&c.action)?`<span class='act act-${esc(c.action)}'>${esc(c.action)}</span>`:'';
+  return (v||a)?`${v}${a}`:`<span class='vtxt'>—</span>`;
+}
+
+// ===== 手法カード（①②③⑤／レガシー枠 共通）。5行カード化（改修1）。 =====
+function methodCard(c,methodKey){
+  const key=methodKey||(Array.isArray(c.branch)?c.branch[0]:c.branch)||'';
+  const label=key?methodLabelChip(key):'';
+  const scoreTxt=(c.score!=null&&c.score!=='')?`<span class='vtxt'>スコア ${esc(c.score)}/21</span>`:'';
+  const verdictHtml=`${verdictActionHtml(c)}${scoreTxt}`;
+  const body=`${c.summary?`<div class='sum'>${esc(c.summary)}</div>`:''}`
+    +`<div class='smeta'>精度: ${esc(c.precision||'—')}　採点: ${esc((c.scored_at||'').slice(0,16).replace('T',' '))}　源: ${esc(c.source||'—')}</div>`;
+  return card5({code:c.code,name:c.name,close:c.close,
+    methodHtml:label,
+    earnHtml:earningsChip(c),
+    judgeHtml:judgeRow(verdictHtml,c.code),
+    propHtml:'',
+    bodyHtml:body});
 }
 
 // セクション外殻（見出し＝絵文字＋名前＋件数＋鮮度、末尾に「↑トップへ」）
@@ -496,7 +614,7 @@ function renderMethodSection(id,prefix,k,spec,cands,runs){
       : "未実行";
     // 防御的描画：キー欠損・空配列は「0件（最終実行日）」。
     const body=list.length
-      ? list.map(methodCard).join('')
+      ? list.map(c=>methodCard(c,k)).join('')
       : `<div class='empty'>0件（最終実行: ${esc((r&&r.trading_day)||'—')}）</div>`;
     return sectionShell(id,m.emoji,`${prefix} ${m.name||k}`,list.length,fresh,body);
   });
@@ -512,17 +630,18 @@ function kenmoCard(c){
   // 補欠：role==="alternate" のときだけグレーチップ＋カード減光。欠損/その他は正規扱い。
   const isAlt=(c&&c.role==='alternate');
   const alt=isAlt ? `<span class='altbadge'>補欠</span>` : '';
-  return `<div class='cand${isAlt?' alt':''}'>
-        <div class='crow'>
-          <span class='code'>${esc(fld(c.code))}</span>
-          <span class='cname'>${esc(fld(c.name))}</span>${st}${alt}
-          <span class='score'>${esc(fld(c.score))}<small>/21</small></span>
-        </div>
-        <div class='chipwrap'>${gyosekiChip(c.code)}${valuationChip(c.code)}</div>
-        <div class='vd'>${esc(c.verdict||'')}<span class='act act-${esc(c.action)}'>${esc(c.action||'')}</span></div>
-        ${c.summary?`<div class='sum'>${esc(c.summary)}</div>`:''}
-        <div class='meta'>精度: ${esc(c.precision||'—')}　採点: ${esc((c.scored_at||'').slice(0,16).replace('T',' '))}　源: ${esc(c.source||'—')}</div>
-      </div>`;
+  const label=methodLabelChip('kenmo_momentum');
+  const scoreTxt=(c.score!=null&&c.score!=='')?`<span class='vtxt'>スコア ${esc(c.score)}/21</span>`:'';
+  const verdictHtml=`${verdictActionHtml(c)}${scoreTxt}`;
+  const body=`${c.summary?`<div class='sum'>${esc(c.summary)}</div>`:''}`
+    +`<div class='smeta'>精度: ${esc(c.precision||'—')}　採点: ${esc((c.scored_at||'').slice(0,16).replace('T',' '))}　源: ${esc(c.source||'—')}</div>`;
+  return card5({code:c.code,name:c.name,close:c.close,
+    methodHtml:`${label}${st}${alt}`,
+    earnHtml:earningsChip(c),
+    judgeHtml:judgeRow(verdictHtml,c.code),
+    propHtml:'',
+    bodyHtml:body,
+    dim:isAlt});
 }
 // renderMethodSection と同一構造。カード描画のみ kenmoCard を使用し、正規→補欠の順に並べる
 // （role欠損＝正規(0)扱いのため、旧形式データはスコア降順の従来並びと完全一致＝後方互換）。
@@ -557,7 +676,7 @@ function renderStfSection(id,prefix,spec,cands,runs){
       ? `最終実行 <b>${esc(r.trading_day)}</b> ／ ${esc(r.count)}件 ／ ${esc(r.source||'')}`
       : "未実行";
     const body=list.length
-      ? list.map(methodCard).join('')
+      ? list.map(c=>methodCard(c,k)).join('')
       : `<div class='empty'>未稼働（①-5実装待ち）</div>`;
     return sectionShell(id,m.emoji,`${prefix} ${m.name||k}`,list.length,fresh,body);
   });
@@ -654,7 +773,7 @@ function renderIpoSection(id,prefix,d,runs){
     // candidates.tenbagger_x（レガシー枠）は通常空。空でない場合のみ④内下部に補助表示。
     const legacy=(d.candidates&&d.candidates.tenbagger_x)||[];
     const legacyHTML=legacy.length
-      ? `<div class='legacy'><div class='lt'>補助表示：candidates.tenbagger_x（レガシー枠 ${legacy.length}件）</div>${legacy.slice().sort((a,b)=>(b.score||0)-(a.score||0)).map(methodCard).join('')}</div>`
+      ? `<div class='legacy'><div class='lt'>補助表示：candidates.tenbagger_x（レガシー枠 ${legacy.length}件）</div>${legacy.slice().sort((a,b)=>(b.score||0)-(a.score||0)).map(c=>methodCard(c,'tenbagger_x')).join('')}</div>`
       : '';
     // ipo.history があれば末尾に折りたたみで「上場済み・観察終了」簡易一覧（任意）。
     const hist=(ipo&&ipo.history)||[];
@@ -673,43 +792,29 @@ function renderIpoSection(id,prefix,d,runs){
 }
 
 // ===== 📐 グランビル・チャートエントリー（3枠。既存カードの配色・構造を流用。ロジック不変） =====
-function gcard(c,extra,spec){
-  // classified_method バッジ：和名で表示。null は「チャート単独」。
+// グランビルカードも5行カード化（改修1）。g＝GRANVILLE枠設定（label/extra/key）。
+function gcard(c,g,spec){
+  // 手法ラベル：枠名（📐転換初動/押し目/リバーサル）＋分類手法バッジ。
+  const frame=`<span class='brchip chart'>${esc((g&&g.label)||'グランビル')}</span>`;
   const badge=c.classified_method
-    ? `<span class='mbadge'>${esc(METHOD_SHORT[c.classified_method]||((spec[c.classified_method]||{}).name)||c.classified_method)}</span>`
+    ? `<span class='mbadge'>${esc(METHOD_SHORT[c.classified_method]||((spec&&spec[c.classified_method]||{}).name)||c.classified_method)}</span>`
     : `<span class='mbadge chart'>チャート単独</span>`;
-  // score=null は「未採点」表示。
-  const score=(c.score==null)
-    ? `<span class='score na'>未採点</span>`
-    : `<span class='score'>${esc(c.score)}<small>/21</small></span>`;
-  // fund_score：全銘柄共通の横並び比較軸として目立つ位置に「ファンダ◯/◯点」表示。
-  // fund_score系は2026-07-23導入のため欠損に強く（null/未定義は「-」）。
-  const fund=(c.fund_score==null)
-    ? `<div class='fund na'>ファンダ <b>-</b></div>`
-    : `<div class='fund'>ファンダ <b>${esc(c.fund_score)}</b><span class='fmax'>/${esc(fld(c.fund_score_max))}点</span>${c.fund_precision?`<span class='fprec'>${esc(c.fund_precision)}</span>`:''}</div>`;
-  // 指標行：終値／25日乖離／CutlerRSI（＋枠別に雲gap or 出来高前日比）
-  let ind=`終値 ${esc(fld(c.close))}円　25日乖離 ${esc(fld(c.dev25))}%　CutlerRSI ${esc(fld(c.rsi_cutler))}`;
+  const scoreTxt=(c.score==null)?`<span class='vtxt'>未採点</span>`:`<span class='vtxt'>スコア ${esc(c.score)}/21</span>`;
+  const verdictHtml=`${verdictActionHtml(c)}${scoreTxt}`;
+  // 指標行（bodyHtmlの薄色メタ）：ファンダ／25日乖離／CutlerRSI（＋枠別に雲gap or 出来高前日比）。
+  const extra=g&&g.extra;
+  let ind=`25日乖離 ${esc(fld(c.dev25))}%　CutlerRSI ${esc(fld(c.rsi_cutler))}`;
   if(extra==="cloud") ind+=`　雲gap ${esc(fld(c.cloud_gap))}%`;
   else if(extra==="vol") ind+=`　出来高前日比 ${esc(fld(c.vol_ratio_prev))}倍`;
-  // verdict / action（採点済みは verdict+バッジ、未採点はバッジのみ）
-  const vd=(c.verdict||c.action)
-    ? `<div class='vd'>${esc(c.verdict||'')}<span class='act act-${esc(c.action||'')}'>${esc(c.action||'')}</span></div>`
-    : '';
-  return `
-    <div class='cand'>
-      <div class='crow'>
-        <span class='code'>${esc(fld(c.code))}</span>
-        <span class='cname'>${esc(fld(c.name))}</span>
-        ${badge}
-        ${score}
-      </div>
-      <div class='chipwrap'>${gyosekiChip(c.code)}${valuationChip(c.code)}</div>
-      ${fund}
-      <div class='meta'>${ind}</div>
-      ${vd}
-      ${c.summary?`<div class='sum'>${esc(c.summary)}</div>`:''}
-      <div class='meta'>採点: ${esc(fld((c.scored_at||'').slice(0,16).replace('T',' ')||null))}</div>
-    </div>`;
+  const fund=(c.fund_score==null)?`ファンダ -`:`ファンダ ${esc(c.fund_score)}/${esc(fld(c.fund_score_max))}点${c.fund_precision?`（${esc(c.fund_precision)}）`:''}`;
+  const body=`${c.summary?`<div class='sum'>${esc(c.summary)}</div>`:''}`
+    +`<div class='smeta'>${fund}　${ind}　採点: ${esc(fld((c.scored_at||'').slice(0,16).replace('T',' ')||null))}</div>`;
+  return card5({code:c.code,name:c.name,close:c.close,
+    methodHtml:`${frame}${badge}`,
+    earnHtml:earningsChip(c),
+    judgeHtml:judgeRow(verdictHtml,c.code),
+    propHtml:'',
+    bodyHtml:body});
 }
 
 function renderGranville(cands,spec,runs){
@@ -724,7 +829,7 @@ function renderGranville(cands,spec,runs){
     const list=(cands[g.key]||[]).slice().sort((a,b)=>(b.score||0)-(a.score||0));
     // 防御的描画：キー欠損・空配列は 0件（最終実行日付付き）表示。
     const body=list.length
-      ? list.map(c=>gcard(c,g.extra,spec)).join('')
+      ? list.map(c=>gcard(c,g,spec)).join('')
       : `<div class='empty'>0件（最終実行: ${esc(gday)}）</div>`;
     return `<div class='gframe' id='${g.id}'><div class='gftitle'>${esc(g.label)}<span class='gfn'>${list.length}件</span></div>${body}<a class='totop' onclick='scrollTop()'>▲タブへ</a></div>`;
   })).join('');
@@ -849,54 +954,69 @@ function orderStatusChip(c){
   const st=c&&c.order_status;
   if(st==null||st==='') return '';
   const s=String(st);
+  // ✅即時可は大半がこの状態で情報量が乏しいため表示しない（改修2b）。
+  // ⏳待機・⛔型不一致・要確認は判断材料として引き続き表示する。
+  if(s.indexOf('✅')>=0) return '';
   let cls='ostat';
   if(s.indexOf('⛔')>=0) cls+=' bad';
   else if(s.indexOf('⏳')>=0) cls+=' wait';
-  else if(s.indexOf('✅')>=0) cls+=' ok';
   return `<span class='${cls}'>${esc(s)}</span>`;
 }
-// 乖離率チップ（提案指値と当日終値の乖離率%）。旧データ（null/空）は非表示。
-function deviationChip(c){
-  const dp=c&&c.deviation_pct;
-  if(dp==null||dp==='') return '';
-  const s=(typeof dp==='number'&&dp>0?'+':'')+dp+'%';
-  return `<span class='devchip'>乖離 ${esc(s)}</span>`;
-}
+// （旧 deviationChip は改修6の ngDevLabel に置き換え。乖離は型別に「終値指値/現値比±/型不明」で表示。）
 // ⛔（型不一致・要確認）＝発注対象外。カード枠線色を変える。
 function isOrderBad(c){ return !!(c&&c.order_status&&String(c.order_status).indexOf('⛔')>=0); }
-// 通過（PASS/PASS_DOJI）カード。1銘柄1カード。
+// ===== 乖離率の表示条件（改修6）。branch→型を判定して乖離表記を切り替える。 =====
+//  mom=モメ系(逆指値・現値比+)／oshime=押し目系(指値・現値比-)／reb=リバ系(終値指値)／cp=変化点系(終値指値)。
+const NG_TYPE_MAP={
+  kenmo_momentum:'mom', kenmo_newhigh:'mom', stf_kakuhen:'mom', granville_tenkan:'mom',
+  granville_oshime:'oshime',
+  choruko_reversal:'reb', granville_rebound:'reb',
+};
+function ngTypeClass(c){
+  const brs=entryBranches(c);
+  if(brs.map(branchKeyType).indexOf('changepoint')>=0||(c&&c.branch_type==='changepoint')) return 'cp';
+  for(let i=0;i<brs.length;i++){ const t=NG_TYPE_MAP[brs[i]]; if(t) return t; }
+  return 'unknown';
+}
+// 乖離チップ：リバ系・変化点系＝「終値指値」／モメ系・押し目系＝「現値比±x.x%」／型不明＝「型不明」。
+function ngDevLabel(c){
+  const t=ngTypeClass(c);
+  const hint=String((c&&c.order_hint)||'');
+  if(t==='reb'||t==='cp'||/当日終値|発火日終値/.test(hint)) return `<span class='devchip'>終値指値</span>`;
+  if(t==='mom'||t==='oshime'){
+    const dp=c&&c.deviation_pct;
+    const s=(typeof dp==='number')?((dp>0?'+':'')+dp+'%'):'—';
+    return `<span class='devchip'>現値比 ${esc(s)}</span>`;
+  }
+  return `<span class='devchip'>型不明</span>`;
+}
+// 提案行（5行目）：提案(order_hint)＋発注ステータス(⏳/⛔)＋乖離＋SL。全て無ければ空（行ごと省略）。
+function ngProposal(c){
+  const hint=c&&c.order_hint, sl=c&&c.sl_hint;
+  const os=orderStatusChip(c);
+  if(!hint&&!sl&&!os) return '';
+  const propose=hint?`<span class='hl'>提案</span> ${esc(hint)}`:'';
+  const dev=hint?ngDevLabel(c):'';
+  const slTxt=sl?`　<span class='hl'>SL</span> ${esc(sl)}`:'';
+  return `<span class='sprop'>${propose}${os}${dev}${slTxt}</span>`;
+}
+// 通過（PASS/PASS_DOJI）カード。1銘柄1カード。5行レイアウト（改修1）。
+//  1行目=コード＋名＋株価／2行目=手法・型チップ／3行目=決算チップ(1個・無ければ省略)／
+//  4行目=ゲート判定｜業績｜値頃感／5行目=提案・乖離・SL(無ければ省略)／6行目=ヘッドライン。
 function ngPassCard(c){
-  const branches=(c.branch||[]).map(branchChip).join('');
-  // 発注ステータス・乖離は「提案指値の直後」に表示（新フィールドのみ／SLより前）。
-  const os=orderStatusChip(c), dv=deviationChip(c);
-  const hasHint=(c.order_hint||c.sl_hint||os||dv);
-  const propose=c.order_hint
-    ? `<span class='hl'>提案</span> ${esc(c.order_hint)}${os}${dv}`
-    : `${os}${dv}`;
-  // 提案（指値/逆指値・SL候補・order_status・乖離率）は2行目の末尾に置く。長ければ内部で折り返す。
-  const hint=hasHint
-    ? `<span class='ngprop'>${propose}${c.sl_hint?`　<span class='hl'>SL</span> ${esc(c.sl_hint)}`:''}</span>`
-    : '';
-  const closeChip=`<span class='ngclose'>終値 ${esc(fld(c.close))}円</span>`;
-  const tanChip=tanYenChip(c.code);
-  // headline は改行区切りの先頭4行を <details> で表示。【調子】行の調子マークは描画直前に正規化（改修1）。
+  // 行6：ヘッドライン（既定展開・カード下）。【調子】正規化＋💰単元/✅即時可の除去（改修2）。
   let hl='';
   if(c.headline){
     const lines=normalizeHeadline(String(c.headline)).split('\n').slice(0,4).join('\n');
     hl=`<details open class='headline'><summary>📌ヘッドライン</summary><div class='hlbody'>${esc(lines)}</div></details>`;
   }
-  // 改修3：ゲート判定チップの直前で必ず改行。ngbreak（flex-basis:100%）で境目を固定。
-  //  1行目＝コード｜名｜手法/型チップ｜業績グレード｜値頃感／2行目＝ゲート判定｜決算・タグ｜終値｜単元｜提案。
-  return `<div class='cand${isOrderBad(c)?' order-bad':''}'>
-      <div class='ngrow'>
-        <span class='code'>${esc(fld(c.code))}</span>
-        <span class='cname'>${esc(fld(c.name))}</span>
-        ${branches}${gyosekiChip(c.code)}${valuationChip(c.code)}
-        <span class='ngbreak'></span>
-        ${gateChipGuarded(c)}${ngTagChips(c)}${closeChip}${tanChip}${hint}
-      </div>
-      ${hl}
-    </div>`;
+  return card5({code:c.code,name:c.name,close:c.close,
+    methodHtml:entryMarkChips(c),          // 行2：手法/型チップ（複数branchをマージ列挙）
+    earnHtml:earningsChip(c),              // 行3：決算チップ1個（改修3。無ければ省略）
+    judgeHtml:judgeRow(gateChipGuarded(c),c.code), // 行4：ゲート判定｜業績｜値頃感
+    propHtml:ngProposal(c),                // 行5：提案・乖離・SL（改修6。無ければ省略）
+    bodyHtml:hl,
+    bad:isOrderBad(c)});
 }
 // 在籍日数：first_seen〜last_seen の暦日数（両端含む）。日付欠損/不正は「-」。
 function daysInPool(a,b){
@@ -999,21 +1119,20 @@ function renderNightGate(d,runs){
 // ===== ②🔔変化点ウォッチ（changepoint_watch を描画。データ欠如に耐える） =====
 function cpDetChips(dets){ return (dets||[]).map(x=>`<span class='brchip'>${esc(x)}</span>`).join(''); }
 function cpPct(n){ return (n==null||n==='')?'—':((typeof n==='number'&&n>0?'+':'')+n+'%'); }
+// 変化点カードも5行カード化（改修1）。手法ラベルに🔔変化点＋検知器＋🔒封印中を置く。
 function cpCard(c){
-  const sig=(c.signal&&c.signal!=='-')?`<span class='sigchip'>${esc(c.signal)}</span>`:'';
+  const sig=(c.signal&&c.signal!=='-')?`<span class='sigchip'>${esc(c.signal)}</span>`:`<span class='vtxt'>—</span>`;
   const dets=cpDetChips(c.detectors);
   const beta=c.beta_context?`<span class='memochip'>β文脈</span>`:'';
-  const earn=(typeof c.earnings_within==='number')?`<span class='warnchip'>⚠決算${esc(c.earnings_within)}営業日</span>`:'';
-  return `<div class='cand'>
-      <div class='crow'>
-        <span class='code'>${esc(fld(c.code))}</span>
-        <span class='cname'>${esc(fld(c.name))}</span>
-        ${sig}
-      </div>
-      <div class='chipwrap'>${dets}${gyosekiChip(c.code)}${valuationChip(c.code)}${beta}${earn}</div>
-      <div class='meta'>終値 ${esc(fld(c.close))}円　市場超過 ${cpPct(c.excess_pct)}　vol比 ${esc(fld(c.vol_ratio))}倍　25日乖離 ${esc(fld(c.dev25))}%</div>
-      ${c.note?`<div class='sum'>${esc(c.note)}</div>`:''}
-    </div>`;
+  const methodHtml=`<span class='cpchip'>🔔変化点</span>${dets}${beta}<span class='lockchip'>🔒封印中</span>`;
+  const body=`${c.note?`<div class='sum'>${esc(c.note)}</div>`:''}`
+    +`<div class='smeta'>市場超過 ${cpPct(c.excess_pct)}　vol比 ${esc(fld(c.vol_ratio))}倍　25日乖離 ${esc(fld(c.dev25))}%</div>`;
+  return card5({code:c.code,name:c.name,close:c.close,
+    methodHtml:methodHtml,
+    earnHtml:earningsChip(c),       // earnings_within→改修3の排他ロジックで1個に畳む
+    judgeHtml:judgeRow(sig,c.code),
+    propHtml:'',                     // 変化点は指値=当日終値・封印中のため提案行は出さない
+    bodyHtml:body});
 }
 function renderChangepoint(d,runs){
   return safeSection('sec-cp','🔔 変化点ウォッチ',()=>{

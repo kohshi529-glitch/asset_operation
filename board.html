@@ -373,6 +373,41 @@ function normalizeHeadline(text){
     return l.indexOf('【調子】')>=0 ? normalizeChoushiLine(l) : l;
   }).join('\n');
 }
+// headline は文字列・配列・オブジェクトのいずれかで来る。すべて改行区切りテキストへ正規化する。
+// 2026-08-15: ①-8 が {gyotai,ima,chosi,suijun,senryaku} のオブジェクトで書くようになり、
+// String(headline) が "[object Object]" になっていた不具合の修正。
+function headlineToText(h){
+  if(h==null) return '';
+  if(typeof h==='string') return h;
+  if(Array.isArray(h)) return h.filter(function(x){return x!=null&&x!=='';}).join('\n');
+  if(typeof h==='object'){
+    var MAP=[['業態',['gyotai','gyoutai','business']],
+             ['いま',['ima','now']],
+             ['調子',['chosi','choshi','choushi','condition']],
+             ['水準',['suijun','level','valuation']],
+             ['戦略',['senryaku','strategy']]];
+    var out=[],used={};
+    MAP.forEach(function(m){
+      var label=m[0],keys=m[1],v=null;
+      for(var i=0;i<keys.length;i++){
+        if(h[keys[i]]!=null&&h[keys[i]]!==''){v=h[keys[i]];used[keys[i]]=1;break;}
+      }
+      if(v==null&&h['【'+label+'】']!=null){v=h['【'+label+'】'];used['【'+label+'】']=1;}
+      if(v!=null&&v!==''){
+        var s=String(v);
+        out.push(s.indexOf('【'+label+'】')===0 ? s : '【'+label+'】'+s);
+      }
+    });
+    Object.keys(h).forEach(function(k){
+      if(used[k]) return;
+      var v=h[k];
+      if(v==null||v===''||typeof v==='object') return;
+      out.push(String(k)+': '+String(v));
+    });
+    return out.join('\n');
+  }
+  return String(h);
+}
 
 // ===== 値頃感（水準）チップ（valuation_cache 由来。業績グレードのすぐ右隣。改修2） =====
 // master.json の valuation_cache（code → {grade,score,flags,metrics,...}）を render() で格納。未取得時は空。
@@ -1007,7 +1042,7 @@ function ngPassCard(c){
   // 行6：ヘッドライン（既定展開・カード下）。【調子】正規化＋💰単元/✅即時可の除去（改修2）。
   let hl='';
   if(c.headline){
-    const lines=normalizeHeadline(String(c.headline)).split('\n').slice(0,4).join('\n');
+    const lines=normalizeHeadline(headlineToText(c.headline)).split('\n').slice(0,5).join('\n');
     hl=`<details open class='headline'><summary>📌ヘッドライン</summary><div class='hlbody'>${esc(lines)}</div></details>`;
   }
   return card5({code:c.code,name:c.name,close:c.close,

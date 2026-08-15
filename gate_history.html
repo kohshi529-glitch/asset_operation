@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ゲート履歴ビューア</title>
+<style>
+:root{
+  --bg:#f7f8fa; --panel:#ffffff; --line:#e3e6ec; --fg:#1b1f27; --muted:#68707f;
+  --accent:#2b5cd9; --accent-soft:#eaf0ff; --warn:#b45309; --warn-soft:#fef3c7;
+  --ok:#15803d; --ok-soft:#dcfce7; --bad:#b91c1c; --bad-soft:#fee2e2;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#12151b; --panel:#1a1e26; --line:#2b313c; --fg:#e6e9ef; --muted:#98a1b2;
+    --accent:#6d94ff; --accent-soft:#1e2740; --warn:#fbbf24; --warn-soft:#3a2f12;
+    --ok:#4ade80; --ok-soft:#14301f; --bad:#f87171; --bad-soft:#3a1818;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+  font-size:15px;line-height:1.6;-webkit-text-size-adjust:100%}
+header{position:sticky;top:0;z-index:10;background:var(--panel);border-bottom:1px solid var(--line);
+  padding:10px 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+h1{font-size:16px;margin:0;font-weight:700;letter-spacing:.02em}
+.status{font-size:12px;color:var(--muted);margin-left:auto}
+.wrap{padding:12px 14px 60px;max-width:1100px;margin:0 auto}
+input[type=search]{flex:1 1 200px;min-width:0;padding:8px 10px;border:1px solid var(--line);
+  border-radius:8px;background:var(--bg);color:var(--fg);font-size:15px}
+button{padding:7px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);
+  color:var(--fg);font-size:13px;cursor:pointer}
+button:hover{border-color:var(--accent);color:var(--accent)}
+button.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:700}
+.days{display:flex;gap:6px;overflow-x:auto;padding:10px 0 12px;-webkit-overflow-scrolling:touch}
+.day{flex:0 0 auto;padding:6px 10px;border:1px solid var(--line);border-radius:8px;
+  background:var(--panel);cursor:pointer;font-size:13px;white-space:nowrap}
+.day .n{color:var(--muted);font-size:11px;margin-left:5px}
+.day.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:700}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 12px}
+.card h2{font-size:14px;margin:0 0 8px;font-weight:700}
+.meta{font-size:12px;color:var(--muted);margin:0 0 10px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;font-weight:600;color:var(--muted);font-size:11px;
+  border-bottom:1px solid var(--line);padding:0 6px 6px;white-space:nowrap}
+td{padding:7px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+.code{font-weight:700;font-variant-numeric:tabular-nums}
+.nm{color:var(--muted);font-size:12px;display:block}
+.num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.tag{display:inline-block;padding:1px 6px;border-radius:5px;font-size:11px;
+  background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.tag.w{background:var(--warn-soft);color:var(--warn)}
+.tag.g{background:var(--ok-soft);color:var(--ok)}
+.tag.r{background:var(--bad-soft);color:var(--bad)}
+.empty{color:var(--muted);font-size:13px;padding:18px 0;text-align:center}
+.hint{font-size:12px;color:var(--muted);margin:14px 0 0;padding-top:10px;border-top:1px solid var(--line)}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media (max-width:560px){ .hideS{display:none} }
+</style>
+</head>
+<body>
+<header>
+  <h1>ゲート履歴</h1>
+  <input type="search" id="q" placeholder="銘柄コード・銘柄名・手法で検索">
+  <button id="reload">再読込</button>
+  <span class="status" id="status">読み込み中…</span>
+</header>
+
+<div class="wrap">
+  <div class="days" id="days"></div>
+  <div id="view"></div>
+  <p class="hint" id="hint"></p>
+</div>
+
+<script>
+// ── 設定 ───────────────────────────────────────────────
+// Pages上では相対パス、それ以外（ローカルプレビュー等）では Pages を直接見る
+var BASE = location.hostname.indexOf('github.io') >= 0
+  ? './'
+  : 'https://kohshi529-glitch.github.io/asset_operation/';
+var LOOKBACK_DAYS = 45;   // 何暦日ぶん遡ってプローブするか
+var days = [];            // [{date, data}]
+var selected = null;
+
+// ── 取得 ───────────────────────────────────────────────
+function ymd(d){
+  return d.getFullYear() + '-' +
+    String(d.getMonth()+1).padStart(2,'0') + '-' +
+    String(d.getDate()).padStart(2,'0');
+}
+function candidateDates(){
+  var out = [], now = new Date();
+  for (var i=0; i<LOOKBACK_DAYS; i++){
+    var d = new Date(now.getTime() - i*86400000);
+    var w = d.getDay();
+    if (w === 0 || w === 6) continue;   // 土日は base_day にならない
+    out.push(ymd(d));
+  }
+  return out;
+}
+function getJSON(url){
+  return fetch(url, {cache:'no-store'})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .catch(function(){ return null; });
+}
+
+function load(){
+  document.getElementById('status').textContent = '読み込み中…';
+  days = [];
+  var dates = candidateDates();
+  var jobs = dates.map(function(d){
+    return getJSON(BASE + 'gate_history/' + d + '.json').then(function(j){
+      if (j) days.push({date:d, data:j});
+    });
+  });
+  // 履歴がまだ無い日でも今夜ぶんは today から拾う
+  jobs.push(getJSON(BASE + 'night_gate_today.json').then(function(j){
+    if (j && j.base_day && !days.some(function(x){return x.date === j.base_day;})){
+      days.push({date:j.base_day, data:j, live:true});
+    }
+  }));
+
+  Promise.all(jobs).then(function(){
+    days.sort(function(a,b){ return a.date < b.date ? 1 : -1; });
+    var n = days.reduce(function(s,x){ return s + (x.data.proposals||[]).length; }, 0);
+    document.getElementById('status').textContent =
+      days.length ? (days.length + '日 / 提案' + n + '件') : 'データなし';
+    document.getElementById('hint').textContent =
+      '直近' + LOOKBACK_DAYS + '暦日を遡って gate_history/ を探しています。' +
+      '蓄積は①-8 v1.21 の適用日から始まります。' +
+      (days.length && days[0].live ? '（最新日は night_gate_today.json から表示中）' : '');
+    selected = days.length ? days[0].date : null;
+    render();
+  });
+}
+
+// ── 描画 ───────────────────────────────────────────────
+function esc(s){
+  return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];
+  });
+}
+function priceLabel(p){
+  if (p.entry_type === 'momentum') return '逆指値 ' + fmt(p.entry_price);
+  return '指値 ' + fmt(p.entry_price);
+}
+function fmt(v){
+  if (v == null || v === '') return '—';
+  return (typeof v === 'number') ? v.toLocaleString('ja-JP') : esc(v);
+}
+function statusTag(st){
+  if (!st) return '';
+  var cls = st.indexOf('⛔') === 0 ? 'r' : (st.indexOf('⏳') === 0 ? 'w' : '');
+  return '<span class="tag ' + cls + '">' + esc(st) + '</span>';
+}
+
+function renderDays(){
+  var el = document.getElementById('days');
+  el.innerHTML = days.map(function(d){
+    return '<div class="day' + (d.date === selected ? ' on' : '') + '" data-d="' + d.date + '">' +
+      esc(d.date.slice(5)) + '<span class="n">' + (d.data.proposals||[]).length + '</span></div>';
+  }).join('');
+  Array.prototype.forEach.call(el.querySelectorAll('.day'), function(n){
+    n.onclick = function(){ selected = n.getAttribute('data-d'); render(); };
+  });
+}
+
+function rowsTable(rows, showDate){
+  if (!rows.length) return '<p class="empty">該当する提案はありません</p>';
+  var head = '<tr>' + (showDate ? '<th>日付</th>' : '') +
+    '<th>コード</th><th class="hideS">手法</th><th>提案</th><th class="num">SL</th>' +
+    '<th class="num hideS">単元</th><th>状態</th></tr>';
+  var body = rows.map(function(r){
+    var p = r.p;
+    var marks = (p.cross_hit ? ' <span class="tag g">🎯2手法</span>' : '') +
+                (p.sealed ? ' <span class="tag w">🔒封印</span>' : '');
+    return '<tr>' +
+      (showDate ? '<td class="num">' + esc(r.d.slice(5)) + '</td>' : '') +
+      '<td><span class="code">' + esc(p.code) + '</span>' + marks +
+        '<span class="nm">' + esc(p.name || '') + '</span></td>' +
+      '<td class="hideS"><span class="tag">' + esc(p.branch || '—') + '</span></td>' +
+      '<td class="num">' + esc(priceLabel(p)) + '</td>' +
+      '<td class="num">' + fmt(p.sl_price) + '</td>' +
+      '<td class="num hideS">' + fmt(p.tan) + '</td>' +
+      '<td>' + statusTag(p.order_status) + '</td>' +
+      '</tr>';
+  }).join('');
+  return '<div class="scroll"><table>' + head + body + '</table></div>';
+}
+
+function fillsTable(fills){
+  var f = (fills || []).filter(function(x){ return x.filled === true; });
+  if (!(fills||[]).length) return '';
+  var head = '<tr><th>コード</th><th class="num">約定</th><th class="num">終値</th><th class="num">含み損益</th></tr>';
+  var body = f.map(function(x){
+    var v = x.unreal_pct;
+    var cls = v == null ? '' : (v >= 0 ? 'g' : 'r');
+    return '<tr><td class="code">' + esc(x.code) + '</td>' +
+      '<td class="num">' + fmt(x.fill_price) + '</td>' +
+      '<td class="num">' + fmt(x.close) + '</td>' +
+      '<td class="num"><span class="tag ' + cls + '">' +
+        (v == null ? '—' : (v >= 0 ? '+' : '') + v.toFixed(1) + '%') + '</span></td></tr>';
+  }).join('');
+  var nf = fills.filter(function(x){ return x.filled === false; }).length;
+  var un = fills.filter(function(x){ return x.filled == null; }).length;
+  return '<div class="card"><h2>前夜の結果</h2>' +
+    '<p class="meta">約定 ' + f.length + ' ／ 不約定 ' + nf + ' ／ 判定不能 ' + un +
+    '　※PL5口座への正式な反映は週次①-11の採点。ここは参考情報です</p>' +
+    (f.length ? '<div class="scroll"><table>' + head + body + '</table></div>'
+              : '<p class="empty">約定した提案はありません</p>') + '</div>';
+}
+
+function render(){
+  renderDays();
+  var q = document.getElementById('q').value.trim().toLowerCase();
+  var view = document.getElementById('view');
+
+  if (!days.length){
+    view.innerHTML = '<div class="card"><p class="empty">' +
+      'まだ履歴がありません。①-8 v1.21 が初回実行されると蓄積が始まります。</p></div>';
+    return;
+  }
+
+  // 検索モード: 全期間を横断
+  if (q){
+    var hits = [];
+    days.forEach(function(d){
+      (d.data.proposals||[]).forEach(function(p){
+        var hay = [p.code, p.name, p.branch, p.entry_type].join(' ').toLowerCase();
+        if (hay.indexOf(q) >= 0) hits.push({d:d.date, p:p});
+      });
+    });
+    var codes = {};
+    hits.forEach(function(h){ codes[h.p.code] = 1; });
+    view.innerHTML = '<div class="card"><h2>検索結果「' + esc(q) + '」</h2>' +
+      '<p class="meta">' + hits.length + '件 / ' + Object.keys(codes).length + '銘柄' +
+      '（読み込み済み ' + days.length + '日ぶんが対象）</p>' +
+      rowsTable(hits, true) + '</div>';
+    return;
+  }
+
+  // 日別モード
+  var day = days.filter(function(d){ return d.date === selected; })[0] || days[0];
+  var dt = day.data;
+  var rows = (dt.proposals||[]).map(function(p){ return {d:day.date, p:p}; });
+  var badges = [];
+  if (dt.market_mode) badges.push('市場: ' + esc(dt.market_mode));
+  if (dt.week_open === true) badges.push('週初（週末ブリーフあり）');
+  if (day.live) badges.push('最新日・today から表示中');
+
+  view.innerHTML =
+    '<div class="card"><h2>' + esc(day.date) + ' の提案 ' + rows.length + '件</h2>' +
+    (badges.length ? '<p class="meta">' + badges.join('　/　') + '</p>' : '') +
+    rowsTable(rows, false) + '</div>' +
+    fillsTable(dt.prev_fills);
+}
+
+document.getElementById('q').addEventListener('input', render);
+document.getElementById('reload').addEventListener('click', load);
+load();
+</script>
+</body>
+</html>

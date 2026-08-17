@@ -146,6 +146,15 @@ details.cfold>summary{cursor:pointer;color:#7fe3d6;font-size:12.5px;font-weight:
 .ostat.wait{color:#e8c766;background:#2e2a17;border-color:#5c5324}
 .ostat.bad{color:#e88a8a;background:#2e1a1a;border-color:#6b2f2f}
 .devchip{display:inline-block;font-size:11px;font-weight:600;color:#8fb3ad;background:#1d3a40;border:1px solid #33565c;border-radius:5px;padding:1px 7px;margin-left:6px;white-space:nowrap}
+/* ===== 🕒 バックナンバー行（ゲート履歴への深リンク。改修: PRボードのバックナンバー機能） ===== */
+.bnrow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:2px 0 10px}
+.bnlbl{font-size:11px;color:#8fb3ad;margin-right:2px}
+.bnchip{display:inline-block;padding:3px 9px;border-radius:999px;font-size:12px;text-decoration:none;
+  background:#12292e;border:1px solid #1d3a40;color:#cfe9e4;font-variant-numeric:tabular-nums}
+.bnchip:hover{border-color:#1fb6a6;color:#7fe3d6}
+.bnchip.bnnow{border-color:#1fb6a6;color:#7fe3d6;font-weight:700}
+.bnchip.bnold{opacity:.45}
+.bnchip.bnall{background:#123d33;border-color:#1fb6a6;color:#7fe3d6}
 /* ===== 業績グレードチップ（gyoseki_cache 由来。ゲート判定と決算チップの間に表示） =====
    配色は既存チップ語彙を流用し新規カラーは増やさない：
    gy-1緑(確変/絶好調)・gy-2青緑(好調)・gy-3中間青(順調)・gy-4灰(横ばい)・gy-5黄(減速)・gy-6赤(悪化)・gy-none灰(未評価/判定保留/業績不明) */
@@ -227,6 +236,7 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 <a href='./setup_guide.html'>🛠 設定要領</a>
 <a class='here' href='./board.html'>📋 候補ボード</a>
 <a href='./system.html'>🖥 システム</a>
+<a href='./gate_history.html'>🕒 ゲート履歴</a>
 </div>
 <div class='kpis' id='kpis'></div>
 <!-- メインタブバー（①ゲート/②変化点/③5手法/④グランビル）。id付与でタブ着地位置の基準に使う -->
@@ -250,7 +260,8 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 </div>
 <button class='fab' id='backtab' onclick='scrollToTabbar()' aria-label='タブバーへ戻る'>▲タブへ戻る</button>
 <script>
-const RAW_URL = "https://raw.githubusercontent.com/kohshi529-glitch/asset_operation/main/master.json";
+// 読み取りは Pages 経由に固定（raw.githubusercontent.com は全読み取り経路で使用禁止）
+const RAW_URL = "https://kohshi529-glitch.github.io/asset_operation/master.json";
 const EMBEDDED = null; // スナップショット無し（LIVE専用。取得失敗時はメッセージ表示）
 // タブ1・手法別セクションの並び。④はIPO（ipo.watchlist）、⑤はSTF。
 const ORDER = ["kenmo_momentum","kenmo_newhigh","choruko_reversal","stf_kakuhen","tenbagger_x","watch_bottoming"];
@@ -1097,6 +1108,32 @@ function mergeNightGateResults(results){
   }
   return Array.from(byCode.values());
 }
+// ===== 🕒 バックナンバー（ゲート履歴への深リンク） =====
+// night_gate.log の日付だけを使うため追加のフェッチは発生しない。
+// 履歴ファイル（gate_history/）の蓄積は①-8 v1.21 の適用日から。それ以前の日はビューア側で
+// 「この日の履歴ファイルはありません」と表示される。
+const HISTORY_START = '2026-08-14';
+function ngLogDates(ng){
+  const out=[], seen={};
+  ((ng&&ng.log)||[]).forEach(e=>{
+    const d=(e&&(e.base_day||e.date))||null;
+    if(d && !seen[d]){ seen[d]=1; out.push(d); }
+  });
+  out.sort((a,b)=>a<b?1:-1);
+  return out;
+}
+function ngBackNumbers(ng,today){
+  const ds=ngLogDates(ng);
+  const chips=ds.map(d=>{
+    const has = d>=HISTORY_START;
+    const cls = 'bnchip'+(d===today?' bnnow':'')+(has?'':' bnold');
+    const tip = has?('この日の提案を履歴ビューアで開く'):('履歴ファイル蓄積開始（'+HISTORY_START+'）より前');
+    return `<a class='${cls}' title='${esc(tip)}' href='./gate_history.html?d=${esc(d)}'>${esc(String(d).slice(5))}</a>`;
+  }).join('');
+  const all = `<a class='bnchip bnall' href='./gate_history.html'>🕒 全期間</a>`;
+  if(!ds.length) return `<div class='bnrow'><span class='bnlbl'>バックナンバー</span>${all}</div>`;
+  return `<div class='bnrow'><span class='bnlbl'>バックナンバー</span>${chips}${all}</div>`;
+}
 function renderNightGate(d,runs){
   return safeSection('sec-ng','🚪 ナイトゲート',()=>{
     const ng=d.night_gate;
@@ -1109,7 +1146,9 @@ function renderNightGate(d,runs){
         <a class='totop' onclick='scrollTop()'>▲タブへ</a>
       </section>`;
     }
-    const day=((results[0].scored_at||'').slice(0,10))||'—';
+    // 判定日は base_day（足の基準日）を正とし、無い旧形式のみ scored_at で代替する。
+    // バックナンバー行の「現在表示中」判定にも使うため base_day 優先でなければならない。
+    const day=(results[0].base_day||((results[0].scored_at||'').slice(0,10)))||'—';
     const passes=results.filter(r=>r.verdict==='PASS'||r.verdict==='PASS_DOJI');
     const r=runs.night_gate;
     const evalN=(r&&typeof r.evaluated==='number')?r.evaluated:results.length;
@@ -1143,6 +1182,7 @@ function renderNightGate(d,runs){
     return `<section class='mth' id='sec-ng'>
       <div class='mhead'><span>🚪</span><span class='mname'>🚪 ナイトゲート</span><span class='cnt'>${passes.length}通過</span></div>
       ${sum}
+      ${ngBackNumbers(ng,day)}
       ${passHTML}
       ${negHTML}
       ${poolHTML}

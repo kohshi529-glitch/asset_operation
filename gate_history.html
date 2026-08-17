@@ -3,18 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ゲート履歴ビューア</title>
+<title>ゲート履歴（バックナンバー）</title>
 <style>
 :root{
   --bg:#f7f8fa; --panel:#ffffff; --line:#e3e6ec; --fg:#1b1f27; --muted:#68707f;
   --accent:#2b5cd9; --accent-soft:#eaf0ff; --warn:#b45309; --warn-soft:#fef3c7;
   --ok:#15803d; --ok-soft:#dcfce7; --bad:#b91c1c; --bad-soft:#fee2e2;
+  --mid:#4f5765; --mid-soft:#eef0f4;
 }
 @media (prefers-color-scheme: dark){
   :root{
     --bg:#12151b; --panel:#1a1e26; --line:#2b313c; --fg:#e6e9ef; --muted:#98a1b2;
     --accent:#6d94ff; --accent-soft:#1e2740; --warn:#fbbf24; --warn-soft:#3a2f12;
     --ok:#4ade80; --ok-soft:#14301f; --bad:#f87171; --bad-soft:#3a1818;
+    --mid:#b7bfcd; --mid-soft:#242a34;
   }
 }
 *{box-sizing:border-box}
@@ -32,11 +34,20 @@ button{padding:7px 12px;border:1px solid var(--line);border-radius:8px;backgroun
   color:var(--fg);font-size:13px;cursor:pointer}
 button:hover{border-color:var(--accent);color:var(--accent)}
 button.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:700}
-.days{display:flex;gap:6px;overflow-x:auto;padding:10px 0 12px;-webkit-overflow-scrolling:touch}
+/* 共通ナビ（全ページ同一の並び。改修: 従来は index.html にのみ ゲート履歴 が出ていた） */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
+.tabs a{background:var(--panel);border:1px solid var(--line);color:var(--fg);text-decoration:none;
+  padding:6px 11px;border-radius:999px;font-size:13px}
+.tabs a.here{border-color:var(--accent);color:var(--accent);font-weight:700;background:var(--accent-soft)}
+.days{display:flex;gap:6px;overflow-x:auto;padding:8px 0 4px;-webkit-overflow-scrolling:touch}
 .day{flex:0 0 auto;padding:6px 10px;border:1px solid var(--line);border-radius:8px;
   background:var(--panel);cursor:pointer;font-size:13px;white-space:nowrap}
 .day .n{color:var(--muted);font-size:11px;margin-left:5px}
 .day.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:700}
+.mgroup{margin:0 0 2px}
+.mlabel{font-size:11px;color:var(--muted);padding:6px 0 0;font-weight:600;letter-spacing:.04em}
+.bar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:6px 0 12px}
+.bar .lbl{font-size:11px;color:var(--muted)}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 12px}
 .card h2{font-size:14px;margin:0 0 8px;font-weight:700}
 .meta{font-size:12px;color:var(--muted);margin:0 0 10px}
@@ -53,22 +64,54 @@ tr:last-child td{border-bottom:0}
 .tag.w{background:var(--warn-soft);color:var(--warn)}
 .tag.g{background:var(--ok-soft);color:var(--ok)}
 .tag.r{background:var(--bad-soft);color:var(--bad)}
+/* 業績グレード／値頃感（水準）チップ。絵文字＋スコアは常時表示、グレード名だけ狭幅で隠す */
+.g{display:inline-flex;align-items:center;gap:3px;padding:1px 6px;border-radius:5px;
+  font-size:11px;white-space:nowrap;background:var(--mid-soft);color:var(--mid)}
+.g b{font-variant-numeric:tabular-nums;font-weight:700}
+.g em{font-style:normal}
+.g.g-hi{background:var(--ok-soft);color:var(--ok)}
+.g.g-mid{background:var(--accent-soft);color:var(--accent)}
+.g.g-warn{background:var(--warn-soft);color:var(--warn)}
+.g.g-bad{background:var(--bad-soft);color:var(--bad)}
+.g.g-none{background:var(--mid-soft);color:var(--muted)}
+.g .live{opacity:.75;font-size:10px}
+details.leg{margin:0 0 10px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+details.leg summary{cursor:pointer;font-size:12px;padding:8px 11px;color:var(--muted);font-weight:600}
+details.leg .body{font-size:12px;color:var(--muted);padding:0 11px 10px;line-height:1.7}
 .empty{color:var(--muted);font-size:13px;padding:18px 0;text-align:center}
 .hint{font-size:12px;color:var(--muted);margin:14px 0 0;padding-top:10px;border-top:1px solid var(--line)}
 .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
-@media (max-width:560px){ .hideS{display:none} }
+.note{font-size:11px;color:var(--warn);margin:6px 0 0}
+@media (max-width:560px){ .hideS{display:none} .g em{display:none} }
 </style>
 </head>
 <body>
 <header>
-  <h1>ゲート履歴</h1>
+  <h1>🕒 ゲート履歴</h1>
   <input type="search" id="q" placeholder="銘柄コード・銘柄名・手法で検索">
   <button id="reload">再読込</button>
   <span class="status" id="status">読み込み中…</span>
 </header>
 
 <div class="wrap">
-  <div class="days" id="days"></div>
+  <div class="tabs">
+    <a href="./index.html">📊 スコアリング基準</a>
+    <a href="./setup_guide.html">🛠 設定要領</a>
+    <a href="./board.html">📋 候補ボード</a>
+    <a href="./system.html">🖥 システム</a>
+    <a class="here" href="./gate_history.html">🕒 ゲート履歴</a>
+  </div>
+
+  <details class="leg"><summary>📊 業績グレードの凡例</summary><div class="body">
+    🚀確変11-13 / 🔥絶好調8-10 / ⚡好調5-7 / ✅順調3-4 / ➖横ばい2 / ⚠減速0-1 / 🔻悪化(減益20%超・赤字転落) — 13点満点。売上成長・利益成長・営業レバレッジ・直近Q加速・進捗率の5軸。業績の状態のみを示し株価の割高割安は見ていない
+  </div></details>
+  <details class="leg"><summary>💠 値頃感（水準）の凡例</summary><div class="body">
+    💎割安6-7 / 🟢値頃5 / ⚪妥当3-4 / 🟡やや割高2 / 🔴過熱0-1 — 7点満点。PEG・ROE対比PBR・52週位置の3軸。株価の水準のみを示し会社の調子（業績グレード）とは独立した別軸<br>
+    <b>⧗が付いた値は「現在値」</b>です。値頃感は株価に依存するため、提案当時の水準とは異なります。⧗が付かない値は提案当日に凍結された当時値です。
+  </div></details>
+
+  <div id="daysbox"></div>
+  <div class="bar" id="bar"></div>
   <div id="view"></div>
   <p class="hint" id="hint"></p>
 </div>
@@ -76,103 +119,250 @@ tr:last-child td{border-bottom:0}
 <script>
 // ── 設定 ───────────────────────────────────────────────
 // Pages上では相対パス、それ以外（ローカルプレビュー等）では Pages を直接見る
+// （raw.githubusercontent.com は全読み取り経路で使用禁止のため使わない）
 var BASE = location.hostname.indexOf('github.io') >= 0
   ? './'
   : 'https://kohshi529-glitch.github.io/asset_operation/';
-var LOOKBACK_DAYS = 45;   // 何暦日ぶん遡ってプローブするか
-var days = [];            // [{date, data}]
+var HISTORY_START = '2026-08-14'; // ①-8 v1.21 適用日。これより前に gate_history は存在しない
+var STEP_DAYS = 45;               // 1回に遡る暦日数（「さらに前へ」で加算）
+var lookback = STEP_DAYS;         // 現在の遡り暦日数
+var probed = {};                  // 既にプローブ済みの日付（再取得を避ける）
+var days = [];                    // [{date, data, live}]
 var selected = null;
+var sortKey = 'code';             // code | gy | val
+var LIVE = {gy:null, val:null, at:null}; // master.json 由来の「現在値」キャッシュ（補完ボタンで取得）
+var liveLoading = false;
 
-// ── 取得 ───────────────────────────────────────────────
+// ── 日付ユーティリティ ─────────────────────────────────
 function ymd(d){
   return d.getFullYear() + '-' +
     String(d.getMonth()+1).padStart(2,'0') + '-' +
     String(d.getDate()).padStart(2,'0');
 }
+// 直近 lookback 暦日のうち、平日かつ HISTORY_START 以降の日付を返す
 function candidateDates(){
   var out = [], now = new Date();
-  for (var i=0; i<LOOKBACK_DAYS; i++){
+  for (var i=0; i<lookback; i++){
     var d = new Date(now.getTime() - i*86400000);
     var w = d.getDay();
-    if (w === 0 || w === 6) continue;   // 土日は base_day にならない
-    out.push(ymd(d));
+    if (w === 0 || w === 6) continue;      // 土日は base_day にならない
+    var s = ymd(d);
+    if (s < HISTORY_START) continue;       // 蓄積開始前は探さない（無駄な404を出さない）
+    out.push(s);
   }
   return out;
 }
+// 「さらに前へ」で遡れる余地が残っているか
+function canExtend(){
+  var oldest = new Date(new Date().getTime() - lookback*86400000);
+  return ymd(oldest) > HISTORY_START;
+}
+function qparam(k){
+  var m = new RegExp('[?&]' + k + '=([^&]*)').exec(location.search);
+  return m ? decodeURIComponent(m[1]) : null;
+}
+
 function getJSON(url){
   return fetch(url, {cache:'no-store'})
     .then(function(r){ return r.ok ? r.json() : null; })
     .catch(function(){ return null; });
 }
 
-function load(){
-  document.getElementById('status').textContent = '読み込み中…';
-  days = [];
-  var dates = candidateDates();
-  var jobs = dates.map(function(d){
+// ── 取得 ───────────────────────────────────────────────
+function probe(dates){
+  var jobs = dates.filter(function(d){ return !probed[d]; }).map(function(d){
+    probed[d] = 1;
     return getJSON(BASE + 'gate_history/' + d + '.json').then(function(j){
       if (j) days.push({date:d, data:j});
     });
   });
-  // 履歴がまだ無い日でも今夜ぶんは today から拾う
-  jobs.push(getJSON(BASE + 'night_gate_today.json').then(function(j){
-    if (j && j.base_day && !days.some(function(x){return x.date === j.base_day;})){
-      days.push({date:j.base_day, data:j, live:true});
+  return Promise.all(jobs);
+}
+
+function load(first){
+  document.getElementById('status').textContent = '読み込み中…';
+  var jobs = [probe(candidateDates())];
+
+  if (first){
+    // 履歴がまだ無い日でも今夜ぶんは today から拾う
+    jobs.push(getJSON(BASE + 'night_gate_today.json').then(function(j){
+      if (j && j.base_day && !days.some(function(x){return x.date === j.base_day;})){
+        days.push({date:j.base_day, data:j, live:true});
+      }
+    }));
+    // ?d=YYYY-MM-DD の直接指定は遡り範囲の外でも取りに行く（ボードからの深リンク用）
+    var dp = qparam('d');
+    if (dp && /^\d{4}-\d{2}-\d{2}$/.test(dp) && !probed[dp]){
+      probed[dp] = 1;
+      jobs.push(getJSON(BASE + 'gate_history/' + dp + '.json').then(function(j){
+        if (j) days.push({date:dp, data:j});
+      }));
     }
-  }));
+  }
 
   Promise.all(jobs).then(function(){
     days.sort(function(a,b){ return a.date < b.date ? 1 : -1; });
     var n = days.reduce(function(s,x){ return s + (x.data.proposals||[]).length; }, 0);
     document.getElementById('status').textContent =
       days.length ? (days.length + '日 / 提案' + n + '件') : 'データなし';
-    document.getElementById('hint').textContent =
-      '直近' + LOOKBACK_DAYS + '暦日を遡って gate_history/ を探しています。' +
-      '蓄積は①-8 v1.21 の適用日から始まります。' +
-      (days.length && days[0].live ? '（最新日は night_gate_today.json から表示中）' : '');
-    selected = days.length ? days[0].date : null;
+
+    if (first){
+      var want = qparam('d');
+      if (want && days.some(function(x){ return x.date === want; })) selected = want;
+      else if (want) selected = want;               // 無い日でも選択して「この日は無い」と出す
+      else selected = days.length ? days[0].date : null;
+    }
+    if (selected == null) selected = days.length ? days[0].date : null;
     render();
   });
 }
 
-// ── 描画 ───────────────────────────────────────────────
+function extend(){
+  lookback += STEP_DAYS;
+  load(false);
+}
+
+// master.json から業績／値頃感の「現在値」キャッシュだけを取り出す（当時値が無い日の補完用）
+function loadLive(){
+  if (liveLoading || LIVE.gy) return;
+  liveLoading = true;
+  render();
+  getJSON(BASE + 'master.json').then(function(m){
+    liveLoading = false;
+    if (!m){ LIVE.gy = {}; LIVE.val = {}; render(); return; }
+    LIVE.gy  = (m.gyoseki_cache   && typeof m.gyoseki_cache   === 'object') ? m.gyoseki_cache   : {};
+    LIVE.val = (m.valuation_cache && typeof m.valuation_cache === 'object') ? m.valuation_cache : {};
+    LIVE.at  = (m.pipeline && m.pipeline.runs && m.pipeline.runs.night_gate &&
+                m.pipeline.runs.night_gate.last_run) || null;
+    render();
+  });
+}
+
+// ── 描画ヘルパ ─────────────────────────────────────────
 function esc(s){
   return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){
     return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];
   });
 }
-function priceLabel(p){
-  if (p.entry_type === 'momentum') return '逆指値 ' + fmt(p.entry_price);
-  return '指値 ' + fmt(p.entry_price);
-}
 function fmt(v){
   if (v == null || v === '') return '—';
   return (typeof v === 'number') ? v.toLocaleString('ja-JP') : esc(v);
+}
+function priceLabel(p){
+  if (p.entry_type === 'momentum') return '逆指値 ' + fmt(p.entry_price);
+  return '指値 ' + fmt(p.entry_price);
 }
 function statusTag(st){
   if (!st) return '';
   var cls = st.indexOf('⛔') === 0 ? 'r' : (st.indexOf('⏳') === 0 ? 'w' : '');
   return '<span class="tag ' + cls + '">' + esc(st) + '</span>';
 }
+// グレード文字列の先頭絵文字で色分けする（grade は "⚡好調" のように絵文字＋名称）
+function gradeCls(grade){
+  var e = grade ? Array.from(String(grade))[0] : '';
+  if (e === '🚀' || e === '🔥' || e === '💎' || e === '🟢') return 'g-hi';
+  if (e === '⚡' || e === '✅') return 'g-mid';
+  if (e === '⚠' || e === '🟡' || e === '➖') return 'g-warn';
+  if (e === '🔻' || e === '🔴') return 'g-bad';
+  if (e === '⚪') return '';
+  return 'g-none';
+}
+// 業績／水準チップ。live=true は master.json 由来の現在値（⧗を付けて当時値と区別する）
+function gradeChip(grade, score, max, live){
+  if (grade == null || grade === '') return '<span class="g g-none">—</span>';
+  var arr = Array.from(String(grade));
+  var emoji = arr[0] || '';
+  var name = arr.slice(1).join('');
+  var sc = (score == null || score === '') ? '' : String(score).replace(/\.0$/, '');
+  var t = (live ? '現在値（提案当時の値ではない）' : '提案当日の凍結値') +
+          ' ' + grade + (sc ? ' ' + sc + '/' + max : '');
+  return '<span class="g ' + gradeCls(grade) + '" title="' + esc(t) + '">' +
+    (live ? '<i class="live">⧗</i>' : '') +
+    '<i>' + esc(emoji) + '</i>' +
+    (sc ? '<b>' + esc(sc) + '</b>' : '') +
+    '<em>' + esc(name) + '</em></span>';
+}
+// 1提案の業績／水準を解決する。凍結値（gate_history 側）を優先、無ければ現在値キャッシュ
+function grades(p){
+  var out = {gy:null, gys:null, val:null, vals:null, live:false};
+  if (p.gyoseki_grade != null || p.valuation_grade != null){
+    out.gy = p.gyoseki_grade; out.gys = p.gyoseki_score;
+    out.val = p.valuation_grade; out.vals = p.valuation_score;
+    return out;
+  }
+  if (LIVE.gy){
+    var g = LIVE.gy[p.code], v = LIVE.val ? LIVE.val[p.code] : null;
+    out.live = true;
+    if (g){ out.gy = g.grade; out.gys = g.score; }
+    if (v){ out.val = v.grade; out.vals = v.score; }
+  }
+  return out;
+}
+function needsLive(rows){
+  if (LIVE.gy) return false;
+  return rows.some(function(r){
+    return r.p.gyoseki_grade == null && r.p.valuation_grade == null;
+  });
+}
+function scoreOf(x){ return (x == null || x === '') ? -1 : Number(x); }
 
+// ── 日付タブ（月ごとにグループ化） ─────────────────────
 function renderDays(){
-  var el = document.getElementById('days');
-  el.innerHTML = days.map(function(d){
-    return '<div class="day' + (d.date === selected ? ' on' : '') + '" data-d="' + d.date + '">' +
-      esc(d.date.slice(5)) + '<span class="n">' + (d.data.proposals||[]).length + '</span></div>';
+  var box = document.getElementById('daysbox');
+  if (!days.length){ box.innerHTML = ''; return; }
+  var months = [], byM = {};
+  days.forEach(function(d){
+    var m = d.date.slice(0,7);
+    if (!byM[m]){ byM[m] = []; months.push(m); }
+    byM[m].push(d);
+  });
+  var multi = months.length > 1;
+  box.innerHTML = months.map(function(m){
+    var chips = byM[m].map(function(d){
+      return '<div class="day' + (d.date === selected ? ' on' : '') + '" data-d="' + d.date + '">' +
+        esc(d.date.slice(5)) + '<span class="n">' + (d.data.proposals||[]).length + '</span></div>';
+    }).join('');
+    return '<div class="mgroup">' +
+      (multi ? '<div class="mlabel">' + esc(m) + '</div>' : '') +
+      '<div class="days">' + chips + '</div></div>';
   }).join('');
-  Array.prototype.forEach.call(el.querySelectorAll('.day'), function(n){
+  Array.prototype.forEach.call(box.querySelectorAll('.day'), function(n){
     n.onclick = function(){ selected = n.getAttribute('data-d'); render(); };
   });
+}
+
+function renderBar(){
+  var el = document.getElementById('bar');
+  var sorts = [['code','コード順'],['gy','業績スコア順'],['val','水準スコア順']];
+  var html = '<span class="lbl">並び</span>' + sorts.map(function(s){
+    return '<button class="s' + (sortKey === s[0] ? ' on' : '') + '" data-s="' + s[0] + '">' + s[1] + '</button>';
+  }).join('');
+  if (canExtend()) html += '<button id="more">さらに前へ（+' + STEP_DAYS + '日）</button>';
+  el.innerHTML = html;
+  Array.prototype.forEach.call(el.querySelectorAll('button.s'), function(b){
+    b.onclick = function(){ sortKey = b.getAttribute('data-s'); render(); };
+  });
+  var mb = document.getElementById('more');
+  if (mb) mb.onclick = extend;
+}
+
+// ── 表 ─────────────────────────────────────────────────
+function sortRows(rows){
+  var r = rows.slice();
+  if (sortKey === 'gy')  r.sort(function(a,b){ return scoreOf(grades(b.p).gys) - scoreOf(grades(a.p).gys); });
+  if (sortKey === 'val') r.sort(function(a,b){ return scoreOf(grades(b.p).vals) - scoreOf(grades(a.p).vals); });
+  return r;
 }
 
 function rowsTable(rows, showDate){
   if (!rows.length) return '<p class="empty">該当する提案はありません</p>';
   var head = '<tr>' + (showDate ? '<th>日付</th>' : '') +
-    '<th>コード</th><th class="hideS">手法</th><th>提案</th><th class="num">SL</th>' +
+    '<th>コード</th><th class="hideS">手法</th>' +
+    '<th>業績</th><th>水準</th>' +
+    '<th>提案</th><th class="num">SL</th>' +
     '<th class="num hideS">単元</th><th>状態</th></tr>';
-  var body = rows.map(function(r){
-    var p = r.p;
+  var body = sortRows(rows).map(function(r){
+    var p = r.p, g = grades(p);
     var marks = (p.cross_hit ? ' <span class="tag g">🎯2手法</span>' : '') +
                 (p.sealed ? ' <span class="tag w">🔒封印</span>' : '');
     return '<tr>' +
@@ -180,6 +370,8 @@ function rowsTable(rows, showDate){
       '<td><span class="code">' + esc(p.code) + '</span>' + marks +
         '<span class="nm">' + esc(p.name || '') + '</span></td>' +
       '<td class="hideS"><span class="tag">' + esc(p.branch || '—') + '</span></td>' +
+      '<td>' + gradeChip(g.gy, g.gys, 13, g.live) + '</td>' +
+      '<td>' + gradeChip(g.val, g.vals, 7, g.live) + '</td>' +
       '<td class="num">' + esc(priceLabel(p)) + '</td>' +
       '<td class="num">' + fmt(p.sl_price) + '</td>' +
       '<td class="num hideS">' + fmt(p.tan) + '</td>' +
@@ -187,6 +379,17 @@ function rowsTable(rows, showDate){
       '</tr>';
   }).join('');
   return '<div class="scroll"><table>' + head + body + '</table></div>';
+}
+
+// 業績・水準が凍結されていない日のための補完ボタン／注記
+function liveBlock(rows){
+  if (!needsLive(rows)){
+    if (LIVE.gy) return '<p class="note">⧗ が付いた業績・水準は master.json の現在値です（提案当時の値ではありません）。</p>';
+    return '';
+  }
+  if (liveLoading) return '<p class="note">現在値を読み込み中…（master.json）</p>';
+  return '<p class="note">この日の履歴には業績・水準が凍結されていません（①-8 v1.23 より前の記録）。' +
+    '<button id="fill">現在値で補完する</button> ※約900KBを取得します。株価に依存する水準は当時と異なります。</p>';
 }
 
 function fillsTable(fills){
@@ -211,18 +414,30 @@ function fillsTable(fills){
               : '<p class="empty">約定した提案はありません</p>') + '</div>';
 }
 
+function bindFill(){
+  var b = document.getElementById('fill');
+  if (b) b.onclick = loadLive;
+}
+
 function render(){
   renderDays();
+  renderBar();
   var q = document.getElementById('q').value.trim().toLowerCase();
   var view = document.getElementById('view');
 
+  document.getElementById('hint').textContent =
+    '直近' + lookback + '暦日ぶんの gate_history/ を探しています（蓄積開始 ' + HISTORY_START + '・' +
+    'それより前は存在しません）。' +
+    (canExtend() ? 'さらに古い日は「さらに前へ」で読み込めます。' : 'これが全期間です。') +
+    (days.length && days[0].live ? '（最新日は night_gate_today.json から表示中）' : '');
+
   if (!days.length){
     view.innerHTML = '<div class="card"><p class="empty">' +
-      'まだ履歴がありません。①-8 v1.21 が初回実行されると蓄積が始まります。</p></div>';
+      'まだ履歴がありません。①-8 が次に実行されると蓄積が始まります。</p></div>';
     return;
   }
 
-  // 検索モード: 全期間を横断
+  // 検索モード: 読み込み済みの全期間を横断
   if (q){
     var hits = [];
     days.forEach(function(d){
@@ -236,29 +451,43 @@ function render(){
     view.innerHTML = '<div class="card"><h2>検索結果「' + esc(q) + '」</h2>' +
       '<p class="meta">' + hits.length + '件 / ' + Object.keys(codes).length + '銘柄' +
       '（読み込み済み ' + days.length + '日ぶんが対象）</p>' +
-      rowsTable(hits, true) + '</div>';
+      liveBlock(hits) + rowsTable(hits, true) + '</div>';
+    bindFill();
     return;
   }
 
   // 日別モード
-  var day = days.filter(function(d){ return d.date === selected; })[0] || days[0];
+  var day = days.filter(function(d){ return d.date === selected; })[0];
+  if (!day){
+    // ?d= で指定された日の履歴が無い場合（蓄積開始前など）
+    view.innerHTML = '<div class="card"><h2>' + esc(selected) + '</h2>' +
+      '<p class="empty">この日の履歴ファイルはありません。' +
+      (selected < HISTORY_START ? '蓄積開始（' + HISTORY_START + '）より前の日付です。'
+                                : '①-8 がこの日に実行されていない可能性があります。') +
+      '</p></div>';
+    return;
+  }
   var dt = day.data;
   var rows = (dt.proposals||[]).map(function(p){ return {d:day.date, p:p}; });
   var badges = [];
   if (dt.market_mode) badges.push('市場: ' + esc(dt.market_mode));
   if (dt.week_open === true) badges.push('週初（週末ブリーフあり）');
   if (day.live) badges.push('最新日・today から表示中');
+  if (dt.generated_at) badges.push('生成 ' + esc(String(dt.generated_at).slice(0,16).replace('T',' ')));
 
   view.innerHTML =
     '<div class="card"><h2>' + esc(day.date) + ' の提案 ' + rows.length + '件</h2>' +
     (badges.length ? '<p class="meta">' + badges.join('　/　') + '</p>' : '') +
-    rowsTable(rows, false) + '</div>' +
+    liveBlock(rows) + rowsTable(rows, false) + '</div>' +
     fillsTable(dt.prev_fills);
+  bindFill();
 }
 
 document.getElementById('q').addEventListener('input', render);
-document.getElementById('reload').addEventListener('click', load);
-load();
+document.getElementById('reload').addEventListener('click', function(){
+  days = []; probed = {}; lookback = STEP_DAYS; load(true);
+});
+load(true);
 </script>
 </body>
 </html>

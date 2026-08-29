@@ -21524,7 +21524,7 @@
       "parsed": true,
       "gyoseki_grade": "✅順調",
       "valuation_grade": "⚪妥当",
-      "flag": null,
+      "flag": "price_discontinuity_suspected(株式分割等の可能性・約定値2769.5と現在の同日終値1384.75がほぼ2倍差)",
       "N": 1,
       "window_start": "2026-08-21",
       "fill_price": 2769.5,
@@ -26493,18 +26493,18 @@
           "avg_open_R": 9.7675
         },
         "reversal": {
-          "proposed": 299,
-          "filled": 247,
+          "proposed": 298,
+          "filled": 246,
           "still_pending": 25,
-          "resolved": 274,
+          "resolved": 273,
           "fillrate": 90.1,
-          "closed": 85,
+          "closed": 84,
           "wins": 20,
-          "losses": 49,
+          "losses": 48,
           "be": 16,
-          "winrate": 23.5,
-          "avgR": -0.3704,
-          "maxDD": -12.14,
+          "winrate": 23.8,
+          "avgR": -0.2303,
+          "maxDD": -1.4405,
           "open_n": 162,
           "avg_open_R": 0.3761
         },
@@ -26546,8 +26546,8 @@
         "reversal": {
           "giveback_n": 15,
           "giveback_avgR": -0.0987,
-          "instant_loss_n": 40,
-          "instant_loss_avgR": -1.1538,
+          "instant_loss_n": 39,
+          "instant_loss_avgR": -0.8721,
           "middle_n": 30,
           "middle_avgR": 0.5381
         },
@@ -26561,8 +26561,8 @@
         }
       },
       "execution_cost": {
-        "slip_ge_020_count": 21,
-        "slip_r_sum": 35.5
+        "slip_ge_020_count": 20,
+        "slip_r_sum": 24.36
       },
       "environment": {
         "n225_start": 65978.9531,
@@ -26636,7 +26636,10 @@
           "already_registered": 0
         },
         "rejected_cap_exceeded": 15,
-        "newly_expired": 67
+        "newly_expired": 67,
+        "price_discontinuity_suspected_excluded_from_stats": [
+          "2026-08-20-7649"
+        ]
       },
       "expired_zero_entry_types": [],
       "caveat": "本統計はスリッページ・板・寄り天を含まない仮想値であり相対比較専用。絶対値では読まない。"

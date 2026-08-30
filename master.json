@@ -4719,10 +4719,10 @@
     "source": "changepoint_watch"
    },
    "night_gate": {
-    "generated_at": "2026-08-28T21:20:00+09:00",
+    "generated_at": "2026-08-30T18:40:00+09:00",
     "trading_day": "2026-08-28",
     "base_day": "2026-08-28",
-    "mode": "normal",
+    "mode": "holiday_prep",
     "status": "done",
     "pool_size": 415,
     "evaluated": 415,
@@ -4732,13 +4732,13 @@
     "fail_insen": 154,
     "skip": 0,
     "deregistered": 0,
-    "unmerged_pr_candidates": 39,
+    "unmerged_pr_candidates": 0,
     "headlines_generated": 103,
-    "valuations_computed": 361,
+    "valuations_computed": 410,
     "stale_gate_count": 0,
     "proposals_generated": 95,
     "source": "night_gate",
-    "memo": "run_at=2026-08-28T21:20:00+09:00"
+    "memo": "run_at=2026-08-30T18:40:00+09:00 mode=holiday_prep(week_open) base_day再評価: 候補固定足のためgate/valuation/gyosekiは不変(独立再計算で1件のverdict境界差異のみ確認・詳細はboard参照)。今夜の追加分=保有アラート/3日ルール/週末ブリーフ/profile_cache6件"
    },
    "gyoseki_update": {
     "generated_at": "2026-08-29T09:21:26+09:00",
@@ -12504,10 +12504,7 @@
    "4419": {
     "name": "Finatext Holdings Ltd.",
     "branches": [
-     "granville_oshime",
-     "granville_rebound",
-     "変化点🔔",
-     "未マージPR由来"
+     "granville_oshime"
     ],
     "first_seen": "2026-08-06",
     "last_seen": "2026-08-28",
@@ -12535,12 +12532,11 @@
    "7419": {
     "name": "Nojima Co.,Ltd.",
     "branches": [
-     "choruko_reversal",
      "granville_rebound"
     ],
     "first_seen": "2026-08-14",
     "last_seen": "2026-08-28",
-    "branch_type": "method",
+    "branch_type": "granville",
     "unmerged_pr_source": [
      "claude/focused-newton-e43lpw"
     ]
@@ -12757,8 +12753,7 @@
    "5036": {
     "name": "Japan Business Systems, Inc.",
     "branches": [
-     "granville_tenkan",
-     "未マージPR由来"
+     "granville_tenkan"
     ],
     "first_seen": "2026-08-12",
     "last_seen": "2026-08-28",
@@ -12869,14 +12864,11 @@
    "5590": {
     "name": "NETSTARS Co.,Ltd.",
     "branches": [
-     "changepoint",
-     "kenmo_momentum",
-     "変化点🔔🔔",
-     "未マージPR由来"
+     "changepoint🔔"
     ],
     "first_seen": "2026-08-06",
     "last_seen": "2026-08-28",
-    "branch_type": "method",
+    "branch_type": "changepoint",
     "unmerged_pr_source": [
      "claude/focused-newton-e43lpw",
      "claude/gracious-fermi-hkdcsr"
@@ -12941,7 +12933,6 @@
    "9279": {
     "name": "GIFT HOLDINGS INC.",
     "branches": [
-     "granville_oshime",
      "granville_rebound"
     ],
     "first_seen": "2026-08-24",
@@ -12971,7 +12962,7 @@
     "branch_type": "granville"
    },
    "421A": {
-    "name": "ムービン・ストラテジック",
+    "name": "Movin' Strategic Career CO.,LTD.",
     "branches": [
      "kenmo_momentum",
      "kenmo_newhigh"
@@ -13059,14 +13050,11 @@
    "4493": {
     "name": "Cyber Security Cloud, Inc.",
     "branches": [
-     "changepoint",
-     "granville_tenkan",
-     "kenmo_momentum",
-     "未マージPR由来"
+     "changepoint🔔🔔"
     ],
     "first_seen": "2026-08-24",
     "last_seen": "2026-08-28",
-    "branch_type": "method",
+    "branch_type": "changepoint",
     "unmerged_pr_source": [
      "claude/gracious-fermi-hkdcsr"
     ]
@@ -13428,9 +13416,7 @@
    "4477": {
     "name": "BASE, Inc.",
     "branches": [
-     "granville_rebound",
-     "kenmo_momentum",
-     "未マージPR由来"
+     "kenmo_momentum"
     ],
     "first_seen": "2026-08-06",
     "last_seen": "2026-08-28",
@@ -13457,7 +13443,6 @@
    "9341": {
     "name": "GENOVA Inc.",
     "branches": [
-     "granville_tenkan",
      "kenmo_momentum"
     ],
     "first_seen": "2026-08-10",
@@ -13522,13 +13507,11 @@
    "212A": {
     "name": "FIT EASY Inc.",
     "branches": [
-     "granville_oshime",
-     "kenmo_momentum",
-     "未マージPR由来"
+     "granville_oshime"
     ],
     "first_seen": "2026-08-06",
     "last_seen": "2026-08-28",
-    "branch_type": "method"
+    "branch_type": "granville"
    },
    "269A": {
     "name": "Sapeet, Inc.",
@@ -13656,10 +13639,7 @@
    "9343": {
     "name": "ibis inc.",
     "branches": [
-     "changepoint",
-     "変化点🔔",
-     "変化点🔔🔔",
-     "未マージPR由来"
+     "changepoint🔔🔔"
     ],
     "first_seen": "2026-08-06",
     "last_seen": "2026-08-28",
@@ -13911,13 +13891,11 @@
    "4475": {
     "name": "Hennge K.K.",
     "branches": [
-     "changepoint",
-     "kenmo_momentum",
-     "未マージPR由来"
+     "changepoint🔔🔔"
     ],
     "first_seen": "2026-08-24",
     "last_seen": "2026-08-28",
-    "branch_type": "method",
+    "branch_type": "changepoint",
     "unmerged_pr_source": [
      "claude/gracious-fermi-hkdcsr"
     ]
@@ -14168,7 +14146,6 @@
    "5384": {
     "name": "Fujimi Incorporated",
     "branches": [
-     "granville_oshime",
      "granville_rebound"
     ],
     "first_seen": "2026-08-10",
@@ -14229,7 +14206,6 @@
    "9211": {
     "name": "f-code Inc.",
     "branches": [
-     "granville_tenkan",
      "kenmo_momentum"
     ],
     "first_seen": "2026-08-06",
@@ -14239,8 +14215,7 @@
    "3915": {
     "name": "TerraSky Co., Ltd.",
     "branches": [
-     "kenmo_momentum",
-     "未マージPR由来"
+     "kenmo_momentum"
     ],
     "first_seen": "2026-08-06",
     "last_seen": "2026-08-28",
@@ -14450,7 +14425,6 @@
    "6324": {
     "name": "ハーモニック・ドライブ・システムズ（ハーモニック）",
     "branches": [
-     "granville_rebound",
      "stf_kakuhen"
     ],
     "first_seen": "2026-08-07",
@@ -14535,12 +14509,11 @@
    "5254": {
     "name": "Arent, Inc.",
     "branches": [
-     "granville_oshime",
-     "kenmo_momentum"
+     "granville_oshime"
     ],
     "first_seen": "2026-08-06",
     "last_seen": "2026-08-28",
-    "branch_type": "method",
+    "branch_type": "granville",
     "unmerged_pr_source": [
      "claude/focused-newton-e43lpw"
     ]
@@ -14585,12 +14558,11 @@
    "5136": {
     "name": "tripla Co., Ltd.",
     "branches": [
-     "changepoint",
-     "kenmo_momentum"
+     "changepoint🔔🔔"
     ],
     "first_seen": "2026-08-17",
     "last_seen": "2026-08-28",
-    "branch_type": "method",
+    "branch_type": "changepoint",
     "unmerged_pr_source": [
      "claude/gracious-fermi-hkdcsr"
     ]
@@ -14646,10 +14618,7 @@
    "4488": {
     "name": "AI inside Inc.",
     "branches": [
-     "changepoint",
-     "changepoint_watch",
-     "変化点🔔",
-     "変化点🔔🔔"
+     "changepoint🔔🔔"
     ],
     "first_seen": "2026-08-19",
     "last_seen": "2026-08-28",
@@ -14690,6 +14659,7 @@
    "3798": {
     "name": "ULS Group Incorporated",
     "branches": [
+     "granville_tenkan",
      "kenmo_momentum"
     ],
     "first_seen": "2026-08-12",
@@ -14736,8 +14706,7 @@
    "5892": {
     "name": "yutori,Inc.",
     "branches": [
-     "kenmo_momentum",
-     "未マージPR由来"
+     "kenmo_momentum"
     ],
     "first_seen": "2026-08-06",
     "last_seen": "2026-08-28",
@@ -14793,6 +14762,7 @@
    "6490": {
     "name": "ＰＩＬＬＡＲ",
     "branches": [
+     "granville_oshime",
      "stf_kakuhen"
     ],
     "first_seen": "2026-08-07",
@@ -14802,10 +14772,7 @@
    "4375": {
     "name": "Safie Inc.",
     "branches": [
-     "changepoint",
-     "granville_tenkan",
-     "変化点🔔",
-     "未マージPR由来"
+     "granville_tenkan"
     ],
     "first_seen": "2026-08-07",
     "last_seen": "2026-08-28",
@@ -14850,8 +14817,7 @@
    "135A": {
     "name": "VRAIN Solution,Inc.",
     "branches": [
-     "kenmo_momentum",
-     "未マージPR由来"
+     "kenmo_momentum"
     ],
     "first_seen": "2026-08-10",
     "last_seen": "2026-08-28",
@@ -14951,8 +14917,7 @@
    "7609": {
     "name": "Daitron Co., Ltd.",
     "branches": [
-     "granville_oshime",
-     "未マージPR由来"
+     "granville_oshime"
     ],
     "first_seen": "2026-08-25",
     "last_seen": "2026-08-28",
@@ -15175,10 +15140,7 @@
    "218A": {
     "name": "Liberaware Co., Ltd.",
     "branches": [
-     "changepoint",
-     "changepoint_watch",
-     "変化点🔔",
-     "未マージPR由来"
+     "changepoint🔔"
     ],
     "first_seen": "2026-08-20",
     "last_seen": "2026-08-28",
@@ -15325,9 +15287,9 @@
     "branch_type": "method"
    },
    "5574": {
-    "name": "ABEJA, Inc.",
+    "name": "ABEJA,Inc.",
     "branches": [
-     "changepoint",
+     "changepoint🔔🔔",
      "kenmo_momentum"
     ],
     "first_seen": "2026-08-06",
@@ -15394,9 +15356,7 @@
    "4478": {
     "name": "freee K.K.",
     "branches": [
-     "changepoint",
-     "変化点🔔🔔",
-     "未マージPR由来"
+     "changepoint🔔🔔"
     ],
     "first_seen": "2026-08-12",
     "last_seen": "2026-08-28",
@@ -15405,10 +15365,7 @@
    "593A": {
     "name": "Tier IV, Inc.",
     "branches": [
-     "changepoint",
-     "変化点🔔",
-     "変化点🔔🔔",
-     "未マージPR由来"
+     "changepoint🔔🔔"
     ],
     "first_seen": "2026-08-25",
     "last_seen": "2026-08-28",
@@ -15455,8 +15412,7 @@
    "2674": {
     "name": "Hard Off Corporation Co., Ltd.",
     "branches": [
-     "granville_oshime",
-     "granville_rebound"
+     "granville_oshime"
     ],
     "first_seen": "2026-08-18",
     "last_seen": "2026-08-28",
@@ -15466,10 +15422,9 @@
     ]
    },
    "2585": {
-    "name": "Lifedrink Company, Inc.",
+    "name": "LIFEDRINK COMPANY INC.",
     "branches": [
-     "granville_tenkan",
-     "未マージPR由来"
+     "granville_tenkan"
     ],
     "first_seen": "2026-08-19",
     "last_seen": "2026-08-28",
@@ -15505,9 +15460,7 @@
    "3923": {
     "name": "Rakus Co., Ltd.",
     "branches": [
-     "changepoint",
-     "変化点🔔",
-     "未マージPR由来"
+     "changepoint🔔🔔"
     ],
     "first_seen": "2026-08-10",
     "last_seen": "2026-08-28",
@@ -15810,13 +15763,13 @@
     "branch_type": "granville"
    },
    "9962": {
-    "name": "ミスミグループ本社",
+    "name": "MISUMI Group Inc.",
     "branches": [
-     "stf_kakuhen"
+     "changepoint🔔"
     ],
     "first_seen": "2026-08-06",
     "last_seen": "2026-08-28",
-    "branch_type": "method"
+    "branch_type": "changepoint"
    },
    "5586": {
     "name": "Laboro.AI, Inc.",
@@ -15875,13 +15828,11 @@
    "4165": {
     "name": "PLAID,Inc.",
     "branches": [
-     "changepoint",
-     "kenmo_momentum",
-     "変化点🔔🔔"
+     "changepoint🔔"
     ],
     "first_seen": "2026-08-06",
     "last_seen": "2026-08-28",
-    "branch_type": "method",
+    "branch_type": "changepoint",
     "unmerged_pr_source": [
      "claude/gracious-fermi-hkdcsr"
     ]
@@ -16148,10 +16099,9 @@
     "branch_type": "granville"
    },
    "5703": {
-    "name": "Nippon Light Metal Holdings Company, Ltd.",
+    "name": "Nippon Light Metal Holdings Co., Ltd.",
     "branches": [
-     "granville_tenkan",
-     "未マージPR由来"
+     "granville_tenkan"
     ],
     "first_seen": "2026-08-27",
     "last_seen": "2026-08-28",
@@ -16198,10 +16148,9 @@
     "branch_type": "granville"
    },
    "4968": {
-    "name": "Arakawa Chemical Industries, Ltd.",
+    "name": "Arakawa Chemical Industries,Ltd.",
     "branches": [
-     "granville_oshime",
-     "未マージPR由来"
+     "granville_oshime"
     ],
     "first_seen": "2026-08-27",
     "last_seen": "2026-08-28",
@@ -16230,8 +16179,7 @@
    "6481": {
     "name": "THK Co., Ltd.",
     "branches": [
-     "granville_rebound",
-     "未マージPR由来"
+     "granville_rebound"
     ],
     "first_seen": "2026-08-27",
     "last_seen": "2026-08-28",
@@ -16270,8 +16218,7 @@
    "2760": {
     "name": "Tokyo Electron Device Limited",
     "branches": [
-     "granville_rebound",
-     "未マージPR由来"
+     "granville_rebound"
     ],
     "first_seen": "2026-08-27",
     "last_seen": "2026-08-28",
@@ -16300,9 +16247,7 @@
    "4431": {
     "name": "Smaregi, Inc.",
     "branches": [
-     "changepoint",
-     "変化点🔔🔔",
-     "未マージPR由来"
+     "changepoint🔔🔔"
     ],
     "first_seen": "2026-08-27",
     "last_seen": "2026-08-28",
@@ -16334,7 +16279,7 @@
    "4667": {
     "name": "Aisan Technology Co.,Ltd.",
     "branches": [
-     "changepoint"
+     "changepoint🔔🔔"
     ],
     "first_seen": "2026-08-28",
     "last_seen": "2026-08-28",
@@ -16346,7 +16291,7 @@
    "7374": {
     "name": "Interworks Confidence Inc.",
     "branches": [
-     "changepoint"
+     "changepoint🔔"
     ],
     "first_seen": "2026-08-28",
     "last_seen": "2026-08-28",
@@ -42675,7 +42620,16 @@
    }
   ],
   "note": "pool/results/logは①-8ルーティンのみが更新(1キー1オーナー)。logは最新30営業日保持し、月次レビューでPASS/FAIL組のT+5成績を実測比較する",
-  "recalc_queue": []
+  "recalc_queue": [
+   {
+    "code": "3851",
+    "name": "Nippon Ichi Software, Inc.",
+    "reason": "📢上方修正(非PASS・②-8夜間再確認)",
+    "headline": "日本一ソフト、上期経常を3.1倍上方修正、通期も増額",
+    "disclosed_at": "2026-08-28T15:30:00+09:00",
+    "queued_at": "2026-08-30T18:40:00+09:00"
+   }
+  ]
  },
  "gyoseki_spec": {
   "version": "2026-08-08 v1.0",
@@ -65942,6 +65896,30 @@
   "9324": {
    "gyotai": "旧財閥系倉庫。首都圏中心に展開。関西の中央倉庫と連携。再開発も。",
    "fetched_at": "2026-08-28T21:00:00+09:00"
+  },
+  "7352": {
+   "gyotai": "企業にITエンジニアを紹介。IT技術者の派遣・転職・独立など支援。IT教育も。",
+   "fetched_at": "2026-08-30T18:40:00+09:00"
+  },
+  "9404": {
+   "gyotai": "読売グループの民放大手。視聴率でトップ争い。動画配信「Hulu」、フィットネスも。",
+   "fetched_at": "2026-08-30T18:40:00+09:00"
+  },
+  "9627": {
+   "gyotai": "調剤薬局首位。大型店を全国展開。女性向けドラッグストアも。雑貨フランフラン買収。",
+   "fetched_at": "2026-08-30T18:40:00+09:00"
+  },
+  "9735": {
+   "gyotai": "警備最大手。賃貸センサー付システム警備が主力。防災、在宅医療など。海外強化。",
+   "fetched_at": "2026-08-30T18:40:00+09:00"
+  },
+  "9869": {
+   "gyotai": "加工食品卸の大手。自社ブランド持つ。常温流通品に強み。海外進出志向。",
+   "fetched_at": "2026-08-30T18:40:00+09:00"
+  },
+  "9882": {
+   "gyotai": "カー用品販売大手。直営店販売とFC向け卸売りが軸。バイク・自転車販売も。",
+   "fetched_at": "2026-08-30T18:40:00+09:00"
   }
  },
  "earnings_log": [

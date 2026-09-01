@@ -1,1628 +1,1085 @@
-# 夜間ゲート 2026-08-31
+# 夜間ゲート 2026-09-01
 
 ## サマリー
-- 評価数: 428 / PASS数: 164(うちPASS_DOJI 0) / 発注可能提案数: 142
-- 市場一言: レンジ様子見（半導体主導リスクオフ）
-- 実行モード: 通常モード（本日は土日・祝日ではない通常営業日）
-- base_day: 2026-08-31
-- week_open: false（本日は日曜でなく、翌営業日も月曜/連休明けの週初ではないため週末ブリーフはスキップ）
+- 評価数: 444
+- PASS数: 125（PASS_DOJI 0件含む）
+- 発注可能提案数: 103
+- 市場一言: 軟調
+- 実行モード: 通常
+- base_day: 2026-09-01
+- week_open: False（STEP4.8週末ブリーフはスキップ）
 
 ## 検証結果
-- V1 四者一致: night_gate_today.proposals=142 / results.entry_price保持=142 / 模擬テンプレの「模擬 」行=142 / 通知母数=142 — 一致
-- V2 PASS収支: PASS(164)=発注可能(142)+除外(22)。除外全件にorder_status設定済み（null 0件）
-- V3 code重複: 0件・各エントリのverdictは単一値
-- V4 valuation_cache既存static: 440件中変更0件
-- V5 許可キー以外の変更: 0バイト（pipeline/night_gate/gyoseki_cache/valuation_cache/earnings_logのみ変更を確認）
-- V6 gyoseki_cacheグレード絵文字整合: 447件中不整合0件
-- V7 board必須セクション: 存在（week_open=falseのためカタリストセクションなし）
-- V8 模擬テンプレ書式: 全行で｜後ろ空・単元記載あり・カンマなしを確認
-- V9 gate_history: gate_history/2026-08-31.json 新規作成・night_gate_todayとバイト一致
-- V10 base_day整合: results/night_gate_today/gate_historyファイル名/模擬テンプレ1行目=すべて2026-08-31
-- V11 書き出し整形: git diff --numstat master.json = +12934/-11628（indent幅=1で検出）。5,000行の目安は超過だが、night_gate.results(428件全置換)・valuation_cache(167件の動的層を毎晩再計算・全件calculated_at更新)・gyoseki_cache(7件新規)が本ルーティンの正常な更新対象であり、変更後トップレベルキーはnight_gate/gyoseki_cache/valuation_cache/earnings_log/pipelineの5つのみ(V5で確認)。過去実績(2026-08-27: +10117/-8407、2026-08-26: +8681/-7289)と同水準であり全体再フォーマットではないと判断
-- V12 並び順: (a)(b)(c)すべてSTEP5.2キーで厳密ソート済みであることをpythonで確認
-- V13 grades.json: 447銘柄/115.1KB。meta.n=stocks件数一致・gyoseki∪valuation和集合と一致・120KB以下
-- V14 method_score: 出所不明(method_score_srcがnull)0件。値の一致は当夜収集データ(collected)基準で0件不一致。ただしmaster.candidatesは①-S1/①-S2が未マージのため、21件はmaster.candidatesの値と直接比較すると差異が出る(stale)。写し間違いではないことを明記
-- V15 ヘッドライン網羅性: PASS/PASS_DOJI 164件中164件に付与(欠落0)。5キー全件存在。【調子】【水準】【戦略】【いま】に「未取得」「取得不可」の出現0件
-- V16 記録の蓄積: 📊決算発表 3件(3329/436A/4666)を全件 earnings_log に追記。4666のgrade_before(⚡好調)は本夜のgyoseki再計算対象外(非PASS)のため値は不変=順序違反なし。gyoseki_cache historyへの退避は今夜0件(既存キャッシュのgrade/score変化なし)。earnings_log総数4件(1200件以内)
-- V17 pool_bars: 431銘柄/362.7KB。先読み0件。保有3銘柄すべて収録。3日ルール判定は保有3銘柄全件でstreak値を保持(判定不可0件)
+- V1 四者一致: today.proposals=103 / results.entry_price=103 / 模擬行=103 → 一致
+- V2 PASS収支: PASS125件 = 発注可能103件 + 除外22件。除外の order_status null: 0件
+- V3 重複コード: 0件・verdict単一値
+- V4 valuation_cache既存static変更: 0件（プログラム照合済み）
+- V5 許可キー以外の変更: 0件（night_gate/gyoseki_cache/valuation_cache/profile_cache/earnings_log/pipeline.runsのみ）
+- V6 gyoseki絵文字整合: 不整合0件（全454エントリ）
+- V7 board必須セクション: サマリー/検証結果/前夜の結果/模擬テンプレ/PASS内訳 すべて存在
+- V8 模擬テンプレ書式: OK（｜後理由欄空・単元記載あり・カンマなし）
+- V9 gate_history: gate_history/2026-09-01.json を新規作成・night_gate_today.jsonとバイト一致
+- V10 base_day整合: results/night_gate_today/gate_historyファイル名/模擬テンプレ1行目 すべて2026-09-01
+- V11 書き出し整形: master.json変更行数 +未計測/-未計測（別途PR本文に実測記載）・indent幅=1
+- V12 並び順: (a)(b)(c)すべて一致
+- V13 grades.json: 454銘柄/約121KB（120KB目安内）
+- V14 method_score: 保持42件・出所不明0件
+- V15 ヘッドライン網羅性: PASS125件中125件に付与・欠落0件（一部銘柄は元データ自体が『取得不可』グレードのため調子欄にその文言が出るが、これはresultsの値をそのまま反映したものでテンプレ組み立ての欠落ではない）
+- V16 記録の蓄積: 📊決算発表の当夜該当0件（プール外）・grade_before順序問題なし・history超過0件・earnings_log4件
+- V17 pool_bars: 444銘柄/約383KB・先読み0件・保有0件のため(c)対象外
 
 ## 保有アラート
-target/stop は未同期の目標コマンド由来（pos_targets_20260830_1145.json 2026-08-30T11:45:49+09:00）。次の週次同期で trade_master に確定します
-- ⚠足が崩れた（premise_kill）: 陰線 (9304 澁澤倉庫・25日線乖離7.9%)
-- ⚠目標未設定 (9304 澁澤倉庫)
-- ⚠足が崩れた（premise_kill）: 陰線 (3374 内外テック・25日線乖離10.66%)
-- ⚠目標未設定 (3374 内外テック)
-- ⚠終値がSL水準を下回っている（終値4250.0<SL4260）要OCO約定確認 (3374 内外テック)
-- ⚠足が崩れた（premise_kill）: 上髭 (4413 ボードルア・25日線乖離2.48%)
-- ⚠目標未設定 (4413 ボードルア)
-
-【抵抗線3日ルール】
-- 9304 澁澤倉庫: 抑え1日目(R=2184.0円)
-- 3374 内外テック: ⏰3日ルール前夜(2日連続・R=4410.0円): 明朝、寄り前に引成の返済注文を検討。日中に4410.0円を上抜けたら取消
+保有0銘柄・アラートなし（2026-09-01朝の週次同期で全ポジション決済済み）
 
 ## 前夜の結果
 PL5口座への正式な反映は週次①-11の採点で行われる。ここは参考情報。
-- 前夜2026-08-28の提案95件 → 約定58・不約定37・判定不能0
-
-| コード | 種別 | 指値/逆指値 | 約定 | 約定価格 | 当日終値 | 含み損益% |
-|---|---|---|---|---|---|---|
-| 5254 | momentum | 4236.0 | － | None | 4120.0 | None |
-| 5136 | momentum | 2042.0 | ○ | 2042.0 | 2058.0 | 0.78 |
-| 5243 | momentum | 3136.0 | ○ | 3136.0 | 3065.0 | -2.26 |
-| 9341 | momentum | 673.0 | ○ | 675.0 | 662.0 | -1.93 |
-| 9554 | momentum | 1786.0 | － | None | 1880.0 | None |
-| 4377 | momentum | 2667.0 | － | None | 2617.0 | None |
-| 5537 | momentum | 3531.0 | － | None | 3405.0 | None |
-| 2334 | momentum | 576.0 | ○ | 576.0 | 572.0 | -0.69 |
-| 8927 | momentum | 483.0 | ○ | 483.0 | 484.0 | 0.21 |
-| 146A | momentum | 3646.0 | － | None | 3535.0 | None |
-| 5590 | momentum | 728.0 | － | None | 705.0 | None |
-| 4058 | momentum | 2605.0 | － | None | 2558.0 | None |
-| 9552 | momentum | 1110.0 | － | None | 1211.0 | None |
-| 4477 | momentum | 319.0 | － | None | 374.0 | None |
-| 4475 | momentum | 1791.0 | ○ | 1791.0 | 1743.0 | -2.68 |
-| 3798 | momentum | 561.0 | ○ | 561.0 | 550.0 | -1.96 |
-| 5038 | momentum | 2331.0 | － | None | 2210.0 | None |
-| 4493 | momentum | 2039.0 | ○ | 2048.0 | 1940.0 | -5.27 |
-| 4165 | momentum | 740.0 | ○ | 740.0 | 744.0 | 0.54 |
-| 8614 | momentum | 759.0 | － | None | 749.0 | None |
-| 7972 | reversal | 2639.0 | ○ | 2630.0 | 2667.0 | 1.41 |
-| 3064 | reversal | 1918.5 | ○ | 1906.5 | 1927.0 | 1.08 |
-| 2579 | reversal | 3922.0 | ○ | 3852.0 | 3933.0 | 2.1 |
-| 1812 | reversal | 4834.0 | ○ | 4775.0 | 4838.0 | 1.32 |
-| 9302 | reversal | 3358.0 | ○ | 3321.0 | 3350.0 | 0.87 |
-| 1802 | reversal | 2990.5 | ○ | 2978.5 | 2992.5 | 0.47 |
-| 8111 | reversal | 2190.0 | ○ | 2190.0 | 2149.0 | -1.87 |
-| 9533 | reversal | 1224.0 | ○ | 1224.0 | 1241.5 | 1.43 |
-| 8366 | reversal | 2817.0 | ○ | 2791.0 | 2847.0 | 2.01 |
-| 3968 | momentum | 683.0 | ○ | 683.0 | 674.0 | -1.32 |
-| 3116 | momentum | 2255.0 | ○ | 2255.0 | 2279.5 | 1.09 |
-| 3048 | momentum | 1785.0 | ○ | 1786.0 | 1781.0 | -0.28 |
-| 4847 | momentum | 1401.0 | － | None | 1386.0 | None |
-| 6305 | momentum | 5825.0 | － | None | 5735.0 | None |
-| 9101 | momentum | 7138.0 | ○ | 7141.0 | 7040.0 | -1.41 |
-| 2281 | momentum | 2436.0 | ○ | 2446.0 | 2455.0 | 0.37 |
-| 7611 | momentum | 2996.0 | ○ | 3025.0 | 2998.0 | -0.89 |
-| 9627 | momentum | 6229.0 | － | None | 6150.0 | None |
-| 7994 | momentum | 2384.0 | ○ | 2384.0 | 2393.0 | 0.38 |
-| 7231 | momentum | 3081.0 | ○ | 3081.0 | 3100.0 | 0.62 |
-| 9503 | momentum | 2617.0 | － | None | 2810.5 | None |
-| 2282 | momentum | 6380.0 | － | None | 6303.0 | None |
-| 9869 | momentum | 6661.0 | ○ | 6661.0 | 6680.0 | 0.29 |
-| 9041 | momentum | 3531.0 | － | None | 3491.0 | None |
-| 5302 | momentum | 5221.0 | ○ | 5221.0 | 5240.0 | 0.36 |
-| 2317 | momentum | 458.0 | ○ | 459.0 | 459.0 | 0.0 |
-| 9404 | momentum | 3031.0 | ○ | 3038.0 | 3040.0 | 0.07 |
-| 2733 | momentum | 2739.0 | － | None | 2725.0 | None |
-| 3865 | momentum | 928.0 | ○ | 928.0 | 925.0 | -0.32 |
-| 2982 | momentum | 440.0 | － | None | 435.0 | None |
-| 3003 | momentum | 1801.0 | ○ | 1801.0 | 1784.5 | -0.92 |
-| 1407 | oshime | 2711.4 | ○ | 2710.0 | 2625.0 | -3.14 |
-| 8008 | oshime | 2106.2 | ○ | 2106.2 | 2121.0 | 0.7 |
-| 4051 | oshime | 6589.6 | ○ | 6589.6 | 6610.0 | 0.31 |
-| 2602 | oshime | 1984.9 | － | None | 2051.0 | None |
-| 8923 | oshime | 1798.8 | － | None | 1836.0 | None |
-| 9828 | oshime | 3418.6 | － | None | 3575.0 | None |
-| 7867 | oshime | 3634.7 | － | None | 3745.0 | None |
-| 8876 | oshime | 2113.9 | － | None | 2209.5 | None |
-| 1375 | oshime | 1161.9 | － | None | 1185.0 | None |
-| 9861 | oshime | 3813.9 | ○ | 3813.9 | 3825.0 | 0.29 |
-| 7278 | oshime | 6118.0 | － | None | 6210.0 | None |
-| 2001 | oshime | 2882.7 | － | None | 2938.0 | None |
-| 3151 | oshime | 1647.2 | － | None | 1661.0 | None |
-| 8544 | oshime | 2743.0 | － | None | 2847.0 | None |
-| 8511 | oshime | 2482.5 | － | None | 2504.0 | None |
-| 3989 | oshime | 1465.2 | － | None | 1614.0 | None |
-| 7860 | oshime | 1281.4 | － | None | 1297.0 | None |
-| 8628 | oshime | 1102.5 | － | None | 1199.0 | None |
-| 205A | reversal | 1680.0 | ○ | 1680.0 | 1670.0 | -0.6 |
-| 4420 | reversal | 785.0 | － | None | 935.0 | None |
-| 9006 | reversal | 1575.0 | ○ | 1573.0 | 1569.5 | -0.22 |
-| 3405 | reversal | 1856.5 | ○ | 1849.0 | 1848.5 | -0.03 |
-| 7581 | reversal | 7270.0 | ○ | 7270.0 | 7080.0 | -2.61 |
-| 7505 | reversal | 2197.0 | ○ | 2178.0 | 2200.0 | 1.01 |
-| 7740 | reversal | 1375.0 | ○ | 1370.0 | 1383.0 | 0.95 |
-| 7460 | reversal | 1717.0 | ○ | 1708.0 | 1713.0 | 0.29 |
-| 9044 | reversal | 3103.0 | ○ | 3081.0 | 3107.0 | 0.84 |
-| 4972 | reversal | 3660.0 | ○ | 3610.0 | 3800.0 | 5.26 |
-| 2483 | reversal | 2265.0 | ○ | 2265.0 | 2255.0 | -0.44 |
-| 7780 | reversal | 1926.0 | ○ | 1925.0 | 1910.0 | -0.78 |
-| 1878 | reversal | 3353.0 | ○ | 3353.0 | 3330.0 | -0.69 |
-| 9735 | reversal | 6437.0 | － | None | 6491.0 | None |
-| 254A | reversal | 1220.0 | ○ | 1220.0 | 1218.0 | -0.16 |
-| 6594 | reversal | 2626.0 | ○ | 2592.0 | 2581.0 | -0.42 |
-| 265A | changepoint | 716.0 | ○ | 716.0 | 730.0 | 1.96 |
-| 479A | changepoint | 2009.0 | ○ | 2009.0 | 1991.0 | -0.9 |
-| 4667 | changepoint | 2661.0 | － | None | 3165.0 | None |
-| 286A | changepoint | 827.0 | ○ | 827.0 | 834.0 | 0.85 |
-| 7374 | changepoint | 1528.0 | ○ | 1528.0 | 1537.0 | 0.59 |
-| 4498 | changepoint | 1373.0 | ○ | 1373.0 | 1375.0 | 0.15 |
-| 218A | changepoint | 1214.0 | ○ | 1214.0 | 1210.0 | -0.33 |
-| 593A | changepoint | 1999.0 | － | None | 2399.0 | None |
-| 598A | changepoint | 1627.0 | ○ | 1627.0 | 1627.0 | 0.0 |
-| 4488 | changepoint | 2264.0 | ○ | 2264.0 | 2360.0 | 4.24 |
+- 前夜2026-08-31の提案142件 → 約定105・不約定37・判定不能0
+  - 593A changepoint 約定2249円 → 終値2539円（+12.89%）
+  - 9502 reversal 約定2853.5円 → 終値2999円（+5.10%）
+  - 9503 momentum 約定2819.5円 → 終値2955円（+4.81%）
+  - 543A reversal 約定276円 → 終値289円（+4.71%）
+  - 9824 changepoint 約定7260円 → 終値7570円（+4.27%）
 
 ## 模擬テンプレ
 ```
-# base_day 2026-08-31 ／ 提案142件
+# base_day 2026-09-01 ／ 提案103件
 # 使い方: 参戦する0〜3銘柄の行だけをコピーし、｜の後ろに参戦理由を書いてポジション株PJへ送る。
 # 選ばなかった行は送らなくてよい（全行に理由を書く必要はない）。見送りは末尾の1行で足りる。
 # 特定銘柄を理由つきで見送る場合のみ『模擬 見送り {code} ｜{理由}』を送る。
-模擬 212A kenmo_momentum 逆指値3005 SL2820 単元100 ｜
-模擬 6298 kenmo_momentum 逆指値1318 SL1234.2 単元100 ｜
-模擬 7318 kenmo_momentum 逆指値1484 SL1390.3 単元100 ｜
-模擬 2334 kenmo_momentum 逆指値578 SL542.4 単元100 ｜
-模擬 3915 kenmo_momentum 逆指値2497 SL2342.5 単元100 ｜
-模擬 135A kenmo_momentum 逆指値4345 SL4074.9 単元100 ｜
-模擬 8927 kenmo_momentum 逆指値485 SL455 単元100 ｜
-模擬 6071 kenmo_momentum 逆指値963 SL904.3 単元100 ｜
-模擬 7409 kenmo_momentum 逆指値1578 SL1478.6 単元100 ｜
-模擬 558A kenmo_momentum 逆指値6330 SL5940.8 単元100 ｜
-模擬 9552 kenmo_momentum 逆指値1216 SL1138.3 単元100 ｜
-模擬 4477 kenmo_momentum 逆指値376 SL352.5 単元100 ｜
-模擬 9560 kenmo_momentum 逆指値937 SL879.8 単元100 ｜
-模擬 4973 kenmo_momentum 逆指値4890 SL4587.2 単元100 ｜
-模擬 505A kenmo_momentum 逆指値1487 SL1393.1 単元100 ｜
-模擬 6785 kenmo_momentum 逆指値3130 SL2932.8 単元100 ｜
-模擬 277A kenmo_momentum 逆指値1970 SL1847.1 単元100 ｜
-模擬 9467 kenmo_momentum 逆指値1197 SL1120.5 単元100 ｜
-模擬 6862 kenmo_momentum 逆指値3580 SL3355.8 単元100 ｜
-模擬 6492 kenmo_momentum 逆指値14050 SL13160 単元100 ｜
-模擬 269A kenmo_newhigh 逆指値2888 SL2710 単元100 ｜
-模擬 1960 kenmo_newhigh 逆指値1660 SL1555.7 単元100 ｜
-模擬 4971 choruko_reversal 指値6680 SL6430 単元100 ｜
-模擬 4099 choruko_reversal 指値2427 SL2359 単元100 ｜
-模擬 6235 choruko_reversal 指値2649 SL2586 単元100 ｜
-模擬 4368 choruko_reversal 指値3000 SL2910 単元100 ｜
-模擬 5301 choruko_reversal 指値1811 SL1629 単元100 ｜
-模擬 5938 choruko_reversal 指値1771 SL1751.5 単元100 ｜
-模擬 6856 choruko_reversal 指値23465 SL22710 単元100 ｜
-模擬 6370 choruko_reversal 指値8085 SL7931 単元100 ｜
-模擬 7944 choruko_reversal 指値3865 SL3760 単元100 ｜
-模擬 7972 choruko_reversal 指値2667 SL2560 単元100 ｜
-模擬 5444 choruko_reversal 指値12500 SL12055 単元100 ｜
-模擬 6728 choruko_reversal 指値7496 SL7258 単元100 ｜
-模擬 6707 choruko_reversal 指値7316 SL7098 単元100 ｜
-模擬 7202 choruko_reversal 指値2287 SL2207.5 単元100 ｜
-模擬 268A choruko_reversal 指値1626 SL1586 単元100 ｜
-模擬 9072 choruko_reversal 指値5518 SL5266 単元100 ｜
-模擬 2579 choruko_reversal 指値3933 SL3840 単元100 ｜
-模擬 1812 choruko_reversal 指値4838 SL4753 単元100 ｜
-模擬 7966 choruko_reversal 指値5530 SL5330 単元100 🎯 ｜
-模擬 9302 choruko_reversal 指値3350 SL3290 単元100 ｜
-模擬 5334 choruko_reversal 指値8349 SL8166 単元100 ｜
-模擬 6135 choruko_reversal 指値15350 SL14910 単元100 ｜
-模擬 1802 choruko_reversal 指値2992.5 SL2940 単元100 ｜
-模擬 456A choruko_reversal 指値1680 SL1570 単元100 ｜
-模擬 6632 choruko_reversal 指値1034 SL994 単元100 ｜
-模擬 1975 choruko_reversal 指値3935 SL3820 単元100 ｜
-模擬 6479 choruko_reversal 指値3380 SL3243 単元100 ｜
-模擬 5105 choruko_reversal 指値3767 SL3697 単元100 ｜
-模擬 1979 choruko_reversal 指値3945 SL3830 単元100 ｜
-模擬 6951 choruko_reversal 指値7074 SL6957 単元100 🎯 ｜
-模擬 6845 choruko_reversal 指値1529 SL1500 単元100 ｜
-模擬 9533 choruko_reversal 指値1241.5 SL1205 単元100 ｜
-模擬 543A choruko_reversal 指値276 SL270 単元100 ｜
-模擬 8366 choruko_reversal 指値2847 SL2650 単元100 ｜
-模擬 8562 granville_tenkan 逆指値390 SL365.7 単元100 ｜
-模擬 5703 granville_tenkan 逆指値3045 SL2852.9 単元100 ｜
-模擬 3491 granville_tenkan 逆指値1611 SL1509.6 単元100 ｜
-模擬 6425 granville_tenkan 逆指値744 SL698.4 単元100 ｜
-模擬 8086 granville_tenkan 逆指値1542.5 SL1445.2 単元100 ｜
-模擬 5020 granville_tenkan 逆指値1345.5 SL1260.1 単元100 ｜
-模擬 5932 granville_tenkan 逆指値675 SL633.6 単元100 ｜
-模擬 7744 granville_tenkan 逆指値2122 SL1990 単元100 ｜
-模擬 4507 granville_tenkan 逆指値2923 SL2742.9 単元100 ｜
-模擬 6023 granville_tenkan 逆指値3125 SL2928.1 単元100 ｜
-模擬 7911 granville_tenkan 逆指値5140 SL4822.2 単元100 ｜
-模擬 208A granville_tenkan 逆指値3015 SL2824.7 単元100 ｜
-模擬 2281 granville_tenkan 逆指値2463 SL2310.5 単元100 ｜
-模擬 6167 granville_tenkan 逆指値1064 SL995.5 単元100 ｜
-模擬 7994 granville_tenkan 逆指値2401 SL2252.2 単元100 ｜
-模擬 5851 granville_tenkan 逆指値2789 SL2617 単元100 ｜
-模擬 2292 granville_tenkan 逆指値2929 SL2748.6 単元100 ｜
-模擬 6794 granville_tenkan 逆指値3060 SL2867 単元100 ｜
-模擬 7231 granville_tenkan 逆指値3110 SL2914 単元100 ｜
-模擬 9503 granville_tenkan 逆指値2819.5 SL2645.6 単元100 ｜
-模擬 6770 granville_tenkan 逆指値2262.5 SL2122 単元100 ｜
-模擬 8425 granville_tenkan 逆指値1380 SL1292.5 単元100 ｜
-模擬 2768 granville_tenkan 逆指値5621 SL5274.3 単元100 ｜
-模擬 3765 granville_tenkan 逆指値2700 SL2533.3 単元100 ｜
-模擬 5186 granville_oshime 指値6713.8 SL6680.4 単元100 ｜
-模擬 9902 granville_oshime 指値3043.9 SL3028.8 単元100 ｜
-模擬 2780 granville_oshime 指値5206.7 SL5180.8 単元100 ｜
-模擬 8923 granville_oshime 指値1802.4 SL1793.4 単元100 ｜
-模擬 9934 granville_oshime 指値2975.9 SL2961.1 単元100 ｜
-模擬 4258 granville_oshime 指値4513.1 SL4490.6 単元100 ｜
-模擬 4022 granville_oshime 指値2123.4 SL2112.8 単元100 ｜
-模擬 5121 granville_oshime 指値2678.1 SL2664.8 単元100 ｜
-模擬 8876 granville_oshime 指値2122.3 SL2111.8 単元100 ｜
-模擬 5232 granville_oshime 指値5691.7 SL5663.4 単元100 ｜
-模擬 6966 granville_oshime 指値934.6 SL930 単元100 ｜
-模擬 2175 granville_oshime 指値2330.1 SL2318.5 単元100 ｜
-模擬 4228 granville_oshime 指値593.6 SL590.6 単元100 ｜
-模擬 2001 granville_oshime 指値2887 SL2872.6 単元100 ｜
-模擬 6333 granville_oshime 指値3353.7 SL3337 単元100 ｜
-模擬 7981 granville_oshime 指値3089.5 SL3074.2 単元100 ｜
-模擬 2810 granville_oshime 指値3826.3 SL3807.3 単元100 ｜
-模擬 4415 granville_oshime 指値1384.6 SL1377.7 単元100 ｜
-模擬 6997 granville_rebound 指値2936 SL2631 単元100 ｜
-模擬 2760 granville_rebound 指値4295 SL3920 単元100 ｜
-模擬 6407 granville_rebound 指値5590 SL5270 単元100 ｜
-模擬 3449 granville_rebound 指値3980 SL3715 単元100 ｜
-模擬 6481 granville_rebound 指値6634 SL6450 単元100 ｜
-模擬 6914 granville_rebound 指値3275 SL3105 単元100 ｜
-模擬 150A granville_rebound 指値805 SL716 単元100 ｜
-模擬 9147 granville_rebound 指値5773 SL5663 単元100 ｜
-模擬 4424 granville_rebound 指値343 SL322 単元100 ｜
-模擬 6125 granville_rebound 指値4765 SL4555 単元100 ｜
-模擬 4392 granville_rebound 指値1215 SL978 単元100 ｜
-模擬 6656 granville_rebound 指値860 SL784 単元100 ｜
-模擬 7419 granville_rebound 指値1278 SL1263 単元100 ｜
-模擬 9319 granville_rebound 指値1825 SL1800 単元100 ｜
-模擬 4612 granville_rebound 指値1208.5 SL1175 単元100 ｜
-模擬 7376 granville_rebound 指値919 SL723 単元100 ｜
-模擬 3393 granville_rebound 指値3060 SL2995 単元100 ｜
-模擬 4063 granville_rebound 指値6023 SL5923 単元100 ｜
-模擬 4718 granville_rebound 指値2588 SL2500 単元100 ｜
-模擬 5384 granville_rebound 指値3560 SL3455 単元100 ｜
-模擬 6996 granville_rebound 指値2760 SL2586 単元100 ｜
-模擬 7740 granville_rebound 指値1383 SL1354 単元100 ｜
-模擬 255A granville_rebound 指値5240 SL5000 単元100 ｜
-模擬 1860 granville_rebound 指値1533.5 SL1507.5 単元100 ｜
-模擬 6237 granville_rebound 指値4135 SL3935 単元100 ｜
-模擬 7745 granville_rebound 指値2902 SL2783 単元100 ｜
-模擬 4320 granville_rebound 指値1651 SL1648 単元100 ｜
-模擬 6703 granville_rebound 指値2878 SL2668 単元100 ｜
-模擬 4980 granville_rebound 指値3073 SL2943.5 単元100 ｜
-模擬 9001 granville_rebound 指値3009 SL2960 単元100 ｜
-模擬 9502 granville_rebound 指値2873.5 SL2830 単元100 ｜
-模擬 9519 granville_rebound 指値913 SL889 単元100 ｜
-模擬 7182 granville_rebound 指値3405 SL3139 単元100 ｜
-模擬 3544 granville_rebound 指値1249 SL1248 単元100 ｜
-模擬 3863 granville_rebound 指値1416 SL1354 単元100 ｜
-模擬 6723 granville_rebound 指値3392 SL3258 単元100 ｜
-模擬 6080 変化点🔔 指値4300 SL4170 単元100 🔒 ｜
-模擬 9962 changepoint🔔 指値3754 SL3576 単元100 🔒 ｜
-模擬 9888 変化点🔔🔔 指値1321 SL1193 単元100 🔒 ｜
-模擬 9824 changepoint🔔🔔 指値7340 SL6970 単元100 🔒 ｜
-模擬 4667 changepoint🔔🔔 指値3165 SL2091 単元100 🔒 ｜
-模擬 4441 changepoint🔔 指値1535 SL1407 単元100 🔒 ｜
-模擬 593A changepoint🔔🔔 指値2399 SL1126 単元100 🔒 ｜
-模擬 4488 changepoint🔔🔔 指値2360 SL2115 単元100 🔒 ｜
+模擬 5724 kenmo_momentum 逆指値3295 SL3097.3 単元100 ｜
+模擬 1435 kenmo_momentum 逆指値179 SL168.26 単元100 ｜
+模擬 2266 kenmo_momentum 逆指値1164 SL1094.16 単元100 ｜
+模擬 8139 kenmo_momentum 逆指値2300 SL2162 単元100 ｜
+模擬 276A granville_oshime 逆指値3745 SL3520.3 単元100 ｜
+模擬 6862 kenmo_momentum 逆指値3535 SL3322.9 単元100 ｜
+模擬 6492 kenmo_momentum 逆指値14150 SL13282.2 単元100 ｜
+模擬 6235 choruko_reversal 指値2657 SL2586 単元100 ｜
+模擬 5301 choruko_reversal 指値1907 SL1638.5 単元100 ｜
+模擬 5938 choruko_reversal 指値1794 SL1751.5 単元100 ｜
+模擬 6856 choruko_reversal 指値23440 SL22845 単元100 ｜
+模擬 3288 choruko_reversal 指値8016 SL7877 単元100 ｜
+模擬 7944 choruko_reversal 指値3880 SL3760 単元100 ｜
+模擬 6013 choruko_reversal 指値3045 SL3010 単元100 ｜
+模擬 7202 choruko_reversal 指値2320 SL2207.5 単元100 ｜
+模擬 4536 choruko_reversal 指値1906.5 SL1840.5 単元100 ｜
+模擬 2579 choruko_reversal 指値3993 SL3840 単元100 ｜
+模擬 7731 choruko_reversal 指値1956 SL1909 単元100 ｜
+模擬 1812 choruko_reversal 指値5016 SL4753 単元100 ｜
+模擬 9065 choruko_reversal 指値8388 SL8251 単元100 ｜
+模擬 1861 choruko_reversal 指値1306 SL1286 単元100 ｜
+模擬 1802 choruko_reversal 指値3065 SL2940 単元100 ｜
+模擬 6586 choruko_reversal 指値5363 SL5215 単元100 ｜
+模擬 6632 choruko_reversal 指値1057 SL1011 単元100 ｜
+模擬 6479 choruko_reversal 指値3410 SL3294 単元100 ｜
+模擬 5105 choruko_reversal 指値3837 SL3697 単元100 ｜
+模擬 1979 choruko_reversal 指値4070 SL3830 単元100 ｜
+模擬 1980 choruko_reversal 指値2845 SL2695 単元100 ｜
+模擬 9533 choruko_reversal 指値1266.5 SL1205 単元100 ｜
+模擬 543A choruko_reversal 指値289 SL270 単元100 ｜
+模擬 8366 choruko_reversal 指値2858 SL2707 単元100 ｜
+模擬 5703 granville_tenkan 逆指値3150 SL2961 単元100 ｜
+模擬 4507 granville_tenkan 逆指値2963 SL2784.75 単元100 ｜
+模擬 2975 granville_oshime 逆指値1579 SL1484.26 単元100 ｜
+模擬 3048 granville_oshime 逆指値1802 SL1693.41 単元100 ｜
+模擬 8919 granville_tenkan 逆指値3810 SL3581.4 単元100 ｜
+模擬 6339 granville_tenkan 逆指値1214 SL1141.16 単元100 ｜
+模擬 9037 granville_tenkan 逆指値1880 SL1767.2 単元100 ｜
+模擬 6305 granville_tenkan 逆指値5950 SL5590.18 単元100 ｜
+模擬 8098 granville_tenkan 逆指値4575 SL4300.5 単元100 ｜
+模擬 1898 granville_tenkan 逆指値1512 SL1421.28 単元100 ｜
+模擬 1820 granville_tenkan 逆指値5690 SL5342.96 単元100 ｜
+模擬 3569 granville_tenkan 逆指値3560 SL3346.4 単元100 ｜
+模擬 1605 granville_tenkan 逆指値4115 SL3865.28 単元100 ｜
+模擬 3289 granville_tenkan 逆指値1356 SL1274.17 単元100 ｜
+模擬 2282 granville_tenkan 逆指値6400 SL6011.3 単元100 ｜
+模擬 9503 granville_tenkan 逆指値2957 SL2779.11 単元100 ｜
+模擬 2982 granville_tenkan 逆指値438 SL411.72 単元100 ｜
+模擬 1982 granville_tenkan 逆指値3065 SL2881.1 単元100 ｜
+模擬 2317 granville_tenkan 逆指値468 SL439.92 単元100 ｜
+模擬 5408 granville_tenkan 逆指値659 SL619.46 単元100 ｜
+模擬 7943 granville_tenkan 逆指値3125 SL2937.5 単元100 ｜
+模擬 7287 granville_tenkan 逆指値2813 SL2644.22 単元100 ｜
+模擬 3003 granville_tenkan 逆指値1806 SL1697.17 単元100 ｜
+模擬 2768 granville_tenkan 逆指値5820 SL5464.22 単元100 ｜
+模擬 8008 granville_oshime 指値2114.88 SL2104.36 単元100 ｜
+模擬 166A granville_oshime 指値1153.3 SL1147.56 単元100 ｜
+模擬 7350 granville_oshime 指値7655.69 SL7617.6 単元100 ｜
+模擬 7970 granville_oshime 指値2252.29 SL2241.08 単元100 ｜
+模擬 8923 granville_oshime 指値1804.54 SL1795.56 単元100 ｜
+模擬 9517 granville_oshime 指値866.03 SL861.72 単元100 ｜
+模擬 9934 granville_oshime 指値2989.59 SL2974.72 単元100 ｜
+模擬 5121 granville_oshime 指値2689.34 SL2675.96 単元100 ｜
+模擬 8876 granville_oshime 指値2130.32 SL2119.72 単元100 ｜
+模擬 5232 granville_oshime 指値5693.08 SL5664.76 単元100 ｜
+模擬 6432 granville_oshime 指値7597 SL7559.2 単元100 ｜
+模擬 6966 granville_oshime 指値935.61 SL930.96 単元100 ｜
+模擬 9861 granville_oshime 指値3829.25 SL3810.2 単元100 ｜
+模擬 8337 granville_oshime 指値2692.44 SL2679.04 単元100 ｜
+模擬 7278 granville_oshime 指値6134.92 SL6104.4 単元100 ｜
+模擬 4228 granville_oshime 指値598.3 SL595.32 単元100 ｜
+模擬 2001 granville_oshime 指値2890.94 SL2876.56 単元100 ｜
+模擬 7981 granville_oshime 指値3087.12 SL3071.76 単元100 ｜
+模擬 8367 granville_oshime 指値1869.14 SL1859.84 単元100 ｜
+模擬 4415 granville_rebound 指値1388.31 SL1381.4 単元100 ｜
+模擬 8544 granville_oshime 指値2739.03 SL2725.4 単元100 ｜
+模擬 7184 granville_oshime 指値3169.09 SL3153.32 単元100 ｜
+模擬 8387 granville_oshime 指値3473.68 SL3456.4 単元100 ｜
+模擬 8511 granville_oshime 指値2487.54 SL2475.16 単元100 ｜
+模擬 2760 granville_rebound 指値4295 SL3965 単元100 ｜
+模擬 6976 granville_rebound 指値9283 SL8625 単元100 ｜
+模擬 9147 granville_rebound 指値5866 SL5673 単元100 ｜
+模擬 3405 granville_rebound 指値1905 SL1781 単元100 ｜
+模擬 5076 granville_rebound 指値2922 SL2765 単元100 ｜
+模擬 6380 granville_rebound 指値4020 SL3815 単元100 ｜
+模擬 7505 granville_rebound 指値2245 SL2131 単元100 ｜
+模擬 9319 granville_rebound 指値1833 SL1799 単元100 ｜
+模擬 8750 granville_rebound 指値1868.5 SL1810.5 単元100 ｜
+模擬 4972 granville_rebound 指値4175 SL3345 単元100 ｜
+模擬 1860 granville_rebound 指値1568 SL1509.5 単元100 ｜
+模擬 8844 granville_rebound 指値1276 SL1257 単元100 ｜
+模擬 7459 granville_rebound 指値2932.5 SL2859.5 単元100 ｜
+模擬 7780 granville_rebound 指値1937 SL1853 単元100 ｜
+模擬 5989 granville_rebound 指値1538 SL1506 単元100 ｜
+模擬 1878 granville_rebound 指値3365 SL3310 単元100 ｜
+模擬 9502 granville_rebound 指値2999 SL2830 単元100 ｜
+模擬 1976 granville_rebound 指値1745 SL1711 単元100 ｜
+模擬 9519 granville_rebound 指値924 SL889 単元100 ｜
+模擬 254A granville_rebound 指値1232 SL1184 単元100 ｜
+模擬 7182 granville_rebound 指値3413 SL3203 単元100 ｜
+模擬 9962 changepoint🔔 指値3778 SL3576 単元100 🔒 ｜
+模擬 9824 changepoint 指値7570 SL7000 単元100 🔒 ｜
+模擬 286A 変化点🔔🔔 指値839 SL801 単元100 🔒 ｜
 模擬 見送り ｜
 ```
 
 ## PASS内訳
-PASS 164件 → 提案 142件（除外 22件: 手法ブランチ不明8/型不一致13/待機1）
-
-除外銘柄一覧:
-- 7480 スズデン — ⛔提案なし(手法ブランチ不明)
-- 3131 シンデンハイ — ⛔提案なし(手法ブランチ不明)
-- 6134 富士機械製造 — ⛔提案なし(手法ブランチ不明)
-- 9308 乾汽船 — ⛔提案なし(手法ブランチ不明)
-- 6324 ハーモニック・ドライブ・システムズ（ハーモニック） — ⛔提案なし(手法ブランチ不明)
-- 7637 白銅 — ⛔提案なし(手法ブランチ不明)
-- 6857 Advantest Corporation — ⛔提案なし(手法ブランチ不明)
-- 6490 ＰＩＬＬＡＲ — ⛔提案なし(手法ブランチ不明)
-- 6103 Okuma Corporation — ⛔型不一致: 既に支持帯以下
-- 7089 For Startups, Inc. — ⛔型不一致: 既に支持帯以下
-- 2674 Hard Off Corporation Co., Ltd. — ⛔型不一致: 既に支持帯以下
-- 7609 Daitron Co., Ltd. — ⛔型不一致: 既に支持帯以下
-- 4968 Arakawa Chemical Industries,Ltd. — ⛔型不一致: 既に支持帯以下
-- 7888 三光合成 — ⛔型不一致: 既に支持帯以下
-- 7970 信越ポリマー — ⛔型不一致: 既に支持帯以下
-- 7085 カーブスホールディングス — ⛔型不一致: 既に支持帯以下
-- 3480 JSB Co. Ltd. — ⛔型不一致: 既に支持帯以下
-- 4092 日本化学工業 — ⛔型不一致: 既に支持帯以下
-- 6925 ウシオ電機 — ⛔型不一致: 既に支持帯以下
-- 6055 Japan Material Co., Ltd. — ⛔型不一致: 既に支持帯以下
-- 6590 芝浦メカトロニクス — ⛔型不一致: 既に支持帯以下
-- 3989 シェアリングテクノロジー — ⏳待機: 到達まで乖離-8.7%
+PASS 125件 = 発注可能 103件 + 除外 22件（⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)13・⛔提案なし(手法ブランチ不明)3・⛔型不一致: 既に支持帯以下6）
+- 6298 Y.A.C.HOLDINGS CO.,LTD.：⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)
+- 8927 Meiho Enterprise Co., Ltd.：⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)
+- 9552 Quants Research Institute Holdings, Inc.：⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)
+- 1960 サンテック：⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)
+- 3131 シンデンハイ：⛔提案なし(手法ブランチ不明)
+- 7433 伯東：⛔提案なし(手法ブランチ不明)
+- 3091 ブロンコビリー：⛔提案なし(手法ブランチ不明)
+- 8086 ニプロ：⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)
+- 5020 ＪＸホールディングス：⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)
+- 3116 Toyota Boshoku Corp.：⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)
+- 4666 PARK24 Co., Ltd.：⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)
+- 1808 Haseko Corporation：⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)
+- 7994 OKAMURA CORP：⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)
+- 4956 Konishi Co., Ltd.：⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)
+- 1833 Okumura Corporation：⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)
+- 7231 トピー工業：⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)
+- 6055 Japan Material Co., Ltd.：⛔型不一致: 既に支持帯以下
+- 9882 Yellow Hat Ltd.：⛔型不一致: 既に支持帯以下
+- 6590 芝浦メカトロニクス：⛔型不一致: 既に支持帯以下
+- 9247 TRE HOLDINGS CORPORATION：⛔型不一致: 既に支持帯以下
+- 3946 Tomoku Co., Ltd.：⛔型不一致: 既に支持帯以下
+- 7128 UNISOL Holdings Corporation：⛔型不一致: 既に支持帯以下
 
 ## 5手法銘柄
-- 212A FIT EASY Inc.｜kenmo_momentum+granville_oshime｜🔥絶好調(10)｜妥当(4.0)｜PASS｜終値2990｜💰299000円｜momentum 3005/SL2820｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値2990円・直近5日-3.08%（材料未確認）
-  > 【調子】🔥絶好調（10/13）
-  > 【水準】妥当（4/7） — PER20.2倍・PEG0.38・52週59% ／ 💰単元29.9万円
-  > 【戦略】当日高値超えの逆指値3005円で順張り参戦を検討。上限3035.1円・SL2820円目安
-- 6298 Y.A.C.HOLDINGS CO.,LTD.｜kenmo_momentum｜🔥絶好調(9)｜値頃(5.0)｜PASS｜終値1313｜💰131300円｜momentum 1318/SL1234.2｜⚠日程不明
-  > 📌【業態】各種自動化機器中堅。メカトロ、ディスプレイ、半導体など関連機器主力。医療用も。
-  > 【いま】終値1313円・直近5日-0.61%（材料未確認）
-  > 【調子】🔥絶好調（9/13）
-  > 【水準】値頃（5/7） — PER11.5倍・PEG0.08・52週64% ／ 💰単元13.1万円
-  > 【戦略】当日高値超えの逆指値1318円で順張り参戦を検討。上限1331.2円・SL1234.2円目安
-- 7318 SERENDIP HOLDINGS Co. Ltd.｜kenmo_momentum+変化点🔔🔔｜🔥絶好調(8)｜割安(6.0)｜PASS｜終値1475｜💰147500円｜momentum 1484/SL1390.3｜⚠日程不明
-  > 📌【業態】中小企業をM&Aによる事業承継や再生コンサル。傘下の車部品、FA機の比重大。
-  > 【いま】終値1475円・直近5日+1.72%（材料未確認）
-  > 【調子】🔥絶好調（8/13）
-  > 【水準】割安（6/7） — PER12.2倍・PEG0.33・52週32% ／ 💰単元14.8万円
-  > 【戦略】当日高値超えの逆指値1484円で順張り参戦を検討。上限1498.8円・SL1390.3円目安
-- 2334 Eole, Inc.｜kenmo_momentum｜🔥絶好調(8)｜妥当(4.0)｜PASS｜終値572｜💰57200円｜momentum 578/SL542.4｜⚠日程不明
-  > 📌【業態】求人広告PFからAIデータセンター、暗号資産を中核へ。「らくらく連絡網」譲渡。
-  > 【いま】終値572円・直近5日+13.27%（材料未確認）
-  > 【調子】🔥絶好調（8/13）
-  > 【水準】妥当（4/7） — PER19.4倍・PEG0.05・52週51% ／ 💰単元5.7万円
-  > 【戦略】当日高値超えの逆指値578円で順張り参戦を検討。上限583.8円・SL542.4円目安
-- 3915 TerraSky Co., Ltd.｜kenmo_momentum｜🔥絶好調(8)｜妥当(4.0)｜PASS｜終値2475｜💰247500円｜momentum 2497/SL2342.5｜⚠日程不明
-  > 📌【業態】クラウドシステムの導入支援や開発。セールスフォースと提携。大企業、AWS向け拡大。
-  > 【いま】終値2475円・直近5日+8.51%（材料未確認）
-  > 【調子】🔥絶好調（8/13）
-  > 【水準】妥当（4/7） — PER20.9倍・PEG0.40・52週44% ／ 💰単元24.8万円
-  > 【戦略】当日高値超えの逆指値2497円で順張り参戦を検討。上限2522円・SL2342.5円目安
-- 135A VRAIN Solution,Inc.｜kenmo_momentum｜🔥絶好調(8)｜やや割高(2.0)｜PASS｜終値4310｜💰431000円｜momentum 4345/SL4074.9｜⚠日程不明
-  > 📌【業態】製造業に特化した人工知能(AI)ソリューションの提供。検査システム。DX支援も。
-  > 【いま】終値4310円・直近5日-0.81%（材料未確認）
-  > 【調子】🔥絶好調（8/13）
-  > 【水準】やや割高（2/7） — PER45.5倍・PEG0.77・52週82% ／ 💰単元43.1万円
-  > 【戦略】当日高値超えの逆指値4345円で順張り参戦を検討。上限4388.4円・SL4074.9円目安
-- 8927 Meiho Enterprise Co., Ltd.｜kenmo_momentum｜⚡好調(7)｜割安(6.0)｜PASS｜終値484｜💰48400円｜momentum 485/SL455｜
-  > 📌【業態】首都圏中心に賃貸アパート開発。マンション開発は休止。仲介や管理、中古再生も。
-  > 【いま】終値484円・直近5日+1.04%（材料未確認）
-  > 【調子】⚡好調（7/13）
-  > 【水準】割安（6/7） — PER5.9倍・PEG0.13・52週43% ／ 💰単元4.8万円
-  > 【戦略】当日高値超えの逆指値485円で順張り参戦を検討。上限489.9円・SL455円目安
-- 6071 IBJ, Inc.｜kenmo_momentum｜⚡好調(7)｜妥当(4.0)｜PASS｜終値957｜💰95700円｜momentum 963/SL904.3｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値957円・直近5日+1.06%（材料未確認）
-  > 【調子】⚡好調（7/13）
-  > 【水準】妥当（4/7） — PER14.4倍・PEG0.47・52週94% ／ 💰単元9.6万円
-  > 【戦略】当日高値超えの逆指値963円で順張り参戦を検討。上限972.6円・SL904.3円目安
-- 7409 AeroEdge Co.,Ltd｜kenmo_momentum｜⚡好調(7)｜妥当(4.0)｜PASS｜終値1570｜💰157000円｜momentum 1578/SL1478.6｜⚠日程不明
-  > 📌【業態】航空機エンジン部品などの製造・販売やエンジニアリングサービスの提供を手掛ける。
-  > 【いま】終値1570円・直近5日+8.80%（材料未確認）
-  > 【調子】⚡好調（7/13）
-  > 【水準】妥当（4/7） — PER40.6倍・PEG1.40・52週39% ／ 💰単元15.7万円
-  > 【戦略】当日高値超えの逆指値1578円で順張り参戦を検討。上限1593.8円・SL1478.6円目安
-- 558A SQUEEZE Inc.｜kenmo_momentum｜⚡好調(7)｜やや割高(2.8)｜PASS｜終値6300｜💰630000円｜momentum 6330/SL5940.8｜⚠日程不明
-  > 📌【業態】自社ホテル運営や、システム開発・提供、宿泊施設の企画・開発などを手掛ける。
-  > 【いま】終値6300円・直近5日+11.90%（材料未確認）
-  > 【調子】⚡好調（7/13）
-  > 【水準】やや割高（2.8/7） — PER40倍・PEG1.21・52週99% ／ 💰単元63万円
-  > 【戦略】当日高値超えの逆指値6330円で順張り参戦を検討。上限6393.3円・SL5940.8円目安／⚠1単元リスク38920円（枠超過）
-- 9552 Quants Research Institute Holdings, Inc.｜kenmo_momentum｜⚡好調(6)｜妥当(3.0)｜PASS｜終値1211｜💰121100円｜momentum 1216/SL1138.3｜⚠日程不明
-  > 📌【業態】M&A仲介事業。デジタルトランスフォーメーションとAI活用のマッチングシステムに強み。
-  > 【いま】終値1211円・直近5日+9.59%（材料未確認）
-  > 【調子】⚡好調（6/13）
-  > 【水準】妥当（3/7） — PER17.8倍・PEG0.94・52週76% ／ 💰単元12.1万円
-  > 【戦略】当日高値超えの逆指値1216円で順張り参戦を検討。上限1228.2円・SL1138.3円目安
-- 4477 BASE, Inc.｜kenmo_momentum｜⚡好調(6)｜やや割高(2.0)｜PASS｜終値374｜💰37400円｜momentum 376/SL352.5｜⚠日程不明
-  > 📌【業態】個人・小規模企業向けECプラットフォーム「BASE」、オンライン決済サービス「PAY.JP」運営。
-  > 【いま】終値374円・直近5日+19.49%（材料未確認）
-  > 【調子】⚡好調（6/13）
-  > 【水準】やや割高（2/7） — PER28.8倍・PEG1.23・52週93% ／ 💰単元3.7万円
-  > 【戦略】当日高値超えの逆指値376円で順張り参戦を検討。上限379.8円・SL352.5円目安
-- 9560 PROGRIT, Inc.｜kenmo_momentum+未マージPR由来｜⚡好調(5)｜値頃(5.0)｜PASS｜終値936｜💰93600円｜momentum 937/SL879.8｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値936円・直近5日+5.88%（材料未確認）
-  > 【調子】⚡好調（5/13）
-  > 【水準】値頃（5/7） — PER10.9倍・PEG0.56・52週49% ／ 💰単元9.4万円
-  > 【戦略】当日高値超えの逆指値937円で順張り参戦を検討。上限946.4円・SL879.8円目安
-- 4973 Japan Pure Chemical Co., Ltd.｜kenmo_momentum+未マージPR由来｜⚡好調(5)｜やや割高(2.0)｜PASS｜終値4865｜💰486500円｜momentum 4890/SL4587.2｜⚠日程不明
-  > 📌【業態】メッキ用薬品の開発・販売。電子基板向けが主力。実装品向けも。ファブレス企業。
-  > 【いま】終値4865円・直近5日+4.29%（材料未確認）
-  > 【調子】⚡好調（5/13） — 質注意
-  > 【水準】やや割高（2/7） — PER13.0倍・PEG4.21・52週49% ／ 💰単元48.6万円
-  > 【戦略】当日高値超えの逆指値4890円で順張り参戦を検討。上限4938.9円・SL4587.2円目安／⚠1単元リスク30280円（枠超過）
-- 505A Geekly,Inc.｜kenmo_momentum+未マージPR由来｜✅順調(4)｜値頃(5.0)｜PASS｜終値1482｜💰148200円｜momentum 1487/SL1393.1｜⚠日程不明
-  > 📌【業態】IT・Web・ゲーム業界に特化した人材紹介(転職エージェント)事業を手掛ける。
-  > 【いま】終値1482円・直近5日+9.53%（材料未確認）
-  > 【調子】✅順調（4/13）
-  > 【水準】値頃（5/7） — PER10.5倍・PEG0.60・52週62% ／ 💰単元14.8万円
-  > 【戦略】当日高値超えの逆指値1487円で順張り参戦を検討。上限1501.9円・SL1393.1円目安
-- 6785 Suzuki Co., Ltd.｜kenmo_momentum+未マージPR由来｜✅順調(4)｜値頃(5.0)｜PASS｜終値3120｜💰312000円｜momentum 3130/SL2932.8｜⚠日程不明
-  > 📌【業態】自動車・携帯電話向けコネクターが主力。精密金型に強み。医療器具事業も。
-  > 【いま】終値3120円・直近5日+8.48%（材料未確認）
-  > 【調子】✅順調（4/13）
-  > 【水準】値頃（5/7） — PER12.0倍・PEG0.30・52週74% ／ 💰単元31.2万円
-  > 【戦略】当日高値超えの逆指値3130円で順張り参戦を検討。上限3161.3円・SL2932.8円目安
-- 277A Globe-Ing, Inc.｜kenmo_momentum｜✅順調(4)｜妥当(4.0)｜PASS｜終値1953｜💰195300円｜momentum 1970/SL1847.1｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値1953円・直近5日+5.51%（材料未確認）
-  > 【調子】✅順調（4/13） — 質注意
-  > 【水準】妥当（4/7） — PER16.5倍・PEG0.94・52週24% ／ 💰単元19.5万円
-  > 【戦略】当日高値超えの逆指値1970円で順張り参戦を検討。上限1989.7円・SL1847.1円目安
-- 9467 Alphapolis Co., Ltd.｜kenmo_momentum+未マージPR由来｜✅順調(4)｜妥当(4.0)｜PASS｜終値1184｜💰118400円｜momentum 1197/SL1120.5｜⚠日程不明
-  > 📌【業態】ネット投稿された小説やマンガなど話題作を書籍化し出版。スマホ向けマンガ拡大。
-  > 【いま】終値1184円・直近5日-2.55%（材料未確認）
-  > 【調子】✅順調（4/13）
-  > 【水準】妥当（4/7） — PER13.4倍・PEG2.07・52週31% ／ 💰単元11.8万円
-  > 【戦略】当日高値超えの逆指値1197円で順張り参戦を検討。上限1209円・SL1120.5円目安
-- 6862 Minato Holdings Inc.｜kenmo_momentum｜判定保留(変則決算)(None)｜値頃(5.0)｜PASS｜終値3520｜💰352000円｜momentum 3580/SL3355.8｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値3520円・直近5日-0.28%（材料未確認）
-  > 【調子】－
-  > 【水準】値頃（5/7） — PER4.4倍・PEG0.03・52週79% ／ 💰単元35.2万円
-  > 【戦略】当日高値超えの逆指値3580円で順張り参戦を検討。上限3615.8円・SL3355.8円目安
-- 6492 Okano Valve Mfg. Co., Ltd.｜kenmo_momentum+未マージPR由来｜判定保留(変則決算)(None)｜妥当(4.0)｜PASS｜終値13830｜💰1383000円｜momentum 14050/SL13160｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値13830円・直近5日+1.24%（材料未確認）
-  > 【調子】－
-  > 【水準】妥当（4/7） — PER15.9倍・PEG0.15・52週47% ／ 💰単元138.3万円
-  > 【戦略】当日高値超えの逆指値14050円で順張り参戦を検討。上限14190.5円・SL13160円目安／⚠1単元リスク89000円（枠超過）
-- 1435 robot home Inc.｜kenmo_momentum｜—｜—｜FAIL_INSEN｜終値177｜💰—円｜—｜
-- 146A Columbia Works Inc.｜kenmo_momentum｜—｜—｜FAIL_INSEN｜終値3535｜💰—円｜—｜
-- 2594 Key Coffee Inc.｜kenmo_momentum+未マージPR由来｜—｜—｜FAIL_INSEN｜終値2038｜💰—円｜—｜
-- 262A INTERMESTIC INC.｜kenmo_momentum｜—｜—｜FAIL_INSEN｜終値1801｜💰—円｜—｜
-- 276A ククレブ・アドバイザーズ｜kenmo_momentum+granville_oshime｜—｜—｜FAIL_INSEN｜終値3740｜💰—円｜—｜
-- 2980 SRE Holdings Corp.｜kenmo_momentum｜—｜—｜FAIL_UWAHIGE｜終値2512｜💰—円｜—｜
-- 3109 Shikibo Ltd.｜kenmo_momentum｜—｜—｜FAIL_UWAHIGE｜終値1084｜💰—円｜—｜
-- 325A ＴＥＮＴＩＡＬ｜kenmo_momentum+kenmo_newhigh/未マージPR由来｜—｜—｜FAIL_UWAHIGE｜終値1851｜💰—円｜—｜
-- 341A TOYOKOH Inc.｜kenmo_momentum｜—｜—｜FAIL_UWAHIGE｜終値2195｜💰—円｜—｜
-- 3441 Sanno Co., Ltd.｜kenmo_momentum+未マージPR由来｜—｜—｜FAIL_UWAHIGE｜終値2847｜💰—円｜—｜
-- 3556 RenetJapanGroup, Inc.｜kenmo_momentum｜—｜—｜FAIL_INSEN｜終値801｜💰—円｜—｜
-- 3723 Nihon Falcom Corporation｜kenmo_momentum｜—｜—｜FAIL_INSEN｜終値2795｜💰—円｜—｜
-- 3798 ULS Group Incorporated｜kenmo_momentum+granville_tenkan｜—｜—｜FAIL_INSEN｜終値550｜💰—円｜—｜
-- 3932 Akatsuki, Inc.｜kenmo_momentum｜—｜—｜FAIL_UWAHIGE｜終値3960｜💰—円｜—｜
-- 4058 Toyokumo, Inc.｜kenmo_momentum+未マージPR由来｜—｜—｜FAIL_INSEN｜終値2558｜💰—円｜—｜
-- 421A Movin' Strategic Career CO.,LTD.｜kenmo_momentum+kenmo_newhigh｜—｜—｜FAIL_UWAHIGE｜終値4390｜💰—円｜—｜🎯
-- 4377 ONE CAREER Inc.｜kenmo_momentum｜—｜—｜FAIL_INSEN｜終値2617｜💰—円｜—｜
-- 4894 Cuorips Inc.｜kenmo_momentum｜—｜—｜FAIL_INSEN｜終値5800｜💰—円｜—｜
-- 5027 AnyMind Group Inc.｜kenmo_momentum+changepoint｜—｜—｜FAIL_INSEN｜終値794｜💰—円｜—｜
-- 5038 eWeLL Co.,Ltd｜kenmo_momentum｜—｜—｜FAIL_UWAHIGE｜終値2210｜💰—円｜—｜
-- 5137 Smart Drive Co. Ltd.｜kenmo_momentum｜—｜—｜FAIL_INSEN｜終値312｜💰—円｜—｜
-- 5243 note inc.｜kenmo_momentum+未マージPR由来｜—｜—｜FAIL_UWAHIGE｜終値3065｜💰—円｜—｜
-- 5246 ELEMENTS,Inc.｜kenmo_momentum｜—｜—｜FAIL_INSEN｜終値915｜💰—円｜—｜
-- 5537 AlbaLink Co.,Ltd.｜kenmo_momentum｜—｜—｜FAIL_INSEN｜終値3405｜💰—円｜—｜
-- 5574 ABEJA,Inc.｜kenmo_momentum+changepoint🔔🔔｜—｜—｜FAIL_UWAHIGE｜終値3190｜💰—円｜—｜
-- 5586 Laboro.AI, Inc.｜kenmo_momentum｜—｜—｜FAIL_UWAHIGE｜終値928｜💰—円｜—｜
-- 5724 Asaka Riken Co., Ltd.｜kenmo_momentum｜—｜—｜FAIL_INSEN｜終値3235｜💰—円｜—｜
-- 5757 CK San-Etsu Co., Ltd.｜kenmo_momentum+未マージPR由来｜—｜—｜FAIL_INSEN｜終値5300｜💰—円｜—｜
-- 5892 yutori,Inc.｜kenmo_momentum｜—｜—｜FAIL_INSEN｜終値2615｜💰—円｜—｜
-- 6562 Geniee, Inc.｜kenmo_momentum+未マージPR由来｜—｜—｜FAIL_UWAHIGE｜終値962｜💰—円｜—｜
-- 6630 YA-MAN Ltd.｜kenmo_momentum｜—｜—｜FAIL_INSEN｜終値805｜💰—円｜—｜
-- 7352 TWOSTONE&Sons Co.Ltd.｜kenmo_momentum｜—｜—｜FAIL_INSEN｜終値332｜💰—円｜—｜
-- 8139 Nagahori Corporation｜kenmo_momentum+未マージPR由来｜—｜—｜FAIL_INSEN｜終値2183｜💰—円｜—｜
-- 8614 Toyo Securities Co., Ltd.｜kenmo_momentum｜—｜—｜FAIL_INSEN｜終値749｜💰—円｜—｜
-- 9211 f-code Inc.｜kenmo_momentum+granville_tenkan｜—｜—｜FAIL_INSEN｜終値1482｜💰—円｜—｜
-- 9270 Valuence Holdings, Inc.｜kenmo_momentum+未マージPR由来｜—｜—｜FAIL_UWAHIGE｜終値2083｜💰—円｜—｜
-- 9341 GENOVA Inc.｜kenmo_momentum｜—｜—｜FAIL_INSEN｜終値662｜💰—円｜—｜
-- 9554 AViC Co. Ltd.｜kenmo_momentum+granville_tenkan｜—｜—｜FAIL_UWAHIGE｜終値1880｜💰—円｜—｜
-- 3374 内外テック｜kenmo_newhigh+changepoint🔔🔔/変化点🔔🔔｜🚀確変(12)｜妥当(4.0)｜FAIL_INSEN｜終値4250｜💰425000円｜—｜
-- 269A ＳＡＰＥＥＴ｜kenmo_newhigh+granville_tenkan｜🚀確変(11)｜妥当(3.0)｜PASS｜終値2872｜💰287200円｜momentum 2888/SL2710｜⚠日程不明
-  > 📌【業態】Expert AIを活用したAIプロダクトやAIソリューションの提供。AI社会の事業を支援。
-  > 【いま】終値2872円・直近5日+9.41%（材料未確認）
+- 5724 Asaka Riken Co., Ltd.｜kenmo_momentum｜🚀確変｜妥当｜PASS｜終値3275｜💰327500円｜momentum: 3295｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】電子部品等からの貴金属回収・精錬。独自技術に強み。環境事業に注力。
+  > 【いま】終値3,275円・直近5日-3.96%（材料未確認）
   > 【調子】🚀確変（11/13）
-  > 【水準】妥当（3/7） — PER35.6倍・PEG0.21・52週99% ／ 💰単元28.7万円
-  > 【戦略】当日高値超えの逆指値2888円で順張り参戦を検討。上限2916.9円・SL2710円目安
-- 1960 サンテック｜kenmo_newhigh｜➖横ばい(2)｜過熱(1.0)｜PASS｜終値1655｜💰165500円｜momentum 1660/SL1555.7｜⚠日程不明
-  > 📌【業態】独立系の電気工事大手。電力・民間・公共に展開。海外工事でも実績。
-  > 【いま】終値1655円・直近5日-1.72%（材料未確認）
-  > 【調子】➖横ばい（2/13） — 質注意
-  > 【水準】過熱（1/7） — PER11.0倍・PEG—・52週84% ／ 💰単元16.6万円
-  > 【戦略】当日高値超えの逆指値1660円で順張り参戦を検討。上限1676.6円・SL1555.7円目安
-- 3851 Nippon Ichi Software, Inc.｜kenmo_newhigh｜—｜—｜FAIL_INSEN｜終値1440｜💰—円｜—｜
-- 4249 森六｜kenmo_newhigh+stf_kakuhen｜—｜—｜FAIL_UWAHIGE｜終値2951｜💰—円｜—｜
-- 4599 StemRIM Inc.｜kenmo_newhigh｜—｜—｜FAIL_INSEN｜終値332｜💰—円｜—｜
-- 4971 MEC Company Ltd.｜choruko_reversal｜🔥絶好調(10)｜妥当(4.0)｜PASS｜終値6680｜💰668000円｜reversal 6680/SL6430｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値6680円・直近5日+0.15%（材料未確認）
-  > 【調子】🔥絶好調（10/13）
-  > 【水準】妥当（4/7） — PER20.3倍・PEG0.50・52週40% ／ 💰単元66.8万円
-  > 【戦略】当日終値6680円の指値で反転を取りにいく。SL6430円（直近5日安値）
-- 4099 四国化成ホールディングス｜choruko_reversal｜🔥絶好調(9)｜妥当(4.0)｜PASS｜終値2427｜💰242700円｜reversal 2427/SL2359｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値2427円・直近5日-1.42%（材料未確認）
+  > 【水準】妥当（4.0/7） — PER21.0倍・PEG0.15・52週48% ／ 💰単元32.8万円
+  > 【戦略】当日高値超えの逆指値3295円で順張り参戦を検討。上限3327.95円・SL3097.3円目安
+- 1435 robot home Inc.｜kenmo_momentum｜🔥絶好調｜割安｜PASS｜終値178｜💰17800円｜momentum: 179｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】IoT賃貸経営プラットホーム「robot home」を展開。投資用不動産売買マッチングも。
+  > 【いま】終値178円・直近5日-1.66%（材料未確認）
   > 【調子】🔥絶好調（9/13）
-  > 【水準】妥当（4/7） — PER16.7倍・PEG0.31・52週50% ／ 💰単元24.3万円
-  > 【戦略】当日終値2427円の指値で反転を取りにいく。SL2359円（直近5日安値）
-- 6235 オプトラン｜choruko_reversal｜🔥絶好調(8)｜値頃(5.0)｜PASS｜終値2649｜💰264900円｜reversal 2649/SL2586｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値2649円・直近5日-0.23%（材料未確認）
-  > 【調子】🔥絶好調（8/13）
-  > 【水準】値頃（5/7） — PER18.9倍・PEG0.15・52週33% ／ 💰単元26.5万円
-  > 【戦略】当日終値2649円の指値で反転を取りにいく。SL2586円（直近5日安値）
-- 4368 Fuso Chemical Co., Ltd.｜choruko_reversal｜🔥絶好調(8)｜妥当(4.0)｜PASS｜終値3000｜💰300000円｜reversal 3000/SL2910｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値3000円・直近5日-1.32%（材料未確認）
-  > 【調子】🔥絶好調（8/13）
-  > 【水準】妥当（4/7） — PER16.5倍・PEG0.66・52週42% ／ 💰単元30万円
-  > 【戦略】当日終値3000円の指値で反転を取りにいく。SL2910円（直近5日安値）
-- 5301 東海カーボン｜choruko_reversal｜🔥絶好調(8)｜妥当(3.0)｜PASS｜終値1811｜💰181100円｜reversal 1811/SL1629｜⚠日程不明
-  > 📌【業態】ガラス・土石
-  > 【いま】終値1811円・直近5日+9.69%（材料未確認）
-  > 【調子】🔥絶好調（8/13）
-  > 【水準】妥当（3/7） — PER16.7倍・PEG0.55・52週88% ／ 💰単元18.1万円
-  > 【戦略】当日終値1811円の指値で反転を取りにいく。SL1629円（直近5日安値）
-- 5938 LIXIL Corporation｜choruko_reversal｜⚡好調(7)｜妥当(4.0)｜PASS｜終値1771｜💰177100円｜reversal 1771/SL1751.5｜⚠日程不明
-  > 📌【業態】トステム、INAXなど5社が統合。日本最大の住設機器・建材メーカー。コア事業に集中。
-  > 【いま】終値1771円・直近5日+0.65%（材料未確認）
+  > 【水準】割安（7.0/7） — PER7.9倍・PEG0.34・52週21% ／ 💰単元1.8万円
+  > 【戦略】当日高値超えの逆指値179円で順張り参戦を検討。上限180.79円・SL168.26円目安
+- 6298 Y.A.C.HOLDINGS CO.,LTD.｜kenmo_momentum｜🔥絶好調｜値頃｜PASS｜終値1316｜💰131600円｜⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】各種自動化機器中堅。メカトロ、ディスプレイ、半導体など関連機器主力。医療用も。
+  > 【いま】終値1,316円・直近5日-0.90%（材料未確認）
+  > 【調子】🔥絶好調（9/13）
+  > 【水準】値頃（5.0/7） — PER11.6倍・PEG0.08・52週65% ／ 💰単元13.2万円
+  > 【戦略】発注対象外（⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)）
+- 8927 Meiho Enterprise Co., Ltd.｜kenmo_momentum｜⚡好調｜割安｜PASS｜終値485｜💰48500円｜⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)｜
+  > 📌ヘッドライン
+  > 【業態】首都圏中心に賃貸アパート開発。マンション開発は休止。仲介や管理、中古再生も。
+  > 【いま】終値485円・直近5日+1.89%（材料未確認）
   > 【調子】⚡好調（7/13）
-  > 【水準】妥当（4/7） — PER42.5倍・PEG0.72・52週48% ／ 💰単元17.7万円
-  > 【戦略】当日終値1771円の指値で反転を取りにいく。SL1751.5円（直近5日安値）
-- 6856 Horiba, Ltd.｜choruko_reversal｜⚡好調(7)｜妥当(4.0)｜PASS｜終値23465｜💰2346500円｜reversal 23465/SL22710｜⚠日程不明
-  > 📌【業態】独立系の分析機器大手。エンジン計測装置は世界首位。半導体や医用関連も。
-  > 【いま】終値23465円・直近5日+1.25%（材料未確認）
-  > 【調子】⚡好調（7/13）
-  > 【水準】妥当（4/7） — PER19.7倍・PEG0.64・52週66% ／ 💰単元234.7万円
-  > 【戦略】当日終値23465円の指値で反転を取りにいく。SL22710円（直近5日安値）／⚠1単元リスク75500円（枠超過）
-- 6370 Kurita Water Industries Ltd.｜choruko_reversal｜⚡好調(7)｜妥当(3.0)｜PASS｜終値8085｜💰808500円｜reversal 8085/SL7931｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値8085円・直近5日+0.11%（材料未確認）
-  > 【調子】⚡好調（7/13）
-  > 【水準】妥当（3/7） — PER17.2倍・PEG1.46・52週63% ／ 💰単元80.8万円
-  > 【戦略】当日終値8085円の指値で反転を取りにいく。SL7931円（直近5日安値）
-- 7944 Roland Corporation｜choruko_reversal｜⚡好調(6)｜妥当(3.0)｜PASS｜終値3865｜💰386500円｜reversal 3865/SL3760｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値3865円・直近5日+0.39%（材料未確認）
+  > 【水準】割安（6.0/7） — PER5.9倍・PEG0.13・52週44% ／ 💰単元4.8万円
+  > 【戦略】発注対象外（⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)）
+- 9552 Quants Research Institute Holdings, Inc.｜kenmo_momentum｜⚡好調｜妥当｜PASS｜終値1223｜💰122300円｜⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】M&A仲介事業。デジタルトランスフォーメーションとAI活用のマッチングシステムに強み。
+  > 【いま】終値1,223円・直近5日+12.41%（材料未確認）
   > 【調子】⚡好調（6/13）
-  > 【水準】妥当（3/7） — PER14.2倍・PEG2.21・52週44% ／ 💰単元38.6万円
-  > 【戦略】当日終値3865円の指値で反転を取りにいく。SL3760円（直近5日安値）
-- 7972 ITOKI Corporation｜choruko_reversal｜⚡好調(5)｜割安(6.0)｜PASS｜終値2667｜💰266700円｜reversal 2667/SL2560｜⚠日程不明
-  > 📌【業態】オフィス家具大手。公共、医療施設向けも。製販一貫体制確立で効率経営。
-  > 【いま】終値2667円・直近5日+2.70%（材料未確認）
+  > 【水準】妥当（3.0/7） — PER18.0倍・PEG0.95・52週78% ／ 💰単元12.2万円
+  > 【戦略】発注対象外（⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)）
+- 2266 Rokko Butter Co., Ltd.｜kenmo_momentum｜⚡好調｜値頃｜PASS｜終値1161｜💰116100円｜momentum: 1164｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】ベビーチーズで首位。QBBブランドが主力。輸入ナッツ加工品も。三菱商事と親密。
+  > 【いま】終値1,161円・直近5日+6.51%（材料未確認）
   > 【調子】⚡好調（5/13）
-  > 【水準】割安（6/7） — PER11.8倍・PEG0.72・52週31% ／ 💰単元26.7万円
-  > 【戦略】当日終値2667円の指値で反転を取りにいく。SL2560円（直近5日安値）
-- 5444 Yamato Kogyo Co., Ltd.｜choruko_reversal｜⚡好調(5)｜値頃(5.0)｜PASS｜終値12500｜💰1250000円｜reversal 12500/SL12055｜⚠日程不明
-  > 📌【業態】独立系電炉大手。主力はH形鋼、溝形鋼。海外多、韓・タイ・米・中東で操業。
-  > 【いま】終値12500円・直近5日+0.81%（材料未確認）
+  > 【水準】値頃（5.0/7） — PER15.2倍・PEG0.74・52週45% ／ 💰単元11.6万円
+  > 【戦略】当日高値超えの逆指値1164円で順張り参戦を検討。上限1175.64円・SL1094.16円目安
+- 8139 Nagahori Corporation｜kenmo_momentum/未マージPR由来｜🔻悪化｜過熱｜PASS｜終値2295｜💰229500円｜momentum: 2300｜⚠業績基調が下向き（🔻悪化） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】卸売業
+  > 【いま】終値2,295円・直近5日+0.31%（材料未確認）
+  > 【調子】🔻悪化（4/13）— 質注意
+  > 【水準】過熱（1.0/7） — PER58.7倍・PEG—・52週52% ／ 💰単元22.9万円
+  > 【戦略】当日高値超えの逆指値2300円で順張り参戦を検討。上限2323円・SL2162円目安
+- 276A ククレブ・アドバイザーズ｜granville_oshime/kenmo_momentum｜判定保留｜値頃｜PASS｜終値3735｜💰373500円｜momentum: 3745｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】AIを活用した企業不動産(CRE)に関するソリューションの提供などを手掛ける。
+  > 【いま】終値3,735円・直近5日+2.19%（材料未確認）
+  > 【調子】判定保留
+  > 【水準】値頃（5.0/7） — PER27.4倍・PEG0.37・52週24% ／ 💰単元37.4万円
+  > 【戦略】当日高値超えの逆指値3745円で順張り参戦を検討。上限3782.45円・SL3520.3円目安
+- 6862 Minato Holdings Inc.｜kenmo_momentum｜判定保留(変則決算)｜値頃｜PASS｜終値3525｜💰352500円｜momentum: 3535｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】産業用メモリ、デバイスプログラム、ROM書込移植装置が主力。M&Aで業容拡大。
+  > 【いま】終値3,525円・直近5日-0.56%（材料未確認）
+  > 【調子】判定保留(変則決算)
+  > 【水準】値頃（5.0/7） — PER4.4倍・PEG0.03・52週80% ／ 💰単元35.2万円
+  > 【戦略】当日高値超えの逆指値3535円で順張り参戦を検討。上限3570.35円・SL3322.9円目安
+- 6492 Okano Valve Mfg. Co., Ltd.｜kenmo_momentum/未マージPR由来｜判定保留(変則決算)｜妥当｜PASS｜終値14130｜💰1413000円｜momentum: 14150｜⚠日程不明 ⚠1単元でリスク枠超過（86780円）
+  > 📌ヘッドライン
+  > 【業態】発電用バルブ最大手。原子力、火力向けに強み。保守点検も手掛ける。
+  > 【いま】終値14,130円・直近5日+0.50%（材料未確認）
+  > 【調子】判定保留(変則決算)
+  > 【水準】妥当（4.0/7） — PER16.2倍・PEG0.15・52週49% ／ 💰単元141.3万円
+  > 【戦略】当日高値超えの逆指値14150円で順張り参戦を検討。上限14291.5円・SL13282.2円目安／⚠1単元リスク86779円（枠超過）
+- 1960 サンテック｜kenmo_newhigh｜➖横ばい｜過熱｜PASS｜終値1699｜💰169900円｜⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】独立系の電気工事大手。電力・民間・公共に展開。海外工事でも実績。
+  > 【いま】終値1,699円・直近5日+0.24%（材料未確認）
+  > 【調子】➖横ばい（2/13）— 質注意
+  > 【水準】過熱（1.0/7） — PER11.3倍・PEG—・52週89% ／ 💰単元17.0万円
+  > 【戦略】発注対象外（⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)）
+- 6235 オプトラン｜choruko_reversal｜🔥絶好調｜値頃｜PASS｜終値2657｜💰265700円｜reversal: 2657｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】光学薄膜装置の製造・販売。車載カメラ、スマホ向けに注力。保守まで一貫に強み。
+  > 【いま】終値2,657円・直近5日-2.46%（材料未確認）
+  > 【調子】🔥絶好調（8/13）
+  > 【水準】値頃（5.0/7） — PER18.9倍・PEG0.14・52週33% ／ 💰単元26.6万円
+  > 【戦略】当日終値2657円の指値で反転を取りにいく。SL2586円（直近5日安値）
+- 5301 東海カーボン｜choruko_reversal｜🔥絶好調｜妥当｜PASS｜終値1907｜💰190700円｜reversal: 1907｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】ガラス・土石
+  > 【いま】終値1,907円・直近5日+15.82%（材料未確認）
+  > 【調子】🔥絶好調（8/13）
+  > 【水準】妥当（3.0/7） — PER17.5倍・PEG0.58・52週97% ／ 💰単元19.1万円
+  > 【戦略】当日終値1907円の指値で反転を取りにいく。SL1638.5円（直近5日安値）
+- 5938 LIXIL Corporation｜choruko_reversal｜⚡好調｜妥当｜PASS｜終値1794｜💰179400円｜reversal: 1794｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】トステム、INAXなど5社が統合。日本最大の住設機器・建材メーカー。コア事業に集中。
+  > 【いま】終値1,794円・直近5日+1.30%（材料未確認）
+  > 【調子】⚡好調（7/13）
+  > 【水準】妥当（4.0/7） — PER43.0倍・PEG0.73・52週53% ／ 💰単元17.9万円
+  > 【戦略】当日終値1794円の指値で反転を取りにいく。SL1751.5円（直近5日安値）
+- 6856 Horiba, Ltd.｜choruko_reversal｜⚡好調｜妥当｜PASS｜終値23440｜💰2344000円｜reversal: 23440｜⚠日程不明 ⚠1単元でリスク枠超過（59500円）
+  > 📌ヘッドライン
+  > 【業態】独立系の分析機器大手。エンジン計測装置は世界首位。半導体や医用関連も。
+  > 【いま】終値23,440円・直近5日+0.49%（材料未確認）
+  > 【調子】⚡好調（7/13）
+  > 【水準】妥当（4.0/7） — PER19.7倍・PEG0.64・52週65% ／ 💰単元234.4万円
+  > 【戦略】当日終値23440円の指値で反転を取りにいく。SL22845円（直近5日安値）／⚠1単元リスク59500円（枠超過）
+- 3288 Open House Group Co. Ltd｜choruko_reversal｜⚡好調｜割安｜PASS｜終値8016｜💰801600円｜reversal: 8016｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】首都圏中心に不動産事業を展開。狭小地の戸建てに強み。マンション分譲も。
+  > 【いま】終値8,016円・直近5日+0.16%（材料未確認）
+  > 【調子】⚡好調（6/13）
+  > 【水準】割安（7.0/7） — PER7.4倍・PEG0.34・52週18% ／ 💰単元80.2万円
+  > 【戦略】当日終値8016円の指値で反転を取りにいく。SL7877円（直近5日安値）
+- 7944 Roland Corporation｜choruko_reversal｜⚡好調｜妥当｜PASS｜終値3880｜💰388000円｜reversal: 3880｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】電子ピアノ、シンセサイザーなど電子楽器、映像・音響機器の開発・製造。海外高シェア。
+  > 【いま】終値3,880円・直近5日+0.65%（材料未確認）
+  > 【調子】⚡好調（6/13）
+  > 【水準】妥当（3.0/7） — PER14.2倍・PEG2.22・52週45% ／ 💰単元38.8万円
+  > 【戦略】当日終値3880円の指値で反転を取りにいく。SL3760円（直近5日安値）
+- 6013 タクマ｜choruko_reversal/granville_rebound｜⚡好調｜妥当｜PASS｜終値3045｜💰304500円｜reversal: 3045｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】ボイラー中心に環境設備を展開。官公需への依存度大。バイオマス発電プラントも。
+  > 【いま】終値3,045円・直近5日-0.81%（材料未確認）
   > 【調子】⚡好調（5/13）
-  > 【水準】値頃（5/7） — PER13.0倍・PEG0.39・52週66% ／ 💰単元125万円
-  > 【戦略】当日終値12500円の指値で反転を取りにいく。SL12055円（直近5日安値）／⚠1単元リスク44500円（枠超過）
-- 6728 ULVAC, Inc.｜choruko_reversal｜⚠減速(5)｜値頃(5.0)｜PASS｜終値7496｜💰749600円｜reversal 7496/SL7258｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値7496円・直近5日-1.00%（材料未確認）
-  > 【調子】⚠減速（5/13） — 質注意・減収
-  > 【水準】値頃（5/7） — PER19.4倍・PEG0.48・52週30% ／ 💰単元75.0万円
-  > 【戦略】当日終値7496円の指値で反転を取りにいく。SL7258円（直近5日安値）
-- 6707 サンケン電気｜choruko_reversal｜⚡好調(5)｜妥当(4.0)｜PASS｜終値7316｜💰731600円｜reversal 7316/SL7098｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値7316円・直近5日-2.64%（材料未確認）
+  > 【水準】妥当（4.0/7） — PER14.2倍・PEG1.04・52週55% ／ 💰単元30.4万円
+  > 【戦略】当日終値3045円の指値で反転を取りにいく。SL3010円（直近5日安値）
+- 7202 Isuzu Motors Limited｜choruko_reversal｜⚡好調｜妥当｜PASS｜終値2320｜💰232000円｜reversal: 2320｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】商用トラックメーカー大手。ディーゼルエンジンに定評。東南アジア・海外強み。傘下にUD。
+  > 【いま】終値2,320円・直近5日+4.84%（材料未確認）
   > 【調子】⚡好調（5/13）
-  > 【水準】妥当（4/7） — PER146.3倍・PEG1.45・52週35% ／ 💰単元73.2万円
-  > 【戦略】当日終値7316円の指値で反転を取りにいく。SL7098円（直近5日安値）
-- 7202 Isuzu Motors Limited｜choruko_reversal｜⚡好調(5)｜妥当(4.0)｜PASS｜終値2287｜💰228700円｜reversal 2287/SL2207.5｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値2287円・直近5日+2.21%（材料未確認）
-  > 【調子】⚡好調（5/13）
-  > 【水準】妥当（4/7） — PER9.8倍・PEG0.77・52週42% ／ 💰単元22.9万円
-  > 【戦略】当日終値2287円の指値で反転を取りにいく。SL2207.5円（直近5日安値）
-- 268A Rigaku Holdings Corporation｜choruko_reversal｜⚡好調(5)｜妥当(3.0)｜PASS｜終値1626｜💰162600円｜reversal 1626/SL1586｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値1626円・直近5日-2.69%（材料未確認）
-  > 【調子】⚡好調（5/13）
-  > 【水準】妥当（3/7） — PER29.5倍・PEG1.94・52週32% ／ 💰単元16.3万円
-  > 【戦略】当日終値1626円の指値で反転を取りにいく。SL1586円（直近5日安値）
-- 9072 ニッコンホールディングス｜choruko_reversal｜⚡好調(5)｜過熱(1.0)｜PASS｜終値5518｜💰551800円｜reversal 5518/SL5266｜⚠日程不明
-  > 📌【業態】陸運業
-  > 【いま】終値5518円・直近5日+1.17%（材料未確認）
-  > 【調子】⚡好調（5/13）
-  > 【水準】過熱（1/7） — PER30.7倍・PEG2.88・52週67% ／ 💰単元55.2万円
-  > 【戦略】当日終値5518円の指値で反転を取りにいく。SL5266円（直近5日安値）
-- 2579 Coca-Cola Bottlers Japan Holdings Inc.｜choruko_reversal+granville_rebound｜✅順調(4)｜妥当(4.0)｜PASS｜終値3933｜💰393300円｜reversal 3933/SL3840｜⚠日程不明
-  > 📌【業態】東西ボトラー統合により誕生。国内コカ・コーラボトラー最大手。青汁のキューサイ譲渡。
-  > 【いま】終値3933円・直近5日+1.73%（材料未確認）
+  > 【水準】妥当（4.0/7） — PER10.0倍・PEG0.78・52週45% ／ 💰単元23.2万円
+  > 【戦略】当日終値2320円の指値で反転を取りにいく。SL2207.5円（直近5日安値）
+- 4536 参天製薬｜choruko_reversal｜✅順調｜値頃｜PASS｜終値1906.5｜💰190650円｜reversal: 1906.5｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】眼科用医薬品最大手。一般目薬「サンテ」が看板商品。海外展開を強化。
+  > 【いま】終値1,906円・直近5日+1.68%（材料未確認）
+  > 【調子】✅順調（4/13）— 税引前代替
+  > 【水準】値頃（5.0/7） — PER15.3倍・PEG—・52週56% ／ 💰単元19.1万円
+  > 【戦略】当日終値1906.5円の指値で反転を取りにいく。SL1840.5円（直近5日安値）
+- 2579 Coca-Cola Bottlers Japan Holdings Inc.｜choruko_reversal/granville_rebound｜✅順調｜妥当｜PASS｜終値3993｜💰399300円｜reversal: 3993｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】東西ボトラー統合により誕生。国内コカ・コーラボトラー最大手。青汁のキューサイ譲渡。
+  > 【いま】終値3,993円・直近5日+1.58%（材料未確認）
   > 【調子】✅順調（4/13）
-  > 【水準】妥当（4/7） — PER28.3倍・PEG0.19・52週67% ／ 💰単元39.3万円
-  > 【戦略】当日終値3933円の指値で反転を取りにいく。SL3840円（直近5日安値）
-- 1812 Kajima Corporation｜choruko_reversal｜⚠減速(4)｜妥当(3.0)｜PASS｜終値4838｜💰483800円｜reversal 4838/SL4753｜⚠日程不明
-  > 📌【業態】総合建設大手。超高層ビル・耐震・原発など技術に強み。内外で不動産開発。
-  > 【いま】終値4838円・直近5日+0.14%（材料未確認）
-  > 【調子】⚠減速（4/13） — 減収
-  > 【水準】妥当（3/7） — PER13.1倍・PEG—・52週18% ／ 💰単元48.4万円
-  > 【戦略】当日終値4838円の指値で反転を取りにいく。SL4753円（直近5日安値）
-- 7966 Lintec Corporation｜choruko_reversal+granville_rebound｜✅順調(4)｜やや割高(2.0)｜PASS｜終値5530｜💰553000円｜reversal 5530/SL5330｜⚠日程不明 🎯
-  > 📌【業態】粘接着素材で首位級。機能性フィルムなど光学関連向けに特色。日本製紙系。
-  > 【いま】終値5530円・直近5日+1.65%（材料未確認）
+  > 【水準】妥当（4.0/7） — PER28.7倍・PEG0.19・52週70% ／ 💰単元39.9万円
+  > 【戦略】当日終値3993円の指値で反転を取りにいく。SL3840円（直近5日安値）
+- 7731 ニコン｜choruko_reversal/granville_rebound｜✅順調｜妥当｜PASS｜終値1956｜💰195600円｜reversal: 1956｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】カメラ・回路露光装置の両輪。一眼レフでキヤノンと双璧。ヘルスケア、エネルギー関連強化。
+  > 【いま】終値1,956円・直近5日-0.74%（材料未確認）
   > 【調子】✅順調（4/13）
-  > 【水準】やや割高（2/7） — PER17.0倍・PEG2.38・52週53% ／ 💰単元55.3万円
-  > 【戦略】当日終値5530円の指値で反転を取りにいく。SL5330円（直近5日安値）
-- 9302 三井倉庫ホールディングス｜choruko_reversal｜✅順調(4)｜やや割高(2.0)｜PASS｜終値3350｜💰335000円｜reversal 3350/SL3290｜⚠日程不明
-  > 📌【業態】倉庫業大手。総合物流業務に強み。国際サプライチェーン展開。不動産賃貸が収益。
-  > 【いま】終値3350円・直近5日+0.33%（材料未確認）
-  > 【調子】✅順調（4/13） — 質注意
-  > 【水準】やや割高（2/7） — PER20.0倍・PEG—・52週17% ／ 💰単元33.5万円
-  > 【戦略】当日終値3350円の指値で反転を取りにいく。SL3290円（直近5日安値）
-- 5334 Niterra Co.,Ltd.｜choruko_reversal｜✅順調(4)｜過熱(1.0)｜PASS｜終値8349｜💰834900円｜reversal 8349/SL8166｜⚠日程不明
-  > 📌【業態】点火プラグ、排気センサー世界最大手。半導体・ファインセラミックス関連も。森村グループ。
-  > 【いま】終値8349円・直近5日-4.24%（材料未確認）
-  > 【調子】✅順調（4/13） — 経常減益-9.4%・質注意
-  > 【水準】過熱（1/7） — PER15.5倍・PEG—・52週51% ／ 💰単元83.5万円
-  > 【戦略】当日終値8349円の指値で反転を取りにいく。SL8166円（直近5日安値）
-- 6135 牧野フライス製作所｜choruko_reversal｜✅順調(4)｜過熱(0.0)｜PASS｜終値15350｜💰1535000円｜reversal 15350/SL14910｜⚠日程不明
-  > 📌【業態】工作機械大手。マシニングセンタ、放電加工機が主力。レーザ加工機にも注力。
-  > 【いま】終値15350円・直近5日-1.79%（材料未確認）
+  > 【水準】妥当（4.0/7） — PER64.3倍・PEG0.57・52週45% ／ 💰単元19.6万円
+  > 【戦略】当日終値1956円の指値で反転を取りにいく。SL1909円（直近5日安値）
+- 1812 Kajima Corporation｜choruko_reversal｜⚠減速｜妥当｜PASS｜終値5016｜💰501600円｜reversal: 5016｜⚠業績基調が下向き（⚠減速） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】総合建設大手。超高層ビル・耐震・原発など技術に強み。内外で不動産開発。
+  > 【いま】終値5,016円・直近5日+3.74%（材料未確認）
+  > 【調子】⚠減速（4/13）
+  > 【水準】妥当（3.0/7） — PER13.5倍・PEG—・52週22% ／ 💰単元50.2万円
+  > 【戦略】当日終値5016円の指値で反転を取りにいく。SL4753円（直近5日安値）
+- 9065 Sankyu Inc.｜choruko_reversal｜✅順調｜妥当｜PASS｜終値8388｜💰838800円｜reversal: 8388｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】日本製鉄系。物流とプラント事業が柱。高炉改修に強み。中東、アジアで物流。
+  > 【いま】終値8,388円・直近5日-0.44%（材料未確認）
   > 【調子】✅順調（4/13）
-  > 【水準】過熱（0/7） — PER16.2倍・PEG4.03・52週81% ／ 💰単元153.5万円
-  > 【戦略】当日終値15350円の指値で反転を取りにいく。SL14910円（直近5日安値）／⚠1単元リスク44000円（枠超過）
-- 1802 Obayashi Corporation｜choruko_reversal｜✅順調(3)｜妥当(3.0)｜PASS｜終値2992.5｜💰299250円｜reversal 2992.5/SL2940｜⚠日程不明
-  > 📌【業態】総合建設大手。関西地盤で首都圏で都市開発。トンネルに強み。発電関連強化。
-  > 【いま】終値2992円・直近5日-0.18%（材料未確認）
+  > 【水準】妥当（3.0/7） — PER12.7倍・PEG2.61・52週29% ／ 💰単元83.9万円
+  > 【戦略】当日終値8388円の指値で反転を取りにいく。SL8251円（直近5日安値）
+- 1861 Kumagai Gumi Co., Ltd.｜choruko_reversal｜✅順調｜割安｜PASS｜終値1306｜💰130600円｜reversal: 1306｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】総合建設準大手。大型土木・超高層ビル建築で実績。筆頭株主に住友林業。
+  > 【いま】終値1,306円・直近5日+0.46%（材料未確認）
   > 【調子】✅順調（3/13）
-  > 【水準】妥当（3/7） — PER13.1倍・PEG—・52週32% ／ 💰単元29.9万円
-  > 【戦略】当日終値2992.5円の指値で反転を取りにいく。SL2940円（直近5日安値）
-- 456A ＨＵＭＡＮ　ＭＡＤＥ｜choruko_reversal｜✅順調(3)｜過熱(0.0)｜PASS｜終値1680｜💰168000円｜reversal 1680/SL1570｜⚠日程不明
-  > 📌【業態】ストリートファッションなどを主力とするアパレルブランドを展開する。
-  > 【いま】終値1680円・直近5日+1.39%（材料未確認）
-  > 【調子】✅順調（3/13） — 質注意
-  > 【水準】過熱（0/7） — PER46.7倍・PEG4.85・52週87% ／ 💰単元16.8万円
-  > 【戦略】当日終値1680円の指値で反転を取りにいく。SL1570円（直近5日安値）
-- 6632 ＪＶＣケンウッド｜choruko_reversal｜➖横ばい(2)｜妥当(3.0)｜PASS｜終値1034｜💰103400円｜reversal 1034/SL994｜⚠日程不明
-  > 📌【業態】ビクターとケンウッドが統合。AV機器、車載、業務用に注力。ドラレコ関連事業を強化。
-  > 【いま】終値1034円・直近5日+2.53%（材料未確認）
-  > 【調子】➖横ばい（2/13） — 質注意
-  > 【水準】妥当（3/7） — PER9.7倍・PEG—・52週27% ／ 💰単元10.3万円
-  > 【戦略】当日終値1034円の指値で反転を取りにいく。SL994円（直近5日安値）
-- 1975 朝日工業社｜choruko_reversal｜➖横ばい(2)｜やや割高(2.0)｜PASS｜終値3935｜💰393500円｜reversal 3935/SL3820｜⚠日程不明
-  > 📌【業態】空調・衛生工事の大手。ハイテク環境制御装置に優れる。民間受注が中心。
-  > 【いま】終値3935円・直近5日+0.77%（材料未確認）
-  > 【調子】➖横ばい（2/13） — 質注意
-  > 【水準】やや割高（2/7） — PER11.0倍・PEG3.59・52週55% ／ 💰単元39.4万円
-  > 【戦略】当日終値3935円の指値で反転を取りにいく。SL3820円（直近5日安値）
-- 6479 ミネベア｜choruko_reversal｜⚠減速(1)｜割安(6.0)｜PASS｜終値3380｜💰338000円｜reversal 3380/SL3243｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値3380円・直近5日+1.08%（材料未確認）
+  > 【水準】割安（6.0/7） — PER10.9倍・PEG0.75・52週14% ／ 💰単元13.1万円
+  > 【戦略】当日終値1306円の指値で反転を取りにいく。SL1286円（直近5日安値）
+- 1802 Obayashi Corporation｜choruko_reversal｜✅順調｜妥当｜PASS｜終値3065｜💰306500円｜reversal: 3065｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】総合建設大手。関西地盤で首都圏で都市開発。トンネルに強み。発電関連強化。
+  > 【いま】終値3,065円・直近5日+1.79%（材料未確認）
+  > 【調子】✅順調（3/13）
+  > 【水準】妥当（3.0/7） — PER13.4倍・PEG—・52週36% ／ 💰単元30.6万円
+  > 【戦略】当日終値3065円の指値で反転を取りにいく。SL2940円（直近5日安値）
+- 6586 Makita Corporation｜choruko_reversal｜✅順調｜過熱｜PASS｜終値5363｜💰536300円｜reversal: 5363｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】電動工具最大手。世界各国で現地生産・販売。園芸、清掃向けも展開。
+  > 【いま】終値5,363円・直近5日+1.02%（材料未確認）
+  > 【調子】✅順調（3/13）
+  > 【水準】過熱（1.0/7） — PER17.1倍・PEG6.18・52週61% ／ 💰単元53.6万円
+  > 【戦略】当日終値5363円の指値で反転を取りにいく。SL5215円（直近5日安値）
+- 6632 ＪＶＣケンウッド｜choruko_reversal｜➖横ばい｜妥当｜PASS｜終値1057｜💰105700円｜reversal: 1057｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】ビクターとケンウッドが統合。AV機器、車載、業務用に注力。ドラレコ関連事業を強化。
+  > 【いま】終値1,057円・直近5日+4.24%（材料未確認）
+  > 【調子】➖横ばい（2/13）— 質注意
+  > 【水準】妥当（3.0/7） — PER10.0倍・PEG—・52週31% ／ 💰単元10.6万円
+  > 【戦略】当日終値1057円の指値で反転を取りにいく。SL1011円（直近5日安値）
+- 6479 ミネベア｜choruko_reversal｜⚠減速｜割安｜PASS｜終値3410｜💰341000円｜reversal: 3410｜⚠業績基調が下向き（⚠減速） ⚠バリュートラップ疑い ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】総合精密部品メーカー。極小ベアリングで世界高シェア。ミツミと統合で新分野開拓。
+  > 【いま】終値3,410円・直近5日+1.91%（材料未確認）
   > 【調子】⚠減速（1/13）
-  > 【水準】割安（6/7） — PER15.6倍・PEG—・52週32% ／ 💰単元33.8万円
-  > 【戦略】当日終値3380円の指値で反転を取りにいく。SL3243円（直近5日安値）
-- 5105 Toyo Tire Corporation｜choruko_reversal｜⚠減速(1)｜妥当(3.0)｜PASS｜終値3767｜💰376700円｜reversal 3767/SL3697｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値3767円・直近5日-1.49%（材料未確認）
+  > 【水準】割安（6.0/7） — PER15.7倍・PEG—・52週33% ／ 💰単元34.1万円
+  > 【戦略】当日終値3410円の指値で反転を取りにいく。SL3294円（直近5日安値）
+- 5105 Toyo Tire Corporation｜choruko_reversal｜⚠減速｜妥当｜PASS｜終値3837｜💰383700円｜reversal: 3837｜⚠業績基調が下向き（⚠減速） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】タイヤ大手。トラック・バス用に強み。北米向けSUV用タイヤも。株主に三菱商事。
+  > 【いま】終値3,837円・直近5日+0.34%（材料未確認）
   > 【調子】⚠減速（1/13）
-  > 【水準】妥当（3/7） — PER7.5倍・PEG—・52週24% ／ 💰単元37.7万円
-  > 【戦略】当日終値3767円の指値で反転を取りにいく。SL3697円（直近5日安値）
-- 1979 Taikisha Ltd.｜choruko_reversal+granville_rebound/未マージPR由来｜⚠減速(1)｜やや割高(2.0)｜PASS｜終値3945｜💰394500円｜reversal 3945/SL3830｜⚠日程不明
-  > 📌【業態】空調工事大手。自動車塗装設備工事で国内トップ。海外積極展開。
-  > 【いま】終値3945円・直近5日-0.25%（材料未確認）
-  > 【調子】⚠減速（1/13） — 質注意
-  > 【水準】やや割高（2/7） — PER13.8倍・PEG16.30・52週51% ／ 💰単元39.5万円
-  > 【戦略】当日終値3945円の指値で反転を取りにいく。SL3830円（直近5日安値）
-- 6951 日本電子｜choruko_reversal+granville_rebound｜⚠減速(1)｜やや割高(2.0)｜PASS｜終値7074｜💰707400円｜reversal 7074/SL6957｜⚠日程不明 🎯
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値7074円・直近5日-0.84%（材料未確認）
-  > 【調子】⚠減速（1/13） — 減収・質注意
-  > 【水準】やや割高（2/7） — PER16.2倍・PEG—・52週55% ／ 💰単元70.7万円
-  > 【戦略】当日終値7074円の指値で反転を取りにいく。SL6957円（直近5日安値）
-- 6845 Azbil Corporation｜choruko_reversal｜⚠減速(1)｜過熱(1.0)｜PASS｜終値1529｜💰152900円｜reversal 1529/SL1500｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値1529円・直近5日+1.43%（材料未確認）
-  > 【調子】⚠減速（1/13） — 質注意
-  > 【水準】過熱（1/7） — PER21.7倍・PEG8.53・52週55% ／ 💰単元15.3万円
-  > 【戦略】当日終値1529円の指値で反転を取りにいく。SL1500円（直近5日安値）
-- 9533 東邦瓦斯｜choruko_reversal｜🔻悪化(0)｜過熱(1.0)｜PASS｜終値1241.5｜💰124150円｜reversal 1241.5/SL1205｜⚠日程不明
-  > 📌【業態】都市ガス大手。愛知、岐阜、三重が拠点。LPGに強み。コージェネ事業に注力。
-  > 【いま】終値1242円・直近5日+1.76%（材料未確認）
-  > 【調子】🔻悪化（0/13） — 質注意・経常減益-34.0%
-  > 【水準】過熱（1/7） — PER19.2倍・PEG—・52週51% ／ 💰単元12.4万円
-  > 【戦略】当日終値1241.5円の指値で反転を取りにいく。SL1205円（直近5日安値）
-- 543A ＡＲＣＨＩＯＮ｜choruko_reversal｜業績データ取得不可(None)｜割安(7.0)｜PASS｜終値276｜💰27600円｜reversal 276/SL270｜⚠日程不明
-  > 📌【業態】トヨタ傘下。トラック国内大手。26年4月に日野自動車と三菱ふそうが経営統合。
-  > 【いま】終値276円・直近5日+1.10%（材料未確認）
-  > 【調子】－
-  > 【水準】割安（7/7） — PER2.3倍・PEG—・52週6% ／ 💰単元2.8万円
-  > 【戦略】当日終値276円の指値で反転を取りにいく。SL270円（直近5日安値）
-- 8366 滋賀銀行｜choruko_reversal｜取得不可(None)｜妥当(3.0)｜PASS｜終値2847｜💰284700円｜reversal 2847/SL2650｜⚠日程不明
-  > 📌【業態】滋賀県内で優位。徹底した収益管理体制。環境関連の法人融資に注力。
-  > 【いま】終値2847円・直近5日+7.80%（材料未確認）
-  > 【調子】－
-  > 【水準】妥当（3/7） — PER23.0倍・PEG0.51・52週92% ／ 💰単元28.5万円
-  > 【戦略】当日終値2847円の指値で反転を取りにいく。SL2650円（直近5日安値）
-- 1861 Kumagai Gumi Co., Ltd.｜choruko_reversal｜—｜—｜FAIL_INSEN｜終値1292｜💰—円｜—｜
-- 1980 ダイダン｜choruko_reversal｜—｜—｜FAIL_UWAHIGE｜終値2755｜💰—円｜—｜
-- 3064 MonotaRO Co., Ltd.｜choruko_reversal｜—｜—｜FAIL_UWAHIGE｜終値1927｜💰—円｜—｜
-- 3288 Open House Group Co. Ltd｜choruko_reversal｜—｜—｜FAIL_INSEN｜終値7951｜💰—円｜—｜
-- 4047 関東電化工業｜choruko_reversal+granville_rebound/未マージPR由来｜—｜—｜FAIL_UWAHIGE｜終値2298｜💰—円｜—｜🎯
-- 4516 日本新薬｜choruko_reversal｜—｜—｜FAIL_INSEN｜終値3544｜💰—円｜—｜
-- 4536 参天製薬｜choruko_reversal｜—｜—｜FAIL_UWAHIGE｜終値1875.5｜💰—円｜—｜
-- 6013 タクマ｜choruko_reversal+granville_rebound｜—｜—｜FAIL_INSEN｜終値3020｜💰—円｜—｜🎯
-- 6141 DMG MORI CO., LTD.｜choruko_reversal｜—｜—｜FAIL_INSEN｜終値2990｜💰—円｜—｜
-- 6278 ユニオンツール｜choruko_reversal｜—｜—｜FAIL_UWAHIGE｜終値14120｜💰—円｜—｜
-- 6544 Japan Elevator Service Holdings Co., Ltd.｜choruko_reversal｜—｜—｜FAIL_UWAHIGE｜終値1560｜💰—円｜—｜
-- 6586 Makita Corporation｜choruko_reversal｜—｜—｜FAIL_UWAHIGE｜終値5299｜💰—円｜—｜
-- 7157 ライフネット生命保険｜choruko_reversal｜—｜—｜FAIL_INSEN｜終値1446｜💰—円｜—｜
-- 7532 パン・パシフィック・インターナショナルホールディングス｜choruko_reversal｜—｜—｜FAIL_INSEN｜終値807｜💰—円｜—｜
-- 7649 Sugi Holdings Co., Ltd.｜choruko_reversal｜—｜—｜FAIL_UWAHIGE｜終値1320.5｜💰—円｜—｜
-- 7685 ＢＵＹＳＥＬＬ　ＴＥＣＨＮＯＬＯＧＩＥＳ｜choruko_reversal+granville_rebound｜—｜—｜FAIL_INSEN｜終値3175｜💰—円｜—｜
-- 7730 マニー｜choruko_reversal｜—｜—｜FAIL_UWAHIGE｜終値1573｜💰—円｜—｜
-- 7731 ニコン｜choruko_reversal+granville_rebound｜—｜—｜FAIL_INSEN｜終値1929.5｜💰—円｜—｜
-- 8111 Goldwin Inc.｜choruko_reversal｜—｜—｜FAIL_INSEN｜終値2149｜💰—円｜—｜
-- 9065 Sankyu Inc.｜choruko_reversal｜—｜—｜FAIL_INSEN｜終値8328｜💰—円｜—｜
-- 9279 GIFT HOLDINGS INC.｜choruko_reversal+granville_rebound｜—｜—｜FAIL_INSEN｜終値2426｜💰—円｜—｜
-- 7480 スズデン｜stf_kakuhen｜🚀確変(13)｜妥当(3.0)｜PASS｜終値3565｜💰356500円｜⛔提案なし(手法ブランチ不明)｜⚠日程不明
-  > 📌【業態】FA機器主力、技術商社。オムロンと特約店契約。電設資材中心。ネット販売に強み。
-  > 【いま】終値3565円・直近5日+2.15%（材料未確認）
-  > 【調子】🚀確変（13/13）
-  > 【水準】妥当（3/7） — PER16.3倍・PEG0.20・52週98% ／ 💰単元35.6万円
-  > 【戦略】発注対象外（⛔提案なし(手法ブランチ不明)）
-- 3131 シンデンハイ｜stf_kakuhen｜🚀確変(12)｜値頃(5.0)｜PASS｜終値6140｜💰614000円｜⛔提案なし(手法ブランチ不明)｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値6140円・直近5日+5.14%（材料未確認）
+  > 【水準】妥当（3.0/7） — PER7.6倍・PEG—・52週29% ／ 💰単元38.4万円
+  > 【戦略】当日終値3837円の指値で反転を取りにいく。SL3697円（直近5日安値）
+- 1979 Taikisha Ltd.｜choruko_reversal/granville_rebound/未マージPR由来｜⚠減速｜やや割高｜PASS｜終値4070｜💰407000円｜reversal: 4070｜⚠業績基調が下向き（⚠減速） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】空調工事大手。自動車塗装設備工事で国内トップ。海外積極展開。
+  > 【いま】終値4,070円・直近5日+4.36%（材料未確認）
+  > 【調子】⚠減速（1/13）— 質注意
+  > 【水準】やや割高（2.0/7） — PER14.2倍・PEG16.82・52週57% ／ 💰単元40.7万円
+  > 【戦略】当日終値4070円の指値で反転を取りにいく。SL3830円（直近5日安値）
+- 1980 ダイダン｜choruko_reversal｜⚠減速｜やや割高｜PASS｜終値2845｜💰284500円｜reversal: 2845｜⚠業績基調が下向き（⚠減速） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】総合設備老舗。空調・電気・水道衛生工事に強み。関西地盤から首都圏に。
+  > 【いま】終値2,845円・直近5日+4.29%（材料未確認）
+  > 【調子】⚠減速（1/13）
+  > 【水準】やや割高（2.0/7） — PER13.5倍・PEG6.61・52週51% ／ 💰単元28.4万円
+  > 【戦略】当日終値2845円の指値で反転を取りにいく。SL2695円（直近5日安値）
+- 9533 東邦瓦斯｜choruko_reversal｜🔻悪化｜過熱｜PASS｜終値1266.5｜💰126650円｜reversal: 1266.5｜⚠業績基調が下向き（🔻悪化） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】都市ガス大手。愛知、岐阜、三重が拠点。LPGに強み。コージェネ事業に注力。
+  > 【いま】終値1,266円・直近5日+3.60%（材料未確認）
+  > 【調子】🔻悪化（0/13）— 質注意
+  > 【水準】過熱（1.0/7） — PER19.6倍・PEG—・52週58% ／ 💰単元12.7万円
+  > 【戦略】当日終値1266.5円の指値で反転を取りにいく。SL1205円（直近5日安値）
+- 543A ＡＲＣＨＩＯＮ｜choruko_reversal｜業績データ取得不可｜割安｜PASS｜終値289｜💰28900円｜reversal: 289｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】トヨタ傘下。トラック国内大手。26年4月に日野自動車と三菱ふそうが経営統合。
+  > 【いま】終値289円・直近5日+6.64%（材料未確認）
+  > 【調子】業績データ取得不可
+  > 【水準】割安（7.0/7） — PER2.5倍・PEG—・52週10% ／ 💰単元2.9万円
+  > 【戦略】当日終値289円の指値で反転を取りにいく。SL270円（直近5日安値）
+- 8366 滋賀銀行｜choruko_reversal｜取得不可｜妥当｜PASS｜終値2858｜💰285800円｜reversal: 2858｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】滋賀県内で優位。徹底した収益管理体制。環境関連の法人融資に注力。
+  > 【いま】終値2,858円・直近5日+5.93%（材料未確認）
+  > 【調子】取得不可
+  > 【水準】妥当（3.0/7） — PER23.0倍・PEG0.51・52週92% ／ 💰単元28.6万円
+  > 【戦略】当日終値2858円の指値で反転を取りにいく。SL2707円（直近5日安値）
+- 3131 シンデンハイ｜stf_kakuhen｜🚀確変｜値頃｜PASS｜終値6430｜💰643000円｜⛔提案なし(手法ブランチ不明)｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】液晶モジュール、半導体、電子機器、バッテリの専門商社。韓国LG、SK製品が主力。
+  > 【いま】終値6,430円・直近5日+3.71%（材料未確認）
   > 【調子】🚀確変（12/13）
-  > 【水準】値頃（5/7） — PER5.8倍・PEG0.01・52週77% ／ 💰単元61.4万円
+  > 【水準】値頃（5.0/7） — PER6.1倍・PEG0.01・52週83% ／ 💰単元64.3万円
   > 【戦略】発注対象外（⛔提案なし(手法ブランチ不明)）
-- 6134 富士機械製造｜stf_kakuhen+granville_rebound｜🚀確変(11)｜値頃(5.0)｜PASS｜終値7134｜💰713400円｜⛔提案なし(手法ブランチ不明)｜⚠日程不明
-  > 📌【業態】電子部品組立など自動装着装置で首位。スマホ向けや自動車用工作機械も。
-  > 【いま】終値7134円・直近5日-2.09%（材料未確認）
-  > 【調子】🚀確変（11/13）
-  > 【水準】値頃（5/7） — PER14.3倍・PEG0.15・52週71% ／ 💰単元71.3万円
-  > 【戦略】発注対象外（⛔提案なし(手法ブランチ不明)）
-- 9308 乾汽船｜stf_kakuhen｜🔥絶好調(10)｜妥当(4.0)｜PASS｜終値2170｜💰217000円｜⛔提案なし(手法ブランチ不明)｜⚠日程不明
-  > 📌【業態】外航海運、倉庫、不動産事業が主力。陸海一貫物流が強み。経営基盤強力。
-  > 【いま】終値2170円・直近5日+1.59%（材料未確認）
-  > 【調子】🔥絶好調（10/13）
-  > 【水準】妥当（4/7） — PER14.3倍・PEG0.07・52週99% ／ 💰単元21.7万円
-  > 【戦略】発注対象外（⛔提案なし(手法ブランチ不明)）
-- 6324 ハーモニック・ドライブ・システムズ（ハーモニック）｜stf_kakuhen｜🔥絶好調(9)｜妥当(4.0)｜PASS｜終値5790｜💰579000円｜⛔提案なし(手法ブランチ不明)｜⚠日程不明
-  > 📌【業態】精密制御減速装置が軸。小型・軽量強み。産業用ロボット向け等。メカトロ製品も。
-  > 【いま】終値5790円・直近5日+1.94%（材料未確認）
+- 7433 伯東｜stf_kakuhen｜🔥絶好調｜妥当｜PASS｜終値5440｜💰544000円｜⛔提案なし(手法ブランチ不明)｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】エレクトロニクス商社。半導体製造装置に強み。工業薬品製造も併営。海外開拓。
+  > 【いま】終値5,440円・直近5日+2.84%（材料未確認）
   > 【調子】🔥絶好調（9/13）
-  > 【水準】妥当（4/7） — PER91.3倍・PEG0.41・52週51% ／ 💰単元57.9万円
+  > 【水準】妥当（4.0/7） — PER16.0倍・PEG0.30・52週100% ／ 💰単元54.4万円
   > 【戦略】発注対象外（⛔提案なし(手法ブランチ不明)）
-- 7637 白銅｜stf_kakuhen｜🔥絶好調(9)｜妥当(4.0)｜PASS｜終値3730｜💰373000円｜⛔提案なし(手法ブランチ不明)｜⚠日程不明
-  > 📌【業態】非鉄金属商社。加工、小口、短納期に強み。主顧客は半導体、FPD製造装置。
-  > 【いま】終値3730円・直近5日-1.97%（材料未確認）
-  > 【調子】🔥絶好調（9/13）
-  > 【水準】妥当（4/7） — PER11.8倍・PEG0.19・52週81% ／ 💰単元37.3万円
-  > 【戦略】発注対象外（⛔提案なし(手法ブランチ不明)）
-- 6857 Advantest Corporation｜stf_kakuhen+changepoint🔔｜🔥絶好調(9)｜妥当(3.0)｜PASS｜終値33690｜💰3369000円｜⛔提案なし(手法ブランチ不明)｜⚠日程不明
-  > 📌【業態】半導体試験装置で世界大手。DRAM用トップ。テストシステム、電子ビーム技術に強み。
-  > 【いま】終値33690円・直近5日-2.35%（材料未確認）
-  > 【調子】🔥絶好調（9/13）
-  > 【水準】妥当（3/7） — PER36.9倍・PEG0.51・52週82% ／ 💰単元336.9万円
-  > 【戦略】発注対象外（⛔提案なし(手法ブランチ不明)）
-- 6490 ＰＩＬＬＡＲ｜stf_kakuhen+granville_oshime｜⚡好調(7)｜妥当(3.0)｜PASS｜終値10200｜💰1020000円｜⛔提案なし(手法ブランチ不明)｜⚠日程不明
-  > 📌【業態】流体制御関連のメカニカルシール大手。パッキン、ガスケットなど産業機械向け拡大。
-  > 【いま】終値10200円・直近5日+3.76%（材料未確認）
+- 3091 ブロンコビリー｜granville_oshime/stf_kakuhen｜⚡好調｜やや割高｜PASS｜終値2925｜💰292500円｜⛔提案なし(手法ブランチ不明)｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】名古屋地盤に高級ステーキ店チェーン展開。炭焼き等、高付加価値提供。関東進出。
+  > 【いま】終値2,925円・直近5日+5.22%（材料未確認）
   > 【調子】⚡好調（7/13）
-  > 【水準】妥当（3/7） — PER16.7倍・PEG0.29・52週77% ／ 💰単元102万円
+  > 【水準】やや割高（2.0/7） — PER33.5倍・PEG1.02・52週99% ／ 💰単元29.2万円
   > 【戦略】発注対象外（⛔提案なし(手法ブランチ不明)）
-- 147A ソラコム｜stf_kakuhen｜—｜—｜FAIL_UWAHIGE｜終値1003｜💰—円｜—｜
-- 3036 アルコニックス（アルコニクス）｜stf_kakuhen｜—｜—｜FAIL_INSEN｜終値3385｜💰—円｜—｜
-- 3091 ブロンコビリー｜stf_kakuhen+granville_oshime｜—｜—｜FAIL_UWAHIGE｜終値2892｜💰—円｜—｜
-- 7267 ホンダ｜stf_kakuhen｜—｜—｜FAIL_UWAHIGE｜終値1710｜💰—円｜—｜
-- 7433 伯東｜stf_kakuhen｜—｜—｜FAIL_UWAHIGE｜終値5300｜💰—円｜—｜
-- 8084 ＲＹＯＤＥＮ｜stf_kakuhen｜—｜—｜FAIL_INSEN｜終値4760｜💰—円｜—｜
-- 8388 阿波銀行｜stf_kakuhen｜—｜—｜FAIL_INSEN｜終値10020｜💰—円｜—｜
-- 8697 日本取引所グループ｜stf_kakuhen｜—｜—｜FAIL_INSEN｜終値2250｜💰—円｜—｜
 
 ## グランビル銘柄
-- 8562 Fukushima Bank, Ltd.｜granville_tenkan+未マージPR由来｜🔥絶好調(9)｜値頃(5.0)｜PASS｜終値388｜💰38800円｜momentum 390/SL365.7｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値388円・直近5日+6.89%（材料未確認）
+- 5703 Nippon Light Metal Holdings Co., Ltd.｜granville_tenkan｜🔥絶好調｜妥当｜PASS｜終値3135｜💰313500円｜momentum: 3150｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】アルミ総合メーカー。アルミ製品と化成品が主力。アジア急展開。国内精錬工場を閉鎖。
+  > 【いま】終値3,135円・直近5日+3.64%（材料未確認）
   > 【調子】🔥絶好調（9/13）
-  > 【水準】値頃（5/7） — PER15.0倍・PEG0.25・52週73% ／ 💰単元3.9万円
-  > 【戦略】当日高値超えの逆指値390円で順張り参戦を検討。上限393.9円・SL365.7円目安
-- 5703 Nippon Light Metal Holdings Co., Ltd.｜granville_tenkan｜🔥絶好調(9)｜妥当(4.0)｜PASS｜終値3030｜💰303000円｜momentum 3045/SL2852.9｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値3030円・直近5日-0.66%（材料未確認）
-  > 【調子】🔥絶好調（9/13）
-  > 【水準】妥当（4/7） — PER11.0倍・PEG0.35・52週77% ／ 💰単元30.3万円
-  > 【戦略】当日高値超えの逆指値3045円で順張り参戦を検討。上限3075.4円・SL2852.9円目安
-- 3491 GA technologies Co., Ltd.｜granville_tenkan｜🔥絶好調(8)｜割安(6.0)｜PASS｜終値1600｜💰160000円｜momentum 1611/SL1509.6｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値1600円・直近5日+1.59%（材料未確認）
+  > 【水準】妥当（4.0/7） — PER11.4倍・PEG0.37・52週85% ／ 💰単元31.4万円
+  > 【戦略】当日高値超えの逆指値3150円で順張り参戦を検討。上限3181.5円・SL2961円目安
+- 8086 ニプロ｜granville_tenkan｜🔥絶好調｜妥当｜PASS｜終値1553｜💰155300円｜⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】使い捨て医療器具大手。人工腎臓に強み。後発医薬品・受託を強化。
+  > 【いま】終値1,553円・直近5日-1.49%（材料未確認）
   > 【調子】🔥絶好調（8/13）
-  > 【水準】割安（6/7） — PER12.0倍・PEG0.29・52週29% ／ 💰単元16万円
-  > 【戦略】当日高値超えの逆指値1611円で順張り参戦を検討。上限1627.1円・SL1509.6円目安
-- 6425 Universal Entertainment Corporation｜granville_tenkan｜🔥絶好調(8)｜値頃(5.0)｜PASS｜終値741｜💰74100円｜momentum 744/SL698.4｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値741円・直近5日+0.41%（材料未確認）
-  > 【調子】🔥絶好調（8/13）
-  > 【水準】値頃（5/7） — PER28.7倍・PEG0.26・52週26% ／ 💰単元7.4万円
-  > 【戦略】当日高値超えの逆指値744円で順張り参戦を検討。上限751.4円・SL698.4円目安
-- 8086 ニプロ｜granville_tenkan｜🔥絶好調(8)｜値頃(5.0)｜PASS｜終値1537｜💰153700円｜momentum 1542.5/SL1445.2｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値1537円・直近5日-3.36%（材料未確認）
-  > 【調子】🔥絶好調（8/13）
-  > 【水準】値頃（5/7） — PER16.7倍・PEG0.43・52週38% ／ 💰単元15.4万円
-  > 【戦略】当日高値超えの逆指値1542.5円で順張り参戦を検討。上限1557.9円・SL1445.2円目安
-- 5020 ＪＸホールディングス｜granville_tenkan｜⚡好調(7)｜値頃(5.0)｜PASS｜終値1339｜💰133900円｜momentum 1345.5/SL1260.1｜⚠日程不明
-  > 📌【業態】石油元売り最大手。東燃ゼネラルと統合。機能材や石油・天然ガス開発にも強み。
-  > 【いま】終値1339円・直近5日-0.11%（材料未確認）
+  > 【水準】妥当（4.0/7） — PER16.9倍・PEG0.43・52週42% ／ 💰単元15.5万円
+  > 【戦略】発注対象外（⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)）
+- 5020 ＪＸホールディングス｜granville_tenkan｜⚡好調｜妥当｜PASS｜終値1389｜💰138900円｜⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】石油元売り最大手。東燃ゼネラルと統合。機能材や石油・天然ガス開発にも強み。
+  > 【いま】終値1,389円・直近5日+3.54%（材料未確認）
   > 【調子】⚡好調（7/13）
-  > 【水準】値頃（5/7） — PER8.6倍・PEG0.27・52週68% ／ 💰単元13.4万円
-  > 【戦略】当日高値超えの逆指値1345.5円で順張り参戦を検討。上限1359円・SL1260.1円目安
-- 5932 Sankyo Tateyama, Inc.｜granville_tenkan｜⚡好調(7)｜妥当(4.0)｜PASS｜終値673｜💰67300円｜momentum 675/SL633.6｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値673円・直近5日+0.15%（材料未確認）
-  > 【調子】⚡好調（7/13）
-  > 【水準】妥当（4/7） — PER21.1倍・PEG0.30・52週57% ／ 💰単元6.7万円
-  > 【戦略】当日高値超えの逆指値675円で順張り参戦を検討。上限681.8円・SL633.6円目安
-- 7744 ノーリツ鋼機｜granville_tenkan｜⚡好調(7)｜妥当(4.0)｜PASS｜終値2109｜💰210900円｜momentum 2122/SL1990｜⚠日程不明
-  > 📌【業態】ペン先等金属加工部材からDJ・音響関連機事業が主軸に。金属部品、建材も。
-  > 【いま】終値2109円・直近5日+5.19%（材料未確認）
-  > 【調子】⚡好調（7/13） — 質注意
-  > 【水準】妥当（4/7） — PER13.3倍・PEG1.10・52週67% ／ 💰単元21.1万円
-  > 【戦略】当日高値超えの逆指値2122円で順張り参戦を検討。上限2143.2円・SL1990円目安
-- 4507 塩野義製薬｜granville_tenkan｜⚡好調(7)｜妥当(3.0)｜PASS｜終値2910.5｜💰291050円｜momentum 2923/SL2742.9｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値2910円・直近5日-0.38%（材料未確認）
-  > 【調子】⚡好調（7/13） — 質注意
-  > 【水準】妥当（3/7） — PER11.8倍・PEG—・52週38% ／ 💰単元29.1万円
-  > 【戦略】当日高値超えの逆指値2923円で順張り参戦を検討。上限2952.2円・SL2742.9円目安
-- 6023 ダイハツインフィニアース｜granville_tenkan｜⚡好調(6)｜値頃(5.0)｜PASS｜終値3115｜💰311500円｜momentum 3125/SL2928.1｜⚠日程不明
-  > 📌【業態】船舶ディーゼル発電用補機の世界大手。コージェネ向けも。ダイハツ直系。
-  > 【いま】終値3115円・直近5日+4.39%（材料未確認）
+  > 【水準】妥当（4.0/7） — PER8.9倍・PEG0.28・52週76% ／ 💰単元13.9万円
+  > 【戦略】発注対象外（⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)）
+- 4507 塩野義製薬｜granville_tenkan｜⚡好調｜やや割高｜PASS｜終値2950｜💰295000円｜momentum: 2963｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】抗HIV薬が大型化。高脂血症薬、鎮痛、感染分野に強み。海外進出本格化。
+  > 【いま】終値2,950円・直近5日+1.34%（材料未確認）
+  > 【調子】⚡好調（7/13）— 質注意
+  > 【水準】やや割高（2.0/7） — PER12.0倍・PEG—・52週41% ／ 💰単元29.5万円
+  > 【戦略】当日高値超えの逆指値2963円で順張り参戦を検討。上限2992.63円・SL2784.75円目安
+- 3116 Toyota Boshoku Corp.｜granville_tenkan｜⚡好調｜割安｜PASS｜終値2348｜💰234800円｜⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】トヨタ系。アラコ、タカニチと合併。自動車シートとエアフィルターで国内首位。
+  > 【いま】終値2,348円・直近5日+5.08%（材料未確認）
   > 【調子】⚡好調（6/13）
-  > 【水準】値頃（5/7） — PER11.2倍・PEG0.44・52週74% ／ 💰単元31.1万円
-  > 【戦略】当日高値超えの逆指値3125円で順張り参戦を検討。上限3156.2円・SL2928.1円目安
-- 7911 TOPPAN Holdings Inc.｜granville_tenkan+未マージPR由来｜⚡好調(6)｜過熱(1.0)｜PASS｜終値5093｜💰509300円｜momentum 5140/SL4822.2｜⚠日程不明
-  > 📌【業態】総合印刷大手。印刷技術柱に情報コミュニケーションやエレクトロ関連を展開。海外開拓。
-  > 【いま】終値5093円・直近5日+1.82%（材料未確認）
+  > 【水準】割安（6.0/7） — PER9.1倍・PEG0.31・52週21% ／ 💰単元23.5万円
+  > 【戦略】発注対象外（⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)）
+- 2975 Star Mica Holdings Co., Ltd.｜granville_oshime/granville_tenkan｜⚡好調｜値頃｜PASS｜終値1578｜💰157800円｜momentum: 1579｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】区分所有の中古マンション売買に特化。リノベマンション事業を中心にリースバックも。
+  > 【いま】終値1,578円・直近5日-1.19%（材料未確認）
   > 【調子】⚡好調（6/13）
-  > 【水準】過熱（1/7） — PER25.9倍・PEG2.52・52週63% ／ 💰単元50.9万円
-  > 【戦略】当日高値超えの逆指値5140円で順張り参戦を検討。上限5191.4円・SL4822.2円目安／⚠1単元リスク31780円（枠超過）
-- 208A 構造計画研究所ホールディングス｜granville_tenkan｜✅順調(4)｜割安(6.0)｜PASS｜終値3005｜💰300500円｜momentum 3015/SL2824.7｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値3005円・直近5日-0.33%（材料未確認）
+  > 【水準】値頃（5.0/7） — PER9.9倍・PEG0.23・52週64% ／ 💰単元15.8万円
+  > 【戦略】当日高値超えの逆指値1579円で順張り参戦を検討。上限1594.79円・SL1484.26円目安
+- 3048 BIC Cameras Inc.｜granville_oshime/granville_tenkan｜⚡好調｜やや割高｜PASS｜終値1796｜💰179600円｜momentum: 1802｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】家電量販店大手。首都圏駅前に大型店を展開。ネット販売も。傘下にコジマ。
+  > 【いま】終値1,796円・直近5日-0.44%（材料未確認）
+  > 【調子】⚡好調（6/13）
+  > 【水準】やや割高（2.0/7） — PER16.7倍・PEG1.42・52週76% ／ 💰単元18.0万円
+  > 【戦略】当日高値超えの逆指値1802円で順張り参戦を検討。上限1820.02円・SL1693.41円目安
+- 8919 カチタス｜granville_tenkan｜⚡好調｜過熱｜PASS｜終値3805｜💰380500円｜momentum: 3810｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】中古住宅の再生・販売を地方中心に全国展開。ニトリと資本業務提携。
+  > 【いま】終値3,805円・直近5日+2.84%（材料未確認）
+  > 【調子】⚡好調（6/13）
+  > 【水準】過熱（1.0/7） — PER21.3倍・PEG1.73・52週94% ／ 💰単元38.0万円
+  > 【戦略】当日高値超えの逆指値3810円で順張り参戦を検討。上限3848.1円・SL3581.4円目安
+- 4666 PARK24 Co., Ltd.｜granville_tenkan/未マージPR由来｜⚡好調｜値頃｜PASS｜終値2076｜💰207600円｜⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】24時間貸駐車場「タイムズパーキング」を主力。カーシェア事業が成長。豪、英国も展開。
+  > 【いま】終値2,076円・直近5日+2.75%（材料未確認）
+  > 【調子】⚡好調（5/13）
+  > 【水準】値頃（5.0/7） — PER8.1倍・PEG0.52・52週60% ／ 💰単元20.8万円
+  > 【戦略】発注対象外（⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)）
+- 6339 Sintokogio,Ltd.｜granville_tenkan/未マージPR由来｜⚠減速｜妥当｜PASS｜終値1209｜💰120900円｜momentum: 1214｜⚠業績基調が下向き（⚠減速） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】鋳造機械最大手。鋳造設備は国内外納入。表面処理や環境関連装置も。
+  > 【いま】終値1,209円・直近5日+0.08%（材料未確認）
+  > 【調子】⚠減速（5/13）— 質注意
+  > 【水準】妥当（4.0/7） — PER11.4倍・PEG0.12・52週76% ／ 💰単元12.1万円
+  > 【戦略】当日高値超えの逆指値1214円で順張り参戦を検討。上限1226.14円・SL1141.16円目安
+- 9037 ハマキョウレックス（ハマキョウ）｜granville_tenkan/未マージPR由来｜⚡好調｜やや割高｜PASS｜終値1876｜💰187600円｜momentum: 1880｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】3PL事業大手。物流業務の一括受託で急成長。通販拡大で個人向けも。
+  > 【いま】終値1,876円・直近5日+1.13%（材料未確認）
+  > 【調子】⚡好調（5/13）
+  > 【水準】やや割高（2.0/7） — PER12.9倍・PEG1.85・52週81% ／ 💰単元18.8万円
+  > 【戦略】当日高値超えの逆指値1880円で順張り参戦を検討。上限1898.8円・SL1767.2円目安
+- 1808 Haseko Corporation｜granville_tenkan｜✅順調｜妥当｜PASS｜終値2963｜💰296300円｜⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】マンション建築最大手。計画から施工まで一貫。独自ノウハウ持つ。サービス関連育成。
+  > 【いま】終値2,963円・直近5日+3.35%（材料未確認）
   > 【調子】✅順調（4/13）
-  > 【水準】割安（6/7） — PER12.4倍・PEG0.67・52週29% ／ 💰単元30.1万円
-  > 【戦略】当日高値超えの逆指値3015円で順張り参戦を検討。上限3045.2円・SL2824.7円目安
-- 2281 Prima Meat Packers,Ltd.｜granville_tenkan｜✅順調(4)｜妥当(3.0)｜PASS｜終値2455｜💰245500円｜momentum 2463/SL2310.5｜⚠日程不明
-  > 📌【業態】ハム業界大手。伊藤忠傘下。加工食品・総菜に注力。ウインナ主力。滝沢ハムと提携。
-  > 【いま】終値2455円・直近5日+0.57%（材料未確認）
+  > 【水準】妥当（4.0/7） — PER11.9倍・PEG1.02・52週50% ／ 💰単元29.6万円
+  > 【戦略】発注対象外（⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)）
+- 6305 Hitachi Construction Machinery Co., Ltd.｜granville_tenkan｜✅順調｜妥当｜PASS｜終値5934｜💰593400円｜momentum: 5950｜⚠日程不明 ⚠1単元でリスク枠超過（35982円）
+  > 📌ヘッドライン
+  > 【業態】総合建機大手。油圧ショベル世界シェア高、ICT化に強み。鉱山機械も拡大。
+  > 【いま】終値5,934円・直近5日-0.03%（材料未確認）
   > 【調子】✅順調（4/13）
-  > 【水準】妥当（3/7） — PER16.5倍・PEG2.25・52週34% ／ 💰単元24.6万円
-  > 【戦略】当日高値超えの逆指値2463円で順張り参戦を検討。上限2487.6円・SL2310.5円目安
-- 6167 冨士ダイス｜granville_tenkan+granville_rebound/未マージPR由来｜✅順調(4)｜やや割高(2.0)｜PASS｜終値1049｜💰104900円｜momentum 1064/SL995.5｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値1049円・直近5日+1.35%（材料未確認）
-  > 【調子】✅順調（4/13） — 質注意
-  > 【水準】やや割高（2/7） — PER33.2倍・PEG7.92・52週29% ／ 💰単元10.5万円
-  > 【戦略】当日高値超えの逆指値1064円で順張り参戦を検討。上限1074.6円・SL995.5円目安
-- 7994 OKAMURA CORP｜granville_tenkan｜✅順調(3)｜妥当(4.0)｜PASS｜終値2393｜💰239300円｜momentum 2401/SL2252.2｜⚠日程不明
-  > 📌【業態】オフィス家具大手。首都圏に強み。商品開発に定評。陳列棚、店舗什器も。
-  > 【いま】終値2393円・直近5日+1.18%（材料未確認）
+  > 【水準】妥当（4.0/7） — PER15.0倍・PEG0.99・52週56% ／ 💰単元59.3万円
+  > 【戦略】当日高値超えの逆指値5950円で順張り参戦を検討。上限6009.5円・SL5590.18円目安／⚠1単元リスク35981円（枠超過）
+- 8098 稲畑産業｜granville_tenkan｜✅順調｜過熱｜PASS｜終値4560｜💰456000円｜momentum: 4575｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】化学専門商社大手。電子材料や合成樹脂に強み。アジアで広域に展開。
+  > 【いま】終値4,560円・直近5日+7.67%（材料未確認）
+  > 【調子】✅順調（4/13）— 質注意
+  > 【水準】過熱（1.0/7） — PER11.6倍・PEG—・52週99% ／ 💰単元45.6万円
+  > 【戦略】当日高値超えの逆指値4575円で順張り参戦を検討。上限4620.75円・SL4300.5円目安
+- 1898 世紀東急工業｜granville_tenkan｜✅順調｜妥当｜PASS｜終値1511｜💰151100円｜momentum: 1512｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】東急建設系の道路舗装大手。環境・景観工事など多技術。舗装材の販売も。
+  > 【いま】終値1,511円・直近5日+0.60%（材料未確認）
   > 【調子】✅順調（3/13）
-  > 【水準】妥当（4/7） — PER10.7倍・PEG1.68・52週40% ／ 💰単元23.9万円
-  > 【戦略】当日高値超えの逆指値2401円で順張り参戦を検討。上限2425円・SL2252.2円目安
-- 5851 Ryobi Limited｜granville_tenkan｜➖横ばい(2)｜妥当(3.0)｜PASS｜終値2784｜💰278400円｜momentum 2789/SL2617｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値2784円・直近5日-1.00%（材料未確認）
-  > 【調子】➖横ばい（2/13） — 経常減益-4.2%・質注意
-  > 【水準】妥当（3/7） — PER7.4倍・PEG—・52週60% ／ 💰単元27.8万円
-  > 【戦略】当日高値超えの逆指値2789円で順張り参戦を検討。上限2816.9円・SL2617円目安
-- 2292 S Foods Inc.｜granville_tenkan｜➖横ばい(2)｜やや割高(2.0)｜PASS｜終値2924｜💰292400円｜momentum 2929/SL2748.6｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値2924円・直近5日+0.83%（材料未確認）
-  > 【調子】➖横ばい（2/13） — 質注意
-  > 【水準】やや割高（2/7） — PER14.2倍・PEG—・52週55% ／ 💰単元29.2万円
-  > 【戦略】当日高値超えの逆指値2929円で順張り参戦を検討。上限2958.3円・SL2748.6円目安
-- 6794 Foster Electric Company, Limited｜granville_tenkan+未マージPR由来｜➖横ばい(2)｜やや割高(2.0)｜PASS｜終値3045｜💰304500円｜momentum 3060/SL2867｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値3045円・直近5日+0.33%（材料未確認）
-  > 【調子】➖横ばい（2/13） — 質注意
-  > 【水準】やや割高（2/7） — PER13.7倍・PEG—・52週68% ／ 💰単元30.4万円
-  > 【戦略】当日高値超えの逆指値3060円で順張り参戦を検討。上限3090.6円・SL2867円目安
-- 7231 トピー工業｜granville_tenkan｜➖横ばい(2)｜やや割高(2.0)｜PASS｜終値3100｜💰310000円｜momentum 3110/SL2914｜⚠日程不明
-  > 📌【業態】日本製鉄系の自動車ホイール最大手。建機用履板も首位。一貫成形に強み。
-  > 【いま】終値3100円・直近5日+0.16%（材料未確認）
-  > 【調子】➖横ばい（2/13） — 質注意
-  > 【水準】やや割高（2/7） — PER10.9倍・PEG—・52週44% ／ 💰単元31万円
-  > 【戦略】当日高値超えの逆指値3110円で順張り参戦を検討。上限3141.1円・SL2914円目安
-- 9503 Kansai Electric Power Company, Incorporated｜granville_tenkan｜🔻悪化(2)｜過熱(2.0)｜PASS｜終値2810.5｜💰281050円｜momentum 2819.5/SL2645.6｜⚠日程不明
-  > 📌【業態】東電と並ぶ業界の雄。原発依存度高いが代替電源確保へ。情報通信も。
-  > 【いま】終値2810円・直近5日+8.85%（材料未確認）
-  > 【調子】🔻悪化（2/13） — 質注意
-  > 【水準】過熱（2/7） — PER10.1倍・PEG—・52週98% ／ 💰単元28.1万円
-  > 【戦略】当日高値超えの逆指値2819.5円で順張り参戦を検討。上限2847.7円・SL2645.6円目安
-- 6770 Alps Alpine Co., Ltd.｜granville_tenkan+未マージPR由来｜⚠減速(1)｜過熱(1.0)｜PASS｜終値2257｜💰225700円｜momentum 2262.5/SL2122｜⚠日程不明
-  > 📌【業態】電子部品大手。車載・家電向けなど高シェア。金型の精密加工技術に強み。
-  > 【いま】終値2257円・直近5日+2.29%（材料未確認）
-  > 【調子】⚠減速（1/13）
-  > 【水準】過熱（1/7） — PER14.7倍・PEG—・52週78% ／ 💰単元22.6万円
-  > 【戦略】当日高値超えの逆指値2262.5円で順張り参戦を検討。上限2285.1円・SL2122円目安
-- 8425 Mizuho Leasing Company, Limited｜granville_tenkan｜業績データ取得不可(None)｜やや割高(2.8)｜PASS｜終値1374｜💰137400円｜momentum 1380/SL1292.5｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値1374円・直近5日+0.22%（材料未確認）
-  > 【調子】－
-  > 【水準】やや割高（2.8/7） — PER7.4倍・PEG2.37・52週47% ／ 💰単元13.7万円
-  > 【戦略】当日高値超えの逆指値1380円で順張り参戦を検討。上限1393.8円・SL1292.5円目安
-- 145A L is B Corp.｜granville_tenkan｜—｜—｜FAIL_UWAHIGE｜終値924｜💰—円｜—｜
-- 1605 Inpex Corporation｜granville_tenkan｜—｜—｜FAIL_UWAHIGE｜終値3957｜💰—円｜—｜
-- 160A As Partners CO.,LTD.｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値1999｜💰—円｜—｜
-- 1716 Daiichi Cutter Kogyo K.K.｜granville_tenkan｜—｜—｜FAIL_UWAHIGE｜終値1404｜💰—円｜—｜
-- 1808 Haseko Corporation｜granville_tenkan｜—｜—｜FAIL_UWAHIGE｜終値2898｜💰—円｜—｜
-- 1820 Nishimatsu Construction Co., Ltd.｜granville_tenkan｜—｜—｜FAIL_UWAHIGE｜終値5573｜💰—円｜—｜
-- 1833 Okumura Corporation｜granville_tenkan+未マージPR由来｜—｜—｜FAIL_UWAHIGE｜終値5830｜💰—円｜—｜
-- 1898 世紀東急工業｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値1494｜💰—円｜—｜
-- 1911 Sumitomo Forestry Co., Ltd.｜granville_tenkan+未マージPR由来｜—｜—｜FAIL_UWAHIGE｜終値1345.5｜💰—円｜—｜
-- 1925 大和ハウス工業（大和ハウス）｜granville_tenkan+未マージPR由来｜—｜—｜FAIL_INSEN｜終値4680｜💰—円｜—｜
-- 2282 NH Foods Limited｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値6303｜💰—円｜—｜
-- 2317 システナ｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値459｜💰—円｜—｜
-- 2585 LIFEDRINK COMPANY INC.｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値1552｜💰—円｜—｜
-- 2702 日本マクドナルド HD｜granville_tenkan｜—｜—｜FAIL_UWAHIGE｜終値8080｜💰—円｜—｜
-- 2733 Arata Corporation｜granville_tenkan+未マージPR由来｜—｜—｜FAIL_INSEN｜終値2725｜💰—円｜—｜
-- 2768 Sojitz Corp.｜granville_tenkan｜業績データ取得不可(経常益予想非開示)(None)｜判定不能(None)｜PASS｜終値5604｜💰560400円｜momentum 5621/SL5274.3｜⚠日程不明
-  > 📌【業態】卸売業
-  > 【いま】終値5604円・直近5日-1.16%（材料未確認）
-  > 【調子】－
-  > 【水準】判定不能 — PER9.0倍・PEG—・52週52% ／ 💰単元56.0万円
-  > 【戦略】当日高値超えの逆指値5621円で順張り参戦を検討。上限5677.2円・SL5274.3円目安／⚠1単元リスク34670円（枠超過）
-- 2975 Star Mica Holdings Co., Ltd.｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値1563｜💰—円｜—｜
-- 2982 ＡＤワークスグループ（ＡＤＷＧ）｜granville_tenkan+未マージPR由来｜—｜—｜FAIL_INSEN｜終値435｜💰—円｜—｜
-- 2986 LA Holdings Co.,Ltd｜granville_tenkan+未マージPR由来｜—｜—｜FAIL_INSEN｜終値2855｜💰—円｜—｜
-- 3003 ヒューリック｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値1784.5｜💰—円｜—｜
-- 3048 BIC Cameras Inc.｜granville_tenkan+granville_oshime｜—｜—｜FAIL_INSEN｜終値1781｜💰—円｜—｜
-- 3116 Toyota Boshoku Corp.｜granville_tenkan｜—｜—｜FAIL_UWAHIGE｜終値2279.5｜💰—円｜—｜
-- 3222 United Super Markets Holdings, Inc.｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値815｜💰—円｜—｜
-- 3289 Tokyu Fudosan Holdings Corp.｜granville_tenkan+未マージPR由来｜—｜—｜FAIL_UWAHIGE｜終値1329｜💰—円｜—｜
-- 3569 セーレン｜granville_tenkan｜—｜—｜FAIL_UWAHIGE｜終値3500｜💰—円｜—｜
-- 3623 Billing System Corporation｜granville_tenkan｜—｜—｜FAIL_UWAHIGE｜終値1310｜💰—円｜—｜
-- 3765 ガンホー・オンライン・エンターテイメント｜granville_tenkan｜取得不可(None)｜判定不能(None)｜PASS｜終値2670｜💰267000円｜momentum 2700/SL2533.3｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値2670円・直近5日+9.74%（材料未確認）
-  > 【調子】－
-  > 【水準】判定不能 — PER—倍・PEG—・52週70% ／ 💰単元26.7万円
-  > 【戦略】当日高値超えの逆指値2700円で順張り参戦を検討。上限2727円・SL2533.3円目安
-- 3865 北越コーポレーション（北越コーポ）｜granville_tenkan+未マージPR由来｜—｜—｜FAIL_UWAHIGE｜終値925｜💰—円｜—｜
-- 3880 大王製紙｜granville_tenkan｜—｜—｜FAIL_UWAHIGE｜終値984｜💰—円｜—｜
-- 3968 セグエグループ｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値674｜💰—円｜—｜
-- 3993 PKSHA Technology, Inc.｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値3295｜💰—円｜—｜
-- 4375 Safie Inc.｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値694｜💰—円｜—｜
-- 4521 科研製薬｜granville_tenkan｜—｜—｜FAIL_UWAHIGE｜終値4000｜💰—円｜—｜
-- 4666 PARK24 Co., Ltd.｜granville_tenkan+未マージPR由来｜—｜—｜FAIL_UWAHIGE｜終値2007｜💰—円｜—｜📊
-- 4765 ＳＢＩグローバルアセットマネジメント｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値648｜💰—円｜—｜
-- 4826 ＣＩＪ｜granville_tenkan｜—｜—｜FAIL_UWAHIGE｜終値552｜💰—円｜—｜
-- 4847 インテリジェント　ウェイブ｜granville_tenkan｜—｜—｜FAIL_UWAHIGE｜終値1386｜💰—円｜—｜
-- 4848 フルキャストホールディングス｜granville_tenkan｜—｜—｜FAIL_UWAHIGE｜終値1888｜💰—円｜—｜
-- 5036 Japan Business Systems, Inc.｜granville_tenkan｜—｜—｜FAIL_UWAHIGE｜終値1657｜💰—円｜—｜
-- 5302 日本カーボン｜granville_tenkan｜—｜—｜FAIL_UWAHIGE｜終値5240｜💰—円｜—｜
-- 5406 神戸製鋼所（神戸鋼）｜granville_tenkan+未マージPR由来｜—｜—｜FAIL_INSEN｜終値2020｜💰—円｜—｜
-- 547A ムニノバホールディングス（ムニノバＨＤ）｜granville_tenkan+未マージPR由来｜—｜—｜FAIL_INSEN｜終値445｜💰—円｜—｜
-- 5592 Kusurinomadoguchi, Inc.｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値2760｜💰—円｜—｜
-- 5885 GDEP ADVANCE,Inc.｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値3440｜💰—円｜—｜
-- 6222 Shima Seiki Mfg. Ltd.｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値966｜💰—円｜—｜
-- 6305 Hitachi Construction Machinery Co., Ltd.｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値5735｜💰—円｜—｜
-- 6339 Sintokogio,Ltd.｜granville_tenkan+未マージPR由来｜—｜—｜FAIL_INSEN｜終値1197｜💰—円｜—｜
-- 6571 QB Net Holdings Co., Ltd.｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値1301｜💰—円｜—｜
-- 6718 アイホン｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値2867｜💰—円｜—｜
-- 7047 PORT INC.｜granville_tenkan+granville_oshime｜—｜—｜FAIL_INSEN｜終値2289｜💰—円｜—｜
-- 7198 SBI ARUHI Corporation｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値833｜💰—円｜—｜
-- 7287 Nippon Seiki Co., Ltd.｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値2740｜💰—円｜—｜
-- 7611 ハイデイ日高｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値2998｜💰—円｜—｜
-- 7679 Yakuodo Holdings Co., Ltd.｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値1662｜💰—円｜—｜
-- 7943 Nichiha Corporation｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値3080｜💰—円｜—｜
-- 8056 ＢＩＰＲＯＧＹ｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値4762｜💰—円｜—｜
-- 8057 内田洋行｜granville_tenkan｜—｜—｜FAIL_UWAHIGE｜終値2343｜💰—円｜—｜
-- 8098 稲畑産業｜granville_tenkan｜—｜—｜FAIL_UWAHIGE｜終値4435｜💰—円｜—｜
-- 8151 TOYO Corporation｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値1933｜💰—円｜—｜
-- 8276 平和堂｜granville_tenkan+未マージPR由来｜—｜—｜FAIL_INSEN｜終値2666｜💰—円｜—｜
-- 8570 イオンフィナンシャルサービス｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値1672｜💰—円｜—｜
-- 8793 NEC Capital Solutions Limited｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値4255｜💰—円｜—｜
-- 8919 カチタス｜granville_tenkan｜—｜—｜FAIL_UWAHIGE｜終値3855｜💰—円｜—｜
-- 9037 ハマキョウレックス（ハマキョウ）｜granville_tenkan+未マージPR由来｜—｜—｜FAIL_UWAHIGE｜終値1859｜💰—円｜—｜
-- 9041 近鉄グループホールディングス｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値3491｜💰—円｜—｜
-- 9101 日本郵船｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値7040｜💰—円｜—｜
-- 9404 Nippon Television Holdings, Inc.｜granville_tenkan｜—｜—｜FAIL_UWAHIGE｜終値3040｜💰—円｜—｜
-- 9627 アインホールディングス｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値6150｜💰—円｜—｜
-- 9628 San Holdings,Inc.｜granville_tenkan｜—｜—｜FAIL_INSEN｜終値1356｜💰—円｜—｜
-- 9869 加藤産業｜granville_tenkan｜—｜—｜FAIL_UWAHIGE｜終値6680｜💰—円｜—｜
-- 6103 Okuma Corporation｜granville_oshime+granville_rebound｜🔥絶好調(9)｜値頃(5.0)｜PASS｜終値4800｜💰480000円｜⛔型不一致: 既に支持帯以下｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値4800円・直近5日-2.04%（材料未確認）
-  > 【調子】🔥絶好調（9/13）
-  > 【水準】値頃（5/7） — PER14.0倍・PEG0.23・52週63% ／ 💰単元48万円
-  > 【戦略】発注対象外（⛔型不一致: 既に支持帯以下）
-- 4413 ボードルア｜granville_oshime+granville_rebound｜🔥絶好調(8)｜やや割高(2.0)｜FAIL_INSEN｜終値2966｜💰296600円｜—｜
-- 5186 Nitta Corporation｜granville_oshime+未マージPR由来｜⚡好調(7)｜妥当(4.0)｜PASS｜終値6740｜💰674000円｜oshime 6713.8/SL6680.4｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値6740円・直近5日+1.81%（材料未確認）
-  > 【調子】⚡好調（7/13）
-  > 【水準】妥当（4/7） — PER12.3倍・PEG0.57・52週84% ／ 💰単元67.4万円
-  > 【戦略】6713.8円までの押し目を指値で待つ。SL6680.4円（25日線基準）
-- 7089 For Startups, Inc.｜granville_oshime｜⚡好調(7)｜妥当(4.0)｜PASS｜終値1563｜💰156300円｜⛔型不一致: 既に支持帯以下｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値1563円・直近5日+3.24%（材料未確認）
-  > 【調子】⚡好調（7/13）
-  > 【水準】妥当（4/7） — PER10.7倍・PEG0.46・52週79% ／ 💰単元15.6万円
-  > 【戦略】発注対象外（⛔型不一致: 既に支持帯以下）
-- 9902 Nichiden Corporation｜granville_oshime+未マージPR由来｜⚡好調(7)｜妥当(4.0)｜PASS｜終値3065｜💰306500円｜oshime 3043.9/SL3028.8｜⚠日程不明
-  > 📌【業態】産業機器・部品商社。動力伝導機器や軸受け主力でシェア首位級。アジア強化。
-  > 【いま】終値3065円・直近5日+0.99%（材料未確認）
-  > 【調子】⚡好調（7/13）
-  > 【水準】妥当（4/7） — PER14.5倍・PEG0.71・52週82% ／ 💰単元30.6万円
-  > 【戦略】3043.9円までの押し目を指値で待つ。SL3028.8円（25日線基準）
-- 2674 Hard Off Corporation Co., Ltd.｜granville_oshime｜⚡好調(6)｜値頃(5.0)｜PASS｜終値2705｜💰270500円｜⛔型不一致: 既に支持帯以下｜⚠日程不明
-  > 📌【業態】総合リユース業。PC・家電・家具・衣料などリサイクル店を全国に直営・FC展開。
-  > 【いま】終値2705円・直近5日+0.60%（材料未確認）
-  > 【調子】⚡好調（6/13）
-  > 【水準】値頃（5/7） — PER11.4倍・PEG0.65・52週71% ／ 💰単元27.1万円
-  > 【戦略】発注対象外（⛔型不一致: 既に支持帯以下）
-- 7609 Daitron Co., Ltd.｜granville_oshime｜⚡好調(6)｜値頃(5.0)｜PASS｜終値4040｜💰404000円｜⛔型不一致: 既に支持帯以下｜⚠日程不明
-  > 📌【業態】電子部品卸中堅。製造装置にも強み。スイッチ電源など自社製造製品に注力。
-  > 【いま】終値4040円・直近5日+2.41%（材料未確認）
-  > 【調子】⚡好調（6/13）
-  > 【水準】値頃（5/7） — PER13.2倍・PEG0.47・52週70% ／ 💰単元40.4万円
-  > 【戦略】発注対象外（⛔型不一致: 既に支持帯以下）
-- 4968 Arakawa Chemical Industries,Ltd.｜granville_oshime｜⚡好調(6)｜妥当(3.0)｜PASS｜終値2141｜💰214100円｜⛔型不一致: 既に支持帯以下｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値2141円・直近5日-1.83%（材料未確認）
-  > 【調子】⚡好調（6/13）
-  > 【水準】妥当（3/7） — PER18.9倍・PEG1.10・52週67% ／ 💰単元21.4万円
-  > 【戦略】発注対象外（⛔型不一致: 既に支持帯以下）
-- 2780 Komehyo Holdings Co., Ltd.｜granville_oshime｜⚡好調(5)｜妥当(4.0)｜PASS｜終値5280｜💰528000円｜oshime 5206.7/SL5180.8｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値5280円・直近5日+3.53%（材料未確認）
-  > 【調子】⚡好調（5/13）
-  > 【水準】妥当（4/7） — PER9.9倍・PEG0.72・52週78% ／ 💰単元52.8万円
-  > 【戦略】5206.7円までの押し目を指値で待つ。SL5180.8円（25日線基準）
-- 7888 三光合成｜granville_oshime｜⚡好調(5)｜妥当(4.0)｜PASS｜終値916｜💰91600円｜⛔型不一致: 既に支持帯以下｜⚠日程不明
-  > 📌【業態】工業用樹脂部品大手。自動車向け大。空調部品や金型の外販も。海外拡大。
-  > 【いま】終値916円・直近5日+0.77%（材料未確認）
-  > 【調子】⚡好調（5/13）
-  > 【水準】妥当（4/7） — PER6.2倍・PEG0.53・52週50% ／ 💰単元9.2万円
-  > 【戦略】発注対象外（⛔型不一致: 既に支持帯以下）
-- 7970 信越ポリマー｜granville_oshime｜⚡好調(5)｜妥当(3.0)｜PASS｜終値2244｜💰224400円｜⛔型不一致: 既に支持帯以下｜⚠日程不明
-  > 📌【業態】信越化学系樹脂加工メーカー。ウエハ容器が主力。車載タッチスイッチや住生活資材も。
-  > 【いま】終値2244円・直近5日+0.18%（材料未確認）
-  > 【調子】⚡好調（5/13）
-  > 【水準】妥当（3/7） — PER17.2倍・PEG1.21・52週59% ／ 💰単元22.4万円
-  > 【戦略】発注対象外（⛔型不一致: 既に支持帯以下）
-- 8923 Tosei Corporation｜granville_oshime｜⚡好調(5)｜妥当(3.0)｜PASS｜終値1836｜💰183600円｜oshime 1802.4/SL1793.4｜⚠日程不明
-  > 📌【業態】賃貸住宅、オフィスの再生・流動化。ファンド運用、不動産開発、ホテルも。名鉄と提携。
-  > 【いま】終値1836円・直近5日+0.99%（材料未確認）
-  > 【調子】⚡好調（5/13） — 質注意
-  > 【水準】妥当（3/7） — PER11.7倍・PEG1.77・52週77% ／ 💰単元18.4万円
-  > 【戦略】1802.4円までの押し目を指値で待つ。SL1793.4円（25日線基準）
-- 7085 カーブスホールディングス｜granville_oshime｜⚡好調(5)｜やや割高(2.0)｜PASS｜終値949｜💰94900円｜⛔型不一致: 既に支持帯以下｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値949円・直近5日-2.77%（材料未確認）
-  > 【調子】⚡好調（5/13）
-  > 【水準】やや割高（2/7） — PER17.5倍・PEG1.04・52週81% ／ 💰単元9.5万円
-  > 【戦略】発注対象外（⛔型不一致: 既に支持帯以下）
-- 9934 Inaba Denki Sangyo Co.,Ltd.｜granville_oshime+未マージPR由来｜⚡好調(5)｜やや割高(2.0)｜PASS｜終値3085｜💰308500円｜oshime 2975.9/SL2961.1｜⚠日程不明
-  > 📌【業態】卸売業
-  > 【いま】終値3085円・直近5日+3.11%（材料未確認）
-  > 【調子】⚡好調（5/13）
-  > 【水準】やや割高（2/7） — PER14.7倍・PEG1.76・52週99% ／ 💰単元30.9万円
-  > 【戦略】2975.9円までの押し目を指値で待つ。SL2961.1円（25日線基準）
-- 3480 JSB Co. Ltd.｜granville_oshime｜⚡好調(5)｜過熱(1.0)｜PASS｜終値8970｜💰897000円｜⛔型不一致: 既に支持帯以下｜⚠日程不明
-  > 📌【業態】学生マンションの企画開発を全国展開。海外留学生向けも。高齢者住宅は譲渡。
-  > 【いま】終値8970円・直近5日+0.11%（材料未確認）
-  > 【調子】⚡好調（5/13）
-  > 【水準】過熱（1/7） — PER31.9倍・PEG1.70・52週96% ／ 💰単元89.7万円
-  > 【戦略】発注対象外（⛔型不一致: 既に支持帯以下）
-- 4258 AMIYA Corporation｜granville_oshime+未マージPR由来｜⚡好調(5)｜過熱(0.0)｜PASS｜終値4545｜💰454500円｜oshime 4513.1/SL4490.6｜⚠日程不明
-  > 📌【業態】情報・通信業
-  > 【いま】終値4545円・直近5日+3.77%（材料未確認）
-  > 【調子】⚡好調（5/13）
-  > 【水準】過熱（0/7） — PER43.0倍・PEG3.22・52週78% ／ 💰単元45.5万円
-  > 【戦略】4513.1円までの押し目を指値で待つ。SL4490.6円（25日線基準）
-- 4022 Rasa Industries,Ltd.｜granville_oshime｜✅順調(4)｜妥当(3.0)｜PASS｜終値2156｜💰215600円｜oshime 2123.4/SL2112.8｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値2156円・直近5日+4.51%（材料未確認）
-  > 【調子】✅順調（4/13） — 質注意
-  > 【水準】妥当（3/7） — PER19.6倍・PEG11.13・52週66% ／ 💰単元21.6万円
-  > 【戦略】2123.4円までの押し目を指値で待つ。SL2112.8円（25日線基準）
-- 4092 日本化学工業｜granville_oshime+未マージPR由来｜✅順調(4)｜妥当(3.0)｜PASS｜終値5490｜💰549000円｜⛔型不一致: 既に支持帯以下｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値5490円・直近5日+1.48%（材料未確認）
-  > 【調子】✅順調（4/13）
-  > 【水準】妥当（3/7） — PER10.6倍・PEG0.77・52週78% ／ 💰単元54.9万円
-  > 【戦略】発注対象外（⛔型不一致: 既に支持帯以下）
-- 5121 藤倉ゴム工業｜granville_oshime｜✅順調(4)｜やや割高(2.0)｜PASS｜終値2728｜💰272800円｜oshime 2678.1/SL2664.8｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値2728円・直近5日-0.22%（材料未確認）
-  > 【調子】✅順調（4/13）
-  > 【水準】やや割高（2/7） — PER13.2倍・PEG1.69・52週90% ／ 💰単元27.3万円
-  > 【戦略】2678.1円までの押し目を指値で待つ。SL2664.8円（25日線基準）
-- 6925 ウシオ電機｜granville_oshime｜✅順調(4)｜過熱(1.0)｜PASS｜終値3889｜💰388900円｜⛔型不一致: 既に支持帯以下｜⚠日程不明
-  > 📌【業態】産業用ランプで世界首位。光源や光学装置を展開。医療装置分野も強化。
-  > 【いま】終値3889円・直近5日+0.44%（材料未確認）
-  > 【調子】✅順調（4/13） — 質注意
-  > 【水準】過熱（1/7） — PER29.4倍・PEG6.00・52週58% ／ 💰単元38.9万円
-  > 【戦略】発注対象外（⛔型不一致: 既に支持帯以下）
-- 8876 リログループ｜granville_oshime｜✅順調(3)｜やや割高(2.0)｜PASS｜終値2209.5｜💰220950円｜oshime 2122.3/SL2111.8｜⚠日程不明
-  > 📌【業態】企業福利厚生代行事業を展開。転勤留守宅の賃貸管理も。海外赴任支援。
-  > 【いま】終値2210円・直近5日+1.40%（材料未確認）
+  > 【水準】妥当（4.0/7） — PER11.8倍・PEG2.30・52週35% ／ 💰単元15.1万円
+  > 【戦略】当日高値超えの逆指値1512円で順張り参戦を検討。上限1527.12円・SL1421.28円目安
+- 1820 Nishimatsu Construction Co., Ltd.｜granville_tenkan｜✅順調｜妥当｜PASS｜終値5684｜💰568400円｜momentum: 5690｜⚠日程不明 ⚠1単元でリスク枠超過（34704円）
+  > 📌ヘッドライン
+  > 【業態】総合建設会社。ダム・トンネルなど土木に強み。開発事業強化。伊藤忠の持分法。
+  > 【いま】終値5,684円・直近5日+2.65%（材料未確認）
+  > 【調子】✅順調（3/13）— 質注意
+  > 【水準】妥当（3.0/7） — PER10.9倍・PEG—・52週35% ／ 💰単元56.8万円
+  > 【戦略】当日高値超えの逆指値5690円で順張り参戦を検討。上限5746.9円・SL5342.96円目安／⚠1単元リスク34704円（枠超過）
+- 7994 OKAMURA CORP｜granville_tenkan｜✅順調｜妥当｜PASS｜終値2420｜💰242000円｜⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】オフィス家具大手。首都圏に強み。商品開発に定評。陳列棚、店舗什器も。
+  > 【いま】終値2,420円・直近5日+2.33%（材料未確認）
   > 【調子】✅順調（3/13）
-  > 【水準】やや割高（2/7） — PER14.9倍・PEG1.74・52週100% ／ 💰単元22.1万円
-  > 【戦略】2122.3円までの押し目を指値で待つ。SL2111.8円（25日線基準）
-- 5232 Sumitomo Osaka Cement Co., Ltd.｜granville_oshime｜✅順調(3)｜過熱(1.0)｜PASS｜終値5707｜💰570700円｜oshime 5691.7/SL5663.4｜⚠日程不明
-  > 📌【業態】セメント大手、国内高シェア。廃棄物再資源化で先行。新素材や電池素材事業も。
-  > 【いま】終値5707円・直近5日+1.26%（材料未確認）
-  > 【調子】✅順調（3/13） — 質注意
-  > 【水準】過熱（1/7） — PER18.1倍・PEG27.44・52週72% ／ 💰単元57.1万円
-  > 【戦略】5691.7円までの押し目を指値で待つ。SL5663.4円（25日線基準）
-- 6055 Japan Material Co., Ltd.｜granville_oshime｜✅順調(3)｜過熱(1.0)｜PASS｜終値2150｜💰215000円｜⛔型不一致: 既に支持帯以下｜⚠日程不明
-  > 📌【業態】半導体製造向け特殊ガス供給装置製販。3D画像処理ツールや太陽光発電も。
-  > 【いま】終値2150円・直近5日+4.42%（材料未確認）
-  > 【調子】✅順調（3/13） — 質注意
-  > 【水準】過熱（1/7） — PER20.5倍・PEG8.21・52週54% ／ 💰単元21.5万円
-  > 【戦略】発注対象外（⛔型不一致: 既に支持帯以下）
-- 6966 Mitsui High-Tec, Inc.｜granville_oshime｜✅順調(3)｜過熱(1.0)｜PASS｜終値949｜💰94900円｜oshime 934.6/SL930｜
-  > 📌【業態】ICリードフレームで首位級。モーターコア製造も。金型の精密加工技術に強み。
-  > 【いま】終値949円・直近5日+2.82%（材料未確認）
-  > 【調子】✅順調（3/13） — 質注意
-  > 【水準】過熱（1/7） — PER17.3倍・PEG3.50・52週49% ／ 💰単元9.5万円
-  > 【戦略】934.6円までの押し目を指値で待つ。SL930円（25日線基準）
-- 6590 芝浦メカトロニクス｜granville_oshime｜➖横ばい(2)｜過熱(1.0)｜PASS｜終値4055｜💰405500円｜⛔型不一致: 既に支持帯以下｜⚠日程不明
-  > 📌【業態】液晶・半導体の製造装置メーカー。前工程ウエハ洗浄で世界トップ。自販機システムも。
-  > 【いま】終値4055円・直近5日-0.25%（材料未確認）
-  > 【調子】➖横ばい（2/13） — 質注意
-  > 【水準】過熱（1/7） — PER22.4倍・PEG4.17・52週48% ／ 💰単元40.5万円
-  > 【戦略】発注対象外（⛔型不一致: 既に支持帯以下）
-- 2175 SMS Co., Ltd.｜granville_oshime｜➖横ばい(2)｜過熱(0.0)｜PASS｜終値2503｜💰250300円｜oshime 2330.1/SL2318.5｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値2503円・直近5日+5.61%（材料未確認）
-  > 【調子】➖横ばい（2/13） — 質注意
-  > 【水準】過熱（0/7） — PER33.3倍・PEG290.66・52週91% ／ 💰単元25.0万円
-  > 【戦略】2330.1円までの押し目を指値で待つ。SL2318.5円（25日線基準）
-- 4228 Sekisui Kasei Co., Ltd.｜granville_oshime｜⚠減速(1)｜妥当(4.0)｜PASS｜終値618｜💰61800円｜oshime 593.6/SL590.6｜⚠日程不明
-  > 📌【業態】発泡プラスチックで首位。ポリマー微粒子も。自動車、電子部品など高付加価値品。
-  > 【いま】終値618円・直近5日+3.34%（材料未確認）
-  > 【調子】⚠減速（1/13） — 減収
-  > 【水準】妥当（4/7） — PER11.3倍・PEG0.72・52週85% ／ 💰単元6.2万円
-  > 【戦略】593.6円までの押し目を指値で待つ。SL590.6円（25日線基準）
-- 2001 NIPPN Corporation｜granville_oshime｜⚠減速(1)｜過熱(1.0)｜PASS｜終値2938｜💰293800円｜oshime 2887/SL2872.6｜⚠日程不明
-  > 📌【業態】製粉老舗で業界2位。加工食品、バイオ事業など多角化推進。アジアにも展開。
-  > 【いま】終値2938円・直近5日+0.07%（材料未確認）
-  > 【調子】⚠減速（1/13）
-  > 【水準】過熱（1/7） — PER11.5倍・PEG—・52週94% ／ 💰単元29.4万円
-  > 【戦略】2887円までの押し目を指値で待つ。SL2872.6円（25日線基準）
-- 6333 TEIKOKU Corp.｜granville_oshime｜⚠減速(1)｜過熱(1.0)｜PASS｜終値3445｜💰344500円｜oshime 3353.7/SL3337｜⚠日程不明
-  > 📌【業態】化学物質用・密閉ポンプ最大手。国内外で高シェア。海外拠点を拡大。
-  > 【いま】終値3445円・直近5日+0.44%（材料未確認）
-  > 【調子】⚠減速（1/13） — 質注意
-  > 【水準】過熱（1/7） — PER14.1倍・PEG—・52週89% ／ 💰単元34.5万円
-  > 【戦略】3353.7円までの押し目を指値で待つ。SL3337円（25日線基準）
-- 7981 Takara standard Co., Ltd.｜granville_oshime+granville_rebound｜⚠減速(1)｜過熱(1.0)｜PASS｜終値3175｜💰317500円｜oshime 3089.5/SL3074.2｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値3175円・直近5日+2.42%（材料未確認）
-  > 【調子】⚠減速（1/13） — 質注意
-  > 【水準】過熱（1/7） — PER14.0倍・PEG22.45・52週83% ／ 💰単元31.8万円
-  > 【戦略】3089.5円までの押し目を指値で待つ。SL3074.2円（25日線基準）
-- 2810 ハウス食品グループ本社｜granville_oshime+granville_rebound｜⚠減速(1)｜過熱(0.0)｜PASS｜終値4000｜💰400000円｜oshime 3826.3/SL3807.3｜⚠日程不明
-  > 📌【業態】カレー、シチュー用ルウでトップ。飲料、健康食品も。乳酸菌事業を拡大。米国で豆腐。
-  > 【いま】終値4000円・直近5日+6.47%（材料未確認）
-  > 【調子】⚠減速（1/13） — 質注意
-  > 【水準】過熱（0/7） — PER21.0倍・PEG—・52週90% ／ 💰単元40万円
-  > 【戦略】3826.3円までの押し目を指値で待つ。SL3807.3円（25日線基準）
-- 4415 BROAD ENTERPRISE CO.,LTD.｜granville_oshime+granville_rebound｜業績データ取得不可(None)｜妥当(3.0)｜PASS｜終値1416｜💰141600円｜oshime 1384.6/SL1377.7｜⚠日程不明
-  > 📌【業態】マンション向け高速インターネットやIoTインターフォンシステムの販売。全戸一括でマンション管理も。
-  > 【いま】終値1416円・直近5日+11.23%（材料未確認）
-  > 【調子】－
-  > 【水準】妥当（3/7） — PER—倍・PEG—・52週79% ／ 💰単元14.2万円
-  > 【戦略】1384.6円までの押し目を指値で待つ。SL1377.7円（25日線基準）
-- 3989 シェアリングテクノロジー｜granville_oshime｜業績データ取得不可(None)｜やや割高(2.8)｜PASS｜終値1614｜💰161400円｜⏳待機: 到達まで乖離-8.7%｜⚠日程不明
-  > 📌【業態】家庭の生活トラブルに対応するマッチングサイトを運営。登録は便利屋が中心。
-  > 【いま】終値1614円・直近5日+4.81%（材料未確認）
-  > 【調子】－
-  > 【水準】やや割高（2.8/7） — PER15.4倍・PEG—・52週100% ／ 💰単元16.1万円
-  > 【戦略】発注対象外（⏳待機: 到達まで乖離-8.7%）
-- 1375 Yukiguni Factory Co., Ltd.｜granville_oshime｜—｜—｜FAIL_UWAHIGE｜終値1185｜💰—円｜—｜
-- 1407 West Holdings Corporation｜granville_oshime｜—｜—｜FAIL_INSEN｜終値2625｜💰—円｜—｜
-- 166A タスキホールディングス｜granville_oshime｜—｜—｜FAIL_INSEN｜終値1183｜💰—円｜—｜
-- 2288 Marudai Food Co., Ltd.｜granville_oshime｜—｜—｜FAIL_INSEN｜終値2275｜💰—円｜—｜
-- 2590 DyDo Group Holdings, Inc.｜granville_oshime｜—｜—｜FAIL_INSEN｜終値3050｜💰—円｜—｜
-- 2602 日清オイリオグループ｜granville_oshime｜—｜—｜FAIL_UWAHIGE｜終値2051｜💰—円｜—｜
-- 2659 SAN-A CO., LTD.｜granville_oshime｜—｜—｜FAIL_UWAHIGE｜終値3365｜💰—円｜—｜
-- 2874 横浜冷凍｜granville_oshime+granville_rebound｜—｜—｜FAIL_INSEN｜終値2201｜💰—円｜—｜
-- 3076 Ai Holdings Corporation｜granville_oshime｜—｜—｜FAIL_INSEN｜終値2988｜💰—円｜—｜
-- 3151 バイタルケーエスケー・ホールディングス（バイタルＫＳ）｜granville_oshime+granville_rebound/未マージPR由来｜—｜—｜FAIL_INSEN｜終値1661｜💰—円｜—｜
-- 3479 TKP Corporation｜granville_oshime｜—｜—｜FAIL_INSEN｜終値1889｜💰—円｜—｜
-- 3498 霞ヶ関キャピタル｜granville_oshime｜—｜—｜FAIL_INSEN｜終値7700｜💰—円｜—｜
-- 4051 GMO Financial Gate, Inc.｜granville_oshime+未マージPR由来｜—｜—｜FAIL_INSEN｜終値6610｜💰—円｜—｜
-- 4417 Global Security Experts Inc.｜granville_oshime+未マージPR由来｜—｜—｜FAIL_INSEN｜終値4865｜💰—円｜—｜
-- 4419 Finatext Holdings Ltd.｜granville_oshime｜—｜—｜FAIL_UWAHIGE｜終値1465｜💰—円｜—｜
-- 4553 Towa Pharmaceutical Co., Ltd.｜granville_oshime｜—｜—｜FAIL_INSEN｜終値3890｜💰—円｜—｜
-- 4722 Future Corporation｜granville_oshime｜—｜—｜FAIL_INSEN｜終値2449｜💰—円｜—｜
-- 5254 Arent, Inc.｜granville_oshime｜—｜—｜FAIL_INSEN｜終値4120｜💰—円｜—｜
-- 6136 オーエスジー｜granville_oshime+granville_rebound/未マージPR由来｜—｜—｜FAIL_UWAHIGE｜終値3713｜💰—円｜—｜
-- 6284 Nissei ASB Machine Co., Ltd.｜granville_oshime+changepoint/変化点🔔｜—｜—｜FAIL_UWAHIGE｜終値8950｜💰—円｜—｜
-- 6432 Takeuchi Mfg.Co., Ltd.｜granville_oshime｜—｜—｜FAIL_INSEN｜終値7620｜💰—円｜—｜
-- 6454 Max Co., Ltd.｜granville_oshime+未マージPR由来｜—｜—｜FAIL_INSEN｜終値1856｜💰—円｜—｜
-- 6588 Toshiba Tec Corp.｜granville_oshime+未マージPR由来｜—｜—｜FAIL_UWAHIGE｜終値3165｜💰—円｜—｜
-- 6638 ミマキエンジニアリング｜granville_oshime｜—｜—｜FAIL_INSEN｜終値1970｜💰—円｜—｜
-- 7128 UNISOL Holdings Corporation｜granville_oshime｜—｜—｜FAIL_INSEN｜終値2710｜💰—円｜—｜
-- 7184 富山第一銀行｜granville_oshime｜—｜—｜FAIL_UWAHIGE｜終値3405｜💰—円｜—｜
-- 7278 Exedy Corporation｜granville_oshime｜—｜—｜FAIL_UWAHIGE｜終値6210｜💰—円｜—｜
-- 7350 Okinawa Financial Group, Inc.｜granville_oshime+未マージPR由来｜—｜—｜FAIL_INSEN｜終値7480｜💰—円｜—｜
-- 7616 コロワイド｜granville_oshime｜—｜—｜FAIL_INSEN｜終値2146｜💰—円｜—｜
-- 7716 Nakanishi Inc.｜granville_oshime｜—｜—｜FAIL_INSEN｜終値3125｜💰—円｜—｜
-- 7806 Ｇ−ＭＴＧ｜granville_oshime｜—｜—｜FAIL_UWAHIGE｜終値9220｜💰—円｜—｜
-- 7860 Avex Inc.｜granville_oshime｜—｜—｜FAIL_UWAHIGE｜終値1297｜💰—円｜—｜
-- 7867 Tomy Company, Ltd.｜granville_oshime｜—｜—｜FAIL_UWAHIGE｜終値3745｜💰—円｜—｜
-- 7956 ピジョン｜granville_oshime｜—｜—｜FAIL_INSEN｜終値2115｜💰—円｜—｜
-- 8008 Yondoshi Holdings, Inc.｜granville_oshime+未マージPR由来｜—｜—｜FAIL_INSEN｜終値2121｜💰—円｜—｜
-- 8101 GSI Creos Corporation｜granville_oshime｜—｜—｜FAIL_INSEN｜終値2721｜💰—円｜—｜
-- 8242 エイチ・ツー・オー　リテイリング｜granville_oshime+未マージPR由来｜—｜—｜FAIL_UWAHIGE｜終値3046｜💰—円｜—｜
-- 8337 千葉興業銀行｜granville_oshime｜—｜—｜FAIL_INSEN｜終値2644｜💰—円｜—｜
-- 8361 大垣共立銀行｜granville_oshime｜—｜—｜FAIL_UWAHIGE｜終値8250｜💰—円｜—｜
-- 8367 南都銀行｜granville_oshime｜—｜—｜FAIL_UWAHIGE｜終値1971｜💰—円｜—｜
-- 8387 Shikoku Bank Ltd.｜granville_oshime｜—｜—｜FAIL_UWAHIGE｜終値3685｜💰—円｜—｜
-- 8511 日本証券金融｜granville_oshime｜—｜—｜FAIL_INSEN｜終値2504｜💰—円｜—｜
-- 8522 名古屋銀行（名古屋銀）｜granville_oshime+未マージPR由来｜—｜—｜FAIL_UWAHIGE｜終値7270｜💰—円｜—｜
-- 8544 Keiyo Bank, Ltd.｜granville_oshime｜—｜—｜FAIL_UWAHIGE｜終値2847｜💰—円｜—｜
-- 8628 松井証券｜granville_oshime+未マージPR由来｜—｜—｜FAIL_INSEN｜終値1199｜💰—円｜—｜
-- 8707 岩井コスモホールディングス｜granville_oshime｜—｜—｜FAIL_INSEN｜終値4715｜💰—円｜—｜
-- 9031 Nishi-Nippon Railroad Co., Ltd.｜granville_oshime｜—｜—｜FAIL_INSEN｜終値3126｜💰—円｜—｜
-- 9247 TRE HOLDINGS CORPORATION｜granville_oshime+granville_rebound｜—｜—｜FAIL_INSEN｜終値1921｜💰—円｜—｜
-- 9274 ＫＰＰグループホールディングス｜granville_oshime｜—｜—｜FAIL_UWAHIGE｜終値1107｜💰—円｜—｜
-- 9324 安田倉庫（安田倉）｜granville_oshime+未マージPR由来｜—｜—｜FAIL_INSEN｜終値2526｜💰—円｜—｜
-- 9517 イーレックス｜granville_oshime｜—｜—｜FAIL_INSEN｜終値870｜💰—円｜—｜
-- 9616 共立メンテナンス｜granville_oshime+未マージPR由来｜—｜—｜FAIL_UWAHIGE｜終値3448｜💰—円｜—｜
-- 9828 ＧＥＮＫＩ　ＧＬＯＢＡＬ　ＤＩＮＩＮＧ　ＣＯＮＣＥＰＴＳ｜granville_oshime｜—｜—｜FAIL_INSEN｜終値3575｜💰—円｜—｜
-- 9861 Yoshinoya Holdings Co., Ltd.｜granville_oshime+未マージPR由来｜—｜—｜FAIL_INSEN｜終値3825｜💰—円｜—｜
-- 9882 Yellow Hat Ltd.｜granville_oshime+未マージPR由来｜—｜—｜FAIL_UWAHIGE｜終値1772｜💰—円｜—｜
-- 6997 Nippon Chemi-Con Corporation｜granville_rebound+未マージPR由来｜🔥絶好調(10)｜値頃(5.0)｜PASS｜終値2936｜💰293600円｜reversal 2936/SL2631｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値2936円・直近5日+9.06%（材料未確認）
-  > 【調子】🔥絶好調（10/13）
-  > 【水準】値頃（5/7） — PER20.1倍・PEG0.11・52週36% ／ 💰単元29.4万円
-  > 【戦略】当日終値2936円の指値で反転を取りにいく。SL2631円（直近5日安値）／⚠1単元リスク30500円（枠超過）
-- 2760 Tokyo Electron Device Limited｜granville_rebound｜🔥絶好調(10)｜妥当(4.0)｜PASS｜終値4295｜💰429500円｜reversal 4295/SL3920｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値4295円・直近5日+7.51%（材料未確認）
-  > 【調子】🔥絶好調（10/13）
-  > 【水準】妥当（4/7） — PER13.5倍・PEG0.34・52週78% ／ 💰単元43.0万円
-  > 【戦略】当日終値4295円の指値で反転を取りにいく。SL3920円（直近5日安値）／⚠1単元リスク37500円（枠超過）
-- 6407 CKD Corporation｜granville_rebound+未マージPR由来｜🔥絶好調(10)｜妥当(4.0)｜PASS｜終値5590｜💰559000円｜reversal 5590/SL5270｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値5590円・直近5日+1.45%（材料未確認）
-  > 【調子】🔥絶好調（10/13）
-  > 【水準】妥当（4/7） — PER19.7倍・PEG0.45・52週54% ／ 💰単元55.9万円
-  > 【戦略】当日終値5590円の指値で反転を取りにいく。SL5270円（直近5日安値）／⚠1単元リスク32000円（枠超過）
-- 3449 Technoflex Corporation｜granville_rebound+未マージPR由来｜🔥絶好調(9)｜値頃(5.0)｜PASS｜終値3980｜💰398000円｜reversal 3980/SL3715｜⚠日程不明
-  > 📌【業態】金属製品
-  > 【いま】終値3980円・直近5日+2.84%（材料未確認）
-  > 【調子】🔥絶好調（9/13）
-  > 【水準】値頃（5/7） — PER17.8倍・PEG0.35・52週27% ／ 💰単元39.8万円
-  > 【戦略】当日終値3980円の指値で反転を取りにいく。SL3715円（直近5日安値）
-- 6481 THK Co., Ltd.｜granville_rebound｜🔥絶好調(9)｜値頃(5.0)｜PASS｜終値6634｜💰663400円｜reversal 6634/SL6450｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値6634円・直近5日-3.05%（材料未確認）
-  > 【調子】🔥絶好調（9/13）
-  > 【水準】値頃（5/7） — PER13.6倍・PEG0.07・52週64% ／ 💰単元66.3万円
-  > 【戦略】当日終値6634円の指値で反転を取りにいく。SL6450円（直近5日安値）
-- 6914 オプテックス｜granville_rebound+未マージPR由来｜🔥絶好調(9)｜値頃(5.0)｜PASS｜終値3275｜💰327500円｜reversal 3275/SL3105｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値3275円・直近5日+2.02%（材料未確認）
-  > 【調子】🔥絶好調（9/13）
-  > 【水準】値頃（5/7） — PER15.2倍・PEG0.43・52週48% ／ 💰単元32.8万円
-  > 【戦略】当日終値3275円の指値で反転を取りにいく。SL3105円（直近5日安値）
-- 150A JSH｜granville_rebound｜🔥絶好調(9)｜妥当(3.0)｜PASS｜終値805｜💰80500円｜reversal 805/SL716｜⚠日程不明
-  > 📌【業態】障がい者雇用支援の農園や訪問看護・診療サービスなどを手掛ける。
-  > 【いま】終値805円・直近5日+7.05%（材料未確認）
-  > 【調子】🔥絶好調（9/13）
-  > 【水準】妥当（3/7） — PER23.7倍・PEG0.05・52週97% ／ 💰単元8.1万円
-  > 【戦略】当日終値805円の指値で反転を取りにいく。SL716円（直近5日安値）
-- 9147 ＮＩＰＰＯＮ　ＥＸＰＲＥＳＳ　ホールディングス｜granville_rebound｜🔥絶好調(9)｜妥当(3.0)｜PASS｜終値5773｜💰577300円｜reversal 5773/SL5663｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値5773円・直近5日+1.05%（材料未確認）
-  > 【調子】🔥絶好調（9/13）
-  > 【水準】妥当（3/7） — PER19.6倍・PEG0.13・52週99% ／ 💰単元57.7万円
-  > 【戦略】当日終値5773円の指値で反転を取りにいく。SL5663円（直近5日安値）
-- 4424 Amazia, Inc.｜granville_rebound｜🔥絶好調(8)｜割安(7.0)｜PASS｜終値343｜💰34300円｜reversal 343/SL322｜⚠日程不明
-  > 📌【業態】電子コミック。フリーミアム型マンガアプリ「マンガBANG!」などを展開。ユーザー向けを創出。
-  > 【いま】終値343円・直近5日+3.63%（材料未確認）
-  > 【調子】🔥絶好調（8/13）
-  > 【水準】割安（7/7） — PER—倍・PEG—・52週29% ／ 💰単元3.4万円
-  > 【戦略】当日終値343円の指値で反転を取りにいく。SL322円（直近5日安値）
-- 6125 Okamoto Machine Tool Works,Ltd.｜granville_rebound+未マージPR由来｜🔥絶好調(8)｜値頃(5.0)｜PASS｜終値4765｜💰476500円｜reversal 4765/SL4555｜⚠日程不明
-  > 📌【業態】工作機械中堅。平面研削盤首位。半導体関連装置も注力。三井物産と提携。
-  > 【いま】終値4765円・直近5日+0.85%（材料未確認）
-  > 【調子】🔥絶好調（8/13）
-  > 【水準】値頃（5/7） — PER15.7倍・PEG0.18・52週47% ／ 💰単元47.6万円
-  > 【戦略】当日終値4765円の指値で反転を取りにいく。SL4555円（直近5日安値）
-- 4392 FIG｜granville_rebound｜🔥絶好調(8)｜やや割高(2.0)｜PASS｜終値1215｜💰121500円｜reversal 1215/SL978｜⚠日程不明
-  > 📌【業態】情報・通信業
-  > 【いま】終値1215円・直近5日+22.11%（材料未確認）
-  > 【調子】🔥絶好調（8/13）
-  > 【水準】やや割高（2/7） — PER63.0倍・PEG2.99・52週33% ／ 💰単元12.2万円
-  > 【戦略】当日終値1215円の指値で反転を取りにいく。SL978円（直近5日安値）
-- 6656 インスペック｜granville_rebound+未マージPR由来｜⚡好調(6)｜妥当(3.0)｜PASS｜終値860｜💰86000円｜reversal 860/SL784｜⚠日程不明
-  > 📌【業態】半導体やIT関連デバイスの外観検査装置メーカー。プリント基板のパターン検査など。
-  > 【いま】終値860円・直近5日+6.44%（材料未確認）
-  > 【調子】⚡好調（6/13）
-  > 【水準】妥当（3/7） — PER43.2倍・PEG1.53・52週33% ／ 💰単元8.6万円
-  > 【戦略】当日終値860円の指値で反転を取りにいく。SL784円（直近5日安値）
-- 7419 Nojima Co.,Ltd.｜granville_rebound｜⚡好調(5)｜割安(6.0)｜PASS｜終値1278｜💰127800円｜reversal 1278/SL1263｜⚠日程不明
-  > 📌【業態】家電量販店。神奈川から首都圏展開。デジタル家電に注力。ドコモショップ首位。
-  > 【いま】終値1278円・直近5日+0.24%（材料未確認）
-  > 【調子】⚡好調（5/13）
-  > 【水準】割安（6/7） — PER7.7倍・PEG0.35・52週40% ／ 💰単元12.8万円
-  > 【戦略】当日終値1278円の指値で反転を取りにいく。SL1263円（直近5日安値）
-- 9319 中央倉庫｜granville_rebound｜⚡好調(5)｜妥当(3.0)｜PASS｜終値1825｜💰182500円｜reversal 1825/SL1800｜⚠日程不明
-  > 📌【業態】京都地盤の内陸総合物流大手。安田倉庫と連携、国際貨物の拡大に注力。
-  > 【いま】終値1825円・直近5日+0.94%（材料未確認）
-  > 【調子】⚡好調（5/13）
-  > 【水準】妥当（3/7） — PER15.5倍・PEG2.39・52週55% ／ 💰単元18.2万円
-  > 【戦略】当日終値1825円の指値で反転を取りにいく。SL1800円（直近5日安値）
-- 4612 Nippon Paint Holdings Co., Ltd.｜granville_rebound｜⚡好調(5)｜過熱(0.0)｜PASS｜終値1208.5｜💰120850円｜reversal 1208.5/SL1175｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値1208円・直近5日-0.04%（材料未確認）
-  > 【調子】⚡好調（5/13） — 質注意
-  > 【水準】過熱（0/7） — PER14.8倍・PEG2.57・52週78% ／ 💰単元12.1万円
-  > 【戦略】当日終値1208.5円の指値で反転を取りにいく。SL1175円（直近5日安値）
-- 7376 ＢＣＣ｜granville_rebound｜✅順調(4)｜妥当(4.2)｜PASS｜終値919｜💰91900円｜reversal 919/SL723｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値919円・直近5日+12.21%（材料未確認）
-  > 【調子】✅順調（4/13） — 赤字・上限適用
-  > 【水準】妥当（4.2/7） — PER—倍・PEG—・52週48% ／ 💰単元9.2万円
-  > 【戦略】当日終値919円の指値で反転を取りにいく。SL723円（直近5日安値）
-- 3393 スターティア　｜granville_rebound｜✅順調(4)｜やや割高(2.0)｜PASS｜終値3060｜💰306000円｜reversal 3060/SL2995｜⚠日程不明
-  > 📌【業態】卸売業
-  > 【いま】終値3060円・直近5日+1.83%（材料未確認）
-  > 【調子】✅順調（4/13）
-  > 【水準】やや割高（2/7） — PER12.3倍・PEG1.58・52週85% ／ 💰単元30.6万円
-  > 【戦略】当日終値3060円の指値で反転を取りにいく。SL2995円（直近5日安値）
-- 4063 信越化学工業｜granville_rebound｜✅順調(4)｜やや割高(2.0)｜PASS｜終値6023｜💰602300円｜reversal 6023/SL5923｜⚠日程不明
-  > 📌【業態】塩ビ・半導体ウエハーで世界トップ。シリコーン(ケイ素樹脂)大手。セルロース、レアアース磁石も。
-  > 【いま】終値6023円・直近5日-0.46%（材料未確認）
-  > 【調子】✅順調（4/13）
-  > 【水準】やや割高（2/7） — PER20.8倍・PEG2.39・52週46% ／ 💰単元60.2万円
-  > 【戦略】当日終値6023円の指値で反転を取りにいく。SL5923円（直近5日安値）
-- 4718 Waseda Academy Co., Ltd.｜granville_rebound+未マージPR由来｜✅順調(4)｜やや割高(2.0)｜PASS｜終値2588｜💰258800円｜reversal 2588/SL2500｜⚠日程不明
-  > 📌【業態】難関中高の進学塾「早稲田アカデミー」を運営。個別指導、社会人研修も展開。
-  > 【いま】終値2588円・直近5日+3.44%（材料未確認）
-  > 【調子】✅順調（4/13）
-  > 【水準】やや割高（2/7） — PER16.8倍・PEG2.18・52週65% ／ 💰単元25.9万円
-  > 【戦略】当日終値2588円の指値で反転を取りにいく。SL2500円（直近5日安値）
-- 5384 Fujimi Incorporated｜granville_rebound｜✅順調(4)｜過熱(1.0)｜PASS｜終値3560｜💰356000円｜reversal 3560/SL3455｜⚠日程不明
-  > 📌【業態】半導体ウエハー用研磨材で世界首位。溶射技術にも強み。CMP製品が成長。
-  > 【いま】終値3560円・直近5日-1.39%（材料未確認）
-  > 【調子】✅順調（4/13） — 質注意
-  > 【水準】過熱（1/7） — PER25.4倍・PEG10.87・52週50% ／ 💰単元35.6万円
-  > 【戦略】当日終値3560円の指値で反転を取りにいく。SL3455円（直近5日安値）
-- 6996 Nichicon Corporation｜granville_rebound+未マージPR由来｜✅順調(4)｜過熱(1.0)｜PASS｜終値2760｜💰276000円｜reversal 2760/SL2586｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値2760円・直近5日+3.41%（材料未確認）
-  > 【調子】✅順調（4/13）
-  > 【水準】過熱（1/7） — PER27.7倍・PEG3.42・52週41% ／ 💰単元27.6万円
-  > 【戦略】当日終値2760円の指値で反転を取りにいく。SL2586円（直近5日安値）
-- 7740 Tamron Co., Ltd.｜granville_rebound｜✅順調(4)｜過熱(1.0)｜PASS｜終値1383｜💰138300円｜reversal 1383/SL1354｜⚠日程不明
-  > 📌【業態】レンズ専業大手。一眼カメラ用交換レンズで世界的。OEMも展開。監視カメラ用強化。
-  > 【いま】終値1383円・直近5日+2.29%（材料未確認）
-  > 【調子】✅順調（4/13）
-  > 【水準】過熱（1/7） — PER16.3倍・PEG1.51・52週84% ／ 💰単元13.8万円
-  > 【戦略】当日終値1383円の指値で反転を取りにいく。SL1354円（直近5日安値）
-- 255A Gltechno Holdings, Inc.｜granville_rebound｜✅順調(3)｜やや割高(2.0)｜PASS｜終値5240｜💰524000円｜reversal 5240/SL5000｜⚠日程不明
-  > 📌【業態】ジーエルサイエンスとテクノクオーツが経営統合。分析機器・半導体向け石英が軸。FRIDも。
-  > 【いま】終値5240円・直近5日+2.95%（材料未確認）
-  > 【調子】✅順調（3/13） — 質注意
-  > 【水準】やや割高（2/7） — PER12.3倍・PEG12.06・52週56% ／ 💰単元52.4万円
-  > 【戦略】当日終値5240円の指値で反転を取りにいく。SL5000円（直近5日安値）
-- 1860 戸田建設｜granville_rebound｜✅順調(3)｜過熱(1.0)｜PASS｜終値1533.5｜💰153350円｜reversal 1533.5/SL1507.5｜⚠日程不明
-  > 📌【業態】名門で業界準大手。堅実経営。病院・学校に強み。洋上風力発電に注力。
-  > 【いま】終値1534円・直近5日+0.66%（材料未確認）
-  > 【調子】✅順調（3/13） — 質注意
-  > 【水準】過熱（1/7） — PER13.0倍・PEG—・52週81% ／ 💰単元15.3万円
-  > 【戦略】当日終値1533.5円の指値で反転を取りにいく。SL1507.5円（直近5日安値）
-- 6237 Iwaki Co. Ltd.｜granville_rebound｜✅順調(3)｜過熱(1.0)｜PASS｜終値4135｜💰413500円｜reversal 4135/SL3935｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値4135円・直近5日-1.19%（材料未確認）
+  > 【水準】妥当（3.0/7） — PER10.9倍・PEG1.69・52週44% ／ 💰単元24.2万円
+  > 【戦略】発注対象外（⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)）
+- 4956 Konishi Co., Ltd.｜granville_tenkan｜✅順調｜やや割高｜PASS｜終値1505｜💰150500円｜⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】接着剤最大手。「ボンド」で有名。住宅・建築分野に強み。化成品商事部門も。
+  > 【いま】終値1,505円・直近5日+4.08%（材料未確認）
   > 【調子】✅順調（3/13）
-  > 【水準】過熱（1/7） — PER17.8倍・PEG4.58・52週49% ／ 💰単元41.4万円
-  > 【戦略】当日終値4135円の指値で反転を取りにいく。SL3935円（直近5日安値）
-- 7745 A&D HOLON Holdings Company. Limited｜granville_rebound｜🔻悪化(3)｜過熱(1.0)｜PASS｜終値2902｜💰290200円｜reversal 2902/SL2783｜⚠日程不明
-  > 📌【業態】計測・計量機器メーカー。電子てんびんでシェア首位。傘下に半導体装置のホロン。
-  > 【いま】終値2902円・直近5日+2.94%（材料未確認）
-  > 【調子】🔻悪化（3/13） — 経常減益-27.1%・減収
-  > 【水準】過熱（1/7） — PER17.7倍・PEG—・52週70% ／ 💰単元29.0万円
-  > 【戦略】当日終値2902円の指値で反転を取りにいく。SL2783円（直近5日安値）
-- 4320 ＣＥホールディングス｜granville_rebound｜✅順調(3)｜過熱(0.0)｜PASS｜終値1651｜💰165100円｜reversal 1651/SL1648｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値1651円・直近5日-0.66%（材料未確認）
-  > 【調子】✅順調（3/13）
-  > 【水準】過熱（0/7） — PER31.6倍・PEG2.59・52週82% ／ 💰単元16.5万円
-  > 【戦略】当日終値1651円の指値で反転を取りにいく。SL1648円（直近5日安値）
-- 6703 沖電気工業｜granville_rebound｜➖横ばい(2)｜妥当(3.0)｜PASS｜終値2878｜💰287800円｜reversal 2878/SL2668｜⚠日程不明
-  > 📌【業態】情報通信システム、ATM、プリンター、EMSが主軸。社会インフラシステム構築を推進。
-  > 【いま】終値2878円・直近5日+7.03%（材料未確認）
+  > 【水準】やや割高（2.0/7） — PER11.3倍・PEG1.57・52週96% ／ 💰単元15.1万円
+  > 【戦略】発注対象外（⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)）
+- 3569 セーレン｜granville_tenkan｜✅順調｜過熱｜PASS｜終値3550｜💰355000円｜momentum: 3560｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】総合繊維会社。染色技術に強み。車用シート・エアバッグ材が主力。化粧品育成。
+  > 【いま】終値3,550円・直近5日+4.57%（材料未確認）
+  > 【調子】✅順調（3/13）— 質注意
+  > 【水準】過熱（1.0/7） — PER13.2倍・PEG2.93・52週84% ／ 💰単元35.5万円
+  > 【戦略】当日高値超えの逆指値3560円で順張り参戦を検討。上限3595.6円・SL3346.4円目安
+- 1605 Inpex Corporation｜granville_tenkan｜➖横ばい｜妥当｜PASS｜終値4112｜💰411200円｜momentum: 4115｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】資源開発最大手。原油・ガス開発生産。政府が黄金株保有。豪でLNG。
+  > 【いま】終値4,112円・直近5日+6.03%（材料未確認）
+  > 【調子】➖横ばい（2/13）— 質注意
+  > 【水準】妥当（4.0/7） — PER9.4倍・PEG1.05・52週65% ／ 💰単元41.1万円
+  > 【戦略】当日高値超えの逆指値4115円で順張り参戦を検討。上限4156.15円・SL3865.28円目安
+- 3289 Tokyu Fudosan Holdings Corp.｜granville_tenkan/未マージPR由来｜➖横ばい｜妥当｜PASS｜終値1355.5｜💰135550円｜momentum: 1356｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】総合不動産大手。首都圏で住宅事業。商業ビルが収益源。リゾート開発、再エネ等。
+  > 【いま】終値1,355円・直近5日+0.97%（材料未確認）
   > 【調子】➖横ばい（2/13）
-  > 【水準】妥当（3/7） — PER13.9倍・PEG2.21・52週56% ／ 💰単元28.8万円
-  > 【戦略】当日終値2878円の指値で反転を取りにいく。SL2668円（直近5日安値）
-- 4980 Dexerials Corp.｜granville_rebound｜⚠減速(1)｜やや割高(2.0)｜PASS｜終値3073｜💰307300円｜reversal 3073/SL2943.5｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値3073円・直近5日+5.84%（材料未確認）
-  > 【調子】⚠減速（1/13） — 質注意
-  > 【水準】やや割高（2/7） — PER18.7倍・PEG64.53・52週35% ／ 💰単元30.7万円
-  > 【戦略】当日終値3073円の指値で反転を取りにいく。SL2943.5円（直近5日安値）
-- 9001 東武鉄道｜granville_rebound｜⚠減速(1)｜やや割高(2.0)｜PASS｜終値3009｜💰300900円｜reversal 3009/SL2960｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値3009円・直近5日-0.66%（材料未確認）
-  > 【調子】⚠減速（1/13） — 質注意
-  > 【水準】やや割高（2/7） — PER10.5倍・PEG—・52週71% ／ 💰単元30.1万円
-  > 【戦略】当日終値3009円の指値で反転を取りにいく。SL2960円（直近5日安値）
-- 9502 中部電力｜granville_rebound｜🔻悪化(1)｜やや割高(2.0)｜PASS｜終値2873.5｜💰287350円｜reversal 2873.5/SL2830｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値2874円・直近5日-0.81%（材料未確認）
-  > 【調子】🔻悪化（1/13） — 経常減益-36.4%・質注意
-  > 【水準】やや割高（2/7） — PER13.6倍・PEG—・52週68% ／ 💰単元28.7万円
-  > 【戦略】当日終値2873.5円の指値で反転を取りにいく。SL2830円（直近5日安値）
-- 9519 レノバ｜granville_rebound+未マージPR由来｜取得不可(None)｜値頃(5.0)｜PASS｜終値913｜💰91300円｜reversal 913/SL889｜⚠日程不明
-  > 📌【業態】再生可能エネルギー施設の開発運営。太陽光、風力、バイオマスなど発電を拡大。
-  > 【いま】終値913円・直近5日-3.89%（材料未確認）
-  > 【調子】－
-  > 【水準】値頃（5/7） — PER24.3倍・PEG—・52週38% ／ 💰単元9.1万円
-  > 【戦略】当日終値913円の指値で反転を取りにいく。SL889円（直近5日安値）
-- 7182 ゆうちょ銀行｜granville_rebound｜取得不可(None)｜妥当(3.0)｜PASS｜終値3405｜💰340500円｜reversal 3405/SL3139｜⚠日程不明
-  > 📌【業態】日本最大の預金金融機関。全国の郵便局が代理店として機能。
-  > 【いま】終値3405円・直近5日+8.06%（材料未確認）
-  > 【調子】－
-  > 【水準】妥当（3/7） — PER18.4倍・PEG0.71・52週97% ／ 💰単元34.0万円
-  > 【戦略】当日終値3405円の指値で反転を取りにいく。SL3139円（直近5日安値）
-- 1518 Mitsui Matsushima Holdings Co., Ltd.｜granville_rebound｜—｜—｜FAIL_UWAHIGE｜終値2381｜💰—円｜—｜
-- 1878 Daito Trust Construction Co., Ltd.｜granville_rebound+未マージPR由来｜—｜—｜FAIL_INSEN｜終値3330｜💰—円｜—｜
-- 1976 Meisei Industrial Co., Ltd.｜granville_rebound｜—｜—｜FAIL_INSEN｜終値1720｜💰—円｜—｜
-- 205A ロゴスホールディングス（ロゴスＨＤ）｜granville_rebound+未マージPR由来｜—｜—｜FAIL_INSEN｜終値1670｜💰—円｜—｜
-- 2217 Morozoff Limited｜granville_rebound｜—｜—｜FAIL_UWAHIGE｜終値1511｜💰—円｜—｜
-- 2483 翻訳センター｜granville_rebound｜—｜—｜FAIL_INSEN｜終値2255｜💰—円｜—｜
-- 254A ＡＩフュージョンキャピタルグループ（ＡＩＦＣＧ）｜granville_rebound+未マージPR由来｜—｜—｜FAIL_INSEN｜終値1218｜💰—円｜—｜
-- 2693 YKT Corporation｜granville_rebound+未マージPR由来｜—｜—｜FAIL_INSEN｜終値286｜💰—円｜—｜
-- 3063 j-Group Holdings Corp.｜granville_rebound+未マージPR由来｜—｜—｜FAIL_INSEN｜終値1120｜💰—円｜—｜
-- 3086 J. FRONT RETAILING Co., Ltd.｜granville_rebound｜—｜—｜FAIL_INSEN｜終値2952.5｜💰—円｜—｜
-- 3191 Joyful Honda Co. Ltd.｜granville_rebound+未マージPR由来｜—｜—｜FAIL_INSEN｜終値2236｜💰—円｜—｜
-- 3405 Kuraray Co., Ltd.｜granville_rebound｜—｜—｜FAIL_INSEN｜終値1848.5｜💰—円｜—｜
-- 3544 SATUDORA HOLDINGS CO., LTD.｜granville_rebound｜業績データ取得不可(None)｜判定不能(None)｜PASS｜終値1249｜💰124900円｜reversal 1249/SL1248｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値1249円・直近5日+0.00%（材料未確認）
-  > 【調子】－
-  > 【水準】判定不能 — PER—倍・PEG—・52週85% ／ 💰単元12.5万円
-  > 【戦略】当日終値1249円の指値で反転を取りにいく。SL1248円（直近5日安値）
-- 3776 ブロードバンドタワー｜granville_rebound｜—｜—｜FAIL_INSEN｜終値251｜💰—円｜—｜
-- 3863 日本製紙｜granville_rebound｜業績データ取得不可(None)｜判定不能(None)｜PASS｜終値1416｜💰141600円｜reversal 1416/SL1354｜⚠日程不明
-  > 📌【業態】製紙業界２強の一角。洋紙で首位。エネルギー、生活用品、建材、緑化なども。
-  > 【いま】終値1416円・直近5日+3.89%（材料未確認）
-  > 【調子】－
-  > 【水準】判定不能 — PER—倍・PEG—・52週66% ／ 💰単元14.2万円
-  > 【戦略】当日終値1416円の指値で反転を取りにいく。SL1354円（直近5日安値）
-- 4220 リケンテクノス｜granville_rebound+未マージPR由来｜—｜—｜FAIL_INSEN｜終値2610｜💰—円｜—｜
-- 4420 イーソル｜granville_rebound｜—｜—｜FAIL_INSEN｜終値935｜💰—円｜—｜
-- 4972 綜研化学｜granville_rebound｜—｜—｜FAIL_UWAHIGE｜終値3800｜💰—円｜—｜
-- 5076 インフロニアＨＤ｜granville_rebound｜—｜—｜FAIL_UWAHIGE｜終値2855｜💰—円｜—｜
-- 5189 櫻護謨｜granville_rebound｜—｜—｜FAIL_UWAHIGE｜終値3495｜💰—円｜—｜
-- 5989 エイチワン｜granville_rebound+未マージPR由来｜—｜—｜FAIL_INSEN｜終値1510｜💰—円｜—｜
-- 5998 アドバネクス｜granville_rebound｜—｜—｜FAIL_INSEN｜終値2647｜💰—円｜—｜
-- 6266 タツモ｜granville_rebound+未マージPR由来｜—｜—｜FAIL_UWAHIGE｜終値3525｜💰—円｜—｜
-- 6327 北川精機｜granville_rebound｜—｜—｜FAIL_INSEN｜終値3110｜💰—円｜—｜
-- 6380 オリエンタルチエン工業｜granville_rebound｜—｜—｜FAIL_INSEN｜終値3850｜💰—円｜—｜
-- 6594 Nidec Corporation｜granville_rebound+未マージPR由来｜—｜—｜FAIL_INSEN｜終値2581｜💰—円｜—｜
-- 6613 Ｇ−ＱＤレーザ｜granville_rebound｜—｜—｜FAIL_INSEN｜終値2088｜💰—円｜—｜
-- 6723 Renesas Electronics Corporation｜granville_rebound｜取得不可(None)｜判定不能(None)｜PASS｜終値3392｜💰339200円｜reversal 3392/SL3258｜⚠日程不明
-  > 📌【業態】半導体大手。ルネサスとNECエレが統合。車載マイコン世界トップ級。FA、インフラ向けも。
-  > 【いま】終値3392円・直近5日-1.05%（材料未確認）
-  > 【調子】－
-  > 【水準】判定不能 — PER—倍・PEG—・52週48% ／ 💰単元33.9万円
-  > 【戦略】当日終値3392円の指値で反転を取りにいく。SL3258円（直近5日安値）
-- 6744 Nohmi Bosai Ltd.｜granville_rebound｜—｜—｜FAIL_INSEN｜終値4280｜💰—円｜—｜
-- 6976 Taiyo Yuden Co., Ltd.｜granville_rebound+未マージPR由来｜—｜—｜FAIL_UWAHIGE｜終値9184｜💰—円｜—｜
-- 7120 SHINKO Inc.｜granville_rebound｜—｜—｜FAIL_UWAHIGE｜終値1003｜💰—円｜—｜
-- 7459 MEDIPAL HOLDINGS Corporation｜granville_rebound｜—｜—｜FAIL_UWAHIGE｜終値2892｜💰—円｜—｜
-- 7460 Yagi & Co., Ltd.｜granville_rebound｜—｜—｜FAIL_UWAHIGE｜終値1713｜💰—円｜—｜
-- 7505 扶桑電通｜granville_rebound｜—｜—｜FAIL_UWAHIGE｜終値2200｜💰—円｜—｜
-- 7581 サイゼリヤ｜granville_rebound+未マージPR由来｜—｜—｜FAIL_INSEN｜終値7080｜💰—円｜—｜
-- 7600 日本エム・ディ・エム｜granville_rebound｜—｜—｜FAIL_INSEN｜終値729｜💰—円｜—｜
-- 7780 Menicon Co., Ltd.｜granville_rebound｜—｜—｜FAIL_INSEN｜終値1910｜💰—円｜—｜
-- 8081 カナデン｜granville_rebound｜—｜—｜FAIL_UWAHIGE｜終値2587｜💰—円｜—｜
-- 8141 新光商事｜granville_rebound+未マージPR由来｜—｜—｜FAIL_INSEN｜終値1567｜💰—円｜—｜
-- 8439 Tokyo Century Corporation｜granville_rebound｜—｜—｜FAIL_UWAHIGE｜終値2695｜💰—円｜—｜
-- 8566 Ricoh Leasing Company,Ltd.｜granville_rebound｜—｜—｜FAIL_INSEN｜終値6860｜💰—円｜—｜
-- 8630 Sompo Holdings,Inc.｜granville_rebound｜—｜—｜FAIL_UWAHIGE｜終値6850｜💰—円｜—｜
-- 8750 Daiichi Life Group. Inc.｜granville_rebound｜—｜—｜FAIL_UWAHIGE｜終値1838.5｜💰—円｜—｜
-- 8844 Cosmos Initia Co., Ltd.｜granville_rebound｜—｜—｜FAIL_INSEN｜終値1263｜💰—円｜—｜
-- 9006 Keikyu Corporation｜granville_rebound｜—｜—｜FAIL_INSEN｜終値1569.5｜💰—円｜—｜
-- 9044 NANKAI Co., Ltd.｜granville_rebound+未マージPR由来｜—｜—｜FAIL_UWAHIGE｜終値3107｜💰—円｜—｜
-- 9301 三菱倉庫｜granville_rebound｜—｜—｜FAIL_UWAHIGE｜終値1528.5｜💰—円｜—｜
-- 9735 Secom Co., Ltd.｜granville_rebound｜—｜—｜FAIL_INSEN｜終値6491｜💰—円｜—｜
-- 9854 愛眼｜granville_rebound｜—｜—｜FAIL_INSEN｜終値284｜💰—円｜—｜
-- 9941 太洋物産｜granville_rebound｜—｜—｜FAIL_INSEN｜終値1201｜💰—円｜—｜
+  > 【水準】妥当（4.0/7） — PER9.7倍・PEG1.08・52週42% ／ 💰単元13.6万円
+  > 【戦略】当日高値超えの逆指値1356円で順張り参戦を検討。上限1369.56円・SL1274.17円目安
+- 1833 Okumura Corporation｜granville_tenkan/未マージPR由来｜⚠減速｜やや割高｜PASS｜終値5910｜💰591000円｜⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)｜⚠業績基調が下向き（⚠減速） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】関西地盤ゼネコン中堅。免震技術やトンネル工事に強み。バイオマス発電事業も展開。
+  > 【いま】終値5,910円・直近5日+2.07%（材料未確認）
+  > 【調子】⚠減速（2/13）— 質注意
+  > 【水準】やや割高（2.0/7） — PER13.8倍・PEG—・52週46% ／ 💰単元59.1万円
+  > 【戦略】発注対象外（⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)）
+- 2282 NH Foods Limited｜granville_tenkan｜➖横ばい｜やや割高｜PASS｜終値6373｜💰637300円｜momentum: 6400｜⚠日程不明 ⚠1単元でリスク枠超過（38870円）
+  > 📌ヘッドライン
+  > 【業態】食肉加工品で国内最大手。飼育・加工・販売までグループで一貫体制が強み。
+  > 【いま】終値6,373円・直近5日-0.53%（材料未確認）
+  > 【調子】➖横ばい（2/13）— 質注意
+  > 【水準】やや割高（2.0/7） — PER15.6倍・PEG18.64・52週44% ／ 💰単元63.7万円
+  > 【戦略】当日高値超えの逆指値6400円で順張り参戦を検討。上限6464円・SL6011.3円目安／⚠1単元リスク38869円（枠超過）
+- 7231 トピー工業｜granville_tenkan｜➖横ばい｜やや割高｜PASS｜終値3195｜💰319500円｜⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】日本製鉄系の自動車ホイール最大手。建機用履板も首位。一貫成形に強み。
+  > 【いま】終値3,195円・直近5日+4.93%（材料未確認）
+  > 【調子】➖横ばい（2/13）— 質注意
+  > 【水準】やや割高（2.0/7） — PER11.3倍・PEG—・52週53% ／ 💰単元31.9万円
+  > 【戦略】発注対象外（⛔型不一致: 既にトリガー超(追いかけ禁止・教訓⑬)）
+- 9503 Kansai Electric Power Company, Incorporated｜granville_tenkan｜🔻悪化｜過熱｜PASS｜終値2955｜💰295500円｜momentum: 2957｜⚠業績基調が下向き（🔻悪化） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】東電と並ぶ業界の雄。原発依存度高いが代替電源確保へ。情報通信も。
+  > 【いま】終値2,955円・直近5日+14.03%（材料未確認）
+  > 【調子】🔻悪化（2/13）— 質注意
+  > 【水準】過熱（2.0/7） — PER10.6倍・PEG—・52週100% ／ 💰単元29.6万円
+  > 【戦略】当日高値超えの逆指値2957円で順張り参戦を検討。上限2986.57円・SL2779.11円目安
+- 2982 ＡＤワークスグループ（ＡＤＷＧ）｜granville_tenkan/未マージPR由来｜⚠減速｜割安｜PASS｜終値437｜💰43700円｜momentum: 438｜⚠業績基調が下向き（⚠減速） ⚠バリュートラップ疑い ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】不動産流動化事業。中古マンション・ビルを1棟仕入れ販売。鑑定評価に強み。
+  > 【いま】終値437円・直近5日+3.31%（材料未確認）
+  > 【調子】⚠減速（1/13）— 質注意
+  > 【水準】割安（6.0/7） — PER7.0倍・PEG—・52週45% ／ 💰単元4.4万円
+  > 【戦略】当日高値超えの逆指値438円で順張り参戦を検討。上限442.38円・SL411.72円目安
+- 1982 Hibiya Engineering,Ltd.｜granville_tenkan｜⚠減速｜やや割高｜PASS｜終値3040｜💰304000円｜momentum: 3065｜⚠業績基調が下向き（⚠減速） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】空調工事大手。電気・衛生工事も。NTT向け主力。床下空調システムなどに強み。
+  > 【いま】終値3,040円・直近5日+2.08%（材料未確認）
+  > 【調子】⚠減速（1/13）— 質注意
+  > 【水準】やや割高（2.0/7） — PER14.4倍・PEG4.95・52週69% ／ 💰単元30.4万円
+  > 【戦略】当日高値超えの逆指値3065円で順張り参戦を検討。上限3095.65円・SL2881.1円目安
+- 2317 システナ｜granville_tenkan｜⚠減速｜やや割高｜PASS｜終値467｜💰46700円｜momentum: 468｜⚠業績基調が下向き（⚠減速） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】ソフト開発支援。自動運転用に注力。モバイル端末向けやソリューション事業も展開。
+  > 【いま】終値467円・直近5日+5.18%（材料未確認）
+  > 【調子】⚠減速（1/13）— 質注意
+  > 【水準】やや割高（2.0/7） — PER15.7倍・PEG—・52週48% ／ 💰単元4.7万円
+  > 【戦略】当日高値超えの逆指値468円で順張り参戦を検討。上限472.68円・SL439.92円目安
+- 5408 Nakayama Steel Works,Ltd.｜granville_tenkan｜🔻悪化｜やや割高｜PASS｜終値658｜💰65800円｜momentum: 659｜⚠業績基調が下向き（🔻悪化） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】日本製鉄系の鉄鋼老舗。高炉・電炉の圧延技術に特色。鋼板と棒線主体。
+  > 【いま】終値658円・直近5日+3.62%（材料未確認）
+  > 【調子】🔻悪化（1/13）— 質注意
+  > 【水準】やや割高（2.0/7） — PER9.2倍・PEG—・52週69% ／ 💰単元6.6万円
+  > 【戦略】当日高値超えの逆指値659円で順張り参戦を検討。上限665.59円・SL619.46円目安
+- 7943 Nichiha Corporation｜granville_tenkan｜⚠減速｜過熱｜PASS｜終値3115｜💰311500円｜momentum: 3125｜⚠業績基調が下向き（⚠減速） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】窯業系外壁材の最大手。高級洋風外壁に特色。内装材や断熱・養生板も。
+  > 【いま】終値3,115円・直近5日+0.32%（材料未確認）
+  > 【調子】⚠減速（1/13）— 質注意
+  > 【水準】過熱（1.0/7） — PER12.7倍・PEG—・52週42% ／ 💰単元31.1万円
+  > 【戦略】当日高値超えの逆指値3125円で順張り参戦を検討。上限3156.25円・SL2937.5円目安
+- 7287 Nippon Seiki Co., Ltd.｜granville_tenkan｜業績データ取得不可(経常益予想非開示)｜妥当｜PASS｜終値2806｜💰280600円｜momentum: 2813｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】2輪車用計器世界首位。ヘッドアップディスプレイ注力。自動車用、民生機器用も。
+  > 【いま】終値2,806円・直近5日+8.17%（材料未確認）
+  > 【調子】業績データ取得不可(経常益予想非開示)
+  > 【水準】妥当（3.0/7） — PER16.1倍・PEG—・52週94% ／ 💰単元28.1万円
+  > 【戦略】当日高値超えの逆指値2813円で順張り参戦を検討。上限2841.13円・SL2644.22円目安
+- 3003 ヒューリック｜granville_tenkan｜業績データ取得不可｜やや割高｜PASS｜終値1798.5｜💰179850円｜momentum: 1806｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】不動産投資会社。都区内に好物件所有、物件多角化へ。私募ファンドも運用。
+  > 【いま】終値1,798円・直近5日-0.28%（材料未確認）
+  > 【調子】業績データ取得不可
+  > 【水準】やや割高（2.8/7） — PER11.3倍・PEG1.62・52週48% ／ 💰単元18.0万円
+  > 【戦略】当日高値超えの逆指値1806円で順張り参戦を検討。上限1824.06円・SL1697.17円目安
+- 2768 Sojitz Corp.｜granville_tenkan｜業績データ取得不可(経常益予想非開示)｜判定不能｜PASS｜終値5813｜💰581300円｜momentum: 5820｜⚠日程不明 ⚠1単元でリスク枠超過（35578円）
+  > 📌ヘッドライン
+  > 【業態】卸売業
+  > 【いま】終値5,813円・直近5日+2.05%（材料未確認）
+  > 【調子】業績データ取得不可(経常益予想非開示)
+  > 【水準】判定不能 — PER9.3倍・PEG—・52週58% ／ 💰単元58.1万円
+  > 【戦略】当日高値超えの逆指値5820円で順張り参戦を検討。上限5878.2円・SL5464.22円目安／⚠1単元リスク35577円（枠超過）
+- 8008 Yondoshi Holdings, Inc.｜granville_oshime/未マージPR由来｜🔥絶好調｜妥当｜PASS｜終値2164｜💰216400円｜oshime: 2114.88｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】ジュエリーブランド「4℃」を展開。アパレル卸や革小物なども。デイリーファッションに注力。
+  > 【いま】終値2,164円・直近5日-1.14%（材料未確認）
+  > 【調子】🔥絶好調（8/13）
+  > 【水準】妥当（3.0/7） — PER17.6倍・PEG0.39・52週90% ／ 💰単元21.6万円
+  > 【戦略】2114.88円までの押し目を指値で待つ。SL2104.36円（25日線基準）
+- 166A タスキホールディングス｜granville_oshime｜⚡好調｜妥当｜PASS｜終値1205｜💰120500円｜oshime: 1153.3｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】投資用賃貸マンションなどを展開。24年4月にタスキと新日本建物が経営統合。
+  > 【いま】終値1,205円・直近5日+0.58%（材料未確認）
+  > 【調子】⚡好調（7/13）
+  > 【水準】妥当（4.0/7） — PER12.8倍・PEG0.67・52週95% ／ 💰単元12.1万円
+  > 【戦略】1153.3円までの押し目を指値で待つ。SL1147.56円（25日線基準）
+- 7350 Okinawa Financial Group, Inc.｜granville_oshime/未マージPR由来｜⚡好調｜妥当｜PASS｜終値7840｜💰784000円｜oshime: 7655.69｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】銀行業
+  > 【いま】終値7,840円・直近5日+3.57%（材料未確認）
+  > 【調子】⚡好調（5/13）
+  > 【水準】妥当（3.0/7） — PER14.0倍・PEG1.30・52週91% ／ 💰単元78.4万円
+  > 【戦略】7655.69円までの押し目を指値で待つ。SL7617.6円（25日線基準）
+- 7970 信越ポリマー｜granville_oshime｜⚡好調｜妥当｜PASS｜終値2260｜💰226000円｜oshime: 2252.29｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】信越化学系樹脂加工メーカー。ウエハ容器が主力。車載タッチスイッチや住生活資材も。
+  > 【いま】終値2,260円・直近5日+1.25%（材料未確認）
+  > 【調子】⚡好調（5/13）
+  > 【水準】妥当（3.0/7） — PER17.3倍・PEG1.22・52週61% ／ 💰単元22.6万円
+  > 【戦略】2252.29円までの押し目を指値で待つ。SL2241.08円（25日線基準）
+- 8923 Tosei Corporation｜granville_oshime｜⚡好調｜妥当｜PASS｜終値1844｜💰184400円｜oshime: 1804.54｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】賃貸住宅、オフィスの再生・流動化。ファンド運用、不動産開発、ホテルも。名鉄と提携。
+  > 【いま】終値1,844円・直近5日+0.99%（材料未確認）
+  > 【調子】⚡好調（5/13）— 質注意
+  > 【水準】妥当（3.0/7） — PER11.8倍・PEG1.78・52週79% ／ 💰単元18.4万円
+  > 【戦略】1804.54円までの押し目を指値で待つ。SL1795.56円（25日線基準）
+- 9517 イーレックス｜granville_oshime｜⚡好調｜やや割高｜PASS｜終値880｜💰88000円｜oshime: 866.03｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】電力買取り、工場・家庭に販売。ガス小売りも。自社でバイオマス発電。海外進出。
+  > 【いま】終値880円・直近5日+1.03%（材料未確認）
+  > 【調子】⚡好調（5/13）— 質注意
+  > 【水準】やや割高（2.0/7） — PER12.7倍・PEG3.66・52週54% ／ 💰単元8.8万円
+  > 【戦略】866.03円までの押し目を指値で待つ。SL861.72円（25日線基準）
+- 9934 Inaba Denki Sangyo Co.,Ltd.｜granville_oshime/未マージPR由来｜⚡好調｜やや割高｜PASS｜終値3161｜💰316100円｜oshime: 2989.59｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】卸売業
+  > 【いま】終値3,161円・直近5日+6.06%（材料未確認）
+  > 【調子】⚡好調（5/13）
+  > 【水準】やや割高（2.0/7） — PER15.0倍・PEG1.81・52週99% ／ 💰単元31.6万円
+  > 【戦略】2989.59円までの押し目を指値で待つ。SL2974.72円（25日線基準）
+- 5121 藤倉ゴム工業｜granville_oshime｜✅順調｜やや割高｜PASS｜終値2767｜💰276700円｜oshime: 2689.34｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】産業資材、ゴム製引布が主力。ゴルフシャフトやアウトドアスポーツ用品も展開。フジクラ系。
+  > 【いま】終値2,767円・直近5日+4.30%（材料未確認）
+  > 【調子】✅順調（4/13）
+  > 【水準】やや割高（2.0/7） — PER13.4倍・PEG1.72・52週94% ／ 💰単元27.7万円
+  > 【戦略】2689.34円までの押し目を指値で待つ。SL2675.96円（25日線基準）
+- 8876 リログループ｜granville_oshime｜✅順調｜やや割高｜PASS｜終値2262.5｜💰226250円｜oshime: 2130.32｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】企業福利厚生代行事業を展開。転勤留守宅の賃貸管理も。海外赴任支援。
+  > 【いま】終値2,262円・直近5日+3.36%（材料未確認）
+  > 【調子】✅順調（3/13）
+  > 【水準】やや割高（2.0/7） — PER15.3倍・PEG1.78・52週99% ／ 💰単元22.6万円
+  > 【戦略】2130.32円までの押し目を指値で待つ。SL2119.72円（25日線基準）
+- 5232 Sumitomo Osaka Cement Co., Ltd.｜granville_oshime｜✅順調｜過熱｜PASS｜終値5738｜💰573800円｜oshime: 5693.08｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】セメント大手、国内高シェア。廃棄物再資源化で先行。新素材や電池素材事業も。
+  > 【いま】終値5,738円・直近5日+2.08%（材料未確認）
+  > 【調子】✅順調（3/13）— 質注意
+  > 【水準】過熱（1.0/7） — PER18.2倍・PEG27.59・52週73% ／ 💰単元57.4万円
+  > 【戦略】5693.08円までの押し目を指値で待つ。SL5664.76円（25日線基準）
+- 6055 Japan Material Co., Ltd.｜granville_oshime｜✅順調｜過熱｜PASS｜終値2126｜💰212600円｜⛔型不一致: 既に支持帯以下｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】半導体製造向け特殊ガス供給装置製販。3D画像処理ツールや太陽光発電も。
+  > 【いま】終値2,126円・直近5日+3.10%（材料未確認）
+  > 【調子】✅順調（3/13）— 質注意
+  > 【水準】過熱（1.0/7） — PER20.2倍・PEG8.11・52週52% ／ 💰単元21.3万円
+  > 【戦略】発注対象外（⛔型不一致: 既に支持帯以下）
+- 6432 Takeuchi Mfg.Co., Ltd.｜granville_oshime｜✅順調｜過熱｜PASS｜終値7650｜💰765000円｜oshime: 7597｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】建機中堅。ミニショベルなど小型が主力。クローラーローダーを開発。欧米で高シェア。
+  > 【いま】終値7,650円・直近5日+1.32%（材料未確認）
+  > 【調子】✅順調（3/13）— 質注意
+  > 【水準】過熱（1.0/7） — PER13.6倍・PEG—・52週90% ／ 💰単元76.5万円
+  > 【戦略】7597円までの押し目を指値で待つ。SL7559.2円（25日線基準）
+- 6966 Mitsui High-Tec, Inc.｜granville_oshime｜✅順調｜過熱｜PASS｜終値945｜💰94500円｜oshime: 935.61｜
+  > 📌ヘッドライン
+  > 【業態】ICリードフレームで首位級。モーターコア製造も。金型の精密加工技術に強み。
+  > 【いま】終値945円・直近5日+0.75%（材料未確認）
+  > 【調子】✅順調（3/13）— 質注意
+  > 【水準】過熱（1.0/7） — PER17.3倍・PEG3.48・52週48% ／ 💰単元9.4万円
+  > 【戦略】935.61円までの押し目を指値で待つ。SL930.96円（25日線基準）
+- 9882 Yellow Hat Ltd.｜granville_oshime/未マージPR由来｜✅順調｜過熱｜PASS｜終値1787｜💰178700円｜⛔型不一致: 既に支持帯以下｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】カー用品販売大手。直営店販売とFC向け卸売りが軸。バイク・自転車販売も。
+  > 【いま】終値1,787円・直近5日-0.22%（材料未確認）
+  > 【調子】✅順調（3/13）
+  > 【水準】過熱（1.0/7） — PER12.4倍・PEG2.51・52週77% ／ 💰単元17.9万円
+  > 【戦略】発注対象外（⛔型不一致: 既に支持帯以下）
+- 9861 Yoshinoya Holdings Co., Ltd.｜granville_oshime/未マージPR由来｜✅順調｜過熱｜PASS｜終値3876｜💰387600円｜oshime: 3829.25｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】牛丼屋老舗。収益柱「吉野家」と「はなまるうどん」を全国展開。ラーメン店も。
+  > 【いま】終値3,876円・直近5日+0.47%（材料未確認）
+  > 【調子】✅順調（3/13）
+  > 【水準】過熱（0.0/7） — PER50.9倍・PEG—・52週80% ／ 💰単元38.8万円
+  > 【戦略】3829.25円までの押し目を指値で待つ。SL3810.2円（25日線基準）
+- 8337 千葉興業銀行｜granville_oshime｜➖横ばい｜やや割高｜PASS｜終値2769｜💰276900円｜oshime: 2692.44｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】千葉県地盤の地銀。個人向け営業体制を強化。27年4月千葉銀と統合予定。
+  > 【いま】終値2,769円・直近5日+1.84%（材料未確認）
+  > 【調子】➖横ばい（2/13）
+  > 【水準】やや割高（2.0/7） — PER17.9倍・PEG1.21・52週93% ／ 💰単元27.7万円
+  > 【戦略】2692.44円までの押し目を指値で待つ。SL2679.04円（25日線基準）
+- 6590 芝浦メカトロニクス｜granville_oshime｜➖横ばい｜過熱｜PASS｜終値4030｜💰403000円｜⛔型不一致: 既に支持帯以下｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】液晶・半導体の製造装置メーカー。前工程ウエハ洗浄で世界トップ。自販機システムも。
+  > 【いま】終値4,030円・直近5日-1.59%（材料未確認）
+  > 【調子】➖横ばい（2/13）— 質注意
+  > 【水準】過熱（1.0/7） — PER22.2倍・PEG4.14・52週47% ／ 💰単元40.3万円
+  > 【戦略】発注対象外（⛔型不一致: 既に支持帯以下）
+- 7278 Exedy Corporation｜granville_oshime｜➖横ばい｜過熱｜PASS｜終値6280｜💰628000円｜oshime: 6134.92｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】アイシン系でクラッチ首位。自動車用トルクコンバーターが主力。マニュアル部品でも高シェア。
+  > 【いま】終値6,280円・直近5日+1.29%（材料未確認）
+  > 【調子】➖横ばい（2/13）— 質注意
+  > 【水準】過熱（1.0/7） — PER16.1倍・PEG—・52週99% ／ 💰単元62.8万円
+  > 【戦略】6134.92円までの押し目を指値で待つ。SL6104.4円（25日線基準）
+- 9247 TRE HOLDINGS CORPORATION｜granville_oshime/granville_rebound｜🔻悪化｜過熱｜PASS｜終値1935｜💰193500円｜⛔型不一致: 既に支持帯以下｜⚠業績基調が下向き（🔻悪化） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】廃棄物処理・リサイクルが主力。タケエイとリバーHDが経営統合。バイオマス発電も注力。
+  > 【いま】終値1,935円・直近5日-0.77%（材料未確認）
+  > 【調子】🔻悪化（2/13）— 質注意
+  > 【水準】過熱（1.0/7） — PER22.2倍・PEG—・52週59% ／ 💰単元19.4万円
+  > 【戦略】発注対象外（⛔型不一致: 既に支持帯以下）
+- 4228 Sekisui Kasei Co., Ltd.｜granville_oshime｜⚠減速｜妥当｜PASS｜終値636｜💰63600円｜oshime: 598.3｜⚠業績基調が下向き（⚠減速） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】発泡プラスチックで首位。ポリマー微粒子も。自動車、電子部品など高付加価値品。
+  > 【いま】終値636円・直近5日+6.89%（材料未確認）
+  > 【調子】⚠減速（1/13）
+  > 【水準】妥当（4.0/7） — PER11.6倍・PEG0.74・52週90% ／ 💰単元6.4万円
+  > 【戦略】598.3円までの押し目を指値で待つ。SL595.32円（25日線基準）
+- 3946 Tomoku Co., Ltd.｜granville_oshime｜⚠減速｜やや割高｜PASS｜終値4520｜💰452000円｜⛔型不一致: 既に支持帯以下｜⚠業績基調が下向き（⚠減速） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】段ボール加工専業で大手。加工食品用が主力。スウェーデンハウス事業、運輸倉庫も。
+  > 【いま】終値4,520円・直近5日-2.27%（材料未確認）
+  > 【調子】⚠減速（1/13）
+  > 【水準】やや割高（2.0/7） — PER9.0倍・PEG2.27・52週82% ／ 💰単元45.2万円
+  > 【戦略】発注対象外（⛔型不一致: 既に支持帯以下）
+- 2001 NIPPN Corporation｜granville_oshime｜⚠減速｜過熱｜PASS｜終値2969｜💰296900円｜oshime: 2890.94｜⚠業績基調が下向き（⚠減速） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】製粉老舗で業界2位。加工食品、バイオ事業など多角化推進。アジアにも展開。
+  > 【いま】終値2,969円・直近5日+0.81%（材料未確認）
+  > 【調子】⚠減速（1/13）
+  > 【水準】過熱（1.0/7） — PER11.6倍・PEG—・52週98% ／ 💰単元29.7万円
+  > 【戦略】2890.94円までの押し目を指値で待つ。SL2876.56円（25日線基準）
+- 7128 UNISOL Holdings Corporation｜granville_oshime｜⚠減速｜過熱｜PASS｜終値2732｜💰273200円｜⛔型不一致: 既に支持帯以下｜⚠業績基調が下向き（⚠減速） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】建設資材・機械や機器工具販売大手。21年10月フルサト工業とマルカが経営統合。
+  > 【いま】終値2,732円・直近5日-3.15%（材料未確認）
+  > 【調子】⚠減速（1/13）— 質注意
+  > 【水準】過熱（1.0/7） — PER31.3倍・PEG—・52週70% ／ 💰単元27.3万円
+  > 【戦略】発注対象外（⛔型不一致: 既に支持帯以下）
+- 7981 Takara standard Co., Ltd.｜granville_oshime/granville_rebound｜⚠減速｜過熱｜PASS｜終値3180｜💰318000円｜oshime: 3087.12｜⚠業績基調が下向き（⚠減速） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】住設機器大手。システムキッチン主力に洗面、浴槽などへ展開。ホーロー技術に特色。
+  > 【いま】終値3,180円・直近5日+2.09%（材料未確認）
+  > 【調子】⚠減速（1/13）— 質注意
+  > 【水準】過熱（1.0/7） — PER14.1倍・PEG22.49・52週84% ／ 💰単元31.8万円
+  > 【戦略】3087.12円までの押し目を指値で待つ。SL3071.76円（25日線基準）
+- 8367 南都銀行｜granville_oshime｜取得不可｜妥当｜PASS｜終値2002｜💰200200円｜oshime: 1869.14｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】奈良地盤の地銀で県内シェアは圧倒的。効率経営に定評。中小企業に積極。
+  > 【いま】終値2,002円・直近5日+7.35%（材料未確認）
+  > 【調子】取得不可
+  > 【水準】妥当（4.0/7） — PER14.3倍・PEG0.46・52週100% ／ 💰単元20.0万円
+  > 【戦略】1869.14円までの押し目を指値で待つ。SL1859.84円（25日線基準）
+- 4415 BROAD ENTERPRISE CO.,LTD.｜granville_rebound/granville_oshime｜業績データ取得不可｜妥当｜PASS｜終値1415｜💰141500円｜oshime: 1388.31｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】マンション向け高速インターネットやIoTインターフォンシステムの販売。全戸一括でマンション管理も。
+  > 【いま】終値1,415円・直近5日+10.46%（材料未確認）
+  > 【調子】業績データ取得不可
+  > 【水準】妥当（3.0/7） — PER—・PEG—・52週78% ／ 💰単元14.2万円
+  > 【戦略】1388.31円までの押し目を指値で待つ。SL1381.4円（25日線基準）
+- 8544 Keiyo Bank, Ltd.｜granville_oshime｜取得不可｜妥当｜PASS｜終値2833｜💰283300円｜oshime: 2739.03｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】千葉地盤の第2地銀。住宅ローン等の個人取引に強み。りそな銀と提携。
+  > 【いま】終値2,833円・直近5日+4.46%（材料未確認）
+  > 【調子】取得不可
+  > 【水準】妥当（3.0/7） — PER17.3倍・PEG0.71・52週92% ／ 💰単元28.3万円
+  > 【戦略】2739.03円までの押し目を指値で待つ。SL2725.4円（25日線基準）
+- 7184 富山第一銀行｜granville_oshime｜取得不可｜過熱｜PASS｜終値3380｜💰338000円｜oshime: 3169.09｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】富山県の第2地銀。中小企業が中心。新潟、石川、岐阜にも展開。財務良好。
+  > 【いま】終値3,380円・直近5日+4.00%（材料未確認）
+  > 【調子】取得不可
+  > 【水準】過熱（1.0/7） — PER15.8倍・PEG—・52週96% ／ 💰単元33.8万円
+  > 【戦略】3169.09円までの押し目を指値で待つ。SL3153.32円（25日線基準）
+- 8387 Shikoku Bank Ltd.｜granville_oshime｜取得不可｜過熱｜PASS｜終値3685｜💰368500円｜oshime: 3473.68｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】銀行業
+  > 【いま】終値3,685円・直近5日+9.02%（材料未確認）
+  > 【調子】取得不可
+  > 【水準】過熱（0.0/7） — PER17.5倍・PEG—・52週98% ／ 💰単元36.9万円
+  > 【戦略】3473.68円までの押し目を指値で待つ。SL3456.4円（25日線基準）
+- 8511 日本証券金融｜granville_oshime｜取得不可｜過熱｜PASS｜終値2539｜💰253900円｜oshime: 2487.54｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】その他金融業
+  > 【いま】終値2,539円・直近5日+2.88%（材料未確認）
+  > 【調子】取得不可
+  > 【水準】過熱（0.0/7） — PER18.6倍・PEG3.48・52週93% ／ 💰単元25.4万円
+  > 【戦略】2487.54円までの押し目を指値で待つ。SL2475.16円（25日線基準）
+- 2760 Tokyo Electron Device Limited｜granville_rebound｜🔥絶好調｜妥当｜PASS｜終値4295｜💰429500円｜reversal: 4295｜⚠日程不明 ⚠1単元でリスク枠超過（33000円）
+  > 📌ヘッドライン
+  > 【業態】電子部品の半導体商社。主に米国製を扱う。設計受託で産業用に強み。
+  > 【いま】終値4,295円・直近5日+7.64%（材料未確認）
+  > 【調子】🔥絶好調（10/13）
+  > 【水準】妥当（4.0/7） — PER13.5倍・PEG0.34・52週78% ／ 💰単元43.0万円
+  > 【戦略】当日終値4295円の指値で反転を取りにいく。SL3965円（直近5日安値）／⚠1単元リスク33000円（枠超過）
+- 6976 Taiyo Yuden Co., Ltd.｜granville_rebound/未マージPR由来｜🔥絶好調｜値頃｜PASS｜終値9283｜💰928300円｜reversal: 9283｜⚠日程不明 ⚠1単元でリスク枠超過（65800円）
+  > 📌ヘッドライン
+  > 【業態】自動車、スマホ用セラミックコンデンサ世界大手。インダクタ、通信フィルター、複合デバイスも。
+  > 【いま】終値9,283円・直近5日+0.14%（材料未確認）
+  > 【調子】🔥絶好調（9/13）
+  > 【水準】値頃（5.0/7） — PER42.4倍・PEG0.57・52週30% ／ 💰単元92.8万円
+  > 【戦略】当日終値9283円の指値で反転を取りにいく。SL8625円（直近5日安値）／⚠1単元リスク65800円（枠超過）
+- 9147 ＮＩＰＰＯＮ　ＥＸＰＲＥＳＳ　ホールディングス｜granville_rebound｜🔥絶好調｜妥当｜PASS｜終値5866｜💰586600円｜reversal: 5866｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】総合物流最大手で世界的。国際複合輸送に強み。引っ越しでも国内大手。
+  > 【いま】終値5,866円・直近5日+2.68%（材料未確認）
+  > 【調子】🔥絶好調（9/13）
+  > 【水準】妥当（3.0/7） — PER19.9倍・PEG0.13・52週100% ／ 💰単元58.7万円
+  > 【戦略】当日終値5866円の指値で反転を取りにいく。SL5673円（直近5日安値）
+- 3405 Kuraray Co., Ltd.｜granville_rebound｜⚡好調｜妥当｜PASS｜終値1905｜💰190500円｜reversal: 1905｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】化学品大手。高分子機能素材・フィルムに強み。樹脂の世界トップ製品多数。
+  > 【いま】終値1,905円・直近5日+6.48%（材料未確認）
+  > 【調子】⚡好調（7/13）
+  > 【水準】妥当（4.0/7） — PER14.3倍・PEG0.59・52週69% ／ 💰単元19.1万円
+  > 【戦略】当日終値1905円の指値で反転を取りにいく。SL1781円（直近5日安値）
+- 5076 インフロニアＨＤ｜granville_rebound｜⚡好調｜妥当｜PASS｜終値2922｜💰292200円｜reversal: 2922｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】建設業
+  > 【いま】終値2,922円・直近5日+5.53%（材料未確認）
+  > 【調子】⚡好調（5/13）— 質注意
+  > 【水準】妥当（4.0/7） — PER8.9倍・PEG0.63・52週97% ／ 💰単元29.2万円
+  > 【戦略】当日終値2922円の指値で反転を取りにいく。SL2765円（直近5日安値）
+- 6380 オリエンタルチエン工業｜granville_rebound｜⚡好調｜妥当｜PASS｜終値4020｜💰402000円｜reversal: 4020｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】高耐久性の小型チェーンに強み。医療機器向け定評。金属射出精密部品も。
+  > 【いま】終値4,020円・直近5日-0.99%（材料未確認）
+  > 【調子】⚡好調（5/13）
+  > 【水準】妥当（4.0/7） — PER73.0倍・PEG0.07・52週58% ／ 💰単元40.2万円
+  > 【戦略】当日終値4020円の指値で反転を取りにいく。SL3815円（直近5日安値）
+- 7505 扶桑電通｜granville_rebound｜⚡好調｜妥当｜PASS｜終値2245｜💰224500円｜reversal: 2245｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】富士通系ディーラー。ネットワーク、ソリューション構築。関連機器販売、運用・保守なども。
+  > 【いま】終値2,245円・直近5日+5.60%（材料未確認）
+  > 【調子】⚡好調（5/13）
+  > 【水準】妥当（3.0/7） — PER10.1倍・PEG1.76・52週80% ／ 💰単元22.4万円
+  > 【戦略】当日終値2245円の指値で反転を取りにいく。SL2131円（直近5日安値）
+- 9319 中央倉庫｜granville_rebound｜⚡好調｜妥当｜PASS｜終値1833｜💰183300円｜reversal: 1833｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】京都地盤の内陸総合物流大手。安田倉庫と連携、国際貨物の拡大に注力。
+  > 【いま】終値1,833円・直近5日+1.50%（材料未確認）
+  > 【調子】⚡好調（5/13）
+  > 【水準】妥当（3.0/7） — PER15.5倍・PEG2.40・52週56% ／ 💰単元18.3万円
+  > 【戦略】当日終値1833円の指値で反転を取りにいく。SL1799円（直近5日安値）
+- 8750 Daiichi Life Group. Inc.｜granville_rebound｜⚠減速｜妥当｜PASS｜終値1868.5｜💰186850円｜reversal: 1868.5｜⚠業績基調が下向き（⚠減速） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】国内生保大手。株主数は国内最多。契約者数約800万人。海外急拡大。
+  > 【いま】終値1,868円・直近5日+3.69%（材料未確認）
+  > 【調子】⚠減速（4/13）— 質注意
+  > 【水準】妥当（3.0/7） — PER13.1倍・PEG0.86・52週90% ／ 💰単元18.7万円
+  > 【戦略】当日終値1868.5円の指値で反転を取りにいく。SL1810.5円（直近5日安値）
+- 4972 綜研化学｜granville_rebound｜✅順調｜過熱｜PASS｜終値4175｜💰417500円｜reversal: 4175｜⚠日程不明 ⚠1単元でリスク枠超過（83000円）
+  > 📌ヘッドライン
+  > 【業態】化学
+  > 【いま】終値4,175円・直近5日+23.52%（材料未確認）
+  > 【調子】✅順調（3/13）— 質注意
+  > 【水準】過熱（1.0/7） — PER16.1倍・PEG—・52週98% ／ 💰単元41.8万円
+  > 【戦略】当日終値4175円の指値で反転を取りにいく。SL3345円（直近5日安値）／⚠1単元リスク83000円（枠超過）
+- 1860 戸田建設｜granville_rebound｜✅順調｜過熱｜PASS｜終値1568｜💰156800円｜reversal: 1568｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】名門で業界準大手。堅実経営。病院・学校に強み。洋上風力発電に注力。
+  > 【いま】終値1,568円・直近5日+3.50%（材料未確認）
+  > 【調子】✅順調（3/13）— 質注意
+  > 【水準】過熱（0.0/7） — PER13.3倍・PEG—・52週86% ／ 💰単元15.7万円
+  > 【戦略】当日終値1568円の指値で反転を取りにいく。SL1509.5円（直近5日安値）
+- 8844 Cosmos Initia Co., Ltd.｜granville_rebound｜➖横ばい｜妥当｜PASS｜終値1276｜💰127600円｜reversal: 1276｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】大和ハウスグループの総合デベロッパー。都市型ホテル、投資用物件など多角化。
+  > 【いま】終値1,276円・直近5日-0.85%（材料未確認）
+  > 【調子】➖横ばい（2/13）— 質注意
+  > 【水準】妥当（3.0/7） — PER6.0倍・PEG—・52週49% ／ 💰単元12.8万円
+  > 【戦略】当日終値1276円の指値で反転を取りにいく。SL1257円（直近5日安値）
+- 7459 MEDIPAL HOLDINGS Corporation｜granville_rebound｜➖横ばい｜やや割高｜PASS｜終値2932.5｜💰293250円｜reversal: 2932.5｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】医薬品卸最大手級。傘下にメディセオやパルタック等。大型物流センターを全国展開。
+  > 【いま】終値2,932円・直近5日+0.81%（材料未確認）
+  > 【調子】➖横ばい（2/13）— 質注意
+  > 【水準】やや割高（2.0/7） — PER14.0倍・PEG—・52週73% ／ 💰単元29.3万円
+  > 【戦略】当日終値2932.5円の指値で反転を取りにいく。SL2859.5円（直近5日安値）
+- 7780 Menicon Co., Ltd.｜granville_rebound｜➖横ばい｜過熱｜PASS｜終値1937｜💰193700円｜reversal: 1937｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】角膜コンタクトレンズ大手。開発、製造から販売まで一貫。定額・会員制に強み。
+  > 【いま】終値1,937円・直近5日+1.47%（材料未確認）
+  > 【調子】➖横ばい（2/13）— 質注意
+  > 【水準】過熱（0.0/7） — PER22.1倍・PEG—・52週85% ／ 💰単元19.4万円
+  > 【戦略】当日終値1937円の指値で反転を取りにいく。SL1853円（直近5日安値）
+- 5989 エイチワン｜granville_rebound/未マージPR由来｜⚠減速｜妥当｜PASS｜終値1538｜💰153800円｜reversal: 1538｜⚠業績基調が下向き（⚠減速） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】ホンダ系の車体骨格部品メーカー。加工・溶接技術に強み。インド、タイなど海外展開。
+  > 【いま】終値1,538円・直近5日-0.71%（材料未確認）
+  > 【調子】⚠減速（1/13）— 質注意
+  > 【水準】妥当（3.0/7） — PER3.9倍・PEG—・52週58% ／ 💰単元15.4万円
+  > 【戦略】当日終値1538円の指値で反転を取りにいく。SL1506円（直近5日安値）
+- 1878 Daito Trust Construction Co., Ltd.｜granville_rebound/未マージPR由来｜⚠減速｜やや割高｜PASS｜終値3365｜💰336500円｜reversal: 3365｜⚠業績基調が下向き（⚠減速） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】地主に建物賃貸事業を提案。建設・賃貸仲介・管理・家賃保証など一貫。
+  > 【いま】終値3,365円・直近5日+1.02%（材料未確認）
+  > 【調子】⚠減速（1/13）— 質注意
+  > 【水準】やや割高（2.0/7） — PER10.2倍・PEG17.02・52週52% ／ 💰単元33.6万円
+  > 【戦略】当日終値3365円の指値で反転を取りにいく。SL3310円（直近5日安値）
+- 9502 中部電力｜granville_rebound｜🔻悪化｜過熱｜PASS｜終値2999｜💰299900円｜reversal: 2999｜⚠業績基調が下向き（🔻悪化） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】電力大手。中部財界の重鎮。浜岡原発3基停止中。火力発電は東電と統合。
+  > 【いま】終値2,999円・直近5日+3.04%（材料未確認）
+  > 【調子】🔻悪化（1/13）— 質注意
+  > 【水準】過熱（1.0/7） — PER14.2倍・PEG—・52週78% ／ 💰単元30.0万円
+  > 【戦略】当日終値2999円の指値で反転を取りにいく。SL2830円（直近5日安値）
+- 1976 Meisei Industrial Co., Ltd.｜granville_rebound｜⚠減速｜妥当｜PASS｜終値1745｜💰174500円｜reversal: 1745｜⚠業績基調が下向き（⚠減速） ⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】建設工事会社。熱絶縁工事に強み。LNG関連や環境関連工事も注力。
+  > 【いま】終値1,745円・直近5日-0.23%（材料未確認）
+  > 【調子】⚠減速（0/13）— 質注意
+  > 【水準】妥当（3.0/7） — PER14.3倍・PEG—・52週34% ／ 💰単元17.4万円
+  > 【戦略】当日終値1745円の指値で反転を取りにいく。SL1711円（直近5日安値）
+- 9519 レノバ｜granville_rebound/未マージPR由来｜取得不可｜値頃｜PASS｜終値924｜💰92400円｜reversal: 924｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】再生可能エネルギー施設の開発運営。太陽光、風力、バイオマスなど発電を拡大。
+  > 【いま】終値924円・直近5日-2.43%（材料未確認）
+  > 【調子】取得不可
+  > 【水準】値頃（5.0/7） — PER24.6倍・PEG—・52週39% ／ 💰単元9.2万円
+  > 【戦略】当日終値924円の指値で反転を取りにいく。SL889円（直近5日安値）
+- 254A ＡＩフュージョンキャピタルグループ（ＡＩＦＣＧ）｜granville_rebound/未マージPR由来｜判定保留｜妥当｜PASS｜終値1232｜💰123200円｜reversal: 1232｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】独立系ベンチャーキャピタル。投資先の育成に注力。地方自治体、地銀と連携。
+  > 【いま】終値1,232円・直近5日+4.14%（材料未確認）
+  > 【調子】判定保留
+  > 【水準】妥当（4.2/7） — PER21.4倍・PEG0.12・52週77% ／ 💰単元12.3万円
+  > 【戦略】当日終値1232円の指値で反転を取りにいく。SL1184円（直近5日安値）
+- 7182 ゆうちょ銀行｜granville_rebound｜取得不可｜妥当｜PASS｜終値3413｜💰341300円｜reversal: 3413｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】日本最大の預金金融機関。全国の郵便局が代理店として機能。
+  > 【いま】終値3,413円・直近5日+7.09%（材料未確認）
+  > 【調子】取得不可
+  > 【水準】妥当（3.0/7） — PER18.4倍・PEG0.71・52週97% ／ 💰単元34.1万円
+  > 【戦略】当日終値3413円の指値で反転を取りにいく。SL3203円（直近5日安値）
 
 ## 変化点銘柄
-- 6080 M&A Capital Partners Co.,Ltd.｜変化点🔔+changepoint｜🔥絶好調(10)｜妥当(3.0)｜PASS｜終値4300｜💰430000円｜changepoint 4300/SL4170｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値4300円・直近5日+3.24%（材料未確認）
-  > 【調子】🔥絶好調（10/13）
-  > 【水準】妥当（3/7） — PER17.8倍・PEG0.33・52週98% ／ 💰単元43万円
-  > 【戦略】発火日終値4300円の指値。追撃禁止・SL4170円。🔒実弾封印中（PL3紙ログ収集中）
-- 9962 MISUMI Group Inc.｜changepoint🔔｜🔥絶好調(9)｜妥当(3.0)｜PASS｜終値3760｜💰376000円｜changepoint 3754/SL3576｜⚠日程不明
-  > 📌【業態】金型用部品の専門商社・ミスミが中核。ネット・カタログ販売。半製品で納期短縮。
-  > 【いま】終値3760円・直近5日+3.70%（材料未確認）
+- 9962 MISUMI Group Inc.｜changepoint🔔｜🔥絶好調｜妥当｜PASS｜終値3778｜💰377800円｜changepoint: 3778｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】金型用部品の専門商社・ミスミが中核。ネット・カタログ販売。半製品で納期短縮。
+  > 【いま】終値3,778円・直近5日+3.11%（材料未確認）
   > 【調子】🔥絶好調（9/13）
-  > 【水準】妥当（3/7） — PER22.1倍・PEG0.59・52週79% ／ 💰単元37.6万円
-  > 【戦略】発火日終値3754円の指値。追撃禁止・SL3576円。🔒実弾封印中（PL3紙ログ収集中）
-- 9888 UEX, Ltd.｜変化点🔔🔔｜🔥絶好調(8)｜値頃(5.0)｜PASS｜終値1321｜💰132100円｜changepoint 1321/SL1193｜⚠日程不明
-  > 📌【業態】ステンレス鋼の専門商社。生産材が中心。中国での加工品製販や機械の製販も。
-  > 【いま】終値1321円・直近5日+8.99%（材料未確認）
-  > 【調子】🔥絶好調（8/13）
-  > 【水準】値頃（5/7） — PER4.5倍・PEG0.06・52週99% ／ 💰単元13.2万円
-  > 【戦略】発火日終値1321円の指値。追撃禁止・SL1193円。🔒実弾封印中（PL3紙ログ収集中）
-- 9824 Senshu Electric Co., Ltd.｜changepoint🔔🔔｜⚡好調(7)｜妥当(4.0)｜PASS｜終値7340｜💰734000円｜changepoint 7340/SL6970｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値7340円・直近5日+5.01%（材料未確認）
+  > 【水準】妥当（3.0/7） — PER22.2倍・PEG0.60・52週80% ／ 💰単元37.8万円
+  > 【戦略】発火日終値3778円の指値。追撃禁止・SL3576円。🔒実弾封印中（PL3紙ログ収集中）
+- 9824 Senshu Electric Co., Ltd.｜changepoint/changepoint🔔🔔｜⚡好調｜妥当｜PASS｜終値7570｜💰757000円｜changepoint: 7570｜⚠日程不明 ⚠1単元でリスク枠超過（57000円）
+  > 📌ヘッドライン
+  > 【業態】電線専門商社。FA・機器・通信・電力向け電線、光ファイバーが軸。即納制に強み。
+  > 【いま】終値7,570円・直近5日+7.53%（材料未確認）
   > 【調子】⚡好調（7/13）
-  > 【水準】妥当（4/7） — PER14.7倍・PEG0.56・52週97% ／ 💰単元73.4万円
-  > 【戦略】発火日終値7340円の指値。追撃禁止・SL6970円。🔒実弾封印中（PL3紙ログ収集中）／⚠1単元リスク37000円（枠超過）
-- 4667 Aisan Technology Co.,Ltd.｜changepoint🔔🔔｜⚡好調(6)｜過熱(0.0)｜PASS｜終値3165｜💰316500円｜changepoint 3165/SL2091｜⚠日程不明
-  > 📌【業態】測量・土木ソフトが主力。高精度3次元計測システムに強み。自動運転実験に参加。
-  > 【いま】終値3165円・直近5日+52.02%（材料未確認）
-  > 【調子】⚡好調（6/13）
-  > 【水準】過熱（0/7） — PER30.6倍・PEG3.37・52週100% ／ 💰単元31.6万円
-  > 【戦略】発火日終値3165円の指値。追撃禁止・SL2091円。🔒実弾封印中（PL3紙ログ収集中）／⚠1単元リスク107400円（枠超過）
-- 4441 トビラシステムズ｜changepoint🔔+changepoint/変化点🔔｜⚡好調(5)｜過熱(0.0)｜PASS｜終値1535｜💰153500円｜changepoint 1535/SL1407｜⚠日程不明
-  > 📌【業態】未取得（次回以降に取得）
-  > 【いま】終値1535円・直近5日+6.23%（材料未確認）
-  > 【調子】⚡好調（5/13） — 質注意
-  > 【水準】過熱（0/7） — PER29.8倍・PEG—・52週80% ／ 💰単元15.3万円
-  > 【戦略】発火日終値1535円の指値。追撃禁止・SL1407円。🔒実弾封印中（PL3紙ログ収集中）
-- 593A Tier IV, Inc.｜changepoint🔔🔔｜✅順調(4)｜過熱(0.0)｜PASS｜終値2399｜💰239900円｜changepoint 2399/SL1126｜⚠日程不明
-  > 📌【業態】自動運転ソフトウェア「Autoware」を活用した自動運転車両の開発を手掛ける。
-  > 【いま】終値2399円・直近5日+109.52%（材料未確認）
-  > 【調子】✅順調（4/13） — 赤字・上限適用・質注意
-  > 【水準】過熱（0/7） — PER—倍・PEG—・52週100% ／ 💰単元24.0万円
-  > 【戦略】発火日終値2399円の指値。追撃禁止・SL1126円。🔒実弾封印中（PL3紙ログ収集中）／⚠1単元リスク127300円（枠超過）
-- 4488 AI inside Inc.｜changepoint🔔🔔｜➖横ばい(2)｜やや割高(2.0)｜PASS｜終値2360｜💰236000円｜changepoint 2360/SL2115｜⚠日程不明
-  > 📌【業態】AI技術を用いた光学式文字読み取り装置(OCR)サービス提供。手書きに強み。
-  > 【いま】終値2360円・直近5日+8.71%（材料未確認）
-  > 【調子】➖横ばい（2/13）
-  > 【水準】やや割高（2/7） — PER26.0倍・PEG4.53・52週31% ／ 💰単元23.6万円
-  > 【戦略】発火日終値2360円の指値。追撃禁止・SL2115円。🔒実弾封印中（PL3紙ログ収集中）
-- 218A Liberaware Co., Ltd.｜changepoint🔔｜—｜—｜FAIL_INSEN｜終値1210｜💰—円｜—｜
-- 265A HMCOMM INC｜変化点🔔+changepoint_watch｜—｜—｜FAIL_UWAHIGE｜終値730｜💰—円｜—｜
-- 286A ユカリア｜変化点🔔🔔｜—｜—｜FAIL_UWAHIGE｜終値834｜💰—円｜—｜
-- 3696 セレス｜changepoint+変化点🔔🔔｜—｜—｜FAIL_INSEN｜終値2210｜💰—円｜—｜
-- 3923 Rakus Co., Ltd.｜changepoint🔔🔔｜—｜—｜FAIL_INSEN｜終値1164｜💰—円｜—｜
-- 3994 マネーフォワード｜変化点🔔+changepoint｜—｜—｜FAIL_INSEN｜終値6453｜💰—円｜—｜
-- 4165 PLAID,Inc.｜changepoint🔔｜—｜—｜FAIL_UWAHIGE｜終値744｜💰—円｜—｜
-- 4431 Smaregi, Inc.｜changepoint🔔🔔｜—｜—｜FAIL_UWAHIGE｜終値3805｜💰—円｜—｜
-- 4443 Sansan, Inc.｜変化点🔔+changepoint/変化点🔔🔔｜—｜—｜FAIL_UWAHIGE｜終値2313｜💰—円｜—｜
-- 4475 Hennge K.K.｜changepoint🔔🔔｜—｜—｜FAIL_INSEN｜終値1743｜💰—円｜—｜
-- 4478 freee K.K.｜changepoint🔔🔔｜—｜—｜FAIL_INSEN｜終値4360｜💰—円｜—｜
-- 4483 JMDC Inc.｜変化点🔔🔔｜—｜—｜FAIL_UWAHIGE｜終値3555｜💰—円｜—｜
-- 4493 Cyber Security Cloud, Inc.｜changepoint🔔🔔｜—｜—｜FAIL_INSEN｜終値1940｜💰—円｜—｜
-- 4498 サイバートラスト｜changepoint🔔🔔+changepoint/変化点🔔🔔｜—｜—｜FAIL_INSEN｜終値1375｜💰—円｜—｜
-- 479A PRONI INC｜changepoint🔔+変化点🔔/変化点🔔🔔｜—｜—｜FAIL_INSEN｜終値1991｜💰—円｜—｜
-- 5136 tripla Co., Ltd.｜changepoint🔔🔔｜—｜—｜FAIL_UWAHIGE｜終値2058｜💰—円｜—｜
-- 5590 NETSTARS Co.,Ltd.｜changepoint🔔｜—｜—｜FAIL_INSEN｜終値705｜💰—円｜—｜
-- 584A LiNKX, Inc.｜changepoint🔔+changepoint/変化点🔔/変化点🔔🔔｜—｜—｜FAIL_INSEN｜終値2815｜💰—円｜—｜
-- 598A CHATPLUS CO LTD｜changepoint｜—｜—｜FAIL_INSEN｜終値1627｜💰—円｜—｜
-- 7374 Interworks Confidence Inc.｜changepoint🔔｜—｜—｜FAIL_UWAHIGE｜終値1537｜💰—円｜—｜
-- 7695 交換できるくん｜changepoint+変化点🔔🔔｜—｜—｜FAIL_INSEN｜終値897｜💰—円｜—｜
-- 9343 ibis inc.｜changepoint🔔🔔｜—｜—｜FAIL_INSEN｜終値827｜💰—円｜—｜
+  > 【水準】妥当（4.0/7） — PER15.2倍・PEG0.58・52週100% ／ 💰単元75.7万円
+  > 【戦略】発火日終値7570円の指値。追撃禁止・SL7000円。🔒実弾封印中（PL3紙ログ収集中）／⚠1単元リスク57000円（枠超過）
+- 286A ユカリア｜変化点🔔🔔｜⚡好調｜妥当｜PASS｜終値839｜💰83900円｜changepoint: 839｜⚠日程不明
+  > 📌ヘッドライン
+  > 【業態】医療法人の経営支援や高齢者施設の運営・紹介などを手掛ける。
+  > 【いま】終値839円・直近5日+2.57%（材料未確認）
+  > 【調子】⚡好調（5/13）
+  > 【水準】妥当（3.0/7） — PER18.1倍・PEG0.76・52週52% ／ 💰単元8.4万円
+  > 【戦略】発火日終値839円の指値。追撃禁止・SL801円。🔒実弾封印中（PL3紙ログ収集中）
 
 ## ⚡材料後出し
 その日の足は開示前の情報。判定は参考値
-- 4666 PARK24 Co., Ltd.｜📊11-7月期(3Q累計)経常が20％増益で着地・..｜verdict=FAIL_UWAHIGE｜order_status=None
+- 4099 SHIKOKU KASEI HOLDINGS CORPORATION：📌その他重要開示「自社株買いの実施を発表」
 
 ## 📢開示
-使用したURL: https://kabutan.jp/warning/?mode=4_2 （取引時間中）／ https://kabutan.jp/warning/?mode=4_3 （取引終了後）
-フォールバック: 未使用
-- 3329 東和フード｜📊決算発表｜5-7月期(1Q)経常は21％増益で着地
-- 1718 美樹工業｜📌その他重要開示｜株式分割に伴い配当予想を修正
-- 2266 六甲バタ｜📌その他重要開示｜今期配当を10.5円増額修正
-- 3031 ラクーンＨＤ｜📌その他重要開示｜5-7月期(1Q)経常は12％増益・上期計画を..
-- 4369 トリケミカル｜📢上方修正｜今期経常を一転23％増益に上方修正・最高..
-- 436A サイバＳＯＬ｜📊決算発表｜5-7月期(1Q)最終は7％増益で着地
-- 4666 パーク２４｜📊決算発表｜11-7月期(3Q累計)経常が20％増益で着地・..
-- 4840 トライアイズ｜📢上方修正｜今期経常を一転黒字に上方修正
-- 5805 ＳＷＣＣ｜📌その他重要開示｜株式分割に伴い配当予想を修正
-- 6508 明電舎｜📌その他重要開示｜未定だった上期配当は36円増配
-- 6522 アスタリスク｜📉下方修正｜今期経常を一転赤字に下方修正
-- 8894 レボリューション｜📌その他重要開示｜26年10月期業績を未定に変更
-①-9へ引き渡し1件
+使用URL: https://kabutan.jp/warning/?mode=4_2（取引時間中）／ https://kabutan.jp/warning/?mode=4_3（取引終了後）／ https://kabutan.jp/warning/?mode=4_4（市場速報・15:30以降）
+- 4099 SHIKOKU KASEI HOLDINGS CORPORATION：📌その他重要開示「自社株買いの実施を発表」
+①-9へ引き渡し1件（4099・recalc_queue追加）
 
 ## 総当りゲート
-プール全銘柄をbranch_typeでグループ化し、グループ内は判定別に表示（母集団俯瞰用）。
-- 5手法: 計135件 PASS64 / FAIL_INSEN43 / FAIL_UWAHIGE28
-- グランビル: 計263件 PASS92 / FAIL_UWAHIGE65 / FAIL_INSEN106
-- 変化点: 計30件 PASS8 / FAIL_INSEN14 / FAIL_UWAHIGE8
-
-除籍リスト: 0件（first_seenから30暦日超の該当なし）
+評価444件: PASS 125 / FAIL_UWAHIGE 121 / FAIL_INSEN 198 / SKIP 0
+除籍リスト: 0件（該当なし）
 
 ## 機械詳細
-- pool: 415→428件（新規13・除籍0・未マージPR由来3ブランチ(cpwatch/①-S1/①-S2)を反映）
-- 候補収集: main+未マージ3ブランチから実質候補114件（cross_hit検出5件）
-- SKIP(ステイル): 0件 / データ取得失敗: 0件（Yahoo Finance 429件全件取得成功）
-- gyoseki再計算: 7件（新規プール銘柄のみ、他160件はキャッシュ再利用）
-- valuation static新規: 7件（他160件はキャッシュ再利用、動的層は167件全件を当日終値で再計算）
-- kabutan finance/top ページ新規取得: 14件（7銘柄×2ページ、50件上限に対し36件の余力残）
-- profile_cache: 総数282件（既存のまま）・本夜の新規追加0件（kabutan top ページから業態ブロックを本セッションでは特定できず見送り。次回以降に取得）
-- 業態が「未取得」のまま出た件数: 64
-- ヘッドライン付与件数: 164件（PASS/PASS_DOJI全件と一致）
-- method_score 保持: 56件 / null: 372件
-- earnings_log: 総数4件／本夜追記3件（3329/436A/4666）／リターン補完0件（直近60日以内で経過営業日不足のため）／日足が取れず埋められなかった件数0件
-- gyoseki_cache historyへの退避: 0件（新規7件は既存キャッシュなしのため退避対象外、既存キャッシュのgrade/score変化は今夜なし）
-- pool_bars.json: 431銘柄/362.7KB
-- gate_history: gate_history/2026-08-31.json 新規作成
-- grades.json: 447銘柄/115.1KB
-- 通知抜粋(10件)群別内訳の母集団: method64/granville92/changepoint8/不明0
+- 新規プール銘柄: 16件、既存更新: 48件
+- gyoseki/valuation新規計算: 7銘柄（未キャッシュのため）、他118銘柄は静的層キャッシュ再利用・動的層(PER/PBR/52週位置等)は全125 PASS銘柄で当夜再計算
+- kabutan新規取得: 44/50件上限（打ち切りなし）
+- profile_cache: 総数326件・本夜追加44件・業態『未取得』のまま出た件数0件
+- earnings_log: 総数4件・本夜追記0件（📊決算発表がプール外のため）・リターン補完1件・未補完2件（プール外で日足取得不可）
+- gyoseki history退避: 0件（新規キャッシュのため既存値なし）
+- pool_bars.json: 444銘柄/約383KB
+- 3日ルール判定: 保有0件のため対象外
 - STEP4.8週末ブリーフ: week_open=falseのためスキップ
-- 3日ルール判定（保有銘柄ごと）:
-  - 9304 澁澤倉庫: streak=1 R=2184.0 窓起点=2026-08-03
-  - 3374 内外テック: streak=2 R=4410.0 窓起点=2026-08-25
-  - 4413 ボードルア: streak=0 R=3290.0 窓起点=2026-08-12
-
+- ヘッドライン抜粋件数: 上限なし（PASS全125件に付与）
+- master.json変更行数: 別途PR本文参照

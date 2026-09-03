@@ -6037,8 +6037,8 @@
     "source": "stf_weekly"
    },
    "changepoint_watch": {
-    "generated_at": "2026-09-02T19:16:05+09:00",
-    "trading_day": "2026-09-02",
+    "generated_at": "2026-09-03T19:29:46+09:00",
+    "trading_day": "2026-09-03",
     "status": "done",
     "pool_counts": {
      "shinne_w": 14,
@@ -6056,29 +6056,27 @@
     "fetch_retry_exhausted": [],
     "signals": {
      "bell_bell": 2,
-     "bell": 3,
-     "sub_signal_only": 1
+     "bell": 0,
+     "sub_signal_only": 0
     },
-    "catalyst_found": 1,
-    "catalyst_codes": [
-     "4667"
-    ],
+    "catalyst_found": 0,
+    "catalyst_codes": [],
     "earnings_radar_run": false,
-    "earnings_radar_note": "base_day(2026-09-02・水曜)のためSTEP2.5対象外(月曜のみ実施)。",
+    "earnings_radar_note": "base_day(2026-09-03・木曜)のためSTEP2.5対象外(月曜のみ実施)。",
     "associative_propagation": {
      "triggered_today": false,
      "active": true,
-     "reason": "本日saas_wの検知器発火は0件(全20銘柄が-1.5%〜-6.4%の反落、日経-2.85%の全面安を受けたセクター全体の調整)のため新規の連想強化発動なし。既存の連想強化(fired_on08-26 effective_to09-02／08-27 effective_to09-03／08-28 effective_to09-04／08-31 effective_to09-07)が本日時点でなお有効(08-26起点分は本日が最終有効日)。"
+     "reason": "本日saas_wの検知器発火は0件(全20銘柄が-2.6%〜+6.7%の範囲で方向感なし、決定的な発火なし)のため新規の連想強化発動なし。既存の連想強化(fired_on08-27 effective_to09-03／08-28 effective_to09-04／08-31 effective_to09-07)が本日時点でなお有効(08-27起点分は本日09-03が最終有効日)。"
     },
     "nikkei_allmarket_filter_checked": true,
-    "nikkei_return_pct": -2.8539,
-    "market_context": "全面安の日",
+    "nikkei_return_pct": -0.1728,
+    "market_context": "平常日",
     "nikkei_data_caveat": null,
     "pl3_summary": {
      "pending": 2,
-     "open": 2,
+     "open": 3,
      "closed": 42,
-     "nofill": 11,
+     "nofill": 12,
      "invalid": 4,
      "matured_of_20": 42,
      "new_pending_today": [
@@ -6086,11 +6084,7 @@
       "593A"
      ],
      "excluded_pead": [],
-     "excluded_direction_down": [
-      "218A",
-      "6254",
-      "8697"
-     ]
+     "excluded_direction_down": []
     },
     "assoc_effectiveness": {
      "n_true": 1,
@@ -6100,7 +6094,7 @@
      "avg_r_true": 0.0,
      "avg_r_false": -0.287
     },
-    "memo": "run_at=2026-09-02T19:16:05+09:00; base_day=2026-09-02(通常実行)。日経平均^N225は09-01終値66215.34375→09-02終値64325.640625を直接取得し騰落-2.8539%(全面安の日)。プール横断で6銘柄が何らかの検知器を発火(265AはD1単独で記録のみ、218A・6254・8697はD3単独下方向で🔔、4667はD1(本日)+窓内08-28/08-31のD1∧D2∧D4複合歴で🔔🔔、593AはD1∧D2同日で🔔🔔)。saas_wプール20銘柄は本日ゼロ発火(-1.5%〜-6.4%の反落、全面安の調整日)。既存の連想緩和(08-26/27/28/31起点)はいずれも有効期間内だが該当発火なし(08-26起点分は本日09-02が最終有効日)。4667は15:19のkabutanニュース(軽井沢町から自動運転バス運行事業を受託・支援、後場S高)により⚡材料起点(大型受注・提携)と判定、catalyst除外はせずPL3対象に含めた。593Aはkabutan開示欄に該当なくcatalyst=null(テクニカル起点、TOPIX採用思惑・自動運転テーマの継続)。218A・6254・8697は下方向発火のためPL3対象外(退避警報のみ)。218Aの次回決算は9/11(7営業日後、決算前ラン文脈だが2026-08-14分析でエッジ根拠否定済みにつき加点材料としない)。6254・8697は次回決算発表日取得不可。PL3処理: pending1件(593A、fire_date09-01)を処理し、翌営業日始値2389.0(指値2539.0より有利)で約定。リスク9.75%>8%のため初期SL=entry*0.92=2197.88に頭打ち。既存open8件をentry_date〜base_dayで通し再計算した結果、本日の全面安を受け7件が決済(4488[08-28発火]・4431・218A[08-28発火]はトレール、4488[08-31発火]・5136はSL、5574はトレール、9824は建値、いずれもR=-1.13〜0.0)。6080のみopen継続(現時点含み損益+0.24%)。本日の新規🔔🔔(4667・593A)は上方向かつ決算近接なし(4667は50営業日後、593Aは取得不可)のためいずれもPL3新規pendingとして登録(4667は⚡材料起点、593Aはテクニカル起点)。closed母数はn=42(勝率19.0%・平均R=-0.28)。連想伝播判定: assoc_only=true群 n=1(成熟10未満のため判定不能、前回から変化なし)。保持上限(closed+nofill=53件、上限120件)未到達のため削除なし。5660(shinne_w)・7317(ipo_secondary_w)は継続ステイルスキップ。",
+    "memo": "run_at=2026-09-03T19:29:46+09:00; base_day=2026-09-03(通常実行)。日経平均^N225は09-02終値64325.640625→09-03終値64214.48046875を直接取得し騰落-0.1728%(平常日)。プール横断で検知器が発火したのは4667・593Aの2銘柄のみ(他72銘柄は検知器不発火)。4667は本日D2+D4(D1は陰線のため不成立)、窓内09-02のD1と08-28/08-31のD1∧D2∧D4複合歴を合わせ5営業日以内複合(2検知器以上)で🔔🔔。593AはD1∧D2同日発火で🔔🔔自動成立、4営業日連続。両銘柄ともkabutanニュース欄に該当する開示・材料なし(4667=市況ロールアップのみ、593A=みんかぶ個人投資家予想記事のみ)のためcatalyst=null(テクニカル起点)。次回決算: 4667は11/11(44営業日後、近接なし)、593Aは取得不可。いずれも決算近接による除外なし。市場文脈は平常日(日経-0.17%)のため両銘柄とも個別性ありと判定(超過騰落+16.87pt/+17.61pt)。PL3処理: pending2件を判定。PL3-2026-09-02-4667は翌営業日(09-03)安値3245.0が指値3145.0に届かず不約定(追撃禁止)。PL3-2026-09-02-593Aは翌営業日安値3000.0が指値3040.0以下のため約定、entry_price=3040.0。リスク(3040-2356)/3040=22.5%>8%のため初期SL=entry*0.92=2796.8に頭打ち、r_per_share=243.2、t10_date=2026-09-17。既存open2件(6080・593A[09-01発火])をentry_date〜base_dayで通し再計算した結果、いずれも決済条件に達せずopen継続(6080: current_sl=4110.0[建値]・peak=4330.0・含み損益+1.34%・経過10営業日/10、593A[09-01発火]: current_sl=2857.6[トレール]・peak=3725.0・含み損益+49.43%・経過2営業日/10)。本日の新規🔔🔔(4667・593A)はいずれも上方向・決算近接なし・catalyst=nullのため通常どおりPL3新規pendingとして登録。closed母数は変化なくn=42(勝率19.05%・平均R=-0.28・中央値R=-0.655)。決済理由別: SL16件平均R-1.002、建値7件平均R-0.101、トレール19件平均R+0.262。連想伝播判定: assoc_only=true群 n=1(PL3-2026-08-26-4488、R=0.0)のため成熟10未満で判定不能(前回から変化なし)。false群n=41、平均R-0.287。保持上限(closed+nofill=54件、上限120件)未到達のため削除なし。5660(shinne_w)・7317(ipo_secondary_w)は継続ステイルスキップ(件数不変)。",
     "source": "changepoint_watch"
    },
    "night_gate": {
@@ -8695,39 +8689,41 @@
   "results": [
    {
     "code": "4667",
-    "name": "Aisan Technology Co.,Ltd.",
-    "close": 3145.0,
+    "name": "アイサンテクノロジー",
+    "close": 3670.0,
     "detectors": [
-     "D1"
+     "D2",
+     "D4"
     ],
     "signal": "🔔🔔",
-    "vol_ratio": 7.7406,
-    "dev25": 48.9194,
-    "w52_pos": 98.8636,
-    "excess_pct": 21.85,
+    "vol_ratio": 9.6512,
+    "dev25": 67.7178,
+    "w52_pos": 92.8131,
+    "excess_pct": 16.87,
     "beta_context": false,
-    "earnings_within": 50,
-    "catalyst": "大型受注・提携",
-    "catalyst_time": "2026-09-02T15:19",
-    "catalyst_headline": "アイサンテクが後場Ｓ高、軽井沢町から自動運転バス運行事業を受託・支援",
+    "earnings_within": 44,
+    "catalyst": null,
+    "catalyst_time": null,
+    "catalyst_headline": null,
     "relax_active": false,
     "assoc_only": false,
-    "note": "D1単独(本日)、窓内08-28/08-31にD1∧D2∧D4の複合発火歴ありのため🔔🔔(5営業日以内の複合発火)。当日+18.99%(市場超過+21.85pt・全面安日にもかかわらず個別性あり)。⚡材料起点(大型受注・提携15:19)によりPL3対象(高値掴みリスク注記あり)。次回決算11/11(50営業日後)で近接なし。",
-    "scored_at": "2026-09-02"
+    "note": "本日D2+D4発火(D1は陰線のため不成立)。窓内(09-02のD1、08-28/08-31のD1∧D2∧D4)を合わせ5営業日以内複合発火(2検知器以上)で🔔🔔成立。当日+16.69%(市場超過+16.87pt・平常日)で個別性あり。次回決算11/11(44営業日後)。catalyst=null(テクニカル起点、自動運転関連連想の継続)。PL3対象。",
+    "scored_at": "2026-09-03"
    },
    {
     "code": "593A",
-    "name": "Tier IV, Inc.",
-    "close": 3040.0,
+    "name": "ティアフォー",
+    "close": 3570.0,
     "detectors": [
      "D1",
-     "D2"
+     "D2",
+     "D4"
     ],
     "signal": "🔔🔔",
-    "vol_ratio": 4.1953,
-    "dev25": 136.6201,
-    "w52_pos": 100.0,
-    "excess_pct": 22.59,
+    "vol_ratio": 3.9743,
+    "dev25": 157.6948,
+    "w52_pos": 94.569,
+    "excess_pct": 17.61,
     "beta_context": false,
     "earnings_within": null,
     "catalyst": null,
@@ -8735,74 +8731,8 @@
     "catalyst_headline": null,
     "relax_active": false,
     "assoc_only": false,
-    "note": "D1∧D2同日発火により🔔🔔(3営業日連続)。当日+19.73%(市場超過+22.59pt・全面安日にもかかわらず個別性あり)。TOPIX採用思惑・自動運転テーマの物色継続だがkabutan開示欄に該当なくcatalyst=null(テクニカル起点)。次回決算発表日は取得不可。PL3対象。",
-    "scored_at": "2026-09-02"
-   },
-   {
-    "code": "218A",
-    "name": "Liberaware Co., Ltd.",
-    "close": 1172.0,
-    "detectors": [
-     "D3"
-    ],
-    "signal": "🔔",
-    "vol_ratio": 1.1293,
-    "dev25": 6.868,
-    "w52_pos": 21.5904,
-    "excess_pct": -0.21,
-    "beta_context": true,
-    "earnings_within": 7,
-    "catalyst": null,
-    "catalyst_time": null,
-    "catalyst_headline": null,
-    "relax_active": false,
-    "assoc_only": false,
-    "note": "D3単独発火(下方向)により🔔。当日-3.06%(市場超過-0.21pt・全面安日のため市場β文脈)。窓内08-28のD3と同一検知器のため複合不成立。次回決算9/11(7営業日後、決算前ラン文脈だが2026-08-14分析によりエッジ根拠なし=加点材料としない)。下方向のためPL3対象外(退避警報のみ)。catalyst=null。",
-    "scored_at": "2026-09-02"
-   },
-   {
-    "code": "6254",
-    "name": "野村マイクロ・サイエンス",
-    "close": 3315.0,
-    "detectors": [
-     "D3"
-    ],
-    "signal": "🔔",
-    "vol_ratio": 0.8602,
-    "dev25": -12.5837,
-    "w52_pos": 26.727,
-    "excess_pct": -2.02,
-    "beta_context": true,
-    "earnings_within": null,
-    "catalyst": null,
-    "catalyst_time": null,
-    "catalyst_headline": null,
-    "relax_active": false,
-    "assoc_only": false,
-    "note": "D3単独発火(下方向)により🔔。当日-4.88%(市場超過-2.02pt・全面安日のため市場β文脈)。窓内に既発火なし(単発)。次回決算発表日は取得不可。下方向のためPL3対象外(退避警報のみ)。catalyst=null。",
-    "scored_at": "2026-09-02"
-   },
-   {
-    "code": "8697",
-    "name": "日本取引所グループ",
-    "close": 2145.5,
-    "detectors": [
-     "D3"
-    ],
-    "signal": "🔔",
-    "vol_ratio": 1.4667,
-    "dev25": -4.1443,
-    "w52_pos": 75.3079,
-    "excess_pct": -0.35,
-    "beta_context": true,
-    "earnings_within": null,
-    "catalyst": null,
-    "catalyst_time": null,
-    "catalyst_headline": null,
-    "relax_active": false,
-    "assoc_only": false,
-    "note": "D3単独発火(下方向)により🔔。当日-3.20%(市場超過-0.35pt・全面安日のため市場β文脈)。窓内に既発火なし(単発)。次回決算発表日は取得不可。下方向のためPL3対象外(退避警報のみ)。catalyst=null。",
-    "scored_at": "2026-09-02"
+    "note": "D1∧D2同日発火により🔔🔔自動成立(4営業日連続)。当日+17.43%(市場超過+17.61pt・平常日)で個別性あり。次回決算日程は取得不可。catalyst=null(テクニカル起点、みんかぶ個人投資家予想記事のみ・TOPIX採用/自動運転連想の継続)。PL3対象。",
+    "scored_at": "2026-09-03"
    }
   ],
   "log": [
@@ -12447,6 +12377,39 @@
     "note": "D1単独発火(窓内複合不成立)のためipo_secondary_wルールでは記録のみ。当日+5.95%(市場超過+8.80pt・全面安日でも個別性あり)。"
    },
    {
+    "trading_day": "2026-09-03",
+    "code": "4667",
+    "pool": "shinne_w",
+    "detectors": [
+     "D2",
+     "D4"
+    ],
+    "signal": "🔔🔔",
+    "beta_context": false,
+    "relax_active": false,
+    "assoc_only": false,
+    "catalyst": null,
+    "catalyst_time": null,
+    "note": "本日D2+D4発火(D1は陰線のため不成立)。窓内09-02のD1・08-28/08-31のD1∧D2∧D4複合歴により5営業日以内複合(2検知器以上)で🔔🔔。当日+16.69%(市場超過+16.87pt・平常日)。次回決算11/11(44営業日後)。catalyst=null。PL3対象。"
+   },
+   {
+    "trading_day": "2026-09-03",
+    "code": "593A",
+    "pool": "ipo_secondary_w",
+    "detectors": [
+     "D1",
+     "D2",
+     "D4"
+    ],
+    "signal": "🔔🔔",
+    "beta_context": false,
+    "relax_active": false,
+    "assoc_only": false,
+    "catalyst": null,
+    "catalyst_time": null,
+    "note": "D1∧D2同日発火により🔔🔔自動成立(4営業日連続)。当日+17.43%(市場超過+17.61pt・平常日)。決算日程取得不可。catalyst=null。PL3対象。"
+   },
+   {
     "type": "assoc_relax",
     "fired_on": "2026-08-13",
     "origin_codes": [
@@ -13015,10 +12978,10 @@
     "pnl_pct": null,
     "max_fav_pct": null,
     "max_adv_pct": null,
-    "note": "2026-08-28時点open継続。current_sl=4110.0(建値)、peak=4330.0、含み損益3.41%、経過6営業日/10。 [2026-08-31時点] status=open継続。current_sl=4110.0 peak=4330.0 経過7営業日/10 含み損益4.62% (終値4300.0)。 [2026-09-01時点] status=open継続。current_sl=4110.0 peak=4330.0 経過8営業日/10 含み損益2.92% (終値4230.0)。 [2026-09-02時点] status=open継続。current_sl=4110.0 peak=4330.0 経過9営業日/10 含み損益0.24% (終値4120.0)。",
+    "note": "2026-08-28時点open継続。current_sl=4110.0(建値)、peak=4330.0、含み損益3.41%、経過6営業日/10。 [2026-08-31時点] status=open継続。current_sl=4110.0 peak=4330.0 経過7営業日/10 含み損益4.62% (終値4300.0)。 [2026-09-01時点] status=open継続。current_sl=4110.0 peak=4330.0 経過8営業日/10 含み損益2.92% (終値4230.0)。 [2026-09-02時点] status=open継続。current_sl=4110.0 peak=4330.0 経過9営業日/10 含み損益0.24% (終値4120.0)。 [2026-09-03時点] status=open継続。current_sl=4110.0 peak=4330.0 経過10営業日/10 含み損益1.34% (終値4165.0)。",
     "current_sl": 4110.0,
     "peak": 4330.0,
-    "unrealized_pnl_pct": 0.24
+    "unrealized_pnl_pct": 1.34
    },
    {
     "id": "PL3-2026-08-20-3696",
@@ -14559,10 +14522,10 @@
     "pnl_pct": null,
     "max_fav_pct": null,
     "max_adv_pct": null,
-    "note": "2026-09-01発火。翌営業日に指値2539.0で仮想エントリー待ち。 [2026-09-02処理] 発火翌営業日始値2389.0で寄付約定(指値2539.0より有利)。初期SL=fire_low 2156.0(リスク9.75%>8%のため初期SL=entry*0.92=2197.88)。 [2026-09-02時点] status=open継続。current_sl=2197.88 peak=3040.0 経過1営業日/10 含み損益27.25% (終値3040.0)。",
-    "current_sl": 2197.88,
-    "peak": 3040.0,
-    "unrealized_pnl_pct": 27.25
+    "note": "2026-09-01発火。翌営業日に指値2539.0で仮想エントリー待ち。 [2026-09-02処理] 発火翌営業日始値2389.0で寄付約定(指値2539.0より有利)。初期SL=fire_low 2156.0(リスク9.75%>8%のため初期SL=entry*0.92=2197.88)。 [2026-09-02時点] status=open継続。current_sl=2197.88 peak=3040.0 経過1営業日/10 含み損益27.25% (終値3040.0)。 [2026-09-03時点] status=open継続。current_sl=2857.6 peak=3725.0 経過2営業日/10 含み損益49.43% (終値3570.0)。",
+    "current_sl": 2857.6,
+    "peak": 3725.0,
+    "unrealized_pnl_pct": 49.43
    },
    {
     "id": "PL3-2026-09-02-4667",
@@ -14581,7 +14544,7 @@
     "assoc_only": false,
     "fire_close": 3145.0,
     "fire_low": 2500.0,
-    "status": "pending",
+    "status": "nofill",
     "entry_date": null,
     "entry_price": null,
     "initial_sl": null,
@@ -14589,12 +14552,12 @@
     "t10_date": null,
     "exit_date": null,
     "exit_price": null,
-    "exit_reason": null,
+    "exit_reason": "不約定(追撃禁止)",
     "r_multiple": null,
     "pnl_pct": null,
     "max_fav_pct": null,
     "max_adv_pct": null,
-    "note": "2026-09-02発火。D1単独(本日)+窓内08-28/08-31のD1∧D2∧D4複合発火歴により🔔🔔(5営業日以内の複合発火)。⚡材料起点(大型受注・提携・15:19、軽井沢町から自動運転バス運行事業を受託)。翌営業日に指値3145.0で仮想エントリー待ち。"
+    "note": "2026-09-02発火。D1単独(本日)+窓内08-28/08-31のD1∧D2∧D4複合発火歴により🔔🔔(5営業日以内の複合発火)。⚡材料起点(大型受注・提携・15:19、軽井沢町から自動運転バス運行事業を受託)。翌営業日に指値3145.0で仮想エントリー待ち。 [2026-09-03処理] 発火翌営業日(2026-09-03)の安値3245.0が指値3145.0に届かず不約定。"
    },
    {
     "id": "PL3-2026-09-02-593A",
@@ -14614,6 +14577,42 @@
     "assoc_only": false,
     "fire_close": 3040.0,
     "fire_low": 2356.0,
+    "status": "open",
+    "entry_date": "2026-09-03",
+    "entry_price": 3040.0,
+    "initial_sl": 2796.8,
+    "r_per_share": 243.2,
+    "t10_date": "2026-09-17",
+    "exit_date": null,
+    "exit_price": null,
+    "exit_reason": null,
+    "r_multiple": null,
+    "pnl_pct": null,
+    "max_fav_pct": null,
+    "max_adv_pct": null,
+    "note": "2026-09-02発火。D1∧D2同日発火により🔔🔔(3営業日連続の🔔🔔、テクニカル起点・TOPIX採用思惑と自動運転テーマ物色の継続)。catalyst=null(kabutan開示欄に該当なし)。次回決算発表日は取得不可。翌営業日に指値3040.0で仮想エントリー待ち。 [2026-09-03処理] 発火翌営業日指値到達3040.0で約定。リスク22.50%>8%のため初期SL=entry*0.92=2796.8。 [2026-09-03時点] status=open継続。current_sl=2796.8 peak=3725.0 経過1営業日/10 含み損益17.43% (終値3570.0)。",
+    "current_sl": 2796.8,
+    "peak": 3725.0,
+    "unrealized_pnl_pct": 17.43
+   },
+   {
+    "id": "PL3-2026-09-03-4667",
+    "code": "4667",
+    "name": "アイサンテクノロジー",
+    "pool": "shinne_w",
+    "fire_date": "2026-09-03",
+    "signal": "🔔🔔",
+    "detectors": [
+     "D2",
+     "D4"
+    ],
+    "catalyst": null,
+    "catalyst_time": null,
+    "beta_context": false,
+    "relax_active": false,
+    "assoc_only": false,
+    "fire_close": 3670.0,
+    "fire_low": 3245.0,
     "status": "pending",
     "entry_date": null,
     "entry_price": null,
@@ -14627,7 +14626,41 @@
     "pnl_pct": null,
     "max_fav_pct": null,
     "max_adv_pct": null,
-    "note": "2026-09-02発火。D1∧D2同日発火により🔔🔔(3営業日連続の🔔🔔、テクニカル起点・TOPIX採用思惑と自動運転テーマ物色の継続)。catalyst=null(kabutan開示欄に該当なし)。次回決算発表日は取得不可。翌営業日に指値3040.0で仮想エントリー待ち。"
+    "note": "2026-09-03発火。本日D2+D4(D1は陰線のため不成立)+窓内09-02のD1により5営業日以内複合発火(2検知器以上)で🔔🔔。catalyst=null(テクニカル起点)。翌営業日に指値3670.0で仮想エントリー待ち。"
+   },
+   {
+    "id": "PL3-2026-09-03-593A",
+    "code": "593A",
+    "name": "ティアフォー",
+    "pool": "ipo_secondary_w",
+    "fire_date": "2026-09-03",
+    "signal": "🔔🔔",
+    "detectors": [
+     "D1",
+     "D2",
+     "D4"
+    ],
+    "catalyst": null,
+    "catalyst_time": null,
+    "beta_context": false,
+    "relax_active": false,
+    "assoc_only": false,
+    "fire_close": 3570.0,
+    "fire_low": 3000.0,
+    "status": "pending",
+    "entry_date": null,
+    "entry_price": null,
+    "initial_sl": null,
+    "r_per_share": null,
+    "t10_date": null,
+    "exit_date": null,
+    "exit_price": null,
+    "exit_reason": null,
+    "r_multiple": null,
+    "pnl_pct": null,
+    "max_fav_pct": null,
+    "max_adv_pct": null,
+    "note": "2026-09-03発火。D1∧D2同日発火により🔔🔔自動成立(4営業日連続)。catalyst=null(テクニカル起点)。翌営業日に指値3570.0で仮想エントリー待ち。"
    }
   ]
  },

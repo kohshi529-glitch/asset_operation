@@ -249,6 +249,7 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 <button id='tab-changepoint' onclick="switchTab('changepoint')">🔔変化点</button>
 <button id='tab-methods' onclick="switchTab('methods')">📋5手法</button>
 <button id='tab-granville' onclick="switchTab('granville')">📐グランビル</button>
+<button id='tab-watch' onclick="switchTab('watch')">👀ウォッチ</button>
 </div>
 <!-- 業績グレードの凡例（全タブ共通。既定は畳んでスペースを食わない） -->
 <details class='gylegend'><summary>📊 業績グレードの凡例</summary><div class='gylegendbody'>🚀確変11-13 / 🔥絶好調8-10 / ⚡好調5-7 / ✅順調3-4 / ➖横ばい2 / ⚠減速0-1 / 🔻悪化(減益20%超・赤字転落) — 13点満点。売上成長・利益成長・営業レバレッジ・直近Q加速・進捗率の5軸。業績の状態のみを示し株価の割高割安は見ていない</div></details>
@@ -260,6 +261,7 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 <div id='panel-changepoint' class='panel'></div>
 <div id='panel-methods' class='panel'></div>
 <div id='panel-granville' class='panel'></div>
+<div id='panel-watch' class='panel'></div>
 <footer>board.html ／ 唯一の正 master.json から描画。候補は各手法ルーティンのPRマージで更新される。</footer>
 </div>
 <button class='fab' id='backtab' onclick='scrollToTabbar()' aria-label='タブバーへ戻る'>▲タブへ戻る</button>
@@ -491,7 +493,7 @@ function scrollToTabbar(){
   scrollToY(absTop(tb)-TAB_OFFSET);
 }
 function switchTab(which){
-  ['nightgate','changepoint','methods','granville'].forEach(t=>{
+  ['nightgate','changepoint','methods','granville','watch'].forEach(t=>{
     const p=document.getElementById('panel-'+t), b=document.getElementById('tab-'+t);
     if(!p||!b)return;
     const on=(t===which);
@@ -1255,6 +1257,67 @@ function renderChangepoint(d,runs){
   });
 }
 
+// ===== 👀候補ウォッチ（①-12 が master.json.watchlist に書く。買い時レジームで分類・継続監視） =====
+function watchClassChip(wc){
+  const col={'待ち':'#7fe3d6','即断':'#c9a24a','両面':'#e08a5b'};
+  const c=col[wc]||'#8fb3ad';
+  return `<span class='brchip' style='border-color:${c};color:${c}'>${esc(fld(wc))}</span>`;
+}
+function watchStatusLabel(e){
+  const s=e.status, sig=fld(e.signal);
+  if(s==='pullback_ready') return '🔻'+(e.signal||'押し目到達');
+  if(s==='judge_now') return '🎯'+(e.signal||'本日判断');
+  if(s==='watching') return '👀'+(e.signal||'監視中');
+  return esc(fld(s));
+}
+function renderWatch(d,runs){
+  return safeSection('sec-watch','👀 候補ウォッチ',()=>{
+    const wl=d.watchlist;
+    if(!wl||!Array.isArray(wl.entries)){
+      return `<section class='mth' id='sec-watch'>
+        <div class='mhead'><span>👀</span><span class='mname'>👀 候補ウォッチ</span></div>
+        <div class='empty'>①-12 未反映（master.json に watchlist がまだありません）</div>
+        <a class='totop' onclick='scrollTop()'>▲タブへ</a>
+      </section>`;
+    }
+    const entries=wl.entries.slice();
+    const prio={pullback_ready:0,judge_now:1,watching:2};
+    entries.sort((a,b)=>{
+      const pa=(prio[a.status]===undefined?9:prio[a.status]), pb=(prio[b.status]===undefined?9:prio[b.status]);
+      return (pa-pb)||((a.days_watched||0)-(b.days_watched||0));
+    });
+    const rows=entries.map(e=>{
+      const nm=`<span class='code'>${esc(fld(e.code))}</span> ${esc(fld(e.name))}`;
+      let dist='—';
+      if(e.dist_to_zone_pct!=null) dist=(Number(e.dist_to_zone_pct)<=0)?'到達':('あと'+Number(e.dist_to_zone_pct).toFixed(1)+'%');
+      const lc=(e.last_close==null)?'—':esc(e.last_close);
+      const dw=(e.days_watched==null)?'—':(esc(e.days_watched)+'日');
+      return `<tr><td>${nm}</td><td>${watchClassChip(e.watch_class)}</td><td>${watchStatusLabel(e)}</td><td>${dw}</td><td>${lc}</td><td>${esc(dist)}</td><td>${esc(fld(e.seed_grade))}</td></tr>`;
+    }).join('');
+    const cnt=entries.length;
+    const pr=entries.filter(e=>e.status==='pullback_ready').length;
+    const jn=entries.filter(e=>e.status==='judge_now').length;
+    const wa=entries.filter(e=>e.status==='watching').length;
+    const r=runs.watch_tracker;
+    const fresh=(r&&r.status==='done')?`最終実行 <b>${esc(r.trading_day)}</b>`:(wl.base_day?`base_day <b>${esc(wl.base_day)}</b>`:'');
+    const closed=Array.isArray(wl.closed)?wl.closed.slice(-10).reverse():[];
+    const closedHTML=closed.length
+      ? `<details class='cfold'><summary>最近クローズ（${closed.length}）</summary><table class='ctable'><thead><tr><th>銘柄</th><th>結果</th><th>理由</th></tr></thead><tbody>${closed.map(c=>`<tr><td><span class='code'>${esc(fld(c.code))}</span> ${esc(fld(c.name))}</td><td>${esc(fld(c.status))}</td><td>${esc(fld(c.status_reason||c.closed_reason))}</td></tr>`).join('')}</tbody></table></details>`
+      : '';
+    const note=`<div class='cpnote'>①-8提案を買い時レジームで分類（待ち=押し目待ち／即断=当日判断／両面）。🔻押し目到達・🎯本日判断は買い場の合図。全て提案であり最終判断はユーザー。</div>`;
+    const body=cnt
+      ? `<table class='ctable'><thead><tr><th>銘柄</th><th>型</th><th>状態</th><th>経過</th><th>現値</th><th>押し目</th><th>業績</th></tr></thead><tbody>${rows}</tbody></table>`
+      : `<div class='empty'>監視中の候補なし</div>`;
+    return `<section class='mth' id='sec-watch'>
+      <div class='mhead'><span>👀</span><span class='mname'>👀 候補ウォッチ</span><span class='cnt'>到達${pr}／判断${jn}／監視${wa}</span><span class='fresh'>${fresh}</span></div>
+      ${note}
+      ${body}
+      ${closedHTML}
+      <a class='totop' onclick='scrollTop()'>▲タブへ</a>
+    </section>`;
+  });
+}
+
 // ===== メイン描画 =====
 function render(d){
   const spec=(d.scoring_spec&&d.scoring_spec.methods)||{};
@@ -1351,6 +1414,9 @@ function render(d){
   try{ g=renderGranville(cands,spec,runs); }
   catch(e){ g=`<section class='gblock'><div class='err'>グランビル枠の描画でエラー: ${esc((e&&e.message)||e)}</div></section>`; }
   document.getElementById('panel-granville').innerHTML=jump2+g;
+
+  // ===== タブ⑤: 👀候補ウォッチ（master.json.watchlist を描画。①-12 が更新） =====
+  document.getElementById('panel-watch').innerHTML=renderWatch(d,runs);
 }
 
 fetch(RAW_URL,{cache:"no-store"}).then(r=>r.ok?r.json():Promise.reject(r.status)).then(render)

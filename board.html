@@ -246,10 +246,10 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 <!-- メインタブバー（①ゲート/②変化点/③5手法/④グランビル）。id付与でタブ着地位置の基準に使う -->
 <div class='maintabs' id='maintabs'>
 <button id='tab-nightgate' class='active' onclick="switchTab('nightgate')">🚪ゲート</button>
+<button id='tab-watch' onclick="switchTab('watch')">👀ウォッチ</button>
 <button id='tab-changepoint' onclick="switchTab('changepoint')">🔔変化点</button>
 <button id='tab-methods' onclick="switchTab('methods')">📋5手法</button>
 <button id='tab-granville' onclick="switchTab('granville')">📐グランビル</button>
-<button id='tab-watch' onclick="switchTab('watch')">👀ウォッチ</button>
 </div>
 <!-- 業績グレードの凡例（全タブ共通。既定は畳んでスペースを食わない） -->
 <details class='gylegend'><summary>📊 業績グレードの凡例</summary><div class='gylegendbody'>🚀確変11-13 / 🔥絶好調8-10 / ⚡好調5-7 / ✅順調3-4 / ➖横ばい2 / ⚠減速0-1 / 🔻悪化(減益20%超・赤字転落) — 13点満点。売上成長・利益成長・営業レバレッジ・直近Q加速・進捗率の5軸。業績の状態のみを示し株価の割高割安は見ていない</div></details>
@@ -258,10 +258,10 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 <!-- ゲート判定・乖離率の凡例（既定は畳む。改修7） -->
 <details class='vallegend'><summary>🚪 ゲート判定・乖離率の凡例</summary><div class='vallegendbody'>✅陽線=当日終値&gt;始値かつ上髭が小さい／✅十字線反転=実体極小で直近5日-5%以上下落＝下げ後の反転期待／✅S高=値幅ゼロで前日比プラス／❌上髭=陽線だが上値を叩かれた形／❌陰線=当日終値が始値を下回った＝需給が売り優勢でゲートの前提を満たさない／－SKIP=当日分の株価データが取れず判定不能。判定は当日足の形だけを見ており業績・株価水準は別軸<br>乖離率=提案価格が当日終値からどれだけ離れているか。押し目系はマイナス(到達待ち)、モメ系はプラス(上抜け待ち)。リバ系・変化点系は指値＝当日終値のため表示しない</div></details>
 <div id='panel-nightgate' class='panel active'></div>
+<div id='panel-watch' class='panel'></div>
 <div id='panel-changepoint' class='panel'></div>
 <div id='panel-methods' class='panel'></div>
 <div id='panel-granville' class='panel'></div>
-<div id='panel-watch' class='panel'></div>
 <footer>board.html ／ 唯一の正 master.json から描画。候補は各手法ルーティンのPRマージで更新される。</footer>
 </div>
 <button class='fab' id='backtab' onclick='scrollToTabbar()' aria-label='タブバーへ戻る'>▲タブへ戻る</button>
@@ -1257,18 +1257,52 @@ function renderChangepoint(d,runs){
   });
 }
 
-// ===== 👀候補ウォッチ（①-12 が master.json.watchlist に書く。買い時レジームで分類・継続監視） =====
+// ===== 👀候補ウォッチ（①-12 が master.json.watchlist に書く。ゲートと同じ5行カードで縦に一覧） =====
 function watchClassChip(wc){
-  const col={'待ち':'#7fe3d6','即断':'#c9a24a','両面':'#e08a5b'};
+  const col={'待ち':'#7fe3d6','即断':'#e8c766','両面':'#e08a5b'};
   const c=col[wc]||'#8fb3ad';
-  return `<span class='brchip' style='border-color:${c};color:${c}'>${esc(fld(wc))}</span>`;
+  return `<span class='brchip' style='border-color:${c};color:${c}' title='買い時レジーム'>${esc(fld(wc))}</span>`;
 }
-function watchStatusLabel(e){
-  const s=e.status, sig=fld(e.signal);
-  if(s==='pullback_ready') return '🔻'+(e.signal||'押し目到達');
-  if(s==='judge_now') return '🎯'+(e.signal||'本日判断');
-  if(s==='watching') return '👀'+(e.signal||'監視中');
-  return esc(fld(s));
+// 状態チップ（判定行の先頭＝ゲート判定の位置に置く）。押し目到達=緑／本日判断=黄／監視=灰。
+function watchStatusChip(e){
+  const s=e.status, sig=String(e.signal||'');
+  if(s==='pullback_ready'){
+    const wait=sig.indexOf('相場待ち')>=0;
+    return `<span class='brchip' style='${wait?"color:#e8c766;border-color:#5c5324;background:#2e2a17":""}'>🔻${wait?'押し目到達(相場待ち)':'押し目到達(買い場)'}</span>`;
+  }
+  if(s==='judge_now'){
+    const conf=sig.indexOf('確認中')>=0;
+    return `<span class='lockchip'>🎯${conf?'確認中':'本日判断'}</span>`;
+  }
+  if(s==='watching') return `<span class='memochip'>👀押し目待ち</span>`;
+  return `<span class='memochip'>${esc(fld(s))}</span>`;
+}
+function wPct(a,b){ // a/b-1 を % 表示（符号付き・小数1桁）。欠損は —
+  if(a==null||b==null||!b) return '—';
+  const v=(a/b-1)*100; return (v>0?'+':'')+v.toFixed(1)+'%';
+}
+function watchCard(e){
+  const days=(e.days_watched==null)?'—':(e.days_watched+'日');
+  let dist='—';
+  if(e.dist_to_zone_pct!=null) dist=(Number(e.dist_to_zone_pct)<=0)?'到達':('あと'+Number(e.dist_to_zone_pct).toFixed(1)+'%');
+  const hpct=wPct(e.last_close,e.ref_high), mapct=wPct(e.last_close,e.ma25);
+  const sep=`<span class='ssep'>/</span>`;
+  // 行2: 型（待ち/即断/両面）＋手法＋経過日数
+  const methodHtml=`${watchClassChip(e.watch_class)}${e.branch?branchChip(e.branch):''}<span class='memochip'>経過${esc(days)}</span>`;
+  // 行5: 監視の主要数値（縦カードなので横スクロール無し）。「押し目まで」は待ちアームの指標なので即断型では出さない。
+  const hasPull=(e.watch_class==='待ち'||e.watch_class==='両面');
+  const propHtml=(hasPull?`<span class='vtxt'>押し目まで <b class='hl'>${esc(dist)}</b></span>${sep}`:'')
+    +`<span class='vtxt'>高値比 ${esc(hpct)}</span>${sep}<span class='vtxt'>25MA比 ${esc(mapct)}</span>`;
+  // 行6: 要約コメント（①-12の signal 文＝水準・業績・市況の要約）＋シード情報
+  const sig=(e.signal&&String(e.signal).trim())?`<div class='sum'>${esc(e.signal)}</div>`:'';
+  const reason=(e.status_reason)?`<div class='sum'>${esc(e.status_reason)}</div>`:'';
+  const seed=`<div class='smeta'>シード ${esc(fld(e.seed_day))}${e.seed_price!=null?' @'+esc(e.seed_price):''}${e.seed_grade?'　業績(シード時) '+esc(e.seed_grade):''}</div>`;
+  return card5({code:e.code,name:e.name,close:e.last_close,
+    methodHtml:methodHtml,
+    earnHtml:'',
+    judgeHtml:judgeRow(watchStatusChip(e),e.code),  // 状態｜業績｜値頃感（ゲートと同じ3チップ）
+    propHtml:propHtml,
+    bodyHtml:sig+reason+seed});
 }
 function renderWatch(d,runs){
   return safeSection('sec-watch','👀 候補ウォッチ',()=>{
@@ -1281,35 +1315,38 @@ function renderWatch(d,runs){
       </section>`;
     }
     const entries=wl.entries.slice();
-    const prio={pullback_ready:0,judge_now:1,watching:2};
-    entries.sort((a,b)=>{
-      const pa=(prio[a.status]===undefined?9:prio[a.status]), pb=(prio[b.status]===undefined?9:prio[b.status]);
-      return (pa-pb)||((a.days_watched||0)-(b.days_watched||0));
+    const byDays=(a,b)=>((a.days_watched||0)-(b.days_watched||0));
+    const pr=entries.filter(e=>e.status==='pullback_ready').sort(byDays);
+    const jn=entries.filter(e=>e.status==='judge_now').sort(byDays);
+    // 監視継続は「押し目まで近い順」（あと一歩が上に来る）
+    const wa=entries.filter(e=>e.status==='watching').sort((a,b)=>{
+      const da=(a.dist_to_zone_pct==null)?1e9:Number(a.dist_to_zone_pct), db=(b.dist_to_zone_pct==null)?1e9:Number(b.dist_to_zone_pct);
+      return da-db;
     });
-    const rows=entries.map(e=>{
-      const nm=`<span class='code'>${esc(fld(e.code))}</span> ${esc(fld(e.name))}`;
-      let dist='—';
-      if(e.dist_to_zone_pct!=null) dist=(Number(e.dist_to_zone_pct)<=0)?'到達':('あと'+Number(e.dist_to_zone_pct).toFixed(1)+'%');
-      const lc=(e.last_close==null)?'—':esc(e.last_close);
-      const dw=(e.days_watched==null)?'—':(esc(e.days_watched)+'日');
-      return `<tr><td>${nm}</td><td>${watchClassChip(e.watch_class)}</td><td>${watchStatusLabel(e)}</td><td>${dw}</td><td>${lc}</td><td>${esc(dist)}</td><td>${esc(fld(e.seed_grade))}</td></tr>`;
-    }).join('');
-    const cnt=entries.length;
-    const pr=entries.filter(e=>e.status==='pullback_ready').length;
-    const jn=entries.filter(e=>e.status==='judge_now').length;
-    const wa=entries.filter(e=>e.status==='watching').length;
+    const other=entries.filter(e=>['pullback_ready','judge_now','watching'].indexOf(e.status)<0);
     const r=runs.watch_tracker;
     const fresh=(r&&r.status==='done')?`最終実行 <b>${esc(r.trading_day)}</b>`:(wl.base_day?`base_day <b>${esc(wl.base_day)}</b>`:'');
-    const closed=Array.isArray(wl.closed)?wl.closed.slice(-10).reverse():[];
+    const sum=`<div class='ngsum'>
+      <span class='ngchip pass'>🔻押し目到達 <b>${pr.length}</b></span>
+      <span class='ngchip'>🎯本日判断 <b>${jn.length}</b></span>
+      <span class='ngchip'>👀監視 <b>${wa.length}</b></span>
+    </div>`;
+    const note=`<div class='cpnote'>①-8提案を買い時レジームで分類し日足で追跡。待ち=押し目待ち／即断=当日判断／両面=両方。判定行は 状態｜業績｜値頃感。全て提案であり最終判断はユーザー。</div>`;
+    const sec=(title,arr,emptyMsg)=>`<div class='section' style='margin:14px 0'>
+      <div class='mhead'><span class='mname'>${title}</span><span class='cnt'>${arr.length}件</span></div>
+      ${arr.length?arr.map(watchCard).join(''):`<div class='empty'>${emptyMsg}</div>`}
+    </div>`;
+    const body=sec('🔻 押し目到達（買い場の合図）',pr,'押し目到達なし')
+      + sec('🎯 本日判断・確認中（即断型）',jn,'本日判断なし')
+      + sec('👀 監視継続（押し目待ち・近い順）',wa,'監視中なし')
+      + (other.length?sec('その他',other,''):'');
+    const closed=Array.isArray(wl.closed)?wl.closed.slice(-15).reverse():[];
     const closedHTML=closed.length
-      ? `<details class='cfold'><summary>最近クローズ（${closed.length}）</summary><table class='ctable'><thead><tr><th>銘柄</th><th>結果</th><th>理由</th></tr></thead><tbody>${closed.map(c=>`<tr><td><span class='code'>${esc(fld(c.code))}</span> ${esc(fld(c.name))}</td><td>${esc(fld(c.status))}</td><td>${esc(fld(c.status_reason||c.closed_reason))}</td></tr>`).join('')}</tbody></table></details>`
+      ? `<details class='cfold'><summary>最近クローズ（${closed.length}件）</summary>${closed.map(c=>`<div class='scard dim'><div class='srow s1'><span class='code'>${esc(fld(c.code))}</span><span class='cname'>${esc(fld(c.name))}</span></div><div class='srow'><span class='memochip'>${esc(fld(c.status))}</span><span class='vtxt'>${esc(fld(c.status_reason||c.closed_reason))}</span></div></div>`).join('')}</details>`
       : '';
-    const note=`<div class='cpnote'>①-8提案を買い時レジームで分類（待ち=押し目待ち／即断=当日判断／両面）。🔻押し目到達・🎯本日判断は買い場の合図。全て提案であり最終判断はユーザー。</div>`;
-    const body=cnt
-      ? `<table class='ctable'><thead><tr><th>銘柄</th><th>型</th><th>状態</th><th>経過</th><th>現値</th><th>押し目</th><th>業績</th></tr></thead><tbody>${rows}</tbody></table>`
-      : `<div class='empty'>監視中の候補なし</div>`;
     return `<section class='mth' id='sec-watch'>
-      <div class='mhead'><span>👀</span><span class='mname'>👀 候補ウォッチ</span><span class='cnt'>到達${pr}／判断${jn}／監視${wa}</span><span class='fresh'>${fresh}</span></div>
+      <div class='mhead'><span>👀</span><span class='mname'>👀 候補ウォッチ</span><span class='cnt'>${entries.length}件監視</span><span class='fresh'>${fresh}</span></div>
+      ${sum}
       ${note}
       ${body}
       ${closedHTML}

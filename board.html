@@ -1281,7 +1281,7 @@ function wPct(a,b){ // a/b-1 を % 表示（符号付き・小数1桁）。欠�
   if(a==null||b==null||!b) return '—';
   const v=(a/b-1)*100; return (v>0?'+':'')+v.toFixed(1)+'%';
 }
-function watchCard(e){
+function watchCard(e,NG,PROF){
   const days=(e.days_watched==null)?'—':(e.days_watched+'日');
   let dist='—';
   if(e.dist_to_zone_pct!=null) dist=(Number(e.dist_to_zone_pct)<=0)?'到達':('あと'+Number(e.dist_to_zone_pct).toFixed(1)+'%');
@@ -1297,12 +1297,30 @@ function watchCard(e){
   const sig=(e.signal&&String(e.signal).trim())?`<div class='sum'>${esc(e.signal)}</div>`:'';
   const reason=(e.status_reason)?`<div class='sum'>${esc(e.status_reason)}</div>`:'';
   const seed=`<div class='smeta'>シード ${esc(fld(e.seed_day))}${e.seed_price!=null?' @'+esc(e.seed_price):''}${e.seed_grade?'　業績(シード時) '+esc(e.seed_grade):''}</div>`;
+  // ゲートタブと同じ銘柄情報を付加: night_gate.results（当夜スナップショット）と profile_cache を code で引く。
+  const ng=(NG&&NG[String(e.code)])||null;
+  const prof=(PROF&&PROF[String(e.code)])||null;
+  // 判定行: 状態｜ゲート判定（当夜）｜業績｜値頃感。ゲート判定は results に無ければ「—」。
+  const gateHtml=ng?gateChipGuarded(ng):`<span class='vtxt' title='当夜のゲート判定なし（pool外/未評価）'>—</span>`;
+  const judgeHtml=`<div class='srow s4'>${watchStatusChip(e)}${sep}${gateHtml}${sep}${gyosekiChip(e.code)}${sep}${valuationChip(e.code)}</div>`;
+  // 行3: 決算チップ（ゲートと同じ排他ロジック。results に無ければ省略）
+  const earnHtml=ng?earningsChip(ng):'';
+  // 行6: ヘッドライン（業態／いま／調子／水準）。①-8の【戦略】行はマーク日の発注案で日が経つと古くなるため出さない。
+  //       results に headline が無い銘柄は profile_cache の業態だけを出す（推定はしない）。
+  let hl='';
+  if(ng&&ng.headline){
+    const lines=normalizeHeadline(headlineToText(ng.headline)).split('\n')
+      .filter(l=>l&&l.indexOf('【戦略】')!==0).slice(0,4).join('\n');
+    if(lines) hl=`<details open class='headline'><summary>📌ヘッドライン</summary><div class='hlbody'>${esc(lines)}</div></details>`;
+  }else if(prof&&prof.gyotai){
+    hl=`<details open class='headline'><summary>📌ヘッドライン</summary><div class='hlbody'>${esc('業態: '+prof.gyotai)}</div></details>`;
+  }
   return card5({code:e.code,name:e.name,close:e.last_close,
     methodHtml:methodHtml,
-    earnHtml:'',
-    judgeHtml:judgeRow(watchStatusChip(e),e.code),  // 状態｜業績｜値頃感（ゲートと同じ3チップ）
+    earnHtml:earnHtml,
+    judgeHtml:judgeHtml,
     propHtml:propHtml,
-    bodyHtml:sig+reason+seed});
+    bodyHtml:sig+reason+seed+hl});
 }
 function renderWatch(d,runs){
   return safeSection('sec-watch','👀 候補ウォッチ',()=>{
@@ -1314,10 +1332,22 @@ function renderWatch(d,runs){
         <a class='totop' onclick='scrollTop()'>▲タブへ</a>
       </section>`;
     }
+    // ゲート情報の引き当て用: night_gate.results を code→entry、profile_cache を code→{gyotai}。
+    const NG={}; (((d.night_gate&&d.night_gate.results)||[])).forEach(r=>{ if(r&&r.code!=null) NG[String(r.code)]=r; });
+    const PROF=(d.profile_cache&&typeof d.profile_cache==='object')?d.profile_cache:{};
     const entries=wl.entries.slice();
     const byDays=(a,b)=>((a.days_watched||0)-(b.days_watched||0));
     const pr=entries.filter(e=>e.status==='pullback_ready').sort(byDays);
-    const jn=entries.filter(e=>e.status==='judge_now').sort(byDays);
+    // 本日判断は「業績×水準の良い順」。業績スコア(0-13)と値頃感スコア(0-7)を各満点で正規化して合算（等重み）。
+    // 未評価(スコア無し)は末尾。同点は経過日の浅い順。
+    const qual=(code)=>{
+      const k=String(code);
+      const g=(GYOSEKI&&GYOSEKI[k]&&typeof GYOSEKI[k].score==='number')?GYOSEKI[k].score/13:null;
+      const v=(VALUATION&&VALUATION[k]&&typeof VALUATION[k].score==='number')?VALUATION[k].score/7:null;
+      if(g==null&&v==null) return -1;
+      return (g==null?0:g)+(v==null?0:v);
+    };
+    const jn=entries.filter(e=>e.status==='judge_now').sort((a,b)=>(qual(b.code)-qual(a.code))||byDays(a,b));
     // 監視継続は「押し目まで近い順」（あと一歩が上に来る）
     const wa=entries.filter(e=>e.status==='watching').sort((a,b)=>{
       const da=(a.dist_to_zone_pct==null)?1e9:Number(a.dist_to_zone_pct), db=(b.dist_to_zone_pct==null)?1e9:Number(b.dist_to_zone_pct);
@@ -1331,13 +1361,13 @@ function renderWatch(d,runs){
       <span class='ngchip'>🎯本日判断 <b>${jn.length}</b></span>
       <span class='ngchip'>👀監視 <b>${wa.length}</b></span>
     </div>`;
-    const note=`<div class='cpnote'>①-8提案を買い時レジームで分類し日足で追跡。待ち=押し目待ち／即断=当日判断／両面=両方。判定行は 状態｜業績｜値頃感。全て提案であり最終判断はユーザー。</div>`;
+    const note=`<div class='cpnote'>①-8提案を買い時レジームで分類し日足で追跡。待ち=押し目待ち／即断=当日判断／両面=両方。判定行は 状態｜当夜ゲート判定｜業績｜値頃感。ヘッドライン（業態・いま・調子・水準）はゲートと同じ情報源（当夜の night_gate.results）。全て提案であり最終判断はユーザー。</div>`;
     const sec=(title,arr,emptyMsg)=>`<div class='section' style='margin:14px 0'>
       <div class='mhead'><span class='mname'>${title}</span><span class='cnt'>${arr.length}件</span></div>
-      ${arr.length?arr.map(watchCard).join(''):`<div class='empty'>${emptyMsg}</div>`}
+      ${arr.length?arr.map(x=>watchCard(x,NG,PROF)).join(''):`<div class='empty'>${emptyMsg}</div>`}
     </div>`;
     const body=sec('🔻 押し目到達（買い場の合図）',pr,'押し目到達なし')
-      + sec('🎯 本日判断・確認中（即断型）',jn,'本日判断なし')
+      + sec('🎯 本日判断・確認中（即断型・業績×水準の良い順）',jn,'本日判断なし')
       + sec('👀 監視継続（押し目待ち・近い順）',wa,'監視中なし')
       + (other.length?sec('その他',other,''):'');
     const closed=Array.isArray(wl.closed)?wl.closed.slice(-15).reverse():[];

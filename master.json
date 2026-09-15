@@ -5044,358 +5044,693 @@
   },
   "action_log": [],
   "system_status": {
-    "version": "2026-07-29",
-    "description": "3層実行体制のタスクマップ（唯一の正）。各タスクにowner層とstatusを持たせ、二重実行を構造的に排除する。将来のダッシュボード6タブ目『システム』はここを描画する。",
+    "version": "2026-09-15",
+    "description": "3層実行体制のタスクマップ（唯一の正）。各タスクに owner 層・status・版・正典ファイル・書き込み先を持たせ、二重実行と1キー2オーナーを構造的に排除する。候補ボード上部の『🖥 システム』タブ（system.html）はここを描画する。2026-09-15 に 7/29 版（統合前の旧タスク表）から現行構成へ全面同期。",
     "legend": {
       "layers": {
-        "L1": "Claude Codeルーティン（無人スケジュール実行→リポジトリ蓄積）",
-        "L2": "Cowork（プロジェクト＋ファイル処理＋スケジュールタスク）",
-        "L3": "対話セッション（ライブ判断・当面継続）"
+        "L1": "Claude Code ルーティン（無人スケジュール実行→PR→翌朝マージ→リポジトリ蓄積）",
+        "L2": "Cowork（プロジェクト指示＋スケジュールタスク。Drive『SBI』の非公開データはここだけが書く）",
+        "L3": "対話セッション（ライブ判断・仕様改訂・正典登録・ボード改修）"
       },
       "status": {
         "active": "稼働中",
-        "planned": "移植/着手予定",
-        "on_hold": "保留（未解決の課題あり）",
+        "testing": "稼働中（検証期間）",
+        "planned": "着手予定",
+        "on_hold": "保留",
         "under_review": "要検討",
-        "needs_confirmation": "所有者確定待ち（二重実行防止）",
-        "done_once": "初回完了→定型化へ"
-      }
+        "needs_confirmation": "現況確認待ち",
+        "retired": "統合・廃止（無効化して保持）"
+      },
+      "conventions": [
+        "master.json の丸ごと手動コミットは恒久禁止。記録変更はメンテナンスPR方式のみ（最新 clone → 対象キーのみ → プログラム検証 → PR）・直列実行。",
+        "main への直接 push・直接コミットはしない（PR方式のみ）。各ルーティンは指定キー以外1バイトも変更しない。書き出しは既存の indent を検出して合わせる（固定禁止）。push 直前に main を再取得してから書き直す。",
+        "raw.githubusercontent.com は全読み取り経路で使用禁止（Pages URL https://kohshi529-glitch.github.io/asset_operation/ または clone）。",
+        "ポジション・戦績の実データは公開リポジトリに置かない。唯一の正は Google Drive『SBI』の trade_master。Drive 書き込みは新規ファイル作成のみ（上書き・削除不可）・最新 = modifiedTime。ルーティン（L1）に Drive 書き込み権限を持たせない。",
+        "タスクプロンプト・PJ指示は Drive『SBI』の正典 pcanon_{slug}_{YYYYMMDD_HHMM}.md が唯一の正（最新 = modifiedTime）。更新は毎回『通し版の全文置換』で納品し、反映はユーザーが行う。",
+        "推定値禁止（取得不可は明記）・売買の断定的推奨禁止（全て提案・最終判断はユーザー）・インサイダー情報は扱わない。"
+      ]
     },
     "tasks": [
       {
-        "id": "compass_morning",
+        "id": "morning_compass",
         "code": "⑤",
-        "name": "モーニングコンパス（市場モード判定+BB期限アラート）",
+        "name": "モーニングコンパス（市場モード判定・手法別ガイダンス・BB期限アラート）",
         "layer": "L1",
-        "schedule": "平日 07:00",
+        "schedule": "平日 06:30 JST（cron 30 21 * * 0-4 UTC）",
         "status": "active",
+        "version": "v8",
+        "canon": "pcanon_morning_compass_20260914_0745.md",
+        "writes": [
+          "market.latest",
+          "market.history",
+          "pipeline.runs.morning_compass",
+          "market_today.json"
+        ],
         "depends_on": [],
-        "wave": 1,
-        "notes": "【2026-07-21 v2化】market.latest/historyへの市場モード書き込み(PR方式)を開始。5段階モード・手法別guidance。①系の市場モード連動の供給源。"
+        "notes": "5段階モード（強気/堅調/平常/軟調/弱気）・手法別 guidance。v7 で大取ナイトを API 経路（NIY=F 第一・NKD=F 代替）へ、v8 で当日レコードを軽量派生ファイル market_today.json に書き出し（PJ・ボードの市場モード第一ソース）。①系の市場モード連動の供給源。"
       },
       {
-        "id": "tenbagger_ipo",
-        "code": "①-4",
-        "name": "テンバガーX IPOチェック",
+        "id": "s1_night_scan",
+        "code": "①-S1",
+        "name": "夜間統合スキャン（モメンタム系: ケンモメ本採点＋新高値）",
         "layer": "L1",
-        "schedule": "平日 21:30",
+        "schedule": "平日 18:00 JST（cron 0 9 * * 1-5 UTC）",
         "status": "active",
-        "depends_on": [],
-        "wave": 1,
-        "notes": "【2026-07-21 v2化】asset_operation・PR方式・ipo/catalyst_schedule書き込みに統一。初実戦PR#20(IPO4銘柄登録・BB期限red 2件)。JPX直読みは環境ドメイン追加後に復帰予定。"
+        "version": "v1.1",
+        "canon": "pcanon_s1_night_scan_20260815_1720.md",
+        "writes": [
+          "candidates.kenmo_momentum",
+          "candidates.kenmo_newhigh",
+          "pipeline.runs.kenmo_momentum",
+          "pipeline.runs.kenmo_newhigh"
+        ],
+        "depends_on": [
+          "morning_compass"
+        ],
+        "notes": "①-1 ケンモメ夜間本採点(v3)＋①-2 Kenmo新高値(v2) を統合（両者は無効化して保持）。TradingView scanner → trailing 圧縮 → IR BANK 予想確認の3段方式・市場モード連動。①-S2 と同時発火のため master.json 書き出し規約（indent 検出・差分行数の自己チェック）を持つ。"
       },
       {
-        "id": "kenmo_momentum_night",
-        "code": "①-1",
-        "name": "Kenmoモメンタム夜間本採点",
+        "id": "s2_night_scan",
+        "code": "①-S2",
+        "name": "夜間統合スキャン（逆張り・チャート系: ちょる子値洗い＋グランビル3区分＋theme_watch）",
         "layer": "L1",
-        "schedule": "平日 20:00",
+        "schedule": "平日 18:00 JST（cron 0 9 * * 1-5 UTC）",
         "status": "active",
-        "depends_on": [],
-        "wave": 2,
-        "notes": "【2026-07-21 v3正式稼働】3段方式(TradingView scanner→trailing圧縮→IR BANK予想確認)・B案許容帯・市場モード連動。初実戦PR#17(10件・レンジ様子見を反映しBUY_NOWなし)。"
+        "version": "v1.2",
+        "canon": "pcanon_s2_night_scan_20260915_0712.md",
+        "writes": [
+          "candidates.choruko_reversal",
+          "candidates.granville_*",
+          "theme_watch",
+          "pipeline.runs.choruko_reversal",
+          "pipeline.runs.granville_night"
+        ],
+        "depends_on": [
+          "morning_compass"
+        ],
+        "notes": "①-3 ちょる子値洗い(v3.1)＋①-6 グランビル3区分チャートエントリー(v3.5) を統合。v1.2（2026-09-15）で入口精度の暫定適用: A転換初動に pre5_pct≤+3%∧hi20_pct≤−2%、Cリバーサルに 25日乖離≤−8%（fit(2) は ≤−12%）、B押し目×急落の重複は overlap_flag＋total−2（total_raw 保持）。閾値は V1〜V3（10月上旬）で再検証。granville_spec は読み取り専用でプロンプトを正とする。"
       },
       {
-        "id": "stf_kakuhen_night",
+        "id": "cp_watch",
+        "code": "①-7",
+        "name": "変化点ウォッチ（プール横断の検知器・PL3 仮想建玉・連想緩和）",
+        "layer": "L1",
+        "schedule": "平日 19:15 JST",
+        "status": "active",
+        "version": "v4.7",
+        "canon": "pcanon_cp_watch_20260817_1454.md",
+        "writes": [
+          "changepoint_watch",
+          "pipeline.runs.changepoint_watch"
+        ],
+        "depends_on": [
+          "s1_night_scan",
+          "s2_night_scan"
+        ],
+        "notes": "D1〜D5 検知器で 🔔🔔/🔔/記録のみ を判定し、次回決算日程・catalyst・市場文脈を付与。PL3 仮想建玉の約定/決済/R 集計、saas_w の連想緩和（assoc_relax・assoc_only の自然実験）を機械可読ログで記録。"
+      },
+      {
+        "id": "night_gate",
+        "code": "①-8",
+        "name": "発注前ゲート（ローソクゲート・業績/値頃グレード・発注提案・派生ファイル書き出し）",
+        "layer": "L1",
+        "schedule": "平日 20:30 JST（cron 30 11 * * 1-5 UTC）＋日曜は手動実行（2026-08-30 運用変更）",
+        "status": "active",
+        "version": "v1.30（v1.31 納品済み・反映待ち）",
+        "canon": "pcanon_night_gate_20260914_2347.md",
+        "writes": [
+          "night_gate",
+          "gyoseki_cache",
+          "valuation_cache",
+          "profile_cache（sector/sector_at の追加のみ）",
+          "pipeline.runs.night_gate",
+          "grades.json",
+          "night_gate_today.json",
+          "pool_bars.json",
+          "gate_history/{base_day}.json"
+        ],
+        "depends_on": [
+          "s1_night_scan",
+          "s2_night_scan",
+          "cp_watch"
+        ],
+        "notes": "候補プール（first_seen+30暦日在籍）を毎晩評価し、PASS/PASS_DOJI/FAIL_UWAHIGE/FAIL_INSEN/SKIP の verdict と業績（gyoseki_spec 13点）・値頃（valuation_spec）グレードを付けて発注提案（指名鮮度 nom_age>10 は提案対象外）。v1.30 で R1 指名時点スコア凍結（gate_history.nominations）・R2 全評価銘柄の verdict＋ローソク特徴（gate_history.verdicts）・R3 東証33業種セクター付与（profile_cache.sector）を記録。v1.31（納品済み）は1年足から trend/ctx/patterns を計算し verdicts 第12要素へ凍結（判定不変）。grades.json は 250KB 上限。"
+      },
+      {
+        "id": "watch_tracker",
+        "code": "①-12",
+        "name": "候補ウォッチ 買い場モニタ（待ち/即断/両面の3クラス・押し目到達/本日判断）",
+        "layer": "L1",
+        "schedule": "日曜〜金曜 21:30 JST（cron 30 12 * * 0-5 UTC・①-8 の即マージ後）",
+        "status": "active",
+        "version": "v1.1",
+        "canon": "pcanon_watch_tracker_20260910_0744.md",
+        "writes": [
+          "watchlist",
+          "pipeline.runs.watch_tracker"
+        ],
+        "depends_on": [
+          "night_gate"
+        ],
+        "notes": "①-8 の提案を型で分類し数営業日にわたり日足で追跡（ma25/ma5/last_close を保持）。表示は候補ボード board.html の 👀ウォッチタブが master.json.watchlist をライブ描画（v1.1 でボードHTML生成・Drive保存を廃止）。日曜夜は翌月曜のための準備実行。"
+      },
+      {
+        "id": "eval_update",
+        "code": "①-9",
+        "name": "銘柄評価更新（業績グレード・値頃感グレードの定期再計算）",
+        "layer": "L1",
+        "schedule": "水曜・土曜 09:00 JST",
+        "status": "active",
+        "version": "v4",
+        "canon": "pcanon_eval_update_20260905_1248.md",
+        "writes": [
+          "gyoseki_cache",
+          "valuation_cache",
+          "pipeline.runs.gyoseki_update"
+        ],
+        "depends_on": [],
+        "notes": "監視ボード上の全銘柄について gyoseki_spec v1.0（13点）と valuation_spec のグレードを更新。v4（2026-09-05）で push 直前のベース更新（PR#283 衝突の再発防止）と master.json 書き出し規約（indent 検出・git diff --numstat 自己チェック）を追加。"
+      },
+      {
+        "id": "surge_log",
+        "code": "①-10",
+        "name": "急騰未検出ログ（週次: 急騰銘柄の in_pool / deep_dive 監査・カバレッジ改善の材料）",
+        "layer": "L1",
+        "schedule": "毎週土曜 13:00 JST（cron 0 4 * * 6 UTC）",
+        "status": "active",
+        "version": "v1（復元版）",
+        "canon": "pcanon_surge_log_20260909_1328.md",
+        "writes": [
+          "surge_log.json（master.json には書かない・読み取り専用）"
+        ],
+        "depends_on": [],
+        "notes": "kabutan の当日ランキング（ストップ高・値上がり率上位）を母集団に、候補プール在籍率と取りこぼし主因（overlay_eligible 等）を週次集計。統計目的で売買候補は提示しない。原プロンプトは ①-12 登録時の上書きで失われ、surge_log.json の notes から復元（正典は復元版）。発火時刻は 2026-09-15 にユーザー確認済み（土曜 13:00）。"
+      },
+      {
+        "id": "gate_track",
+        "code": "①-11",
+        "name": "ゲート追跡（提案の仮想約定/決済・R 集計・失敗3分類 mfe/mae/slip）",
+        "layer": "L1",
+        "schedule": "土曜 14:00 JST",
+        "status": "active",
+        "version": "v3.5",
+        "canon": "pcanon_gate_track_20260905_1320.md",
+        "writes": [
+          "gate_track.json"
+        ],
+        "depends_on": [
+          "night_gate"
+        ],
+        "notes": "①-8 の提案を判定窓（^N225 実足の取引カレンダーで window_end を機械確定）で仮想約定→決済し、branch 別に R を集計。v3.5 で closed に mfe_r/mae_r/stop_price/slip_r を追加し、エントリー/出口/執行の失敗を分離。PL5 の理由メモ（reason）は Drive 非公開のみで gate_track.json・PR本文・通知には書かない。型タグ規約 v1（pcanon_play_tags_20260905_1301.md）の集計を担う。"
+      },
+      {
+        "id": "stf_weekly",
         "code": "①-5",
-        "name": "STF確変初動",
+        "name": "STF確変初動（週次・4軸自己判定: 取得/採点/校正/報告）",
         "layer": "L1",
-        "schedule": "平日 20:15",
-        "status": "planned",
-        "depends_on": [
-          "kenmo_momentum_night"
-        ],
-        "wave": 2,
-        "notes": "①-1のJSON出力に依存。鮮度ガード必須。"
-      },
-      {
-        "id": "kenmo_newhigh_night",
-        "code": "①-2",
-        "name": "Kenmo新高値（Yahoo!ランキング+鮮度検証）",
-        "layer": "L1",
-        "schedule": "平日 20:30",
+        "schedule": "毎週土曜 07:30 JST（第1土曜=+月次校正、四半期最初の土曜=+本校正）",
         "status": "active",
-        "depends_on": [],
-        "wave": 2,
-        "notes": "プロンプト検証済→【2026-07-20】リハーサル成功（PR #7・5銘柄・査読合格・マージ済み）。ルーティン正式登録済み（平日20:30・PR方式）。初回実戦は7/21予定。2〜3晩の安定確認後にactive化。初実戦7/21 PR#18(0件=業績×モメンタム不在日の正常結果)。"
-      },
-      {
-        "id": "choruko_revalue",
-        "code": "①-3",
-        "name": "ちょる子値洗い（21銘柄±3%変動のみ深掘り）",
-        "layer": "L1",
-        "schedule": "平日 18:45",
-        "status": "active",
-        "depends_on": [],
-        "wave": 2,
-        "notes": "【2026-07-21 v2正式稼働】2モード自動切替(値洗い/フル)・Cutler式RSI自前計算・急落日トリガー。初実戦は日経-2.23%急落でフルモード発動、PR#19(12件・サンケン電気14点BUY_NOW・7項目全実数値)。　【2026-07-29】夕方シフト(18:45)・v3化（clone読み・margin_trend補助記録・close欄）。"
-      },
-      {
-        "id": "us_stage1",
-        "code": "③-1",
-        "name": "米国株Stage1（NO_TRADE自動スキップ付）",
-        "layer": "L1",
-        "schedule": "平日 21:00",
-        "status": "planned",
-        "depends_on": [],
-        "wave": 3,
-        "notes": ""
-      },
-      {
-        "id": "us_stage2",
-        "code": "③-2",
-        "name": "米国株Stage2（NO_TRADE自動スキップ付）",
-        "layer": "L1",
-        "schedule": "平日 22:00",
-        "status": "planned",
-        "depends_on": [
-          "us_stage1"
+        "version": "（正典未登録・Drive に pcanon_stf_weekly なし）",
+        "canon": null,
+        "writes": [
+          "candidates.stf_kakuhen",
+          "stf_log",
+          "pipeline.runs.stf_weekly"
         ],
-        "wave": 3,
-        "notes": ""
+        "depends_on": [],
+        "notes": "イベントドリブン（決算後3〜15営業日窓）。暫定閾値7で運用しながら stf_log の実績で校正する自己校正型。直近実行 2026-09-05（PR#282 新規2件/現役2件+校正）。正典未登録のため三点棚卸し後に登録が必要。"
       },
       {
-        "id": "granville",
-        "code": "②-2",
-        "name": "グランビル",
+        "id": "ipo_check",
+        "code": "①-4",
+        "name": "テンバガーX IPO週次チェック（BB期限・週中イベント差分・変化日のみPR）",
         "layer": "L1",
-        "schedule": "平日 22:30",
+        "schedule": "日曜 19:30 JST（cron 30 10 * * 0 UTC）",
+        "status": "active",
+        "version": "v4.1",
+        "canon": "pcanon_ipo_check_20260815_1720.md",
+        "writes": [
+          "ipo",
+          "catalyst_schedule"
+        ],
+        "depends_on": [],
+        "notes": "v4 で平日毎日→週1。JPX 第一ソース・7軸21点・三層記載様式。非営業日スキップ事故の封じ込め、遅延再実行プロトコル。v4.1 で master.json 書き出し規約を追加。"
+      },
+      {
+        "id": "weekly_sync",
+        "code": "週次同期",
+        "name": "週次総取引同期（SBI CSV → Drive trade_master・戦績/ポジションボード生成・pos_targets サイドカーのマージ）",
+        "layer": "L2",
+        "project": "スケジュールタスク（新規セッション）",
+        "schedule": "毎週土曜 06:30 JST",
+        "status": "active",
+        "version": "v6",
+        "canon": "pcanon_weekly_sync_20260905_2023.md",
+        "writes": [
+          "Drive: trade_master（holdings/realized/summary/sync_log）",
+          "Drive: senseki_board_*.html / position_board_*.html"
+        ],
+        "depends_on": [],
+        "notes": "取引実データの唯一の書き手（同期分担）。v5 で pos_targets サイドカー（ポジション株PJ v6 が書く target/stop）を set_at 比較で1回だけマージ、v6 で戦績ボード月別タブに取引明細・累積タブに銘柄別通算表を追加。ボードのファイル名前綴（senseki_board_／position_board_）はホーム画面ライブビューアの自動検出に使うため厳守。旧『土曜朝のCSV同期リマインド』『SBI CSV→positions同期(M1)』はこのタスクに統合。"
+      },
+      {
+        "id": "pj_explainer",
+        "code": "PJ",
+        "name": "銘柄かんたん解説PJ（コード投入→1行回答＋ショート解説・読み上げモード）",
+        "layer": "L2",
+        "project": "Cowork プロジェクト（対話型）",
+        "schedule": "随時",
+        "status": "active",
+        "version": "v5.10",
+        "canon": "pcanon_pj_explainer_20260914_0745.md",
+        "writes": [],
+        "depends_on": [
+          "night_gate",
+          "morning_compass"
+        ],
+        "notes": "第一ソースは派生ファイル（grades.json・night_gate_today.json・market_today.json）でボードと同値・同時点。市場モードは market_today.json（当日朝・⑤）を必ず引き、無い/古いときは night_gate_today の値に『（{date}夜時点・当日朝の判定未反映）』を添える。kabutan は『いま』と欠損補完のみ、現在値は minkabu を必ず1回試してから取得不可と書く。master.json・Drive は読まない。"
+      },
+      {
+        "id": "pj_position",
+        "code": "PJ",
+        "name": "ポジション株PJ（保有の目標/SL 設定・PL5 仮説トレード記録）",
+        "layer": "L2",
+        "project": "Cowork プロジェクト（対話型）",
+        "schedule": "随時",
+        "status": "active",
+        "version": "v6",
+        "canon": "pcanon_pj_position_20260905_1315.md",
+        "writes": [
+          "Drive: pos_targets_YYYYMMDD_HHMM.json（サイドカー）",
+          "Drive: PL5 サイドカー"
+        ],
+        "depends_on": [
+          "weekly_sync"
+        ],
+        "notes": "trade_master には一切書き込まない（44KB の全文再入力で UTF-8 破損した 2026-08-24 の事故が理由）。target/stop は約400バイトのサイドカーに書き、週次総取引同期が master へ確定させる。PL5 の理由メモは Drive 非公開のみ。"
+      },
+      {
+        "id": "pj_senseki",
+        "code": "PJ",
+        "name": "戦績ボードPJ（決済報告・stock_comments・出口タグ/型タグ・rulebook）",
+        "layer": "L2",
+        "project": "Cowork プロジェクト（対話型）",
+        "schedule": "随時",
+        "status": "active",
+        "version": "（正典未登録）",
+        "canon": null,
+        "writes": [
+          "Drive: stock_comments",
+          "Drive: 手動記録",
+          "Drive: realized.memo の出口タグ・型タグ",
+          "Drive: rulebook"
+        ],
+        "depends_on": [
+          "weekly_sync"
+        ],
+        "notes": "書き込み分担のうち戦績側を担う。型タグ規約 v1（`型:◯◯` を出口タグの並びに書く）の書き手。正典未登録のため三点棚卸し後に登録が必要。"
+      },
+      {
+        "id": "pj_saas",
+        "code": "PJ",
+        "name": "SaaSカルテPJ（内製化耐性5軸・paper_log 追記）",
+        "layer": "L2",
+        "project": "Cowork プロジェクト（対話型）",
+        "schedule": "随時",
         "status": "on_hold",
-        "depends_on": [],
-        "wave": null,
-        "notes": "データ鮮度問題が未解決のため保留。"
-      },
-      {
-        "id": "pts_screening",
-        "code": "②-1",
-        "name": "PTSスクリーニング",
-        "layer": "L1",
-        "schedule": "平日 06:10",
-        "status": "under_review",
-        "depends_on": [],
-        "wave": null,
-        "notes": "インデックス遅延の吸収設計後に判断。"
-      },
-      {
-        "id": "sbi_csv_sync",
-        "code": "M1",
-        "name": "SBI CSV→positions同期",
-        "layer": "L2",
-        "project": "ポジション株モニタ",
-        "schedule": "毎週 土曜（定型化予定）",
-        "status": "done_once",
-        "depends_on": [],
-        "notes": "初回完了（誤記1件発見の実績）。【2026-07-20】保存先をDrive非公開positions.jsonへ分離確定。公開master.jsonには書かない。プロンプトはposition_sync_prompt_drive.md版に更新。"
-      },
-      {
-        "id": "position_revalue",
-        "code": "④-4",
-        "name": "ポジション値洗い（水・土）",
-        "layer": "L2",
-        "project": "ポジション株モニタ",
-        "schedule": "水・土",
-        "status": "planned",
-        "depends_on": [
-          "sbi_csv_sync"
+        "version": "（正典未登録）",
+        "canon": null,
+        "writes": [
+          "Drive: paper_log.records（追記のみ）"
         ],
-        "notes": "CSV同期に統合予定。値洗い結果もDriveのpositions.jsonへ（公開リポジトリに触れない）。"
+        "depends_on": [],
+        "notes": "書き込み分担に paper_log.records 追記が割り当てられているが、ほぼ非稼働（2026-09-15 ユーザー確認）。再開時は正典を作ってから。"
       },
       {
         "id": "weekend_catchup",
         "code": "M2",
         "name": "週末材料キャッチアップ",
         "layer": "L2",
-        "project": "モーニングコンパス",
-        "schedule": "日曜 21:00（祝日時は翌営業日前夜へ振替）",
-        "status": "active",
+        "project": "スケジュールタスク（新規セッション）",
+        "schedule": "日曜 21:00（祝日週は翌営業日前夜へ振替）",
+        "status": "on_hold",
+        "version": null,
+        "canon": null,
+        "writes": [],
         "depends_on": [],
-        "notes": "Cowork登録のスケジュールタスク（新規セッション）。所有者=L2で確定、L3手動実行は停止。通常は日曜夜、祝日週は翌営業日前夜へ振替（例：2026-07-20(月・海の日)休場のため今週は月曜21:00）。※参照リポジトリが旧名のまま→known_risks: stale_repo_reference 参照。"
+        "notes": "2026-07 に L2 所有で確定した Cowork スケジュールタスク。長期保留を継続中（2026-09-15 ユーザー確認）。①-8 の日曜手動実行・①-12 の日曜準備実行が週末の役割を担っている。"
       },
       {
-        "id": "sat_csv_reminder",
-        "code": "",
-        "name": "土曜朝のCSV同期リマインド",
-        "layer": "L2",
-        "project": "モーニングコンパス",
-        "schedule": "土曜 06:30",
+        "id": "canon_ops",
+        "code": "L3",
+        "name": "仕様改訂・正典登録・メンテナンスPR・ボード改修（対話セッション）",
+        "layer": "L3",
+        "schedule": "随時",
         "status": "active",
+        "version": null,
+        "canon": null,
+        "writes": [
+          "Drive: pcanon_{slug}_{YYYYMMDD_HHMM}.md（新規作成のみ）",
+          "候補ボード等の静的 HTML（手動コミット）",
+          "master.json のメンテナンスPR（system_status・granville_spec 等の仕様キー）"
+        ],
         "depends_on": [],
-        "notes": "Cowork登録のスケジュールタスク（新規セッション）。所有者=L2で確定。SBI保有証券CSV＋取引履歴CSVをDrive『SBI』へ保存→『同期』送信でpositions更新版master.jsonを返す。sbi_csv_sync(M1)の起動リマインド。※参照リポジトリが旧名のまま→known_risks: stale_repo_reference 参照。"
+        "notes": "タスクプロンプト・PJ指示の改訂は通し版の全文置換を MD のコードブロックで納品し、タスクへの反映はユーザーが行う（Cowork は勝手に反映しない）。正典登録は Drive 返却 fileSize とローカルバイト数の完全一致で検証。入口精度の検証台帳（R1〜R4/V1〜V4/S1〜S3/D1〜D3）もここで管理。"
+      },
+      {
+        "id": "live_ops",
+        "code": "L3",
+        "name": "場中のライブ判断（ボード判定・IFD-OCO/OCO 価格設定・イベント時の緊急モード判定・損切り/利確の実行記録）",
+        "layer": "L3",
+        "schedule": "場中・イベント時・発注前",
+        "status": "active",
+        "version": null,
+        "canon": null,
+        "writes": [],
+        "depends_on": [
+          "night_gate",
+          "watch_tracker"
+        ],
+        "notes": "候補ボード（公開）と実弾ボード（Drive）を見て最終判断するのはユーザー。セッションは提案までで断定的推奨をしない。"
+      },
+      {
+        "id": "kenmo_momentum_night",
+        "code": "①-1",
+        "name": "Kenmoモメンタム夜間本採点（→ ①-S1 に統合）",
+        "layer": "L1",
+        "schedule": "—",
+        "status": "retired",
+        "version": "v3",
+        "canon": null,
+        "writes": [],
+        "depends_on": [],
+        "notes": "2026-08-14 に ①-S1 夜間統合スキャンへ統合。ルーティンは削除せず無効化して保持。"
+      },
+      {
+        "id": "kenmo_newhigh_night",
+        "code": "①-2",
+        "name": "Kenmo新高値 夜間採点（→ ①-S1 に統合）",
+        "layer": "L1",
+        "schedule": "—",
+        "status": "retired",
+        "version": "v2",
+        "canon": null,
+        "writes": [],
+        "depends_on": [],
+        "notes": "2026-08-14 に ①-S1 へ統合。無効化して保持。"
+      },
+      {
+        "id": "choruko_revalue",
+        "code": "①-3",
+        "name": "ちょる子値洗い（→ ①-S2 に統合）",
+        "layer": "L1",
+        "schedule": "—",
+        "status": "retired",
+        "version": "v3.1",
+        "canon": null,
+        "writes": [],
+        "depends_on": [],
+        "notes": "2026-08-14 に ①-S2 へ統合。無効化して保持。"
+      },
+      {
+        "id": "granville_night",
+        "code": "①-6",
+        "name": "グランビル3区分チャートエントリー（→ ①-S2 に統合）",
+        "layer": "L1",
+        "schedule": "—",
+        "status": "retired",
+        "version": "v3.5",
+        "canon": null,
+        "writes": [],
+        "depends_on": [],
+        "notes": "2026-08-14 に ①-S2 へ統合（theme_watch 定点観測も同時に移管）。無効化して保持。"
+      },
+      {
+        "id": "sbi_csv_sync",
+        "code": "M1",
+        "name": "SBI CSV→positions 同期・土曜朝リマインド（→ 週次総取引同期に統合）",
+        "layer": "L2",
+        "schedule": "—",
+        "status": "retired",
+        "version": null,
+        "canon": null,
+        "writes": [],
+        "depends_on": [],
+        "notes": "Drive 非公開 positions.json 方式は trade_master 方式（週次総取引同期 v1〜v6）に置き換え。"
       },
       {
         "id": "screening_project",
         "code": "M3",
-        "name": "場中の銘柄深掘り・スコアリング対話（移設完了）",
+        "name": "手法別スクリーニングPJ（場中の銘柄深掘り・採点対話）",
         "layer": "L2",
-        "project": "手法別スクリーニング",
-        "schedule": "場中随時",
-        "status": "active",
+        "schedule": "—",
+        "status": "on_hold",
+        "version": null,
+        "canon": null,
+        "writes": [],
         "depends_on": [],
-        "notes": "【2026-07-19 稼働開始】Coworkプロジェクト作成・指示文投入・初回採点テスト成功。採点基準はraw master.jsonのscoring_specを毎セッション参照（薄いカード）。ボード登録はファイル返却→手動コミット方式。candidatesエントリ形式はscreening_project_instructions.mdで定義（wave2も同形式を採用予定）。L3での場中スコアリング対話は本プロジェクトへ移設。"
+        "notes": "2026-07-19 稼働開始の5大手法カード方式（method_cards.md・scoring_spec 参照）。夜間ルーティン群と銘柄かんたん解説PJの稼働後はほぼ非稼働（2026-09-15 ユーザー確認）。廃止するか、必要時に再設計する。"
       },
       {
-        "id": "daytrade_ifdoco",
-        "code": "",
-        "name": "IFD-OCO設計対話の移設先",
-        "layer": "L2",
-        "project": "完全不関与デイトレ",
-        "schedule": "発注前",
-        "status": "planned",
-        "depends_on": [],
-        "notes": "ミッション3待ち。"
-      },
-      {
-        "id": "us_stage3_dialog",
-        "code": "",
-        "name": "Stage3リアルタイム対話の移設先",
-        "layer": "L2",
-        "project": "米国株デイトレ",
-        "schedule": "米国場中",
-        "status": "planned",
-        "depends_on": [],
-        "notes": "ミッション3待ち。"
-      },
-      {
-        "id": "weekly_observation",
-        "code": "④-1/2/3",
-        "name": "AI特需/SaaS耐力/カタリスト/週次レポート",
-        "layer": "L2",
-        "project": "週次定点観測",
-        "schedule": "週次",
-        "status": "planned",
-        "depends_on": [],
-        "notes": "当面は第3層で実施→安定後に移設判断。"
-      },
-      {
-        "id": "sbi_screener_op",
-        "code": "M4",
-        "name": "SBIスクリーナー実操作（Chrome連携）",
-        "layer": "L2",
-        "project": "デスクトップ",
-        "schedule": "PC環境が使える日",
-        "status": "planned",
-        "depends_on": [],
-        "notes": "成功すれば全スクリーニングが本来の複合条件精度に。"
-      },
-      {
-        "id": "board_judgment",
-        "code": "",
-        "name": "セミコン・ミニスイングのボード判定/押し目・売り時/急騰即時分析",
+        "id": "future_plans",
+        "code": "③/②/④",
+        "name": "米国株 Stage1/2/3・PTSスクリーニング・完全不関与デイトレ・週次定点観測・SBIスクリーナー実操作",
         "layer": "L3",
-        "schedule": "場中随時",
-        "status": "active",
+        "schedule": "—",
+        "status": "on_hold",
+        "version": null,
+        "canon": null,
+        "writes": [],
         "depends_on": [],
-        "notes": ""
+        "notes": "2026-07 の計画のまま未着手。必要になった時点で現行の PR 方式・正典運用に合わせて再設計する。"
+      }
+    ],
+    "boards": [
+      {
+        "id": "board",
+        "name": "📋 候補ボード（board.html）",
+        "visibility": "公開（GitHub Pages）",
+        "source": "master.json（candidates / watchlist / changepoint_watch / granville）＋ pool_bars.json（Promise.all で並列取得・失敗許容）",
+        "tabs": "🚪ゲート／👀ウォッチ／🔔変化点／📋5手法／📐グランビル／📖凡例",
+        "notes": "注意チップ（🧲業績追い風・⚠高成長×急落・⛔押し目×ちょるリバ重複・⌛待機(直近5日+x%・押し待)・🏃直近5日+x%・⚠当日大陽線・🌧地合い×逆張り）、トレンドチップ（📈PO／MA25↑／MA200↑／GX10／終値＞MA25 等）、ローソク27形態チップ、セクターチップ。市場モードは market_today.json。手動コミットで更新（ウォッチは公開情報として扱う）。"
       },
       {
-        "id": "order_pricing",
-        "code": "",
-        "name": "IFD-OCO・OCOの価格設定戦略（サインポスト型）",
-        "layer": "L3",
-        "schedule": "発注前",
-        "status": "active",
-        "depends_on": [],
-        "notes": ""
+        "id": "gate_history",
+        "name": "🕒 ゲート履歴（gate_history.html）",
+        "visibility": "公開（GitHub Pages）",
+        "source": "gate_history/{base_day}.json（不変・verdicts/nominations 同居）",
+        "tabs": "日付別／全期間",
+        "notes": "①-8 の夜ごとの通過/提案を遡って閲覧。候補ボードの日付チップからリンク。"
       },
       {
-        "id": "weekly_batch_l3",
-        "code": "④-1..3",
-        "name": "週次バッチ（④-1〜3+統合レポート）",
-        "layer": "L3",
-        "schedule": "土曜 朝",
-        "status": "active",
-        "depends_on": [],
-        "notes": "初回完了。ルーティン化までの暫定担当。安定後にL2週次定点観測へ移設判断。"
+        "id": "index",
+        "name": "📊 スコアリング基準（index.html）",
+        "visibility": "公開（GitHub Pages）",
+        "source": "master.json.scoring_spec（render_master.py で生成）",
+        "tabs": "5手法",
+        "notes": "5大手法の採点基準マスターの閲覧用。基準変更は master.json でのみ行う。"
       },
       {
-        "id": "event_ops",
-        "code": "",
-        "name": "CPI等の結果確認/緊急モード判定/損切り・利確の実行記録",
-        "layer": "L3",
-        "schedule": "イベント時",
-        "status": "active",
-        "depends_on": [],
-        "notes": ""
+        "id": "system",
+        "name": "🖥 システム（system.html）",
+        "visibility": "公開（GitHub Pages）",
+        "source": "master.json.system_status（Pages URL でライブ取得・内蔵スナップショットと版比較）",
+        "tabs": "層別タスク／ボード／派生ファイル／未確定／既知リスク",
+        "notes": "build_system_html.py で再生成。ライブ版の version が内蔵より古いときは内蔵スナップショットを優先表示。"
       },
       {
-        "id": "granville_night",
-        "layer": "L1",
-        "name": "①-6 グランビル3区分チャートエントリー(夜間)",
-        "owner": "Claude Codeルーティン",
-        "schedule": "平日 22:00",
-        "status": "testing",
-        "notes": "【2026-07-23新設】転換初動/押し目/リバーサルの3ブランチ統合・1PR方式。検証A(2段方式成立・2178銘柄完走)→GT診断(7/21凍結・A19/23→雲gap-1.5%緩和で23/23、B8/8、C4/4)を経て入口v2確定。分類(①-1〜①-5)・該当手法採点・各ブランチtop10登録。書き込み先はcandidates.granville_*のみ(1キー1オーナー)。【2026-07-27】theme_watch(内製化圧力残存SaaS)の定点観測を追加担当(v3.4)。"
+        "id": "setup_guide",
+        "name": "🛠 設定要領（setup_guide.html）",
+        "visibility": "公開（GitHub Pages）",
+        "source": "静的",
+        "tabs": "—",
+        "notes": "ルーティン登録・正典運用・PJ・ボード・派生ファイル・禁止事項の運用手引き（2026-09-15 全面改訂）。"
       },
       {
-        "id": "stf_weekly",
-        "layer": "L1",
-        "name": "①-5 STF確変初動(週次・4軸自己判定)",
-        "owner": "Claude Codeルーティン",
-        "schedule": "毎週土 7:30 JST(第1土曜=+月次校正、四半期最初の土曜=+本校正)",
-        "status": "testing",
-        "notes": "【2026-07-25新設】イベントドリブン(決算後3〜15営業日窓)・4軸構成(取得/採点/校正/報告)。GTなしのため遡及検証(S1/S2)で設計→暫定閾値7で運用しながらstf_logの実績で校正する初の自己校正型ルーティン。書き込みはcandidates.stf_kakuhen/stf_log/pipeline.runsのみ。"
+        "id": "live_boards",
+        "name": "🔒 実弾ボード（戦績ボード／ポジションボード）",
+        "visibility": "非公開（Drive『SBI』・ホーム画面ライブビューアが前綴で最新版を自動検出）",
+        "source": "trade_master・pos_targets サイドカー・PL5 サイドカー",
+        "tabs": "月別（取引明細）／累積（銘柄別通算）／保有",
+        "notes": "週次総取引同期 v6 が生成。ファイル名は senseki_board_／position_board_ 前綴を厳守。公開リポジトリには置かない。"
+      }
+    ],
+    "derived_files": [
+      {
+        "path": "market_today.json",
+        "writer": "⑤ v8",
+        "when": "平日 06:30",
+        "size": "数KB",
+        "content": "当日の date / market_mode / method_guidance / pattern / note / indicators / data_health / settlement（market.latest の射影）。PJ・ボードの市場モード第一ソース。"
+      },
+      {
+        "path": "grades.json",
+        "writer": "①-8",
+        "when": "平日 20:30（＋日曜手動）",
+        "size": "約190KB（上限250KB）",
+        "content": "gyoseki_cache／valuation_cache／profile_cache の射影（キー n,biz,sec,gy,gys,val,vals,per,pbr,roe,peg,p52,tan,px,at）。各銘柄の at は最終算定夜。"
+      },
+      {
+        "path": "night_gate_today.json",
+        "writer": "①-8",
+        "when": "平日 20:30（＋日曜手動）",
+        "size": "約75〜100KB",
+        "content": "base_day / market_mode（前夜スナップショット・当日朝の判定は含まない）/ market_date / week_open / prev_fills / proposals。"
+      },
+      {
+        "path": "pool_bars.json",
+        "writer": "①-8",
+        "when": "平日 20:30（＋日曜手動）",
+        "size": "約390KB",
+        "content": "{meta, bars:{code:[[d,o,h,l,c]…最大20本]}}（出来高なし）。候補ボードのローソク形態・短期トレンドチップの計算源。"
+      },
+      {
+        "path": "gate_history/{base_day}.json",
+        "writer": "①-8",
+        "when": "毎夜（不変）",
+        "size": "夜ごと",
+        "content": "その夜の通過/提案に加え、v1.30 から nominations（指名時点スコア凍結）と verdicts（全評価銘柄の verdict＋ローソク特徴、v1.31 から trend）を同居。V1〜V4 の検証データ。"
+      },
+      {
+        "path": "gate_track.json",
+        "writer": "①-11",
+        "when": "土曜 14:00",
+        "size": "約1.4MB",
+        "content": "提案の仮想約定/決済・R 集計・失敗3分類。PL5 の理由メモは含めない。"
+      },
+      {
+        "path": "surge_log.json",
+        "writer": "①-10",
+        "when": "週次・土曜",
+        "size": "約40KB",
+        "content": "週ごとの急騰銘柄の in_pool / deep_dive 監査（notes に主因分類）。"
       }
     ],
     "open_questions": [
       {
         "no": 1,
         "topic": "月曜21:00キャッチアップの担当",
-        "detail": "Cowork登録内容の共有をもって確定（二重実行防止）。確定後は weekend_catchup.status を active に、L3手動は停止。　→【2026-07-19 確定】両タスクともCowork(L2)所有と判明。weekend_catchup・sat_csv_reminderをactive化、L3手動停止。",
+        "detail": "【2026-07-19 確定】Cowork(L2) 所有で確定、L3 手動停止。→【2026-09-15】長期保留を継続中（on_hold）。",
         "status": "resolved",
         "blocks": [
-          "weekend_catchup",
-          "sat_csv_reminder"
+          "weekend_catchup"
         ]
       },
       {
         "no": 2,
         "topic": "第2弾ルーティン（①系4本）の移植タイミング",
-        "detail": "⑤・①-4の安定を来週1週間確認後が推奨。ただし本当のゲートは known_risks の master.json 書き込み競合の解決。　→【2026-07-19 更新】書き込み競合の設計は確定（pipeline.write_protocol参照）。残るゲートは⑤・①-4の1週間安定確認と、オーケストレータへのscore_*実装のみ。　→【2026-07-20 更新】配管は全実証完了（書き込み=PR方式/価格=query1直接HTTP）。残るゲートは①-2ルーティン本実装と⑤・①-4の安定確認（〜7/25）のみ。→【2026-07-22 クローズ】wave2全4本(①-1/①-2/①-3/①-4)がv2/v3アーキテクチャで正式稼働。フル編成初夜(7/21)を無人完走(PR#17/#18/#19/#20)。",
+        "detail": "【2026-07-22 クローズ】wave2 全4本が正式稼働。→ 2026-08-14 に ①-S1／①-S2 へ統合し現行構成へ。",
         "status": "resolved",
         "blocks": [
-          "kenmo_momentum_night",
-          "stf_kakuhen_night",
-          "kenmo_newhigh_night",
-          "choruko_revalue"
+          "s1_night_scan",
+          "s2_night_scan"
         ]
       },
       {
         "no": 3,
         "topic": "ミッション3（プロジェクト作成）の着手順",
-        "detail": "場中対話が最多の『手法別スクリーニング』から作るのが効果大。　→【2026-07-19 確定】手法別スクリーニングPJを作成・稼働開始。残るミッション3対象（完全不関与デイトレ／米国株デイトレ）は必要になった時点で同パターンで作成。",
+        "detail": "【2026-07-19 確定】手法別スクリーニングPJから作成。→ 現在は 銘柄かんたん解説PJ／ポジション株PJ／戦績ボードPJ が主。手法別スクリーニングPJはほぼ非稼働（2026-09-15 確認・on_hold）。",
         "status": "resolved",
         "blocks": [
           "screening_project"
+        ]
+      },
+      {
+        "no": 4,
+        "topic": "①-10 急騰未検出ログの正確な発火時刻",
+        "detail": "原プロンプトは ①-12 登録時の上書きで消失。復元版正典の推定 cron `0 4 * * 6`（土曜 13:00 JST）が旧設定と一致することを 2026-09-15 にユーザーが確認。正典ヘッダの「要確認」表記は次回改訂時に外す。",
+        "status": "resolved",
+        "blocks": [
+          "surge_log"
+        ]
+      },
+      {
+        "no": 5,
+        "topic": "①-8 v1.31（R4 トレンド文脈の記録）の反映",
+        "detail": "納品済み。タスクへの反映完了後に正典登録（登録時にヘッダ日付を登録時刻へ差し替え）。反映後、候補ボード側で results.ctx を読む D3-2 に着手できる。",
+        "status": "open",
+        "blocks": [
+          "night_gate"
+        ]
+      },
+      {
+        "no": 6,
+        "topic": "入口精度の再検証 V1〜V4（10月上旬）",
+        "detail": "gate_history の nominations／verdicts を4週分蓄積後、S1〜S3 の暫定閾値（A転換 pre5/hi20、C リバ dev25、B 押し目×急落 −2）と2層ゲート（文脈×当日足）の verdict 規則を実測で確定する。",
+        "status": "open",
+        "blocks": [
+          "s2_night_scan",
+          "night_gate"
+        ]
+      },
+      {
+        "no": 7,
+        "topic": "granville_spec.branches.entrance 文字列の同期",
+        "detail": "①-S2 v1.2 の入口条件は granville_spec を読み取り専用としプロンプトを正にしている。master.json 側の entrance 文字列をメンテナンスPRで合わせるかはユーザー判断。",
+        "status": "open",
+        "blocks": [
+          "s2_night_scan"
+        ]
+      },
+      {
+        "no": 8,
+        "topic": "正典未登録のタスク・PJの棚卸し",
+        "detail": "①-5 STF週次・戦績ボードPJ は稼働中だが Drive に正典が無い（三点棚卸し後に登録）。週末材料キャッチアップ・手法別スクリーニングPJ・SaaSカルテPJ は保留/ほぼ非稼働（2026-09-15 確認）で、再開時に正典を作る。ROUTINES.md 台帳＋採番スキルの整備と合わせて進める。",
+        "status": "open",
+        "blocks": [
+          "stf_weekly",
+          "pj_senseki"
         ]
       }
     ],
     "known_risks": [
       {
-        "id": "master_write_contention",
-        "title": "L1第2弾のmaster.json同時書き込み・依存チェーン",
-        "detail": "【解決 2026-07-20】書き込みはPR方式で実証確定（pipeline.write_protocol参照）。単一オーケストレータ+1晩1PR+人間マージにより、同時書き込み競合と依存チェーン破綻は構造的に消滅。旧設計のContents API直接書き込みは環境のgitプロキシ仕様により不採用。",
-        "severity": "resolved",
-        "related": [
-          "kenmo_momentum_night",
-          "stf_kakuhen_night"
-        ]
-      },
-      {
-        "id": "stale_repo_reference",
-        "title": "Coworkスケジュールの参照リポジトリ/パス/スキーマが旧仕様のまま",
-        "detail": "【解決済 2026-07-19】両スケジュールのプロンプトを asset_operation/root master.json 参照へ更新済み（①②とも反映確認）。旧 investment-research は廃止。スキーマ差異は asset_operation 新設計に一本化し、catalyst_schedule/ipo 依存を排除、positions は {holdings/closed_trades_summary/recent_closed} 雛形を導入。",
-        "severity": "resolved",
-        "related": [
-          "weekend_catchup",
-          "sat_csv_reminder",
-          "sbi_csv_sync"
-        ]
-      },
-      {
         "id": "raw_cdn_cache_mirage",
-        "title": "raw CDNキャッシュによる誤警報と誤復旧未遂（2026-07-21朝）",
-        "detail": "raw.githubusercontent.comが約2日前のmaster.jsonを返し『ボード更新停止』の誤警報が発生（実際はmain健全・全PRマージ済み。git clone+git logで真相判明）。教訓: (1)ボード状態の検証はrawフェッチでなくclone+git logで行う。(2)master.jsonの丸ごと手動コミットは巻き戻しリスクのため本コミットを最後に恒久禁止。以後の記録変更はメンテナンスPR方式（最新clone→対象キーのみ→検証→PR）。(3)Drive等の古いコピーはコミット素材にしない。",
+        "title": "raw CDN キャッシュによる誤警報（2026-07-21）→ raw 経路の恒久禁止",
+        "detail": "raw.githubusercontent.com が約2日前の master.json を返し誤警報が発生。以後、全読み取り経路で raw を使わず Pages URL または clone を使う。master.json の丸ごと手動コミットは恒久禁止（メンテナンスPR方式）。Drive 等の古いコピーはコミット素材にしない。",
         "severity": "resolved"
+      },
+      {
+        "id": "indent_reformat_conflict",
+        "title": "master.json の indent 再整形による PR コンフリクト（2026-08-15 PR#181）",
+        "detail": "ルーティンが indent 固定で書き出し 33,733 行が再整形され、同時発火の ①-S1/①-S2 が衝突。全ルーティンに『既存 indent の検出・差分行数の自己チェック』の書き出し規約を導入して解決。",
+        "severity": "resolved"
+      },
+      {
+        "id": "stale_base_push",
+        "title": "push 直前のベース更新欠如による衝突（2026-09-05 PR#283・①-9）",
+        "detail": "ブランチ作成後に別ルーティンの PR が main に入り 66,506 行の衝突域。①-9 v4 で『push 直前に main を再取得して書き直す』を新設（①-8 は既に実装済み）。他ルーティンにも同規約を持たせるのが望ましい。",
+        "severity": "resolved"
+      },
+      {
+        "id": "prompt_overwrite_loss",
+        "title": "タスク登録時の上書きによるプロンプト消失（①-10・2026-09-09 判明）",
+        "detail": "①-12 登録時に ①-10 のプロンプトを誤って上書きし、正典未登録だったため surge_log.json から復元。教訓: 新規ルーティンは新規作成で登録し、既存タスクの編集画面を流用しない。全ルーティンの正典を Drive に置く。",
+        "severity": "resolved"
+      },
+      {
+        "id": "market_mode_timepoint",
+        "title": "市場モードの時点ズレ（2026-09-14・前週金曜『弱気』を当日として引用）",
+        "detail": "night_gate_today.json の market_mode は前夜スナップショット。⑤ v8 が market_today.json を書き、PJ v5.10・候補ボードはこれを第一ソースにして解決。時点（いつの値か）を表示に必ず添える。",
+        "severity": "resolved"
+      },
+      {
+        "id": "log_format_drift",
+        "title": "night_gate.log の形式ドリフトで銘柄別 verdict が残らない期間（2026-09-03〜09-13）",
+        "detail": "ゲート再校正に必要な PASS/FAIL 組の銘柄別記録が件数サマリーに退化していた。①-8 v1.30 で gate_history の verdicts に全評価銘柄を記録し、log は件数サマリーと定義して解決。",
+        "severity": "resolved"
+      },
+      {
+        "id": "gate_track_growth",
+        "title": "gate_track.json の肥大化（約1.4MB）",
+        "detail": "候補ボード・PJは読まないため表示への影響は無いが、①-11 の読み書きと Pages 配信が重くなる。保持上限（closed の世代管理）の導入を検討。",
+        "severity": "watch"
+      },
+      {
+        "id": "sandbox_network",
+        "title": "対話セッション環境からの query1 取得不可・git push 不可",
+        "detail": "Cowork クラウド環境では query1.finance.yahoo.com が proxy 403、GitHub への push も 403。検証は手元データ（pool_bars・gate_history）で行い迂回しない。ボード等の HTML はファイル納品→ユーザーが手動コミット、master.json の仕様キーは Claude Code セッションのメンテナンスPRで反映。",
+        "severity": "watch"
       }
     ]
   },

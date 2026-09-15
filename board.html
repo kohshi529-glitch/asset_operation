@@ -237,6 +237,26 @@ details.cfold>summary{cursor:pointer;color:#7fe3d6;font-size:12.5px;font-weight:
 .cauchip.wait{color:#e8c766;background:#2e2a17;border-color:#5c5324}
 .cauchip.mode{color:#c9a7e0;background:#2a2340;border-color:#4a3f6b}
 .cauchip.stop{color:#f08a8a;background:#3d1f1f;border-color:#6b2f2f}
+/* D3: ローソク足形態チップ（🕯）とトレンド文脈チップ（📈） */
+.patchip{display:inline-block;font-size:11px;font-weight:600;border-radius:5px;padding:1px 7px;border:1px solid;white-space:nowrap}
+.patchip.bull{color:#7fe3d6;background:#123d33;border-color:#1f6b57}
+.patchip.bear{color:#f08a8a;background:#3d1f1f;border-color:#6b2f2f}
+.patchip.neutral{color:#8fb3ad;background:#1d3a40;border-color:#33565c}
+.trchip{display:inline-block;font-size:11px;font-weight:600;border-radius:5px;padding:1px 7px;border:1px solid;white-space:nowrap;color:#b39ddb;background:#2a2340;border-color:#4a3f6b}
+.trchip.dn{color:#e8a35b;background:#3d2817;border-color:#6b4a24}
+/* 凡例タブ */
+.lg h3{font-size:15px;margin:18px 0 8px;color:#7fe3d6}
+.lg table{width:100%;border-collapse:collapse;font-size:12px;margin:6px 0 10px}
+.lg th,.lg td{border-bottom:1px solid #1d3a40;padding:6px 6px;vertical-align:top;text-align:left}
+.lg th{color:#8fb3ad;font-weight:600;white-space:nowrap}
+.lg td:first-child{white-space:nowrap}
+.lg .note{font-size:12px;color:#8fb3ad;line-height:1.6;margin:4px 0 10px}
+.lg .tw{overflow-x:auto}
+.lg .lcard{border:1px solid #1d3a40;border-radius:10px;padding:8px 10px;margin:6px 0;background:#0f2226}
+.lg .lhead{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:4px}
+.lg .ldir{font-size:11px;color:#8fb3ad}
+.lg .lcond{font-size:12px;color:#c9dcd8;line-height:1.5}
+.lg .lmean{font-size:12px;color:#8fb3ad;line-height:1.5;margin-top:2px}
 .secchip{display:inline-block;font-size:11px;font-weight:500;color:#8fb3ad;background:#17262a;border:1px solid #2b444a;border-radius:5px;padding:1px 7px;white-space:nowrap}
 footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 </style></head><body><div class='wrap'>
@@ -259,6 +279,7 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 <button id='tab-changepoint' onclick="switchTab('changepoint')">🔔変化点</button>
 <button id='tab-methods' onclick="switchTab('methods')">📋5手法</button>
 <button id='tab-granville' onclick="switchTab('granville')">📐グランビル</button>
+<button id='tab-legend' onclick="switchTab('legend')">📖凡例</button>
 </div>
 <!-- 業績グレードの凡例（全タブ共通。既定は畳んでスペースを食わない） -->
 <details class='gylegend'><summary>📊 業績グレードの凡例</summary><div class='gylegendbody'>🚀確変11-13 / 🔥絶好調8-10 / ⚡好調5-7 / ✅順調3-4 / ➖横ばい2 / ⚠減速0-1 / 🔻悪化(減益20%超・赤字転落) — 13点満点。売上成長・利益成長・営業レバレッジ・直近Q加速・進捗率の5軸。業績の状態のみを示し株価の割高割安は見ていない</div></details>
@@ -271,6 +292,7 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 <div id='panel-changepoint' class='panel'></div>
 <div id='panel-methods' class='panel'></div>
 <div id='panel-granville' class='panel'></div>
+<div id='panel-legend' class='panel'></div>
 <footer>board.html ／ 唯一の正 master.json から描画。候補は各手法ルーティンのPRマージで更新される。</footer>
 </div>
 <button class='fab' id='backtab' onclick='scrollToTabbar()' aria-label='タブバーへ戻る'>▲タブへ戻る</button>
@@ -507,7 +529,7 @@ function scrollToTabbar(){
   scrollToY(absTop(tb)-TAB_OFFSET);
 }
 function switchTab(which){
-  ['nightgate','changepoint','methods','granville','watch'].forEach(t=>{
+  ['nightgate','changepoint','methods','granville','watch','legend'].forEach(t=>{
     const p=document.getElementById('panel-'+t), b=document.getElementById('tab-'+t);
     if(!p||!b)return;
     const on=(t===which);
@@ -650,6 +672,98 @@ function sectorChip(code){
   const sec=p&&p.sector;
   return sec?`<span class='secchip' title='東証33業種（profile_cache）'>${esc(sec)}</span>`:'';
 }
+// ===== D3: ローソク足の形態（直近6本のOHLCから機械判定・pool_bars.json）=====
+// 定義は ①-8 v1.31 R4 の trend/pattern 仕様と同一（閾値: 実体/値幅・ヒゲ/実体の比率）。文脈（直前5日−3%以下 or 終値<MA10×0.98=下落後／+3%以上 or 20日高値圏=上昇後）で
+// カラカサ/首吊り線・トンカチ/流れ星を振り分ける。形態は「兆し」であり判定・順位は変えない。
+function _cb(b){ const o=+b[1],h=+b[2],l=+b[3],c=+b[4]; return {o,h,l,c,body:Math.abs(c-o),rng:(h>l?h-l:0),up:h-Math.max(o,c),lo:Math.min(o,c)-l,bull:c>o,bear:c<o}; }
+function patternContext(bars,i){
+  const c=bars.slice(0,i+1).map(b=>+b[4]); if(c.length<6) return null;
+  const ret5=(c[c.length-1]/c[c.length-6]-1)*100;
+  const w=c.slice(-10); const ma10=w.reduce((a,b)=>a+b,0)/w.length; const prev=c[c.length-2];
+  const seg=bars.slice(Math.max(0,i-19),i+1); const hi=Math.max(...seg.map(b=>+b[2]));
+  return {ret5, down:(ret5<=-3||prev<ma10*0.98), up:(ret5>=3||(prev>ma10*1.02&&c[c.length-1]>=hi*0.97))};
+}
+function detectPatterns(bars,i){
+  if(!Array.isArray(bars)) return []; if(i==null) i=bars.length-1; if(i<1) return [];
+  const out=[]; const B=[]; for(let k=Math.max(0,i-5);k<=i;k++) B.push(_cb(bars[k]));
+  const t=B[B.length-1], p=B.length>=2?B[B.length-2]:null; const ctx=patternContext(bars,i)||{down:false,up:false};
+  const bodies=B.slice(0,-1).filter(x=>x.rng>0).map(x=>x.body); const avgbody=bodies.length?bodies.reduce((a,b)=>a+b,0)/bodies.length:t.body;
+  if(t.rng<=0) return out;
+  const doji=t.body<=0.1*t.rng;
+  const hammer=t.lo>=2*Math.max(t.body,0.02*t.rng)&&t.up<=0.15*t.rng&&t.body<=0.35*t.rng;
+  const inv=t.up>=2*Math.max(t.body,0.02*t.rng)&&t.lo<=0.15*t.rng&&t.body<=0.35*t.rng;
+  if(doji&&t.lo>=0.6*t.rng) out.push(['トンボ',ctx.down?'bull':'neutral']);
+  else if(doji&&t.up>=0.6*t.rng) out.push(['トウバ',ctx.up?'bear':'neutral']);
+  else if(doji) out.push(['十字線','neutral']);
+  else if(hammer) out.push(ctx.down?['カラカサ','bull']:(ctx.up?['首吊り線','bear']:['カラカサ形','neutral']));
+  else if(inv) out.push(ctx.down?['トンカチ','bull']:(ctx.up?['流れ星','bear']:['トンカチ形','neutral']));
+  if(t.body>=2*avgbody&&(t.up+t.lo)<=0.15*t.rng) out.push(t.bull?['大陽線','bull']:['大陰線','bear']);
+  if(p&&p.rng>0){
+    if(p.bear&&t.bull&&t.o<=p.c&&t.c>=p.o&&t.body>=p.body*1.05) out.push(['陽の包み足','bull']);
+    if(p.bull&&t.bear&&t.o>=p.c&&t.c<=p.o&&t.body>=p.body*1.05) out.push(['陰の包み足','bear']);
+    if(p.body>=avgbody&&t.body<=0.6*p.body&&Math.max(t.o,t.c)<=Math.max(p.o,p.c)&&Math.min(t.o,t.c)>=Math.min(p.o,p.c)&&p.bull!==t.bull){
+      out.push(doji?['はらみ寄せ線',p.bear?'bull':'bear']:(p.bear?['陽のはらみ足','bull']:['陰のはらみ足','bear']));
+    }
+    const mid=(p.o+p.c)/2;
+    if(p.bear&&t.bull&&t.o<p.c&&t.c>mid&&t.c<p.o) out.push(['切り込み線','bull']);
+    if(p.bull&&t.bear&&t.o>p.c&&t.c<mid&&t.c>p.o) out.push(['かぶせ線','bear']);
+    if(Math.abs(t.l-p.l)<=0.002*t.c&&t.bull&&ctx.down) out.push(['毛抜き底','bull']);
+    if(Math.abs(t.h-p.h)<=0.002*t.c&&t.bear&&ctx.up) out.push(['毛抜き天井','bear']);
+    if(t.l>p.h) out.push(['上放れ','bull']);
+    if(t.h<p.l) out.push(['下放れ','bear']);
+  }
+  if(B.length>=3){
+    const a=B[B.length-3],b=B[B.length-2],c3=B[B.length-1];
+    const inBody=(x,y)=>Math.min(x.o,x.c)<=y.o&&y.o<=Math.max(x.o,x.c);
+    if(a.bull&&b.bull&&c3.bull&&b.c>a.c&&c3.c>b.c&&inBody(a,b)&&inBody(b,c3)&&[a,b,c3].every(x=>x.up<=0.3*Math.max(x.body,1e-9)&&x.body>=0.5*avgbody)) out.push(['赤三兵','bull']);
+    if(a.bear&&b.bear&&c3.bear&&b.c<a.c&&c3.c<b.c&&inBody(a,b)&&inBody(b,c3)&&[a,b,c3].every(x=>x.lo<=0.3*Math.max(x.body,1e-9)&&x.body>=0.5*avgbody)) out.push(['黒三兵','bear']);
+    if(a.bear&&a.body>=avgbody&&b.body<=0.3*Math.max(b.rng,1e-9)&&Math.max(b.o,b.c)<a.c&&c3.bull&&c3.c>(a.o+a.c)/2) out.push(['明けの明星','bull']);
+    if(a.bull&&a.body>=avgbody&&b.body<=0.3*Math.max(b.rng,1e-9)&&Math.min(b.o,b.c)>a.c&&c3.bear&&c3.c<(a.o+a.c)/2) out.push(['宵の明星','bear']);
+  }
+  if(B.length>=5){
+    const f=B[B.length-5],m=[B[B.length-4],B[B.length-3],B[B.length-2]],lst=B[B.length-1];
+    const inside=m.every(x=>x.body<f.body&&x.h<=f.h&&x.l>=f.l);
+    if(f.bull&&f.body>=avgbody&&inside&&lst.bull&&lst.c>f.c) out.push(['上げ三法','bull']);
+    if(f.bear&&f.body>=avgbody&&inside&&lst.bear&&lst.c<f.c) out.push(['下げ三法','bear']);
+  }
+  if(B.length>=4){
+    let g1=true,g2=true; for(let k=B.length-3;k<B.length;k++){ if(!(B[k].l>B[k-1].h)) g1=false; if(!(B[k].h<B[k-1].l)) g2=false; }
+    if(g1) out.push(['三空踏み上げ','bear']); if(g2) out.push(['三空叩き込み','bull']);
+  }
+  return out;
+}
+function patternChips(code){
+  const bars=BARS&&BARS[String(code)]; if(!Array.isArray(bars)||bars.length<3) return '';
+  const day=bars[bars.length-1][0];
+  return detectPatterns(bars).map(([n,d])=>`<span class='patchip ${d}' title='ローソク足形態（${esc(day)}足・直近6本から機械判定・兆しであり判定ではない）'>🕯${esc(n)}</span>`).join('');
+}
+// トレンド文脈チップ（追加取得ゼロ）: グランビル候補は fit_detail、ウォッチは ①-12 の ma25/ma5、その他は pool_bars の MA10/MA20 から。
+function trendChipsFromFit(c){
+  const f=c&&c.fit_detail; if(!f) return '';
+  const out=[];
+  if(f.perfect_order) out.push(`<span class='trchip' title='パーフェクトオーダー（25MA>75MA>200MA）'>📈PO</span>`);
+  if(f.ma25_up) out.push(`<span class='trchip' title='25日線が上向き（5営業日前比プラス）'>MA25↑</span>`);
+  if(f.ma75_upflat) out.push(`<span class='trchip' title='75日線が上向きか横ばい'>MA75↑/→</span>`);
+  if(f.sma200_up) out.push(`<span class='trchip' title='200日線が上向き'>MA200↑</span>`);
+  if(f.gx10) out.push(`<span class='trchip' title='25MAが75MAを10営業日以内に上抜け'>GX10</span>`);
+  if(f.cloud_break10) out.push(`<span class='trchip' title='雲上限を10営業日以内に上抜け'>雲抜け</span>`);
+  return out.join('');
+}
+function trendChipsFromWatch(e){
+  if(!e) return ''; const out=[];
+  if(e.last_close!=null&&e.ma25!=null){ const d=(e.last_close/e.ma25-1)*100; out.push(`<span class='trchip${d<0?' dn':''}' title='終値と25日線の乖離'>${d>=0?'終値＞MA25':'終値＜MA25'} ${esc((d>0?'+':'')+d.toFixed(1))}%</span>`); }
+  if(e.ma5!=null&&e.ma25!=null) out.push(`<span class='trchip${e.ma5<e.ma25?' dn':''}' title='短期線と25日線の位置（MA5>MA25=短期上向き）'>${e.ma5>=e.ma25?'MA5＞MA25':'MA5＜MA25'}</span>`);
+  return out.join('');
+}
+function trendChipsFromBars(code){
+  const bars=BARS&&BARS[String(code)]; if(!Array.isArray(bars)||bars.length<20) return '';
+  const c=bars.map(b=>+b[4]); const n=c.length;
+  const ma=(k,end)=>c.slice(end-k,end).reduce((a,b)=>a+b,0)/k;
+  const ma20=ma(20,n), ma10=ma(10,n), ma10p=ma(10,n-5);
+  const dev=(c[n-1]/ma20-1)*100, slope=(ma10/ma10p-1)*100;
+  return `<span class='trchip${dev<0?' dn':''}' title='終値と20日線の乖離（pool_bars 20本から算出）'>${dev>=0?'終値＞MA20':'終値＜MA20'} ${esc((dev>0?'+':'')+dev.toFixed(1))}%</span>`
+       + `<span class='trchip${slope<0?' dn':''}' title='10日線の向き（5営業日前比）'>MA10${slope>=0?'↑':'↓'}</span>`;
+}
 // 注意チップ列を組み立てる。branches=その銘柄の指名元（配列）。opts.kenmoWait=true で D1 の⏳待機を出す。
 function cautionChips(code,branches,opts){
   opts=opts||{};
@@ -685,7 +799,8 @@ function cautionChips(code,branches,opts){
     chips.push(`<span class='cauchip mode' title='弱気/軟調の朝に逆張りを実行した群は T+5 勝率0%（n4/n7）。選定には入れず表示のみ'>🌧地合い${esc(MODE)}×逆張り</span>`);
   }
   const sec=sectorChip(code);
-  return chips.join('')+sec;
+  const tr=(opts.trendHtml!=null)?opts.trendHtml:trendChipsFromBars(code);
+  return chips.join('')+tr+patternChips(code)+sec;
 }
 // 統一5行カード。v = {code,name,close,methodHtml,cautionHtml,earnHtml,judgeHtml,propHtml,bodyHtml,dim,bad}
 function card5(v){
@@ -953,7 +1068,7 @@ function gcard(c,g,spec){
     +`<div class='smeta'>${fund}　${ind}　採点: ${esc(fld((c.scored_at||'').slice(0,16).replace('T',' ')||null))}</div>`;
   return card5({code:c.code,name:c.name,close:c.close,
     methodHtml:`${frame}${badge}`,
-    cautionHtml:cautionChips(c.code,[g&&g.key]),
+    cautionHtml:cautionChips(c.code,[g&&g.key],{trendHtml:trendChipsFromFit(c)||trendChipsFromBars(c.code)}),
     earnHtml:earningsChip(c),
     judgeHtml:judgeRow(verdictHtml,c.code),
     propHtml:'',
@@ -1409,7 +1524,7 @@ function watchCard(e,NG,PROF){
   }
   return card5({code:e.code,name:e.name,close:e.last_close,
     methodHtml:methodHtml,
-    cautionHtml:cautionChips(e.code, ng?entryBranches(ng):[e.branch], {kenmoWait:(e.branch==='kenmo_momentum')}),
+    cautionHtml:cautionChips(e.code, ng?entryBranches(ng):[e.branch], {kenmoWait:(e.branch==='kenmo_momentum'), trendHtml:trendChipsFromWatch(e)||trendChipsFromBars(e.code)}),
     earnHtml:earnHtml,
     judgeHtml:judgeHtml,
     propHtml:propHtml,
@@ -1454,7 +1569,7 @@ function renderWatch(d,runs){
       <span class='ngchip'>🎯本日判断 <b>${jn.length}</b></span>
       <span class='ngchip'>👀監視 <b>${wa.length}</b></span>
     </div>`;
-    const note=`<div class='cpnote'>①-8提案を買い時レジームで分類し日足で追跡。待ち=押し目待ち／即断=当日判断／両面=両方。判定行は 状態｜当夜ゲート判定｜業績｜値頃感。注意チップ（🧲業績追い風／⚠高成長×急落／⛔押し目×ちょるリバ重複／⌛待機・🏃走った後／⚠当日大陽線／🌧地合い×逆張り／業種）は入口精度分析（2026-09-14）の実測に基づく表示で、選定・判定は変えない。ヘッドライン（業態・いま・調子・水準）はゲートと同じ情報源（当夜の night_gate.results）。全て提案であり最終判断はユーザー。</div>`;
+    const note=`<div class='cpnote'>①-8提案を買い時レジームで分類し日足で追跡。待ち=押し目待ち／即断=当日判断／両面=両方。判定行は 状態｜当夜ゲート判定｜業績｜値頃感。注意チップ（🧲業績追い風／⚠高成長×急落／⛔押し目×ちょるリバ重複／⌛待機・🏃走った後／⚠当日大陽線／🌧地合い×逆張り／業種）は入口精度分析（2026-09-14）の実測に基づく表示で、選定・判定は変えない。📈トレンド文脈（MA との位置・向き）と🕯ローソク足形態（赤三兵・カラカサ・包み足・はらみ足・明けの明星 等。直近6本から機械判定。緑=強気の兆し／赤=弱気の兆し／灰=文脈なし）も同じく表示のみ。ヘッドライン（業態・いま・調子・水準）はゲートと同じ情報源（当夜の night_gate.results）。全て提案であり最終判断はユーザー。</div>`;
     const sec=(title,arr,emptyMsg)=>`<div class='section' style='margin:14px 0'>
       <div class='mhead'><span class='mname'>${title}</span><span class='cnt'>${arr.length}件</span></div>
       ${arr.length?arr.map(x=>watchCard(x,NG,PROF)).join(''):`<div class='empty'>${emptyMsg}</div>`}
@@ -1476,6 +1591,77 @@ function renderWatch(d,runs){
       <a class='totop' onclick='scrollTop()'>▲タブへ</a>
     </section>`;
   });
+}
+
+// ===== 📖 凡例タブ（チップ・形態・文脈の解説。データ非依存の静的コンテンツ） =====
+function renderLegend(){
+  const cau=[
+    [`<span class='cauchip good'>🧲業績追い風</span>`,'順張り枠（ケンモメ・新高値・転換・STF）で業績スコア5以上','順張り枠は業績⚡好調以上が効く（転換: T+5 +1.5%/64%、✅順調は −1.7%/38%）'],
+    [`<span class='cauchip warn'>⚠高成長×急落</span>`,'逆張り枠（ちょる子・リバ）で業績スコア8以上（🚀🔥）','急落した高成長株はまだ底ではないことが多い（ちょる子 🚀🔥群 −2.5%/13%、➖⚠群 +0.5%/65%）'],
+    [`<span class='cauchip stop'>⛔押し目×ちょるリバ重複</span>`,'押し目枠と、リバ／ちょる子の両方に指名','押し目と急落が同時に成立＝崩れ始め（同時指名 −2.4%/38%、押し目単独 +1.1%/64%）。①-S2 v1.2 では総合点−2'],
+    [`<span class='cauchip wait'>⌛待機(直近5日+x%・押し待)</span>`,'ケンモメで指名前5営業日の上げ幅が+3%超','走った後の指名は T+5 勝率0%（n4）。飛びつかず押しを待つ（①-12 待ち型）'],
+    [`<span class='cauchip warn'>🏃直近5日+x%（走った後）</span>`,'ケンモメ以外で指名前5営業日の上げ幅が+3%超','全枠で「既に走った銘柄」は負け（勝率0〜11%）。転換枠は v1.2 で入口から除外済み'],
+    [`<span class='cauchip warn'>⚠当日大陽線</span>`,'ちょる子で当日の実体が値幅の60%超','当日に反発し切った形は翌日以降の伸びしろが小さい（−1.4%/31%）'],
+    [`<span class='cauchip mode'>🌧地合い×逆張り</span>`,'当日朝の⑤市場モードが弱気／軟調で、逆張り型の銘柄','弱気・軟調の朝に逆張りを実行した群は勝率0%（n4/n7）。選定には入れず表示のみ。「勝負に行かない」判断の材料'],
+    [`<span class='secchip'>業種名</span>`,'profile_cache の東証33業種（①-8 v1.30 から蓄積）','型別×業種の成績集計のための属性。判断材料ではない'],
+  ];
+  const tr=[
+    [`<span class='trchip'>📈PO</span>`,'25MA＞75MA＞200MA のパーフェクトオーダー（グランビル候補・fit_detail）','中期の上昇トレンドが整列している'],
+    [`<span class='trchip'>MA25↑</span> <span class='trchip'>MA75↑/→</span> <span class='trchip'>MA200↑</span>`,'各移動平均の向き（5営業日前比・グランビル候補）','短中長期の向き。押し目は MA75 上向き、逆張りは MA200 上向きが前提'],
+    [`<span class='trchip'>GX10</span> <span class='trchip'>雲抜け</span>`,'25MA が 75MA を10営業日以内に上抜け／終値が雲上限を10営業日以内に上抜け','転換初動の合図（グランビル法則①）'],
+    [`<span class='trchip'>終値＞MA25 +x%</span> <span class='trchip dn'>終値＜MA25</span>`,'ウォッチ銘柄の終値と25日線の位置（①-12 の ma25）','25日線の上か下か。緑＝上、橙＝下'],
+    [`<span class='trchip'>MA5＞MA25</span> <span class='trchip dn'>MA5＜MA25</span>`,'短期線と25日線の位置（ウォッチ銘柄）','短期の勢いが中期線を上回っているか'],
+    [`<span class='trchip'>終値＞MA20 +x%</span> <span class='trchip'>MA10↑</span>`,'pool_bars（直近20本）から算出（上記が無い銘柄）','短期の構造。①-8 v1.31 適用後は1年足からの文脈判定（合致／不一致／レンジ）に置き換わる'],
+  ];
+  const pat=[
+    ['十字線','neutral','実体≤値幅×0.1','迷い。下ヒゲが長ければトンボ、上ヒゲが長ければトウバ'],
+    ['トンボ','bull','十字線で下ヒゲ≥値幅×0.6（下落後）','売りを吸収して戻した形。底打ちの兆し'],
+    ['トウバ','bear','十字線で上ヒゲ≥値幅×0.6（上昇後）','買いが続かず押し戻された形。天井の兆し'],
+    ['カラカサ','bull','下ヒゲ≥実体×2・上ヒゲ≤値幅×0.15・実体≤値幅×0.35、下落後','下値で買い戻された形（ハンマー）。反転の兆し'],
+    ['首吊り線','bear','カラカサと同形で上昇後','高値圏で一度大きく売られた痕跡。反落の兆し'],
+    ['トンカチ','bull','上ヒゲ≥実体×2・下ヒゲ≤値幅×0.15・実体≤値幅×0.35、下落後','下落後の上値試し。翌日陽線で確認'],
+    ['流れ星','bear','トンカチと同形で上昇後','上値を叩かれた形。反落の兆し'],
+    ['カラカサ形／トンカチ形','neutral','上の形だが下落後でも上昇後でもない','文脈が無いので方向は付けない'],
+    ['大陽線','bull','実体≥直前5本の平均実体×2・ヒゲ合計≤値幅×0.15','強い買い（丸坊主）。ただし当日に伸び切った可能性も'],
+    ['大陰線','bear','大陽線の逆','強い売り'],
+    ['陽の包み足','bull','前日陰線→当日陽線で、当日実体が前日実体を包む（×1.05以上）','前日の売りを翌日の買いが飲み込んだ。反転の兆し'],
+    ['陰の包み足','bear','前日陽線→当日陰線で包む','反落の兆し'],
+    ['陽のはらみ足','bull','前日が平均以上の陰線、当日の実体がその内側で≤0.6倍・陽線','下げの勢いが止まった。翌日の確認が要る'],
+    ['陰のはらみ足','bear','前日が平均以上の陽線、当日が内側の陰線','上げの勢いが止まった'],
+    ['はらみ寄せ線','bull/bear','はらみ足で当日が十字線','前日の方向に対する迷い。反転の初期サイン'],
+    ['切り込み線','bull','前日陰線→当日陽線で、始値は前日終値より下、終値は前日実体の中点超え（始値未満）','下値で買いが入った'],
+    ['かぶせ線','bear','切り込み線の逆','上値で売りが出た'],
+    ['毛抜き底','bull','前日と当日の安値がほぼ同値（終値×0.2%以内）で当日陽線、下落後','同じ安値で2度支えられた'],
+    ['毛抜き天井','bear','高値がほぼ同値で当日陰線、上昇後','同じ高値で2度止められた'],
+    ['上放れ','bull','当日安値＞前日高値（窓を空けて上）','強い買い。窓埋めの有無を見る'],
+    ['下放れ','bear','当日高値＜前日安値','強い売り'],
+    ['赤三兵','bull','3本連続陽線・終値切り上げ・各始値が前日実体内・上ヒゲ≤実体×0.3・各実体≥平均×0.5','底値圏なら上昇転換の代表形。高値圏では過熱'],
+    ['黒三兵','bear','赤三兵の逆','下落転換の代表形'],
+    ['明けの明星','bull','大陰線→小実体（前日終値より下）→陽線が1本目実体の中点超え','三川明けの明星。底打ちの代表形'],
+    ['宵の明星','bear','明けの明星の逆','天井の代表形'],
+    ['上げ三法','bull','大陽線→3本が1本目の値幅内→陽線が1本目終値超え','上昇途中の押しを消化して再上昇'],
+    ['下げ三法','bear','上げ三法の逆','下落途中の戻りを消化して再下落'],
+    ['三空踏み上げ','bear','3本連続で上放れ','買い疲れ。反落警戒'],
+    ['三空叩き込み','bull','3本連続で下放れ','売られ過ぎ。反発期待'],
+  ];
+  const row=(a)=>`<div class='lcard'><div class='lhead'>${a[0]}</div><div class='lcond'>条件: ${esc(a[1])}</div><div class='lmean'>${esc(a[2])}</div></div>`;
+  const prow=(a)=>{ const d=a[1]==='bull'?'強気':(a[1]==='bear'?'弱気':(a[1]==='bull/bear'?'前日と逆方向':'中立')); const cls=a[1]==='bull'?'bull':(a[1]==='bear'?'bear':'neutral');
+    return `<div class='lcard'><div class='lhead'><span class='patchip ${cls}'>🕯${esc(a[0])}</span><span class='ldir'>${esc(d)}</span></div><div class='lcond'>条件: ${esc(a[2])}</div><div class='lmean'>${esc(a[3])}</div></div>`; };
+  return `<section class='mth lg' id='sec-legend'>
+    <div class='mhead'><span>📖</span><span class='mname'>📖 チップと形態の凡例</span></div>
+    <div class='note'>カード2行目下の小さなチップは、入口精度分析（2026-09-14）とテクニカル文脈の実測に基づく「表示のみ」の補助情報です。選定・判定・並び順は一切変えていません。数字は 8/17〜9/11 指名450件の T+5 生値動き（平均／勝率・下落局面1レジーム・暫定）。全て提案であり最終判断はユーザー。</div>
+    <h3>注意チップ（業績×型・重複・走った後・地合い）</h3>
+    ${cau.map(row).join('')}
+    <h3>📈 トレンド文脈チップ</h3>
+    <div class='note'>「文脈」＝移動平均との位置関係と向き。ローソクゲート（当日1本のトリガー）とは別軸。緑・紫＝上向き側、橙＝下向き側。</div>
+    ${tr.map(row).join('')}
+    <h3>🕯 ローソク足形態チップ</h3>
+    <div class='note'>直近6本のOHLC（pool_bars.json・base_day 足まで）から機械判定。実体＝|終値−始値|、値幅＝高値−安値、平均実体＝直前5本の実体平均。文脈「下落後」＝直前5日−3%以下または前日終値＜MA10×0.98、「上昇後」＝直前5日+3%以上または（前日終値＞MA10×1.02 かつ 20日高値の97%以上）。形態は「兆し」であり、翌日の確認足と文脈で判断する。形態ごとの成績は ①-8 v1.31 の記録が4週たまってから検証（V4）。</div>
+    ${pat.map(prow).join('')}
+    <h3>既存の凡例</h3>
+    <div class='note'>業績グレード（🚀確変11-13／🔥絶好調8-10／⚡好調5-7／✅順調3-4／➖横ばい2／⚠減速0-1／🔻悪化）、値頃感（💎割安6-7／🟢値頃5／⚪妥当3-4／🟡やや割高2／🔴過熱0-1）、ゲート判定（✅陽線／✅十字線反転／❌上髭／❌陰線／－SKIP）は、タブバー下の折りたたみ凡例を参照。</div>
+    <a class='totop' onclick='scrollTop()'>▲タブへ</a>
+  </section>`;
 }
 
 // ===== メイン描画 =====
@@ -1579,6 +1765,9 @@ function render(d){
 
   // ===== タブ⑤: 👀候補ウォッチ（master.json.watchlist を描画。①-12 が更新） =====
   document.getElementById('panel-watch').innerHTML=renderWatch(d,runs);
+
+  // ===== タブ⑥: 📖凡例（静的） =====
+  try{ document.getElementById('panel-legend').innerHTML=renderLegend(); }catch(e){ document.getElementById('panel-legend').innerHTML=`<div class='err'>凡例の描画でエラー: ${esc((e&&e.message)||e)}</div>`; }
 }
 
 // master.json（必須）と pool_bars.json（任意・注意チップ用）を並列取得。pool_bars が取れなくても描画は続ける。

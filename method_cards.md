@@ -2,7 +2,7 @@
 
 各セッションの「指示を追加」欄に、対応する1枚だけを貼る。
 採点基準そのものはカードに書かない ―― すべて基準マスター（GitHub上の master.json 内 `scoring_spec`）を参照する。
-raw URL: https://raw.githubusercontent.com/kohshi529-glitch/asset_operation/main/master.json
+Pages URL: https://kohshi529-glitch.github.io/asset_operation/master.json（raw.githubusercontent.com は全読み取り経路で使用禁止）
 基準を直したくなったら master.json の `scoring_spec` だけを編集して push すれば、全セッションに反映される。
 
 ---
@@ -18,11 +18,11 @@ raw URL: https://raw.githubusercontent.com/kohshi529-glitch/asset_operation/main
 - データの日時を必ず検証。古いキャッシュを現在値として扱わない。
 - 売買の実行・断定的推奨はしない。提案に留め、最終判断はユーザー。
 - 成果物はmaster.jsonにそのまま貼れる形／ダッシュボードで見える形に整形。
-【採点基準】master.json（GitHub raw: https://raw.githubusercontent.com/kohshi529-glitch/asset_operation/main/master.json）内 scoring_spec.methods["〈キー〉"] を唯一の正として厳密準拠。
+【採点基準】master.json（Pages: https://kohshi529-glitch.github.io/asset_operation/master.json ※raw.githubusercontent.com は使用禁止）内 scoring_spec.methods["〈キー〉"] を唯一の正として厳密準拠。
 　カード内に基準を複製しない。基準変更は基準マスター側でのみ行う。
 【市場モード連動】先に market.latest.market_mode（5段階）と method_guidance を確認し、その日の地合いで新規採用度を調整。
 【出力形式】candidates形式（code / name / score / verdict / status）でmaster.jsonへ反映。
-【データ源】master.json（GitHub raw: https://raw.githubusercontent.com/kohshi529-glitch/asset_operation/main/master.json ／ scoring_spec・candidates・market.latest）、Drive SBIフォルダ、ユーザー提供のスクリーナー/チャート画像。
+【データ源】master.json（Pages: https://kohshi529-glitch.github.io/asset_operation/master.json ※raw.githubusercontent.com は使用禁止 ／ scoring_spec・candidates・market.latest）、Drive SBIフォルダ、ユーザー提供のスクリーナー/チャート画像。
 ```
 
 ---
@@ -38,7 +38,7 @@ raw URL: https://raw.githubusercontent.com/kohshi529-glitch/asset_operation/main
 【注文標準】12点以上で検討。押し目±5%指値／TP+20%／SL-10%／RR2.0／IFD-OCO推奨。格上げ・格下げトリガーはscoring_spec準拠。
 【市場モード連動】market.latest.market_mode と method_guidance を先に確認し新規採用度を調整。
 【出力形式】candidates形式（code/name/score/verdict/status）でmaster.jsonへ反映。
-【データ源】master.json（GitHub raw: https://raw.githubusercontent.com/kohshi529-glitch/asset_operation/main/master.json）、Drive SBIフォルダ、ユーザー提供のスクリーナー/チャート画像。
+【データ源】master.json（Pages: https://kohshi529-glitch.github.io/asset_operation/master.json ※raw.githubusercontent.com は使用禁止）、Drive SBIフォルダ、ユーザー提供のスクリーナー/チャート画像。
 ```
 
 ---
@@ -54,7 +54,7 @@ raw URL: https://raw.githubusercontent.com/kohshi529-glitch/asset_operation/main
 　※STEP0の入口スクリーナー11項目とSTEP3の運用6原則の実値は未提供。必要になったら別途取得。
 【市場モード連動】market.latest.market_mode と method_guidance を先に確認。
 【出力形式】candidates形式（code/name/score/verdict/status）でmaster.jsonへ反映。
-【データ源】master.json（GitHub raw: https://raw.githubusercontent.com/kohshi529-glitch/asset_operation/main/master.json）、Drive SBIフォルダ、ユーザー提供のスクリーナー/チャート画像。
+【データ源】master.json（Pages: https://kohshi529-glitch.github.io/asset_operation/master.json ※raw.githubusercontent.com は使用禁止）、Drive SBIフォルダ、ユーザー提供のスクリーナー/チャート画像。
 ```
 
 ---
@@ -70,7 +70,7 @@ raw URL: https://raw.githubusercontent.com/kohshi529-glitch/asset_operation/main
 【エントリー条件】14点以上＋RSI≤30＋乖離率≤-10%の同時成立で第1打診（詳細はscoring_spec.operation）。
 【市場モード連動】market.latest.market_mode と method_guidance を先に確認。日経-2%超の下落日は即再スクリーニング。
 【出力形式】candidates形式（code/name/score/verdict/status）でmaster.jsonへ反映。
-【データ源】master.json（GitHub raw: https://raw.githubusercontent.com/kohshi529-glitch/asset_operation/main/master.json）、Drive SBIフォルダ、ユーザー提供のスクリーナー/チャート画像。
+【データ源】master.json（Pages: https://kohshi529-glitch.github.io/asset_operation/master.json ※raw.githubusercontent.com は使用禁止）、Drive SBIフォルダ、ユーザー提供のスクリーナー/チャート画像。
 ```
 
 ---
@@ -86,7 +86,7 @@ raw URL: https://raw.githubusercontent.com/kohshi529-glitch/asset_operation/main
 【スコア精度】✓実数値と（推定値）を必ず区別。推定は確定と平均3〜5点ブレる前提で、次回決算後にIR実数値で更新。
 【市場モード連動】market.latest.market_mode と method_guidance を先に確認。
 【出力形式】candidates形式（code/name/score/verdict/status）。rationaleにAI/DCがR40代替なら「ai_dc_exposure: R40代替(R40=XX)」を明記。
-【データ源】master.json（GitHub raw: https://raw.githubusercontent.com/kohshi529-glitch/asset_operation/main/master.json）、TDnet決算短信、各社IR決算説明資料、株探、Drive SBIフォルダ。
+【データ源】master.json（Pages: https://kohshi529-glitch.github.io/asset_operation/master.json ※raw.githubusercontent.com は使用禁止）、TDnet決算短信、各社IR決算説明資料、株探、Drive SBIフォルダ。
 ```
 
 ---
@@ -102,7 +102,7 @@ raw URL: https://raw.githubusercontent.com/kohshi529-glitch/asset_operation/main
 【運用】データ不足項目は△(1点)。AVOIDはアクションログに記録しない。再分析ごとに最新スコアへ上書きし過去5件まで履歴保存。
 【市場モード連動】market.latest.market_mode と method_guidance を先に確認。
 【出力形式】candidates形式（code/name/score/verdict/status）でmaster.jsonへ反映。
-【データ源】master.json（GitHub raw: https://raw.githubusercontent.com/kohshi529-glitch/asset_operation/main/master.json）、Drive SBIフォルダ、ユーザー提供のスクリーナー/チャート画像。
+【データ源】master.json（Pages: https://kohshi529-glitch.github.io/asset_operation/master.json ※raw.githubusercontent.com は使用禁止）、Drive SBIフォルダ、ユーザー提供のスクリーナー/チャート画像。
 ```
 
 ---

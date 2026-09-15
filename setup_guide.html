@@ -1,6 +1,8 @@
 <!doctype html><html lang="ja"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>手法カード＆プロジェクト 設定要領</title>
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="apple-touch-icon.png">
+<title>運用設定要領 — 半自動投資システム</title>
 <style>
 :root{color-scheme:dark}
 *{box-sizing:border-box}
@@ -12,113 +14,179 @@ h1{font-size:22px;margin:6px 0 2px}
 .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
 .tabs a{background:#12292e;border:1px solid #1d3a40;color:#e6f4f1;text-decoration:none;padding:7px 12px;border-radius:999px;font-size:13px}
 .tabs a.here{border-color:#1fb6a6;color:#7fe3d6}
-h2{font-size:17px;color:#7fe3d6;border-bottom:1px solid #1d3a40;padding-bottom:6px;margin:28px 0 12px}
+.toc{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.toc a{font-size:12px;color:#7fe3d6;text-decoration:none;background:#0f2429;border:1px solid #1d3a40;border-radius:6px;padding:3px 8px}
+h2{font-size:17px;color:#7fe3d6;border-bottom:1px solid #1d3a40;padding-bottom:6px;margin:30px 0 12px}
+h3{font-size:14.5px;color:#c9e8e2;margin:18px 0 6px}
 .step{background:#12292e;border:1px solid #1d3a40;border-left:4px solid #1fb6a6;border-radius:12px;padding:14px 16px;margin-bottom:14px}
 .snum{display:inline-block;background:#1fb6a6;color:#0d1b1e;width:26px;height:26px;text-align:center;line-height:26px;border-radius:8px;font-weight:700;margin-right:8px}
 .stitle{font-size:15px;font-weight:700;vertical-align:middle}
-.step p{margin:10px 0 0;font-size:14px}
+.step p,.warn p{margin:10px 0 0;font-size:14px}
 .warn{background:#2a2410;border:1px solid #5c4a1e;border-left:4px solid #e8c766;border-radius:12px;padding:14px 16px;margin:14px 0}
 .warn .wt{color:#e8c766;font-weight:700;font-size:15px}
-.warn p{margin:8px 0 0;font-size:14px;color:#f0dfa0}
+.warn p{color:#f0dfa0}
 .bad{color:#e59a9a;font-weight:700}
 .good{color:#5be0b0;font-weight:700}
-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px}
-td,th{border:1px solid #1d3a40;padding:8px 10px;text-align:left;vertical-align:top}
-th{background:#0f2429;color:#7fe3d6}
+.tbl{overflow-x:auto}
+.tbl table{min-width:620px}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px}
+td,th{border:1px solid #1d3a40;padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#0f2429;color:#7fe3d6;white-space:nowrap}
 .key{font-family:ui-monospace,monospace;color:#7fe3d6;font-size:12.5px;background:#0f2429;padding:1px 6px;border-radius:5px}
-.field-ng{background:#2e1a1a;border:1px solid #6b2f2f;color:#e59a9a;padding:2px 8px;border-radius:6px;font-weight:700;font-size:12px}
-.field-ok{background:#123d33;border:1px solid #1f6b57;color:#5be0b0;padding:2px 8px;border-radius:6px;font-weight:700;font-size:12px}
 .anti{background:#12292e;border:1px solid #6b2f2f;border-radius:10px;padding:12px 14px;margin-bottom:10px}
 .anti .h{color:#e59a9a;font-weight:700;font-size:14px}
 .anti .fix{color:#5be0b0;font-size:13px;margin-top:6px}
 code.block{display:block;white-space:pre-wrap;background:#0f2429;border:1px solid #1d3a40;border-radius:8px;padding:12px;font-size:12.5px;color:#cfeee8;margin-top:8px}
-.emoji{font-size:16px}
+.card{background:#12292e;border:1px solid #1d3a40;border-radius:10px;padding:10px 12px;margin-bottom:10px;font-size:13.5px}
+.card b{color:#c9e8e2}
+.chips span{display:inline-block;background:#0f2429;border:1px solid #1d3a40;border-radius:6px;padding:1px 7px;margin:2px 4px 2px 0;font-size:12px;color:#7fe3d6}
 footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:34px}
 </style></head><body><div class="wrap">
 
-<h1>手法カード＆プロジェクト 設定要領</h1>
-<div class="sub">5大手法スコアリング運用のセットアップ手順（間違い防止版）</div>
+<h1>🛠 運用設定要領</h1>
+<div class="sub">半自動投資システム（SBI証券・モバイル中心）の運用手引き ／ 2026-09-15 全面改訂（旧「手法カード＆プロジェクト 設定要領」を置き換え）</div>
+
 <div class="tabs"><a href="./index.html">📊 スコアリング基準</a><a class="here" href="./setup_guide.html">🛠 設定要領</a><a href="./board.html">📋 候補ボード</a><a href="./system.html">🖥 システム</a><a href="./gate_history.html">🕒 ゲート履歴</a></div>
 
 <div class="lead">
-考え方はシンプルです。<b>採点基準は1か所（master.jsonのscoring_spec）にだけ置き、5つのプロジェクトには「薄いカード」を貼る</b>。
-カードは基準を参照するだけなので、精度を直すときはmaster.jsonの1か所を編集するだけで全手法に効きます。
-以下の順番どおりに進めれば迷いません。
+考え方は3つだけです。<b>① 記録の唯一の正は master.json（公開）と Drive「SBI」の trade_master（非公開）</b>。<b>② 指示文の唯一の正は Drive の正典ファイル pcanon_*</b>。<b>③ リポジトリへの書き込みは全て PR 方式</b>で、丸ごとコミットや raw 経由の読み取りはしない。
+以下はこの3原則を、毎日の運用で迷わない手順に落としたものです。
 </div>
 
-<h2>いちばん大事な原則（ここだけは間違えない）</h2>
-<div class="warn">
-<div class="wt">⚠ カードは必ず「指示（カスタム指示）」欄に貼る</div>
-<p>プロジェクトには <span class="field-ng">説明</span> 欄と <span class="field-ok">指示を追加</span> 欄があります。
-カード本文は必ず <span class="field-ok">指示を追加</span> 欄へ。<span class="field-ng">説明</span> 欄はメモ扱いで、AIの動作には反映されません。
-以前うまく効かなかったのは、ここに貼っていたのが原因です。</p>
+<div class="toc">
+<a href="#flow">1日の流れ</a><a href="#routines">ルーティン一覧</a><a href="#canon">正典の運用</a><a href="#update">指示文の更新手順</a><a href="#pj">プロジェクト</a><a href="#boards">ボード</a><a href="#derived">派生ファイル</a><a href="#write">書き込み規約</a><a href="#maint">メンテナンスPR</a><a href="#anti">やってはいけない</a><a href="#new">新規ルーティン</a>
 </div>
 
-<h2>セットアップ手順</h2>
+<h2 id="flow">1日の流れ（平日）</h2>
+<div class="tbl"><table>
+<tr><th>時刻(JST)</th><th>誰が</th><th>何を</th><th>あなたがすること</th></tr>
+<tr><td>06:30</td><td>⑤ モーニングコンパス</td><td>市場モード判定 → <span class="key">market.latest</span>／<span class="key">market_today.json</span></td><td>通知とPRを確認しマージ。モード（強気/堅調/平常/軟調/弱気）を頭に入れる</td></tr>
+<tr><td>寄り前〜場中</td><td>あなた＋対話セッション／PJ</td><td>候補ボードの 🚪ゲート・👀ウォッチ を見て発注判断</td><td>気になる銘柄は 銘柄かんたん解説PJ にコードを投入。発注は自分で（IFD-OCO/OCO）</td></tr>
+<tr><td>18:00</td><td>①-S1／①-S2</td><td>モメンタム系・逆張り/チャート系のスキャン → <span class="key">candidates.*</span></td><td>PRをマージ（2本。衝突時は後述）</td></tr>
+<tr><td>19:15</td><td>①-7 変化点ウォッチ</td><td>プール横断の検知器・PL3仮想建玉 → <span class="key">changepoint_watch</span></td><td>PRをマージ</td></tr>
+<tr><td>20:30</td><td>①-8 発注前ゲート</td><td>ローソクゲート・業績/値頃グレード・発注提案 → <span class="key">night_gate</span>＋派生ファイル4種＋<span class="key">gate_history/</span></td><td><b>即マージ</b>（①-12 が 21:30 に読む）。通知の提案を見て翌日の候補を絞る</td></tr>
+<tr><td>21:30</td><td>①-12 候補ウォッチ</td><td>提案を 待ち/即断/両面 に分類し日足で追跡 → <span class="key">watchlist</span></td><td>PRをマージ。押し目到達／本日判断の通知に目を通す</td></tr>
+</table></div>
+<div class="tbl"><table>
+<tr><th>曜日</th><th>誰が</th><th>何を</th></tr>
+<tr><td>水・土 09:00</td><td>①-9 銘柄評価更新</td><td>業績・値頃グレードの再計算（<span class="key">gyoseki_cache</span>／<span class="key">valuation_cache</span>）</td></tr>
+<tr><td>土 06:30</td><td>週次総取引同期（Cowork）</td><td>SBI の保有証券CSV・取引履歴CSVを Drive「SBI」へ保存してから起動。trade_master 更新・戦績/ポジションボード生成・pos_targets サイドカーのマージ</td></tr>
+<tr><td>土 07:30</td><td>①-5 STF確変初動（週次）</td><td>決算後窓のイベントドリブン採点・自己校正</td></tr>
+<tr><td>土 13:00</td><td>①-10 急騰未検出ログ</td><td>急騰銘柄のプール在籍率・取りこぼし主因 → <span class="key">surge_log.json</span></td></tr>
+<tr><td>土 14:00</td><td>①-11 ゲート追跡</td><td>提案の仮想約定/決済・R集計 → <span class="key">gate_track.json</span></td></tr>
+<tr><td>日 19:30</td><td>①-4 IPO週次チェック</td><td>BB期限・週中イベント差分（変化日のみPR）</td></tr>
+<tr><td>日 夜</td><td>あなた</td><td>①-8 を<b>手動実行</b>（日曜は自動発火しない）。①-12 は 21:30 に自動で拾う</td></tr>
+</table></div>
+<div class="warn"><div class="wt">⚠ 市場モードは「いつの値か」を必ず見る</div><p>night_gate_today.json の market_mode は<b>前夜 20:30 時点</b>のスナップショットで、当日朝の判定を含みません。当日のモードは ⑤ が 06:30 に書く <span class="key">market_today.json</span> が第一ソース（候補ボード・解説PJ v5.10 はこれを読みます）。</p></div>
 
-<div class="step">
-<span class="snum">1</span><span class="stitle">基準マスターを保管場所に置く</span>
-<p><span class="key">scoring_spec.json</span> の中身を、Google Drive上の <span class="key">master.json</span> に <span class="key">scoring_spec</span> ブロックとして統合します。
-これが全手法が読む「唯一の正」。5つのセッションは互いのチャットを読めないので、この共有ファイルだけが手法をつなぐ橋になります。</p>
-</div>
+<h2 id="routines">ルーティン一覧（現行・2026-09-15）</h2>
+<p style="font-size:13px;color:#8fb3ad">版・正典ファイル名・書き込み先の詳細は <a href="./system.html" style="color:#7fe3d6">🖥 システム</a> に master.json の system_status から描画されます。ここでは登録画面で確認する項目だけを載せます。</p>
+<div class="tbl"><table>
+<tr><th>コード</th><th>登録名</th><th>cron（UTC）</th><th>JST</th><th>版</th><th>正典 slug</th></tr>
+<tr><td>⑤</td><td>⑤モーニングコンパス市場動向分析</td><td><span class="key">30 21 * * 0-4</span></td><td>平日 06:30</td><td>v8</td><td>morning_compass</td></tr>
+<tr><td>①-S1</td><td>①-S1 夜間統合スキャン（モメンタム系）</td><td><span class="key">0 9 * * 1-5</span></td><td>平日 18:00</td><td>v1.1</td><td>s1_night_scan</td></tr>
+<tr><td>①-S2</td><td>①-S2 夜間統合スキャン（逆張り・チャート系）</td><td><span class="key">0 9 * * 1-5</span></td><td>平日 18:00</td><td>v1.2</td><td>s2_night_scan</td></tr>
+<tr><td>①-7</td><td>①-7 変化点ウォッチ</td><td>—</td><td>平日 19:15</td><td>v4.7</td><td>cp_watch</td></tr>
+<tr><td>①-8</td><td>①-8 発注前ゲート</td><td><span class="key">30 11 * * 1-5</span></td><td>平日 20:30＋日曜手動</td><td>v1.30（v1.31 反映待ち）</td><td>night_gate</td></tr>
+<tr><td>①-12</td><td>①-12 候補ウォッチ買い場モニタ</td><td><span class="key">30 12 * * 0-5</span></td><td>日〜金 21:30</td><td>v1.1</td><td>watch_tracker</td></tr>
+<tr><td>①-9</td><td>①-9 銘柄評価更新</td><td>—</td><td>水・土 09:00</td><td>v4</td><td>eval_update</td></tr>
+<tr><td>①-10</td><td>①-10 急騰未検出ログ</td><td><span class="key">0 4 * * 6</span></td><td>土 13:00</td><td>v1 復元版</td><td>surge_log</td></tr>
+<tr><td>①-11</td><td>①-11 ゲート追跡</td><td>—</td><td>土 14:00</td><td>v3.5</td><td>gate_track</td></tr>
+<tr><td>①-5</td><td>①-5 STF確変初動（週次）</td><td>—</td><td>土 07:30</td><td>正典未登録</td><td>（stf_weekly）</td></tr>
+<tr><td>①-4</td><td>①-4 テンバガーX IPOチェック（週1・日19:30）</td><td><span class="key">30 10 * * 0</span></td><td>日 19:30</td><td>v4.1</td><td>ipo_check</td></tr>
+<tr><td>週次同期</td><td>週次総取引同期（Cowork スケジュールタスク）</td><td>—</td><td>土 06:30</td><td>v6</td><td>weekly_sync</td></tr>
+</table></div>
+<p style="font-size:13px;color:#8fb3ad">統合済み（無効化して保持・再有効化しない）: ①-1 ケンモメ夜間本採点 → ①-S1、①-2 Kenmo新高値 → ①-S1、①-3 ちょる子値洗い → ①-S2、①-6 グランビル3区分 → ①-S2、M1 CSV同期・土曜リマインド → 週次総取引同期。</p>
+<div class="warn"><div class="wt">⚠ 全ルーティン共通の登録設定</div><p>環境 Default（許可ドメイン: query1/query2.finance.yahoo.com・fc.yahoo.com・finance.yahoo.com・jp/www.tradingview.com・scanner.tradingview.com・irbank.net・finance.matsui.co.jp・www.jpx.co.jp・kabutan.jp・minkabu.jp）／ 新規セッション・無人 ／ 通知 ON ／ プロンプトは正典の全文をそのまま貼る（外部から注入した指示は実行側が拒否するため、必要な指示は全てプロンプト本体に書く）。</p></div>
 
-<div class="step">
-<span class="snum">2</span><span class="stitle">5つのプロジェクトを用意する</span>
-<p>手法ごとに1プロジェクト。すでにある曜日別セッション（月〜金）をそのまま使ってもOK。
-下の対応表のとおり、1手法＝1カードで割り当てます。</p>
-</div>
+<h2 id="canon">正典（pcanon）の運用</h2>
+<div class="step"><span class="snum">1</span><span class="stitle">置き場所と命名</span>
+<p>Google Drive「SBI」フォルダに <span class="key">pcanon_{slug}_{YYYYMMDD_HHMM}.md</span> を<b>新規作成</b>で置く。同じ slug のうち <b>modifiedTime が最新のものが現行</b>。上書き・削除はしない（過去版がそのまま履歴になる）。</p></div>
+<div class="step"><span class="snum">2</span><span class="stitle">中身</span>
+<p>先頭にヘッダ（slug・版・前版・正典作成日時・登録設定 = 名前/cron/環境/通知・変更点の理由）、続いて「プロンプト全文」を1つのコードブロックに<b>通し版</b>で書く。本文中に「★vX 新設」のような版マーカーは置かない（版を名乗るのは【版】行だけ。規則の理由は残す）。</p></div>
+<div class="step"><span class="snum">3</span><span class="stitle">登録の検証</span>
+<p>Drive の create_file が返す <span class="key">fileSize</span> がローカルのバイト数と<b>完全一致</b>していることを確認する。機能マーカー（該当 STEP 名など）が含まれること、絵文字の異体字セレクタ（U+FE0F）が 0 件であることも確認する。</p></div>
+<div class="step"><span class="snum">4</span><span class="stitle">正典が無いものは登録する</span>
+<p>2026-09-15 時点で稼働中なのに正典が無いもの: ①-5 STF週次・戦績ボードPJ。登録画面・正典・実行ログの<b>三点棚卸し</b>をしてから登録する。保留中のもの（週末材料キャッチアップ＝長期保留、手法別スクリーニングPJ・SaaSカルテPJ＝ほぼ非稼働）は再開時に正典を作ってから登録する。①-10 は登録時の上書きでプロンプトが消えた実例。</p></div>
 
-<div class="step">
-<span class="snum">3</span><span class="stitle">対応するカードを「指示を追加」欄に貼る</span>
-<p><span class="key">method_cards.md</span> の中から該当する手法の「```」で囲まれたブロックだけをコピーし、
-そのプロジェクトの <span class="field-ok">指示を追加</span> 欄に貼り付けて保存します。共通テンプレートの見出しごとコピーする必要はありません。1手法につき1ブロックです。</p>
-</div>
+<h2 id="update">指示文（タスク／PJ）の更新手順</h2>
+<div class="step"><span class="snum">1</span><span class="stitle">対話セッションに依頼する</span>
+<p>「①-8 の ○○ を変えたい」と伝える。セッションは<b>現行正典（または貼り付けた現行本文）を土台に通し版で書き直し</b>、MD ファイルのコードブロックで全文を納品する。追記パッチやチャット本文への全文貼り付けはしない。</p></div>
+<div class="step"><span class="snum">2</span><span class="stitle">あなたがタスクに反映する</span>
+<p>登録画面のプロンプト欄を<b>全文置換</b>（追記ではない）。cron や名前の変更が指示されていればそれも合わせる。Cowork は勝手に反映しない。</p></div>
+<div class="step"><span class="snum">3</span><span class="stitle">「反映完了」と伝える → 正典登録</span>
+<p>セッションが Drive に pcanon を新規作成し fileSize 一致で検証する。ヘッダの正典作成日時は登録時刻に合わせる。</p></div>
+<div class="step"><span class="snum">4</span><span class="stitle">翌夜の実行で確認</span>
+<p>通知の【版】行と自己検証行（例: ①-8 なら「grades.json: … バイト」「verdicts: n件」）が新版のものになっているかを見る。pipeline.runs.*.memo にも版や entrance= が残る。</p></div>
+<div class="warn"><div class="wt">⚠ 閾値はタスク上で口頭調整しない</div><p>入口条件や減点幅などの数字は<b>正典改訂</b>でだけ変える。例: ①-S2 v1.2 の A転換 pre5≤+3%／hi20≤−2%、C リバ 25日乖離≤−8%、押し目×急落 −2 は暫定値で、V1〜V3（10月上旬）の再検証で確定する。</p></div>
 
-<div class="step">
-<span class="snum">4</span><span class="stitle">効いているか動作テストする</span>
-<p>保存後、そのプロジェクトで新規チャットを開き、下の一文を送って確認します。指示が読めていれば内容を要約して返します。</p>
-<code class="block">この指示で参照する採点基準のキーと、担当手法・満点・判定閾値を答えて。実際の分析はまだしなくていい。</code>
-<p>期待する答えの例（決算モメンタムなら）：「scoring_spec.methods["kenmo_momentum"]を参照。7項目21点満点。18〜21で🚀確変=BUY_NOW…」と返ってくれば設定成功です。的外れな返答なら、貼る欄を間違えている可能性が高いので手順3を見直してください。</p>
-</div>
+<h2 id="pj">Cowork プロジェクト（対話型）</h2>
+<div class="card"><b>銘柄かんたん解説PJ（v5.10）</b> — コードを投入すると 1行回答＋ショート解説（読み上げモードあり）。第一ソースは Pages の派生ファイル（grades.json・night_gate_today.json・market_today.json）でボードと同値・同時点。kabutan は「いま」と欠損補完のみ、現在値は minkabu を1回試してから「取得不可」。master.json・Drive は読まない。指示は「指示を追加（カスタム指示）」欄に全文置換で貼る。</div>
+<div class="card"><b>ポジション株PJ（v6）</b> — 保有の目標/SL を <span class="key">pos_targets_YYYYMMDD_HHMM.json</span>（約400バイトのサイドカー）に書く。trade_master には<b>一切書かない</b>（44KB の全文再入力で UTF-8 が破損した 2026-08-24 の事故が理由）。週次総取引同期が set_at 比較で1回だけ master へマージする。PL5 仮説トレードの理由メモは Drive 非公開のみ。</div>
+<div class="card"><b>戦績ボードPJ</b> — 決済報告・stock_comments・realized.memo の出口タグ／型タグ（<span class="key">[出口:SL][型:連続新高値]</span> の書式・半角コロン）・rulebook の書き手。正典未登録。</div>
+<div class="card"><b>SaaSカルテPJ</b> — 内製化耐性5軸。書き込みは paper_log.records の追記のみ。ほぼ非稼働（保留）。</div>
+<div class="tbl"><table>
+<tr><th>Drive「SBI」への書き込み分担（1キー1オーナー）</th><th>担当</th></tr>
+<tr><td>trade_master の holdings／realized／summary／sync_log、戦績・ポジションボード HTML</td><td>週次総取引同期</td></tr>
+<tr><td>stock_comments・手動記録・realized.memo の出口タグ/型タグ・rulebook</td><td>戦績ボードPJ</td></tr>
+<tr><td>pos_targets サイドカー・PL5 サイドカー</td><td>ポジション株PJ</td></tr>
+<tr><td>paper_log.records（追記のみ）</td><td>SaaSカルテPJ</td></tr>
+<tr><td>pcanon_* 正典（新規作成のみ）</td><td>対話セッション</td></tr>
+<tr><td>L1 ルーティン</td><td><span class="bad">Drive 書き込み権限を持たせない</span></td></tr>
+</table></div>
 
-<h2>カード ↔ プロジェクト 対応表</h2>
-<table>
-<thead><tr><th>曜日</th><th>手法（プロジェクト名）</th><th>貼るカード</th><th>参照キー</th></tr></thead>
-<tbody>
-<tr><td>🔵 Mon</td><td>kenmo式 決算モメンタム</td><td>カード①</td><td class="key">kenmo_momentum</td></tr>
-<tr><td>🟢 Tue</td><td>kenmo式 新高値ブレイク</td><td>カード②</td><td class="key">kenmo_newhigh</td></tr>
-<tr><td>🟠 Wed</td><td>ちょる子式 大型株リバーサル</td><td>カード③</td><td class="key">choruko_reversal</td></tr>
-<tr><td>🟣 Fri</td><td>STF式 確変初動</td><td>カード④</td><td class="key">stf_kakuhen</td></tr>
-<tr><td>🟡 Thu</td><td>テンバガー投資家X式</td><td>カード⑤</td><td class="key">tenbagger_x</td></tr>
-</tbody>
-</table>
+<h2 id="boards">ボード</h2>
+<div class="card"><b>📋 候補ボード（board.html・公開）</b> — 🚪ゲート（①-8 の提案・日付チップからゲート履歴へ）／👀ウォッチ（①-12 の watchlist をライブ描画）／🔔変化点／📋5手法／📐グランビル／📖凡例。カードには注意チップ（🧲業績追い風・⚠高成長×急落・⛔押し目×ちょるリバ重複・⌛待機(直近5日+x%・押し待)・🏃直近5日+x%・⚠当日大陽線・🌧地合い×逆張り）、トレンドチップ（📈PO・MA25↑・MA200↑・GX10・終値＞MA25 など）、ローソク27形態チップ、セクターチップが付く。意味は 📖凡例 タブ。改修はセッションがファイルを納品 → あなたが手動コミット。</div>
+<div class="card"><b>🕒 ゲート履歴（gate_history.html・公開）</b> — 夜ごとの通過/提案を遡って閲覧。</div>
+<div class="card"><b>📊 スコアリング基準（index.html）／🖥 システム（system.html）</b> — それぞれ master.json の scoring_spec／system_status から生成（render_master.py／build_system_html.py）。元キーをメンテナンスPRで変えたら再生成してコミット。</div>
+<div class="card"><b>🔒 実弾ボード（戦績ボード／ポジションボード・非公開）</b> — Drive「SBI」に週次総取引同期が生成。ホーム画面のライブビューアが <span class="key">senseki_board_</span>／<span class="key">position_board_</span> の前綴で最新版を自動検出するため、前綴は厳守。ファイル名に trade_master／SaveFile／pl5_paper_log を含めない。</div>
 
-<h2>やってはいけない3つ（アンチパターン）</h2>
+<h2 id="derived">派生ファイル（Pages 配信・master.json を重くしないための射影）</h2>
+<div class="tbl"><table>
+<tr><th>ファイル</th><th>書き手</th><th>時点の意味</th></tr>
+<tr><td><span class="key">market_today.json</span></td><td>⑤ 06:30</td><td>date = 当日朝。市場モードの第一ソース</td></tr>
+<tr><td><span class="key">night_gate_today.json</span></td><td>①-8 20:30</td><td>base_day = 前営業日夜。market_mode は前夜スナップショット</td></tr>
+<tr><td><span class="key">grades.json</span></td><td>①-8 20:30</td><td>各銘柄の at = 最終算定夜（上限 250KB）</td></tr>
+<tr><td><span class="key">pool_bars.json</span></td><td>①-8 20:30</td><td>候補プールの直近20本（出来高なし）。形態・短期トレンドチップの計算源</td></tr>
+<tr><td><span class="key">gate_history/{base_day}.json</span></td><td>①-8 毎夜</td><td>不変。nominations（指名時点スコア凍結）・verdicts（全評価銘柄・ローソク特徴・v1.31 から trend）</td></tr>
+<tr><td><span class="key">gate_track.json</span>／<span class="key">surge_log.json</span></td><td>①-11／①-10 土曜</td><td>仮想成績／急騰未検出の週次監査</td></tr>
+</table></div>
 
-<div class="anti">
-<div class="h">✗ カードを「説明」欄に貼る</div>
-<div class="fix">→ 必ず <span class="field-ok">指示を追加</span> 欄に貼る。説明欄はAIの動作に反映されない。</div>
-</div>
+<h2 id="write">書き込み規約（全ルーティン共通）</h2>
+<div class="step"><span class="snum">1</span><span class="stitle">PR 方式のみ</span><p>自セッションのブランチに commit/push → main への PR を自動作成 → あなたが翌朝ワンタップでマージ。main への直接 push はしない（git プロキシも拒否する）。</p></div>
+<div class="step"><span class="snum">2</span><span class="stitle">指定キー以外は1バイトも変えない</span><p>各ルーティンは自分のキー（例: ①-12 は watchlist だけ）にしか書かない。書き出し前後で他キーの同一性をプログラムで検証する。</p></div>
+<div class="step"><span class="snum">3</span><span class="stitle">indent は検出して合わせる</span><p>indent 固定で書き出すと数万行が再整形され、同時発火の PR が必ず衝突する（PR#181）。既存 indent を検出し、<span class="key">git diff --numstat</span> で差分行数を自己チェックする。</p></div>
+<div class="step"><span class="snum">4</span><span class="stitle">push 直前に main を再取得する</span><p>ブランチ作成後に別 PR が入ると衝突する（PR#283）。計算値はメモリに残し、最新の master.json に対して書き直してから push する。</p></div>
+<div class="step"><span class="snum">5</span><span class="stitle">読み取りは Pages か clone</span><p>raw.githubusercontent.com は全読み取り経路で使用禁止。状態の検証は clone ＋ git log で行う。</p></div>
 
-<div class="anti">
-<div class="h">✗ カードの中に採点基準（点数表）を丸ごと書き込む</div>
-<div class="fix">→ 基準はmaster.jsonのscoring_specにだけ置く。カードは「参照するだけ」。両方に書くと食い違いの元になり、直すときに二度手間。</div>
-</div>
+<h2 id="maint">メンテナンスPR（仕様キーを変えるとき）</h2>
+<p style="font-size:14px">scoring_spec・system_status・granville_spec などの仕様キーを変えるときは、<b>master.json を丸ごとコミットせず</b>、Claude Code セッションに「最新 clone → 対象キーのみ置換（indent 検出）→ 差分行数と他キー同一性を検証 → PR」を指示する。対話セッション（Cowork 環境）は push できないため、置換後の JSON と指示文を納品し、Claude Code 側で実行する。マージ後、生成ページ（index.html／system.html）を再生成してコミットする。</p>
+<code class="block">python3 - &lt;&lt;'EOF'
+import json, re
+raw = open('master.json', encoding='utf-8').read()
+ind = len(re.search(r'\n( +)"', raw).group(1))        # 既存 indent の検出
+d = json.loads(raw); keys = set(d)
+d['system_status'] = json.load(open('system_status_YYYYMMDD.json', encoding='utf-8'))
+assert set(d) == keys
+open('master.json', 'w', encoding='utf-8').write(json.dumps(d, ensure_ascii=False, indent=ind) + ('\n' if raw.endswith('\n') else ''))
+EOF
+git diff --numstat master.json   # 数万行なら indent 不一致 → 中止</code>
 
-<div class="anti">
-<div class="h">✗ 精度を直したいときにカード側を編集する</div>
-<div class="fix">→ 閾値変更・項目追加・基準の微調整は <b>master.jsonのscoring_specを1か所だけ</b> 編集し、閲覧用HTMLを再生成する。5枚のカードは触らない。</div>
-</div>
+<h2 id="anti">やってはいけない（アンチパターン）</h2>
+<div class="anti"><div class="h">✗ master.json を丸ごと手動コミットする</div><div class="fix">→ 2026-07-21 の巻き戻し事故以来、恒久禁止。記録はルーティンの PR、仕様はメンテナンスPR。</div></div>
+<div class="anti"><div class="h">✗ raw.githubusercontent.com から読む</div><div class="fix">→ 約2日前のキャッシュを返して誤警報を起こした。Pages URL か clone。</div></div>
+<div class="anti"><div class="h">✗ ポジション・戦績・PL5 の理由メモを公開リポジトリ・PR本文・通知に書く</div><div class="fix">→ 個人金融データ。Drive「SBI」の trade_master／サイドカーだけに置く。ウォッチ・候補・ゲート記録は公開でよい。</div></div>
+<div class="anti"><div class="h">✗ 既存タスクの編集画面を流用して新しいルーティンを登録する</div><div class="fix">→ ①-10 のプロンプトが消えた。新規ルーティンは新規作成し、登録前に正典を Drive に置く。</div></div>
+<div class="anti"><div class="h">✗ 指示文を追記パッチで直す／チャットで口頭調整する</div><div class="fix">→ つぎはぎになり版が追えない。通し版の全文置換 → 反映 → 正典登録の順。</div></div>
+<div class="anti"><div class="h">✗ 市場モードで選定段（①-S1/S2）を絞る</div><div class="fix">→ ⑤ は翌朝実行なので実行順序的に不成立。モードは表示側（🌧地合い×逆張りチップ）と発注判断で使う。</div></div>
+<div class="anti"><div class="h">✗ 推定値を書く／売買を断定する／インサイダー情報を扱う</div><div class="fix">→ 取得不可は「取得不可」と明記。全て提案で最終判断はあなた。</div></div>
+<div class="anti"><div class="h">✗ WebFetch/WebSearch が失敗したときに curl 等で迂回する</div><div class="fix">→ 迂回しない。手元データ（pool_bars・gate_history）で検証する。</div></div>
 
-<h2>精度を上げたくなったら（日々の運用）</h2>
-<table>
-<thead><tr><th>やりたいこと</th><th>触る場所</th></tr></thead>
-<tbody>
-<tr><td>閾値や点数基準を変えたい</td><td class="key">master.json の scoring_spec</td></tr>
-<tr><td>手法の役割・出力形式を変えたい</td><td>該当カード（指示欄）1枚だけ</td></tr>
-<tr><td>その日の地合いで新規を絞りたい</td><td class="key">master.json の market.latest / method_guidance</td></tr>
-</tbody>
-</table>
+<h2 id="new">新しいルーティンを増やすとき</h2>
+<div class="step"><span class="snum">1</span><span class="stitle">採番と台帳</span><p>登録画面・正典・実行ログの三点棚卸しをしてから ①-13 のように採番する（ROUTINES.md 台帳と採番スキルは整備予定）。</p></div>
+<div class="step"><span class="snum">2</span><span class="stitle">書き込み先を1キーに決める</span><p>master.json の新キー、または派生ファイル。既存キーに相乗りしない（1キー1オーナー）。system_status の tasks に writes を書く。</p></div>
+<div class="step"><span class="snum">3</span><span class="stitle">正典を先に置き、新規作成で登録する</span><p>プロンプトに 厳守（PR方式・指定キー以外不変・indent検出・push直前ベース更新・raw禁止・推定値禁止）と自己検証行を含める。</p></div>
+<div class="step"><span class="snum">4</span><span class="stitle">system_status を更新する</span><p>メンテナンスPRで tasks に追加 → build_system_html.py で system.html を再生成。</p></div>
 
-<footer>この手順書は運用の入口用メモ。基準の中身は scoring_master.html（閲覧用マスター）を参照。</footer>
+<footer>setup_guide.html ／ 運用の入口用メモ。タスクマップの現在値は system.html（master.json の system_status）、採点基準は index.html、指示文の本文は Drive「SBI」の pcanon_* を参照。</footer>
 </div></body></html>

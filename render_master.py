@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-# master.json（リポジトリ唯一の正）から、公開ページ docs/index.html を生成する。
-# 使い方: リポジトリ直下で  python3 scripts/render_master.py
+# master.json（リポジトリ唯一の正）から、公開ページ index.html（リポジトリ直下）を生成する。
+# 使い方: リポジトリ直下で  python3 render_master.py
+# ※ master.json は丸ごとコミットしない（scoring_spec の変更はメンテナンスPR）。生成した index.html だけをコミットする。
 # master.json を編集 → 本スクリプトで再生成 → commit/push。
 import json, html, os, sys
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.path.dirname(os.path.abspath(__file__))
 spec = json.load(open(os.path.join(ROOT, "master.json"), encoding="utf-8"))["scoring_spec"]
 
 def esc(x): return html.escape(str(x))
@@ -59,6 +60,10 @@ gp="　".join(f"{k}={v}点" for k,v in common["grade_points"].items())
 acts="".join(f"<tr><td><span class='act act-{k}'>{esc(k)}</span></td><td>{esc(v)}</td></tr>" for k,v in common["actions"].items())
 
 out=f"""<!doctype html><html lang='ja'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<meta name='apple-mobile-web-app-title' content='スコア基準'>
+<link rel='apple-touch-icon' href='apple-touch-icon.png'>
+<link rel='icon' type='image/png' href='apple-touch-icon.png'>
+<meta name='theme-color' content='#0d1b1e'>
 <title>5大手法 スコアリング基準マスター</title><style>
 :root{{color-scheme:dark}}*{{box-sizing:border-box}}
 body{{margin:0;background:{BG};color:{TXT};font-family:-apple-system,'Hiragino Sans','Noto Sans JP',sans-serif;line-height:1.6}}
@@ -100,14 +105,14 @@ footer{{color:{SUB};font-size:12px;text-align:center;margin-top:30px}}
 </style></head><body><div class='wrap'>
 <h1>5大手法 スコアリング基準マスター</h1>
 <div class='ver'>version {esc(spec['version'])} ／ 唯一の正（master.json から自動生成）</div>
-<div class='tabs'><a class='here' href='./index.html'>📊 スコアリング基準</a><a href='./setup_guide.html'>🛠 設定要領</a><a href='./board.html'>📋 候補ボード</a><a href='./system.html'>🖥 システム</a></div>
+<div class='tabs'><a class='here' href='./index.html'>📊 スコアリング基準</a><a href='./setup_guide.html'>🛠 設定要領</a><a href='./board.html'>📋 候補ボード</a><a href='./system.html'>🖥 システム</a><a href='./gate_history.html'>🕒 ゲート履歴</a></div>
 <div class='lead'>{esc(spec['description'])}</div>
 <div class='common'><div class='gp'>共通配点：{esc(gp)}　／　満点 {esc(common['max_score'])}点</div>
 <div class='sub'>アクション定義</div><table><tbody>{acts}</tbody></table></div>
 <div class='nav'>{nav}</div>{sections}
-<footer>index.html は scripts/render_master.py が master.json から生成。基準変更は master.json を編集し再生成すること。</footer>
+<footer>index.html は render_master.py が master.json の scoring_spec から生成。基準変更は master.json を編集し再生成すること。</footer>
 </div></body></html>"""
 
-with open(os.path.join(ROOT, "docs", "index.html"), "w", encoding="utf-8") as f:
+with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:
     f.write(out)
-print("written: docs/index.html", file=sys.stderr)
+print("written: index.html", file=sys.stderr)

@@ -1440,39 +1440,42 @@
   },
   "market": {
     "latest": {
-      "date": "2026-09-17",
-      "market_mode": "レンジ様子見",
+      "date": "2026-09-18",
+      "market_mode": "強気ギャップアップ",
       "method_guidance": {
-        "kenmo_momentum": "夜間先物は現物比+0.54%と小幅高だがVIXが17.20→17.71へ上昇し警戒感もやや強まる。方向感は限定的で新規モメンタムは寄り確認後の選別エントリーを推奨。",
-        "kenmo_newhigh": "SOXは+0.63%と底堅いが指数全体は方向感なし。新高値追いは値動きの荒い銘柄を避け厳選継続。",
-        "choruko_reversal": "VIXは17.20→17.71と上昇し警戒感がやや強まる。急落銘柄の戻り逆張りはサイズを縮小し慎重に対応。",
-        "stf_kakuhen": "ドル円156.20円(前日155.27円から+0.60%の円安)。地合いはレンジ様子見のため初動は寄り後の値固め確認を優先。",
-        "tenbagger_x": "BB期限・上場日が base_day から2営業日以内の銘柄なし。既存上場銘柄は地合いの方向感待ちで初値形成の需給に注意。",
-        "daytrade": "夜間先物は小幅高もWTI急落・VIX上昇で方向感に乏しくレンジ様子見。無理な仕掛けは避け寄り確認後の対応が無難。",
-        "semicon_miniswing": "SOX+0.63%と底堅いがレンジ様子見モードにつきVWAP積極追随は見送り。押し目待ちで様子見継続。"
+        "kenmo_momentum": "大取ナイトは現物比+1.01%高、SOX+3.14%主導でリスクオン継続。FOMCタカ派決定後の急変動を経た戻りのため、寄り確認後の順張りエントリーを推奨。",
+        "kenmo_newhigh": "半導体主導の地合い改善で新高値追いは環境良好。ただしFOMC後のボラティリティが残るため初動の値固めを確認してから参加。",
+        "choruko_reversal": "リスクオン基調でVIXも17.71→15.44に急低下。急落銘柄の戻り逆張りは需要が薄く、無理な逆張りは見送りサイズ縮小。",
+        "stf_kakuhen": "ドル円155.92円(前日比-0.06%とほぼ横ばい)。SOX主導のリスクオンで確変初動は狙いやすいが、寄り高値掴みには注意。",
+        "tenbagger_x": "BB期限・上場日がbase_dayから2営業日以内の銘柄なし。既存上場銘柄は地合い改善を追い風に需給を確認。",
+        "daytrade": "夜間先物は現物比+1.01%高、NYはFOMC通過で一時急落も切り返し高値圏で引け。値動きは荒いため寄り天井掴みに厳重注意。",
+        "semicon_miniswing": "強気モードにつきVWAP±0.5%積極帯。SOX+3.14%の強さを追うが、FOMC後の反動には警戒。"
       },
-      "pattern": "先物乖離型。NYダウ-1.21%と続落する一方SOXは+0.63%と底堅く選別色が残る。VIXは17.20→17.71(+2.97%)と上昇し警戒感がやや強まったが、大取ナイト先物(NIY=F)は日経現物終値比+0.54%の小幅高でレンジ内。WTIは前日水準から-3.60%と急反落し、方向感の定まらない相場。",
-      "note": "米国株はダウ続落・SOXは底堅さ残存とまちまち、VIX上昇・WTI急落で方向感が乏しい。大取ナイト先物は小幅高にとどまり、寄り付き前に強気の確信は持てない。",
+      "pattern": "半導体主導リスクオン",
+      "note": "FOMCで利上げ決定(タカ派・全会一致)後、NYダウは一時900ドル超急落も切り返し高値圏で引け、VIXは17.71→15.44へ急低下。SOX+3.14%主導のリスクオンで大取ナイトも現物比+1.01%高。F&G30(Fear)はリスクオン方向と乖離しており、寄り付きの高値掴みには注意。",
       "indicators": {
-        "nikkei": 63923.0,
-        "night_futures": 64265.0,
-        "night_futures_asof": "2026-09-17 05:59 JST",
-        "night_gap_pct": 0.535,
-        "dow_pct": -1.212,
-        "nasdaq_pct": -0.012,
-        "sp500_pct": -0.447,
-        "sox": 11246.107,
-        "sox_pct": 0.631,
-        "vix": 17.71,
-        "fear_greed": null,
-        "usdjpy": 156.198,
-        "wti": 102.02,
-        "wti_pct": -3.6
+        "nikkei": 64136.25,
+        "night_futures": 64785.0,
+        "night_futures_asof": "2026-09-18 05:59 JST",
+        "night_gap_pct": 1.01,
+        "dow_pct": 0.61,
+        "nasdaq_pct": 1.69,
+        "sp500_pct": 1.14,
+        "sox": 11599.49,
+        "sox_pct": 3.14,
+        "vix": 15.44,
+        "fear_greed": {
+          "value": 30,
+          "label": "Fear"
+        },
+        "usdjpy": 155.92,
+        "wti": 101.09,
+        "wti_pct": -1.31
       },
       "data_health": {
         "sox": "api",
         "vix": "api",
-        "fear_greed": "null",
+        "fear_greed": "search_snippet",
         "night_futures": "api_niy",
         "night_source": "NIY=F",
         "wti": "api"
@@ -1481,11 +1484,60 @@
         "us_settled": true,
         "us_close_jst": "05:00",
         "night_settled": true,
-        "run_at_jst": "06:36",
+        "run_at_jst": "06:38",
         "excluded": []
       }
     },
     "history": [
+      {
+        "date": "2026-09-18",
+        "market_mode": "強気ギャップアップ",
+        "method_guidance": {
+          "kenmo_momentum": "大取ナイトは現物比+1.01%高、SOX+3.14%主導でリスクオン継続。FOMCタカ派決定後の急変動を経た戻りのため、寄り確認後の順張りエントリーを推奨。",
+          "kenmo_newhigh": "半導体主導の地合い改善で新高値追いは環境良好。ただしFOMC後のボラティリティが残るため初動の値固めを確認してから参加。",
+          "choruko_reversal": "リスクオン基調でVIXも17.71→15.44に急低下。急落銘柄の戻り逆張りは需要が薄く、無理な逆張りは見送りサイズ縮小。",
+          "stf_kakuhen": "ドル円155.92円(前日比-0.06%とほぼ横ばい)。SOX主導のリスクオンで確変初動は狙いやすいが、寄り高値掴みには注意。",
+          "tenbagger_x": "BB期限・上場日がbase_dayから2営業日以内の銘柄なし。既存上場銘柄は地合い改善を追い風に需給を確認。",
+          "daytrade": "夜間先物は現物比+1.01%高、NYはFOMC通過で一時急落も切り返し高値圏で引け。値動きは荒いため寄り天井掴みに厳重注意。",
+          "semicon_miniswing": "強気モードにつきVWAP±0.5%積極帯。SOX+3.14%の強さを追うが、FOMC後の反動には警戒。"
+        },
+        "pattern": "半導体主導リスクオン",
+        "note": "FOMCで利上げ決定(タカ派・全会一致)後、NYダウは一時900ドル超急落も切り返し高値圏で引け、VIXは17.71→15.44へ急低下。SOX+3.14%主導のリスクオンで大取ナイトも現物比+1.01%高。F&G30(Fear)はリスクオン方向と乖離しており、寄り付きの高値掴みには注意。",
+        "indicators": {
+          "nikkei": 64136.25,
+          "night_futures": 64785.0,
+          "night_futures_asof": "2026-09-18 05:59 JST",
+          "night_gap_pct": 1.01,
+          "dow_pct": 0.61,
+          "nasdaq_pct": 1.69,
+          "sp500_pct": 1.14,
+          "sox": 11599.49,
+          "sox_pct": 3.14,
+          "vix": 15.44,
+          "fear_greed": {
+            "value": 30,
+            "label": "Fear"
+          },
+          "usdjpy": 155.92,
+          "wti": 101.09,
+          "wti_pct": -1.31
+        },
+        "data_health": {
+          "sox": "api",
+          "vix": "api",
+          "fear_greed": "search_snippet",
+          "night_futures": "api_niy",
+          "night_source": "NIY=F",
+          "wti": "api"
+        },
+        "settlement": {
+          "us_settled": true,
+          "us_close_jst": "05:00",
+          "night_settled": true,
+          "run_at_jst": "06:38",
+          "excluded": []
+        }
+      },
       {
         "date": "2026-09-17",
         "market_mode": "レンジ様子見",
@@ -2351,49 +2403,6 @@
           "us_close_jst": "05:00",
           "night_settled": true,
           "run_at_jst": "06:32",
-          "excluded": []
-        }
-      },
-      {
-        "date": "2026-08-21",
-        "market_mode": "レンジ様子見",
-        "method_guidance": {
-          "kenmo_momentum": "SOX高(+0.53%)だが米指数全体は軟調でモメンタム地合いは限定的。値がさ成長株は選別要。",
-          "kenmo_newhigh": "方向感が乖離し新高値追随は厳選のみ。大取ナイト欠損で寄り想定が立てにくい。",
-          "choruko_reversal": "前日日経+1.36%反発の一服も想定、リバーサル狙いは個別材料優先で選別。",
-          "stf_kakuhen": "地合い不透明でエントリーは通常より慎重に。初動確認を優先。",
-          "tenbagger_x": "bb期限・上場日が直近2営業日以内の銘柄なし。セカンダリー観察を継続。",
-          "daytrade": "不関与方針を継続。",
-          "semicon_miniswing": "SOXは+0.53%と底堅いが指数全体は軟調・大取ナイト欠損のため見送り優勢。VWAP積極帯なし。"
-        },
-        "pattern": "先物乖離",
-        "note": "米国主要3指数(ダウ-1.32%/ナスダック-1.00%/S&P500-0.87%)は揃って軟調でVIXは+7.52%急伸する一方、SOXのみ+0.53%と底堅く指数間で乖離。大取ナイトとF&Gが取得不可のため寄り付き方向の確度は低く様子見が無難。",
-        "indicators": {
-          "nikkei": 66216.79,
-          "night_futures": null,
-          "dow_pct": -1.32,
-          "nasdaq_pct": -1.0,
-          "sp500_pct": -0.87,
-          "sox": 11800.02,
-          "sox_pct": 0.53,
-          "vix": 16.01,
-          "fear_greed": null,
-          "usdjpy": 159.04,
-          "wti": 86.21,
-          "wti_pct": 0.44
-        },
-        "data_health": {
-          "sox": "api",
-          "vix": "api",
-          "fear_greed": "null",
-          "night_futures": "null",
-          "wti": "api"
-        },
-        "settlement": {
-          "us_settled": true,
-          "us_close_jst": "05:00",
-          "night_settled": true,
-          "run_at_jst": "06:35",
           "excluded": []
         }
       }
@@ -5696,14 +5705,12 @@
         }
       },
       "morning_compass": {
-        "generated_at": "2026-09-17T06:36:53+09:00",
-        "trading_day": "2026-09-17",
+        "generated_at": "2026-09-18T06:38:13+09:00",
+        "trading_day": "2026-09-18",
         "status": "done",
         "source": "morning_compass_v8",
-        "memo": "run_at=2026-09-17T06:36:53+09:00",
-        "missing": [
-          "fear_greed"
-        ]
+        "memo": "run_at=2026-09-18T06:38:13+09:00",
+        "missing": []
       },
       "watch_tracker": {
         "generated_at": "2026-09-17T12:45:05Z",

@@ -1,43 +1,40 @@
 {
- "generated_at": "2026-09-17T21:38:53.604748+00:00",
+ "generated_at": "2026-09-24T06:41:26.628740+09:00",
  "source": "morning_compass_v8",
- "run_at_jst": "2026-09-18 06:38",
- "date": "2026-09-18",
- "market_mode": "強気ギャップアップ",
+ "run_at_jst": "2026-09-24 06:41",
+ "date": "2026-09-24",
+ "market_mode": "堅調",
  "method_guidance": {
-  "kenmo_momentum": "大取ナイトは現物比+1.01%高、SOX+3.14%主導でリスクオン継続。FOMCタカ派決定後の急変動を経た戻りのため、寄り確認後の順張りエントリーを推奨。",
-  "kenmo_newhigh": "半導体主導の地合い改善で新高値追いは環境良好。ただしFOMC後のボラティリティが残るため初動の値固めを確認してから参加。",
-  "choruko_reversal": "リスクオン基調でVIXも17.71→15.44に急低下。急落銘柄の戻り逆張りは需要が薄く、無理な逆張りは見送りサイズ縮小。",
-  "stf_kakuhen": "ドル円155.92円(前日比-0.06%とほぼ横ばい)。SOX主導のリスクオンで確変初動は狙いやすいが、寄り高値掴みには注意。",
-  "tenbagger_x": "BB期限・上場日がbase_dayから2営業日以内の銘柄なし。既存上場銘柄は地合い改善を追い風に需給を確認。",
-  "daytrade": "夜間先物は現物比+1.01%高、NYはFOMC通過で一時急落も切り返し高値圏で引け。値動きは荒いため寄り天井掴みに厳重注意。",
-  "semicon_miniswing": "強気モードにつきVWAP±0.5%積極帯。SOX+3.14%の強さを追うが、FOMC後の反動には警戒。"
+  "kenmo_momentum": "先物ギャップ+1.46%(4連休分累積)で寄り強含み想定。SOX堅調も一気に消化するため寄り天井掴みに注意し押し目待ち優先。",
+  "kenmo_newhigh": "新高値ブレイクは寄り後の値固めを確認してからのエントリーが無難。初動の飛びつきは避ける。",
+  "choruko_reversal": "ダウ安・ナスダック小安のミックスで過熱感は薄く、リバーサル狙いは通常運用でよい。",
+  "stf_kakuhen": "地合いは堅調寄りだが確変判定は個別材料優先。VIX15台は中立圏でスクリーニングへの影響は小さい。",
+  "tenbagger_x": "新規BB案件なし(bb_deadline/list_date未設定)。既存16銘柄はセカンダリー観察継続、高値圏銘柄は利確警戒。",
+  "daytrade": "完全不関与方針を継続。寄り天井の可能性がありデイトレ新規建ては見送り推奨。",
+  "semicon_miniswing": "SOX+0.81%で底堅いが強気ギャップアップではないため通常運用。VWAP±0.5%積極帯は見送り、通常帯で管理。"
  },
  "pattern": "半導体主導リスクオン",
- "note": "FOMCで利上げ決定(タカ派・全会一致)後、NYダウは一時900ドル超急落も切り返し高値圏で引け、VIXは17.71→15.44へ急低下。SOX+3.14%主導のリスクオンで大取ナイトも現物比+1.01%高。F&G30(Fear)はリスクオン方向と乖離しており、寄り付きの高値掴みには注意。",
+ "note": "4連休明けの先物ギャップ+1.46%は複数日累積(9/19-23休場)である点に注意。NYはダウ安・ナスダック小安の一方SOXは堅調、原油安は地政学緊張緩和(イラン外交)由来で好悪材料混在。",
  "indicators": {
-  "nikkei": 64136.25,
-  "night_futures": 64785.0,
-  "night_futures_asof": "2026-09-18 05:59 JST",
-  "night_gap_pct": 1.01,
-  "dow_pct": 0.61,
-  "nasdaq_pct": 1.69,
-  "sp500_pct": 1.14,
-  "sox": 11599.49,
-  "sox_pct": 3.14,
-  "vix": 15.44,
-  "fear_greed": {
-   "value": 30,
-   "label": "Fear"
-  },
-  "usdjpy": 155.92,
-  "wti": 101.09,
-  "wti_pct": -1.31
+  "nikkei": 65018.95,
+  "night_futures": 65965.0,
+  "night_futures_asof": "2026-09-24 05:59 JST",
+  "night_gap_pct": 1.46,
+  "dow_pct": -1.03,
+  "nasdaq_pct": -0.69,
+  "sp500_pct": -0.76,
+  "sox": 12534.27,
+  "sox_pct": 0.81,
+  "vix": 15.18,
+  "fear_greed": null,
+  "usdjpy": 158.25,
+  "wti": 92.71,
+  "wti_pct": -1.99
  },
  "data_health": {
   "sox": "api",
   "vix": "api",
-  "fear_greed": "search_snippet",
+  "fear_greed": "null",
   "night_futures": "api_niy",
   "night_source": "NIY=F",
   "wti": "api"
@@ -46,7 +43,7 @@
   "us_settled": true,
   "us_close_jst": "05:00",
   "night_settled": true,
-  "run_at_jst": "06:38",
+  "run_at_jst": "06:32",
   "excluded": []
  }
 }

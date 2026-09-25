@@ -54482,7 +54482,7 @@
     }
   },
   "valuation_spec": {
-    "version": "2026-08-09 v1.0",
+    "version": "2026-09-24 v1.1",
     "purpose": "割高割安(値頃感)の共通語彙。業績グレード(gyoseki_spec)とは独立した第2軸として、いまの株価水準を定型カテゴリで一目化する。①-8の通知・board.html・簡単銘柄解説・各種分析で同一の判定結果を使うための共有スペック。読み取り専用(変更はメンテナンスPRのみ)",
     "origin": "2026-08-09 実測検証で確定。監視ボード98銘柄にv0.9(4軸9点)を適用したところ、V2(現在PER÷擬似PER中央値)が数式上EPSが約分されて『現値÷過去終値中央値』に退化しておりバリュエーションではなく価格モメンタムを測っていること、その機能はV4(52週位置)と重複していることが判明したためV2を廃止。3軸7点満点へ組み替えた",
     "relation_to_gyoseki": "業績グレードと掛けて読む。🚀確変×🔴過熱=織り込み済み(追いかけ禁止)、🚀確変×💎割安=理想形、⚠減速×💎割安=バリュートラップ疑い。値頃感グレードを単独で売買判断に使わない",
@@ -54571,6 +54571,95 @@
       "カテゴリ境界(6-7/5/3-4/2/0-1)は9点満点の検証を7点満点へ換算した予測値であり実分布は未実測。初回実行で1カテゴリに山が集中していたら境界を調整する",
       "PSR代替は実測8%。赤字企業が増える局面でこの比率が上がったらPSR側の閾値(2/5/10倍)を実測で見直す",
       "同業比較(業種平均PER)を入れていない。V1のPEGが業種差を部分的に吸収しているが完全な代替ではない"
+    ],
+    "layer2": {
+      "_note": "第2層。7点の採点には入れない（分布チェックの基準を壊さないため）。①-9 v5 が valuation_cache に書き、①-8 が grades.json の vg/nc/eqr に写す。表示は候補ボード D4・実弾ボード・解説PJ。",
+      "value_gap": {
+        "_desc": "PER圧縮（🤷）。利益は伸びているのに株価が横ばいに居座り PER が縮んでいる型。sato 型の『まだ誰も買っていない割安』。",
+        "conditions": {
+          "growth_min_pct": 15,
+          "chg26w_abs_max_pct": 10,
+          "range26w_max_pct": 25,
+          "per_ratio_max": 0.8
+        },
+        "rule": "growth ≥ 15 ∧ |chg26w| ≤ 10 ∧ range26w ≤ 25 ∧ per_now ≤ per_1y × 0.8 を全て満たす → flag=true。材料が一つでも null → flag=null（データ不足）。それ以外 false。",
+        "per_1y": "1年前の終値 ÷ 前期EPS（前期EPSの実績が無ければ 前期経常 × (今期予想EPS ÷ 今期予想経常) の近似。近似時は flags に '前期EPS近似'）",
+        "sector_rel": "grades.json meta.sector_per_median の業種中央値を下回れば true（母数5未満・業種未付与なら null）",
+        "cache_keys": [
+          "flag",
+          "chg26w",
+          "range26w",
+          "per_now",
+          "per_1y",
+          "growth",
+          "growth_prev",
+          "sector_rel",
+          "note",
+          "calculated_at"
+        ],
+        "cache_path": "valuation_cache[code].value_gap",
+        "grades_key": "vg",
+        "writer": "eval_update(①-9) v5",
+        "source_data": "query1 1年足（①-9 STEP 2）と valuation_cache.static のみ（追加取得なし）"
+      },
+      "asset": {
+        "_desc": "資産層（🏦）。ネットキャッシュ比率・自己資本比率・配当性向。『PBR の低さは入口であって証明ではない』の受け皿。",
+        "net_cash_ratio": "nc(%) = (cash + sec_inv × 0.7 − debt) ÷ 時価総額 × 100（清原式）。cash または debt が null、時価総額が算出不可なら null。sec_inv だけ null は 0 として計算し flags に '投資有価証券欠損'。",
+        "thresholds": {
+          "bank1_min_pct": 50,
+          "bank2_min_pct": 100
+        },
+        "asset_trap": {
+          "roe_max_pct": 3,
+          "payout_min_pct": 80,
+          "rule": "🏦 または 🏦🏦 かつ ROE < 3 かつ 配当性向 > 80 → flags '⚠資産バリュートラップ疑い'（ROE か配当性向が null なら判定しない）"
+        },
+        "static_keys": [
+          "cash",
+          "sec_inv",
+          "debt",
+          "equity_ratio",
+          "payout",
+          "asset_at",
+          "nc"
+        ],
+        "cache_path": "valuation_cache[code].static",
+        "grades_keys": {
+          "nc": "static.nc",
+          "eqr": "static.equity_ratio"
+        },
+        "refresh_days": 90,
+        "batch_per_run": 50,
+        "time_box_min": 30,
+        "source": "irbank.net/{code}/bs（および dividend）。取得不可は null。equity_ratio のみ kabutan 財務テーブルで代替可（その場合 asset_at は書かない）。",
+        "writer": "eval_update(①-9) v5"
+      },
+      "sector_per_median": {
+        "_desc": "業種別PER中央値（同業比の出口目安・A2）。①-8 が grades.json の meta.sector_per_median に毎晩書く。プール在籍銘柄の中央値であり全上場ではない。",
+        "min_n": 5,
+        "per_range": [
+          0,
+          200
+        ],
+        "writer": "night_gate(①-8) v1.33 以降",
+        "location": "grades.json meta.sector_per_median {業種: [中央値PER, 母数n]}／各銘柄 spm"
+      }
+    },
+    "layer2_display_flags": [
+      "🤷PER圧縮",
+      "🏦資産バリュー",
+      "🏦🏦資産バリュー",
+      "⚠資産バリュートラップ疑い",
+      "前期EPS近似",
+      "投資有価証券欠損",
+      "有利子負債合算"
+    ],
+    "layer2_changelog": [
+      {
+        "version": "1.1",
+        "date": "2026-09-24",
+        "change": "第2層（value_gap・asset・sector_per_median）と表示フラグの定義を追加。採点体系・閾値・target_distribution は不変。"
+      }
     ]
   },
   "valuation_cache": {

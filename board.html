@@ -22,14 +22,17 @@ h1{font-size:22px;margin:6px 0 2px}
 .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
 .tabs a{background:#12292e;border:1px solid #1d3a40;color:#e6f4f1;text-decoration:none;padding:7px 12px;border-radius:999px;font-size:13px}
 .tabs a.here{border-color:#1fb6a6;color:#7fe3d6}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-bottom:16px}
-.kpi{background:#12292e;border:1px solid #1d3a40;border-radius:12px;padding:12px 14px}
-.kpi .n{font-size:26px;font-weight:700;color:#7fe3d6;line-height:1.1}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(84px,1fr));gap:6px;margin-bottom:10px}
+.kpi{background:#12292e;border:1px solid #1d3a40;border-radius:8px;padding:5px 8px;min-width:0}
+.kpi .n{font-size:16px;font-weight:700;color:#7fe3d6;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .kpi.buy .n{color:#48e0b0}
-.kpi .l{font-size:12px;color:#8fb3ad;margin-top:2px}
+.kpi .l{font-size:10.5px;color:#8fb3ad;margin-top:0;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:480px){ .kpis{grid-template-columns:repeat(4,1fr);gap:5px} .kpi{padding:4px 6px} .kpi .n{font-size:15px} .kpi .l{font-size:10px} }
 /* メインタブバー（JS切替・ページ遷移なし）。スクロールしても上部に残す。 */
 .maintabs{position:sticky;top:0;z-index:20;display:flex;gap:8px;background:#0d1b1e;padding:10px 0;border-bottom:1px solid #1d3a40;margin-bottom:14px}
-.maintabs button{flex:1;background:#12292e;border:1px solid #1d3a40;color:#e6f4f1;padding:10px 12px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:background .12s,border-color .12s}
+.maintabs button{flex:1 0 auto;white-space:nowrap;background:#12292e;border:1px solid #1d3a40;color:#e6f4f1;padding:10px 12px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:background .12s,border-color .12s}
+/* D5: タブが7つになったので、狭い画面では横スクロール（縦書きに潰さない） */
+@media (max-width:560px){ .maintabs{overflow-x:auto;-webkit-overflow-scrolling:touch;gap:6px;scrollbar-width:none} .maintabs::-webkit-scrollbar{display:none} .maintabs button{flex:0 0 auto;padding:8px 10px;font-size:13px} }
 .maintabs button.active{background:#123d33;border-color:#1fb6a6;color:#7fe3d6}
 .panel{display:none}.panel.active{display:block}
 /* ジャンプボタン行（横スクロール可のチップ型） */
@@ -264,7 +267,14 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 .bankchip{display:inline-block;font-size:11px;font-weight:700;color:#7fc8e8;background:#132a3a;border:1px solid #275470;border-radius:5px;padding:1px 7px;white-space:nowrap;vertical-align:middle}
 .perchip{display:inline-block;font-size:10px;font-weight:500;color:#8fb3ad;background:#0f2429;border:1px solid #1d3a40;border-radius:5px;padding:1px 6px;white-space:nowrap;vertical-align:middle}
 .kpi.tri-g .n{color:#48e0b0}.kpi.tri-y .n{color:#e8c766}.kpi.tri-b .n{color:#7fc8e8}
-.kpi .d{font-size:11px;color:#8fb3ad;margin-top:1px}
+.kpi .d{font-size:10px;color:#8fb3ad;margin-top:0;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* D5（2026-09-26）: 🧳保有タブ。コードは端末の localStorage にだけ置き、どこにも送らない */
+.holdbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:8px 0 12px}
+.holdbar input{flex:1 1 180px;min-width:0;background:#0f2429;border:1px solid #2b444a;border-radius:8px;color:#e5e9f0;padding:8px 10px;font-size:14px}
+.holdbar button{background:#1d3a40;border:1px solid #33565c;border-radius:8px;color:#b7d6d0;padding:8px 12px;font-size:13px;cursor:pointer}
+.holdbar button.pri{background:#123d33;border-color:#1f6b57;color:#48e0b0;font-weight:600}
+.holdnote{font-size:11px;color:#8fb3ad;line-height:1.6;margin:0 0 10px}
+.holdx{float:right;background:none;border:1px solid #2b444a;border-radius:6px;color:#8fb3ad;font-size:11px;padding:1px 7px;cursor:pointer;margin-left:6px}
 @media (max-width:480px){ .perchip{display:none} .vgchip .vgfull{display:none} }
 </style></head><body><div class='wrap'>
 <h1>📋 候補ボード</h1>
@@ -283,6 +293,7 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 <div class='maintabs' id='maintabs'>
 <button id='tab-nightgate' class='active' onclick="switchTab('nightgate')">🚪ゲート</button>
 <button id='tab-watch' onclick="switchTab('watch')">👀ウォッチ</button>
+<button id='tab-hold' onclick="switchTab('hold')">🧳保有</button>
 <button id='tab-changepoint' onclick="switchTab('changepoint')">🔔変化点</button>
 <button id='tab-methods' onclick="switchTab('methods')">📋5手法</button>
 <button id='tab-granville' onclick="switchTab('granville')">📐グランビル</button>
@@ -296,11 +307,12 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 <details class='vallegend'><summary>🚪 ゲート判定・乖離率の凡例</summary><div class='vallegendbody'>✅陽線=当日終値&gt;始値かつ上髭が小さい／✅十字線反転=実体極小で直近5日-5%以上下落＝下げ後の反転期待／✅S高=値幅ゼロで前日比プラス／❌上髭=陽線だが上値を叩かれた形／❌陰線=当日終値が始値を下回った＝需給が売り優勢でゲートの前提を満たさない／－SKIP=当日分の株価データが取れず判定不能。判定は当日足の形だけを見ており業績・株価水準は別軸<br>乖離率=提案価格が当日終値からどれだけ離れているか。押し目系はマイナス(到達待ち)、モメ系はプラス(上抜け待ち)。リバ系・変化点系は指値＝当日終値のため表示しない</div></details>
 <div id='panel-nightgate' class='panel active'></div>
 <div id='panel-watch' class='panel'></div>
+<div id='panel-hold' class='panel'></div>
 <div id='panel-changepoint' class='panel'></div>
 <div id='panel-methods' class='panel'></div>
 <div id='panel-granville' class='panel'></div>
 <div id='panel-legend' class='panel'></div>
-<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
+<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
 </div>
 <button class='fab' id='backtab' onclick='scrollToTabbar()' aria-label='タブバーへ戻る'>▲タブへ戻る</button>
 <script>
@@ -591,7 +603,7 @@ function scrollToTabbar(){
   scrollToY(absTop(tb)-TAB_OFFSET);
 }
 function switchTab(which){
-  ['nightgate','changepoint','methods','granville','watch','legend'].forEach(t=>{
+  ['nightgate','changepoint','methods','granville','watch','hold','legend'].forEach(t=>{
     const p=document.getElementById('panel-'+t), b=document.getElementById('tab-'+t);
     if(!p||!b)return;
     const on=(t===which);
@@ -1803,8 +1815,103 @@ function renderLegend(){
   </section>`;
 }
 
+// ===== 🧳保有タブ（D5・2026-09-26）=====
+// 目的: 保有銘柄を候補と同じ物差し（ゲート判定・業績・値頃感・🤷🏦・PER×業種中央値・📈文脈・🕯形態・決算）で見る。
+// 制約: このページは公開（GitHub Pages）なので、保有コードは master.json にも grades.json にも無い。
+//   コードは「この端末の localStorage」にだけ保存し、どこにも送らない（pool_bars/grades はファイル全体を読むだけ）。
+//   数量・建値・損益は扱わない（それらは Drive の実弾ボード側）。
+// 入口: (1) 画面の入力欄で追加／削除 (2) URL の #hold=325A,6965 で一括登録（フラグメントはサーバーに送られない。読んだら消す）
+const HOLD_KEY='board_hold_codes_v1';
+let LAST_D=null;
+function holdLoad(){ try{ const s=localStorage.getItem(HOLD_KEY); const a=s?JSON.parse(s):[]; return Array.isArray(a)?a.map(x=>String(x).trim().toUpperCase()).filter(Boolean):[]; }catch(e){ return []; } }
+function holdSave(arr){ try{ localStorage.setItem(HOLD_KEY,JSON.stringify(arr)); }catch(e){} }
+function holdParse(s){ return String(s||'').split(/[\s,、，／/]+/).map(x=>x.trim().toUpperCase()).filter(x=>/^[0-9A-Z]{4,5}$/.test(x)); }
+function holdFromHash(){
+  try{
+    const h=location.hash||''; const m=h.match(/[#&]hold=([^&]+)/);
+    if(!m) return null;
+    const codes=holdParse(decodeURIComponent(m[1]));
+    history.replaceState(null,'',location.pathname+location.search); // 履歴にコードを残さない
+    return codes;
+  }catch(e){ return null; }
+}
+function holdAdd(){ const el=document.getElementById('hold-in'); if(!el) return; const add=holdParse(el.value); if(!add.length) return; const cur=holdLoad(); add.forEach(c=>{ if(cur.indexOf(c)<0) cur.push(c); }); holdSave(cur); el.value=''; holdRerender(); }
+function holdRemove(code){ holdSave(holdLoad().filter(c=>c!==code)); holdRerender(); }
+function holdClear(){ if(!confirm('この端末に保存した保有コードをすべて消しますか？')) return; holdSave([]); holdRerender(); }
+function holdRerender(){ if(LAST_D){ document.getElementById('panel-hold').innerHTML=renderHold(LAST_D,(LAST_D.pipeline&&LAST_D.pipeline.runs)||{}); } }
+function holdNameOf(code,ng,pool){
+  if(ng&&ng.name) return ng.name;
+  if(pool&&pool[code]&&pool[code].name) return pool[code].name;
+  const g=gradesOf(code); if(g&&g.n) return g.n;
+  return null;
+}
+function holdCloseOf(code,ng){
+  if(ng&&typeof ng.close==='number') return {close:ng.close,src:'ゲート',day:ng.base_day||null};
+  const bars=BARS&&BARS[String(code)];
+  if(Array.isArray(bars)&&bars.length){ const b=bars[bars.length-1]; if(typeof +b[4]==='number'&&isFinite(+b[4])) return {close:+b[4],src:'pool_bars',day:b[0]}; }
+  const g=gradesOf(code); if(g&&typeof g.px==='number') return {close:g.px,src:'grades',day:(g.at||'').slice(0,10)||null};
+  return {close:null,src:null,day:null};
+}
+function holdEarnChip(code,ng){
+  if(ng){ const e=earningsChip(ng); if(e) return e; }
+  const g=gradesOf(code); const nx=g&&g.nx; if(!nx||!/^\d{4}-\d{2}-\d{2}$/.test(String(nx))) return '';
+  const today=new Date(); const ts=today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+  const n=bizDaysLeft(ts,nx); if(n==null) return '';
+  if(n<0) return '';
+  return earningsChip({'窓残り営業日':n,'発表日':nx});
+}
+function holdCard(code,NG,POOL){
+  const ng=(NG&&NG[String(code)])||null;
+  const name=holdNameOf(code,ng,POOL);
+  const px=holdCloseOf(code,ng);
+  const methodHtml=(ng?entryMarkChips(ng):`<span class='memochip' title='当夜の候補プールに無い（保有のみ）'>候補外</span>`)
+    +`<button class='holdx' onclick="holdRemove('${esc(code)}')" title='この端末の一覧から外す'>✕ 外す</button>`;
+  let caution='';
+  try{ caution=ng?cautionChips(code,entryBranches(ng)):(trendChipsFromBars(code)+patternChips(code)+sectorChip(code)); }catch(e){ caution=sectorChip(code); }
+  const gate=ng?gateChipGuarded(ng):`<span class='vtxt' title='当夜のゲート判定なし（候補外）'>—</span>`;
+  const judgeHtml=judgeRow(gate,code);
+  let hl='';
+  if(ng&&ng.headline){
+    const lines=normalizeHeadline(headlineToText(ng.headline)).split('\n').filter(l=>l&&l.indexOf('【戦略】')!==0).slice(0,4).join('\n');
+    if(lines) hl=`<details class='headline'><summary>📌ヘッドライン</summary><div class='hlbody'>${esc(lines)}</div></details>`;
+  }else{ const p=PROF&&PROF[String(code)]; if(p&&p.gyotai) hl=`<details class='headline'><summary>📌ヘッドライン</summary><div class='hlbody'>${esc('業態: '+p.gyotai)}</div></details>`; }
+  const meta=`<div class='smeta'>${px.close!=null?`現在値 ${esc(fmtPrice(px.close))}円（${esc(px.day||'—')}・${esc(px.src||'—')}）`:'現在値 取得不可（pool_bars／grades に無し）'}${name==null?'　銘柄名 未取得':''}</div>`;
+  return card5({code:code,name:name||'—',close:px.close,
+    methodHtml:methodHtml, cautionHtml:caution, earnHtml:holdEarnChip(code,ng), judgeHtml:judgeHtml, propHtml:'', bodyHtml:meta+hl});
+}
+function renderHold(d,runs){
+  return safeSection('sec-hold','🧳 保有',()=>{
+    const fromHash=holdFromHash();
+    if(fromHash&&fromHash.length){ holdSave(fromHash); }
+    const codes=holdLoad();
+    const NG={}; (((d.night_gate&&d.night_gate.results)||[])).forEach(r=>{ if(r&&r.code!=null) NG[String(r.code)]=r; });
+    const POOL=(d.night_gate&&d.night_gate.pool)||{};
+    const bar=`<div class='holdbar'>
+      <input id='hold-in' type='text' inputmode='text' placeholder='コードを追加（例: 325A, 6965 8011）' onkeydown="if(event.key==='Enter'){holdAdd();}">
+      <button class='pri' onclick='holdAdd()'>追加</button>
+      <button onclick='holdClear()'>全消去</button>
+    </div>
+    <div class='holdnote'>保有コードは<b>この端末</b>にだけ保存され、どこにも送信されません（公開ページのため数量・建値・損益は扱いません。それらは実弾ボード側）。評価の材料は候補と同じ: 当夜のゲート判定（候補プールにいる銘柄のみ）／業績／値頃感／🤷🏦／PER×業種中央値／📈文脈・🕯形態（pool_bars に日足がある銘柄のみ）／📅決算（grades.json の次回決算日）。週末の実弾ボードのリンク（#hold=…）から開くと一括で登録されます。</div>`;
+    let body;
+    if(!codes.length){ body=`<div class='empty'>保有コードが未登録です。上の欄にコードを入れて「追加」を押してください。</div>`; }
+    else{
+      const inPool=codes.filter(c=>NG[c]).length;
+      body=`<div class='ngsum'><span class='ngchip'>登録 <b>${codes.length}</b></span><span class='ngchip'>候補プール内 <b>${inPool}</b></span><span class='ngchip'>候補外 <b>${codes.length-inPool}</b></span></div>`
+        + codes.map(c=>holdCard(c,NG,POOL)).join('');
+    }
+    const r=runs.night_gate;
+    const fresh=(r&&r.status==='done')?`ゲート最終実行 <b>${esc(r.trading_day)}</b>${GRADES_DAY?`／grades <b>${esc(GRADES_DAY)}</b>`:''}`:'';
+    return `<section class='mth' id='sec-hold'>
+      <div class='mhead'><span>🧳</span><span class='mname'>🧳 保有銘柄の評価</span><span class='cnt'>${codes.length}件</span><span class='fresh'>${fresh}</span></div>
+      ${bar}${body}
+      <a class='totop' onclick='scrollTop()'>▲タブへ</a>
+    </section>`;
+  });
+}
+
 // ===== メイン描画 =====
 function render(d){
+  LAST_D=d;
   const spec=(d.scoring_spec&&d.scoring_spec.methods)||{};
   const cands=d.candidates||{};
   const runs=(d.pipeline&&d.pipeline.runs)||{};
@@ -1875,9 +1982,9 @@ function render(d){
       wl.forEach(e=>{ if(e&&(e.watch_class==='待ち'||e.watch_class==='両面'||e.watch_class==='熟成')&&['expired','invalidated','entered','nominated'].indexOf(e.status)<0) triY++; });
     }catch(e){}
     document.getElementById('kpis').innerHTML=[
-      {n:triG,l:"🟩緑 即買い候補",cls:"tri-g",id:"kpi-tri-g",tip:"PASS∧値頃感💎🟢∧業績⚡以上∧✅即時可"},
-      {n:triY,l:"🟨黄 監視中",cls:"tri-y",id:"kpi-tri-y",tip:"①-12 待ち／両面／熟成"},
-      {n:triB,l:"🟦青 チャート下落",cls:"tri-b",id:"kpi-tri-b",tip:"FAIL_INSEN∧文脈不一致"},
+      {n:triG,l:"🟩即買い候補",cls:"tri-g",id:"kpi-tri-g",tip:"PASS∧値頃感💎🟢∧業績⚡以上∧✅即時可"},
+      {n:triY,l:"🟨監視中",cls:"tri-y",id:"kpi-tri-y",tip:"①-12 待ち／両面／熟成"},
+      {n:triB,l:"🟦チャート下落",cls:"tri-b",id:"kpi-tri-b",tip:"FAIL_INSEN∧文脈不一致"},
       {n:total,l:"候補合計"},
       {n:buy,l:"BUY_NOW",cls:"buy"},
       {n:methodsWithData,l:"データあり手法"},
@@ -1940,6 +2047,8 @@ function render(d){
 
   // ===== タブ⑤: 👀候補ウォッチ（master.json.watchlist を描画。①-12 が更新） =====
   document.getElementById('panel-watch').innerHTML=renderWatch(d,runs);
+  // ===== タブ⑤b: 🧳保有（端末内のコード一覧を候補と同じ物差しで評価。D5） =====
+  try{ document.getElementById('panel-hold').innerHTML=renderHold(d,runs); }catch(e){ document.getElementById('panel-hold').innerHTML=`<div class='err'>保有タブの描画でエラー: ${esc((e&&e.message)||e)}</div>`; }
 
   // ===== タブ⑥: 📖凡例（静的） =====
   try{ document.getElementById('panel-legend').innerHTML=renderLegend(); }catch(e){ document.getElementById('panel-legend').innerHTML=`<div class='err'>凡例の描画でエラー: ${esc((e&&e.message)||e)}</div>`; }

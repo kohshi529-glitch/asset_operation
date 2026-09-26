@@ -783,8 +783,6 @@ function detectPatterns(bars,i){
     if(p.bull&&t.bear&&t.o>p.c&&t.c<mid&&t.c>p.o) out.push(['かぶせ線','bear']);
     if(Math.abs(t.l-p.l)<=0.002*t.c&&t.bull&&ctx.down) out.push(['毛抜き底','bull']);
     if(Math.abs(t.h-p.h)<=0.002*t.c&&t.bear&&ctx.up) out.push(['毛抜き天井','bear']);
-    if(t.l>p.h) out.push(['上放れ','bull']);
-    if(t.h<p.l) out.push(['下放れ','bear']);
   }
   if(B.length>=3){
     const a=B[B.length-3],b=B[B.length-2],c3=B[B.length-1];
@@ -800,9 +798,12 @@ function detectPatterns(bars,i){
     if(f.bull&&f.body>=avgbody&&inside&&lst.bull&&lst.c>f.c) out.push(['上げ三法','bull']);
     if(f.bear&&f.body>=avgbody&&inside&&lst.bear&&lst.c<f.c) out.push(['下げ三法','bear']);
   }
-  if(B.length>=4){
-    let g1=true,g2=true; for(let k=B.length-3;k<B.length;k++){ if(!(B[k].l>B[k-1].h)) g1=false; if(!(B[k].h<B[k-1].l)) g2=false; }
-    if(g1) out.push(['三空踏み上げ','bear']); if(g2) out.push(['三空叩き込み','bull']);
+  // 窓（上放れ／下放れ）: base_day から遡った連続本数で1つだけ出す。3本以上=三空（反転警戒）・2本=2本連続（継続）・1本=単独（D6・2026-09-26）
+  { let gu=0,gd=0;
+    for(let k=B.length-1;k>=1;k--){ if(B[k].l>B[k-1].h) gu++; else break; }
+    for(let k=B.length-1;k>=1;k--){ if(B[k].h<B[k-1].l) gd++; else break; }
+    if(gu>=3) out.push(['三空踏み上げ','bear']); else if(gu===2) out.push(['2本連続上放れ','bull']); else if(gu===1) out.push(['上放れ','bull']);
+    if(gd>=3) out.push(['三空叩き込み','bull']); else if(gd===2) out.push(['2本連続下放れ','bear']); else if(gd===1) out.push(['下放れ','bear']);
   }
   return out;
 }
@@ -1786,14 +1787,16 @@ function renderLegend(){
     ['毛抜き天井','bear','高値がほぼ同値で当日陰線、上昇後','同じ高値で2度止められた'],
     ['上放れ','bull','当日安値＞前日高値（窓を空けて上）','強い買い。窓埋めの有無を見る'],
     ['下放れ','bear','当日高値＜前日安値','強い売り'],
+    ['2本連続上放れ','bull','当日と前日の2本が連続で上放れ（3本目が出たら三空に切り替わる）','勢いの継続。窓が2つ開いた状態＝買いが強いが、3本目は買い疲れの領域'],
+    ['2本連続下放れ','bear','2本連続で下放れ','下げの加速。3本目で三空叩き込み（売られ過ぎ）に切り替わる'],
     ['赤三兵','bull','3本連続陽線・終値切り上げ・各始値が前日実体内・上ヒゲ≤実体×0.3・各実体≥平均×0.5','底値圏なら上昇転換の代表形。高値圏では過熱'],
     ['黒三兵','bear','赤三兵の逆','下落転換の代表形'],
     ['明けの明星','bull','大陰線→小実体（前日終値より下）→陽線が1本目実体の中点超え','三川明けの明星。底打ちの代表形'],
     ['宵の明星','bear','明けの明星の逆','天井の代表形'],
     ['上げ三法','bull','大陽線→3本が1本目の値幅内→陽線が1本目終値超え','上昇途中の押しを消化して再上昇'],
     ['下げ三法','bear','上げ三法の逆','下落途中の戻りを消化して再下落'],
-    ['三空踏み上げ','bear','3本連続で上放れ','買い疲れ。反落警戒'],
-    ['三空叩き込み','bull','3本連続で下放れ','売られ過ぎ。反発期待'],
+    ['三空踏み上げ','bear','3本以上連続で上放れ','買い疲れ。反落警戒'],
+    ['三空叩き込み','bull','3本以上連続で下放れ','売られ過ぎ。反発期待'],
   ];
   const row=(a)=>`<div class='lcard'><div class='lhead'>${a[0]}</div><div class='lcond'>条件: ${esc(a[1])}</div><div class='lmean'>${esc(a[2])}</div></div>`;
   const prow=(a)=>{ const d=a[1]==='bull'?'強気':(a[1]==='bear'?'弱気':(a[1]==='bull/bear'?'前日と逆方向':'中立')); const cls=a[1]==='bull'?'bull':(a[1]==='bear'?'bear':'neutral');
@@ -1807,7 +1810,7 @@ function renderLegend(){
     <div class='note'>「文脈」＝移動平均との位置関係と向き。ローソクゲート（当日1本のトリガー）とは別軸。緑・紫＝上向き側、橙＝下向き側。</div>
     ${tr.map(row).join('')}
     <h3>🕯 ローソク足形態チップ</h3>
-    <div class='note'>直近6本のOHLC（pool_bars.json・base_day 足まで）から機械判定。実体＝|終値−始値|、値幅＝高値−安値、平均実体＝直前5本の実体平均。文脈「下落後」＝直前5日−3%以下または前日終値＜MA10×0.98、「上昇後」＝直前5日+3%以上または（前日終値＞MA10×1.02 かつ 20日高値の97%以上）。形態は「兆し」であり、翌日の確認足と文脈で判断する。形態ごとの成績は ①-8 v1.31 の記録が4週たまってから検証（V4）。</div>
+    <div class='note'>直近6本のOHLC（pool_bars.json・base_day 足まで）から機械判定。実体＝|終値−始値|、値幅＝高値−安値、平均実体＝直前5本の実体平均。文脈「下落後」＝直前5日−3%以下または前日終値＜MA10×0.98、「上昇後」＝直前5日+3%以上または（前日終値＞MA10×1.02 かつ 20日高値の97%以上）。窓（上放れ／下放れ）は連続本数で1つだけ出す（1本＝上放れ／下放れ、2本＝2本連続、3本以上＝三空）。形態は「兆し」であり、翌日の確認足と文脈で判断する。形態ごとの成績は ①-8 v1.31 の記録が4週たまってから検証（V4）。</div>
     ${pat.map(prow).join('')}
     <h3>既存の凡例</h3>
     <div class='note'>業績グレード（🚀確変11-13／🔥絶好調8-10／⚡好調5-7／✅順調3-4／➖横ばい2／⚠減速0-1／🔻悪化）、値頃感（💎割安6-7／🟢値頃5／⚪妥当3-4／🟡やや割高2／🔴過熱0-1）、ゲート判定（✅陽線／✅十字線反転／❌上髭／❌陰線／－SKIP）は、タブバー下の折りたたみ凡例を参照。</div>

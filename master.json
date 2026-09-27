@@ -1440,42 +1440,39 @@
   },
   "market": {
     "latest": {
-      "date": "2026-09-25",
-      "market_mode": "レンジ様子見",
+      "date": "2026-09-28",
+      "market_mode": "堅調",
       "method_guidance": {
-        "kenmo_momentum": "大取ナイトは前日終値比-0.04%とほぼ横ばい。方向感が出るまで飛び乗らず寄り後の値動き確認を優先。",
-        "kenmo_newhigh": "NYはダウ・SOX小安、ナスダック横ばいで強い追い風なし。新高値ブレイクは出来高確認後のエントリーが無難。",
-        "choruko_reversal": "ダウ-0.31%・SOX-0.33%と軽い調整で過熱感は薄い。リバーサル狙いは通常運用でよい。",
-        "stf_kakuhen": "マクロは方向感薄く原油急伸のみが目立つ地合い。確変判定は個別材料優先、スクリーニングへの macro 影響は限定的。",
-        "tenbagger_x": "新規BB案件なし(bb_deadline/list_date未設定)。既存16銘柄はセカンダリー観察継続、高値圏銘柄は利確警戒。",
-        "daytrade": "完全不関与方針を継続。中東地政学リスク(サウジ・フーシ軍事衝突、ホルムズ海峡通航急減)によるオイルショック波及に警戒し新規建ては見送り。",
-        "semicon_miniswing": "SOX-0.33%で強気ギャップアップではないため通常運用。VWAP±0.5%積極帯は見送り、通常帯で管理。"
+        "kenmo_momentum": "大取ナイトは週末据え置き値(+0.14%・2026-09-26 05:59 JST時点)で方向感の参考程度。SOX+1.41%・ダウ+0.93%とNYは堅調だが、寄り後の実際の値動きを確認してから追随判断。",
+        "kenmo_newhigh": "NY3指数そろって上昇(ダウ+0.93%/ナスダック+0.48%/SOX+1.41%)で新高値ブレイクの地合いは良好。出来高を伴う本物のブレイクか見極めてエントリー。",
+        "choruko_reversal": "VIX14.87と落ち着いた地合いで過熱感は薄い。リバーサル狙いは通常運用でよい。",
+        "stf_kakuhen": "マクロはリスクオン方向で個別材料の反応が出やすい環境。確変判定は個別決算・材料優先でmacro影響は限定的。",
+        "tenbagger_x": "新規BB案件なし(bb_deadline/list_date が base_day 2営業日以内の銘柄なし)。既存16銘柄はセカンダリー観察継続。",
+        "daytrade": "完全不関与方針を継続。原油-2.33%で地政学懸念は一服も、週明けの実際の寄り付き確認まで新規は見送り。",
+        "semicon_miniswing": "SOX+1.41%で強気地合いのためVWAP±0.5%積極帯を適用可。ただし大取先物は週末据え置き値のため寄り確認は必須。"
       },
-      "pattern": "地政学ショック型",
-      "note": "WTI原油+2.82%(94.76ドル)はサウジ・フーシ軍事衝突とホルムズ海峡通航急減(日次3隻)を材料に急伸。株式指標(ダウ-0.31%/ナスダック+0.01%/SOX-0.33%)への波及はまだ限定的だが、中東情勢の一段の悪化には要警戒。大取ナイトは前日終値比-0.04%でほぼ横ばい。",
+      "pattern": "半導体主導リスクオン",
+      "note": "大取ナイト先物(NIY=F)は週末据え置き値(2026-09-26 05:59 JST)のため月曜朝の実際の寄り付き方向とは異なる可能性が高い。米国株はSOX主導で堅調(ダウ+0.93%/SOX+1.41%)、VIX14.87で落ち着き、原油は-2.33%と地政学懸念は後退。",
       "indicators": {
-        "nikkei": 65513.99,
-        "night_futures": 65485.0,
-        "night_futures_asof": "2026-09-25 05:59 JST",
-        "night_gap_pct": -0.04,
-        "dow_pct": -0.31,
-        "nasdaq_pct": 0.01,
-        "sp500_pct": -0.02,
-        "sox": 12492.54,
-        "sox_pct": -0.33,
-        "vix": 15.67,
-        "fear_greed": {
-          "value": 35,
-          "label": "Fear"
-        },
-        "usdjpy": 158.77,
-        "wti": 94.76,
-        "wti_pct": 2.82
+        "nikkei": 66364.2,
+        "night_futures": 66455.0,
+        "night_futures_asof": "2026-09-26 05:59 JST",
+        "night_gap_pct": 0.14,
+        "dow_pct": 0.93,
+        "nasdaq_pct": 0.48,
+        "sp500_pct": 0.51,
+        "sox": 12668.93,
+        "sox_pct": 1.41,
+        "vix": 14.87,
+        "fear_greed": null,
+        "usdjpy": 157.25,
+        "wti": 92.41,
+        "wti_pct": -2.33
       },
       "data_health": {
         "sox": "api",
         "vix": "api",
-        "fear_greed": "search_snippet",
+        "fear_greed": "null",
         "night_futures": "api_niy",
         "night_source": "NIY=F",
         "wti": "api"
@@ -1489,6 +1486,52 @@
       }
     },
     "history": [
+      {
+        "date": "2026-09-28",
+        "market_mode": "堅調",
+        "method_guidance": {
+          "kenmo_momentum": "大取ナイトは週末据え置き値(+0.14%・2026-09-26 05:59 JST時点)で方向感の参考程度。SOX+1.41%・ダウ+0.93%とNYは堅調だが、寄り後の実際の値動きを確認してから追随判断。",
+          "kenmo_newhigh": "NY3指数そろって上昇(ダウ+0.93%/ナスダック+0.48%/SOX+1.41%)で新高値ブレイクの地合いは良好。出来高を伴う本物のブレイクか見極めてエントリー。",
+          "choruko_reversal": "VIX14.87と落ち着いた地合いで過熱感は薄い。リバーサル狙いは通常運用でよい。",
+          "stf_kakuhen": "マクロはリスクオン方向で個別材料の反応が出やすい環境。確変判定は個別決算・材料優先でmacro影響は限定的。",
+          "tenbagger_x": "新規BB案件なし(bb_deadline/list_date が base_day 2営業日以内の銘柄なし)。既存16銘柄はセカンダリー観察継続。",
+          "daytrade": "完全不関与方針を継続。原油-2.33%で地政学懸念は一服も、週明けの実際の寄り付き確認まで新規は見送り。",
+          "semicon_miniswing": "SOX+1.41%で強気地合いのためVWAP±0.5%積極帯を適用可。ただし大取先物は週末据え置き値のため寄り確認は必須。"
+        },
+        "pattern": "半導体主導リスクオン",
+        "note": "大取ナイト先物(NIY=F)は週末据え置き値(2026-09-26 05:59 JST)のため月曜朝の実際の寄り付き方向とは異なる可能性が高い。米国株はSOX主導で堅調(ダウ+0.93%/SOX+1.41%)、VIX14.87で落ち着き、原油は-2.33%と地政学懸念は後退。",
+        "indicators": {
+          "nikkei": 66364.2,
+          "night_futures": 66455.0,
+          "night_futures_asof": "2026-09-26 05:59 JST",
+          "night_gap_pct": 0.14,
+          "dow_pct": 0.93,
+          "nasdaq_pct": 0.48,
+          "sp500_pct": 0.51,
+          "sox": 12668.93,
+          "sox_pct": 1.41,
+          "vix": 14.87,
+          "fear_greed": null,
+          "usdjpy": 157.25,
+          "wti": 92.41,
+          "wti_pct": -2.33
+        },
+        "data_health": {
+          "sox": "api",
+          "vix": "api",
+          "fear_greed": "null",
+          "night_futures": "api_niy",
+          "night_source": "NIY=F",
+          "wti": "api"
+        },
+        "settlement": {
+          "us_settled": true,
+          "us_close_jst": "05:00",
+          "night_settled": true,
+          "run_at_jst": "06:32",
+          "excluded": []
+        }
+      },
       {
         "date": "2026-09-25",
         "market_mode": "レンジ様子見",
@@ -2362,49 +2405,6 @@
           "vix": "api",
           "fear_greed": "null",
           "night_futures": "search_snippet",
-          "wti": "api"
-        },
-        "settlement": {
-          "us_settled": true,
-          "us_close_jst": "05:00",
-          "night_settled": true,
-          "run_at_jst": "06:31",
-          "excluded": []
-        }
-      },
-      {
-        "date": "2026-08-26",
-        "market_mode": "堅調",
-        "method_guidance": {
-          "kenmo_momentum": "SOX+1.44%・ナスダック+0.66%と地合い良好でモメンタム系は追い風。ただし大取ナイト欠損のため寄り確認後にエントリー。",
-          "kenmo_newhigh": "米主要指数そろって上昇・VIX15.45まで低下で新高値ブレイクは狙いやすい。夜間先物不明のため寄り天井掴みに注意。",
-          "choruko_reversal": "逆張り材料は限定的。原油急落(-4.6%)関連銘柄のオーバーシュートがあれば個別確認。",
-          "stf_kakuhen": "確変シグナルなし。地合いは良好だが夜間先物欠損のため初動は小さめの試し玉から。",
-          "tenbagger_x": "BB期限・上場日とも直近2営業日以内の銘柄なし。新規待機。",
-          "daytrade": "米指数そろって上昇・VIX低下で寄り急落リスクは後退。通常運用でルール通り執行。",
-          "semicon_miniswing": "VWAP±0.5%積極帯。SOX+1.44%が追い風だが大取ナイト欠損で寄り高値掴みに警戒。NVIDIA決算控えでボラ拡大注意。"
-        },
-        "pattern": "半導体主導リスクオン",
-        "note": "大取ナイト欠損(重み最大±4)のため寄り前提は未確認。日経終値65,856.43はAPIのregularMarketPrice値(chart配列未反映のため)を採用。原油-4.6%(対イラン制裁観測、Hormuz緊張継続)。F&Gは4日連続取得不可でVIX代替(中立圏・引け後値)参考。SOX+1.44%・Nasdaq+0.66%・VIX15.45低下と地合いは良好。",
-        "indicators": {
-          "nikkei": 65856.43,
-          "night_futures": null,
-          "dow_pct": 0.3,
-          "nasdaq_pct": 0.66,
-          "sp500_pct": 0.32,
-          "sox": 11588.04,
-          "sox_pct": 1.44,
-          "vix": 15.45,
-          "fear_greed": null,
-          "usdjpy": 159.2,
-          "wti": 81.11,
-          "wti_pct": -4.59
-        },
-        "data_health": {
-          "sox": "api",
-          "vix": "api",
-          "fear_greed": "null",
-          "night_futures": "null",
           "wti": "api"
         },
         "settlement": {
@@ -5737,12 +5737,14 @@
         "note": "①-9 銘柄評価更新 v5。gyoseki再取得10件(開示由来1件・新規未キャッシュ9件、うち2件は経常益予想非開示のため業績データ取得不可)。value_gap(PER圧縮)を全銘柄で初回導入(per_1yは1年分の日足が243-248本のため250本閾値未達で全銘柄null、flag全銘柄null)。資産層(nc/自己資本比率/配当性向)を初回導入、irbank取得43/50成功・7件は表形式相違で取得不可。"
       },
       "morning_compass": {
-        "generated_at": "2026-09-24T21:37:44.704600+00:00",
-        "trading_day": "2026-09-25",
+        "generated_at": "2026-09-27T21:38:24.254094+00:00",
+        "trading_day": "2026-09-28",
         "status": "done",
         "source": "morning_compass_v8",
-        "memo": "run_at=2026-09-25T06:32:00+09:00",
-        "missing": []
+        "memo": "run_at=2026-09-28T06:32:00+09:00",
+        "missing": [
+          "fear_greed"
+        ]
       },
       "watch_tracker": {
         "generated_at": "2026-09-27T12:55:13.816897Z",

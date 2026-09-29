@@ -1,40 +1,43 @@
 {
- "generated_at": "2026-09-28T21:34:24.836114+00:00",
+ "generated_at": "2026-09-30T06:33:27.428257+09:00",
  "source": "morning_compass_v8",
- "run_at_jst": "2026-09-29 06:34",
- "date": "2026-09-29",
- "market_mode": "軟調",
+ "run_at_jst": "2026-09-30 06:33",
+ "date": "2026-09-30",
+ "market_mode": "堅調",
  "method_guidance": {
-  "kenmo_momentum": "NY全面安(ダウ-0.67%/ナスダック-0.92%/SOX-1.61%)＋大取ナイト-0.32%で寄りは弱含み。新規追随は寄り後の下げ止まり確認まで見送り気味。",
-  "kenmo_newhigh": "ナスダック・SOX主導の下落で新高値ブレイクの信頼度は低下。出来高を伴うブレイクのみ厳選、通常より絞る。",
-  "choruko_reversal": "VIX16.07(+8%)と警戒感は緩やかに上昇。寄り後の急落局面での逆張りは分割・小ロットで。",
-  "stf_kakuhen": "マクロは逆風だが個別材料優先。確変判定は個別決算・材料主導、マクロ影響は限定的。",
-  "tenbagger_x": "新規BB案件の期限直近銘柄なし。既存銘柄はセカンダリー観察継続。",
-  "daytrade": "完全不関与方針を継続。ホルムズ交渉難航で原油高止まり、寄りのボラ上昇に巻き込まれない。",
-  "semicon_miniswing": "SOX-1.61%で弱め地合い。VWAP±0.5%積極帯は適用せず見送り。"
+  "kenmo_momentum": "大取ナイト+1.27%・SOX+1.32%で寄りは高く入りやすい。ギャップ上での飛びつきは避け、寄り後の押し目・出来高確認で追随。",
+  "kenmo_newhigh": "半導体主導の戻りで新高値ブレイクの環境は改善。出来高を伴うものに絞り、寄り天には注意。",
+  "choruko_reversal": "VIX16.04と落ち着き、F&G34は恐怖寄り。急落局面の逆張りは小ロット・分割を継続。",
+  "stf_kakuhen": "マクロは追い風気味だが個別材料優先。確変判定は決算・材料主導で通常運用。",
+  "tenbagger_x": "新規BB期限直近の銘柄なし。既存銘柄はセカンダリー観察継続。",
+  "daytrade": "完全不関与方針を継続。ギャップアップ後の値動き反転に巻き込まれない。",
+  "semicon_miniswing": "SOX+1.32%で半導体は戻り基調。VWAP±0.5%を積極帯とするが、寄り高値掴みは避け押し目限定。"
  },
- "pattern": "地政学ショック型",
- "note": "トランプ大統領がホルムズ海峡再開のイラン提案を拒否、原油93ドル台・米金利上昇で米株反落(SOX-1.61%)。大取ナイトも-0.32%で寄りは弱含み、F&Gは取得不可(スニペット不一致)。",
+ "pattern": "半導体主導リスクオン",
+ "note": "NYダウ-0.26%・ナスダック-0.09%と小反落もSOX+1.32%、WTI-3.95%(88.94)で大取ナイトは+1.27%の高寄り。トランプ大統領がイラン停戦案を拒否した地政学リスクは残り、寄り高値掴みに注意。",
  "indicators": {
-  "nikkei": 65877.62,
-  "night_futures": 65670.0,
-  "night_futures_asof": "2026-09-29 05:59 JST",
-  "night_gap_pct": -0.32,
-  "dow_pct": -0.67,
-  "nasdaq_pct": -0.92,
-  "sp500_pct": -0.77,
-  "sox": 12465.24,
-  "sox_pct": -1.61,
-  "vix": 16.07,
-  "fear_greed": null,
-  "usdjpy": 157.35,
-  "wti": 93.29,
-  "wti_pct": 0.95
+  "nikkei": 65481.27,
+  "night_futures": 66315.0,
+  "night_futures_asof": "2026-09-30 05:59 JST",
+  "night_gap_pct": 1.27,
+  "dow_pct": -0.26,
+  "nasdaq_pct": -0.09,
+  "sp500_pct": -0.17,
+  "sox": 12629.16,
+  "sox_pct": 1.32,
+  "vix": 16.04,
+  "fear_greed": {
+   "value": 33.83,
+   "label": "Fear"
+  },
+  "usdjpy": 157.27,
+  "wti": 88.94,
+  "wti_pct": -3.95
  },
  "data_health": {
   "sox": "api",
   "vix": "api",
-  "fear_greed": "null",
+  "fear_greed": "search_snippet",
   "night_futures": "api_niy",
   "night_source": "NIY=F",
   "wti": "api"
@@ -43,7 +46,7 @@
   "us_settled": true,
   "us_close_jst": "05:00",
   "night_settled": true,
-  "run_at_jst": "06:34",
+  "run_at_jst": "06:33",
   "excluded": []
  }
 }

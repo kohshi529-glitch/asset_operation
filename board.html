@@ -273,6 +273,9 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 /* D4（2026-09-23・sato型の視点）: 🤷PER圧縮／🏦資産バリュー／PER×業種中央値／4色トリアージ／熟成枠。判定・順位は変えず表示のみ */
 .vgchip{display:inline-block;font-size:11px;font-weight:700;color:#c9a7e0;background:#2a2340;border:1px solid #4a3f6b;border-radius:5px;padding:1px 7px;white-space:nowrap;vertical-align:middle}
 .bankchip{display:inline-block;font-size:11px;font-weight:700;color:#7fc8e8;background:#132a3a;border:1px solid #275470;border-radius:5px;padding:1px 7px;white-space:nowrap;vertical-align:middle}
+.divchip{display:inline-block;font-size:10px;font-weight:500;color:#c8d6a0;background:#1f2a14;border:1px solid #3c5222;border-radius:5px;padding:1px 6px;white-space:nowrap;vertical-align:middle}
+.rightschip{display:inline-block;font-size:11px;font-weight:700;color:#ffb4b4;background:#4a1f2a;border:1px solid #7a2e3d;border-radius:5px;padding:1px 7px;white-space:nowrap;vertical-align:middle}
+.rightschip.unk{color:#c9d1e0;background:#26304a;border-color:#3a4763;font-weight:500}
 .perchip{display:inline-block;font-size:10px;font-weight:500;color:#8fb3ad;background:#0f2429;border:1px solid #1d3a40;border-radius:5px;padding:1px 6px;white-space:nowrap;vertical-align:middle}
 .kpi.tri-g .n{color:#48e0b0}.kpi.tri-y .n{color:#e8c766}.kpi.tri-b .n{color:#7fc8e8}
 .kpi .d{font-size:10px;color:#8fb3ad;margin-top:0;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -621,7 +624,50 @@ function perMedChip(code){
   const hi=per>med;
   return `<span class='perchip' title='業種別PER中央値はプール在籍銘柄${n!=null?n+'銘柄':''}の中央値（全上場ではない）。人気化の目安（sato型の出口参考値）'>PER ${esc(num1(per))}倍／${esc(sec||'業種')}中央値 ${esc(num1(med))}倍${n!=null?'('+n+')':''}${hi?' ↑':''}</span>`;
 }
-function d4Chips(code){ return vgChip(code)+bankChip(code)+perMedChip(code); }
+// 💴配当・🎁優待（D8）: grades.json の rm(権利月)/dvi(中間)/dvf(期末)/dva(年間)/yt(優待)/ym(優待権利月)。①-8 v1.38 の rights_cache の射影。無ければ出さない
+function rightsOf(code){ const g=gradesOf(code); if(!g) return null; const has=['fy','rm','dvi','dvf','dva','yt','ym'].some(k=>g[k]!=null); return has?g:null; }
+function divChip(code){
+  const g=rightsOf(code); if(!g) return '';
+  const parts=[];
+  if(typeof g.dva==='number') parts.push(`年${g.dva}円`); else if(typeof g.dvi==='number'||typeof g.dvf==='number') parts.push(`中${g.dvi==null?'—':g.dvi}/期${g.dvf==null?'—':g.dvf}円`);
+  const px=holdCloseOf(code,null).close; if(typeof g.dva==='number'&&px) parts.push(`${num1(g.dva/px*100)}%`);
+  if(g.yt===true) parts.push('🎁優待'+(Array.isArray(g.ym)&&g.ym.length?`(${g.ym.join('/')}月)`:''));
+  else if(g.yt===false) parts.push('優待なし');
+  const rm=Array.isArray(g.rm)&&g.rm.length?`権利月 ${g.rm.join('/')}`:'';
+  if(!parts.length&&!rm) return '';
+  return `<span class='divchip' title='予想配当（①-8 が kabutan から読んだ公表値）と優待の有無（minkabu）。${esc(rm)}。落ち目安は配当÷株価で、優待分は含まない'>💴${esc(parts.join('・'))}${rm?'・'+esc(rm):''}</span>`;
+}
+// 権利週の銘柄別チップ: 今日〜次の営業日に権利付き最終日／権利落ち日があるとき、その月が rm に含まれる銘柄だけ「📆権利対象」。rm が無い銘柄は「📆権利月不明」。それ以外は出さない
+function rightsWeekInfo(){
+  try{
+    const now=new Date(Date.now()+(9*60-(-new Date().getTimezoneOffset()))*60000); const today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+    const days=[today,MKTCAL.nextBiz(today)];
+    for(const d of days){ const ev=MKTCAL.eventsOn(d); const e=ev.find(x=>x.key==='ex_right'||x.key==='right_last'); if(e) return {month:d.getMonth()+1,key:e.key,date:MKTCAL.fmt(d)}; }
+  }catch(e){}
+  return null;
+}
+function ret5Of(code){ const b=BARS&&BARS[String(code)]; if(!Array.isArray(b)||b.length<6) return null; const c0=+b[b.length-1][4], c5=+b[b.length-6][4]; if(!(c0>0&&c5>0)) return null; return (c0/c5-1)*100; }
+function rightsChip(code){
+  const w=rightsWeekInfo(); if(!w) return '';
+  const g=rightsOf(code);
+  if(!g||!Array.isArray(g.rm)) return `<span class='rightschip unk' title='①-8 の rights_cache に未取得。SBI/kabutan で権利月を確認'>📆権利月不明</span>`;
+  if(!g.rm.includes(w.month)) return '';
+  const px=holdCloseOf(code,null).close;
+  let dv=null, lab='';
+  const fy=(typeof g.fy==='number')?g.fy:null; const mid=fy!=null?((fy+5)%12)+1:null;
+  if(fy!=null&&w.month===fy){ if(typeof g.dvf==='number'){ dv=g.dvf; lab='期末'; } else if(typeof g.dva==='number'){ dv=g.dva; lab='年間ベース'; } }
+  else if(mid!=null&&w.month===mid){ if(typeof g.dvi==='number'){ dv=g.dvi; lab='中間'; } }
+  else if(fy==null&&typeof g.dva==='number'){ dv=g.dva; lab='年間ベース（決算月不明）'; }
+  else { lab='優待のみ（配当の権利月ではない）'; }
+  const y=(dv!=null&&px)?num1(dv/px*100):null;
+  const after=(dv!=null&&px)?fmtPrice(Math.round((px-dv)*10)/10):null;
+  const z=ret5Of(code);
+  const what=(w.key==='ex_right'?'権利落ち':'権利付き最終日')+' '+w.date;
+  const tail=(y!=null)?` ${esc(fmtPrice(px))}→${esc(after)}円（−${dv}円・−${esc(y)}%）`:(lab.indexOf('優待のみ')===0?' 優待のみ':' 配当額不明');
+  const up=(z!=null)?`・直近5日${z>0?'+':''}${esc(num1(z))}%`:'';
+  return `<span class='rightschip' title='${esc(what)}。この銘柄は権利月${esc(g.rm.join('/'))}で対象。落ち後目安＝現在値−${esc(lab)}配当（優待分は含まない）。直近5日＝権利取り前に上がってきた幅（落ち後に剥落しうる分）。SL との比較はしない'>📆権利対象${tail}${g.yt===true?'・🎁':''}${up}</span>`;
+}
+function d4Chips(code){ return vgChip(code)+bankChip(code)+perMedChip(code)+divChip(code)+rightsChip(code); }
 // スコア整形：整数はそのまま、小数は1桁。
 function valScoreTxt(s){
   if(typeof s!=='number') return '';
@@ -1882,6 +1928,8 @@ function renderLegend(){
     <h3>📈 トレンド文脈チップ</h3>
     <div class='note'>「文脈」＝移動平均との位置関係と向き。ローソクゲート（当日1本のトリガー）とは別軸。緑・紫＝上向き側、橙＝下向き側。</div>
     ${tr.map(row).join('')}
+    <h3>💴 配当・🎁優待・📆権利対象（D8）</h3>
+    <div class='note'>💴チップ＝①-8 v1.38 が kabutan の既読ページから読んだ予想配当（年間または中間／期末）と、minkabu の優待ページで確かめた優待の有無・優待権利月（grades.json の fy/rm/dvi/dvf/dva/yt/ym）。未取得の銘柄には出ない（初回は保有・PASS から順に埋まる）。<br>📆権利対象チップ＝今日〜次の営業日に権利付き最終日／権利落ち日があり、かつその月がこの銘柄の権利月（配当または優待）に含まれるときだけ出る。「現在値→落ち後目安（−x円・−y%）」は該当する配当を現在値から引いたもので、公表値からの計算（推定ではない）。優待分は含まないので、🎁付きの銘柄は目安より大きく落ちうる。「直近5日 ±z%」は権利取り前に上がってきた幅（pool_bars の直近5本）で、落ち後に剥落しうる分の目安。SL との比較は出さない（stop の反映は実弾ボード側の運用に依存するため）。権利月が未取得の銘柄は「📆権利月不明」。権利月が違う銘柄には何も出ない（＝今回の権利落ちの影響は限定的）。</div>
     <h3>🕯 ローソク足形態チップ</h3>
     <div class='note'>直近6本のOHLC（pool_bars.json・base_day 足まで）から機械判定。実体＝|終値−始値|、値幅＝高値−安値、平均実体＝直前5本の実体平均。文脈「下落後」＝直前5日−3%以下または前日終値＜MA10×0.98、「上昇後」＝直前5日+3%以上または（前日終値＞MA10×1.02 かつ 20日高値の97%以上）。窓（上放れ／下放れ）は連続本数で1つだけ出す（1本＝上放れ／下放れ、2本＝2本連続、3本以上＝三空）。形態は「兆し」であり、翌日の確認足と文脈で判断する。形態ごとの成績は ①-8 v1.31 の記録が4週たまってから検証（V4）。</div>
     ${pat.map(prow).join('')}

@@ -1,43 +1,40 @@
 {
- "generated_at": "2026-10-01T06:35:41.729314+09:00",
+ "generated_at": "2026-10-02T06:34:49.925480+09:00",
  "source": "morning_compass_v8",
- "run_at_jst": "2026-10-01 06:35",
- "date": "2026-10-01",
+ "run_at_jst": "2026-10-02 06:34",
+ "date": "2026-10-02",
  "market_mode": "レンジ様子見",
  "method_guidance": {
-  "kenmo_momentum": "大取ナイト+0.54%は小幅高も、NYダウ-0.86%で地合いは割れ気味。寄り後の出来高を確認し、押し目限定で追随。",
-  "kenmo_newhigh": "日経は前日+1.94%で高値圏。新高値ブレイクは出来高を伴う銘柄に絞り、寄り天に注意。",
-  "choruko_reversal": "VIX16.34は中立、F&G29は恐怖圏。逆張りは小ロット・分割で継続。",
-  "stf_kakuhen": "マクロは方向感に乏しく個別材料優先。確変判定は通常運用。",
-  "tenbagger_x": "直近のBB期限銘柄なし。既存銘柄はセカンダリー観察継続。",
+  "kenmo_momentum": "大取ナイト-0.68%(68,485)で前日の日経+3.30%に対し先物が押し戻し。寄り直後の追随は避け、出来高を確認してから押し目限定で。",
+  "kenmo_newhigh": "日経68,957は前日+3.30%の急伸で高値圏。新高値ブレイクは出来高を伴う銘柄に絞り、寄り天・高値掴みに注意。",
+  "choruko_reversal": "VIX16.39は中立(F&G取得不可)。寄りの先物安は逆張りの拾い場になり得るが、小ロット・分割で。",
+  "stf_kakuhen": "ダウ・ナスダックは横ばいで方向感に乏しい。個別材料優先で確変判定は通常運用。",
+  "tenbagger_x": "BB期限・上場日が2営業日以内の銘柄なし(ルクレ10/15・アイビス10/13は範囲外)。既存はセカンダリー観察継続。",
   "daytrade": "完全不関与方針を継続。",
-  "semicon_miniswing": "SOXは横ばい(±0.0%)で方向感なし。VWAP±0.5%の積極帯は使わず、押し目限定・見送り寄り。"
+  "semicon_miniswing": "SOX+1.59%と半導体は堅調だが先物-0.68%で寄りは割れ気味。VWAP±0.5%は押し目に限り、深追いしない。"
  },
  "pattern": "先物乖離",
- "note": "大取ナイト+0.54%(67,115)に対しNYダウ-0.86%、SOX横ばい、F&G29(恐怖)と材料が割れる。日経は前日+1.94%で高値圏のため寄り高値掴みに注意。WTI+1.07%(90.34)。",
+ "note": "日経は前日+3.30%の68,957で急伸後。大取ナイト-0.68%(-472pt)と米SOX+1.59%で材料が割れ、WTI+2.75%(92.91)も重く、寄り高値掴みに注意。",
  "indicators": {
-  "nikkei": 66753.72,
-  "night_futures": 67115.0,
-  "night_futures_asof": "2026-10-01 05:59 JST",
-  "night_gap_pct": 0.54,
-  "dow_pct": -0.86,
-  "nasdaq_pct": 0.24,
-  "sp500_pct": -0.25,
-  "sox": 12628.62,
-  "sox_pct": -0.0,
-  "vix": 16.34,
-  "fear_greed": {
-   "value": 29.2,
-   "label": "Fear"
-  },
-  "usdjpy": 157.33,
-  "wti": 90.34,
-  "wti_pct": 1.07
+  "nikkei": 68956.72,
+  "night_futures": 68485.0,
+  "night_futures_asof": "2026-10-02 05:59 JST",
+  "night_gap_pct": -0.68,
+  "dow_pct": 0.04,
+  "nasdaq_pct": 0.04,
+  "sp500_pct": 0.19,
+  "sox": 12829.0,
+  "sox_pct": 1.59,
+  "vix": 16.39,
+  "fear_greed": null,
+  "usdjpy": 158.04,
+  "wti": 92.91,
+  "wti_pct": 2.75
  },
  "data_health": {
   "sox": "api",
   "vix": "api",
-  "fear_greed": "search_snippet",
+  "fear_greed": null,
   "night_futures": "api_niy",
   "night_source": "NIY=F",
   "wti": "api"
@@ -46,7 +43,7 @@
   "us_settled": true,
   "us_close_jst": "05:00",
   "night_settled": true,
-  "run_at_jst": "06:35",
+  "run_at_jst": "06:34",
   "excluded": []
  }
 }

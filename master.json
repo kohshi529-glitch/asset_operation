@@ -2612,517 +2612,1689 @@
     ],
     "choruko_reversal": [
       {
-        "code": "3186",
-        "name": "ネクステージ",
-        "close": 2792.0,
+        "code": "1803",
+        "name": "Shimizu Corporation",
+        "close": 2089.5,
+        "score": 16,
+        "verdict": "🔥 強注目",
+        "action": "BUY_NOW",
+        "precision": {
+          "rsi": {
+            "value": 21.01827676240209,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -10.551460200857887,
+            "grade": "○",
+            "points": 2
+          },
+          "mcap_oku": {
+            "value": 14195.75707123,
+            "grade": "◎",
+            "points": 3
+          },
+          "value_traded_oku": {
+            "value": 85.0447395,
+            "grade": "◎",
+            "points": 3
+          },
+          "theme": {
+            "grade": "○",
+            "points": 2,
+            "note": "建設・インフラ"
+          },
+          "margin": {
+            "value": 57.96,
+            "grade": "✗",
+            "points": 0,
+            "note": "信用倍率57.96倍(株探)"
+          },
+          "profit_growth": {
+            "value": 28.93,
+            "grade": "◎",
+            "points": 3,
+            "note": "営業利益成長+28.9%(2027/03予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": {
+          "buy_13w_chg_pct": 117.34878667149582,
+          "sell_13w_chg_pct": -92.48870188561634,
+          "ratio_now": 37.35,
+          "irb_week": "07/17"
+        },
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI21.0 乖離-10.6% 買残13週+117%(信用残07/17週時点)"
+      },
+      {
+        "code": "2809",
+        "name": "Kewpie Corporation",
+        "close": 4255.0,
         "score": 14,
         "verdict": "🔥 強注目",
         "action": "BUY_NOW",
         "precision": {
           "rsi": {
-            "value": 22.899159663865547,
+            "value": 18.19645732689211,
             "grade": "◎",
             "points": 3
           },
           "dev25": {
-            "value": -8.883232165002275,
+            "value": -7.04736106256555,
             "grade": "△",
             "points": 1
           },
           "mcap_oku": {
-            "value": 2198.98274345,
-            "grade": "○",
-            "points": 2
-          },
-          "value_traded_oku": {
-            "value": 19.569128,
-            "grade": "△",
-            "points": 1
-          },
-          "theme": {
-            "grade": "◎",
-            "points": 3,
-            "note": "業種(Specialty Stores)=半導体/AI/防衛系"
-          },
-          "margin": {
-            "value": 3.65,
-            "grade": "△",
-            "points": 1,
-            "note": "信用倍率3.65倍"
-          },
-          "profit_growth": {
-            "value": 40.84,
-            "grade": "◎",
-            "points": 3,
-            "note": "利益成長+40.8%",
-            "source": "irbank"
-          }
-        },
-        "margin_trend": {
-          "buy_13w_chg_pct": 47.019622362088114,
-          "sell_13w_chg_pct": -35.11783532150131,
-          "ratio_now": 1.0,
-          "irb_week": "07/17"
-        },
-        "scored_at": "2026-10-01T09:29:24.999114+00:00",
-        "source": "nightly_s2",
-        "summary": "14→14点 RSI回復で反発進行 RSI22.9 乖離-8.9% 買残13週+47%(前回値継承)"
-      },
-      {
-        "code": "2702",
-        "name": "日本マクドナルドホールディングス",
-        "close": 7560.0,
-        "score": 12,
-        "verdict": "⚡ 注目",
-        "action": "WATCH",
-        "precision": {
-          "rsi": {
-            "value": 14.285714285714285,
-            "grade": "◎",
-            "points": 3
-          },
-          "dev25": {
-            "value": -5.125244716630684,
-            "grade": "△",
-            "points": 1
-          },
-          "mcap_oku": {
-            "value": 10038.40332031,
+            "value": 6095.36544952,
             "grade": "◎",
             "points": 3
           },
           "value_traded_oku": {
-            "value": 48.36888,
+            "value": 29.75947,
             "grade": "○",
             "points": 2
           },
           "theme": {
             "grade": "△",
             "points": 1,
-            "note": "業種(Restaurants)=その他プライム一般"
+            "note": "食品(一般)"
           },
           "margin": {
-            "value": 3.58,
-            "grade": "△",
-            "points": 1,
-            "note": "信用倍率3.58倍"
-          },
-          "profit_growth": {
-            "value": 4.21,
-            "grade": "△",
-            "points": 1,
-            "note": "利益成長+4.2%",
-            "source": "irbank"
-          }
-        },
-        "margin_trend": {
-          "buy_13w_chg_pct": -25.330269959793224,
-          "sell_13w_chg_pct": -58.67276887871854,
-          "ratio_now": 1.0,
-          "irb_week": "07/17"
-        },
-        "scored_at": "2026-10-01T09:29:24.999114+00:00",
-        "source": "nightly_s2",
-        "summary": "11→12点 RSI14.3 乖離-5.1% 買残13週-25%(前回値継承)"
-      },
-      {
-        "code": "9861",
-        "name": "吉野家ホールディングス",
-        "close": 3688.0,
-        "score": 10,
-        "verdict": "⚡ 注目",
-        "action": "WATCH",
-        "precision": {
-          "rsi": {
-            "value": 36.71875,
-            "grade": "△",
-            "points": 1
-          },
-          "dev25": {
-            "value": -2.0087150600488823,
-            "grade": "✗",
-            "points": 0
-          },
-          "mcap_oku": {
-            "value": 2354.54379723,
-            "grade": "○",
-            "points": 2
-          },
-          "value_traded_oku": {
-            "value": 15.71088,
-            "grade": "△",
-            "points": 1
-          },
-          "theme": {
-            "grade": "△",
-            "points": 1,
-            "note": "業種(Restaurants)=その他プライム一般"
-          },
-          "margin": {
-            "value": 0.35,
-            "grade": "◎",
-            "points": 3,
-            "note": "信用倍率0.35倍"
-          },
-          "profit_growth": {
-            "value": 5.08,
+            "value": 1.75,
             "grade": "○",
             "points": 2,
-            "note": "利益成長+5.1%",
-            "source": "irbank"
-          }
-        },
-        "margin_trend": {
-          "buy_13w_chg_pct": 13.26530612244898,
-          "sell_13w_chg_pct": 202.9654036243822,
-          "ratio_now": 0.0,
-          "irb_week": "07/17"
-        },
-        "scored_at": "2026-10-01T09:29:24.999114+00:00",
-        "source": "nightly_s2",
-        "summary": "10→10点 RSI回復で反発進行 RSI36.7 乖離-2.0% 買残13週+13%(前回値継承)"
-      },
-      {
-        "code": "7309",
-        "name": "シマノ",
-        "close": 17770.0,
-        "score": 10,
-        "verdict": "⚡ 注目",
-        "action": "WATCH",
-        "precision": {
-          "rsi": {
-            "value": 31.4207650273224,
-            "grade": "△",
-            "points": 1
-          },
-          "dev25": {
-            "value": -4.7930306569655805,
-            "grade": "✗",
-            "points": 0
-          },
-          "mcap_oku": {
-            "value": 15361.45314026,
-            "grade": "◎",
-            "points": 3
-          },
-          "value_traded_oku": {
-            "value": 40.53337,
-            "grade": "○",
-            "points": 2
-          },
-          "theme": {
-            "grade": "△",
-            "points": 1,
-            "note": "業種(Motor Vehicles)=その他プライム一般"
-          },
-          "margin": {
-            "value": 0.9,
-            "grade": "◎",
-            "points": 3,
-            "note": "信用倍率0.90倍"
+            "note": "信用倍率1.75倍(株探)"
           },
           "profit_growth": {
-            "value": -9.05,
-            "grade": "✗",
-            "points": 0,
-            "note": "利益成長-9.1%",
-            "source": "irbank"
-          }
-        },
-        "margin_trend": {
-          "buy_13w_chg_pct": -61.72839506172839,
-          "sell_13w_chg_pct": 224.72727272727272,
-          "ratio_now": 0.0,
-          "irb_week": "07/17"
-        },
-        "scored_at": "2026-10-01T09:29:24.999114+00:00",
-        "source": "nightly_s2",
-        "summary": "11→10点 RSI回復で反発進行 RSI31.4 乖離-4.8% 買残13週-62%(前回値継承)"
-      },
-      {
-        "code": "9627",
-        "name": "アインホールディングス",
-        "close": 5355.0,
-        "score": 11,
-        "verdict": "⚡ 注目",
-        "action": "WATCH",
-        "precision": {
-          "rsi": {
-            "value": 24.715447154471544,
-            "grade": "◎",
-            "points": 3
-          },
-          "dev25": {
-            "value": -8.320493066255775,
-            "grade": "△",
-            "points": 1
-          },
-          "mcap_oku": {
-            "value": 1897.34251541,
-            "grade": "△",
-            "points": 1
-          },
-          "value_traded_oku": {
-            "value": 6.87582,
-            "grade": "✗",
-            "points": 0
-          },
-          "theme": {
-            "grade": "◎",
-            "points": 3,
-            "note": "業種(Drugstore Chains)=半導体/AI/防衛系"
-          },
-          "margin": {
-            "value": 4.12,
-            "grade": "△",
-            "points": 1,
-            "note": "信用倍率4.12倍"
-          },
-          "profit_growth": {
-            "value": 8.94,
+            "value": 9.74,
             "grade": "○",
             "points": 2,
-            "note": "利益成長+8.9%",
+            "note": "営業利益成長+9.7%(2026/11予)",
             "source": "irbank"
           }
         },
         "margin_trend": {
-          "buy_13w_chg_pct": -30.512820512820515,
-          "sell_13w_chg_pct": -87.83382789317507,
-          "ratio_now": 1.0,
+          "buy_13w_chg_pct": -75.67094515752626,
+          "sell_13w_chg_pct": -1.104972375690605,
+          "ratio_now": 0.78,
           "irb_week": "07/17"
         },
-        "scored_at": "2026-10-01T09:29:24.999114+00:00",
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
         "source": "nightly_s2",
-        "summary": "11→11点 RSI24.7 乖離-8.3% 買残13週-31%(前回値継承)"
+        "summary": "RSI18.2 乖離-7.0% 買残13週-76%(信用残07/17週時点)"
       },
       {
-        "code": "1332",
-        "name": "ニッスイ",
-        "close": 1118.5,
-        "score": 10,
-        "verdict": "⚡ 注目",
-        "action": "WATCH",
+        "code": "2874",
+        "name": "YOKOREI CO. LTD.",
+        "close": 1871.0,
+        "score": 14,
+        "verdict": "🔥 強注目",
+        "action": "BUY_NOW",
         "precision": {
           "rsi": {
-            "value": 28.607594936708857,
+            "value": 23.32214765100671,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -13.06893155165686,
             "grade": "○",
             "points": 2
           },
+          "mcap_oku": {
+            "value": 1142.86315704,
+            "grade": "△",
+            "points": 1
+          },
+          "value_traded_oku": {
+            "value": 6.367013,
+            "grade": "✗",
+            "points": 0
+          },
+          "theme": {
+            "grade": "○",
+            "points": 2,
+            "note": "冷蔵倉庫・物流インフラ"
+          },
+          "margin": {
+            "value": 0.23,
+            "grade": "◎",
+            "points": 3,
+            "note": "信用倍率0.23倍(株探)"
+          },
+          "profit_growth": {
+            "value": 65.17,
+            "grade": "◎",
+            "points": 3,
+            "note": "営業利益成長+65.2%(2026/09予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": {
+          "buy_13w_chg_pct": 109.01749663526243,
+          "sell_13w_chg_pct": 67.15328467153286,
+          "ratio_now": 0.97,
+          "irb_week": "07/17"
+        },
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI23.3 乖離-13.1% 買残13週+109%(信用残07/17週時点)"
+      },
+      {
+        "code": "6269",
+        "name": "Modec, Inc.",
+        "close": 8711.0,
+        "score": 14,
+        "verdict": "🔥 強注目",
+        "action": "BUY_NOW",
+        "precision": {
+          "rsi": {
+            "value": 23.543838136112814,
+            "grade": "◎",
+            "points": 3
+          },
           "dev25": {
-            "value": -7.5390592708936115,
+            "value": -6.186055528033252,
             "grade": "△",
             "points": 1
           },
           "mcap_oku": {
-            "value": 3402.59050781,
-            "grade": "○",
-            "points": 2
+            "value": 5981.048638,
+            "grade": "◎",
+            "points": 3
           },
           "value_traded_oku": {
-            "value": 20.6777095,
-            "grade": "○",
-            "points": 2
+            "value": 68.29424,
+            "grade": "◎",
+            "points": 3
           },
           "theme": {
-            "grade": "△",
-            "points": 1,
-            "note": "業種(Food: Specialty/Candy)=その他プライム一般"
+            "grade": "○",
+            "points": 2,
+            "note": "海洋エネルギー設備・インフラ"
           },
           "margin": {
-            "value": 8.15,
+            "value": 40.81,
             "grade": "✗",
             "points": 0,
-            "note": "信用倍率8.15倍"
+            "note": "信用倍率40.81倍(株探)"
           },
           "profit_growth": {
             "value": 5.12,
             "grade": "○",
             "points": 2,
-            "note": "利益成長+5.1%",
+            "note": "営業利益成長+5.1%(2026/12予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": null,
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI23.5 乖離-6.2% 信用残推移取得不可"
+      },
+      {
+        "code": "3391",
+        "name": "TSURUHA Holdings, Inc.",
+        "close": 2061.0,
+        "score": 13,
+        "verdict": "⚡ 注目",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 14.705882352941174,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -8.084628146351047,
+            "grade": "△",
+            "points": 1
+          },
+          "mcap_oku": {
+            "value": 9436.29523926,
+            "grade": "◎",
+            "points": 3
+          },
+          "value_traded_oku": {
+            "value": 36.518859,
+            "grade": "○",
+            "points": 2
+          },
+          "theme": {
+            "grade": "△",
+            "points": 1,
+            "note": "ドラッグストア(一般)"
+          },
+          "margin": {
+            "value": 6.95,
+            "grade": "✗",
+            "points": 0,
+            "note": "信用倍率6.95倍(株探)"
+          },
+          "profit_growth": {
+            "value": 57.69,
+            "grade": "◎",
+            "points": 3,
+            "note": "営業利益成長+57.7%(2027/02予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": null,
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI14.7 乖離-8.1% 信用残推移取得不可"
+      },
+      {
+        "code": "3289",
+        "name": "Tokyu Fudosan Holdings Corp.",
+        "close": 1202.0,
+        "score": 13,
+        "verdict": "⚡ 注目",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 23.907455012853475,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -6.925602428297095,
+            "grade": "△",
+            "points": 1
+          },
+          "mcap_oku": {
+            "value": 8844.0132251,
+            "grade": "◎",
+            "points": 3
+          },
+          "value_traded_oku": {
+            "value": 33.288188,
+            "grade": "○",
+            "points": 2
+          },
+          "theme": {
+            "grade": "△",
+            "points": 1,
+            "note": "不動産(一般)"
+          },
+          "margin": {
+            "value": 4.45,
+            "grade": "△",
+            "points": 1,
+            "note": "信用倍率4.45倍(株探)"
+          },
+          "profit_growth": {
+            "value": 13.85,
+            "grade": "○",
+            "points": 2,
+            "note": "営業利益成長+13.8%(2027/03予)",
             "source": "irbank"
           }
         },
         "margin_trend": {
-          "buy_13w_chg_pct": 22.949946751863685,
-          "sell_13w_chg_pct": -1.5444015444015444,
-          "ratio_now": 3.0,
+          "buy_13w_chg_pct": 2.7873156937992416,
+          "sell_13w_chg_pct": -20.663265306122447,
+          "ratio_now": 8.18,
           "irb_week": "07/17"
         },
-        "scored_at": "2026-10-01T09:29:24.999114+00:00",
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
         "source": "nightly_s2",
-        "summary": "10→10点 RSI28.6 乖離-7.5% 買残13週+23%(前回値継承)"
+        "summary": "RSI23.9 乖離-6.9% 買残13週+3%(信用残07/17週時点)"
       },
       {
-        "code": "4023",
-        "name": "クレハ",
-        "close": 4030.0,
+        "code": "2702",
+        "name": "McDonald's Holdings Company (Japan), Ltd.",
+        "close": 7440.0,
+        "score": 12,
+        "verdict": "⚡ 注目",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 14.14141414141414,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -6.283065450697844,
+            "grade": "△",
+            "points": 1
+          },
+          "mcap_oku": {
+            "value": 10051.69921875,
+            "grade": "◎",
+            "points": 3
+          },
+          "value_traded_oku": {
+            "value": 65.77704,
+            "grade": "◎",
+            "points": 3
+          },
+          "theme": {
+            "grade": "△",
+            "points": 1,
+            "note": "外食(一般)"
+          },
+          "margin": {
+            "value": 5.62,
+            "grade": "✗",
+            "points": 0,
+            "note": "信用倍率5.62倍(株探)"
+          },
+          "profit_growth": {
+            "value": 4.21,
+            "grade": "△",
+            "points": 1,
+            "note": "営業利益成長+4.2%(2026/12予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": {
+          "buy_13w_chg_pct": -25.330269959793217,
+          "sell_13w_chg_pct": -58.67276887871853,
+          "ratio_now": 1.44,
+          "irb_week": "07/17"
+        },
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI14.1 乖離-6.3% 買残13週-25%(信用残07/17週時点)"
+      },
+      {
+        "code": "3283",
+        "name": "Nippon Prologis REIT, Inc.",
+        "close": 80300.0,
+        "score": 12,
+        "verdict": "⚡ 注目",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 23.68421052631579,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -5.158973874427176,
+            "grade": "△",
+            "points": 1
+          },
+          "mcap_oku": {
+            "value": 6887.45742512,
+            "grade": "◎",
+            "points": 3
+          },
+          "value_traded_oku": {
+            "value": 21.590261,
+            "grade": "○",
+            "points": 2
+          },
+          "theme": {
+            "grade": "△",
+            "points": 1,
+            "note": "J-REIT(不動産投資・特段の注目テーマ性なし)"
+          },
+          "margin": {
+            "value": 8.03,
+            "grade": "✗",
+            "points": 0,
+            "note": "信用倍率8.03倍(株探)"
+          },
+          "profit_growth": {
+            "value": 10.77,
+            "grade": "○",
+            "points": 2,
+            "note": "営業利益成長+10.8%(2027/05予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": {
+          "buy_13w_chg_pct": -31.69435215946844,
+          "sell_13w_chg_pct": 115.34526854219949,
+          "ratio_now": 2.44,
+          "irb_week": "07/17"
+        },
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI23.7 乖離-5.2% 買残13週-32%(信用残07/17週時点)"
+      },
+      {
+        "code": "9503",
+        "name": "Kansai Electric Power Company, Incorporated",
+        "close": 2632.5,
+        "score": 12,
+        "verdict": "⚡ 注目",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 23.8401142041399,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -7.311559912117627,
+            "grade": "△",
+            "points": 1
+          },
+          "mcap_oku": {
+            "value": 28580.34770508,
+            "grade": "◎",
+            "points": 3
+          },
+          "value_traded_oku": {
+            "value": 97.3682775,
+            "grade": "◎",
+            "points": 3
+          },
+          "theme": {
+            "grade": "○",
+            "points": 2,
+            "note": "電力・インフラ"
+          },
+          "margin": {
+            "value": 5.45,
+            "grade": "✗",
+            "points": 0,
+            "note": "信用倍率5.45倍(株探)"
+          },
+          "profit_growth": {
+            "value": -42.86,
+            "grade": "✗",
+            "points": 0,
+            "note": "営業利益成長-42.9%(2027/03予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": null,
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI23.8 乖離-7.3% 信用残推移取得不可"
+      },
+      {
+        "code": "8088",
+        "name": "IWATANI Corporation",
+        "close": 1996.5,
+        "score": 12,
+        "verdict": "⚡ 注目",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 24.251069900142653,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -6.552773227240816,
+            "grade": "△",
+            "points": 1
+          },
+          "mcap_oku": {
+            "value": 4706.07693695,
+            "grade": "○",
+            "points": 2
+          },
+          "value_traded_oku": {
+            "value": 14.1491955,
+            "grade": "△",
+            "points": 1
+          },
+          "theme": {
+            "grade": "○",
+            "points": 2,
+            "note": "産業ガス・素材"
+          },
+          "margin": {
+            "value": 54.97,
+            "grade": "✗",
+            "points": 0,
+            "note": "信用倍率54.97倍(株探)"
+          },
+          "profit_growth": {
+            "value": 27.36,
+            "grade": "◎",
+            "points": 3,
+            "note": "営業利益成長+27.4%(2027/03予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": null,
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI24.3 乖離-6.6% 信用残推移取得不可"
+      },
+      {
+        "code": "3471",
+        "name": "Mitsui Fudosan Logistics Park, Inc.",
+        "close": 97300.0,
+        "score": 11,
+        "verdict": "⚡ 注目",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 15.384615384615385,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -5.080579076754987,
+            "grade": "△",
+            "points": 1
+          },
+          "mcap_oku": {
+            "value": 3193.9413147,
+            "grade": "○",
+            "points": 2
+          },
+          "value_traded_oku": {
+            "value": 10.512292,
+            "grade": "△",
+            "points": 1
+          },
+          "theme": {
+            "grade": "△",
+            "points": 1,
+            "note": "J-REIT(不動産投資・特段の注目テーマ性なし)"
+          },
+          "margin": {
+            "value": 247.0,
+            "grade": "✗",
+            "points": 0,
+            "note": "信用倍率247.0倍(株探)"
+          },
+          "profit_growth": {
+            "value": 20.77,
+            "grade": "◎",
+            "points": 3,
+            "note": "営業利益成長+20.8%(2027/07予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": {
+          "buy_13w_chg_pct": -26.95539754363284,
+          "sell_13w_chg_pct": -93.8622754491018,
+          "ratio_now": 82.68,
+          "irb_week": "07/17"
+        },
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI15.4 乖離-5.1% 買残13週-27%(信用残07/17週時点)"
+      },
+      {
+        "code": "9031",
+        "name": "Nishi-Nippon Railroad Co., Ltd.",
+        "close": 2829.5,
+        "score": 11,
+        "verdict": "⚡ 注目",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 23.585810162991372,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -7.904672629509568,
+            "grade": "△",
+            "points": 1
+          },
+          "mcap_oku": {
+            "value": 2250.68890762,
+            "grade": "○",
+            "points": 2
+          },
+          "value_traded_oku": {
+            "value": 6.802118,
+            "grade": "✗",
+            "points": 0
+          },
+          "theme": {
+            "grade": "○",
+            "points": 2,
+            "note": "鉄道・インフラ"
+          },
+          "margin": {
+            "value": 0.05,
+            "grade": "◎",
+            "points": 3,
+            "note": "信用倍率0.05倍(株探)"
+          },
+          "profit_growth": {
+            "value": -18.9,
+            "grade": "✗",
+            "points": 0,
+            "note": "営業利益成長-18.9%(2027/03予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": {
+          "buy_13w_chg_pct": 309.1976516634051,
+          "sell_13w_chg_pct": 300.0,
+          "ratio_now": 3.99,
+          "irb_week": "07/17"
+        },
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI23.6 乖離-7.9% 買残13週+309%(信用残07/17週時点)"
+      },
+      {
+        "code": "8953",
+        "name": "Japan Metropolitan Fund Investment Corporation",
+        "close": 104800.0,
         "score": 10,
         "verdict": "⚡ 注目",
         "action": "WATCH",
         "precision": {
           "rsi": {
-            "value": 29.569892473118276,
-            "grade": "○",
-            "points": 2
+            "value": 13.26530612244898,
+            "grade": "◎",
+            "points": 3
           },
           "dev25": {
-            "value": -7.632363052945223,
+            "value": -5.772343103758315,
             "grade": "△",
             "points": 1
           },
           "mcap_oku": {
-            "value": 1538.43151283,
-            "grade": "△",
-            "points": 1
+            "value": 7703.49855137,
+            "grade": "◎",
+            "points": 3
           },
           "value_traded_oku": {
-            "value": 10.2765,
-            "grade": "△",
-            "points": 1
+            "value": 21.699888,
+            "grade": "○",
+            "points": 2
           },
           "theme": {
-            "grade": "○",
-            "points": 2,
-            "note": "業種(Chemicals: Specialty)=金融/インフラ/素材/鉄鋼系"
-          },
-          "margin": {
-            "value": 2.32,
-            "grade": "○",
-            "points": 2,
-            "note": "信用倍率2.32倍"
-          },
-          "profit_growth": {
-            "value": null,
             "grade": "△",
             "points": 1,
-            "note": "取得不可",
+            "note": "J-REIT(不動産投資・特段の注目テーマ性なし)"
+          },
+          "margin": {
+            "value": 120.0,
+            "grade": "✗",
+            "points": 0,
+            "note": "信用倍率120.0倍(株探)"
+          },
+          "profit_growth": {
+            "value": -21.15,
+            "grade": "✗",
+            "points": 0,
+            "note": "営業利益成長-21.1%(2027/02予)",
             "source": "irbank"
           }
         },
         "margin_trend": {
-          "buy_13w_chg_pct": 6.406188020626735,
-          "sell_13w_chg_pct": -76.51899447638371,
-          "ratio_now": 2.0,
+          "buy_13w_chg_pct": -9.046912305607535,
+          "sell_13w_chg_pct": -48.10495626822158,
+          "ratio_now": 79.19,
           "irb_week": "07/17"
         },
-        "scored_at": "2026-10-01T09:29:24.999114+00:00",
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
         "source": "nightly_s2",
-        "summary": "10→10点 RSI29.6 乖離-7.6% 買残13週+6%(前回値継承)"
+        "summary": "RSI13.3 乖離-5.8% 買残13週-9%(信用残07/17週時点)"
       },
       {
-        "code": "2801",
-        "name": "キッコーマン",
-        "close": 1660.5,
+        "code": "3249",
+        "name": "Industrial & Infrastructure Fund Investment Corporation",
+        "close": 127200.0,
+        "score": 10,
+        "verdict": "⚡ 注目",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 16.541353383458645,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -5.958893981960667,
+            "grade": "△",
+            "points": 1
+          },
+          "mcap_oku": {
+            "value": 3307.22696114,
+            "grade": "○",
+            "points": 2
+          },
+          "value_traded_oku": {
+            "value": 20.55552,
+            "grade": "○",
+            "points": 2
+          },
+          "theme": {
+            "grade": "△",
+            "points": 1,
+            "note": "J-REIT(不動産投資・特段の注目テーマ性なし)"
+          },
+          "margin": {
+            "value": 147.0,
+            "grade": "✗",
+            "points": 0,
+            "note": "信用倍率147.0倍(株探)"
+          },
+          "profit_growth": {
+            "value": 1.21,
+            "grade": "△",
+            "points": 1,
+            "note": "営業利益成長+1.2%(2027/07予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": {
+          "buy_13w_chg_pct": -15.051169590643276,
+          "sell_13w_chg_pct": -61.18721461187215,
+          "ratio_now": 136.72,
+          "irb_week": "07/17"
+        },
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI16.5 乖離-6.0% 買残13週-15%(信用残07/17週時点)"
+      },
+      {
+        "code": "7984",
+        "name": "Kokuyo Co., Ltd.",
+        "close": 851.0,
+        "score": 10,
+        "verdict": "⚡ 注目",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 18.503967281342966,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -5.6771078343203385,
+            "grade": "△",
+            "points": 1
+          },
+          "mcap_oku": {
+            "value": 3728.89284332,
+            "grade": "○",
+            "points": 2
+          },
+          "value_traded_oku": {
+            "value": 7.373064,
+            "grade": "✗",
+            "points": 0
+          },
+          "theme": {
+            "grade": "△",
+            "points": 1,
+            "note": "文具・オフィス(一般)"
+          },
+          "margin": {
+            "value": 2.23,
+            "grade": "○",
+            "points": 2,
+            "note": "信用倍率2.23倍(株探)"
+          },
+          "profit_growth": {
+            "value": 2.87,
+            "grade": "△",
+            "points": 1,
+            "note": "営業利益成長+2.9%(2026/12予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": {
+          "buy_13w_chg_pct": -57.991402891754596,
+          "sell_13w_chg_pct": 25.709112854556437,
+          "ratio_now": 0.52,
+          "irb_week": "07/17"
+        },
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI18.5 乖離-5.7% 買残13週-58%(信用残07/17週時点)"
+      },
+      {
+        "code": "3462",
+        "name": "Nomura Real Estate Master Fund, Inc.",
+        "close": 136400.0,
+        "score": 10,
+        "verdict": "⚡ 注目",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 23.52941176470588,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -5.07210066254663,
+            "grade": "△",
+            "points": 1
+          },
+          "mcap_oku": {
+            "value": 6463.09195566,
+            "grade": "◎",
+            "points": 3
+          },
+          "value_traded_oku": {
+            "value": 11.629464,
+            "grade": "△",
+            "points": 1
+          },
+          "theme": {
+            "grade": "△",
+            "points": 1,
+            "note": "J-REIT(不動産投資・特段の注目テーマ性なし)"
+          },
+          "margin": {
+            "value": 27.74,
+            "grade": "✗",
+            "points": 0,
+            "note": "信用倍率27.74倍(株探)"
+          },
+          "profit_growth": {
+            "value": 4.27,
+            "grade": "△",
+            "points": 1,
+            "note": "営業利益成長+4.3%(2027/02予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": {
+          "buy_13w_chg_pct": 32.796486090775986,
+          "sell_13w_chg_pct": -14.358974358974363,
+          "ratio_now": 5.43,
+          "irb_week": "07/17"
+        },
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI23.5 乖離-5.1% 買残13週+33%(信用残07/17週時点)"
+      },
+      {
+        "code": "8952",
+        "name": "Japan Real Estate Investment Corp.",
+        "close": 107200.0,
         "score": 9,
         "verdict": "👀 監視",
         "action": "WATCH",
         "precision": {
           "rsi": {
-            "value": 34.93282149712092,
+            "value": 17.391304347826086,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -6.362461129939556,
             "grade": "△",
             "points": 1
           },
-          "dev25": {
-            "value": -3.862854760829537,
-            "grade": "✗",
-            "points": 0
-          },
           "mcap_oku": {
-            "value": 15948.30390259,
+            "value": 7946.38611078,
             "grade": "◎",
             "points": 3
           },
           "value_traded_oku": {
-            "value": 60.960276,
-            "grade": "◎",
-            "points": 3
+            "value": 17.026576,
+            "grade": "△",
+            "points": 1
           },
           "theme": {
             "grade": "△",
             "points": 1,
-            "note": "業種(Food: Specialty/Candy)=その他プライム一般"
+            "note": "J-REIT(不動産投資・特段の注目テーマ性なし)"
           },
           "margin": {
-            "value": 5.41,
+            "value": 67.94,
             "grade": "✗",
             "points": 0,
-            "note": "信用倍率5.41倍"
+            "note": "信用倍率67.94倍(株探)"
           },
           "profit_growth": {
-            "value": 3.77,
-            "grade": "△",
-            "points": 1,
-            "note": "利益成長+3.8%",
+            "value": -1.97,
+            "grade": "✗",
+            "points": 0,
+            "note": "営業利益成長-2.0%(2027/03予)",
             "source": "irbank"
           }
         },
         "margin_trend": {
-          "buy_13w_chg_pct": -34.093590247738895,
-          "sell_13w_chg_pct": -58.23735603405108,
-          "ratio_now": 4.0,
+          "buy_13w_chg_pct": 45.70032573289902,
+          "sell_13w_chg_pct": -81.7067421027817,
+          "ratio_now": 11.53,
           "irb_week": "07/17"
         },
-        "scored_at": "2026-10-01T09:29:24.999114+00:00",
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
         "source": "nightly_s2",
-        "summary": "9→9点 RSI34.9 乖離-3.9% 買残13週-34%(前回値継承)"
+        "summary": "RSI17.4 乖離-6.4% 買残13週+46%(信用残07/17週時点)"
       },
       {
-        "code": "5726",
-        "name": "大阪チタニウムテクノロジーズ",
-        "close": 2465.0,
+        "code": "8818",
+        "name": "Keihanshin Building Co., Ltd.",
+        "close": 976.0,
+        "score": 9,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 19.665271966527197,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -11.020348625191456,
+            "grade": "○",
+            "points": 2
+          },
+          "mcap_oku": {
+            "value": 953.09258423,
+            "grade": "✗",
+            "points": 0
+          },
+          "value_traded_oku": {
+            "value": 5.057632,
+            "grade": "✗",
+            "points": 0
+          },
+          "theme": {
+            "grade": "△",
+            "points": 1,
+            "note": "オフィスビル賃貸"
+          },
+          "margin": {
+            "value": 0.09,
+            "grade": "◎",
+            "points": 3,
+            "note": "信用倍率0.09倍(株探)"
+          },
+          "profit_growth": {
+            "value": -2.59,
+            "grade": "✗",
+            "points": 0,
+            "note": "営業利益成長-2.6%(2027/03予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": {
+          "buy_13w_chg_pct": 59.59051724137932,
+          "sell_13w_chg_pct": 1267.6136363636363,
+          "ratio_now": 0.09,
+          "irb_week": "07/17"
+        },
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI19.7 乖離-11.0% 買残13週+60%(信用残07/17週時点)"
+      },
+      {
+        "code": "4928",
+        "name": "Noevir Holdings Co., Ltd.",
+        "close": 4440.0,
+        "score": 9,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 20.35398230088495,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -6.9533509367534325,
+            "grade": "△",
+            "points": 1
+          },
+          "mcap_oku": {
+            "value": 1530.20632324,
+            "grade": "△",
+            "points": 1
+          },
+          "value_traded_oku": {
+            "value": 3.48096,
+            "grade": "✗",
+            "points": 0
+          },
+          "theme": {
+            "grade": "△",
+            "points": 1,
+            "note": "化粧品(一般)"
+          },
+          "margin": {
+            "value": 1.74,
+            "grade": "○",
+            "points": 2,
+            "note": "信用倍率1.74倍(株探)"
+          },
+          "profit_growth": {
+            "value": 2.93,
+            "grade": "△",
+            "points": 1,
+            "note": "営業利益成長+2.9%(2026/09予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": {
+          "buy_13w_chg_pct": 39.66346153846154,
+          "sell_13w_chg_pct": -27.985074626865668,
+          "ratio_now": 3.01,
+          "irb_week": "07/17"
+        },
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI20.4 乖離-7.0% 買残13週+40%(信用残07/17週時点)"
+      },
+      {
+        "code": "8954",
+        "name": "ORIX JREIT Inc.",
+        "close": 90700.0,
+        "score": 9,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 23.232323232323232,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -5.583777481678876,
+            "grade": "△",
+            "points": 1
+          },
+          "mcap_oku": {
+            "value": 5122.5599823,
+            "grade": "◎",
+            "points": 3
+          },
+          "value_traded_oku": {
+            "value": 10.763369,
+            "grade": "△",
+            "points": 1
+          },
+          "theme": {
+            "grade": "△",
+            "points": 1,
+            "note": "J-REIT(不動産投資・特段の注目テーマ性なし)"
+          },
+          "margin": {
+            "value": 153.0,
+            "grade": "✗",
+            "points": 0,
+            "note": "信用倍率153.0倍(株探)"
+          },
+          "profit_growth": {
+            "value": -7.49,
+            "grade": "✗",
+            "points": 0,
+            "note": "営業利益成長-7.5%(2027/02予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": {
+          "buy_13w_chg_pct": 6.598465473145776,
+          "sell_13w_chg_pct": -48.170731707317074,
+          "ratio_now": 24.52,
+          "irb_week": "07/17"
+        },
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI23.2 乖離-5.6% 買残13週+7%(信用残07/17週時点)"
+      },
+      {
+        "code": "3309",
+        "name": "Sekisui House Reit. Inc.",
+        "close": 67500.0,
+        "score": 8,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 11.666666666666666,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -5.820962160955467,
+            "grade": "△",
+            "points": 1
+          },
+          "mcap_oku": {
+            "value": 2974.04350281,
+            "grade": "○",
+            "points": 2
+          },
+          "value_traded_oku": {
+            "value": 10.372725,
+            "grade": "△",
+            "points": 1
+          },
+          "theme": {
+            "grade": "△",
+            "points": 1,
+            "note": "J-REIT(不動産投資・特段の注目テーマ性なし)"
+          },
+          "margin": {
+            "value": 224.0,
+            "grade": "✗",
+            "points": 0,
+            "note": "信用倍率224.0倍(株探)"
+          },
+          "profit_growth": {
+            "value": -27.69,
+            "grade": "✗",
+            "points": 0,
+            "note": "営業利益成長-27.7%(2027/04予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": {
+          "buy_13w_chg_pct": 1.6698172652803933,
+          "sell_13w_chg_pct": -79.79094076655052,
+          "ratio_now": 111.28,
+          "irb_week": "07/17"
+        },
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI11.7 乖離-5.8% 買残13週+2%(信用残07/17週時点)"
+      },
+      {
+        "code": "8961",
+        "name": "MORI TRUST REIT.Inc",
+        "close": 67800.0,
+        "score": 8,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 15.686274509803921,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -5.010087424344323,
+            "grade": "△",
+            "points": 1
+          },
+          "mcap_oku": {
+            "value": 2463.5199604,
+            "grade": "○",
+            "points": 2
+          },
+          "value_traded_oku": {
+            "value": 4.009692,
+            "grade": "✗",
+            "points": 0
+          },
+          "theme": {
+            "grade": "△",
+            "points": 1,
+            "note": "J-REIT(不動産投資・特段の注目テーマ性なし)"
+          },
+          "margin": {
+            "value": 6.45,
+            "grade": "✗",
+            "points": 0,
+            "note": "信用倍率6.45倍(株探)"
+          },
+          "profit_growth": {
+            "value": 1.09,
+            "grade": "△",
+            "points": 1,
+            "note": "営業利益成長+1.1%(2027/02予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": {
+          "buy_13w_chg_pct": 16.40058055152396,
+          "sell_13w_chg_pct": 74.54545454545453,
+          "ratio_now": 0.0,
+          "irb_week": "07/17"
+        },
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI15.7 乖離-5.0% 買残13週+16%(信用残07/17週時点)"
+      },
+      {
+        "code": "2815",
+        "name": "ARIAKE JAPAN Co., Ltd.",
+        "close": 5000.0,
+        "score": 8,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 18.0,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -5.560592323964942,
+            "grade": "△",
+            "points": 1
+          },
+          "mcap_oku": {
+            "value": 1614.78244801,
+            "grade": "△",
+            "points": 1
+          },
+          "value_traded_oku": {
+            "value": 7.955,
+            "grade": "✗",
+            "points": 0
+          },
+          "theme": {
+            "grade": "△",
+            "points": 1,
+            "note": "食品素材(一般)"
+          },
+          "margin": {
+            "value": 2.12,
+            "grade": "○",
+            "points": 2,
+            "note": "信用倍率2.12倍(株探)"
+          },
+          "profit_growth": {
+            "value": -4.51,
+            "grade": "✗",
+            "points": 0,
+            "note": "営業利益成長-4.5%(2027/03予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": {
+          "buy_13w_chg_pct": 213.8157894736842,
+          "sell_13w_chg_pct": -5.154639175257736,
+          "ratio_now": 2.59,
+          "irb_week": "07/17"
+        },
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI18.0 乖離-5.6% 買残13週+214%(信用残07/17週時点)"
+      },
+      {
+        "code": "3292",
+        "name": "AEON REIT Investment Corp.",
+        "close": 107400.0,
+        "score": 8,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 20.28985507246377,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -6.4068600111544916,
+            "grade": "△",
+            "points": 1
+          },
+          "mcap_oku": {
+            "value": 2308.62087536,
+            "grade": "○",
+            "points": 2
+          },
+          "value_traded_oku": {
+            "value": 9.58008,
+            "grade": "✗",
+            "points": 0
+          },
+          "theme": {
+            "grade": "△",
+            "points": 1,
+            "note": "J-REIT(不動産投資・特段の注目テーマ性なし)"
+          },
+          "margin": {
+            "value": 437.0,
+            "grade": "✗",
+            "points": 0,
+            "note": "信用倍率437.0倍(株探)"
+          },
+          "profit_growth": {
+            "value": 0.94,
+            "grade": "△",
+            "points": 1,
+            "note": "営業利益成長+0.9%(2027/07予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": null,
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI20.3 乖離-6.4% 信用残推移取得不可"
+      },
+      {
+        "code": "8986",
+        "name": "Daiwa Securities Living Investment Corporation",
+        "close": 86000.0,
+        "score": 8,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 23.255813953488374,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -7.19557991971339,
+            "grade": "△",
+            "points": 1
+          },
+          "mcap_oku": {
+            "value": 2097.33081222,
+            "grade": "○",
+            "points": 2
+          },
+          "value_traded_oku": {
+            "value": 6.24962,
+            "grade": "✗",
+            "points": 0
+          },
+          "theme": {
+            "grade": "△",
+            "points": 1,
+            "note": "J-REIT(不動産投資・特段の注目テーマ性なし)"
+          },
+          "margin": {
+            "value": 84.44,
+            "grade": "✗",
+            "points": 0,
+            "note": "信用倍率84.44倍(株探)"
+          },
+          "profit_growth": {
+            "value": null,
+            "grade": "△",
+            "points": 1,
+            "note": "取得不可→△1点",
+            "source": null
+          }
+        },
+        "margin_trend": {
+          "buy_13w_chg_pct": 9.329446064139946,
+          "sell_13w_chg_pct": -17.14285714285714,
+          "ratio_now": 51.72,
+          "irb_week": "07/17"
+        },
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI23.3 乖離-7.2% 買残13週+9%(信用残07/17週時点)"
+      },
+      {
+        "code": "3279",
+        "name": "Activia Properties, Inc.",
+        "close": 125000.0,
         "score": 7,
         "verdict": "👀 監視",
         "action": "WATCH",
         "precision": {
           "rsi": {
-            "value": 31.57894736842105,
+            "value": 12.903225806451612,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -5.285809541128694,
             "grade": "△",
             "points": 1
           },
-          "dev25": {
-            "value": -4.084110258525431,
+          "mcap_oku": {
+            "value": 3022.67677116,
+            "grade": "○",
+            "points": 2
+          },
+          "value_traded_oku": {
+            "value": 6.09625,
             "grade": "✗",
             "points": 0
           },
-          "mcap_oku": {
-            "value": 1071.31532372,
-            "grade": "△",
-            "points": 1
-          },
-          "value_traded_oku": {
-            "value": 11.292165,
-            "grade": "△",
-            "points": 1
-          },
           "theme": {
-            "grade": "○",
-            "points": 2,
-            "note": "業種(Other Metals/Minerals)=金融/インフラ/素材/鉄鋼系"
+            "grade": "△",
+            "points": 1,
+            "note": "J-REIT(不動産投資・特段の注目テーマ性なし)"
           },
           "margin": {
-            "value": 1.77,
-            "grade": "○",
-            "points": 2,
-            "note": "信用倍率1.77倍"
-          },
-          "profit_growth": {
-            "value": -33.02,
+            "value": 263.0,
             "grade": "✗",
             "points": 0,
-            "note": "利益成長-33.0%",
+            "note": "信用倍率263.0倍(株探)"
+          },
+          "profit_growth": {
+            "value": -0.18,
+            "grade": "✗",
+            "points": 0,
+            "note": "営業利益成長-0.2%(2027/05予)",
             "source": "irbank"
           }
         },
         "margin_trend": {
-          "buy_13w_chg_pct": -15.97087028624991,
-          "sell_13w_chg_pct": 15.737410071942445,
-          "ratio_now": 1.0,
+          "buy_13w_chg_pct": -4.340836012861738,
+          "sell_13w_chg_pct": -45.08196721311475,
+          "ratio_now": 8.88,
           "irb_week": "07/17"
         },
-        "scored_at": "2026-10-01T09:29:24.999114+00:00",
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
         "source": "nightly_s2",
-        "summary": "9→7点 RSI回復で反発進行 RSI31.6 乖離-4.1% 買残13週-16%(前回値継承)"
+        "summary": "RSI12.9 乖離-5.3% 買残13週-4%(信用残07/17週時点)"
+      },
+      {
+        "code": "8955",
+        "name": "Japan Prime Realty Investment Corporation",
+        "close": 89900.0,
+        "score": 7,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 13.513513513513514,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -5.352480417754569,
+            "grade": "△",
+            "points": 1
+          },
+          "mcap_oku": {
+            "value": 3732.49195862,
+            "grade": "○",
+            "points": 2
+          },
+          "value_traded_oku": {
+            "value": 6.671479,
+            "grade": "✗",
+            "points": 0
+          },
+          "theme": {
+            "grade": "△",
+            "points": 1,
+            "note": "J-REIT(不動産投資・特段の注目テーマ性なし)"
+          },
+          "margin": {
+            "value": 87.1,
+            "grade": "✗",
+            "points": 0,
+            "note": "信用倍率87.1倍(株探)"
+          },
+          "profit_growth": {
+            "value": -12.87,
+            "grade": "✗",
+            "points": 0,
+            "note": "営業利益成長-12.9%(2027/06予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": {
+          "buy_13w_chg_pct": 97.93713163064832,
+          "sell_13w_chg_pct": -57.77777777777777,
+          "ratio_now": 21.21,
+          "irb_week": "07/17"
+        },
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI13.5 乖離-5.4% 買残13週+98%(信用残07/17週時点)"
+      },
+      {
+        "code": "3234",
+        "name": "Mori Hills Reit Investment Corporation",
+        "close": 118300.0,
+        "score": 7,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 16.071428571428573,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -5.095786670089531,
+            "grade": "△",
+            "points": 1
+          },
+          "mcap_oku": {
+            "value": 2262.83981514,
+            "grade": "○",
+            "points": 2
+          },
+          "value_traded_oku": {
+            "value": 6.791603,
+            "grade": "✗",
+            "points": 0
+          },
+          "theme": {
+            "grade": "△",
+            "points": 1,
+            "note": "J-REIT(不動産投資・特段の注目テーマ性なし)"
+          },
+          "margin": {
+            "value": 23.64,
+            "grade": "✗",
+            "points": 0,
+            "note": "信用倍率23.64倍(株探)"
+          },
+          "profit_growth": {
+            "value": -1.32,
+            "grade": "✗",
+            "points": 0,
+            "note": "営業利益成長-1.3%(2027/07予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": {
+          "buy_13w_chg_pct": 7.259953161592514,
+          "sell_13w_chg_pct": 52.63157894736843,
+          "ratio_now": 26.32,
+          "irb_week": "07/17"
+        },
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI16.1 乖離-5.1% 買残13週+7%(信用残07/17週時点)"
+      },
+      {
+        "code": "8584",
+        "name": "Jaccs Co., Ltd.",
+        "close": 3440.0,
+        "score": 7,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 24.107142857142854,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -7.675791733762749,
+            "grade": "△",
+            "points": 1
+          },
+          "mcap_oku": {
+            "value": 1570.67283936,
+            "grade": "△",
+            "points": 1
+          },
+          "value_traded_oku": {
+            "value": 7.64712,
+            "grade": "✗",
+            "points": 0
+          },
+          "theme": {
+            "grade": "○",
+            "points": 2,
+            "note": "金融(信販)"
+          },
+          "margin": {
+            "value": 24.0,
+            "grade": "✗",
+            "points": 0,
+            "note": "信用倍率24.0倍(株探)"
+          },
+          "profit_growth": {
+            "value": -46.12,
+            "grade": "✗",
+            "points": 0,
+            "note": "営業利益成長-46.1%(2027/03予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": {
+          "buy_13w_chg_pct": 25.395256916996047,
+          "sell_13w_chg_pct": 498.4732824427481,
+          "ratio_now": 3.24,
+          "irb_week": "07/17"
+        },
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI24.1 乖離-7.7% 買残13週+25%(信用残07/17週時点)"
+      },
+      {
+        "code": "6804",
+        "name": "Hosiden Corp.",
+        "close": 2376.0,
+        "score": 6,
+        "verdict": "👀 監視",
+        "action": "WATCH",
+        "precision": {
+          "rsi": {
+            "value": 23.71794871794872,
+            "grade": "◎",
+            "points": 3
+          },
+          "dev25": {
+            "value": -7.212146773513284,
+            "grade": "△",
+            "points": 1
+          },
+          "mcap_oku": {
+            "value": 1222.53535172,
+            "grade": "△",
+            "points": 1
+          },
+          "value_traded_oku": {
+            "value": 6.612408,
+            "grade": "✗",
+            "points": 0
+          },
+          "theme": {
+            "grade": "△",
+            "points": 1,
+            "note": "電子部品(一般)"
+          },
+          "margin": {
+            "value": 50.15,
+            "grade": "✗",
+            "points": 0,
+            "note": "信用倍率50.15倍(株探)"
+          },
+          "profit_growth": {
+            "value": -6.43,
+            "grade": "✗",
+            "points": 0,
+            "note": "営業利益成長-6.4%(2027/03予)",
+            "source": "irbank"
+          }
+        },
+        "margin_trend": {
+          "buy_13w_chg_pct": 16.390243902439018,
+          "sell_13w_chg_pct": 174.68354430379748,
+          "ratio_now": 5.5,
+          "irb_week": "07/17"
+        },
+        "scored_at": "2026-10-02T09:44:10.059851+00:00",
+        "source": "nightly_s2",
+        "summary": "RSI23.7 乖離-7.2% 買残13週+16%(信用残07/17週時点)"
       }
     ],
     "stf_kakuhen": [
@@ -3243,49 +4415,112 @@
     "watch_bottoming": [],
     "granville_tenkan": [
       {
-        "code": "4507",
-        "name": "Shionogi & Co., Ltd.",
-        "close": 2852.0,
+        "code": "2986",
+        "name": "LA Holdings Co.,Ltd",
+        "close": 2795.0,
         "branch": "tenkan",
         "granville_rule": "法則①",
-        "dev25": -1.8811840312659034,
-        "dev75": -0.4785312324796287,
-        "dev200": -6.400812593225869,
-        "rsi_cutler": 45.31410916580844,
-        "vol_ratio_prev": 0.7693860952968562,
-        "cloud_gap": -1.2379880529824259,
-        "mcap_oku": 25246.90598694,
-        "value_traded_oku": 78.241768,
-        "pre5_pct": -2.2450728363324735,
-        "hi20_pct": -5.750165234633176,
+        "dev25": -2.1344836762419606,
+        "dev75": -0.7248996778633776,
+        "dev200": -4.469320551084888,
+        "rsi_cutler": 49.78165938864629,
+        "vol_ratio_prev": 2.6625811103100214,
+        "cloud_gap": -0.657543984361116,
+        "mcap_oku": 661.41106834,
+        "value_traded_oku": 10.321935,
+        "pre5_pct": -4.834865509022812,
+        "hi20_pct": -6.552992310264127,
         "classified_method": null,
         "classified_all": [],
-        "granville_fit": 2,
+        "granville_fit": 4,
         "fit_detail": {
           "gx10": false,
           "cloud_break10": true,
-          "ma25_up": false,
+          "ma25_up": true,
           "ma75_flat_or_up": true,
+          "vol_1_2x_5d": true
+        },
+        "trailing_growth": -4.354163844668781,
+        "fund_score": 6,
+        "fund_score_max": 6,
+        "fund_precision": {
+          "revenue_growth": {
+            "value": 31.06,
+            "grade": "◎",
+            "points": 3,
+            "period": "2026/12",
+            "source": "irbank(予想)"
+          },
+          "op_growth": {
+            "value": 74.57,
+            "grade": "◎",
+            "points": 3,
+            "basis": "営業利益",
+            "period": "2026/12",
+            "source": "irbank(予想)"
+          }
+        },
+        "mom": 0,
+        "mom_detail": {
+          "pct20_ge_8": false,
+          "w52_ge_90": false
+        },
+        "total_raw": 9,
+        "total": 9,
+        "overlap_flag": [],
+        "score": null,
+        "verdict": null,
+        "action": "CHART_WATCH",
+        "precision": {
+          "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
+        },
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルtenkan局面。fit4/5(cloud_break10,ma25_up,ma75_flat_or_up,vol_1_2x_5d) fund6/6 revenue_growth+31.1%(2026/12)・op_growth+74.6%(2026/12) RSI50 乖離25日-2.1%"
+      },
+      {
+        "code": "4259",
+        "name": "ExaWizards Inc.",
+        "close": 853.0,
+        "branch": "tenkan",
+        "granville_rule": "法則①",
+        "dev25": 0.18792576932111782,
+        "dev75": 2.168740118498169,
+        "dev200": 8.34497650196877,
+        "rsi_cutler": 56.61538461538461,
+        "vol_ratio_prev": 1.1447171505537264,
+        "cloud_gap": 0.7678676904902539,
+        "mcap_oku": 818.94062958,
+        "value_traded_oku": 6.524597,
+        "pre5_pct": -1.273148148148151,
+        "hi20_pct": -11.606217616580306,
+        "classified_method": null,
+        "classified_all": [],
+        "granville_fit": 3,
+        "fit_detail": {
+          "gx10": true,
+          "cloud_break10": true,
+          "ma25_up": true,
+          "ma75_flat_or_up": false,
           "vol_1_2x_5d": false
         },
-        "trailing_growth": 27.866812876450464,
+        "trailing_growth": 28.09697447521435,
         "fund_score": 5,
         "fund_score_max": 6,
         "fund_precision": {
           "revenue_growth": {
-            "value": 40.09,
+            "value": 30.04,
             "grade": "◎",
             "points": 3,
             "period": "2027/03",
-            "source": "kabutan(予想)"
+            "source": "irbank(予想)"
           },
           "op_growth": {
-            "value": 31.95,
+            "value": 44.29,
             "grade": "○",
             "points": 2,
             "basis": "営業利益",
             "period": "2027/03",
-            "source": "kabutan(予想)"
+            "source": "irbank(予想)"
           }
         },
         "mom": 0,
@@ -3293,8 +4528,8 @@
           "pct20_ge_8": false,
           "w52_ge_90": false
         },
-        "total_raw": 6,
-        "total": 6,
+        "total_raw": 7,
+        "total": 7,
         "overlap_flag": [],
         "score": null,
         "verdict": null,
@@ -3302,25 +4537,25 @@
         "precision": {
           "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
         },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルtenkan局面。fit2/5(cloud_break10,ma75_flat_or_up) fund5/6 revenue_growth+40.1%(2027/03) RSI45 乖離25日-1.9%"
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルtenkan局面。fit3/5(gx10,cloud_break10,ma25_up) fund5/6 revenue_growth+30.0%(2027/03)・op_growth+44.3%(2027/03) RSI57 乖離25日+0.2%"
       },
       {
-        "code": "3064",
-        "name": "MonotaRO Co., Ltd.",
-        "close": 1958.5,
+        "code": "6473",
+        "name": "JTEKT Corporation",
+        "close": 2120.0,
         "branch": "tenkan",
         "granville_rule": "法則①",
-        "dev25": 1.9478626605867522,
-        "dev75": 3.2648240517141325,
-        "dev200": -1.0854839096612778,
-        "rsi_cutler": 49.50276243093923,
-        "vol_ratio_prev": 0.9710079712008228,
-        "cloud_gap": 1.7402597402597402,
-        "mcap_oku": 9598.21417969,
-        "value_traded_oku": 29.5831425,
-        "pre5_pct": 1.4241325737959665,
-        "hi20_pct": -3.3793783917118847,
+        "dev25": 1.21844085405447,
+        "dev75": 1.452881836105746,
+        "dev200": 8.916791681223145,
+        "rsi_cutler": 60.728218465539655,
+        "vol_ratio_prev": 0.8407239109996866,
+        "cloud_gap": -0.5161895823557016,
+        "mcap_oku": 6885.55154022,
+        "value_traded_oku": 22.74972,
+        "pre5_pct": -0.25876264408374317,
+        "hi20_pct": -5.504791620236238,
         "classified_method": null,
         "classified_all": [],
         "granville_fit": 4,
@@ -3331,84 +4566,77 @@
           "ma75_flat_or_up": true,
           "vol_1_2x_5d": false
         },
-        "trailing_growth": 18.758455951371403,
-        "fund_score": 2,
+        "trailing_growth": 4.63940177075345,
+        "fund_score": 3,
         "fund_score_max": 6,
         "fund_precision": {
           "revenue_growth": {
-            "value": 14.23,
-            "grade": "△",
-            "points": 1,
-            "period": "2026/12",
-            "source": "irbank(予想)"
-          },
-          "op_growth": {
-            "value": 14.94,
-            "grade": "△",
-            "points": 1,
-            "basis": "営業利益",
-            "period": "2026/12",
-            "source": "irbank(予想)"
-          }
-        },
-        "mom": 0,
-        "mom_detail": {
-          "pct20_ge_8": false,
-          "w52_ge_90": false
-        },
-        "total_raw": 6,
-        "total": 6,
-        "overlap_flag": [],
-        "score": null,
-        "verdict": null,
-        "action": "CHART_WATCH",
-        "precision": {
-          "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
-        },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルtenkan局面。fit4/5(gx10,cloud_break10,ma25_up,ma75_flat_or_up) fund2/6 revenue_growth+14.2%(2026/12) RSI50 乖離25日+1.9%"
-      },
-      {
-        "code": "4658",
-        "name": "Nippon Air Conditioning Services Co., Ltd.",
-        "close": 1549.0,
-        "branch": "tenkan",
-        "granville_rule": "法則①",
-        "dev25": -1.9098761366802663,
-        "dev75": -1.8692772916173883,
-        "dev200": 1.790367043315122,
-        "rsi_cutler": 47.61904761904762,
-        "vol_ratio_prev": 0.8544568245125348,
-        "cloud_gap": -1.0539763653784733,
-        "mcap_oku": 540.63040268,
-        "value_traded_oku": 1.900623,
-        "pre5_pct": -5.60633759902498,
-        "hi20_pct": -8.071216617210686,
-        "classified_method": null,
-        "classified_all": [],
-        "granville_fit": 4,
-        "fit_detail": {
-          "gx10": true,
-          "cloud_break10": true,
-          "ma25_up": true,
-          "ma75_flat_or_up": true,
-          "vol_1_2x_5d": false
-        },
-        "trailing_growth": 7.355564704267874,
-        "fund_score": 1,
-        "fund_score_max": 6,
-        "fund_precision": {
-          "revenue_growth": {
-            "value": 6.94,
+            "value": -2.34,
             "grade": "✗",
             "points": 0,
             "period": "2027/03",
             "source": "irbank(予想)"
           },
           "op_growth": {
-            "value": 11.34,
-            "grade": "△",
-            "points": 1,
+            "value": 201.85,
+            "grade": "◎",
+            "points": 3,
+            "basis": "営業利益",
+            "period": "2027/03",
+            "source": "irbank(予想)"
+          }
+        },
+        "mom": 1,
+        "mom_detail": {
+          "pct20_ge_8": false,
+          "w52_ge_90": true
+        },
+        "total_raw": 7,
+        "total": 7,
+        "overlap_flag": [],
+        "score": null,
+        "verdict": null,
+        "action": "CHART_WATCH",
+        "precision": {
+          "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
+        },
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルtenkan局面。fit4/5(gx10,cloud_break10,ma25_up,ma75_flat_or_up) fund3/6 revenue_growth-2.3%(2027/03)・op_growth+201.8%(2027/03) RSI61 乖離25日+1.2%"
+      },
+      {
+        "code": "9064",
+        "name": "Yamato Holdings Co., Ltd.",
+        "close": 1967.5,
+        "branch": "tenkan",
+        "granville_rule": "法則①",
+        "dev25": -0.3161510634632769,
+        "dev75": 1.1581992555167897,
+        "dev200": 2.2856355616092117,
+        "rsi_cutler": 55.10204081632652,
+        "vol_ratio_prev": 0.8017982799061767,
+        "cloud_gap": -0.39235539805087966,
+        "mcap_oku": 6788.60668961,
+        "value_traded_oku": 24.212055,
+        "pre5_pct": -2.5990099009901013,
+        "hi20_pct": -3.9306640625,
+        "classified_method": null,
+        "classified_all": [],
+        "granville_fit": 3,
+        "fit_detail": {
+          "gx10": false,
+          "cloud_break10": true,
+          "ma25_up": true,
+          "ma75_flat_or_up": true,
+          "vol_1_2x_5d": false
+        },
+        "trailing_growth": 4.304408788151688,
+        "fund_score": 2,
+        "fund_score_max": 3,
+        "fund_precision": {
+          "op_growth": {
+            "value": 48.39,
+            "grade": "○",
+            "points": 2,
             "basis": "営業利益",
             "period": "2027/03",
             "source": "irbank(予想)"
@@ -3418,6 +4646,69 @@
         "mom_detail": {
           "pct20_ge_8": false,
           "w52_ge_90": false
+        },
+        "total_raw": 6,
+        "total": 6,
+        "overlap_flag": [],
+        "score": null,
+        "verdict": null,
+        "action": "CHART_WATCH",
+        "precision": {
+          "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
+        },
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルtenkan局面。fit3/5(cloud_break10,ma25_up,ma75_flat_or_up) fund2/3 op_growth+48.4%(2027/03) RSI55 乖離25日-0.3%"
+      },
+      {
+        "code": "6454",
+        "name": "Max Co., Ltd.",
+        "close": 1853.0,
+        "branch": "tenkan",
+        "granville_rule": "法則①",
+        "dev25": -1.129039142869348,
+        "dev75": 3.4132511831413526,
+        "dev200": 7.510037364524602,
+        "rsi_cutler": 44.66403162055336,
+        "vol_ratio_prev": 0.717607973421927,
+        "cloud_gap": 2.09366391184573,
+        "mcap_oku": 3476.60923309,
+        "value_traded_oku": 3.201984,
+        "pre5_pct": -1.593202336696764,
+        "hi20_pct": -4.4352759154203225,
+        "classified_method": null,
+        "classified_all": [],
+        "granville_fit": 2,
+        "fit_detail": {
+          "gx10": false,
+          "cloud_break10": false,
+          "ma25_up": true,
+          "ma75_flat_or_up": true,
+          "vol_1_2x_5d": false
+        },
+        "trailing_growth": 10.920837299847044,
+        "fund_score": 2,
+        "fund_score_max": 6,
+        "fund_precision": {
+          "revenue_growth": {
+            "value": 10.33,
+            "grade": "△",
+            "points": 1,
+            "period": "2027/03",
+            "source": "irbank(予想)"
+          },
+          "op_growth": {
+            "value": 13.25,
+            "grade": "△",
+            "points": 1,
+            "basis": "営業利益",
+            "period": "2027/03",
+            "source": "irbank(予想)"
+          }
+        },
+        "mom": 1,
+        "mom_detail": {
+          "pct20_ge_8": false,
+          "w52_ge_90": true
         },
         "total_raw": 5,
         "total": 5,
@@ -3428,25 +4719,25 @@
         "precision": {
           "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
         },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルtenkan局面。fit4/5(gx10,cloud_break10,ma25_up,ma75_flat_or_up) fund1/6 revenue_growth+6.9%(2027/03) RSI48 乖離25日-1.9%"
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルtenkan局面。fit2/5(ma25_up,ma75_flat_or_up) fund2/6 revenue_growth+10.3%(2027/03)・op_growth+13.2%(2027/03) RSI45 乖離25日-1.1%"
       },
       {
         "code": "9960",
         "name": "Totech Corporation",
-        "close": 4195.0,
+        "close": 4190.0,
         "branch": "tenkan",
         "granville_rule": "法則①",
-        "dev25": 2.858964299725386,
-        "dev75": 4.603032116497108,
-        "dev200": 6.0582119268084655,
-        "rsi_cutler": 57.04697986577181,
-        "vol_ratio_prev": 0.8831050228310502,
-        "cloud_gap": 2.9447852760736195,
-        "mcap_oku": 1736.39163322,
-        "value_traded_oku": 4.056565,
-        "pre5_pct": -4.550625711035272,
-        "hi20_pct": -5.624296962879638,
+        "dev25": 2.3099086780290046,
+        "dev75": 4.346526763182368,
+        "dev200": 5.845500934673886,
+        "rsi_cutler": 54.545454545454554,
+        "vol_ratio_prev": 1.1209927611168562,
+        "cloud_gap": 2.8220858895705523,
+        "mcap_oku": 1746.80165501,
+        "value_traded_oku": 4.54196,
+        "pre5_pct": -4.772727272727273,
+        "hi20_pct": -5.736782902137227,
         "classified_method": null,
         "classified_all": [],
         "granville_fit": 3,
@@ -3462,14 +4753,14 @@
         "fund_score_max": 6,
         "fund_precision": {
           "revenue_growth": {
-            "value": 5.88,
+            "value": 5.87,
             "grade": "✗",
             "points": 0,
             "period": "2027/03",
             "source": "irbank(予想)"
           },
           "op_growth": {
-            "value": 5.26,
+            "value": 5.11,
             "grade": "✗",
             "points": 0,
             "basis": "営業利益",
@@ -3491,114 +4782,51 @@
         "precision": {
           "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
         },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルtenkan局面。fit3/5(gx10,ma25_up,ma75_flat_or_up) fund0/6 revenue_growth+5.9%(2027/03) RSI57 乖離25日+2.9%"
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルtenkan局面。fit3/5(gx10,ma25_up,ma75_flat_or_up) fund0/6 revenue_growth+5.9%(2027/03)・op_growth+5.1%(2027/03) RSI55 乖離25日+2.3%"
       },
       {
-        "code": "3496",
-        "name": "AZOOM CO.,LTD",
-        "close": 4790.0,
+        "code": "3661",
+        "name": "m-up holdings, Inc.",
+        "close": 804.0,
         "branch": "tenkan",
         "granville_rule": "法則①",
-        "dev25": -0.5192107995846351,
-        "dev75": 4.560800977938184,
-        "dev200": 4.897210588267509,
-        "rsi_cutler": 53.529411764705884,
-        "vol_ratio_prev": 0.6905766526019691,
-        "cloud_gap": 1.5906680805938493,
-        "mcap_oku": 576.43391752,
-        "value_traded_oku": 2.35189,
-        "pre5_pct": -1.7435897435897463,
-        "hi20_pct": -3.427419354838712,
+        "dev25": -1.0485895731797368,
+        "dev75": 4.08934767223077,
+        "dev200": 6.167345618286135,
+        "rsi_cutler": 57.25190839694656,
+        "vol_ratio_prev": 1.0307064633884475,
+        "cloud_gap": -1.19815668202765,
+        "mcap_oku": 596.45219055,
+        "value_traded_oku": 3.8592,
+        "pre5_pct": 0.24937655860348684,
+        "hi20_pct": -4.513064133016631,
         "classified_method": null,
         "classified_all": [],
         "granville_fit": 2,
         "fit_detail": {
           "gx10": false,
-          "cloud_break10": true,
+          "cloud_break10": false,
           "ma25_up": false,
           "ma75_flat_or_up": true,
-          "vol_1_2x_5d": false
+          "vol_1_2x_5d": true
         },
-        "trailing_growth": 26.49849065904274,
-        "fund_score": 3,
+        "trailing_growth": 21.792528693617953,
+        "fund_score": 2,
         "fund_score_max": 6,
         "fund_precision": {
           "revenue_growth": {
-            "value": 25.93,
-            "grade": "○",
-            "points": 2,
-            "period": "2026/09",
+            "value": 13.51,
+            "grade": "△",
+            "points": 1,
+            "period": "2027/03",
             "source": "irbank(予想)"
           },
           "op_growth": {
-            "value": 20.69,
+            "value": 15.93,
             "grade": "△",
             "points": 1,
             "basis": "営業利益",
-            "period": "2026/09",
-            "source": "irbank(予想)"
-          }
-        },
-        "mom": 0,
-        "mom_detail": {
-          "pct20_ge_8": false,
-          "w52_ge_90": false
-        },
-        "total_raw": 4,
-        "total": 4,
-        "overlap_flag": [],
-        "score": null,
-        "verdict": null,
-        "action": "CHART_WATCH",
-        "precision": {
-          "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
-        },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルtenkan局面。fit2/5(cloud_break10,ma75_flat_or_up) fund3/6 revenue_growth+25.9%(2026/09) RSI54 乖離25日-0.5%"
-      },
-      {
-        "code": "9531",
-        "name": "TOKYO GAS Co., Ltd.",
-        "close": 6110.0,
-        "branch": "tenkan",
-        "granville_rule": "法則①",
-        "dev25": -1.8221550920718532,
-        "dev75": -0.5417301506686956,
-        "dev200": -7.274124852128027,
-        "rsi_cutler": 48.307410795974384,
-        "vol_ratio_prev": 0.7149755258632094,
-        "cloud_gap": -1.0285899408763262,
-        "mcap_oku": 20638.640271,
-        "value_traded_oku": 66.04299,
-        "pre5_pct": -0.9242743635479167,
-        "hi20_pct": -6.216423637759016,
-        "classified_method": null,
-        "classified_all": [],
-        "granville_fit": 4,
-        "fit_detail": {
-          "gx10": true,
-          "cloud_break10": true,
-          "ma25_up": true,
-          "ma75_flat_or_up": true,
-          "vol_1_2x_5d": false
-        },
-        "trailing_growth": 6.066472936188324,
-        "fund_score": 0,
-        "fund_score_max": 6,
-        "fund_precision": {
-          "revenue_growth": {
-            "value": 4.24,
-            "grade": "✗",
-            "points": 0,
-            "period": "2027/03",
-            "source": "irbank(予想)"
-          },
-          "op_growth": {
-            "value": -5.92,
-            "grade": "✗",
-            "points": 0,
-            "basis": "営業利益",
             "period": "2027/03",
             "source": "irbank(予想)"
           }
@@ -3617,27 +4845,29 @@
         "precision": {
           "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
         },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルtenkan局面。fit4/5(gx10,cloud_break10,ma25_up,ma75_flat_or_up) fund0/6 revenue_growth+4.2%(2027/03) RSI48 乖離25日-1.8%"
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルtenkan局面。fit2/5(ma75_flat_or_up,vol_1_2x_5d) fund2/6 revenue_growth+13.5%(2027/03)・op_growth+15.9%(2027/03) RSI57 乖離25日-1.0%"
       },
       {
-        "code": "7181",
-        "name": "JAPAN POST INSURANCE Co., Ltd.",
-        "close": 1723.5,
+        "code": "8927",
+        "name": "Meiho Enterprise Co., Ltd.",
+        "close": 490.0,
         "branch": "tenkan",
         "granville_rule": "法則①",
-        "dev25": -1.1482518124254382,
-        "dev75": 2.9278857829924565,
-        "dev200": 6.906483596043378,
-        "rsi_cutler": 49.343832020997375,
-        "vol_ratio_prev": 1.0792707359423,
-        "cloud_gap": 2.719213290620577,
-        "mcap_oku": 19084.17736938,
-        "value_traded_oku": 55.706967,
-        "pre5_pct": -3.3099579242636734,
-        "hi20_pct": -6.534707158351405,
-        "classified_method": null,
-        "classified_all": [],
+        "dev25": 0.29474373669560183,
+        "dev75": 4.931045313079974,
+        "dev200": 7.447893253807258,
+        "rsi_cutler": 58.57142857142856,
+        "vol_ratio_prev": 1.6462472406181015,
+        "cloud_gap": 4.310803618946248,
+        "mcap_oku": 153.32974812,
+        "value_traded_oku": 1.46167,
+        "pre5_pct": -3.1620553359683834,
+        "hi20_pct": -3.9215686274509776,
+        "classified_method": "kenmo_momentum",
+        "classified_all": [
+          "kenmo_momentum"
+        ],
         "granville_fit": 3,
         "fit_detail": {
           "gx10": false,
@@ -3646,172 +4876,23 @@
           "ma75_flat_or_up": true,
           "vol_1_2x_5d": true
         },
-        "trailing_growth": -5.902100634182067,
-        "fund_score": null,
-        "fund_score_max": null,
-        "fund_precision": {
-          "note": "ファンダ取得不可(IR BANK/株探で今期予想なし・他ソース未取得)"
-        },
-        "mom": 1,
-        "mom_detail": {
-          "pct20_ge_8": false,
-          "w52_ge_90": true
-        },
-        "total_raw": 4,
-        "total": 4,
-        "overlap_flag": [],
-        "score": null,
-        "verdict": null,
-        "action": "CHART_WATCH",
-        "precision": {
-          "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
-        },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルtenkan局面。fit3/5(ma25_up,ma75_flat_or_up,vol_1_2x_5d) fundNone/None ファンダ取得不可 RSI49 乖離25日-1.1%"
-      },
-      {
-        "code": "2432",
-        "name": "DeNA Co., Ltd.",
-        "close": 2556.5,
-        "branch": "tenkan",
-        "granville_rule": "法則①",
-        "dev25": 0.16141797067834585,
-        "dev75": 1.7083339964035105,
-        "dev200": -0.3501290692881409,
-        "rsi_cutler": 43.19899244332493,
-        "vol_ratio_prev": 0.7167625239643244,
-        "cloud_gap": 1.428288038087681,
-        "mcap_oku": 2327.5684639,
-        "value_traded_oku": 21.9833435,
-        "pre5_pct": 0.31391014322150745,
-        "hi20_pct": -2.7577025484975315,
-        "classified_method": null,
-        "classified_all": [],
-        "granville_fit": 4,
-        "fit_detail": {
-          "gx10": true,
-          "cloud_break10": true,
-          "ma25_up": true,
-          "ma75_flat_or_up": true,
-          "vol_1_2x_5d": false
-        },
-        "trailing_growth": -16.654633112459386,
-        "fund_score": null,
-        "fund_score_max": null,
-        "fund_precision": {
-          "note": "ファンダ取得不可(IR BANK/株探で今期予想なし・他ソース未取得)"
-        },
-        "mom": 0,
-        "mom_detail": {
-          "pct20_ge_8": false,
-          "w52_ge_90": false
-        },
-        "total_raw": 4,
-        "total": 4,
-        "overlap_flag": [],
-        "score": null,
-        "verdict": null,
-        "action": "CHART_WATCH",
-        "precision": {
-          "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
-        },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルtenkan局面。fit4/5(gx10,cloud_break10,ma25_up,ma75_flat_or_up) fundNone/None ファンダ取得不可 RSI43 乖離25日+0.2%"
-      },
-      {
-        "code": "2986",
-        "name": "LA Holdings Co.,Ltd",
-        "close": 2890.0,
-        "branch": "tenkan",
-        "granville_rule": "法則①",
-        "dev25": 1.142313184197996,
-        "dev75": 2.6680265474319675,
-        "dev200": -1.1803646822827196,
-        "rsi_cutler": 61.78861788617886,
-        "vol_ratio_prev": 1.1248986212489862,
-        "cloud_gap": 2.719033232628399,
-        "mcap_oku": 665.75944561,
-        "value_traded_oku": 4.00843,
-        "pre5_pct": -1.2303485987696483,
-        "hi20_pct": -3.3767970578401862,
-        "classified_method": null,
-        "classified_all": [],
-        "granville_fit": 4,
-        "fit_detail": {
-          "gx10": false,
-          "cloud_break10": true,
-          "ma25_up": true,
-          "ma75_flat_or_up": true,
-          "vol_1_2x_5d": true
-        },
-        "trailing_growth": -4.354163844668781,
-        "fund_score": null,
-        "fund_score_max": null,
-        "fund_precision": {
-          "note": "ファンダ取得不可(IR BANK/株探で今期予想なし・他ソース未取得)"
-        },
-        "mom": 0,
-        "mom_detail": {
-          "pct20_ge_8": false,
-          "w52_ge_90": false
-        },
-        "total_raw": 4,
-        "total": 4,
-        "overlap_flag": [],
-        "score": null,
-        "verdict": null,
-        "action": "CHART_WATCH",
-        "precision": {
-          "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
-        },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルtenkan局面。fit4/5(cloud_break10,ma25_up,ma75_flat_or_up,vol_1_2x_5d) fundNone/None ファンダ取得不可 RSI62 乖離25日+1.1%"
-      },
-      {
-        "code": "6208",
-        "name": "Ishikawa Seisakusho,Ltd.",
-        "close": 1782.0,
-        "branch": "tenkan",
-        "granville_rule": "法則①",
-        "dev25": 3.2803987481163643,
-        "dev75": 4.212964045942602,
-        "dev200": -4.694415103421534,
-        "rsi_cutler": 57.552083333333336,
-        "vol_ratio_prev": 0.7195357833655706,
-        "cloud_gap": 1.596351197263398,
-        "mcap_oku": 115.58820917,
-        "value_traded_oku": 2.651616,
-        "pre5_pct": 0.05614823133071045,
-        "hi20_pct": -12.303149606299213,
-        "classified_method": "kenmo_momentum",
-        "classified_all": [
-          "kenmo_momentum"
-        ],
-        "granville_fit": 4,
-        "fit_detail": {
-          "gx10": true,
-          "cloud_break10": true,
-          "ma25_up": true,
-          "ma75_flat_or_up": true,
-          "vol_1_2x_5d": false
-        },
-        "trailing_growth": 8.282767793719543,
-        "fund_score": 0,
+        "trailing_growth": 23.822444956928475,
+        "fund_score": 1,
         "fund_score_max": 6,
         "fund_precision": {
           "revenue_growth": {
-            "value": 2.7,
-            "grade": "✗",
-            "points": 0,
-            "period": "2027/03",
+            "value": 11.4,
+            "grade": "△",
+            "points": 1,
+            "period": "2027/07",
             "source": "irbank(予想)"
           },
           "op_growth": {
-            "value": -23.66,
+            "value": 6.29,
             "grade": "✗",
             "points": 0,
             "basis": "営業利益",
-            "period": "2027/03",
+            "period": "2027/07",
             "source": "irbank(予想)"
           }
         },
@@ -3829,27 +4910,203 @@
         "precision": {
           "note": "分類=kenmo_momentum。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
         },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルtenkan局面。fit4/5(gx10,cloud_break10,ma25_up,ma75_flat_or_up) fund0/6 revenue_growth+2.7%(2027/03) RSI58 乖離25日+3.3% 分類:kenmo_momentum(機械判定・ファンダ条件未検証)"
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルtenkan局面。fit3/5(ma25_up,ma75_flat_or_up,vol_1_2x_5d) fund1/6 revenue_growth+11.4%(2027/07)・op_growth+6.3%(2027/07) RSI59 乖離25日+0.3% 分類:kenmo_momentum(機械判定・ファンダ条件未検証)"
+      },
+      {
+        "code": "2413",
+        "name": "M3, Inc.",
+        "close": 1753.0,
+        "branch": "tenkan",
+        "granville_rule": "法則①",
+        "dev25": -0.4622006200529216,
+        "dev75": -1.176337943475636,
+        "dev200": 0.6281365569161812,
+        "rsi_cutler": 60.820895522388064,
+        "vol_ratio_prev": 1.8322658126501201,
+        "cloud_gap": 1.5643105446118193,
+        "mcap_oku": 12216.69562439,
+        "value_traded_oku": 80.23481,
+        "pre5_pct": -0.8203677510608243,
+        "hi20_pct": -3.8661913901837153,
+        "classified_method": null,
+        "classified_all": [],
+        "granville_fit": 3,
+        "fit_detail": {
+          "gx10": false,
+          "cloud_break10": false,
+          "ma25_up": true,
+          "ma75_flat_or_up": true,
+          "vol_1_2x_5d": true
+        },
+        "trailing_growth": 15.763577296173558,
+        "fund_score": 0,
+        "fund_score_max": 3,
+        "fund_precision": {
+          "op_growth": {
+            "value": 8.77,
+            "grade": "✗",
+            "points": 0,
+            "basis": "営業利益",
+            "period": "2027/03",
+            "source": "irbank(予想)"
+          }
+        },
+        "mom": 0,
+        "mom_detail": {
+          "pct20_ge_8": false,
+          "w52_ge_90": false
+        },
+        "total_raw": 3,
+        "total": 3,
+        "overlap_flag": [],
+        "score": null,
+        "verdict": null,
+        "action": "CHART_WATCH",
+        "precision": {
+          "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
+        },
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルtenkan局面。fit3/5(ma25_up,ma75_flat_or_up,vol_1_2x_5d) fund0/3 op_growth+8.8%(2027/03) RSI61 乖離25日-0.5%"
+      },
+      {
+        "code": "9531",
+        "name": "TOKYO GAS Co., Ltd.",
+        "close": 6173.0,
+        "branch": "tenkan",
+        "granville_rule": "法則①",
+        "dev25": -0.8601860417309148,
+        "dev75": 0.5121402643416539,
+        "dev200": -6.3281957745260575,
+        "rsi_cutler": 46.19047619047619,
+        "vol_ratio_prev": 0.8794523082616338,
+        "cloud_gap": -0.008099133392726979,
+        "mcap_oku": 20371.90501709,
+        "value_traded_oku": 58.680538,
+        "pre5_pct": -0.8512688724702899,
+        "hi20_pct": -5.249424405218727,
+        "classified_method": null,
+        "classified_all": [],
+        "granville_fit": 3,
+        "fit_detail": {
+          "gx10": false,
+          "cloud_break10": true,
+          "ma25_up": true,
+          "ma75_flat_or_up": true,
+          "vol_1_2x_5d": false
+        },
+        "trailing_growth": 6.066472936188324,
+        "fund_score": 0,
+        "fund_score_max": 6,
+        "fund_precision": {
+          "revenue_growth": {
+            "value": 3.96,
+            "grade": "✗",
+            "points": 0,
+            "period": "2027/03",
+            "source": "irbank(予想)"
+          },
+          "op_growth": {
+            "value": -5.91,
+            "grade": "✗",
+            "points": 0,
+            "basis": "営業利益",
+            "period": "2027/03",
+            "source": "irbank(予想)"
+          }
+        },
+        "mom": 0,
+        "mom_detail": {
+          "pct20_ge_8": false,
+          "w52_ge_90": false
+        },
+        "total_raw": 3,
+        "total": 3,
+        "overlap_flag": [],
+        "score": null,
+        "verdict": null,
+        "action": "CHART_WATCH",
+        "precision": {
+          "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
+        },
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルtenkan局面。fit3/5(cloud_break10,ma25_up,ma75_flat_or_up) fund0/6 revenue_growth+4.0%(2027/03)・op_growth-5.9%(2027/03) RSI46 乖離25日-0.9%"
       }
     ],
     "granville_oshime": [
       {
-        "code": "2334",
-        "name": "Eole, Inc.",
-        "close": 567.0,
+        "code": "290A",
+        "name": "Synspective Inc.",
+        "close": 1427.0,
         "branch": "oshime",
         "granville_rule": "法則②③",
-        "dev25": -0.5751560636880093,
-        "dev75": 1.841651499185737,
-        "dev200": 17.700786747763274,
-        "rsi_cutler": 47.61904761904762,
-        "vol_ratio_prev": 0.9390627134854488,
-        "cloud_gap": 0.5319148936170213,
-        "mcap_oku": 238.20032421,
-        "value_traded_oku": 3.896991,
-        "pre5_pct": -3.076923076923077,
-        "hi20_pct": -6.280991735537189,
+        "dev25": -2.5140046454433684,
+        "dev75": 7.421384910319073,
+        "dev200": 7.470599975146941,
+        "rsi_cutler": 42.797494780793315,
+        "vol_ratio_prev": 1.3384036380743296,
+        "cloud_gap": 6.631795254997199,
+        "mcap_oku": 1893.28032608,
+        "value_traded_oku": 12.179445,
+        "pre5_pct": -3.057065217391308,
+        "hi20_pct": -10.025220680958391,
+        "classified_method": "tenbagger_x",
+        "classified_all": [
+          "tenbagger_x"
+        ],
+        "granville_fit": 5,
+        "fit_detail": {
+          "perfect_order": true,
+          "pullback_depth_ok": true,
+          "day_up": true,
+          "vol_contraction_20d": true,
+          "ma200_up": true
+        },
+        "trailing_growth": 5.1032561186715615,
+        "fund_score": 3,
+        "fund_score_max": 3,
+        "fund_precision": {
+          "revenue_growth": {
+            "value": 167.33,
+            "grade": "◎",
+            "points": 3,
+            "period": "2026/12",
+            "source": "irbank(予想)"
+          }
+        },
+        "mom": 0,
+        "mom_detail": {
+          "pct20_ge_8": false,
+          "w52_ge_90": false
+        },
+        "total_raw": 10,
+        "total": 10,
+        "overlap_flag": [],
+        "score": null,
+        "verdict": null,
+        "action": "CHART_WATCH",
+        "precision": {
+          "note": "分類=tenbagger_x。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
+        },
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルoshime局面。fit5/5(perfect_order,pullback_depth_ok,day_up,vol_contraction_20d,ma200_up) fund3/3 revenue_growth+167.3%(2026/12) RSI43 乖離25日-2.5% 分類:tenbagger_x(機械判定・ファンダ条件未検証)"
+      },
+      {
+        "code": "2334",
+        "name": "Eole, Inc.",
+        "close": 569.0,
+        "branch": "oshime",
+        "granville_rule": "法則②③",
+        "dev25": -0.3642221755270736,
+        "dev75": 2.1715188661176166,
+        "dev200": 17.938460581815917,
+        "rsi_cutler": 53.246753246753244,
+        "vol_ratio_prev": 1.0020369562054416,
+        "cloud_gap": 0.8865248226950355,
+        "mcap_oku": 244.23071217,
+        "value_traded_oku": 3.918703,
+        "pre5_pct": -0.8710801393728262,
+        "hi20_pct": -5.950413223140494,
         "classified_method": null,
         "classified_all": [],
         "granville_fit": 4,
@@ -3865,14 +5122,14 @@
         "fund_score_max": 6,
         "fund_precision": {
           "revenue_growth": {
-            "value": 80.28,
+            "value": 80.45,
             "grade": "◎",
             "points": 3,
             "period": "2027/03",
             "source": "irbank(予想)"
           },
           "op_growth": {
-            "value": 440.28,
+            "value": 440.0,
             "grade": "◎",
             "points": 3,
             "basis": "営業利益",
@@ -3894,53 +5151,212 @@
         "precision": {
           "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
         },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルoshime局面。fit4/5(perfect_order,day_up,vol_contraction_20d,ma200_up) fund6/6 revenue_growth+80.3%(2027/03) RSI48 乖離25日-0.6%"
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルoshime局面。fit4/5(perfect_order,day_up,vol_contraction_20d,ma200_up) fund6/6 revenue_growth+80.5%(2027/03)・op_growth+440.0%(2027/03) RSI53 乖離25日-0.4%"
       },
       {
-        "code": "4373",
-        "name": "Simplex Holdings,Inc.",
-        "close": 1117.0,
+        "code": "4180",
+        "name": "Appier Group, Inc.",
+        "close": 1404.0,
         "branch": "oshime",
         "granville_rule": "法則②③",
-        "dev25": -4.100415536247814,
-        "dev75": 2.548565972604755,
-        "dev200": 12.386682630874635,
-        "rsi_cutler": 44.97816593886462,
-        "vol_ratio_prev": 0.7855313700384123,
-        "cloud_gap": -0.42344550924894137,
-        "mcap_oku": 2633.6971997099995,
-        "value_traded_oku": 9.593913,
-        "pre5_pct": -3.2062391681109137,
-        "hi20_pct": -12.529365700861394,
+        "dev25": -1.8895348837209225,
+        "dev75": 26.717851211822175,
+        "dev200": 39.854567187966936,
+        "rsi_cutler": 51.490514905149055,
+        "vol_ratio_prev": 1.1449934980494147,
+        "cloud_gap": 22.566564818856392,
+        "mcap_oku": 1453.53972153,
+        "value_traded_oku": 12.36222,
+        "pre5_pct": -4.878048780487809,
+        "hi20_pct": -9.419354838709681,
         "classified_method": null,
         "classified_all": [],
-        "granville_fit": 5,
+        "granville_fit": 4,
         "fit_detail": {
           "perfect_order": true,
           "pullback_depth_ok": true,
-          "day_up": true,
+          "day_up": false,
           "vol_contraction_20d": true,
           "ma200_up": true
         },
-        "trailing_growth": 22.942048733568452,
-        "fund_score": 2,
-        "fund_score_max": 6,
+        "trailing_growth": 28.350394010000784,
+        "fund_score": 3,
+        "fund_score_max": 3,
+        "fund_precision": {
+          "op_growth": {
+            "value": 69.12,
+            "grade": "◎",
+            "points": 3,
+            "basis": "営業利益",
+            "period": "2026/12",
+            "source": "irbank(予想)"
+          }
+        },
+        "mom": 0,
+        "mom_detail": {
+          "pct20_ge_8": false,
+          "w52_ge_90": false
+        },
+        "total_raw": 9,
+        "total": 9,
+        "overlap_flag": [],
+        "score": null,
+        "verdict": null,
+        "action": "CHART_WATCH",
+        "precision": {
+          "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
+        },
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルoshime局面。fit4/5(perfect_order,pullback_depth_ok,vol_contraction_20d,ma200_up) fund3/3 op_growth+69.1%(2026/12) RSI51 乖離25日-1.9%"
+      },
+      {
+        "code": "5246",
+        "name": "ELEMENTS,Inc.",
+        "close": 826.0,
+        "branch": "oshime",
+        "granville_rule": "法則②③",
+        "dev25": -2.447089947089953,
+        "dev75": 8.808290155440424,
+        "dev200": 20.80615438617017,
+        "rsi_cutler": 48.24120603015075,
+        "vol_ratio_prev": 1.1666666666666667,
+        "cloud_gap": 0.8854961832061069,
+        "mcap_oku": 228.35929958,
+        "value_traded_oku": 2.792706,
+        "pre5_pct": -4.508670520231217,
+        "hi20_pct": -7.191011235955058,
+        "classified_method": null,
+        "classified_all": [],
+        "granville_fit": 4,
+        "fit_detail": {
+          "perfect_order": true,
+          "pullback_depth_ok": true,
+          "day_up": false,
+          "vol_contraction_20d": true,
+          "ma200_up": true
+        },
+        "trailing_growth": 65.26346696841158,
+        "fund_score": 3,
+        "fund_score_max": 3,
         "fund_precision": {
           "revenue_growth": {
-            "value": 19.29,
-            "grade": "△",
-            "points": 1,
-            "period": "2027/03",
-            "source": "kabutan(予想)"
-          },
+            "value": 53.01,
+            "grade": "◎",
+            "points": 3,
+            "period": "2025/11",
+            "source": "irbank(実績)"
+          }
+        },
+        "mom": 0,
+        "mom_detail": {
+          "pct20_ge_8": false,
+          "w52_ge_90": false
+        },
+        "total_raw": 9,
+        "total": 9,
+        "overlap_flag": [],
+        "score": null,
+        "verdict": null,
+        "action": "CHART_WATCH",
+        "precision": {
+          "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
+        },
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルoshime局面。fit4/5(perfect_order,pullback_depth_ok,vol_contraction_20d,ma200_up) fund3/3 revenue_growth+53.0%(2025/11) RSI48 乖離25日-2.4%"
+      },
+      {
+        "code": "8624",
+        "name": "Ichiyoshi Securities Co., Ltd.",
+        "close": 1601.0,
+        "branch": "oshime",
+        "granville_rule": "法則②③",
+        "dev25": -5.8434684419769845,
+        "dev75": 1.7748620540595672,
+        "dev200": 14.665511178275882,
+        "rsi_cutler": 36.47058823529412,
+        "vol_ratio_prev": 1.5399361022364217,
+        "cloud_gap": -0.5898789195901893,
+        "mcap_oku": 527.150522,
+        "value_traded_oku": 3.85841,
+        "pre5_pct": -6.374269005847955,
+        "hi20_pct": -10.458612975391501,
+        "classified_method": null,
+        "classified_all": [],
+        "granville_fit": 3,
+        "fit_detail": {
+          "perfect_order": true,
+          "pullback_depth_ok": true,
+          "day_up": false,
+          "vol_contraction_20d": false,
+          "ma200_up": true
+        },
+        "trailing_growth": 49.55804999728865,
+        "fund_score": 3,
+        "fund_score_max": 3,
+        "fund_precision": {
           "op_growth": {
-            "value": 19.28,
-            "grade": "△",
-            "points": 1,
+            "value": 169.58,
+            "grade": "◎",
+            "points": 3,
             "basis": "営業利益",
-            "period": "2027/03",
-            "source": "kabutan(予想)"
+            "period": "2026/03",
+            "source": "irbank(実績)"
+          }
+        },
+        "mom": 0,
+        "mom_detail": {
+          "pct20_ge_8": false,
+          "w52_ge_90": false
+        },
+        "total_raw": 8,
+        "total": 8,
+        "overlap_flag": [],
+        "score": null,
+        "verdict": null,
+        "action": "CHART_WATCH",
+        "precision": {
+          "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
+        },
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルoshime局面。fit3/5(perfect_order,pullback_depth_ok,ma200_up) fund3/3 op_growth+169.6%(2026/03) RSI36 乖離25日-5.8%"
+      },
+      {
+        "code": "3994",
+        "name": "Money Forward, Inc.",
+        "close": 5987.0,
+        "branch": "oshime",
+        "granville_rule": "法則②③",
+        "dev25": -2.157215231246934,
+        "dev75": 10.445496091578566,
+        "dev200": 31.578441310839512,
+        "rsi_cutler": 52.50929368029739,
+        "vol_ratio_prev": 1.4613583138173303,
+        "cloud_gap": 0.9016600657284909,
+        "mcap_oku": 3328.87573242,
+        "value_traded_oku": 18.67944,
+        "pre5_pct": 3.8868644803053964,
+        "hi20_pct": -13.080720092915211,
+        "classified_method": null,
+        "classified_all": [],
+        "granville_fit": 4,
+        "fit_detail": {
+          "perfect_order": true,
+          "pullback_depth_ok": true,
+          "day_up": false,
+          "vol_contraction_20d": true,
+          "ma200_up": true
+        },
+        "trailing_growth": 28.279565297525032,
+        "fund_score": 2,
+        "fund_score_max": 3,
+        "fund_precision": {
+          "revenue_growth": {
+            "value": 24.74,
+            "grade": "○",
+            "points": 2,
+            "period": "2025/11",
+            "source": "irbank(実績)"
           }
         },
         "mom": 0,
@@ -3957,53 +5373,46 @@
         "precision": {
           "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
         },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルoshime局面。fit5/5(perfect_order,pullback_depth_ok,day_up,vol_contraction_20d,ma200_up) fund2/6 revenue_growth+19.3%(2027/03) RSI45 乖離25日-4.1%"
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルoshime局面。fit4/5(perfect_order,pullback_depth_ok,vol_contraction_20d,ma200_up) fund2/3 revenue_growth+24.7%(2025/11) RSI53 乖離25日-2.2%"
       },
       {
-        "code": "9678",
-        "name": "Kanamoto Co., Ltd.",
-        "close": 5370.0,
+        "code": "7616",
+        "name": "Colowide Co., Ltd.",
+        "close": 1995.0,
         "branch": "oshime",
         "granville_rule": "法則②③",
-        "dev25": -1.6339390386869823,
-        "dev75": 0.5341853673148433,
-        "dev200": 14.32160135397651,
-        "rsi_cutler": 51.086956521739125,
-        "vol_ratio_prev": 0.850956696878147,
-        "cloud_gap": 0.3738317757009346,
-        "mcap_oku": 1909.06711388,
-        "value_traded_oku": 4.53765,
-        "pre5_pct": -0.9225092250922495,
-        "hi20_pct": -6.7708333333333375,
+        "dev25": -2.8686609020799336,
+        "dev75": 0.975165339452011,
+        "dev200": 5.893265427175809,
+        "rsi_cutler": 42.67100977198697,
+        "vol_ratio_prev": 0.6262769134056263,
+        "cloud_gap": -2.421129860601614,
+        "mcap_oku": 2123.01521187,
+        "value_traded_oku": 7.950075,
+        "pre5_pct": 0.5037783375314797,
+        "hi20_pct": -6.644829199812818,
         "classified_method": null,
         "classified_all": [],
-        "granville_fit": 5,
+        "granville_fit": 4,
         "fit_detail": {
           "perfect_order": true,
           "pullback_depth_ok": true,
-          "day_up": true,
+          "day_up": false,
           "vol_contraction_20d": true,
           "ma200_up": true
         },
-        "trailing_growth": 1.5167009885640372,
+        "trailing_growth": 16.408404537014317,
         "fund_score": 1,
-        "fund_score_max": 6,
+        "fund_score_max": 3,
         "fund_precision": {
-          "revenue_growth": {
-            "value": 3.61,
-            "grade": "✗",
-            "points": 0,
-            "period": "2026/10",
-            "source": "irbank(予想)"
-          },
           "op_growth": {
-            "value": 17.24,
+            "value": 21.98,
             "grade": "△",
             "points": 1,
             "basis": "営業利益",
-            "period": "2026/10",
-            "source": "irbank(予想)"
+            "period": "2026/03",
+            "source": "irbank(実績)"
           }
         },
         "mom": 1,
@@ -4020,25 +5429,25 @@
         "precision": {
           "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
         },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルoshime局面。fit5/5(perfect_order,pullback_depth_ok,day_up,vol_contraction_20d,ma200_up) fund1/6 revenue_growth+3.6%(2026/10) RSI51 乖離25日-1.6%"
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルoshime局面。fit4/5(perfect_order,pullback_depth_ok,vol_contraction_20d,ma200_up) fund1/3 op_growth+22.0%(2026/03) RSI43 乖離25日-2.9%"
       },
       {
         "code": "3498",
         "name": "Kasumigaseki Capital Co., Ltd.",
-        "close": 7550.0,
+        "close": 7480.0,
         "branch": "oshime",
         "granville_rule": "法則②③",
-        "dev25": 1.0276722153829798,
-        "dev75": 4.451044049287978,
-        "dev200": 7.424376084915063,
-        "rsi_cutler": 54.696132596685075,
-        "vol_ratio_prev": 0.9197695035460993,
-        "cloud_gap": -1.5324421258558854,
-        "mcap_oku": 1909.37889862,
-        "value_traded_oku": 15.66625,
-        "pre5_pct": 0.9358288770053402,
-        "hi20_pct": -3.575989782886335,
+        "dev25": 0.18214936247724633,
+        "dev75": 3.1591335368320372,
+        "dev200": 6.452622890160242,
+        "rsi_cutler": 50.27932960893855,
+        "vol_ratio_prev": 1.1248192771084338,
+        "cloud_gap": -2.4453863710466255,
+        "mcap_oku": 1857.70756245,
+        "value_traded_oku": 17.45832,
+        "pre5_pct": -0.9271523178807972,
+        "hi20_pct": -4.469987228607919,
         "classified_method": null,
         "classified_all": [],
         "granville_fit": 2,
@@ -4061,7 +5470,7 @@
             "source": "irbank(予想)"
           },
           "op_growth": {
-            "value": 46.03,
+            "value": 45.78,
             "grade": "○",
             "points": 2,
             "basis": "営業利益",
@@ -4083,123 +5492,25 @@
         "precision": {
           "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
         },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルoshime局面。fit2/5(perfect_order,vol_contraction_20d) fund5/6 revenue_growth+69.6%(2026/08) RSI55 乖離25日+1.0%"
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルoshime局面。fit2/5(perfect_order,vol_contraction_20d) fund5/6 revenue_growth+69.6%(2026/08)・op_growth+45.8%(2026/08) RSI50 乖離25日+0.2%"
       },
       {
-        "code": "7616",
-        "name": "Colowide Co., Ltd.",
-        "close": 1997.5,
+        "code": "4667",
+        "name": "Aisan Technology Co., Ltd.",
+        "close": 1051.0,
         "branch": "oshime",
         "granville_rule": "法則②③",
-        "dev25": -2.9388040700104034,
-        "dev75": 1.2055151728051383,
-        "dev200": 6.103965951117796,
-        "rsi_cutler": 41.19496855345912,
-        "vol_ratio_prev": 0.9030655691172297,
-        "cloud_gap": -2.2988505747126435,
-        "mcap_oku": 2109.72975998,
-        "value_traded_oku": 12.7100925,
-        "pre5_pct": -0.39890301670406636,
-        "hi20_pct": -7.501736513081736,
-        "classified_method": null,
-        "classified_all": [],
-        "granville_fit": 5,
-        "fit_detail": {
-          "perfect_order": true,
-          "pullback_depth_ok": true,
-          "day_up": true,
-          "vol_contraction_20d": true,
-          "ma200_up": true
-        },
-        "trailing_growth": 16.408404537014317,
-        "fund_score": null,
-        "fund_score_max": null,
-        "fund_precision": {
-          "note": "ファンダ取得不可(IR BANK/株探で今期予想なし・他ソース未取得)"
-        },
-        "mom": 1,
-        "mom_detail": {
-          "pct20_ge_8": false,
-          "w52_ge_90": true
-        },
-        "total_raw": 6,
-        "total": 6,
-        "overlap_flag": [],
-        "score": null,
-        "verdict": null,
-        "action": "CHART_WATCH",
-        "precision": {
-          "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
-        },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルoshime局面。fit5/5(perfect_order,pullback_depth_ok,day_up,vol_contraction_20d,ma200_up) fundNone/None ファンダ取得不可 RSI41 乖離25日-2.9%"
-      },
-      {
-        "code": "6379",
-        "name": "RAIZNEXT Corporation",
-        "close": 989.0,
-        "branch": "oshime",
-        "granville_rule": "法則②③",
-        "dev25": -1.4599993887078555,
-        "dev75": 9.267279574997733,
-        "dev200": 17.95012475758395,
-        "rsi_cutler": 49.619477957257004,
-        "vol_ratio_prev": 0.6047661300545063,
-        "cloud_gap": 1.635694630757087,
-        "mcap_oku": 1605.53557861,
-        "value_traded_oku": 4.718519,
-        "pre5_pct": -4.290326349454765,
-        "hi20_pct": -7.281246463060242,
-        "classified_method": null,
-        "classified_all": [],
-        "granville_fit": 5,
-        "fit_detail": {
-          "perfect_order": true,
-          "pullback_depth_ok": true,
-          "day_up": true,
-          "vol_contraction_20d": true,
-          "ma200_up": true
-        },
-        "trailing_growth": 13.444428121586839,
-        "fund_score": null,
-        "fund_score_max": null,
-        "fund_precision": {
-          "note": "ファンダ取得不可(IR BANK/株探で今期予想なし・他ソース未取得)"
-        },
-        "mom": 1,
-        "mom_detail": {
-          "pct20_ge_8": false,
-          "w52_ge_90": true
-        },
-        "total_raw": 6,
-        "total": 6,
-        "overlap_flag": [],
-        "score": null,
-        "verdict": null,
-        "action": "CHART_WATCH",
-        "precision": {
-          "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
-        },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルoshime局面。fit5/5(perfect_order,pullback_depth_ok,day_up,vol_contraction_20d,ma200_up) fundNone/None ファンダ取得不可 RSI50 乖離25日-1.5%"
-      },
-      {
-        "code": "9960",
-        "name": "Totech Corporation",
-        "close": 4195.0,
-        "branch": "oshime",
-        "granville_rule": "法則②③",
-        "dev25": 2.858964299725386,
-        "dev75": 4.603032116497108,
-        "dev200": 6.0582119268084655,
-        "rsi_cutler": 57.04697986577181,
-        "vol_ratio_prev": 0.8831050228310502,
-        "cloud_gap": 2.9447852760736195,
-        "mcap_oku": 1736.39163322,
-        "value_traded_oku": 4.056565,
-        "pre5_pct": -4.550625711035272,
-        "hi20_pct": -5.624296962879638,
+        "dev25": -0.11278131113018341,
+        "dev75": 33.008791046075544,
+        "dev200": 52.95430277640014,
+        "rsi_cutler": 40.46849558158244,
+        "vol_ratio_prev": 0.6486172437834069,
+        "cloud_gap": 56.554118779715715,
+        "mcap_oku": 173.65679169,
+        "value_traded_oku": 2.933341,
+        "pre5_pct": -4.743205929917405,
+        "hi20_pct": -23.097558685974384,
         "classified_method": null,
         "classified_all": [],
         "granville_fit": 4,
@@ -4210,30 +5521,30 @@
           "vol_contraction_20d": true,
           "ma200_up": true
         },
-        "trailing_growth": 6.330195149323524,
-        "fund_score": 0,
+        "trailing_growth": 24.47867575286621,
+        "fund_score": 1,
         "fund_score_max": 6,
         "fund_precision": {
           "revenue_growth": {
-            "value": 5.88,
+            "value": 5.36,
             "grade": "✗",
             "points": 0,
             "period": "2027/03",
             "source": "irbank(予想)"
           },
           "op_growth": {
-            "value": 5.26,
-            "grade": "✗",
-            "points": 0,
+            "value": 11.77,
+            "grade": "△",
+            "points": 1,
             "basis": "営業利益",
             "period": "2027/03",
             "source": "irbank(予想)"
           }
         },
-        "mom": 2,
+        "mom": 1,
         "mom_detail": {
           "pct20_ge_8": true,
-          "w52_ge_90": true
+          "w52_ge_90": false
         },
         "total_raw": 6,
         "total": 6,
@@ -4244,166 +5555,48 @@
         "precision": {
           "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
         },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルoshime局面。fit4/5(perfect_order,day_up,vol_contraction_20d,ma200_up) fund0/6 revenue_growth+5.9%(2027/03) RSI57 乖離25日+2.9%"
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルoshime局面。fit4/5(perfect_order,day_up,vol_contraction_20d,ma200_up) fund1/6 revenue_growth+5.4%(2027/03)・op_growth+11.8%(2027/03) RSI40 乖離25日-0.1%"
       },
       {
-        "code": "8059",
-        "name": "Daiichi Jitsugyo Co., Ltd.",
-        "close": 3535.0,
+        "code": "6072",
+        "name": "Jibannet Holdings Co., Ltd.",
+        "close": 1091.0,
         "branch": "oshime",
         "granville_rule": "法則②③",
-        "dev25": -3.4047436878347326,
-        "dev75": 3.156260578258685,
-        "dev200": 7.727423714660997,
-        "rsi_cutler": 42.55319148936171,
-        "vol_ratio_prev": 0.7857868020304568,
-        "cloud_gap": 2.389572773352643,
-        "mcap_oku": 1139.85794678,
-        "value_traded_oku": 2.73609,
-        "pre5_pct": -3.4153005464480857,
-        "hi20_pct": -7.9427083333333375,
-        "classified_method": null,
-        "classified_all": [],
-        "granville_fit": 5,
+        "dev25": 2.595448561218716,
+        "dev75": 5.425567552245747,
+        "dev200": 24.886960702388983,
+        "rsi_cutler": 53.674121405750796,
+        "vol_ratio_prev": 0.6088225754135582,
+        "cloud_gap": -7.4246924056003385,
+        "mcap_oku": 238.05620937,
+        "value_traded_oku": 6.143421,
+        "pre5_pct": 1.2999071494893322,
+        "hi20_pct": -5.0478677110530885,
+        "classified_method": "kenmo_momentum",
+        "classified_all": [
+          "kenmo_momentum"
+        ],
+        "granville_fit": 3,
         "fit_detail": {
           "perfect_order": true,
-          "pullback_depth_ok": true,
+          "pullback_depth_ok": false,
           "day_up": true,
-          "vol_contraction_20d": true,
+          "vol_contraction_20d": false,
           "ma200_up": true
         },
-        "trailing_growth": -7.4555013340822915,
-        "fund_score": 0,
-        "fund_score_max": 6,
+        "trailing_growth": 50.766025552581475,
+        "fund_score": 1,
+        "fund_score_max": 3,
         "fund_precision": {
           "revenue_growth": {
-            "value": -4.15,
-            "grade": "✗",
-            "points": 0,
-            "period": "2027/03",
-            "source": "irbank(予想)"
-          },
-          "op_growth": {
-            "value": -12.41,
-            "grade": "✗",
-            "points": 0,
-            "basis": "営業利益",
+            "value": 12.73,
+            "grade": "△",
+            "points": 1,
             "period": "2027/03",
             "source": "irbank(予想)"
           }
-        },
-        "mom": 1,
-        "mom_detail": {
-          "pct20_ge_8": false,
-          "w52_ge_90": true
-        },
-        "total_raw": 6,
-        "total": 6,
-        "overlap_flag": [],
-        "score": null,
-        "verdict": null,
-        "action": "CHART_WATCH",
-        "precision": {
-          "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
-        },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルoshime局面。fit5/5(perfect_order,pullback_depth_ok,day_up,vol_contraction_20d,ma200_up) fund0/6 revenue_growth-4.2%(2027/03) RSI43 乖離25日-3.4%"
-      },
-      {
-        "code": "9900",
-        "name": "Sagami Holdings Corp.",
-        "close": 1087.0,
-        "branch": "oshime",
-        "granville_rule": "法則②③",
-        "dev25": -2.1091118675816367,
-        "dev75": 9.019791388071674,
-        "dev200": 15.387269185654628,
-        "rsi_cutler": 46.206896551724135,
-        "vol_ratio_prev": 0.660670482420278,
-        "cloud_gap": 2.801749615793829,
-        "mcap_oku": 627.67007538,
-        "value_traded_oku": 2.634888,
-        "pre5_pct": -0.36663611365719273,
-        "hi20_pct": -8.347386172006743,
-        "classified_method": null,
-        "classified_all": [],
-        "granville_fit": 5,
-        "fit_detail": {
-          "perfect_order": true,
-          "pullback_depth_ok": true,
-          "day_up": true,
-          "vol_contraction_20d": true,
-          "ma200_up": true
-        },
-        "trailing_growth": 9.56423087091586,
-        "fund_score": 0,
-        "fund_score_max": 6,
-        "fund_precision": {
-          "revenue_growth": {
-            "value": 2.79,
-            "grade": "✗",
-            "points": 0,
-            "period": "2027/03",
-            "source": "irbank(予想)"
-          },
-          "op_growth": {
-            "value": -19.46,
-            "grade": "✗",
-            "points": 0,
-            "basis": "営業利益",
-            "period": "2027/03",
-            "source": "irbank(予想)"
-          }
-        },
-        "mom": 1,
-        "mom_detail": {
-          "pct20_ge_8": false,
-          "w52_ge_90": true
-        },
-        "total_raw": 6,
-        "total": 6,
-        "overlap_flag": [],
-        "score": null,
-        "verdict": null,
-        "action": "CHART_WATCH",
-        "precision": {
-          "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
-        },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルoshime局面。fit5/5(perfect_order,pullback_depth_ok,day_up,vol_contraction_20d,ma200_up) fund0/6 revenue_growth+2.8%(2027/03) RSI46 乖離25日-2.1%"
-      },
-      {
-        "code": "3994",
-        "name": "Money Forward, Inc.",
-        "close": 6000.0,
-        "branch": "oshime",
-        "granville_rule": "法則②③",
-        "dev25": -2.0491321553109065,
-        "dev75": 11.265234064964048,
-        "dev200": 32.11515817762552,
-        "rsi_cutler": 49.02386117136659,
-        "vol_ratio_prev": 0.8717844017966517,
-        "cloud_gap": 4.243582504452069,
-        "mcap_oku": 3302.79953918,
-        "value_traded_oku": 12.81,
-        "pre5_pct": 5.207785376117835,
-        "hi20_pct": -12.891986062717775,
-        "classified_method": null,
-        "classified_all": [],
-        "granville_fit": 5,
-        "fit_detail": {
-          "perfect_order": true,
-          "pullback_depth_ok": true,
-          "day_up": true,
-          "vol_contraction_20d": true,
-          "ma200_up": true
-        },
-        "trailing_growth": 28.279565297525032,
-        "fund_score": null,
-        "fund_score_max": null,
-        "fund_precision": {
-          "note": "ファンダ取得不可(IR BANK/株探で今期予想なし・他ソース未取得)"
         },
         "mom": 0,
         "mom_detail": {
@@ -4417,121 +5610,293 @@
         "verdict": null,
         "action": "CHART_WATCH",
         "precision": {
-          "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
+          "note": "分類=kenmo_momentum。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
         },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルoshime局面。fit5/5(perfect_order,pullback_depth_ok,day_up,vol_contraction_20d,ma200_up) fundNone/None ファンダ取得不可 RSI49 乖離25日-2.0%"
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルoshime局面。fit3/5(perfect_order,day_up,ma200_up) fund1/3 revenue_growth+12.7%(2027/03) RSI54 乖離25日+2.6% 分類:kenmo_momentum(機械判定・ファンダ条件未検証)"
       }
     ],
     "granville_rebound": [
       {
-        "code": "2874",
-        "name": "YOKOREI CO. LTD.",
-        "close": 1944.0,
+        "code": "3083",
+        "name": "Star seeds Co.,Ltd.",
+        "close": 1050.0,
         "branch": "rebound",
         "granville_rule": "法則④",
-        "dev25": -10.081592628910807,
-        "dev75": -7.441500234887832,
-        "dev200": 9.029419435167018,
-        "rsi_cutler": 26.127819548872182,
-        "vol_ratio_prev": 3.0164452877925365,
-        "cloud_gap": -9.338929695697797,
-        "mcap_oku": 1178.72460384,
-        "value_traded_oku": 9.270936,
-        "pre5_pct": -10.620689655172411,
-        "hi20_pct": -15.953307392996107,
-        "classified_method": "choruko_reversal",
-        "classified_all": [
-          "choruko_reversal"
-        ],
-        "granville_fit": 3,
-        "fit_detail": {
-          "rsi_le30": true,
-          "dev25_le_m12": false,
-          "vol_2x_prev": true,
-          "ma200_up": true,
-          "lower_wick_bull_or_day_up": false
-        },
-        "trailing_growth": 1.4219021997151449,
-        "fund_score": 3,
-        "fund_score_max": 6,
-        "fund_precision": {
-          "revenue_growth": {
-            "value": -0.48,
-            "grade": "✗",
-            "points": 0,
-            "period": "2026/09",
-            "source": "irbank(予想)"
-          },
-          "op_growth": {
-            "value": 65.09,
-            "grade": "◎",
-            "points": 3,
-            "basis": "営業利益",
-            "period": "2026/09",
-            "source": "irbank(予想)"
-          }
-        },
-        "mom": 0,
-        "mom_detail": {
-          "pct20_ge_8": false,
-          "w52_ge_90": false
-        },
-        "total_raw": 5,
-        "total": 5,
-        "overlap_flag": [],
-        "score": null,
-        "verdict": null,
-        "action": "CHART_WATCH",
-        "precision": {
-          "note": "分類=choruko_reversal。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
-        },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルrebound局面。fit3/5(rsi_le30,vol_2x_prev,ma200_up) fund3/6 revenue_growth-0.5%(2026/09) RSI26 乖離25日-10.1% 分類:choruko_reversal(機械判定・ファンダ条件未検証)"
-      },
-      {
-        "code": "8163",
-        "name": "SRS HOLDINGS CO.,LTD.",
-        "close": 1392.0,
-        "branch": "rebound",
-        "granville_rule": "法則④",
-        "dev25": -8.711733690092071,
-        "dev75": -0.6376701246787908,
-        "dev200": 7.930403498433769,
-        "rsi_cutler": 26.388888888888896,
-        "vol_ratio_prev": 1.5975232198142415,
-        "cloud_gap": -4.82051282051282,
-        "mcap_oku": 590.90352535,
-        "value_traded_oku": 3.59136,
-        "pre5_pct": -7.50830564784053,
-        "hi20_pct": -13.432835820895528,
+        "dev25": -11.371463299344997,
+        "dev75": 0.44258510516179683,
+        "dev200": 8.280353303324194,
+        "rsi_cutler": 23.834196891191713,
+        "vol_ratio_prev": 1.6484860248447204,
+        "cloud_gap": 7.637109174782163,
+        "mcap_oku": 108.4288514,
+        "value_traded_oku": 8.91765,
+        "pre5_pct": -11.24260355029586,
+        "hi20_pct": -22.680412371134018,
         "classified_method": null,
         "classified_all": [],
-        "granville_fit": 2,
+        "granville_fit": 3,
         "fit_detail": {
           "rsi_le30": true,
           "dev25_le_m12": false,
           "vol_2x_prev": false,
           "ma200_up": true,
-          "lower_wick_bull_or_day_up": false
+          "lower_wick_bull_or_up": true
         },
-        "trailing_growth": 10.38115511220327,
-        "fund_score": 0,
+        "trailing_growth": 181.58648227977517,
+        "fund_score": 6,
         "fund_score_max": 6,
         "fund_precision": {
           "revenue_growth": {
-            "value": 8.64,
-            "grade": "✗",
-            "points": 0,
-            "period": "2027/03",
+            "value": 237.11,
+            "grade": "◎",
+            "points": 3,
+            "period": "2027/02",
             "source": "irbank(予想)"
           },
           "op_growth": {
-            "value": 4.92,
+            "value": 765.77,
+            "grade": "◎",
+            "points": 3,
+            "basis": "営業利益",
+            "period": "2027/02",
+            "source": "irbank(予想)"
+          }
+        },
+        "mom": 0,
+        "mom_detail": {
+          "pct20_ge_8": false,
+          "w52_ge_90": false
+        },
+        "total_raw": 8,
+        "total": 8,
+        "overlap_flag": [],
+        "score": null,
+        "verdict": null,
+        "action": "CHART_WATCH",
+        "precision": {
+          "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
+        },
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルrebound局面。fit3/5(rsi_le30,ma200_up,lower_wick_bull_or_up) fund6/6 revenue_growth+237.1%(2027/02)・op_growth+765.8%(2027/02) RSI24 乖離25日-11.4%"
+      },
+      {
+        "code": "3653",
+        "name": "Morpho, Inc.",
+        "close": 983.0,
+        "branch": "rebound",
+        "granville_rule": "法則④",
+        "dev25": -10.795310174597994,
+        "dev75": 23.55869142588991,
+        "dev200": 29.105977225863235,
+        "rsi_cutler": 28.55626326963907,
+        "vol_ratio_prev": 2.479905437352246,
+        "cloud_gap": 40.17825311942959,
+        "mcap_oku": 51.9278111,
+        "value_traded_oku": 9.280503,
+        "pre5_pct": -11.600719424460426,
+        "hi20_pct": -41.45324597974985,
+        "classified_method": null,
+        "classified_all": [],
+        "granville_fit": 4,
+        "fit_detail": {
+          "rsi_le30": true,
+          "dev25_le_m12": false,
+          "vol_2x_prev": true,
+          "ma200_up": true,
+          "lower_wick_bull_or_up": true
+        },
+        "trailing_growth": -9.9070294853701,
+        "fund_score": 0,
+        "fund_score_max": 3,
+        "fund_precision": {
+          "revenue_growth": {
+            "value": -10.7,
             "grade": "✗",
             "points": 0,
+            "period": "2026/10",
+            "source": "irbank(予想)"
+          }
+        },
+        "mom": 1,
+        "mom_detail": {
+          "pct20_ge_8": true,
+          "w52_ge_90": false
+        },
+        "total_raw": 5,
+        "total": 5,
+        "overlap_flag": [],
+        "score": null,
+        "verdict": null,
+        "action": "CHART_WATCH",
+        "precision": {
+          "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
+        },
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルrebound局面。fit4/5(rsi_le30,vol_2x_prev,ma200_up,lower_wick_bull_or_up) fund0/3 revenue_growth-10.7%(2026/10) RSI29 乖離25日-10.8%"
+      },
+      {
+        "code": "4346",
+        "name": "NEXYZ.Group Corporation",
+        "close": 915.0,
+        "branch": "rebound",
+        "granville_rule": "法則④",
+        "dev25": -9.172126265634306,
+        "dev75": 4.401204892594168,
+        "dev200": 13.620136219988455,
+        "rsi_cutler": 32.142857142857146,
+        "vol_ratio_prev": 1.3252858958068614,
+        "cloud_gap": 9.449760765550238,
+        "mcap_oku": 123.98872855,
+        "value_traded_oku": 0.954345,
+        "pre5_pct": -11.764705882352944,
+        "hi20_pct": -18.230563002680967,
+        "classified_method": null,
+        "classified_all": [],
+        "granville_fit": 1,
+        "fit_detail": {
+          "rsi_le30": false,
+          "dev25_le_m12": false,
+          "vol_2x_prev": false,
+          "ma200_up": true,
+          "lower_wick_bull_or_up": false
+        },
+        "trailing_growth": 8.490328158207557,
+        "fund_score": 2,
+        "fund_score_max": 6,
+        "fund_precision": {
+          "revenue_growth": {
+            "value": 16.06,
+            "grade": "△",
+            "points": 1,
+            "period": "2026/09",
+            "source": "irbank(予想)"
+          },
+          "op_growth": {
+            "value": 20.88,
+            "grade": "△",
+            "points": 1,
             "basis": "営業利益",
-            "period": "2027/03",
+            "period": "2026/09",
+            "source": "irbank(予想)"
+          }
+        },
+        "mom": 0,
+        "mom_detail": {
+          "pct20_ge_8": false,
+          "w52_ge_90": false
+        },
+        "total_raw": 3,
+        "total": 3,
+        "overlap_flag": [],
+        "score": null,
+        "verdict": null,
+        "action": "CHART_WATCH",
+        "precision": {
+          "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
+        },
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルrebound局面。fit1/5(ma200_up) fund2/6 revenue_growth+16.1%(2026/09)・op_growth+20.9%(2026/09) RSI32 乖離25日-9.2%"
+      },
+      {
+        "code": "7354",
+        "name": "Direct Marketing MiX Inc.",
+        "close": 352.0,
+        "branch": "rebound",
+        "granville_rule": "法則④",
+        "dev25": -8.228178120763374,
+        "dev75": -0.710820264018952,
+        "dev200": 8.814937323214366,
+        "rsi_cutler": 32.758620689655174,
+        "vol_ratio_prev": 1.2871428571428571,
+        "cloud_gap": -2.3578363384188625,
+        "mcap_oku": 170.93626743,
+        "value_traded_oku": 0.634304,
+        "pre5_pct": -3.825136612021862,
+        "hi20_pct": -18.706697459584298,
+        "classified_method": null,
+        "classified_all": [],
+        "granville_fit": 1,
+        "fit_detail": {
+          "rsi_le30": false,
+          "dev25_le_m12": false,
+          "vol_2x_prev": false,
+          "ma200_up": true,
+          "lower_wick_bull_or_up": false
+        },
+        "trailing_growth": 2.8616042992230124,
+        "fund_score": 1,
+        "fund_score_max": 3,
+        "fund_precision": {
+          "op_growth": {
+            "value": 10.19,
+            "grade": "△",
+            "points": 1,
+            "basis": "営業利益",
+            "period": "2026/12",
+            "source": "irbank(予想)"
+          }
+        },
+        "mom": 0,
+        "mom_detail": {
+          "pct20_ge_8": false,
+          "w52_ge_90": false
+        },
+        "total_raw": 3,
+        "total": 3,
+        "overlap_flag": [],
+        "score": null,
+        "verdict": null,
+        "action": "CHART_WATCH",
+        "precision": {
+          "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
+        },
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルrebound局面。fit1/5(ma200_up) fund1/3 op_growth+10.2%(2026/12) RSI33 乖離25日-8.2%"
+      },
+      {
+        "code": "4392",
+        "name": "Future Innovation Group, Inc.",
+        "close": 912.0,
+        "branch": "rebound",
+        "granville_rule": "法則④",
+        "dev25": -9.702970297029701,
+        "dev75": -13.42429688884389,
+        "dev200": 22.004240717577584,
+        "rsi_cutler": 34.82758620689655,
+        "vol_ratio_prev": 1.3268252999796624,
+        "cloud_gap": -29.35708752904725,
+        "mcap_oku": 304.23233414,
+        "value_traded_oku": 5.949888,
+        "pre5_pct": -3.594080338266381,
+        "hi20_pct": -23.23232323232324,
+        "classified_method": null,
+        "classified_all": [],
+        "granville_fit": 1,
+        "fit_detail": {
+          "rsi_le30": false,
+          "dev25_le_m12": false,
+          "vol_2x_prev": false,
+          "ma200_up": true,
+          "lower_wick_bull_or_up": false
+        },
+        "trailing_growth": 11.471556182416549,
+        "fund_score": 1,
+        "fund_score_max": 6,
+        "fund_precision": {
+          "revenue_growth": {
+            "value": 5.12,
+            "grade": "✗",
+            "points": 0,
+            "period": "2026/12",
+            "source": "irbank(予想)"
+          },
+          "op_growth": {
+            "value": 19.9,
+            "grade": "△",
+            "points": 1,
+            "basis": "営業利益",
+            "period": "2026/12",
             "source": "irbank(予想)"
           }
         },
@@ -4549,59 +5914,8 @@
         "precision": {
           "note": "分類=なし。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
         },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルrebound局面。fit2/5(rsi_le30,ma200_up) fund0/6 revenue_growth+8.6%(2027/03) RSI26 乖離25日-8.7%"
-      },
-      {
-        "code": "9166",
-        "name": "GENDA Inc.",
-        "close": 650.0,
-        "branch": "rebound",
-        "granville_rule": "法則④",
-        "dev25": -8.646278389925788,
-        "dev75": 0.34167627202372763,
-        "dev200": 1.476086769860041,
-        "rsi_cutler": 27.053140096618357,
-        "vol_ratio_prev": 1.5410030498136225,
-        "cloud_gap": -9.47075208913649,
-        "mcap_oku": 1240.1207605,
-        "value_traded_oku": 5.91175,
-        "pre5_pct": -3.9881831610044327,
-        "hi20_pct": -13.563829787234038,
-        "classified_method": "choruko_reversal",
-        "classified_all": [
-          "choruko_reversal"
-        ],
-        "granville_fit": 1,
-        "fit_detail": {
-          "rsi_le30": true,
-          "dev25_le_m12": false,
-          "vol_2x_prev": false,
-          "ma200_up": false,
-          "lower_wick_bull_or_day_up": false
-        },
-        "trailing_growth": 47.16357870628652,
-        "fund_score": null,
-        "fund_score_max": null,
-        "fund_precision": {
-          "note": "ファンダ取得不可(IR BANK/株探で今期予想なし・他ソース未取得)"
-        },
-        "mom": 0,
-        "mom_detail": {
-          "pct20_ge_8": false,
-          "w52_ge_90": false
-        },
-        "total_raw": 1,
-        "total": 1,
-        "overlap_flag": [],
-        "score": null,
-        "verdict": null,
-        "action": "CHART_WATCH",
-        "precision": {
-          "note": "分類=choruko_reversal。手法別の正式採点は機械適用不可(上方修正・機関・テーマ等の項目が未取得)。チャート単独/分類のみ"
-        },
-        "scored_at": "2026-10-01T09:35:44.749609+00:00",
-        "summary": "グランビルrebound局面。fit1/5(rsi_le30) fundNone/None ファンダ取得不可 RSI27 乖離25日-8.6% 分類:choruko_reversal(機械判定・ファンダ条件未検証)"
+        "scored_at": "2026-10-02T09:43:31.673278+00:00",
+        "summary": "グランビルrebound局面。fit1/5(ma200_up) fund1/6 revenue_growth+5.1%(2026/12)・op_growth+19.9%(2026/12) RSI35 乖離25日-9.7%"
       }
     ]
   },
@@ -5330,14 +6644,14 @@
         "memo": "run_at=2026-10-02T18:32:25+09:00"
       },
       "choruko_reversal": {
-        "generated_at": "2026-10-01T09:35:53.964818+00:00",
-        "trading_day": "2026-10-01",
+        "generated_at": "2026-10-02T09:44:23.803334+00:00",
+        "trading_day": "2026-10-02",
         "status": "done",
-        "count": 9,
+        "count": 30,
         "source": "nightly_s2",
-        "mode": "revalue",
+        "mode": "full",
         "batch": "night_scan_s2",
-        "memo": "run_at=2026-10-01T18:35:53+09:00"
+        "memo": "run_at=2026-10-02T19:35:00+09:00; full mode reason=base_day Friday; raw66->top30"
       },
       "stf_kakuhen": {
         "generated_at": null,
@@ -5352,16 +6666,16 @@
         "count": 0
       },
       "granville_night": {
-        "generated_at": "2026-10-01T09:35:53.964818+00:00",
-        "trading_day": "2026-10-01",
+        "generated_at": "2026-10-02T09:44:23.803334+00:00",
+        "trading_day": "2026-10-02",
         "status": "done",
         "count_a": 10,
         "count_b": 10,
-        "count_c": 3,
+        "count_c": 5,
         "themes": 1,
         "source": "nightly_s2",
         "batch": "night_scan_s2",
-        "memo": "run_at=2026-10-01T18:35:53+09:00; entrance=v1.2(A:pre5<=3,hi20<=-2 / C:dev25<=-8 / B:overlap-2); dropped A_pre5=7 A_hi20=17 C_dev25=11; overlap_B=0"
+        "memo": "run_at=2026-10-02T19:35:00+09:00; entrance=v1.2(A:pre5<=3,hi20<=-2 / C:dev25<=-8 / B:overlap-2); dropped A_pre5=2 A_hi20=11 C_dev25=22; overlap_B=0"
       },
       "stf_weekly": {
         "generated_at": "2026-09-26T07:30:00+09:00",
@@ -8235,7 +9549,7 @@
           {
             "code": "479A",
             "name": "PRONI Inc.",
-            "close": 1979.0,
+            "close": 1969.0,
             "fit": 2,
             "fit_detail": {
               "gx10": false,
@@ -8244,42 +9558,42 @@
               "ma75_flat_or_up": true,
               "vol_1_2x_5d": false
             },
-            "dev25": -0.8755409520756485,
-            "dev75": 23.116036397720574,
+            "dev25": -1.4297442880313982,
+            "dev75": 21.737589237135822,
             "dev200": null,
-            "rsi_cutler": 52.25563909774436,
-            "vol_ratio_prev": 0.44941348973607037,
-            "cloud_gap": 21.485573971761816,
-            "w52_pos": 87.29598588442876,
+            "rsi_cutler": 56.35135135135134,
+            "vol_ratio_prev": 0.6557911908646004,
+            "cloud_gap": 19.441916894146193,
+            "w52_pos": 86.85487428319365,
             "signal": "-",
-            "scored_at": "2026-10-01T09:29:36.493691+00:00"
+            "scored_at": "2026-10-02T09:32:23.246053+00:00"
           },
           {
             "code": "478A",
             "name": "Hutzper Inc.",
-            "close": 736.0,
-            "fit": 2,
+            "close": 723.0,
+            "fit": 3,
             "fit_detail": {
               "gx10": false,
               "cloud_break10": true,
               "ma25_up": false,
               "ma75_flat_or_up": true,
-              "vol_1_2x_5d": false
+              "vol_1_2x_5d": true
             },
-            "dev25": -5.002839589034025,
-            "dev75": -2.7809577484633308,
+            "dev25": -6.429569808976543,
+            "dev75": -4.541853710060728,
             "dev200": null,
-            "rsi_cutler": 31.052631578947366,
-            "vol_ratio_prev": 0.7344497607655502,
-            "cloud_gap": -2.3872679045092835,
-            "w52_pos": 52.98776097912167,
+            "rsi_cutler": 33.714285714285715,
+            "vol_ratio_prev": 3.1596091205211727,
+            "cloud_gap": -4.365079365079365,
+            "w52_pos": 52.05183585313174,
             "signal": "-",
-            "scored_at": "2026-10-01T09:29:36.493691+00:00"
+            "scored_at": "2026-10-02T09:32:23.246053+00:00"
           },
           {
             "code": "4478",
             "name": "freee K.K.",
-            "close": 3555.0,
+            "close": 3460.0,
             "fit": 1,
             "fit_detail": {
               "gx10": false,
@@ -8288,20 +9602,20 @@
               "ma75_flat_or_up": true,
               "vol_1_2x_5d": false
             },
-            "dev25": -8.456507184426021,
-            "dev75": 20.7108869562068,
-            "dev200": 35.4887026051562,
-            "rsi_cutler": 42.16216216216216,
-            "vol_ratio_prev": 1.0865002836074873,
-            "cloud_gap": 12.9557550242275,
-            "w52_pos": 77.53544165757906,
+            "dev25": -10.520326885279818,
+            "dev75": 16.63655241228661,
+            "dev200": 31.749797234777375,
+            "rsi_cutler": 36.36363636363636,
+            "vol_ratio_prev": 0.8608718350300183,
+            "cloud_gap": 7.754593584553099,
+            "w52_pos": 75.46346782988005,
             "signal": "-",
-            "scored_at": "2026-10-01T09:29:36.493691+00:00"
+            "scored_at": "2026-10-02T09:32:23.246053+00:00"
           },
           {
             "code": "4011",
             "name": "Headwaters Co., Ltd.",
-            "close": 2338.0,
+            "close": 2294.0,
             "fit": 1,
             "fit_detail": {
               "gx10": false,
@@ -8310,20 +9624,20 @@
               "ma75_flat_or_up": true,
               "vol_1_2x_5d": false
             },
-            "dev25": -1.5147685723432613,
-            "dev75": 7.796247571741222,
-            "dev200": -3.7382735059978356,
-            "rsi_cutler": 36.7816091954023,
-            "vol_ratio_prev": 0.7311827956989247,
-            "cloud_gap": 5.911664779161948,
-            "w52_pos": 58.08695652173913,
+            "dev25": -3.4397993029481544,
+            "dev75": 5.526898472144692,
+            "dev200": -5.422927312943326,
+            "rsi_cutler": 40.0,
+            "vol_ratio_prev": 0.8970588235294118,
+            "cloud_gap": 3.8831654024680176,
+            "w52_pos": 57.20698254364089,
             "signal": "-",
-            "scored_at": "2026-10-01T09:29:36.493691+00:00"
+            "scored_at": "2026-10-02T09:32:23.246053+00:00"
           },
           {
             "code": "4259",
             "name": "ExaWizards Inc.",
-            "close": 860.0,
+            "close": 853.0,
             "fit": 3,
             "fit_detail": {
               "gx10": true,
@@ -8332,20 +9646,20 @@
               "ma75_flat_or_up": false,
               "vol_1_2x_5d": false
             },
-            "dev25": 1.5012746671702493,
-            "dev75": 2.8298126743722563,
-            "dev200": 9.351456853856854,
-            "rsi_cutler": 51.39664804469274,
-            "vol_ratio_prev": 0.7837203847056063,
-            "cloud_gap": 0.17472335468841002,
-            "w52_pos": 59.515570934256054,
-            "signal": "🔔🔔",
-            "scored_at": "2026-10-01T09:29:36.493691+00:00"
+            "dev25": 0.18792576932111782,
+            "dev75": 2.168740118498169,
+            "dev200": 8.34497650196877,
+            "rsi_cutler": 56.61538461538461,
+            "vol_ratio_prev": 1.1447171505537264,
+            "cloud_gap": 0.7678676904902539,
+            "w52_pos": 59.031141868512115,
+            "signal": "🔔",
+            "scored_at": "2026-10-02T09:32:23.246053+00:00"
           },
           {
             "code": "4418",
             "name": "Japan Data Science Consortium Co Ltd.",
-            "close": 1131.0,
+            "close": 1125.0,
             "fit": 2,
             "fit_detail": {
               "gx10": false,
@@ -8354,42 +9668,42 @@
               "ma75_flat_or_up": true,
               "vol_1_2x_5d": false
             },
-            "dev25": 3.193430656934315,
-            "dev75": 27.42417641845303,
-            "dev200": 23.181144898492633,
-            "rsi_cutler": 54.285714285714285,
-            "vol_ratio_prev": 0.9964454976303317,
-            "cloud_gap": 21.189391909991965,
-            "w52_pos": 58.119218910585815,
+            "dev25": 2.216972560421593,
+            "dev75": 25.773272713721383,
+            "dev200": 22.62449110836191,
+            "rsi_cutler": 59.375,
+            "vol_ratio_prev": 1.0118906064209274,
+            "cloud_gap": 20.54647736405036,
+            "w52_pos": 57.810894141829394,
             "signal": "-",
-            "scored_at": "2026-10-01T09:29:36.493691+00:00"
+            "scored_at": "2026-10-02T09:32:23.246053+00:00"
           },
           {
             "code": "4488",
             "name": "AI inside, Inc.",
-            "close": 2136.0,
-            "fit": 3,
+            "close": 2086.0,
+            "fit": 2,
             "fit_detail": {
               "gx10": false,
               "cloud_break10": true,
               "ma25_up": false,
               "ma75_flat_or_up": true,
-              "vol_1_2x_5d": true
+              "vol_1_2x_5d": false
             },
-            "dev25": -1.1257591467930705,
-            "dev75": 0.5845456429060203,
-            "dev200": -7.987748930616034,
-            "rsi_cutler": 44.31818181818182,
-            "vol_ratio_prev": 3.1363636363636362,
-            "cloud_gap": 0.011705489874751257,
-            "w52_pos": 63.008849557522126,
-            "signal": "🔔🔔",
-            "scored_at": "2026-10-01T09:29:36.493691+00:00"
+            "dev25": -3.3847749967578777,
+            "dev75": -1.8439164559662102,
+            "dev200": -10.018720937254677,
+            "rsi_cutler": 45.525291828793776,
+            "vol_ratio_prev": 0.4420289855072464,
+            "cloud_gap": -2.3293924850755006,
+            "w52_pos": 61.533923303834804,
+            "signal": "-",
+            "scored_at": "2026-10-02T09:32:23.246053+00:00"
           },
           {
             "code": "5574",
             "name": "ABEJA,Inc.",
-            "close": 3165.0,
+            "close": 3135.0,
             "fit": 2,
             "fit_detail": {
               "gx10": false,
@@ -8398,42 +9712,42 @@
               "ma75_flat_or_up": true,
               "vol_1_2x_5d": false
             },
-            "dev25": 3.901305249888387,
-            "dev75": 19.58137074632882,
-            "dev200": 16.952581548097445,
-            "rsi_cutler": 58.28427249789739,
-            "vol_ratio_prev": 1.093484419263456,
-            "cloud_gap": 14.198087678152623,
-            "w52_pos": 87.91666666666667,
+            "dev25": 2.3854002011783226,
+            "dev75": 17.825250308187268,
+            "dev200": 15.754843426343367,
+            "rsi_cutler": 55.98326359832636,
+            "vol_ratio_prev": 1.3652849740932642,
+            "cloud_gap": 13.115641349449755,
+            "w52_pos": 87.08333333333333,
             "signal": "-",
-            "scored_at": "2026-10-01T09:29:36.493691+00:00"
+            "scored_at": "2026-10-02T09:32:23.246053+00:00"
           },
           {
             "code": "4493",
             "name": "Cyber Security Cloud, Inc.",
-            "close": 2020.0,
-            "fit": 4,
+            "close": 1973.0,
+            "fit": 3,
             "fit_detail": {
               "gx10": false,
               "cloud_break10": true,
               "ma25_up": true,
               "ma75_flat_or_up": true,
-              "vol_1_2x_5d": true
+              "vol_1_2x_5d": false
             },
-            "dev25": 7.353160009353532,
-            "dev75": 9.608664510667841,
-            "dev200": 14.173962684331599,
-            "rsi_cutler": 68.02413273001507,
-            "vol_ratio_prev": 2.014765100671141,
-            "cloud_gap": 5.939425724400158,
-            "w52_pos": 94.26038264115726,
+            "dev25": 4.715098505434767,
+            "dev75": 6.885916123719671,
+            "dev200": 11.456017805847353,
+            "rsi_cutler": 64.52074391988555,
+            "vol_ratio_prev": 0.8067954696868754,
+            "cloud_gap": 3.474498492198767,
+            "w52_pos": 92.06719552029865,
             "signal": "🔔",
-            "scored_at": "2026-10-01T09:29:36.493691+00:00"
+            "scored_at": "2026-10-02T09:32:23.246053+00:00"
           },
           {
             "code": "4475",
             "name": "HENNGE K.K.",
-            "close": 1786.0,
+            "close": 1760.0,
             "fit": 2,
             "fit_detail": {
               "gx10": false,
@@ -8442,42 +9756,42 @@
               "ma75_flat_or_up": true,
               "vol_1_2x_5d": false
             },
-            "dev25": 5.783126821294049,
-            "dev75": 26.62595477576948,
-            "dev200": 47.32448506545464,
-            "rsi_cutler": 70.76271186440678,
-            "vol_ratio_prev": 0.8645348837209302,
-            "cloud_gap": 24.113968033356496,
-            "w52_pos": 98.34801762114537,
+            "dev25": 3.7002121140702338,
+            "dev75": 23.948317307692314,
+            "dev200": 44.898900085622074,
+            "rsi_cutler": 63.22869955156951,
+            "vol_ratio_prev": 0.8841067025330643,
+            "cloud_gap": 20.754716981132077,
+            "w52_pos": 96.3327859879584,
             "signal": "-",
-            "scored_at": "2026-10-01T09:29:36.493691+00:00"
+            "scored_at": "2026-10-02T09:32:23.246053+00:00"
           },
           {
             "code": "4382",
             "name": "HEROZ, Inc.",
-            "close": 856.0,
-            "fit": 2,
+            "close": 854.0,
+            "fit": 3,
             "fit_detail": {
               "gx10": false,
               "cloud_break10": false,
               "ma25_up": true,
               "ma75_flat_or_up": true,
-              "vol_1_2x_5d": false
+              "vol_1_2x_5d": true
             },
-            "dev25": 7.2843034040206645,
-            "dev75": 13.969217659903066,
-            "dev200": 7.357635122000161,
-            "rsi_cutler": 73.46938775510205,
-            "vol_ratio_prev": 0.5586297760210803,
-            "cloud_gap": 10.665804783451842,
-            "w52_pos": 68.15286624203821,
-            "signal": "-",
-            "scored_at": "2026-10-01T09:29:36.493691+00:00"
+            "dev25": 6.483790523690769,
+            "dev75": 13.600085133553264,
+            "dev200": 7.120906137501093,
+            "rsi_cutler": 72.3076923076923,
+            "vol_ratio_prev": 2.498820754716981,
+            "cloud_gap": 10.909090909090908,
+            "w52_pos": 67.99363057324841,
+            "signal": "🔔",
+            "scored_at": "2026-10-02T09:32:23.246053+00:00"
           },
           {
             "code": "4165",
             "name": "PLAID Inc.",
-            "close": 694.0,
+            "close": 707.0,
             "fit": 1,
             "fit_detail": {
               "gx10": false,
@@ -8486,20 +9800,20 @@
               "ma75_flat_or_up": true,
               "vol_1_2x_5d": false
             },
-            "dev25": 2.1970901808328946,
-            "dev75": 15.558811775676041,
-            "dev200": 9.330077586546427,
-            "rsi_cutler": 60.10362694300518,
-            "vol_ratio_prev": 0.7992580379225062,
-            "cloud_gap": 5.47112462006079,
-            "w52_pos": 62.29802513464991,
+            "dev25": 3.9950576606260224,
+            "dev75": 17.171962699429887,
+            "dev200": 11.453546571660533,
+            "rsi_cutler": 68.61702127659575,
+            "vol_ratio_prev": 1.444559051057246,
+            "cloud_gap": 7.243079256731135,
+            "w52_pos": 63.46499102333932,
             "signal": "-",
-            "scored_at": "2026-10-01T09:29:36.493691+00:00"
+            "scored_at": "2026-10-02T09:32:23.246053+00:00"
           },
           {
             "code": "4443",
             "name": "Sansan, Inc.",
-            "close": 2050.0,
+            "close": 2069.0,
             "fit": 1,
             "fit_detail": {
               "gx10": false,
@@ -8508,42 +9822,42 @@
               "ma75_flat_or_up": true,
               "vol_1_2x_5d": false
             },
-            "dev25": -2.542453458078997,
-            "dev75": 8.668763473159702,
-            "dev200": 28.80039708219979,
-            "rsi_cutler": 56.07064017660045,
-            "vol_ratio_prev": 1.6517603323857424,
-            "cloud_gap": 1.8633540372670807,
-            "w52_pos": 87.04883227176221,
+            "dev25": -1.4818200864712416,
+            "dev75": 9.186667511029478,
+            "dev200": 29.840382304305948,
+            "rsi_cutler": 60.264900662251655,
+            "vol_ratio_prev": 0.6972926457933408,
+            "cloud_gap": 1.1241446725317694,
+            "w52_pos": 87.85562632696391,
             "signal": "-",
-            "scored_at": "2026-10-01T09:29:36.493691+00:00"
+            "scored_at": "2026-10-02T09:32:23.246053+00:00"
           },
           {
             "code": "3993",
             "name": "PKSHA Technology, Inc.",
-            "close": 3245.0,
-            "fit": 3,
+            "close": 3270.0,
+            "fit": 1,
             "fit_detail": {
               "gx10": false,
               "cloud_break10": false,
-              "ma25_up": true,
+              "ma25_up": false,
               "ma75_flat_or_up": true,
-              "vol_1_2x_5d": true
+              "vol_1_2x_5d": false
             },
-            "dev25": 2.018360160965793,
-            "dev75": 9.979619595916688,
-            "dev200": 6.259659969088083,
-            "rsi_cutler": 55.70469798657718,
-            "vol_ratio_prev": 1.2064643799472297,
-            "cloud_gap": 7.432544280748221,
-            "w52_pos": 71.87153931339978,
-            "signal": "🔔",
-            "scored_at": "2026-10-01T09:29:36.493691+00:00"
+            "dev25": 2.713908782510366,
+            "dev75": 10.504830221325069,
+            "dev200": 7.1019745084199615,
+            "rsi_cutler": 65.67164179104478,
+            "vol_ratio_prev": 0.9097867687260798,
+            "cloud_gap": 7.81404549950544,
+            "w52_pos": 72.42524916943522,
+            "signal": "-",
+            "scored_at": "2026-10-02T09:32:23.246053+00:00"
           },
           {
             "code": "4483",
             "name": "JMDC Inc.",
-            "close": 3720.0,
+            "close": 3625.0,
             "fit": 3,
             "fit_detail": {
               "gx10": false,
@@ -8552,20 +9866,20 @@
               "ma75_flat_or_up": true,
               "vol_1_2x_5d": true
             },
-            "dev25": 5.179823569328201,
-            "dev75": 14.15711947626841,
-            "dev200": 9.832682308966433,
-            "rsi_cutler": 62.35955056179776,
-            "vol_ratio_prev": 1.4647887323943662,
-            "cloud_gap": 10.879284649776453,
-            "w52_pos": 75.15151515151514,
+            "dev25": 2.2624689686300936,
+            "dev75": 10.789862956759855,
+            "dev200": 7.087888876744053,
+            "rsi_cutler": 58.730158730158735,
+            "vol_ratio_prev": 1.0264423076923077,
+            "cloud_gap": 8.047690014903129,
+            "w52_pos": 73.23232323232324,
             "signal": "🔔",
-            "scored_at": "2026-10-01T09:29:36.493691+00:00"
+            "scored_at": "2026-10-02T09:32:23.246053+00:00"
           },
           {
             "code": "3994",
             "name": "Money Forward, Inc.",
-            "close": 6000.0,
+            "close": 5987.0,
             "fit": 2,
             "fit_detail": {
               "gx10": false,
@@ -8574,20 +9888,20 @@
               "ma75_flat_or_up": true,
               "vol_1_2x_5d": false
             },
-            "dev25": -2.0491321553109065,
-            "dev75": 11.265234064964048,
-            "dev200": 32.11515817762552,
-            "rsi_cutler": 49.02386117136659,
-            "vol_ratio_prev": 0.8717844017966517,
-            "cloud_gap": 4.243582504452069,
-            "w52_pos": 85.1063829787234,
+            "dev25": -2.157215231246934,
+            "dev75": 10.445496091578566,
+            "dev200": 31.578441310839512,
+            "rsi_cutler": 52.50929368029739,
+            "vol_ratio_prev": 1.4613583138173303,
+            "cloud_gap": 0.9016600657284909,
+            "w52_pos": 84.92198581560284,
             "signal": "-",
-            "scored_at": "2026-10-01T09:29:36.493691+00:00"
+            "scored_at": "2026-10-02T09:32:23.246053+00:00"
           },
           {
             "code": "4071",
             "name": "Plus Alpha Consulting Co. LTD.",
-            "close": 2048.0,
+            "close": 2029.0,
             "fit": 0,
             "fit_detail": {
               "gx10": false,
@@ -8596,64 +9910,20 @@
               "ma75_flat_or_up": false,
               "vol_1_2x_5d": false
             },
-            "dev25": -2.6745490143897266,
-            "dev75": -12.91727140783745,
-            "dev200": -11.231895836177774,
-            "rsi_cutler": 51.724137931034484,
-            "vol_ratio_prev": 0.7200689061154177,
-            "cloud_gap": -18.25982837756935,
-            "w52_pos": 68.33500166833501,
+            "dev25": -3.165148998720968,
+            "dev75": -13.408520590193406,
+            "dev200": -11.99821307362181,
+            "rsi_cutler": 47.256097560975604,
+            "vol_ratio_prev": 0.9300239234449761,
+            "cloud_gap": -19.018160047894632,
+            "w52_pos": 67.70103436770103,
             "signal": "-",
-            "scored_at": "2026-10-01T09:29:36.493691+00:00"
+            "scored_at": "2026-10-02T09:32:23.246053+00:00"
           },
           {
             "code": "4375",
             "name": "Safie Inc.",
-            "close": 648.0,
-            "fit": 2,
-            "fit_detail": {
-              "gx10": false,
-              "cloud_break10": true,
-              "ma25_up": false,
-              "ma75_flat_or_up": true,
-              "vol_1_2x_5d": false
-            },
-            "dev25": -3.4104459813975696,
-            "dev75": -1.273691266987631,
-            "dev200": -12.438940349028105,
-            "rsi_cutler": 42.95302013422819,
-            "vol_ratio_prev": 0.7737737737737738,
-            "cloud_gap": 0.1545595054095827,
-            "w52_pos": 66.46153846153847,
-            "signal": "-",
-            "scored_at": "2026-10-01T09:29:36.493691+00:00"
-          },
-          {
-            "code": "4180",
-            "name": "Appier Group, Inc.",
-            "close": 1414.0,
-            "fit": 2,
-            "fit_detail": {
-              "gx10": false,
-              "cloud_break10": false,
-              "ma25_up": true,
-              "ma75_flat_or_up": true,
-              "vol_1_2x_5d": false
-            },
-            "dev25": -0.8526392550625483,
-            "dev75": 28.55168735453839,
-            "dev200": 41.04245737056562,
-            "rsi_cutler": 43.28018223234624,
-            "vol_ratio_prev": 0.8013755731554815,
-            "cloud_gap": 25.326833591845777,
-            "w52_pos": 81.97101449275362,
-            "signal": "-",
-            "scored_at": "2026-10-01T09:29:36.493691+00:00"
-          },
-          {
-            "code": "3923",
-            "name": "RAKUS Co., Ltd.",
-            "close": 1017.0,
+            "close": 646.0,
             "fit": 1,
             "fit_detail": {
               "gx10": false,
@@ -8662,15 +9932,59 @@
               "ma75_flat_or_up": true,
               "vol_1_2x_5d": false
             },
-            "dev25": -5.511372082651988,
-            "dev75": -1.5505387429072148,
-            "dev200": 7.087801377958258,
-            "rsi_cutler": 45.14003294892916,
-            "vol_ratio_prev": 0.8802502667572024,
-            "cloud_gap": -6.245678727817469,
-            "w52_pos": 72.90322580645162,
+            "dev25": -3.512964511889116,
+            "dev75": -1.5584046162911203,
+            "dev200": -12.619455021337888,
+            "rsi_cutler": 41.61073825503357,
+            "vol_ratio_prev": 1.2755498059508408,
+            "cloud_gap": -0.1545595054095827,
+            "w52_pos": 66.25641025641026,
             "signal": "-",
-            "scored_at": "2026-10-01T09:29:36.493691+00:00"
+            "scored_at": "2026-10-02T09:32:23.246053+00:00"
+          },
+          {
+            "code": "4180",
+            "name": "Appier Group, Inc.",
+            "close": 1404.0,
+            "fit": 2,
+            "fit_detail": {
+              "gx10": false,
+              "cloud_break10": false,
+              "ma25_up": true,
+              "ma75_flat_or_up": true,
+              "vol_1_2x_5d": false
+            },
+            "dev25": -1.8895348837209225,
+            "dev75": 26.717851211822175,
+            "dev200": 39.854567187966936,
+            "rsi_cutler": 51.490514905149055,
+            "vol_ratio_prev": 1.1449934980494147,
+            "cloud_gap": 22.566564818856392,
+            "w52_pos": 81.3913043478261,
+            "signal": "-",
+            "scored_at": "2026-10-02T09:32:23.246053+00:00"
+          },
+          {
+            "code": "3923",
+            "name": "RAKUS Co., Ltd.",
+            "close": 1019.0,
+            "fit": 1,
+            "fit_detail": {
+              "gx10": false,
+              "cloud_break10": false,
+              "ma25_up": false,
+              "ma75_flat_or_up": true,
+              "vol_1_2x_5d": false
+            },
+            "dev25": -5.036158950272118,
+            "dev75": -1.5234392229651839,
+            "dev200": 7.373300206162958,
+            "rsi_cutler": 49.73166368515206,
+            "vol_ratio_prev": 0.6899553694418425,
+            "cloud_gap": -6.5244811374842335,
+            "w52_pos": 73.04659498207884,
+            "signal": "-",
+            "scored_at": "2026-10-02T09:32:23.246053+00:00"
           }
         ]
       }

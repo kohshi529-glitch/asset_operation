@@ -340,6 +340,9 @@ const MKTCAL = (function(){
   // 日銀 金融政策決定会合（2日目＝結果公表日・昼）。出典: 日本銀行 2026年の金融政策決定会合等の日程。2027年分は未公表→表なし
   const BOJ2 = ['2026-01-23','2026-03-19','2026-04-28','2026-06-16','2026-07-31','2026-09-18','2026-10-30','2026-12-18'];
   const BOJ_RANGE = ['2026-01-01','2026-12-31'];
+  // TOPIX 第2段階 段階的ウエイト低減の実施日（固定表・8回）。出典: JPX「TOPIX の見直し（第2段階）」— 2026年8月最終営業日基準の定期入替で除外予定となった銘柄のウエイトを、2026年10月最終営業日から四半期ごと（1・4・7・10月の最終営業日）8回で段階的に引き下げ。第1回＝定期入替実施日（新規採用の組入れも同日）
+  // 2027-02 以降は祝日表の範囲外のため暦日ベースの暫定値（祝日表を延ばしたら lastBizOfMonth で再計算して差し替える）。対象銘柄かどうかはこの表では判定しない（JPX 公表リストで確認・次版 index_flags）
+  const TOPIX_STEP = ['2026-10-30','2027-01-29','2027-04-30','2027-07-30','2027-10-29','2028-01-31','2028-04-28','2028-07-31'];
   const pad=(n)=>String(n).padStart(2,'0');
   const iso=(d)=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
   const parse=(s)=>{ const [y,m,d]=s.split('-').map(Number); return new Date(y,m-1,d); };
@@ -365,6 +368,7 @@ const MKTCAL = (function(){
     if(s===iso(rl)) ev.push({key:'right_last',level:big?3:(mid?2:1),label:'権利付き最終日 '+mk(m),note:'この日の大引けまで保有で配当・優待の権利。翌営業日は権利落ちで、権利分だけ株価が下がるのが通例'});
     if(s===iso(ro)) ev.push({key:'ex_right',level:big?3:(mid?2:1),label:'権利落ち日 '+mk(m),note:'配当・優待の権利分（概ね配当相当額）だけ寄り付きから下がるのが通例。前日終値基準の指値・逆指値・SL はその分ズレる。落ち幅は銘柄の予想配当で確認（推定しない）'});
     if(s===iso(lb)) ev.push({key:'month_end',level:(m%3===0)?2:1,label:(m%3===0?'四半期末':'月末')+'最終営業日',note:'機関のリバランス・ドレッシングで引けにかけて需給が歪みやすい'});
+    const ti=TOPIX_STEP.indexOf(s); if(ti>=0) ev.push({key:'topix_step',level:2,label:'📑TOPIX 段階的ウエイト低減 第'+(ti+1)+'回/8'+(ti===0?'（定期入替 実施日）':''),note:'2026年8月末基準の定期入替で除外予定となった銘柄は、この日の引けにパッシブ運用の機械的な売りが出る（ウエイトを8回に分けて引き下げ）。対象かどうかは JPX 公表リストで確認（このボードは対象銘柄を判定しない）。'+(ti===0?'第1回は新規採用銘柄の組入れも同日':'')});
     const sq=sqDay(y,m); if(s===iso(sq)) ev.push({key:'sq',level:(m%3===0)?2:1,label:(m%3===0?'メジャーSQ':'マイナーSQ')+'（'+m+'月）',note:'寄り付きで先物・オプションの清算値が決まる。寄りの需給が歪み、SQ値と寄り値の差が大きい日は方向感が出やすい'});
     const f1=nthFriday(y,m,1); if(s===iso(f1)&&d.getDay()===5) ev.push({key:'nfp',level:1,label:'米雇用統計（通例・第1金曜の夜）',note:'21:30/22:30 JST 発表。影響は翌営業日の寄りから（発表日の例外あり）'});
     const pf1=nthFriday(y,m,1); const nb=nextBiz(pf1); if(s===iso(nb)&&d.getDay()!==5) ev.push({key:'nfp_after',level:1,label:'米雇用統計明け',note:'前営業日の夜に米雇用統計。寄りがギャップしやすい'});
@@ -373,7 +377,9 @@ const MKTCAL = (function(){
     const nx=nextBiz(d); const gap=Math.round((nx-d)/86400000); if(gap>=4) ev.push({key:'long_holiday',level:2,label:'連休前最終営業日（次の営業日 '+fmt(nx)+'）',note:'連休中の海外市場・材料を持ち越す。玉の大きさとSLを確認'});
     ev.sort((a,b)=>b.level-a.level); return ev;
   }
-  return {isBiz,nextBiz,prevBiz,eventsOn,iso,fmt,parse,lastBizOfMonth,sqDay,HOL_RANGE};
+  // 次の TOPIX 低減日（d 以降・祝日表の範囲内のみ）と、そこまでの営業日数。範囲外・無ければ null
+  function nextTopixStep(d){ const s=iso(d); for(let i=0;i<TOPIX_STEP.length;i++){ const t=TOPIX_STEP[i]; if(t<s) continue; if(!inRange(t,HOL_RANGE)) return null; let n=0, x=new Date(d.getTime()); while(iso(x)<t){ x=nextBiz(x); n++; } return {date:parse(t),step:i+1,biz:n}; } return null; }
+  return {isBiz,nextBiz,prevBiz,eventsOn,iso,fmt,parse,lastBizOfMonth,sqDay,nextTopixStep,HOL_RANGE,TOPIX_STEP};
 })();
 
 function renderMktCal(){
@@ -386,7 +392,8 @@ function renderMktCal(){
     const line=(d,tag)=>{ const ev=MKTCAL.eventsOn(d); const chips=ev.length?ev.map(e=>`<span class='mc l${e.level}' title='${esc(e.note||'')}'>${esc(e.label)}</span>`).join(' '):`<span class='mc l1'>イベントなし</span>`; return `<span class='mcd'>${tag} ${esc(MKTCAL.fmt(d))}</span>${chips}`; };
     const evT=MKTCAL.isBiz(today)?MKTCAL.eventsOn(today):[]; const evN=MKTCAL.eventsOn(nb);
     const notes=[...evT,...evN].filter(e=>e.level>=2&&e.note).slice(0,2).map(e=>`<span class='mcnote'>・${esc(e.label)}: ${esc(e.note)}</span>`).join('');
-    el.innerHTML=`<span class='mcd'>📆</span>`+(MKTCAL.isBiz(today)?line(today,'今日'):`<span class='mcd'>今日 ${esc(MKTCAL.fmt(today))} 休場</span>`)+`<span class='mcd'>｜</span>`+line(nb,'次')+notes;
+    const ts=MKTCAL.nextTopixStep(today); const ahead=(ts&&ts.biz>=2&&ts.biz<=10)?`<span class='mcnote'>・📑TOPIX 段階的ウエイト低減 第${ts.step}回/8 は ${esc(MKTCAL.fmt(ts.date))}（あと${ts.biz}営業日）: 除外予定銘柄は引けにパッシブ売り。対象は JPX 公表リストで確認</span>`:'';
+    el.innerHTML=`<span class='mcd'>📆</span>`+(MKTCAL.isBiz(today)?line(today,'今日'):`<span class='mcd'>今日 ${esc(MKTCAL.fmt(today))} 休場</span>`)+`<span class='mcd'>｜</span>`+line(nb,'次')+notes+ahead;
   }catch(e){ el.innerHTML=`<span class='mcd'>📆 カレンダー描画エラー: ${esc((e&&e.message)||e)}</span>`; }
 }
 renderMktCal();
@@ -1924,7 +1931,7 @@ function renderLegend(){
     <h3>注意チップ（業績×型・重複・走った後・地合い）</h3>
     ${cau.map(row).join('')}
     <h3>📆 市場カレンダー（ページ上部の帯）</h3>
-    <div class='note'>「誰もが知るイベント」を日付計算だけで出す（取得ゼロ・推定なし）。赤＝最重要（3月末・9月末の権利付き最終日／権利落ち日）、橙＝重要（6月末・12月末の権利日・四半期末・SQ（3/6/9/12月）・FOMC明け・日銀会合結果・連休前）、灰＝参考（他月の権利日・月末・マイナーSQ・米雇用統計）。<br>権利確定日＝月末最終営業日、権利付き最終日＝その2営業日前、権利落ち日＝その1営業日前（15日・20日確定の銘柄は対象外）。権利落ち日は配当・優待の権利分だけ寄り付きから下がるのが通例で、前日終値基準の指値・逆指値・SL はその分ズレる。落ち幅は銘柄ごとの予想配当で確認する（このボードは推定しない）。SQ＝第2金曜（休場なら前営業日）。米雇用統計＝通例第1金曜の夜（例外あり）。FOMC・日銀会合は固定表（FOMC 2026〜2027・日銀 2026）。祝日表は 2027-01 まで。表の範囲外は「範囲外」と表示して黙らない。</div>
+    <div class='note'>「誰もが知るイベント」を日付計算だけで出す（取得ゼロ・推定なし）。赤＝最重要（3月末・9月末の権利付き最終日／権利落ち日）、橙＝重要（6月末・12月末の権利日・四半期末・SQ（3/6/9/12月）・FOMC明け・日銀会合結果・連休前）、灰＝参考（他月の権利日・月末・マイナーSQ・米雇用統計）。<br>権利確定日＝月末最終営業日、権利付き最終日＝その2営業日前、権利落ち日＝その1営業日前（15日・20日確定の銘柄は対象外）。権利落ち日は配当・優待の権利分だけ寄り付きから下がるのが通例で、前日終値基準の指値・逆指値・SL はその分ズレる。落ち幅は銘柄ごとの予想配当で確認する（このボードは推定しない）。SQ＝第2金曜（休場なら前営業日）。米雇用統計＝通例第1金曜の夜（例外あり）。FOMC・日銀会合は固定表（FOMC 2026〜2027・日銀 2026）。祝日表は 2027-01 まで。表の範囲外は「範囲外」と表示して黙らない。<br>📑TOPIX 段階的ウエイト低減（D9）＝JPX の TOPIX 見直し（第2段階）で、2026年8月末基準の定期入替により除外予定となった銘柄のウエイトを 2026-10-30 から四半期ごと（1・4・7・10月の最終営業日）8回で引き下げる。その日の引けにパッシブ運用の機械的な売りが出るため橙で表示し、10営業日前から予告を出す（固定表 8 回分。2027-02 以降は祝日表の範囲外のため暫定）。このボードは「どの銘柄が対象か」を判定しない（JPX 公表リストで確認。銘柄別の📑チップは次版 index_flags で対応）。日経225 の定期見直しは年2回（春: 3月上旬発表・4月第1営業日実施／秋: 9月上旬発表・10月第1営業日実施）で日付が固定でないため、この帯には出さない。</div>
     <h3>📈 トレンド文脈チップ</h3>
     <div class='note'>「文脈」＝移動平均との位置関係と向き。ローソクゲート（当日1本のトリガー）とは別軸。緑・紫＝上向き側、橙＝下向き側。</div>
     ${tr.map(row).join('')}

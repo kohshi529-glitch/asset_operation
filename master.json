@@ -1440,37 +1440,37 @@
   },
   "market": {
     "latest": {
-      "date": "2026-10-05",
-      "market_mode": "強気ギャップアップ",
+      "date": "2026-10-06",
+      "market_mode": "堅調",
       "method_guidance": {
-        "kenmo_momentum": "大取ナイト+2.34%(69,910)で強い寄り付き。寄り直後の飛びつきは避け、出来高を伴う押し目で参入。",
-        "kenmo_newhigh": "日経は前日-0.94%の68,309だが先物は69,910へ急伸。新高値ブレイクは出来高確認の銘柄に限定、寄り天に注意。",
-        "choruko_reversal": "VIX15.31は中立、F&G31.2(Fear)。ギャップアップ寄りでは逆張りの出番は限定的、押し待ち。",
-        "stf_kakuhen": "ナスダック+1.19%・SOX+2.40%と米株高。確変判定は通常運用、初動の出来高を重視。",
-        "tenbagger_x": "BB期限・上場日が2営業日以内の銘柄の有無はIPOアラート欄参照。既存はセカンダリー観察継続。",
-        "daytrade": "完全不関与方針を継続。",
-        "semicon_miniswing": "SOX+2.40%で強気。VWAP±0.5%積極帯を適用、ただしギャップ幅が大きく寄り高値の深追いは禁止。"
+        "kenmo_momentum": "米株高・NIY先物+0.34%で寄り堅調想定。ブレイク初動は出来高確認のうえ通常ロットで。",
+        "kenmo_newhigh": "日経は69,947の高値圏。新高値銘柄は寄り高値掴みを避け押し目待ち中心。",
+        "choruko_reversal": "リスクオン地合いで反発余地あり。ただし戻り売り圧力に注意し、確認足後に限定。",
+        "stf_kakuhen": "初動確認が取れる銘柄のみ。先物ギャップ+0.3%程度で過熱感は薄い。",
+        "tenbagger_x": "IPOアラート該当なし(直近は9334 10/13上場)。観察継続。",
+        "daytrade": "完全不関与デイトレは通常運用。寄り直後の乱高下に注意。",
+        "semicon_miniswing": "SOX+0.27%と小幅高。VWAP±0.5%の積極帯は限定的、ナスダック+1.05%を追い風に押し目のみ。"
       },
-      "pattern": "半導体主導リスクオン",
-      "note": "先物+2.34%(+1,600pt)と米SOX+2.40%で寄りは大幅高見込み。ただし先物は金曜ナイト終値(10/3 5:59)の週末据え置き値で、日経は68,000円台の高値圏のため寄り高値掴みに注意。",
+      "pattern": "グロース集中(ナスダック主導・SOXは小幅)",
+      "note": "日経は6.9万台の高値圏で先物+0.34%。ナスダック+1.05%高だがダウ+0.18%と温度差、原油-2%は追い風。F&Gは44(Fear)で慎重さ残る。",
       "indicators": {
-        "nikkei": 68309.46,
-        "night_futures": 69910.0,
-        "night_futures_asof": "2026-10-03 05:59 JST",
-        "night_gap_pct": 2.34,
-        "dow_pct": 0.49,
-        "nasdaq_pct": 1.19,
-        "sp500_pct": 0.73,
-        "sox": 13136.67,
-        "sox_pct": 2.4,
-        "vix": 15.31,
+        "nikkei": 69946.86,
+        "night_futures": 70185.0,
+        "night_futures_asof": "2026-10-06 05:59 JST",
+        "night_gap_pct": 0.34,
+        "dow_pct": 0.18,
+        "nasdaq_pct": 1.05,
+        "sp500_pct": 0.66,
+        "sox": 13172.74,
+        "sox_pct": 0.27,
+        "vix": 15.52,
         "fear_greed": {
-          "value": 31.2,
+          "value": 44,
           "label": "Fear"
         },
-        "usdjpy": 157.79,
-        "wti": 91.11,
-        "wti_pct": -1.9
+        "usdjpy": 157.88,
+        "wti": 89.3,
+        "wti_pct": -1.99
       },
       "data_health": {
         "sox": "api",
@@ -1484,11 +1484,60 @@
         "us_settled": true,
         "us_close_jst": "05:00",
         "night_settled": true,
-        "run_at_jst": "06:34",
+        "run_at_jst": "06:33",
         "excluded": []
       }
     },
     "history": [
+      {
+        "date": "2026-10-06",
+        "market_mode": "堅調",
+        "method_guidance": {
+          "kenmo_momentum": "米株高・NIY先物+0.34%で寄り堅調想定。ブレイク初動は出来高確認のうえ通常ロットで。",
+          "kenmo_newhigh": "日経は69,947の高値圏。新高値銘柄は寄り高値掴みを避け押し目待ち中心。",
+          "choruko_reversal": "リスクオン地合いで反発余地あり。ただし戻り売り圧力に注意し、確認足後に限定。",
+          "stf_kakuhen": "初動確認が取れる銘柄のみ。先物ギャップ+0.3%程度で過熱感は薄い。",
+          "tenbagger_x": "IPOアラート該当なし(直近は9334 10/13上場)。観察継続。",
+          "daytrade": "完全不関与デイトレは通常運用。寄り直後の乱高下に注意。",
+          "semicon_miniswing": "SOX+0.27%と小幅高。VWAP±0.5%の積極帯は限定的、ナスダック+1.05%を追い風に押し目のみ。"
+        },
+        "pattern": "グロース集中(ナスダック主導・SOXは小幅)",
+        "note": "日経は6.9万台の高値圏で先物+0.34%。ナスダック+1.05%高だがダウ+0.18%と温度差、原油-2%は追い風。F&Gは44(Fear)で慎重さ残る。",
+        "indicators": {
+          "nikkei": 69946.86,
+          "night_futures": 70185.0,
+          "night_futures_asof": "2026-10-06 05:59 JST",
+          "night_gap_pct": 0.34,
+          "dow_pct": 0.18,
+          "nasdaq_pct": 1.05,
+          "sp500_pct": 0.66,
+          "sox": 13172.74,
+          "sox_pct": 0.27,
+          "vix": 15.52,
+          "fear_greed": {
+            "value": 44,
+            "label": "Fear"
+          },
+          "usdjpy": 157.88,
+          "wti": 89.3,
+          "wti_pct": -1.99
+        },
+        "data_health": {
+          "sox": "api",
+          "vix": "api",
+          "fear_greed": "search_snippet",
+          "night_futures": "api_niy",
+          "night_source": "NIY=F",
+          "wti": "api"
+        },
+        "settlement": {
+          "us_settled": true,
+          "us_close_jst": "05:00",
+          "night_settled": true,
+          "run_at_jst": "06:33",
+          "excluded": []
+        }
+      },
       {
         "date": "2026-10-05",
         "market_mode": "強気ギャップアップ",
@@ -2387,52 +2436,6 @@
           "us_close_jst": "05:00",
           "night_settled": true,
           "run_at_jst": "06:36",
-          "excluded": []
-        }
-      },
-      {
-        "date": "2026-09-03",
-        "market_mode": "レンジ様子見",
-        "method_guidance": {
-          "kenmo_momentum": "前日日経-2.85%からの反発初日で値動き粗い。夜間先物が未確認のため寄り確認後にモメンタム追随を判断。",
-          "kenmo_newhigh": "指数はまだ戻り待ちの水準。新高値候補は限定的、無理な追随は避け選別継続。",
-          "choruko_reversal": "前日大幅安(-2.85%)は良好な条件。SOX/ナスダック小反発を受け、下げ止まり銘柄のリバウンド狙いを注視。",
-          "stf_kakuhen": "金利上昇テーマの続伸有無を見極めてから初動判断。夜間先物未確認のため寄り付き前の過度な期待は禁物。",
-          "tenbagger_x": "直近2営業日以内のBB期限・上場日該当銘柄なし。既存IPO銘柄(ティアフォー等)の値動き監視継続。",
-          "daytrade": "夜間先物が特定不可で方向感読みにくい。寄り付き急変動リスクを踏まえルール通り執行、無理な逆張りは回避。",
-          "semicon_miniswing": "モードはレンジ様子見。SOX小反発(+0.45%)だが積極追随は見送り、寄り確認後に判断。"
-        },
-        "pattern": "半導体主導リスクオン(小幅)",
-        "note": "前日日経-2.85%(世界的な長期金利上昇が重荷)から一夜明け、NY市場はエヌビディア思惑買い等で小反発(NYダウ+0.56%・SOX+0.45%)。大取ナイト先物は検索結果が前日記事と重複し当該セッションの値を特定できず取得不可。方向感は限定的で寄り付き確認を優先。",
-        "indicators": {
-          "nikkei": 64325.64,
-          "night_futures": null,
-          "dow_pct": 0.56,
-          "nasdaq_pct": 0.45,
-          "sp500_pct": 0.46,
-          "sox": 11339.25,
-          "sox_pct": 0.45,
-          "vix": 15.2,
-          "fear_greed": {
-            "value": 33.8,
-            "label": "Fear"
-          },
-          "usdjpy": 158.68,
-          "wti": 90.63,
-          "wti_pct": 0.45
-        },
-        "data_health": {
-          "sox": "api",
-          "vix": "api",
-          "fear_greed": "search_snippet",
-          "night_futures": "null",
-          "wti": "api"
-        },
-        "settlement": {
-          "us_settled": true,
-          "us_close_jst": "05:00",
-          "night_settled": true,
-          "run_at_jst": "06:37",
           "excluded": []
         }
       }
@@ -6877,11 +6880,11 @@
         "note": "①-9 銘柄評価更新 v5.1。"
       },
       "morning_compass": {
-        "generated_at": "2026-10-05T06:34:05.465776+09:00",
-        "trading_day": "2026-10-05",
+        "generated_at": "2026-10-06T06:33:21.367545+09:00",
+        "trading_day": "2026-10-06",
         "status": "done",
         "source": "morning_compass_v8",
-        "memo": "run_at=2026-10-05T06:34:05+09:00",
+        "memo": "run_at=2026-10-06T06:33:21.367545+09:00",
         "missing": []
       },
       "watch_tracker": {

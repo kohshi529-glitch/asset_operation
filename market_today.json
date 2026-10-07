@@ -1,43 +1,40 @@
 {
- "generated_at": "2026-10-06T06:33:21.367545+09:00",
+ "generated_at": "2026-10-08T06:34:01.183688+09:00",
  "source": "morning_compass_v8",
- "run_at_jst": "2026-10-06 06:33",
- "date": "2026-10-06",
- "market_mode": "堅調",
+ "run_at_jst": "2026-10-08 06:34",
+ "date": "2026-10-08",
+ "market_mode": "レンジ様子見",
  "method_guidance": {
-  "kenmo_momentum": "米株高・NIY先物+0.34%で寄り堅調想定。ブレイク初動は出来高確認のうえ通常ロットで。",
-  "kenmo_newhigh": "日経は69,947の高値圏。新高値銘柄は寄り高値掴みを避け押し目待ち中心。",
-  "choruko_reversal": "リスクオン地合いで反発余地あり。ただし戻り売り圧力に注意し、確認足後に限定。",
-  "stf_kakuhen": "初動確認が取れる銘柄のみ。先物ギャップ+0.3%程度で過熱感は薄い。",
-  "tenbagger_x": "IPOアラート該当なし(直近は9334 10/13上場)。観察継続。",
+  "kenmo_momentum": "米株全面安・NIY先物-0.33%で寄りは弱含み想定。ブレイク初動は出来高確認後、ロット抑えめで。",
+  "kenmo_newhigh": "日経は7万円近辺の高値圏から反落。新高値銘柄は寄り付きを追わず押し目待ち。",
+  "choruko_reversal": "寄り下げ後の反発狙いは確認足後に限定。戻り売り圧力に注意。",
+  "stf_kakuhen": "先物ギャップ-0.3%程度で過熱感は薄いが、初動確認が取れる銘柄のみ。",
+  "tenbagger_x": "IPOアラート該当なし(9334 10/13上場)。観察継続。",
   "daytrade": "完全不関与デイトレは通常運用。寄り直後の乱高下に注意。",
-  "semicon_miniswing": "SOX+0.27%と小幅高。VWAP±0.5%の積極帯は限定的、ナスダック+1.05%を追い風に押し目のみ。"
+  "semicon_miniswing": "SOX-1.15%と半導体が軟化。VWAP±0.5%積極帯は見送り、押し目確認のみ。"
  },
- "pattern": "グロース集中(ナスダック主導・SOXは小幅)",
- "note": "日経は6.9万台の高値圏で先物+0.34%。ナスダック+1.05%高だがダウ+0.18%と温度差、原油-2%は追い風。F&Gは44(Fear)で慎重さ残る。",
+ "pattern": "半導体主導リスクオフ(SOX下落・ナスダックは小幅安)",
+ "note": "SOX-1.15%・ダウ-0.66%・NIY先物-0.33%で寄りは軟調気味。ただしVIX15で落ち着き、原油安・為替158円は下支え。F&Gは取得不可。",
  "indicators": {
-  "nikkei": 69946.86,
-  "night_futures": 70185.0,
-  "night_futures_asof": "2026-10-06 05:59 JST",
-  "night_gap_pct": 0.34,
-  "dow_pct": 0.18,
-  "nasdaq_pct": 1.05,
-  "sp500_pct": 0.66,
-  "sox": 13172.74,
-  "sox_pct": 0.27,
-  "vix": 15.52,
-  "fear_greed": {
-   "value": 44,
-   "label": "Fear"
-  },
-  "usdjpy": 157.88,
-  "wti": 89.3,
-  "wti_pct": -1.99
+  "nikkei": 70035.71,
+  "night_futures": 69805.0,
+  "night_futures_asof": "2026-10-08 05:59 JST",
+  "night_gap_pct": -0.33,
+  "dow_pct": -0.66,
+  "nasdaq_pct": -0.22,
+  "sp500_pct": -0.22,
+  "sox": 13066.15,
+  "sox_pct": -1.15,
+  "vix": 15.08,
+  "fear_greed": null,
+  "usdjpy": 158.03,
+  "wti": 88.94,
+  "wti_pct": -0.56
  },
  "data_health": {
   "sox": "api",
   "vix": "api",
-  "fear_greed": "search_snippet",
+  "fear_greed": null,
   "night_futures": "api_niy",
   "night_source": "NIY=F",
   "wti": "api"
@@ -46,7 +43,7 @@
   "us_settled": true,
   "us_close_jst": "05:00",
   "night_settled": true,
-  "run_at_jst": "06:33",
+  "run_at_jst": "06:34",
   "excluded": []
  }
 }

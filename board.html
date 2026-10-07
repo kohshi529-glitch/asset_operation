@@ -275,6 +275,11 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 .bankchip{display:inline-block;font-size:11px;font-weight:700;color:#7fc8e8;background:#132a3a;border:1px solid #275470;border-radius:5px;padding:1px 7px;white-space:nowrap;vertical-align:middle}
 .divchip{display:inline-block;font-size:10px;font-weight:500;color:#c8d6a0;background:#1f2a14;border:1px solid #3c5222;border-radius:5px;padding:1px 6px;white-space:nowrap;vertical-align:middle}
 .rightschip{display:inline-block;font-size:11px;font-weight:700;color:#ffb4b4;background:#4a1f2a;border:1px solid #7a2e3d;border-radius:5px;padding:1px 7px;white-space:nowrap;vertical-align:middle}
+.ixchip{display:inline-block;font-size:11px;font-weight:700;color:#ffd0a0;background:#4a2f12;border:1px solid #7a4e1f;border-radius:5px;padding:1px 7px;white-space:nowrap;vertical-align:middle}
+.aiwave{display:inline-block;font-size:11.5px;font-weight:700;border-radius:6px;padding:2px 8px;margin:2px 4px 2px 0;border:1px solid #1d3a40;background:#12292e;color:#8fb3ad}
+.aiwave.on{color:#0d1b1e;background:#48e0b0;border-color:#48e0b0}
+.aisig{display:inline-block;font-size:10.5px;font-weight:700;color:#e6f4f1;background:#2a3f5a;border:1px solid #3d5a80;border-radius:5px;padding:1px 6px;margin-right:3px}
+.ixchip.in{color:#b8f0c8;background:#163a22;border-color:#2a6b3c}
 .rightschip.unk{color:#c9d1e0;background:#26304a;border-color:#3a4763;font-weight:500}
 .perchip{display:inline-block;font-size:10px;font-weight:500;color:#8fb3ad;background:#0f2429;border:1px solid #1d3a40;border-radius:5px;padding:1px 6px;white-space:nowrap;vertical-align:middle}
 .kpi.tri-g .n{color:#48e0b0}.kpi.tri-y .n{color:#e8c766}.kpi.tri-b .n{color:#7fc8e8}
@@ -310,6 +315,7 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 <button id='tab-changepoint' onclick="switchTab('changepoint')">🔔変化点</button>
 <button id='tab-methods' onclick="switchTab('methods')">📋5手法</button>
 <button id='tab-granville' onclick="switchTab('granville')">📐グランビル</button>
+<button id='tab-ai' onclick="switchTab('ai')">🤖AI特需</button>
 <button id='tab-legend' onclick="switchTab('legend')">📖凡例</button>
 </div>
 <!-- 業績グレードの凡例（全タブ共通。既定は畳んでスペースを食わない） -->
@@ -324,8 +330,9 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 <div id='panel-changepoint' class='panel'></div>
 <div id='panel-methods' class='panel'></div>
 <div id='panel-granville' class='panel'></div>
+<div id='panel-ai' class='panel'></div>
 <div id='panel-legend' class='panel'></div>
-<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
+<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
 </div>
 <button class='fab' id='backtab' onclick='scrollToTabbar()' aria-label='タブバーへ戻る'>▲タブへ戻る</button>
 <script>
@@ -410,6 +417,7 @@ let BARS = {};      // code -> [[d,o,h,l,c],...]
 let GRADES = {};    // grades.json の stocks（code -> {per,spm,vg,nc,eqr,sec,...}）
 let SPM = {};       // grades.json の meta.sector_per_median（業種 -> [中央値PER, 母数n]）
 let GRADES_DAY = null;
+let IXMETA = null;   // grades.json meta.index_flags（{published,next_step,step_no}・①-8 v1.40）
 let PROF = {};      // profile_cache（業態・業種）
 let MODE = null;    // market.latest.market_mode（当日朝の⑤判定。表示にのみ使う）
 const EMBEDDED = null; // スナップショット無し（LIVE専用。取得失敗時はメッセージ表示）
@@ -674,7 +682,24 @@ function rightsChip(code){
   const up=(z!=null)?`・直近5日${z>0?'+':''}${esc(num1(z))}%`:'';
   return `<span class='rightschip' title='${esc(what)}。この銘柄は権利月${esc(g.rm.join('/'))}で対象。落ち後目安＝現在値−${esc(lab)}配当（優待分は含まない）。直近5日＝権利取り前に上がってきた幅（落ち後に剥落しうる分）。SL との比較はしない'>📆権利対象${tail}${g.yt===true?'・🎁':''}${up}</span>`;
 }
-function d4Chips(code){ return vgChip(code)+bankChip(code)+perMedChip(code)+divChip(code)+rightsChip(code); }
+// 📑指数イベント（D10）: grades.json の ix（①-8 v1.40 が index_flags.json から写す）。null なら出さない（「対象外」は書かない＝未反映と区別できないため）
+function ixNext(){
+  try{
+    if(IXMETA&&IXMETA.next_step){ const d=MKTCAL.parse(IXMETA.next_step); return {date:d,step:IXMETA.step_no||null}; }
+    const now=new Date(Date.now()+(9*60-(-new Date().getTimezoneOffset()))*60000); const today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+    const t=MKTCAL.nextTopixStep(today); return t?{date:t.date,step:t.step}:null;
+  }catch(e){ return null; }
+}
+function ixChip(code){
+  const g=gradesOf(code); if(!g||!g.ix) return '';
+  const pub=(IXMETA&&IXMETA.published)?IXMETA.published:'';
+  if(g.ix==='topix_out'){ const n=ixNext(); const when=n?` 次 ${esc(MKTCAL.fmt(n.date))}${n.step?` 第${n.step}回/8`:''}`:''; return `<span class='ixchip' title='TOPIX 初回定期入替（${esc(pub)} 公表）の移行措置銘柄＝段階的ウエイト低減の対象。2026-10-30 から四半期ごと 8 回、実施日の引けにパッシブ売りが出る。判定は JPX 公表リスト（index_flags.json）のみ'>📑TOPIX低減対象${when}</span>`; }
+  if(g.ix==='topix_in') return `<span class='ixchip in' title='TOPIX 初回定期入替（${esc(pub)} 公表）の新規追加銘柄。2026-10-30 に組入れ'>📑TOPIX新規採用</span>`;
+  if(g.ix==='n225_out') return `<span class='ixchip' title='日経225 定期見直しの除外銘柄（${esc(pub)}）'>📑日経225除外</span>`;
+  if(g.ix==='n225_in') return `<span class='ixchip in' title='日経225 定期見直しの採用銘柄（${esc(pub)}）'>📑日経225採用</span>`;
+  return '';
+}
+function d4Chips(code){ return vgChip(code)+bankChip(code)+perMedChip(code)+divChip(code)+rightsChip(code)+ixChip(code); }
 // スコア整形：整数はそのまま、小数は1桁。
 function valScoreTxt(s){
   if(typeof s!=='number') return '';
@@ -727,7 +752,7 @@ function scrollToTabbar(){
   scrollToY(absTop(tb)-TAB_OFFSET);
 }
 function switchTab(which){
-  ['nightgate','changepoint','methods','granville','watch','hold','legend'].forEach(t=>{
+  ['nightgate','changepoint','methods','granville','ai','watch','hold','legend'].forEach(t=>{
     const p=document.getElementById('panel-'+t), b=document.getElementById('tab-'+t);
     if(!p||!b)return;
     const on=(t===which);
@@ -841,9 +866,9 @@ function earningsChip(c){
 //  ・押し目枠と急落枠（リバ/ちょる子）の同時指名は -2.4%/38%（単独 +1.1%/64%）
 //  ・ちょる子の当日大陽線（実体が値幅の60%超）は伸びしろが無い（-1.4%/31%）
 //  ・弱気/軟調の朝に逆張りを実行した群は勝率0%（n4/n7）。モードは選定に入れず表示で扱う（実行順序上、夜の選定時に当日モードは無い）
-const FWD_BRANCHES = ['kenmo_momentum','kenmo_newhigh','granville_tenkan','stf_kakuhen'];
-const REV_BRANCHES = ['choruko_reversal','granville_rebound'];
-const CONTRA_BRANCHES = ['choruko_reversal','granville_rebound','granville_oshime','changepoint'];
+const FWD_BRANCHES = ['kenmo_momentum','kenmo_newhigh','granville_tenkan','stf_kakuhen','ai_momentum'];
+const REV_BRANCHES = ['choruko_reversal','granville_rebound','ai_reversal'];
+const CONTRA_BRANCHES = ['choruko_reversal','granville_rebound','granville_oshime','changepoint','ai_reversal'];
 function normBranches(x){
   if(!x) return [];
   const arr=Array.isArray(x)?x:[x];
@@ -1304,6 +1329,8 @@ const BRANCH_LABEL = Object.assign({}, METHOD_SHORT, {
   granville_tenkan:"📐転換初動",
   granville_oshime:"📐押し目",
   granville_rebound:"📐リバーサル",
+  ai_momentum:"🤖AI順張り",
+  ai_reversal:"🤖AI逆張り",
 });
 function branchLabel(k){ return BRANCH_LABEL[k]||k; }
 function branchChip(k){
@@ -1312,7 +1339,7 @@ function branchChip(k){
 }
 // ===== エントリ型判定（改修3。branch/branch_type → method/granville/changepoint/unknown） =====
 // 5手法キーの集合（master.json candidates 配下のキー）。
-const METHOD_KEYS={kenmo_momentum:1,kenmo_newhigh:1,choruko_reversal:1,stf_kakuhen:1,tenbagger_x:1,watch_bottoming:1};
+const METHOD_KEYS={kenmo_momentum:1,kenmo_newhigh:1,choruko_reversal:1,stf_kakuhen:1,tenbagger_x:1,watch_bottoming:1,ai_momentum:1,ai_reversal:1};
 // 単一 branch キー→型。granville_* / 変化点(🔔) / 5手法キー を判定。未知は unknown。
 function branchKeyType(k){
   const s=String(k==null?'':k);
@@ -1620,6 +1647,51 @@ function cpCard(c){
     judgeHtml:judgeRow(sig,c.code),
     propHtml:'',                     // 変化点は指値=当日終値・封印中のため提案行は出さない
     bodyHtml:body});
+}
+// ===== タブ: 🤖AI特需（D11）。①-S3 AI特需スキャン v1.0 が書く master.json の ai_scan（セクター別の波）と candidates.ai_momentum／ai_reversal を描く。判定・順位は変えない =====
+function renderAiScan(d){
+  const sc=d.ai_scan||null; const cm=(d.candidates&&d.candidates.ai_momentum)||[]; const cr=(d.candidates&&d.candidates.ai_reversal)||[];
+  const NG={}; (((d.night_gate&&d.night_gate.results)||[])).forEach(r=>{ if(r&&r.code!=null) NG[String(r.code)]=r; });
+  const note=`<div class='cpnote'>①-S3 AI特需スキャン（平日 18:15）が固定ユニバース 74 銘柄（ai_universe.json＝エネマネ・冷却空調・光通信・基板素材の 2 波・3 波）をチャート条件だけで順張り（M1 新高値ブレイク／M2 転換初動／M3 再上昇）と逆張り（R1 押し目／R2 リバウンド／R3 深押し反発）に分け、①-8（20:30）が別ブランチ ai_momentum／ai_reversal として同じゲート・鮮度・提案で扱う。「波」はセクター内で 25MA を上回る銘柄の割合と 20 日リターン中央値から点灯させる表示で、抽出条件には使わない。業績条件は入れていないので、業績グレード（🔻⚠）と値頃感は別軸として横に出す。全て候補であり最終判断はユーザー。</div>`;
+  if(!sc&&!cm.length&&!cr.length) return note+`<div class='empty'>①-S3 AI特需スキャンの実行記録がありません（ai_scan 未作成）。</div>`;
+  let waves='';
+  if(sc&&sc.sectors){
+    const order=['energy_mgmt','cooling','optical','substrate'];
+    waves=`<div class='cpsec'><h3>波の点灯（base_day ${esc(sc.base_day||'—')}・ユニバース ${esc(sc.universe_n||'—')}・取得 ${esc(sc.fetched_n||'—')}）</h3>`+
+      order.filter(k=>sc.sectors[k]).map(k=>{ const s=sc.sectors[k]; return `<span class='aiwave${s.wave_on?' on':''}' title='25MA 上回り率 ${esc(num1(s.above25_pct))}%・75MA ${esc(num1(s.above75_pct))}%・25MA 乖離中央値 ${esc(num1(s.median_dev25))}%・20日リターン中央値 ${esc(num1(s.median_ret20))}%・当夜の該当 順張り${esc(s.signals_m)}／逆張り${esc(s.signals_r)}'>${esc(s.label||k)}${s.wave&&s.wave!=='—'?` ${esc(s.wave)}波`:''} ${s.wave_on?'● 点灯':'○'} ${esc(num1(s.above25_pct))}%</span>`; }).join('')+
+      `<div class='meta'>● 点灯＝25MA 上回り率 50% 以上かつ 20 日リターン中央値がプラス。数字は 25MA 上回り率。</div></div>`;
+  }
+  const row=(c)=>{
+    const code=String(c.code); const r=NG[code];
+    const sig=(c.signals||[]).map(s=>`<span class='aisig'>${esc(s)}</span>`).join('');
+    const aiInfo=`<span class='memochip'>${esc(c.sector_label||c.sector||'')}/${esc(c.proc||'')}${c.wave?` ${esc(c.wave)}波`:''}</span>${sig}<span class='memochip' title='①-S3 のスコア（並び順専用・手法間で比較しない）'>score ${esc(c.score)}</span>`;
+    const aiHtml=`<span class='brchip'>${esc(branchLabel(c.branch||''))}</span>`+aiInfo; // 未評価カード用（ブランチチップ＋業態・信号・score）
+    const stat=`<div class='smeta'>終値 ${esc(fmtPrice(c.close))}円・25MA乖離 ${esc(num1(c.dev25))}%・75MA乖離 ${esc(num1(c.dev75))}%・出来高 ${esc(num1(c.vol_ratio20))}倍・RSI ${esc(num1(c.rsi14))}・52週位置 ${esc(c.pos52w!=null?Math.round(c.pos52w):'—')}%・5日 ${esc(num1(c.ret5_pct))}%／20日 ${esc(num1(c.ret20_pct))}%${c.perfect_order?'・PO':''}</div>`;
+    if(r){
+      // ①-8 が当夜評価済み: ゲートタブと同じ部品（手法/型・注意=📈文脈🕯形態・決算・ゲート判定｜業績｜値頃感・提案・ヘッドライン）
+      const ebr=entryBranches(r)||[]; // ①-8 が v1.41 未満で ai ブランチを集めていない夜は、当夜結果に ai_* が無いので ①-S3 側のブランチチップを補う
+      let hl='';
+      if(r.headline){ const lines=normalizeHeadline(headlineToText(r.headline)).split('\n').slice(0,5).join('\n'); hl=`<details class='headline'><summary>📌ヘッドライン</summary><div class='hlbody'>${esc(lines)}</div></details>`; }
+      return card5({code:r.code,name:r.name||c.name,close:r.close!=null?r.close:c.close,
+        methodHtml:entryMarkChips(r)+(ebr.indexOf(c.branch)>=0?'':`<span class='brchip'>${esc(branchLabel(c.branch||''))}</span>`)+aiInfo,
+        cautionHtml:cautionChips(code,ebr.indexOf(c.branch)>=0?ebr:ebr.concat([c.branch])),
+        earnHtml:earningsChip(r),
+        judgeHtml:judgeRow(gateChipGuarded(r),code),
+        propHtml:ngProposal(r),
+        bodyHtml:stat+hl, bad:isOrderBad(r)});
+    }
+    // ①-8 未評価（①-S3 直後〜20:30 の間）: 判定は「未評価」、業績・値頃感は grades.json のキャッシュ、文脈・形態は pool_bars から
+    return card5({code:code,name:c.name,close:c.close,
+      methodHtml:aiHtml,
+      cautionHtml:cautionChips(code,[c.branch]),
+      earnHtml:'',
+      judgeHtml:judgeRow(`<span class='vchip unknown'>当夜ゲート未評価（20:30 の ①-8 で判定）</span>`,code),
+      propHtml:'', bodyHtml:stat, bad:false});
+  };
+  const sortS=(a)=>[...a].sort((x,y)=>(y.score||0)-(x.score||0)||String(x.code).localeCompare(String(y.code)));
+  const secM=`<div class='cpsec'><h3>🤖 順張り候補 ai_momentum（${cm.length}件）</h3>${cm.length?sortS(cm).map(row).join(''):`<div class='empty'>当夜の該当なし</div>`}</div>`;
+  const secR=`<div class='cpsec'><h3>🤖 逆張り候補 ai_reversal（${cr.length}件）</h3>${cr.length?sortS(cr).map(row).join(''):`<div class='empty'>当夜の該当なし</div>`}</div>`;
+  return note+waves+secM+secR;
 }
 function renderChangepoint(d,runs){
   return safeSection('sec-cp','🔔 変化点ウォッチ',()=>{
@@ -1937,6 +2009,10 @@ function renderLegend(){
     ${tr.map(row).join('')}
     <h3>💴 配当・🎁優待・📆権利対象（D8）</h3>
     <div class='note'>💴チップ＝①-8 v1.38 が kabutan の既読ページから読んだ予想配当（年間または中間／期末）と、minkabu の優待ページで確かめた優待の有無・優待権利月（grades.json の fy/rm/dvi/dvf/dva/yt/ym）。未取得の銘柄には出ない（初回は保有・PASS から順に埋まる）。<br>📆権利対象チップ＝今日〜次の営業日に権利付き最終日／権利落ち日があり、かつその月がこの銘柄の権利月（配当または優待）に含まれるときだけ出る。「現在値→落ち後目安（−x円・−y%）」は該当する配当を現在値から引いたもので、公表値からの計算（推定ではない）。優待分は含まないので、🎁付きの銘柄は目安より大きく落ちうる。「直近5日 ±z%」は権利取り前に上がってきた幅（pool_bars の直近5本）で、落ち後に剥落しうる分の目安。SL との比較は出さない（stop の反映は実弾ボード側の運用に依存するため）。権利月が未取得の銘柄は「📆権利月不明」。権利月が違う銘柄には何も出ない（＝今回の権利落ちの影響は限定的）。</div>
+    <h3>🤖 AI特需タブ（D11）</h3>
+    <div class='note'>①-S3 AI特需スキャン v1.0 が master.json に書く ai_scan（セクター別: 25MA 上回り率・20日リターン中央値・wave_on）と candidates.ai_momentum／ai_reversal を描く。順張り M1＝60日高値ブレイク＋出来高1.5倍、M2＝25MA 上抜け初動、M3＝押し後の10日高値更新。逆張り R1＝パーフェクトオーダーの 25MA 押し目、R2＝25MA 乖離 −8% 以下＋RSI35 以下＋200MA 上向き、R3＝−15% 以下の深押しからの反発。ユニバースは固定 74 銘柄（ai_universe.json）。ゲート判定・提案は ①-8 の既存の器（別ブランチ）。表示であり判定・順位は変えない。</div>
+    <h3>📑 指数イベント（D10）</h3>
+    <div class='note'>①-8 v1.40 が公開派生ファイル index_flags.json（JPX「TOPIX 初回定期入替における選定結果」2026-10-07 公表・移行措置 683・新規追加 35）から各銘柄の区分を grades.json の ix に写し、このボードはそれを読むだけ。「📑TOPIX低減対象 次 M/D 第n回/8」＝移行措置銘柄（段階的ウエイト低減の対象）。2026-10-30 から四半期ごと 8 回、実施日の引けにパッシブ運用の機械的な売りが出る。「📑TOPIX新規採用」＝10/30 に組入れ。ix が無い銘柄には何も出ない（対象外か、①-8 v1.40 未反映かはこのボードでは区別しない）。判定は公表リストのみで推定しない。ゲート判定・提案価格は変わらない。</div>
     <h3>🕯 ローソク足形態チップ</h3>
     <div class='note'>直近6本のOHLC（pool_bars.json・base_day 足まで）から機械判定。実体＝|終値−始値|、値幅＝高値−安値、平均実体＝直前5本の実体平均。文脈「下落後」＝直前5日−3%以下または前日終値＜MA10×0.98、「上昇後」＝直前5日+3%以上または（前日終値＞MA10×1.02 かつ 20日高値の97%以上）。窓（上放れ／下放れ）は連続本数で1つだけ出す（1本＝上放れ／下放れ、2本＝2本連続、3本以上＝三空）。形態は「兆し」であり、翌日の確認足と文脈で判断する。形態ごとの成績は ①-8 v1.31 の記録が4週たまってから検証（V4）。</div>
     ${pat.map(prow).join('')}
@@ -2147,6 +2223,7 @@ function render(d){
 
   // ===== タブ②: 🔔変化点ウォッチ =====
   document.getElementById('panel-changepoint').innerHTML=renderChangepoint(d,runs);
+  try{ document.getElementById('panel-ai').innerHTML=renderAiScan(d); }catch(e){ document.getElementById('panel-ai').innerHTML=`<div class='empty'>🤖AI特需タブの描画エラー: ${esc((e&&e.message)||e)}</div>`; }
 
   // ===== タブ③: 📋5手法銘柄（既存「手法別ボード」を移設・ロジック不変） =====
   const jump1=`<div class='jump'>
@@ -2188,7 +2265,7 @@ function render(d){
 // master.json（必須）と pool_bars.json（任意・注意チップ用）を並列取得。pool_bars が取れなくても描画は続ける。
 // grades.json の stocks は {code:{...}} または [{n:code,...}] のどちらでも受ける（①-8 の版差に耐える）。
 function normalizeGrades(j){
-  const out={stocks:{},spm:{},day:null};
+  const out={stocks:{},spm:{},day:null,ixmeta:null};
   if(!j||typeof j!=='object') return out;
   try{
     const st=j.stocks;
@@ -2197,6 +2274,7 @@ function normalizeGrades(j){
     const m=j.meta||{};
     if(m.sector_per_median&&typeof m.sector_per_median==='object') out.spm=m.sector_per_median;
     out.day=m.base_day||null;
+    out.ixmeta=(m.index_flags&&typeof m.index_flags==='object')?m.index_flags:null;
   }catch(e){}
   return out;
 }
@@ -2204,7 +2282,7 @@ Promise.all([
   fetch(RAW_URL,{cache:"no-store"}).then(r=>r.ok?r.json():Promise.reject(r.status)),
   fetch(BARS_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>(j&&j.bars&&typeof j.bars==='object')?j.bars:{}).catch(()=>({})),
   fetch(GRADES_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).then(normalizeGrades).catch(()=>normalizeGrades(null))
-]).then(([d,bars,g])=>{ BARS=bars||{}; GRADES=(g&&g.stocks)||{}; SPM=(g&&g.spm)||{}; GRADES_DAY=(g&&g.day)||null; render(d); })
+]).then(([d,bars,g])=>{ BARS=bars||{}; GRADES=(g&&g.stocks)||{}; SPM=(g&&g.spm)||{}; GRADES_DAY=(g&&g.day)||null; IXMETA=(g&&g.ixmeta)||null; render(d); })
 .catch(e=>{document.getElementById('src').innerHTML="<span class='snap'>● 取得失敗</span> master.jsonを取得できませんでした。再読み込みしてください。("+esc(e)+")";});
 </script>
 </body></html>

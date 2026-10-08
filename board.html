@@ -311,11 +311,11 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 <div class='maintabs' id='maintabs'>
 <button id='tab-nightgate' class='active' onclick="switchTab('nightgate')">🚪ゲート</button>
 <button id='tab-watch' onclick="switchTab('watch')">👀ウォッチ</button>
+<button id='tab-ai' onclick="switchTab('ai')">🤖AI特需</button>
 <button id='tab-hold' onclick="switchTab('hold')">🧳保有</button>
 <button id='tab-changepoint' onclick="switchTab('changepoint')">🔔変化点</button>
 <button id='tab-methods' onclick="switchTab('methods')">📋5手法</button>
 <button id='tab-granville' onclick="switchTab('granville')">📐グランビル</button>
-<button id='tab-ai' onclick="switchTab('ai')">🤖AI特需</button>
 <button id='tab-legend' onclick="switchTab('legend')">📖凡例</button>
 </div>
 <!-- 業績グレードの凡例（全タブ共通。既定は畳んでスペースを食わない） -->
@@ -326,13 +326,13 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 <details class='vallegend'><summary>🚪 ゲート判定・乖離率の凡例</summary><div class='vallegendbody'>✅陽線=当日終値&gt;始値かつ上髭が小さい／✅十字線反転=実体極小で直近5日-5%以上下落＝下げ後の反転期待／✅S高=値幅ゼロで前日比プラス／❌上髭=陽線だが上値を叩かれた形／❌陰線=当日終値が始値を下回った＝需給が売り優勢でゲートの前提を満たさない／－SKIP=当日分の株価データが取れず判定不能。判定は当日足の形だけを見ており業績・株価水準は別軸<br>乖離率=提案価格が当日終値からどれだけ離れているか。押し目系はマイナス(到達待ち)、モメ系はプラス(上抜け待ち)。リバ系・変化点系は指値＝当日終値のため表示しない</div></details>
 <div id='panel-nightgate' class='panel active'></div>
 <div id='panel-watch' class='panel'></div>
+<div id='panel-ai' class='panel'></div>
 <div id='panel-hold' class='panel'></div>
 <div id='panel-changepoint' class='panel'></div>
 <div id='panel-methods' class='panel'></div>
 <div id='panel-granville' class='panel'></div>
-<div id='panel-ai' class='panel'></div>
 <div id='panel-legend' class='panel'></div>
-<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
+<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
 </div>
 <button class='fab' id='backtab' onclick='scrollToTabbar()' aria-label='タブバーへ戻る'>▲タブへ戻る</button>
 <script>

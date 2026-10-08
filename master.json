@@ -7160,13 +7160,13 @@
         ]
       },
       "watch_tracker": {
-        "generated_at": "2026-10-07T12:48:29Z",
-        "trading_day": "2026-10-07",
+        "generated_at": "2026-10-08T12:44:22Z",
+        "trading_day": "2026-10-08",
         "status": "done",
         "source": "watch_tracker",
-        "memo": "run_at=2026-10-07T21:45+09:00(水曜夜); base_day=2026-10-07(①-8追従: night_gate_today.json base_day=2026-10-07)。日足取得 成功130/130。熟成: grades.json vg全null(旧版)のため新規登録スキップ。",
-        "seeded": 21,
-        "active": 80,
+        "memo": "run_at=2026-10-08T21:44+09:00(木曜夜); base_day=2026-10-08(①-8未反映フォールバック: night_gate_today.json base_day=2026-10-07)。新規シード取り込みスキップ。日足取得 成功80/80。熟成: grades.json vg全null(旧版)のため新規登録スキップ。",
+        "seeded": 0,
+        "active": 66,
         "ripen_active": 0,
         "ripen_triggered": 0
       },
@@ -100932,8 +100932,8 @@
     }
   ],
   "watchlist": {
-    "updated_at": "2026-10-07T12:48:29Z",
-    "base_day": "2026-10-07",
+    "updated_at": "2026-10-08T12:44:22Z",
+    "base_day": "2026-10-08",
     "entries": [
       {
         "code": "6862",
@@ -100944,21 +100944,16 @@
         "seed_price": 4355.0,
         "seed_grade": "判定保留(変則決算)",
         "ref_high": 5690.0,
-        "ma5": 5250.0,
-        "ma25": 4657.8,
-        "last_close": 5240.0,
-        "last_date": "2026-10-07",
-        "days_watched": 12,
-        "dist_to_zone_pct": 4.24,
+        "ma5": 5151.0,
+        "ma25": 4716.8,
+        "last_close": 4995.0,
+        "last_date": "2026-10-08",
+        "days_watched": 16,
+        "dist_to_zone_pct": 9.36,
         "status": "pullback_ready",
         "status_reason": null,
         "signal": "押し目到達（買い場）",
         "history": [
-          {
-            "date": "2026-10-01",
-            "close": 5490.0,
-            "note": "押し目待ち中(あと0.5%)"
-          },
           {
             "date": "2026-10-02",
             "close": 5140.0,
@@ -100978,51 +100973,10 @@
             "date": "2026-10-07",
             "close": 5240.0,
             "note": "押し目到達（買い場）"
-          }
-        ]
-      },
-      {
-        "code": "428A",
-        "name": "Cypress Holdings Co. Ltd.",
-        "branch": "kenmo_newhigh",
-        "watch_class": "待ち",
-        "seed_day": "2026-09-16",
-        "seed_price": 1676.0,
-        "seed_grade": "⚡好調",
-        "ref_high": 1934.0,
-        "ma5": 1761.0,
-        "ma25": 1664.72,
-        "last_close": 1710.0,
-        "last_date": "2026-10-07",
-        "days_watched": 12,
-        "dist_to_zone_pct": 8.58,
-        "status": "pullback_ready",
-        "status_reason": null,
-        "signal": "押し目到達（買い場）",
-        "history": [
-          {
-            "date": "2026-10-01",
-            "close": 1871.0,
-            "note": "押し目待ち中(あと0.8%)"
           },
           {
-            "date": "2026-10-02",
-            "close": 1781.0,
-            "note": "押し目到達（買い場）"
-          },
-          {
-            "date": "2026-10-05",
-            "close": 1739.0,
-            "note": "押し目到達（買い場）"
-          },
-          {
-            "date": "2026-10-06",
-            "close": 1704.0,
-            "note": "押し目到達（買い場）"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 1710.0,
+            "date": "2026-10-08",
+            "close": 4995.0,
             "note": "押し目到達（買い場）"
           }
         ]
@@ -101036,21 +100990,16 @@
         "seed_price": 2950.0,
         "seed_grade": "🔥絶好調",
         "ref_high": 3460.0,
-        "ma5": 3416.0,
-        "ma25": 3086.28,
-        "last_close": 3415.0,
-        "last_date": "2026-10-07",
-        "days_watched": 10,
-        "dist_to_zone_pct": -2.73,
-        "status": "watching",
+        "ma5": 3395.0,
+        "ma25": 3095.88,
+        "last_close": 3290.0,
+        "last_date": "2026-10-08",
+        "days_watched": 14,
+        "dist_to_zone_pct": 0.96,
+        "status": "pullback_ready",
         "status_reason": null,
-        "signal": "押し目待ち中(あと2.7%)",
+        "signal": "押し目到達（買い場）",
         "history": [
-          {
-            "date": "2026-10-01",
-            "close": 3395.0,
-            "note": "押し目待ち中(あと4.0%)"
-          },
           {
             "date": "2026-10-02",
             "close": 3375.0,
@@ -101070,6 +101019,11 @@
             "date": "2026-10-07",
             "close": 3415.0,
             "note": "押し目待ち中(あと2.7%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 3290.0,
+            "note": "押し目到達（買い場）"
           }
         ]
       },
@@ -101082,21 +101036,16 @@
         "seed_price": 3365.0,
         "seed_grade": "⚡好調",
         "ref_high": 3380.0,
-        "ma5": 3333.0,
-        "ma25": 3311.0,
-        "last_close": 3325.0,
-        "last_date": "2026-10-07",
-        "days_watched": 9,
-        "dist_to_zone_pct": -2.41,
+        "ma5": 3312.0,
+        "ma25": 3307.8,
+        "last_close": 3275.0,
+        "last_date": "2026-10-08",
+        "days_watched": 10,
+        "dist_to_zone_pct": -0.92,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(あと2.4%)",
+        "signal": "押し目待ち中(あと0.0%)",
         "history": [
-          {
-            "date": "2026-10-01",
-            "close": 3380.0,
-            "note": "押し目待ち中(あと4.0%)"
-          },
           {
             "date": "2026-10-02",
             "close": 3320.0,
@@ -101116,6 +101065,11 @@
             "date": "2026-10-07",
             "close": 3325.0,
             "note": "押し目待ち中(あと2.4%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 3275.0,
+            "note": "押し目待ち中(あと0.0%)"
           }
         ]
       },
@@ -101128,21 +101082,16 @@
         "seed_price": 2667.0,
         "seed_grade": "⚠減速",
         "ref_high": 2752.0,
-        "ma5": 2724.6,
-        "ma25": 2671.66,
-        "last_close": 2752.0,
-        "last_date": "2026-10-07",
-        "days_watched": 9,
-        "dist_to_zone_pct": -4.0,
+        "ma5": 2725.6,
+        "ma25": 2672.72,
+        "last_close": 2732.0,
+        "last_date": "2026-10-08",
+        "days_watched": 10,
+        "dist_to_zone_pct": -3.3,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(あと4.0%)",
+        "signal": "押し目待ち中(あと0.0%)",
         "history": [
-          {
-            "date": "2026-10-01",
-            "close": 2727.0,
-            "note": "押し目待ち中(あと4.0%)"
-          },
           {
             "date": "2026-10-02",
             "close": 2687.0,
@@ -101162,6 +101111,11 @@
             "date": "2026-10-07",
             "close": 2752.0,
             "note": "押し目待ち中(あと4.0%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 2732.0,
+            "note": "押し目待ち中(あと0.0%)"
           }
         ]
       },
@@ -101173,22 +101127,17 @@
         "seed_day": "2026-09-25",
         "seed_price": 1960.0,
         "seed_grade": "⚡好調",
-        "ref_high": 2134.0,
-        "ma5": 2072.4,
-        "ma25": 1956.86,
-        "last_close": 2134.0,
-        "last_date": "2026-10-07",
-        "days_watched": 8,
+        "ref_high": 2147.5,
+        "ma5": 2110.2,
+        "ma25": 1965.68,
+        "last_close": 2147.5,
+        "last_date": "2026-10-08",
+        "days_watched": 9,
         "dist_to_zone_pct": -4.0,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(あと4.0%)",
+        "signal": "押し目待ち中(あと0.0%)",
         "history": [
-          {
-            "date": "2026-10-01",
-            "close": 1958.5,
-            "note": "押し目待ち中(あと3.9%)"
-          },
           {
             "date": "2026-10-02",
             "close": 2060.0,
@@ -101208,6 +101157,11 @@
             "date": "2026-10-07",
             "close": 2134.0,
             "note": "押し目待ち中(あと4.0%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 2147.5,
+            "note": "押し目待ち中(あと0.0%)"
           }
         ]
       },
@@ -101219,22 +101173,17 @@
         "seed_day": "2026-09-25",
         "seed_price": 3737.0,
         "seed_grade": "✅順調",
-        "ref_high": 3753.0,
-        "ma5": 3742.0,
-        "ma25": 3693.48,
-        "last_close": 3753.0,
-        "last_date": "2026-10-07",
-        "days_watched": 8,
+        "ref_high": 3784.0,
+        "ma5": 3748.6,
+        "ma25": 3695.28,
+        "last_close": 3784.0,
+        "last_date": "2026-10-08",
+        "days_watched": 9,
         "dist_to_zone_pct": -4.0,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(あと4.0%)／再加速",
+        "signal": "押し目待ち中(あと0.0%)",
         "history": [
-          {
-            "date": "2026-10-01",
-            "close": 3751.0,
-            "note": "押し目待ち中(あと4.0%)"
-          },
           {
             "date": "2026-10-02",
             "close": 3734.0,
@@ -101254,6 +101203,11 @@
             "date": "2026-10-07",
             "close": 3753.0,
             "note": "押し目待ち中(あと4.0%)／再加速"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 3784.0,
+            "note": "押し目待ち中(あと0.0%)"
           }
         ]
       },
@@ -101265,22 +101219,17 @@
         "seed_day": "2026-09-25",
         "seed_price": 1767.5,
         "seed_grade": "➖横ばい",
-        "ref_high": 1845.5,
-        "ma5": 1797.5,
-        "ma25": 1763.12,
-        "last_close": 1845.5,
-        "last_date": "2026-10-07",
-        "days_watched": 8,
+        "ref_high": 1851.5,
+        "ma5": 1808.0,
+        "ma25": 1763.82,
+        "last_close": 1851.5,
+        "last_date": "2026-10-08",
+        "days_watched": 9,
         "dist_to_zone_pct": -4.0,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(あと4.0%)",
+        "signal": "押し目待ち中(あと0.0%)",
         "history": [
-          {
-            "date": "2026-10-01",
-            "close": 1799.0,
-            "note": "押し目待ち中(あと4.0%)"
-          },
           {
             "date": "2026-10-02",
             "close": 1753.0,
@@ -101300,6 +101249,11 @@
             "date": "2026-10-07",
             "close": 1845.5,
             "note": "押し目待ち中(あと4.0%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 1851.5,
+            "note": "押し目待ち中(あと0.0%)"
           }
         ]
       },
@@ -101312,21 +101266,16 @@
         "seed_price": 512.0,
         "seed_grade": "🚀確変",
         "ref_high": 532.0,
-        "ma5": 517.8,
-        "ma25": 484.8,
-        "last_close": 513.0,
-        "last_date": "2026-10-07",
-        "days_watched": 7,
-        "dist_to_zone_pct": -0.44,
-        "status": "watching",
+        "ma5": 511.8,
+        "ma25": 485.88,
+        "last_close": 502.0,
+        "last_date": "2026-10-08",
+        "days_watched": 8,
+        "dist_to_zone_pct": 1.74,
+        "status": "pullback_ready",
         "status_reason": null,
-        "signal": "押し目待ち中(あと0.4%)",
+        "signal": "押し目到達（買い場）",
         "history": [
-          {
-            "date": "2026-10-01",
-            "close": 532.0,
-            "note": "押し目待ち中(あと4.0%)"
-          },
           {
             "date": "2026-10-02",
             "close": 518.0,
@@ -101346,6 +101295,11 @@
             "date": "2026-10-07",
             "close": 513.0,
             "note": "押し目待ち中(あと0.4%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 502.0,
+            "note": "押し目到達（買い場）"
           }
         ]
       },
@@ -101358,21 +101312,16 @@
         "seed_price": 4345.0,
         "seed_grade": "🚀確変",
         "ref_high": 4345.0,
-        "ma5": 4206.0,
-        "ma25": 4118.8,
-        "last_close": 4120.0,
-        "last_date": "2026-10-07",
-        "days_watched": 5,
-        "dist_to_zone_pct": 1.24,
-        "status": "pullback_ready",
+        "ma5": 4158.0,
+        "ma25": 4114.8,
+        "last_close": 4020.0,
+        "last_date": "2026-10-08",
+        "days_watched": 6,
+        "dist_to_zone_pct": 3.76,
+        "status": "watching",
         "status_reason": null,
-        "signal": "押し目到達（買い場）",
+        "signal": "押し目待ち中(あと3.8%)",
         "history": [
-          {
-            "date": "2026-10-01",
-            "close": 4260.0,
-            "note": "押し目待ち中(あと2.1%)"
-          },
           {
             "date": "2026-10-02",
             "close": 4185.0,
@@ -101392,6 +101341,11 @@
             "date": "2026-10-07",
             "close": 4120.0,
             "note": "押し目到達（買い場）"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 4020.0,
+            "note": "押し目待ち中(あと3.8%)"
           }
         ]
       },
@@ -101404,21 +101358,16 @@
         "seed_price": 805.0,
         "seed_grade": "🚀確変",
         "ref_high": 828.0,
-        "ma5": 801.6,
-        "ma25": 774.2,
-        "last_close": 780.0,
-        "last_date": "2026-10-07",
-        "days_watched": 5,
-        "dist_to_zone_pct": 1.91,
+        "ma5": 792.4,
+        "ma25": 773.72,
+        "last_close": 782.0,
+        "last_date": "2026-10-08",
+        "days_watched": 6,
+        "dist_to_zone_pct": 1.65,
         "status": "pullback_ready",
         "status_reason": null,
         "signal": "押し目到達（買い場）",
         "history": [
-          {
-            "date": "2026-10-01",
-            "close": 828.0,
-            "note": "押し目待ち中(あと4.0%)"
-          },
           {
             "date": "2026-10-02",
             "close": 806.0,
@@ -101438,52 +101387,11 @@
             "date": "2026-10-07",
             "close": 780.0,
             "note": "押し目到達（買い場）"
-          }
-        ]
-      },
-      {
-        "code": "5590",
-        "name": "NETSTARS Co.",
-        "branch": "kenmo_momentum",
-        "watch_class": "待ち",
-        "seed_day": "2026-09-30",
-        "seed_price": 725.0,
-        "seed_grade": "⚡好調",
-        "ref_high": 725.0,
-        "ma5": 718.6,
-        "ma25": 718.84,
-        "last_close": 711.0,
-        "last_date": "2026-10-07",
-        "days_watched": 5,
-        "dist_to_zone_pct": -2.11,
-        "status": "watching",
-        "status_reason": null,
-        "signal": "押し目待ち中(あと2.1%)",
-        "history": [
-          {
-            "date": "2026-10-01",
-            "close": 725.0,
-            "note": "押し目待ち中(あと4.0%)"
           },
           {
-            "date": "2026-10-02",
-            "close": 717.0,
-            "note": "押し目待ち中(あと-2.9%)"
-          },
-          {
-            "date": "2026-10-05",
-            "close": 719.0,
-            "note": "押し目待ち中(あと3.2%)"
-          },
-          {
-            "date": "2026-10-06",
-            "close": 721.0,
-            "note": "押し目待ち中(あと-3.5%)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 711.0,
-            "note": "押し目待ち中(あと2.1%)"
+            "date": "2026-10-08",
+            "close": 782.0,
+            "note": "押し目到達（買い場）"
           }
         ]
       },
@@ -101496,21 +101404,16 @@
         "seed_price": 2197.0,
         "seed_grade": "✅順調",
         "ref_high": 2323.0,
-        "ma5": 2305.0,
-        "ma25": 2163.0,
-        "last_close": 2323.0,
-        "last_date": "2026-10-07",
-        "days_watched": 5,
-        "dist_to_zone_pct": -4.0,
+        "ma5": 2300.2,
+        "ma25": 2166.4,
+        "last_close": 2295.0,
+        "last_date": "2026-10-08",
+        "days_watched": 6,
+        "dist_to_zone_pct": -2.83,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(あと4.0%)／再加速",
+        "signal": "押し目待ち中(あと0.0%)",
         "history": [
-          {
-            "date": "2026-10-01",
-            "close": 2319.0,
-            "note": "押し目待ち中(あと4.0%)"
-          },
           {
             "date": "2026-10-02",
             "close": 2283.0,
@@ -101530,6 +101433,11 @@
             "date": "2026-10-07",
             "close": 2323.0,
             "note": "押し目待ち中(あと4.0%)／再加速"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 2295.0,
+            "note": "押し目待ち中(あと0.0%)"
           }
         ]
       },
@@ -101542,21 +101450,16 @@
         "seed_price": 4370.0,
         "seed_grade": "判定保留",
         "ref_high": 4370.0,
-        "ma5": 4218.0,
-        "ma25": 4111.0,
-        "last_close": 4300.0,
-        "last_date": "2026-10-07",
-        "days_watched": 5,
-        "dist_to_zone_pct": -2.44,
+        "ma5": 4224.0,
+        "ma25": 4135.0,
+        "last_close": 4340.0,
+        "last_date": "2026-10-08",
+        "days_watched": 6,
+        "dist_to_zone_pct": -3.34,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(あと2.4%)",
+        "signal": "押し目待ち中(あと0.0%)",
         "history": [
-          {
-            "date": "2026-10-01",
-            "close": 4310.0,
-            "note": "押し目待ち中(あと2.7%)"
-          },
           {
             "date": "2026-10-02",
             "close": 4200.0,
@@ -101576,6 +101479,11 @@
             "date": "2026-10-07",
             "close": 4300.0,
             "note": "押し目待ち中(あと2.4%)／再点灯 2026-10-07"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 4340.0,
+            "note": "押し目待ち中(あと0.0%)"
           }
         ]
       },
@@ -101588,21 +101496,16 @@
         "seed_price": 3225.0,
         "seed_grade": "⚡好調",
         "ref_high": 3385.0,
-        "ma5": 3292.0,
-        "ma25": 3157.2,
-        "last_close": 3385.0,
-        "last_date": "2026-10-07",
-        "days_watched": 5,
-        "dist_to_zone_pct": -4.0,
-        "status": "watching",
+        "ma5": 3284.0,
+        "ma25": 3157.6,
+        "last_close": 3230.0,
+        "last_date": "2026-10-08",
+        "days_watched": 6,
+        "dist_to_zone_pct": 0.61,
+        "status": "pullback_ready",
         "status_reason": null,
-        "signal": "押し目待ち中(あと4.0%)",
+        "signal": "押し目到達（買い場）",
         "history": [
-          {
-            "date": "2026-10-01",
-            "close": 3270.0,
-            "note": "押し目待ち中(あと4.0%)"
-          },
           {
             "date": "2026-10-02",
             "close": 3235.0,
@@ -101622,6 +101525,11 @@
             "date": "2026-10-07",
             "close": 3385.0,
             "note": "押し目待ち中(あと4.0%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 3230.0,
+            "note": "押し目到達（買い場）"
           }
         ]
       },
@@ -101634,21 +101542,16 @@
         "seed_price": 3830.0,
         "seed_grade": "🚀確変",
         "ref_high": 3860.0,
-        "ma5": 3812.0,
-        "ma25": 3573.8,
-        "last_close": 3850.0,
-        "last_date": "2026-10-07",
-        "days_watched": 5,
-        "dist_to_zone_pct": -3.75,
+        "ma5": 3786.0,
+        "ma25": 3580.4,
+        "last_close": 3730.0,
+        "last_date": "2026-10-08",
+        "days_watched": 6,
+        "dist_to_zone_pct": -0.65,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(あと3.8%)",
+        "signal": "押し目待ち中(あと0.0%)",
         "history": [
-          {
-            "date": "2026-10-01",
-            "close": 3860.0,
-            "note": "押し目待ち中(あと4.0%)"
-          },
           {
             "date": "2026-10-02",
             "close": 3760.0,
@@ -101668,6 +101571,11 @@
             "date": "2026-10-07",
             "close": 3850.0,
             "note": "押し目待ち中(あと3.8%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 3730.0,
+            "note": "押し目待ち中(あと0.0%)"
           }
         ]
       },
@@ -101680,21 +101588,16 @@
         "seed_price": 4915.0,
         "seed_grade": "🚀確変",
         "ref_high": 5370.0,
-        "ma5": 5182.0,
-        "ma25": 4382.4,
-        "last_close": 5220.0,
-        "last_date": "2026-10-07",
-        "days_watched": 5,
-        "dist_to_zone_pct": -1.24,
+        "ma5": 5206.0,
+        "ma25": 4418.8,
+        "last_close": 5160.0,
+        "last_date": "2026-10-08",
+        "days_watched": 6,
+        "dist_to_zone_pct": -0.09,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(あと1.2%)",
+        "signal": "押し目待ち中(あと0.0%)",
         "history": [
-          {
-            "date": "2026-10-01",
-            "close": 5040.0,
-            "note": "押し目待ち中(あと4.0%)"
-          },
           {
             "date": "2026-10-02",
             "close": 5030.0,
@@ -101714,6 +101617,11 @@
             "date": "2026-10-07",
             "close": 5220.0,
             "note": "押し目待ち中(あと1.2%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 5160.0,
+            "note": "押し目待ち中(あと0.0%)"
           }
         ]
       },
@@ -101726,21 +101634,16 @@
         "seed_price": 3475.0,
         "seed_grade": "✅順調",
         "ref_high": 3611.0,
-        "ma5": 3547.2,
-        "ma25": 3417.44,
-        "last_close": 3548.0,
-        "last_date": "2026-10-07",
-        "days_watched": 5,
-        "dist_to_zone_pct": -2.3,
+        "ma5": 3549.0,
+        "ma25": 3418.0,
+        "last_close": 3526.0,
+        "last_date": "2026-10-08",
+        "days_watched": 6,
+        "dist_to_zone_pct": -1.69,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(あと2.3%)",
+        "signal": "押し目待ち中(あと0.0%)",
         "history": [
-          {
-            "date": "2026-10-01",
-            "close": 3517.0,
-            "note": "押し目待ち中(あと4.0%)"
-          },
           {
             "date": "2026-10-02",
             "close": 3506.0,
@@ -101760,6 +101663,11 @@
             "date": "2026-10-07",
             "close": 3548.0,
             "note": "押し目待ち中(あと2.3%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 3526.0,
+            "note": "押し目待ち中(あと0.0%)"
           }
         ]
       },
@@ -101772,21 +101680,16 @@
         "seed_price": 2573.0,
         "seed_grade": "🚀確変",
         "ref_high": 2705.0,
-        "ma5": 2622.0,
-        "ma25": 2299.8,
-        "last_close": 2705.0,
-        "last_date": "2026-10-07",
-        "days_watched": 4,
-        "dist_to_zone_pct": -4.0,
+        "ma5": 2642.8,
+        "ma25": 2316.24,
+        "last_close": 2677.0,
+        "last_date": "2026-10-08",
+        "days_watched": 5,
+        "dist_to_zone_pct": -3.0,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(あと4.0%)",
+        "signal": "押し目待ち中(あと0.0%)",
         "history": [
-          {
-            "date": "2026-10-01",
-            "close": 2573.0,
-            "note": "押し目待ち中(あと4.0%)"
-          },
           {
             "date": "2026-10-02",
             "close": 2568.0,
@@ -101806,52 +101709,11 @@
             "date": "2026-10-07",
             "close": 2705.0,
             "note": "押し目待ち中(あと4.0%)／再点灯 2026-10-07"
-          }
-        ]
-      },
-      {
-        "code": "6298",
-        "name": "Y.A.C.HOLDINGS CO.,LTD.",
-        "branch": "kenmo_momentum",
-        "watch_class": "待ち",
-        "seed_day": "2026-10-01",
-        "seed_price": 1285.0,
-        "seed_grade": "🔥絶好調",
-        "ref_high": 1285.0,
-        "ma5": 1271.4,
-        "ma25": 1270.04,
-        "last_close": 1260.0,
-        "last_date": "2026-10-07",
-        "days_watched": 4,
-        "dist_to_zone_pct": -2.1,
-        "status": "watching",
-        "status_reason": null,
-        "signal": "押し目待ち中(あと2.1%)",
-        "history": [
-          {
-            "date": "2026-10-01",
-            "close": 1285.0,
-            "note": "押し目待ち中(あと4.0%)"
           },
           {
-            "date": "2026-10-02",
-            "close": 1254.0,
-            "note": "押し目待ち中(あと-1.6%)"
-          },
-          {
-            "date": "2026-10-05",
-            "close": 1275.0,
-            "note": "押し目待ち中(あと3.2%)"
-          },
-          {
-            "date": "2026-10-06",
-            "close": 1283.0,
-            "note": "押し目待ち中(あと-3.9%)（再点灯 2026-10-06）"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 1260.0,
-            "note": "押し目待ち中(あと2.1%)"
+            "date": "2026-10-08",
+            "close": 2677.0,
+            "note": "押し目待ち中(あと0.0%)"
           }
         ]
       },
@@ -101863,22 +101725,17 @@
         "seed_day": "2026-10-01",
         "seed_price": 3825.0,
         "seed_grade": "🔥絶好調",
-        "ref_high": 4010.0,
-        "ma5": 3826.0,
-        "ma25": 3548.2,
-        "last_close": 4010.0,
-        "last_date": "2026-10-07",
-        "days_watched": 4,
+        "ref_high": 4070.0,
+        "ma5": 3875.0,
+        "ma25": 3574.8,
+        "last_close": 4070.0,
+        "last_date": "2026-10-08",
+        "days_watched": 5,
         "dist_to_zone_pct": -4.0,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(あと4.0%)",
+        "signal": "押し目待ち中(あと0.0%)",
         "history": [
-          {
-            "date": "2026-10-01",
-            "close": 3825.0,
-            "note": "押し目待ち中(あと4.0%)"
-          },
           {
             "date": "2026-10-02",
             "close": 3680.0,
@@ -101898,6 +101755,11 @@
             "date": "2026-10-07",
             "close": 4010.0,
             "note": "押し目待ち中(あと4.0%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 4070.0,
+            "note": "押し目待ち中(あと0.0%)"
           }
         ]
       },
@@ -101910,21 +101772,16 @@
         "seed_price": 2030.0,
         "seed_grade": "判定保留(変則決算)",
         "ref_high": 2105.0,
-        "ma5": 2053.0,
-        "ma25": 1888.32,
-        "last_close": 2017.0,
-        "last_date": "2026-10-07",
-        "days_watched": 4,
-        "dist_to_zone_pct": 0.19,
+        "ma5": 2042.4,
+        "ma25": 1893.36,
+        "last_close": 1977.0,
+        "last_date": "2026-10-08",
+        "days_watched": 5,
+        "dist_to_zone_pct": 2.22,
         "status": "pullback_ready",
         "status_reason": null,
         "signal": "押し目到達（買い場）",
         "history": [
-          {
-            "date": "2026-10-01",
-            "close": 2030.0,
-            "note": "押し目待ち中(あと4.0%)"
-          },
           {
             "date": "2026-10-02",
             "close": 2105.0,
@@ -101944,6 +101801,11 @@
             "date": "2026-10-07",
             "close": 2017.0,
             "note": "押し目到達（買い場）"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 1977.0,
+            "note": "押し目到達（買い場）"
           }
         ]
       },
@@ -101956,21 +101818,16 @@
         "seed_price": 4415.0,
         "seed_grade": "🚀確変",
         "ref_high": 4460.0,
-        "ma5": 4425.0,
-        "ma25": 3850.6,
-        "last_close": 4435.0,
-        "last_date": "2026-10-07",
-        "days_watched": 4,
-        "dist_to_zone_pct": -3.46,
+        "ma5": 4411.0,
+        "ma25": 3881.4,
+        "last_close": 4345.0,
+        "last_date": "2026-10-08",
+        "days_watched": 5,
+        "dist_to_zone_pct": -1.46,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(あと3.5%)",
+        "signal": "押し目待ち中(あと0.0%)",
         "history": [
-          {
-            "date": "2026-10-01",
-            "close": 4415.0,
-            "note": "押し目待ち中(あと4.0%)"
-          },
           {
             "date": "2026-10-02",
             "close": 4355.0,
@@ -101990,6 +101847,11 @@
             "date": "2026-10-07",
             "close": 4435.0,
             "note": "押し目待ち中(あと3.5%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 4345.0,
+            "note": "押し目待ち中(あと0.0%)"
           }
         ]
       },
@@ -102002,21 +101864,16 @@
         "seed_price": 4676.0,
         "seed_grade": "➖横ばい",
         "ref_high": 4676.0,
-        "ma5": 4634.4,
-        "ma25": 4550.68,
-        "last_close": 4619.0,
-        "last_date": "2026-10-07",
-        "days_watched": 4,
-        "dist_to_zone_pct": -2.82,
+        "ma5": 4626.2,
+        "ma25": 4549.08,
+        "last_close": 4635.0,
+        "last_date": "2026-10-08",
+        "days_watched": 5,
+        "dist_to_zone_pct": -3.15,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(あと2.8%)",
+        "signal": "押し目待ち中(あと0.0%)",
         "history": [
-          {
-            "date": "2026-10-01",
-            "close": 4676.0,
-            "note": "押し目待ち中(あと4.0%)"
-          },
           {
             "date": "2026-10-02",
             "close": 4607.0,
@@ -102036,6 +101893,11 @@
             "date": "2026-10-07",
             "close": 4619.0,
             "note": "押し目待ち中(あと2.8%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 4635.0,
+            "note": "押し目待ち中(あと0.0%)"
           }
         ]
       },
@@ -102048,21 +101910,16 @@
         "seed_price": 4195.0,
         "seed_grade": "⚠減速",
         "ref_high": 4330.0,
-        "ma5": 4239.0,
-        "ma25": 4146.6,
-        "last_close": 4330.0,
-        "last_date": "2026-10-07",
-        "days_watched": 4,
-        "dist_to_zone_pct": -4.0,
+        "ma5": 4221.0,
+        "ma25": 4157.0,
+        "last_close": 4105.0,
+        "last_date": "2026-10-08",
+        "days_watched": 5,
+        "dist_to_zone_pct": 1.26,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(あと4.0%)",
+        "signal": "押し目待ち中(あと1.3%)",
         "history": [
-          {
-            "date": "2026-10-01",
-            "close": 4195.0,
-            "note": "押し目待ち中(あと4.0%)"
-          },
           {
             "date": "2026-10-02",
             "close": 4190.0,
@@ -102082,6 +101939,11 @@
             "date": "2026-10-07",
             "close": 4330.0,
             "note": "押し目待ち中(あと4.0%)／再点灯 2026-10-07"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 4105.0,
+            "note": "押し目待ち中(あと1.3%)"
           }
         ]
       },
@@ -102094,15 +101956,15 @@
         "seed_price": 4160.0,
         "seed_grade": "🔥絶好調",
         "ref_high": 4320.0,
-        "ma5": 4226.0,
-        "ma25": 4089.2,
-        "last_close": 4305.0,
-        "last_date": "2026-10-07",
-        "days_watched": 3,
-        "dist_to_zone_pct": -3.67,
+        "ma5": 4262.0,
+        "ma25": 4104.4,
+        "last_close": 4290.0,
+        "last_date": "2026-10-08",
+        "days_watched": 4,
+        "dist_to_zone_pct": -3.33,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(あと3.7%)",
+        "signal": "押し目待ち中(あと0.0%)",
         "history": [
           {
             "date": "2026-10-02",
@@ -102123,6 +101985,11 @@
             "date": "2026-10-07",
             "close": 4305.0,
             "note": "押し目待ち中(あと3.7%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 4290.0,
+            "note": "押し目待ち中(あと0.0%)"
           }
         ]
       },
@@ -102135,15 +102002,15 @@
         "seed_price": 2919.0,
         "seed_grade": "⚡好調",
         "ref_high": 3000.0,
-        "ma5": 2952.2,
-        "ma25": 2775.72,
-        "last_close": 3000.0,
-        "last_date": "2026-10-07",
-        "days_watched": 3,
-        "dist_to_zone_pct": -4.0,
+        "ma5": 2960.0,
+        "ma25": 2789.48,
+        "last_close": 2959.0,
+        "last_date": "2026-10-08",
+        "days_watched": 4,
+        "dist_to_zone_pct": -2.67,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(あと4.0%)",
+        "signal": "押し目待ち中(あと0.0%)",
         "history": [
           {
             "date": "2026-10-02",
@@ -102164,6 +102031,11 @@
             "date": "2026-10-07",
             "close": 3000.0,
             "note": "押し目待ち中(あと4.0%)／再点灯 2026-10-07"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 2959.0,
+            "note": "押し目待ち中(あと0.0%)"
           }
         ]
       },
@@ -102176,15 +102048,15 @@
         "seed_price": 3035.0,
         "seed_grade": "🚀確変",
         "ref_high": 3250.0,
-        "ma5": 3114.0,
-        "ma25": 2934.76,
-        "last_close": 3210.0,
-        "last_date": "2026-10-07",
-        "days_watched": 3,
-        "dist_to_zone_pct": -2.8,
-        "status": "watching",
+        "ma5": 3103.4,
+        "ma25": 2938.76,
+        "last_close": 2972.0,
+        "last_date": "2026-10-08",
+        "days_watched": 4,
+        "dist_to_zone_pct": 4.98,
+        "status": "pullback_ready",
         "status_reason": null,
-        "signal": "押し目待ち中(あと2.8%)",
+        "signal": "押し目到達（買い場）",
         "history": [
           {
             "date": "2026-10-02",
@@ -102205,47 +102077,11 @@
             "date": "2026-10-07",
             "close": 3210.0,
             "note": "押し目待ち中(あと2.8%)"
-          }
-        ]
-      },
-      {
-        "code": "6841",
-        "name": "Yokogawa Electric Corp.",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-02",
-        "seed_price": 4707.0,
-        "seed_grade": "➖横ばい",
-        "ref_high": 4743.0,
-        "ma5": 4716.8,
-        "ma25": 4712.2,
-        "last_close": 4667.0,
-        "last_date": "2026-10-07",
-        "days_watched": 3,
-        "dist_to_zone_pct": -2.44,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中(seed割れ)",
-        "history": [
-          {
-            "date": "2026-10-02",
-            "close": 4707.0,
-            "note": "本日判断(25MA乖離-1.2%・5日レンジ位置51%)"
           },
           {
-            "date": "2026-10-05",
-            "close": 4733.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-06",
-            "close": 4743.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 4667.0,
-            "note": "確認中(seed割れ)"
+            "date": "2026-10-08",
+            "close": 2972.0,
+            "note": "押し目到達（買い場）"
           }
         ]
       },
@@ -102258,11 +102094,11 @@
         "seed_price": 4411.0,
         "seed_grade": "✅順調",
         "ref_high": 4411.0,
-        "ma5": 4155.6,
-        "ma25": 4041.44,
+        "ma5": 4236.6,
+        "ma25": 4041.52,
         "last_close": 4116.0,
-        "last_date": "2026-10-07",
-        "days_watched": 3,
+        "last_date": "2026-10-08",
+        "days_watched": 4,
         "dist_to_zone_pct": 2.88,
         "status": "pullback_ready",
         "status_reason": null,
@@ -102287,6 +102123,11 @@
             "date": "2026-10-07",
             "close": 4116.0,
             "note": "押し目到達（買い場）"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 4116.0,
+            "note": "押し目到達（買い場）"
           }
         ]
       },
@@ -102299,15 +102140,15 @@
         "seed_price": 5487.0,
         "seed_grade": "✅順調",
         "ref_high": 5637.0,
-        "ma5": 5530.2,
-        "ma25": 5496.6,
-        "last_close": 5637.0,
-        "last_date": "2026-10-07",
-        "days_watched": 3,
-        "dist_to_zone_pct": -4.0,
+        "ma5": 5551.8,
+        "ma25": 5499.64,
+        "last_close": 5539.0,
+        "last_date": "2026-10-08",
+        "days_watched": 4,
+        "dist_to_zone_pct": -2.3,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(あと4.0%)",
+        "signal": "押し目待ち中(あと0.0%)",
         "history": [
           {
             "date": "2026-10-02",
@@ -102328,8 +102169,1546 @@
             "date": "2026-10-07",
             "close": 5637.0,
             "note": "押し目待ち中(あと4.0%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 5539.0,
+            "note": "押し目待ち中(あと0.0%)"
           }
         ]
+      },
+      {
+        "code": "9554",
+        "name": "AViC Co. Ltd.",
+        "branch": "kenmo_momentum",
+        "watch_class": "待ち",
+        "seed_day": "2026-10-06",
+        "seed_price": 1824.0,
+        "seed_grade": "🔥絶好調",
+        "ref_high": 1824.0,
+        "ma5": 1754.4,
+        "ma25": 1733.24,
+        "last_close": 1717.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": 1.98,
+        "status": "watching",
+        "status_reason": null,
+        "signal": "押し目待ち中(あと2.0%)",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 1824.0,
+            "note": "押し目待ち中(あと-4.0%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 1773.0,
+            "note": "押し目待ち中(あと1.2%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 1717.0,
+            "note": "押し目待ち中(あと2.0%)"
+          }
+        ]
+      },
+      {
+        "code": "6071",
+        "name": "IBJ, Inc.",
+        "branch": "kenmo_momentum",
+        "watch_class": "待ち",
+        "seed_day": "2026-10-06",
+        "seed_price": 901.0,
+        "seed_grade": "⚡好調",
+        "ref_high": 910.0,
+        "ma5": 899.4,
+        "ma25": 895.08,
+        "last_close": 910.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -4.0,
+        "status": "watching",
+        "status_reason": null,
+        "signal": "押し目待ち中(あと0.0%)",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 901.0,
+            "note": "押し目待ち中(あと-4.0%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 908.0,
+            "note": "押し目待ち中(あと4.0%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 910.0,
+            "note": "押し目待ち中(あと0.0%)"
+          }
+        ]
+      },
+      {
+        "code": "4412",
+        "name": "Science Arts, Inc.",
+        "branch": "kenmo_momentum",
+        "watch_class": "待ち",
+        "seed_day": "2026-10-06",
+        "seed_price": 1537.0,
+        "seed_grade": null,
+        "ref_high": 1547.0,
+        "ma5": 1505.8,
+        "ma25": 1403.92,
+        "last_close": 1415.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": 4.96,
+        "status": "pullback_ready",
+        "status_reason": null,
+        "signal": "押し目到達（買い場）",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 1537.0,
+            "note": "押し目待ち中(あと-4.0%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 1547.0,
+            "note": "押し目待ち中(あと4.0%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 1415.0,
+            "note": "押し目到達（買い場）"
+          }
+        ]
+      },
+      {
+        "code": "4023",
+        "name": "クレハ",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-06",
+        "seed_price": 3955.0,
+        "seed_grade": "🔥絶好調",
+        "ref_high": 3955.0,
+        "ma5": 3931.0,
+        "ma25": 4248.4,
+        "last_close": 3910.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -2.9,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中(seed割れ)",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 3955.0,
+            "note": "本日判断(25MA乖離-8.0%・5日レンジ25%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 3920.0,
+            "note": "確認中(seed割れ)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 3910.0,
+            "note": "確認中(seed割れ)"
+          }
+        ]
+      },
+      {
+        "code": "9031",
+        "name": "西日本鉄道",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-06",
+        "seed_price": 2852.0,
+        "seed_grade": "🔻悪化",
+        "ref_high": 2852.0,
+        "ma5": 2823.4,
+        "ma25": 3025.86,
+        "last_close": 2787.5,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -1.78,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中(seed割れ)",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 2852.0,
+            "note": "本日判断(25MA乖離-6.5%・5日レンジ31%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 2813.5,
+            "note": "確認中(seed割れ)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 2787.5,
+            "note": "確認中(seed割れ)"
+          }
+        ]
+      },
+      {
+        "code": "4680",
+        "name": "ROUND ONE Corporation",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-06",
+        "seed_price": 1277.5,
+        "seed_grade": "✅順調",
+        "ref_high": 1293.0,
+        "ma5": 1269.4,
+        "ma25": 1232.28,
+        "last_close": 1293.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -4.0,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 1277.5,
+            "note": "本日判断(25MA乖離3.3%・5日レンジ100%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 1288.0,
+            "note": "確認中／再点灯 2026-10-07"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 1293.0,
+            "note": "確認中"
+          }
+        ]
+      },
+      {
+        "code": "9861",
+        "name": "吉野家ホールディングス",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-06",
+        "seed_price": 3675.0,
+        "seed_grade": "✅順調",
+        "ref_high": 3747.0,
+        "ma5": 3697.6,
+        "ma25": 3737.4,
+        "last_close": 3747.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -4.0,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 3675.0,
+            "note": "本日判断(25MA乖離-1.9%・5日レンジ71%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 3728.0,
+            "note": "確認中／再点灯 2026-10-07"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 3747.0,
+            "note": "確認中"
+          }
+        ]
+      },
+      {
+        "code": "7956",
+        "name": "Pigeon Corporation",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-06",
+        "seed_price": 2058.5,
+        "seed_grade": "✅順調",
+        "ref_high": 2084.0,
+        "ma5": 2051.7,
+        "ma25": 2020.16,
+        "last_close": 2067.5,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -3.23,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 2058.5,
+            "note": "本日判断(25MA乖離1.7%・5日レンジ100%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 2084.0,
+            "note": "確認中"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 2067.5,
+            "note": "確認中"
+          }
+        ]
+      },
+      {
+        "code": "9503",
+        "name": "Kansai Electric Power Company, Incorporated",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-06",
+        "seed_price": 2602.0,
+        "seed_grade": "🔻悪化",
+        "ref_high": 2655.5,
+        "ma5": 2628.1,
+        "ma25": 2835.02,
+        "last_close": 2644.5,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -3.6,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 2602.0,
+            "note": "本日判断(25MA乖離-8.4%・5日レンジ0%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 2655.5,
+            "note": "確認中"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 2644.5,
+            "note": "確認中"
+          }
+        ]
+      },
+      {
+        "code": "6457",
+        "name": "グローリー",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-06",
+        "seed_price": 4557.0,
+        "seed_grade": "業績データ取得不可(経常益予想非開示)",
+        "ref_high": 4557.0,
+        "ma5": 4497.4,
+        "ma25": 4473.32,
+        "last_close": 4522.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -3.26,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中(seed割れ)",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 4557.0,
+            "note": "本日判断(25MA乖離1.3%・5日レンジ100%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 4556.0,
+            "note": "確認中(seed割れ)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 4522.0,
+            "note": "確認中(seed割れ)"
+          }
+        ]
+      },
+      {
+        "code": "3234",
+        "name": "Mori Hills Reit Investment Corporation",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-06",
+        "seed_price": 118200.0,
+        "seed_grade": "判定保留",
+        "ref_high": 118300.0,
+        "ma5": 118080.0,
+        "ma25": 122896.0,
+        "last_close": 118000.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -3.76,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中(seed割れ)",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 118200.0,
+            "note": "本日判断(25MA乖離-4.5%・5日レンジ19%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 118300.0,
+            "note": "確認中"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 118000.0,
+            "note": "確認中(seed割れ)"
+          }
+        ]
+      },
+      {
+        "code": "3249",
+        "name": "Industrial & Infrastructure Fund Investment Corporation",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-06",
+        "seed_price": 127100.0,
+        "seed_grade": "判定保留",
+        "ref_high": 127100.0,
+        "ma5": 126600.0,
+        "ma25": 133508.0,
+        "last_close": 125600.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -2.85,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中(seed割れ)",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 127100.0,
+            "note": "本日判断(25MA乖離-5.4%・5日レンジ7%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 126400.0,
+            "note": "確認中(seed割れ)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 125600.0,
+            "note": "確認中(seed割れ)"
+          }
+        ]
+      },
+      {
+        "code": "3279",
+        "name": "Activia Properties, Inc.",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-06",
+        "seed_price": 125300.0,
+        "seed_grade": "判定保留",
+        "ref_high": 125300.0,
+        "ma5": 124460.0,
+        "ma25": 129948.0,
+        "last_close": 123400.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -2.52,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中(seed割れ)",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 125300.0,
+            "note": "本日判断(25MA乖離-4.3%・5日レンジ33%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 124400.0,
+            "note": "確認中(seed割れ)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 123400.0,
+            "note": "確認中(seed割れ)"
+          }
+        ]
+      },
+      {
+        "code": "3283",
+        "name": "Nippon Prologis REIT, Inc.",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-06",
+        "seed_price": 80000.0,
+        "seed_grade": "判定保留",
+        "ref_high": 80000.0,
+        "ma5": 79780.0,
+        "ma25": 83616.0,
+        "last_close": 79300.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -3.15,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中(seed割れ)",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 80000.0,
+            "note": "本日判断(25MA乖離-4.9%・5日レンジ15%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 79800.0,
+            "note": "確認中(seed割れ)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 79300.0,
+            "note": "確認中(seed割れ)"
+          }
+        ]
+      },
+      {
+        "code": "8955",
+        "name": "Japan Prime Realty Investment Corporation",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-06",
+        "seed_price": 89600.0,
+        "seed_grade": "判定保留",
+        "ref_high": 89600.0,
+        "ma5": 88960.0,
+        "ma25": 93568.0,
+        "last_close": 87900.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -2.14,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中(seed割れ)",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 89600.0,
+            "note": "本日判断(25MA乖離-5.0%・5日レンジ21%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 88500.0,
+            "note": "確認中(seed割れ)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 87900.0,
+            "note": "確認中(seed割れ)"
+          }
+        ]
+      },
+      {
+        "code": "8961",
+        "name": "MORI TRUST REIT.Inc",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-06",
+        "seed_price": 67500.0,
+        "seed_grade": "判定保留",
+        "ref_high": 67500.0,
+        "ma5": 67120.0,
+        "ma25": 70252.0,
+        "last_close": 66300.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -2.26,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中(seed割れ)",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 67500.0,
+            "note": "本日判断(25MA乖離-4.6%・5日レンジ15%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 66800.0,
+            "note": "確認中(seed割れ)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 66300.0,
+            "note": "確認中(seed割れ)"
+          }
+        ]
+      },
+      {
+        "code": "6473",
+        "name": "JTEKT Corporation",
+        "branch": "granville_tenkan",
+        "watch_class": "待ち",
+        "seed_day": "2026-10-06",
+        "seed_price": 2198.5,
+        "seed_grade": "⚠減速",
+        "ref_high": 2206.0,
+        "ma5": 2165.3,
+        "ma25": 2110.58,
+        "last_close": 2130.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -0.57,
+        "status": "watching",
+        "status_reason": null,
+        "signal": "押し目待ち中(あと0.0%)",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 2198.5,
+            "note": "押し目待ち中(あと-4.0%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 2206.0,
+            "note": "押し目待ち中(あと4.0%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 2130.0,
+            "note": "押し目待ち中(あと0.0%)"
+          }
+        ]
+      },
+      {
+        "code": "3661",
+        "name": "m-up holdings, Inc.",
+        "branch": "granville_tenkan",
+        "watch_class": "待ち",
+        "seed_day": "2026-10-06",
+        "seed_price": 834.0,
+        "seed_grade": "⚡好調",
+        "ref_high": 834.0,
+        "ma5": 815.6,
+        "ma25": 809.32,
+        "last_close": 814.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -1.64,
+        "status": "watching",
+        "status_reason": null,
+        "signal": "押し目待ち中(あと0.0%)",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 834.0,
+            "note": "押し目待ち中(あと-4.0%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 825.0,
+            "note": "押し目待ち中(あと3.0%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 814.0,
+            "note": "押し目待ち中(あと0.0%)"
+          }
+        ]
+      },
+      {
+        "code": "5036",
+        "name": "Japan Business Systems, Inc.",
+        "branch": "granville_tenkan",
+        "watch_class": "待ち",
+        "seed_day": "2026-10-06",
+        "seed_price": 1572.0,
+        "seed_grade": "✅順調",
+        "ref_high": 1600.0,
+        "ma5": 1570.4,
+        "ma25": 1558.12,
+        "last_close": 1600.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -4.0,
+        "status": "watching",
+        "status_reason": null,
+        "signal": "押し目待ち中(あと0.0%)",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 1572.0,
+            "note": "押し目待ち中(あと-4.0%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 1591.0,
+            "note": "押し目待ち中(あと4.0%)／再点灯 2026-10-07"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 1600.0,
+            "note": "押し目待ち中(あと0.0%)"
+          }
+        ]
+      },
+      {
+        "code": "8927",
+        "name": "Meiho Enterprise Co., Ltd.",
+        "branch": "granville_tenkan",
+        "watch_class": "待ち",
+        "seed_day": "2026-10-06",
+        "seed_price": 493.0,
+        "seed_grade": "✅順調",
+        "ref_high": 496.0,
+        "ma5": 490.4,
+        "ma25": 490.4,
+        "last_close": 487.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -2.23,
+        "status": "watching",
+        "status_reason": null,
+        "signal": "押し目待ち中(あと0.0%)",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 493.0,
+            "note": "押し目待ち中(あと-4.0%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 496.0,
+            "note": "押し目待ち中(あと4.0%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 487.0,
+            "note": "押し目待ち中(あと0.0%)"
+          }
+        ]
+      },
+      {
+        "code": "4763",
+        "name": "クリーク・アンド・リバー社",
+        "branch": "granville_tenkan",
+        "watch_class": "待ち",
+        "seed_day": "2026-10-06",
+        "seed_price": 1517.0,
+        "seed_grade": null,
+        "ref_high": 1517.0,
+        "ma5": 1500.2,
+        "ma25": 1493.04,
+        "last_close": 1495.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -2.59,
+        "status": "watching",
+        "status_reason": null,
+        "signal": "押し目待ち中(あと0.0%)",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 1517.0,
+            "note": "押し目待ち中(あと-4.0%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 1510.0,
+            "note": "押し目待ち中(あと3.6%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 1495.0,
+            "note": "押し目待ち中(あと0.0%)"
+          }
+        ]
+      },
+      {
+        "code": "3994",
+        "name": "Money Forward, Inc.",
+        "branch": "granville_oshime",
+        "watch_class": "即断",
+        "seed_day": "2026-10-06",
+        "seed_price": 6290.0,
+        "seed_grade": "⚡好調",
+        "ref_high": 6344.0,
+        "ma5": 6173.0,
+        "ma25": 6083.6,
+        "last_close": 6307.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -3.44,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 6290.0,
+            "note": "本日判断(25MA乖離3.0%・5日レンジ100%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 6344.0,
+            "note": "確認中"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 6307.0,
+            "note": "確認中"
+          }
+        ]
+      },
+      {
+        "code": "3399",
+        "name": "Maruchiyo Yamaokaya Corporation",
+        "branch": "granville_oshime",
+        "watch_class": "即断",
+        "seed_day": "2026-10-06",
+        "seed_price": 4070.0,
+        "seed_grade": "⚡好調",
+        "ref_high": 4380.0,
+        "ma5": 4099.0,
+        "ma25": 3924.0,
+        "last_close": 4380.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -4.0,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 4070.0,
+            "note": "本日判断(25MA乖離4.3%・5日レンジ100%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 4240.0,
+            "note": "確認中／再点灯 2026-10-07"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 4380.0,
+            "note": "確認中"
+          }
+        ]
+      },
+      {
+        "code": "6254",
+        "name": "野村マイクロ・サイエンス",
+        "branch": "changepoint",
+        "watch_class": "即断",
+        "seed_day": "2026-10-06",
+        "seed_price": 3775.0,
+        "seed_grade": "🔥絶好調",
+        "ref_high": 3800.0,
+        "ma5": 3686.0,
+        "ma25": 3433.0,
+        "last_close": 3685.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -1.0,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中(seed割れ)",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 3775.0,
+            "note": "本日判断(25MA乖離10.5%・5日レンジ100%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 3800.0,
+            "note": "確認中"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 3685.0,
+            "note": "確認中(seed割れ)"
+          }
+        ]
+      },
+      {
+        "code": "9308",
+        "name": "乾汽船",
+        "branch": "changepoint",
+        "watch_class": "即断",
+        "seed_day": "2026-10-06",
+        "seed_price": 2283.0,
+        "seed_grade": "🔥絶好調",
+        "ref_high": 2283.0,
+        "ma5": 2207.8,
+        "ma25": 2222.28,
+        "last_close": 2191.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": 0.03,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中(seed割れ)",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 2283.0,
+            "note": "本日判断(25MA乖離3.0%・5日レンジ45%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 2240.0,
+            "note": "確認中(seed割れ)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 2191.0,
+            "note": "確認中(seed割れ)"
+          }
+        ]
+      },
+      {
+        "code": "4431",
+        "name": "スマレジ",
+        "branch": "changepoint",
+        "watch_class": "即断",
+        "seed_day": "2026-10-06",
+        "seed_price": 3780.0,
+        "seed_grade": "🔥絶好調",
+        "ref_high": 3890.0,
+        "ma5": 3687.0,
+        "ma25": 3455.2,
+        "last_close": 3890.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -4.0,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中",
+        "history": [
+          {
+            "date": "2026-10-06",
+            "close": 3780.0,
+            "note": "本日判断(25MA乖離9.6%・5日レンジ100%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 3835.0,
+            "note": "確認中"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 3890.0,
+            "note": "確認中"
+          }
+        ]
+      },
+      {
+        "code": "6337",
+        "name": "Tesec Corporation",
+        "branch": "kenmo_newhigh",
+        "watch_class": "待ち",
+        "seed_day": "2026-10-07",
+        "seed_price": 4065.0,
+        "seed_grade": "🚀確変",
+        "ref_high": 4090.0,
+        "ma5": 3989.0,
+        "ma25": 3570.2,
+        "last_close": 4090.0,
+        "last_date": "2026-10-08",
+        "days_watched": 1,
+        "dist_to_zone_pct": -4.0,
+        "status": "watching",
+        "status_reason": null,
+        "signal": "押し目待ち中(あと0.0%)",
+        "history": [
+          {
+            "date": "2026-10-07",
+            "close": 4065.0,
+            "note": "押し目待ち中(あと4.0%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 4090.0,
+            "note": "押し目待ち中(あと0.0%)"
+          }
+        ]
+      },
+      {
+        "code": "7550",
+        "name": "Zensho Holdings Co., Ltd.",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-07",
+        "seed_price": 11525.0,
+        "seed_grade": "⚡好調",
+        "ref_high": 11525.0,
+        "ma5": 11215.0,
+        "ma25": 11148.2,
+        "last_close": 11315.0,
+        "last_date": "2026-10-08",
+        "days_watched": 1,
+        "dist_to_zone_pct": -2.22,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中(seed割れ)",
+        "history": [
+          {
+            "date": "2026-10-07",
+            "close": 11525.0,
+            "note": "本日判断(25MA乖離3.2%・⚡好調・堅調)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 11315.0,
+            "note": "確認中(seed割れ)"
+          }
+        ]
+      },
+      {
+        "code": "7564",
+        "name": "Workman Co., Ltd.",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-07",
+        "seed_price": 5250.0,
+        "seed_grade": "⚡好調",
+        "ref_high": 5290.0,
+        "ma5": 5220.0,
+        "ma25": 5552.4,
+        "last_close": 5290.0,
+        "last_date": "2026-10-08",
+        "days_watched": 1,
+        "dist_to_zone_pct": -4.0,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中",
+        "history": [
+          {
+            "date": "2026-10-07",
+            "close": 5250.0,
+            "note": "本日判断(25MA乖離-6.1%・⚡好調・堅調)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 5290.0,
+            "note": "確認中"
+          }
+        ]
+      },
+      {
+        "code": "2702",
+        "name": "日本マクドナルドホールディングス",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-07",
+        "seed_price": 7690.0,
+        "seed_grade": "⚠減速",
+        "ref_high": 7690.0,
+        "ma5": 7526.0,
+        "ma25": 7856.0,
+        "last_close": 7620.0,
+        "last_date": "2026-10-08",
+        "days_watched": 1,
+        "dist_to_zone_pct": -3.12,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中(seed割れ)",
+        "history": [
+          {
+            "date": "2026-10-07",
+            "close": 7690.0,
+            "note": "本日判断(25MA乖離-2.3%・⚠減速・堅調)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 7620.0,
+            "note": "確認中(seed割れ)"
+          }
+        ]
+      },
+      {
+        "code": "2809",
+        "name": "Kewpie Corporation",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-07",
+        "seed_price": 4357.0,
+        "seed_grade": "⚡好調",
+        "ref_high": 4360.0,
+        "ma5": 4315.6,
+        "ma25": 4515.6,
+        "last_close": 4360.0,
+        "last_date": "2026-10-08",
+        "days_watched": 1,
+        "dist_to_zone_pct": -4.0,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中",
+        "history": [
+          {
+            "date": "2026-10-07",
+            "close": 4357.0,
+            "note": "本日判断(25MA乖離-3.9%・⚡好調・堅調)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 4360.0,
+            "note": "確認中"
+          }
+        ]
+      },
+      {
+        "code": "9627",
+        "name": "アインホールディングス",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-07",
+        "seed_price": 5432.0,
+        "seed_grade": "✅順調",
+        "ref_high": 5432.0,
+        "ma5": 5364.6,
+        "ma25": 5676.44,
+        "last_close": 5420.0,
+        "last_date": "2026-10-08",
+        "days_watched": 1,
+        "dist_to_zone_pct": -3.79,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中(seed割れ)",
+        "history": [
+          {
+            "date": "2026-10-07",
+            "close": 5432.0,
+            "note": "本日判断(25MA乖離-4.8%・✅順調・堅調)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 5420.0,
+            "note": "確認中(seed割れ)"
+          }
+        ]
+      },
+      {
+        "code": "2801",
+        "name": "キッコーマン",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-07",
+        "seed_price": 1742.0,
+        "seed_grade": "✅順調",
+        "ref_high": 1742.0,
+        "ma5": 1707.7,
+        "ma25": 1704.66,
+        "last_close": 1736.5,
+        "last_date": "2026-10-08",
+        "days_watched": 1,
+        "dist_to_zone_pct": -3.7,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中(seed割れ)",
+        "history": [
+          {
+            "date": "2026-10-07",
+            "close": 1742.0,
+            "note": "本日判断(25MA乖離2.0%・✅順調・堅調)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 1736.5,
+            "note": "確認中(seed割れ)"
+          }
+        ]
+      },
+      {
+        "code": "2685",
+        "name": "AND ST HD Co.Ltd.",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-07",
+        "seed_price": 3020.0,
+        "seed_grade": "⚠減速",
+        "ref_high": 3040.0,
+        "ma5": 3015.6,
+        "ma25": 3156.32,
+        "last_close": 3040.0,
+        "last_date": "2026-10-08",
+        "days_watched": 1,
+        "dist_to_zone_pct": -4.0,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中",
+        "history": [
+          {
+            "date": "2026-10-07",
+            "close": 3020.0,
+            "note": "本日判断(25MA乖離-4.7%・⚠減速・堅調)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 3040.0,
+            "note": "確認中"
+          }
+        ]
+      },
+      {
+        "code": "2815",
+        "name": "ARIAKE JAPAN Co., Ltd.",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-07",
+        "seed_price": 5120.0,
+        "seed_grade": "⚠減速",
+        "ref_high": 5130.0,
+        "ma5": 5066.0,
+        "ma25": 5236.0,
+        "last_close": 5130.0,
+        "last_date": "2026-10-08",
+        "days_watched": 1,
+        "dist_to_zone_pct": -4.0,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中",
+        "history": [
+          {
+            "date": "2026-10-07",
+            "close": 5120.0,
+            "note": "本日判断(25MA乖離-2.4%・⚠減速・堅調)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 5130.0,
+            "note": "確認中"
+          }
+        ]
+      },
+      {
+        "code": "4928",
+        "name": "Noevir Holdings Co., Ltd.",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-07",
+        "seed_price": 4460.0,
+        "seed_grade": "⚠減速",
+        "ref_high": 4460.0,
+        "ma5": 4436.0,
+        "ma25": 4694.8,
+        "last_close": 4455.0,
+        "last_date": "2026-10-08",
+        "days_watched": 1,
+        "dist_to_zone_pct": -3.89,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中(seed割れ)",
+        "history": [
+          {
+            "date": "2026-10-07",
+            "close": 4460.0,
+            "note": "本日判断(25MA乖離-5.4%・⚠減速・堅調)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 4455.0,
+            "note": "確認中(seed割れ)"
+          }
+        ]
+      },
+      {
+        "code": "3498",
+        "name": "Kasumigaseki Capital Co., Ltd.",
+        "branch": "granville_oshime",
+        "watch_class": "即断",
+        "seed_day": "2026-10-07",
+        "seed_price": 7780.0,
+        "seed_grade": "🔥絶好調",
+        "ref_high": 7780.0,
+        "ma5": 7474.0,
+        "ma25": 7402.8,
+        "last_close": 7620.0,
+        "last_date": "2026-10-08",
+        "days_watched": 1,
+        "dist_to_zone_pct": -1.98,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中(seed割れ)",
+        "history": [
+          {
+            "date": "2026-10-07",
+            "close": 7780.0,
+            "note": "本日判断(25MA乖離5.0%・🔥絶好調・堅調)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 7620.0,
+            "note": "確認中(seed割れ)"
+          }
+        ]
+      },
+      {
+        "code": "2334",
+        "name": "Eole, Inc.",
+        "branch": "granville_oshime",
+        "watch_class": "即断",
+        "seed_day": "2026-10-07",
+        "seed_price": 590.0,
+        "seed_grade": "🔥絶好調",
+        "ref_high": 590.0,
+        "ma5": 579.0,
+        "ma25": 574.08,
+        "last_close": 568.0,
+        "last_date": "2026-10-08",
+        "days_watched": 1,
+        "dist_to_zone_pct": -0.28,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中(seed割れ)",
+        "history": [
+          {
+            "date": "2026-10-07",
+            "close": 590.0,
+            "note": "本日判断(25MA乖離2.7%・🔥絶好調・堅調)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 568.0,
+            "note": "確認中(seed割れ)"
+          }
+        ]
+      },
+      {
+        "code": "7354",
+        "name": "Direct Marketing MiX Inc.",
+        "branch": "granville_rebound",
+        "watch_class": "即断",
+        "seed_day": "2026-10-07",
+        "seed_price": 362.0,
+        "seed_grade": "✅順調",
+        "ref_high": 362.0,
+        "ma5": 357.4,
+        "ma25": 380.56,
+        "last_close": 355.0,
+        "last_date": "2026-10-08",
+        "days_watched": 1,
+        "dist_to_zone_pct": -2.11,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "確認中(seed割れ)",
+        "history": [
+          {
+            "date": "2026-10-07",
+            "close": 362.0,
+            "note": "本日判断(25MA乖離-5.3%・✅順調・堅調)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 355.0,
+            "note": "確認中(seed割れ)"
+          }
+        ]
+      }
+    ],
+    "closed": [
+      {
+        "code": "428A",
+        "name": "Cypress Holdings Co. Ltd.",
+        "branch": "kenmo_newhigh",
+        "watch_class": "待ち",
+        "seed_day": "2026-09-16",
+        "seed_price": 1676.0,
+        "seed_grade": "⚡好調",
+        "ref_high": 1934.0,
+        "ma5": 1711.6,
+        "ma25": 1671.68,
+        "last_close": 1624.0,
+        "last_date": "2026-10-08",
+        "days_watched": 16,
+        "dist_to_zone_pct": 14.33,
+        "status": "expired",
+        "status_reason": "待機期限切れ",
+        "signal": null,
+        "history": [
+          {
+            "date": "2026-10-02",
+            "close": 1781.0,
+            "note": "押し目到達（買い場）"
+          },
+          {
+            "date": "2026-10-05",
+            "close": 1739.0,
+            "note": "押し目到達（買い場）"
+          },
+          {
+            "date": "2026-10-06",
+            "close": 1704.0,
+            "note": "押し目到達（買い場）"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 1710.0,
+            "note": "押し目到達（買い場）"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 1624.0,
+            "note": "expired:待機期限切れ"
+          }
+        ],
+        "closed_day": "2026-10-08",
+        "closed_reason": "待機期限切れ"
+      },
+      {
+        "code": "5590",
+        "name": "NETSTARS Co.",
+        "branch": "kenmo_momentum",
+        "watch_class": "待ち",
+        "seed_day": "2026-09-30",
+        "seed_price": 725.0,
+        "seed_grade": "⚡好調",
+        "ref_high": 725.0,
+        "ma5": 716.0,
+        "ma25": 719.12,
+        "last_close": 712.0,
+        "last_date": "2026-10-08",
+        "days_watched": 6,
+        "dist_to_zone_pct": -2.25,
+        "status": "invalidated",
+        "status_reason": "25MA割れ2日",
+        "signal": null,
+        "history": [
+          {
+            "date": "2026-10-02",
+            "close": 717.0,
+            "note": "押し目待ち中(あと-2.9%)"
+          },
+          {
+            "date": "2026-10-05",
+            "close": 719.0,
+            "note": "押し目待ち中(あと3.2%)"
+          },
+          {
+            "date": "2026-10-06",
+            "close": 721.0,
+            "note": "押し目待ち中(あと-3.5%)"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 711.0,
+            "note": "押し目待ち中(あと2.1%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 712.0,
+            "note": "invalidated:25MA割れ2日"
+          }
+        ],
+        "closed_day": "2026-10-08",
+        "closed_reason": "25MA割れ2日"
+      },
+      {
+        "code": "6298",
+        "name": "Y.A.C.HOLDINGS CO.,LTD.",
+        "branch": "kenmo_momentum",
+        "watch_class": "待ち",
+        "seed_day": "2026-10-01",
+        "seed_price": 1285.0,
+        "seed_grade": "🔥絶好調",
+        "ref_high": 1285.0,
+        "ma5": 1259.2,
+        "ma25": 1266.48,
+        "last_close": 1224.0,
+        "last_date": "2026-10-08",
+        "days_watched": 5,
+        "dist_to_zone_pct": 0.78,
+        "status": "invalidated",
+        "status_reason": "25MA割れ2日",
+        "signal": null,
+        "history": [
+          {
+            "date": "2026-10-02",
+            "close": 1254.0,
+            "note": "押し目待ち中(あと-1.6%)"
+          },
+          {
+            "date": "2026-10-05",
+            "close": 1275.0,
+            "note": "押し目待ち中(あと3.2%)"
+          },
+          {
+            "date": "2026-10-06",
+            "close": 1283.0,
+            "note": "押し目待ち中(あと-3.9%)（再点灯 2026-10-06）"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 1260.0,
+            "note": "押し目待ち中(あと2.1%)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 1224.0,
+            "note": "invalidated:25MA割れ2日"
+          }
+        ],
+        "closed_day": "2026-10-08",
+        "closed_reason": "25MA割れ2日"
+      },
+      {
+        "code": "6841",
+        "name": "Yokogawa Electric Corp.",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-02",
+        "seed_price": 4707.0,
+        "seed_grade": "➖横ばい",
+        "ref_high": 4743.0,
+        "ma5": 4683.0,
+        "ma25": 4690.32,
+        "last_close": 4565.0,
+        "last_date": "2026-10-08",
+        "days_watched": 4,
+        "dist_to_zone_pct": -0.26,
+        "status": "expired",
+        "status_reason": "即断期限切れ",
+        "signal": null,
+        "history": [
+          {
+            "date": "2026-10-02",
+            "close": 4707.0,
+            "note": "本日判断(25MA乖離-1.2%・5日レンジ位置51%)"
+          },
+          {
+            "date": "2026-10-05",
+            "close": 4733.0,
+            "note": "確認中"
+          },
+          {
+            "date": "2026-10-06",
+            "close": 4743.0,
+            "note": "確認中"
+          },
+          {
+            "date": "2026-10-07",
+            "close": 4667.0,
+            "note": "確認中(seed割れ)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 4565.0,
+            "note": "expired:即断期限切れ"
+          }
+        ],
+        "closed_day": "2026-10-08",
+        "closed_reason": "即断期限切れ"
       },
       {
         "code": "6058",
@@ -102340,15 +103719,15 @@
         "seed_price": 2065.0,
         "seed_grade": "⚡好調",
         "ref_high": 2065.0,
-        "ma5": 1996.6,
-        "ma25": 1975.84,
-        "last_close": 1982.0,
-        "last_date": "2026-10-07",
-        "days_watched": 3,
-        "dist_to_zone_pct": 0.02,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中(seed割れ)",
+        "ma5": 1986.4,
+        "ma25": 1965.28,
+        "last_close": 1924.0,
+        "last_date": "2026-10-08",
+        "days_watched": 4,
+        "dist_to_zone_pct": 3.04,
+        "status": "invalidated",
+        "status_reason": "反発失敗",
+        "signal": null,
         "history": [
           {
             "date": "2026-10-02",
@@ -102369,8 +103748,15 @@
             "date": "2026-10-07",
             "close": 1982.0,
             "note": "確認中(seed割れ)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 1924.0,
+            "note": "invalidated:反発失敗"
           }
-        ]
+        ],
+        "closed_day": "2026-10-08",
+        "closed_reason": "反発失敗"
       },
       {
         "code": "8163",
@@ -102381,15 +103767,15 @@
         "seed_price": 1407.0,
         "seed_grade": "➖横ばい",
         "ref_high": 1435.0,
-        "ma5": 1403.6,
-        "ma25": 1499.8,
-        "last_close": 1435.0,
-        "last_date": "2026-10-07",
-        "days_watched": 3,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中",
+        "ma5": 1410.0,
+        "ma25": 1492.88,
+        "last_close": 1424.0,
+        "last_date": "2026-10-08",
+        "days_watched": 4,
+        "dist_to_zone_pct": -3.26,
+        "status": "expired",
+        "status_reason": "即断期限切れ",
+        "signal": null,
         "history": [
           {
             "date": "2026-10-02",
@@ -102410,8 +103796,15 @@
             "date": "2026-10-07",
             "close": 1435.0,
             "note": "確認中／再点灯 2026-10-07"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 1424.0,
+            "note": "expired:即断期限切れ"
           }
-        ]
+        ],
+        "closed_day": "2026-10-08",
+        "closed_reason": "即断期限切れ"
       },
       {
         "code": "584A",
@@ -102422,15 +103815,15 @@
         "seed_price": 2432.0,
         "seed_grade": "🔥絶好調",
         "ref_high": 2463.0,
-        "ma5": 2426.0,
-        "ma25": 2549.68,
-        "last_close": 2442.0,
-        "last_date": "2026-10-07",
-        "days_watched": 3,
-        "dist_to_zone_pct": -3.17,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中",
+        "ma5": 2434.0,
+        "ma25": 2533.08,
+        "last_close": 2400.0,
+        "last_date": "2026-10-08",
+        "days_watched": 4,
+        "dist_to_zone_pct": -1.48,
+        "status": "expired",
+        "status_reason": "即断期限切れ",
+        "signal": null,
         "history": [
           {
             "date": "2026-10-02",
@@ -102451,287 +103844,15 @@
             "date": "2026-10-07",
             "close": 2442.0,
             "note": "確認中"
-          }
-        ]
-      },
-      {
-        "code": "9554",
-        "name": "AViC Co. Ltd.",
-        "branch": "kenmo_momentum",
-        "watch_class": "待ち",
-        "seed_day": "2026-10-06",
-        "seed_price": 1824.0,
-        "seed_grade": "🔥絶好調",
-        "ref_high": 1824.0,
-        "ma5": 1760.8,
-        "ma25": 1739.76,
-        "last_close": 1773.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -1.24,
-        "status": "watching",
-        "status_reason": null,
-        "signal": "押し目待ち中(あと1.2%)",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 1824.0,
-            "note": "押し目待ち中(あと-4.0%)"
           },
           {
-            "date": "2026-10-07",
-            "close": 1773.0,
-            "note": "押し目待ち中(あと1.2%)"
+            "date": "2026-10-08",
+            "close": 2400.0,
+            "note": "expired:即断期限切れ"
           }
-        ]
-      },
-      {
-        "code": "6071",
-        "name": "IBJ, Inc.",
-        "branch": "kenmo_momentum",
-        "watch_class": "待ち",
-        "seed_day": "2026-10-06",
-        "seed_price": 901.0,
-        "seed_grade": "⚡好調",
-        "ref_high": 908.0,
-        "ma5": 897.8,
-        "ma25": 896.96,
-        "last_close": 908.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
-        "status": "watching",
-        "status_reason": null,
-        "signal": "押し目待ち中(あと4.0%)",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 901.0,
-            "note": "押し目待ち中(あと-4.0%)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 908.0,
-            "note": "押し目待ち中(あと4.0%)"
-          }
-        ]
-      },
-      {
-        "code": "4412",
-        "name": "Science Arts, Inc.",
-        "branch": "kenmo_momentum",
-        "watch_class": "待ち",
-        "seed_day": "2026-10-06",
-        "seed_price": 1537.0,
-        "seed_grade": null,
-        "ref_high": 1547.0,
-        "ma5": 1514.8,
-        "ma25": 1399.96,
-        "last_close": 1547.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
-        "status": "watching",
-        "status_reason": null,
-        "signal": "押し目待ち中(あと4.0%)",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 1537.0,
-            "note": "押し目待ち中(あと-4.0%)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 1547.0,
-            "note": "押し目待ち中(あと4.0%)"
-          }
-        ]
-      },
-      {
-        "code": "4023",
-        "name": "クレハ",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-06",
-        "seed_price": 3955.0,
-        "seed_grade": "🔥絶好調",
-        "ref_high": 3955.0,
-        "ma5": 3955.0,
-        "ma25": 4273.6,
-        "last_close": 3920.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -3.14,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中(seed割れ)",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 3955.0,
-            "note": "本日判断(25MA乖離-8.0%・5日レンジ25%)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 3920.0,
-            "note": "確認中(seed割れ)"
-          }
-        ]
-      },
-      {
-        "code": "9031",
-        "name": "西日本鉄道",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-06",
-        "seed_price": 2852.0,
-        "seed_grade": "🔻悪化",
-        "ref_high": 2852.0,
-        "ma5": 2836.9,
-        "ma25": 3039.4,
-        "last_close": 2813.5,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -2.69,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中(seed割れ)",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 2852.0,
-            "note": "本日判断(25MA乖離-6.5%・5日レンジ31%)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 2813.5,
-            "note": "確認中(seed割れ)"
-          }
-        ]
-      },
-      {
-        "code": "4680",
-        "name": "ROUND ONE Corporation",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-06",
-        "seed_price": 1277.5,
-        "seed_grade": "✅順調",
-        "ref_high": 1288.0,
-        "ma5": 1266.1,
-        "ma25": 1234.56,
-        "last_close": 1288.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 1277.5,
-            "note": "本日判断(25MA乖離3.3%・5日レンジ100%)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 1288.0,
-            "note": "確認中／再点灯 2026-10-07"
-          }
-        ]
-      },
-      {
-        "code": "9861",
-        "name": "吉野家ホールディングス",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-06",
-        "seed_price": 3675.0,
-        "seed_grade": "✅順調",
-        "ref_high": 3728.0,
-        "ma5": 3685.8,
-        "ma25": 3740.52,
-        "last_close": 3728.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 3675.0,
-            "note": "本日判断(25MA乖離-1.9%・5日レンジ71%)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 3728.0,
-            "note": "確認中／再点灯 2026-10-07"
-          }
-        ]
-      },
-      {
-        "code": "7956",
-        "name": "Pigeon Corporation",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-06",
-        "seed_price": 2058.5,
-        "seed_grade": "✅順調",
-        "ref_high": 2084.0,
-        "ma5": 2045.5,
-        "ma25": 2022.06,
-        "last_close": 2084.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 2058.5,
-            "note": "本日判断(25MA乖離1.7%・5日レンジ100%)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 2084.0,
-            "note": "確認中"
-          }
-        ]
-      },
-      {
-        "code": "9503",
-        "name": "Kansai Electric Power Company, Incorporated",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-06",
-        "seed_price": 2602.0,
-        "seed_grade": "🔻悪化",
-        "ref_high": 2655.5,
-        "ma5": 2633.8,
-        "ma25": 2841.66,
-        "last_close": 2655.5,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 2602.0,
-            "note": "本日判断(25MA乖離-8.4%・5日レンジ0%)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 2655.5,
-            "note": "確認中"
-          }
-        ]
+        ],
+        "closed_day": "2026-10-08",
+        "closed_reason": "即断期限切れ"
       },
       {
         "code": "5726",
@@ -102742,15 +103863,15 @@
         "seed_price": 2412.0,
         "seed_grade": "🔻悪化",
         "ref_high": 2412.0,
-        "ma5": 2407.2,
-        "ma25": 2520.8,
-        "last_close": 2390.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -3.12,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中(seed割れ)",
+        "ma5": 2370.2,
+        "ma25": 2505.16,
+        "last_close": 2280.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": 1.56,
+        "status": "invalidated",
+        "status_reason": "反発失敗",
+        "signal": null,
         "history": [
           {
             "date": "2026-10-06",
@@ -102761,287 +103882,15 @@
             "date": "2026-10-07",
             "close": 2390.0,
             "note": "確認中(seed割れ)"
-          }
-        ]
-      },
-      {
-        "code": "6457",
-        "name": "グローリー",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-06",
-        "seed_price": 4557.0,
-        "seed_grade": "業績データ取得不可(経常益予想非開示)",
-        "ref_high": 4557.0,
-        "ma5": 4474.4,
-        "ma25": 4486.56,
-        "last_close": 4556.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -3.98,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中(seed割れ)",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 4557.0,
-            "note": "本日判断(25MA乖離1.3%・5日レンジ100%)"
           },
           {
-            "date": "2026-10-07",
-            "close": 4556.0,
-            "note": "確認中(seed割れ)"
+            "date": "2026-10-08",
+            "close": 2280.0,
+            "note": "invalidated:反発失敗"
           }
-        ]
-      },
-      {
-        "code": "3234",
-        "name": "Mori Hills Reit Investment Corporation",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-06",
-        "seed_price": 118200.0,
-        "seed_grade": "判定保留",
-        "ref_high": 118300.0,
-        "ma5": 118560.0,
-        "ma25": 123316.0,
-        "last_close": 118300.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 118200.0,
-            "note": "本日判断(25MA乖離-4.5%・5日レンジ19%)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 118300.0,
-            "note": "確認中"
-          }
-        ]
-      },
-      {
-        "code": "3249",
-        "name": "Industrial & Infrastructure Fund Investment Corporation",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-06",
-        "seed_price": 127100.0,
-        "seed_grade": "判定保留",
-        "ref_high": 127100.0,
-        "ma5": 127640.0,
-        "ma25": 133920.0,
-        "last_close": 126400.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -3.47,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中(seed割れ)",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 127100.0,
-            "note": "本日判断(25MA乖離-5.4%・5日レンジ7%)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 126400.0,
-            "note": "確認中(seed割れ)"
-          }
-        ]
-      },
-      {
-        "code": "3279",
-        "name": "Activia Properties, Inc.",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-06",
-        "seed_price": 125300.0,
-        "seed_grade": "判定保留",
-        "ref_high": 125300.0,
-        "ma5": 125220.0,
-        "ma25": 130448.0,
-        "last_close": 124400.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -3.31,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中(seed割れ)",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 125300.0,
-            "note": "本日判断(25MA乖離-4.3%・5日レンジ33%)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 124400.0,
-            "note": "確認中(seed割れ)"
-          }
-        ]
-      },
-      {
-        "code": "3283",
-        "name": "Nippon Prologis REIT, Inc.",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-06",
-        "seed_price": 80000.0,
-        "seed_grade": "判定保留",
-        "ref_high": 80000.0,
-        "ma5": 80340.0,
-        "ma25": 83932.0,
-        "last_close": 79800.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -3.76,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中(seed割れ)",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 80000.0,
-            "note": "本日判断(25MA乖離-4.9%・5日レンジ15%)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 79800.0,
-            "note": "確認中(seed割れ)"
-          }
-        ]
-      },
-      {
-        "code": "8955",
-        "name": "Japan Prime Realty Investment Corporation",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-06",
-        "seed_price": 89600.0,
-        "seed_grade": "判定保留",
-        "ref_high": 89600.0,
-        "ma5": 89820.0,
-        "ma25": 93924.0,
-        "last_close": 88500.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -2.81,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中(seed割れ)",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 89600.0,
-            "note": "本日判断(25MA乖離-5.0%・5日レンジ21%)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 88500.0,
-            "note": "確認中(seed割れ)"
-          }
-        ]
-      },
-      {
-        "code": "8961",
-        "name": "MORI TRUST REIT.Inc",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-06",
-        "seed_price": 67500.0,
-        "seed_grade": "判定保留",
-        "ref_high": 67500.0,
-        "ma5": 67700.0,
-        "ma25": 70492.0,
-        "last_close": 66800.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -2.99,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中(seed割れ)",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 67500.0,
-            "note": "本日判断(25MA乖離-4.6%・5日レンジ15%)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 66800.0,
-            "note": "確認中(seed割れ)"
-          }
-        ]
-      },
-      {
-        "code": "6473",
-        "name": "JTEKT Corporation",
-        "branch": "granville_tenkan",
-        "watch_class": "待ち",
-        "seed_day": "2026-10-06",
-        "seed_price": 2198.5,
-        "seed_grade": "⚠減速",
-        "ref_high": 2206.0,
-        "ma5": 2171.9,
-        "ma25": 2111.4,
-        "last_close": 2206.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
-        "status": "watching",
-        "status_reason": null,
-        "signal": "押し目待ち中(あと4.0%)",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 2198.5,
-            "note": "押し目待ち中(あと-4.0%)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 2206.0,
-            "note": "押し目待ち中(あと4.0%)"
-          }
-        ]
-      },
-      {
-        "code": "3661",
-        "name": "m-up holdings, Inc.",
-        "branch": "granville_tenkan",
-        "watch_class": "待ち",
-        "seed_day": "2026-10-06",
-        "seed_price": 834.0,
-        "seed_grade": "⚡好調",
-        "ref_high": 834.0,
-        "ma5": 817.0,
-        "ma25": 810.12,
-        "last_close": 825.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -2.95,
-        "status": "watching",
-        "status_reason": null,
-        "signal": "押し目待ち中(あと3.0%)",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 834.0,
-            "note": "押し目待ち中(あと-4.0%)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 825.0,
-            "note": "押し目待ち中(あと3.0%)"
-          }
-        ]
+        ],
+        "closed_day": "2026-10-08",
+        "closed_reason": "反発失敗"
       },
       {
         "code": "4658",
@@ -103052,15 +103901,15 @@
         "seed_price": 1612.0,
         "seed_grade": "⚡好調",
         "ref_high": 1612.0,
-        "ma5": 1565.4,
-        "ma25": 1580.84,
-        "last_close": 1567.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -1.24,
-        "status": "watching",
-        "status_reason": null,
-        "signal": "押し目待ち中(あと1.2%)",
+        "ma5": 1566.2,
+        "ma25": 1579.76,
+        "last_close": 1553.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -0.35,
+        "status": "invalidated",
+        "status_reason": "25MA割れ2日",
+        "signal": null,
         "history": [
           {
             "date": "2026-10-06",
@@ -103071,70 +103920,15 @@
             "date": "2026-10-07",
             "close": 1567.0,
             "note": "押し目待ち中(あと1.2%)"
-          }
-        ]
-      },
-      {
-        "code": "5036",
-        "name": "Japan Business Systems, Inc.",
-        "branch": "granville_tenkan",
-        "watch_class": "待ち",
-        "seed_day": "2026-10-06",
-        "seed_price": 1572.0,
-        "seed_grade": "✅順調",
-        "ref_high": 1591.0,
-        "ma5": 1560.6,
-        "ma25": 1560.4,
-        "last_close": 1591.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
-        "status": "watching",
-        "status_reason": null,
-        "signal": "押し目待ち中(あと4.0%)",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 1572.0,
-            "note": "押し目待ち中(あと-4.0%)"
           },
           {
-            "date": "2026-10-07",
-            "close": 1591.0,
-            "note": "押し目待ち中(あと4.0%)／再点灯 2026-10-07"
+            "date": "2026-10-08",
+            "close": 1553.0,
+            "note": "invalidated:25MA割れ2日"
           }
-        ]
-      },
-      {
-        "code": "8927",
-        "name": "Meiho Enterprise Co., Ltd.",
-        "branch": "granville_tenkan",
-        "watch_class": "待ち",
-        "seed_day": "2026-10-06",
-        "seed_price": 493.0,
-        "seed_grade": "✅順調",
-        "ref_high": 496.0,
-        "ma5": 493.2,
-        "ma25": 490.28,
-        "last_close": 496.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
-        "status": "watching",
-        "status_reason": null,
-        "signal": "押し目待ち中(あと4.0%)",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 493.0,
-            "note": "押し目待ち中(あと-4.0%)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 496.0,
-            "note": "押し目待ち中(あと4.0%)"
-          }
-        ]
+        ],
+        "closed_day": "2026-10-08",
+        "closed_reason": "25MA割れ2日"
       },
       {
         "code": "4375",
@@ -103145,15 +103939,15 @@
         "seed_price": 675.0,
         "seed_grade": "取得不可",
         "ref_high": 675.0,
-        "ma5": 655.4,
-        "ma25": 666.72,
-        "last_close": 665.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -2.56,
-        "status": "watching",
-        "status_reason": null,
-        "signal": "押し目待ち中(あと2.6%)",
+        "ma5": 656.4,
+        "ma25": 665.08,
+        "last_close": 653.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": -0.77,
+        "status": "invalidated",
+        "status_reason": "25MA割れ2日",
+        "signal": null,
         "history": [
           {
             "date": "2026-10-06",
@@ -103164,101 +103958,15 @@
             "date": "2026-10-07",
             "close": 665.0,
             "note": "押し目待ち中(あと2.6%)"
-          }
-        ]
-      },
-      {
-        "code": "4763",
-        "name": "クリーク・アンド・リバー社",
-        "branch": "granville_tenkan",
-        "watch_class": "待ち",
-        "seed_day": "2026-10-06",
-        "seed_price": 1517.0,
-        "seed_grade": null,
-        "ref_high": 1517.0,
-        "ma5": 1503.2,
-        "ma25": 1495.04,
-        "last_close": 1510.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -3.55,
-        "status": "watching",
-        "status_reason": null,
-        "signal": "押し目待ち中(あと3.6%)",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 1517.0,
-            "note": "押し目待ち中(あと-4.0%)"
           },
           {
-            "date": "2026-10-07",
-            "close": 1510.0,
-            "note": "押し目待ち中(あと3.6%)"
+            "date": "2026-10-08",
+            "close": 653.0,
+            "note": "invalidated:25MA割れ2日"
           }
-        ]
-      },
-      {
-        "code": "3994",
-        "name": "Money Forward, Inc.",
-        "branch": "granville_oshime",
-        "watch_class": "即断",
-        "seed_day": "2026-10-06",
-        "seed_price": 6290.0,
-        "seed_grade": "⚡好調",
-        "ref_high": 6344.0,
-        "ma5": 6111.6,
-        "ma25": 6089.44,
-        "last_close": 6344.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 6290.0,
-            "note": "本日判断(25MA乖離3.0%・5日レンジ100%)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 6344.0,
-            "note": "確認中"
-          }
-        ]
-      },
-      {
-        "code": "3399",
-        "name": "Maruchiyo Yamaokaya Corporation",
-        "branch": "granville_oshime",
-        "watch_class": "即断",
-        "seed_day": "2026-10-06",
-        "seed_price": 4070.0,
-        "seed_grade": "⚡好調",
-        "ref_high": 4240.0,
-        "ma5": 3992.0,
-        "ma25": 3909.4,
-        "last_close": 4240.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 4070.0,
-            "note": "本日判断(25MA乖離4.3%・5日レンジ100%)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 4240.0,
-            "note": "確認中／再点灯 2026-10-07"
-          }
-        ]
+        ],
+        "closed_day": "2026-10-08",
+        "closed_reason": "25MA割れ2日"
       },
       {
         "code": "8360",
@@ -103269,15 +103977,15 @@
         "seed_price": 1594.0,
         "seed_grade": "取得不可",
         "ref_high": 1594.0,
-        "ma5": 1530.0,
-        "ma25": 1475.16,
-        "last_close": 1525.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": 0.34,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中(seed割れ)",
+        "ma5": 1522.0,
+        "ma25": 1474.88,
+        "last_close": 1469.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": 4.17,
+        "status": "invalidated",
+        "status_reason": "反発失敗",
+        "signal": null,
         "history": [
           {
             "date": "2026-10-06",
@@ -103288,8 +103996,15 @@
             "date": "2026-10-07",
             "close": 1525.0,
             "note": "確認中(seed割れ)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 1469.0,
+            "note": "invalidated:反発失敗"
           }
-        ]
+        ],
+        "closed_day": "2026-10-08",
+        "closed_reason": "反発失敗"
       },
       {
         "code": "8544",
@@ -103300,15 +104015,15 @@
         "seed_price": 3045.0,
         "seed_grade": "取得不可",
         "ref_high": 3045.0,
-        "ma5": 2962.6,
-        "ma25": 2885.12,
-        "last_close": 2956.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -1.11,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中(seed割れ)",
+        "ma5": 2949.6,
+        "ma25": 2885.52,
+        "last_close": 2857.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": 2.32,
+        "status": "invalidated",
+        "status_reason": "反発失敗",
+        "signal": null,
         "history": [
           {
             "date": "2026-10-06",
@@ -103319,8 +104034,15 @@
             "date": "2026-10-07",
             "close": 2956.0,
             "note": "確認中(seed割れ)"
+          },
+          {
+            "date": "2026-10-08",
+            "close": 2857.0,
+            "note": "invalidated:反発失敗"
           }
-        ]
+        ],
+        "closed_day": "2026-10-08",
+        "closed_reason": "反発失敗"
       },
       {
         "code": "5713",
@@ -103331,15 +104053,15 @@
         "seed_price": 9815.0,
         "seed_grade": "🔥絶好調",
         "ref_high": 9815.0,
-        "ma5": 9724.8,
-        "ma25": 9870.12,
-        "last_close": 9643.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -2.29,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中(seed割れ)",
+        "ma5": 9623.4,
+        "ma25": 9796.04,
+        "last_close": 9263.0,
+        "last_date": "2026-10-08",
+        "days_watched": 2,
+        "dist_to_zone_pct": 1.72,
+        "status": "invalidated",
+        "status_reason": "反発失敗",
+        "signal": null,
         "history": [
           {
             "date": "2026-10-06",
@@ -103350,413 +104072,15 @@
             "date": "2026-10-07",
             "close": 9643.0,
             "note": "確認中(seed割れ)"
-          }
-        ]
-      },
-      {
-        "code": "6254",
-        "name": "野村マイクロ・サイエンス",
-        "branch": "changepoint",
-        "watch_class": "即断",
-        "seed_day": "2026-10-06",
-        "seed_price": 3775.0,
-        "seed_grade": "🔥絶好調",
-        "ref_high": 3800.0,
-        "ma5": 3658.0,
-        "ma25": 3426.8,
-        "last_close": 3800.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 3775.0,
-            "note": "本日判断(25MA乖離10.5%・5日レンジ100%)"
           },
           {
-            "date": "2026-10-07",
-            "close": 3800.0,
-            "note": "確認中"
+            "date": "2026-10-08",
+            "close": 9263.0,
+            "note": "invalidated:反発失敗"
           }
-        ]
-      },
-      {
-        "code": "9308",
-        "name": "乾汽船",
-        "branch": "changepoint",
-        "watch_class": "即断",
-        "seed_day": "2026-10-06",
-        "seed_price": 2283.0,
-        "seed_grade": "🔥絶好調",
-        "ref_high": 2283.0,
-        "ma5": 2225.2,
-        "ma25": 2221.44,
-        "last_close": 2240.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -2.16,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中(seed割れ)",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 2283.0,
-            "note": "本日判断(25MA乖離3.0%・5日レンジ45%)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 2240.0,
-            "note": "確認中(seed割れ)"
-          }
-        ]
-      },
-      {
-        "code": "4431",
-        "name": "スマレジ",
-        "branch": "changepoint",
-        "watch_class": "即断",
-        "seed_day": "2026-10-06",
-        "seed_price": 3780.0,
-        "seed_grade": "🔥絶好調",
-        "ref_high": 3835.0,
-        "ma5": 3596.0,
-        "ma25": 3451.8,
-        "last_close": 3835.0,
-        "last_date": "2026-10-07",
-        "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "確認中",
-        "history": [
-          {
-            "date": "2026-10-06",
-            "close": 3780.0,
-            "note": "本日判断(25MA乖離9.6%・5日レンジ100%)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 3835.0,
-            "note": "確認中"
-          }
-        ]
-      },
-      {
-        "code": "6337",
-        "name": "Tesec Corporation",
-        "branch": "kenmo_newhigh",
-        "watch_class": "待ち",
-        "seed_day": "2026-10-07",
-        "seed_price": 4065.0,
-        "seed_grade": "🚀確変",
-        "ref_high": 4065.0,
-        "ma5": 3930.0,
-        "ma25": 3540.8,
-        "last_close": 4065.0,
-        "last_date": "2026-10-07",
-        "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
-        "status": "watching",
-        "status_reason": null,
-        "signal": "押し目待ち中(あと4.0%)",
-        "history": [
-          {
-            "date": "2026-10-07",
-            "close": 4065.0,
-            "note": "押し目待ち中(あと4.0%)"
-          }
-        ]
-      },
-      {
-        "code": "7550",
-        "name": "Zensho Holdings Co., Ltd.",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-07",
-        "seed_price": 11525.0,
-        "seed_grade": "⚡好調",
-        "ref_high": 11525.0,
-        "ma5": 11110.0,
-        "ma25": 11167.2,
-        "last_close": 11525.0,
-        "last_date": "2026-10-07",
-        "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "本日判断",
-        "history": [
-          {
-            "date": "2026-10-07",
-            "close": 11525.0,
-            "note": "本日判断(25MA乖離3.2%・⚡好調・堅調)"
-          }
-        ]
-      },
-      {
-        "code": "7564",
-        "name": "Workman Co., Ltd.",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-07",
-        "seed_price": 5250.0,
-        "seed_grade": "⚡好調",
-        "ref_high": 5250.0,
-        "ma5": 5258.0,
-        "ma25": 5590.0,
-        "last_close": 5250.0,
-        "last_date": "2026-10-07",
-        "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "本日判断",
-        "history": [
-          {
-            "date": "2026-10-07",
-            "close": 5250.0,
-            "note": "本日判断(25MA乖離-6.1%・⚡好調・堅調)"
-          }
-        ]
-      },
-      {
-        "code": "2702",
-        "name": "日本マクドナルドホールディングス",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-07",
-        "seed_price": 7690.0,
-        "seed_grade": "⚠減速",
-        "ref_high": 7690.0,
-        "ma5": 7514.0,
-        "ma25": 7874.4,
-        "last_close": 7690.0,
-        "last_date": "2026-10-07",
-        "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "本日判断",
-        "history": [
-          {
-            "date": "2026-10-07",
-            "close": 7690.0,
-            "note": "本日判断(25MA乖離-2.3%・⚠減速・堅調)"
-          }
-        ]
-      },
-      {
-        "code": "2809",
-        "name": "Kewpie Corporation",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-07",
-        "seed_price": 4357.0,
-        "seed_grade": "⚡好調",
-        "ref_high": 4357.0,
-        "ma5": 4320.6,
-        "ma25": 4531.92,
-        "last_close": 4357.0,
-        "last_date": "2026-10-07",
-        "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "本日判断",
-        "history": [
-          {
-            "date": "2026-10-07",
-            "close": 4357.0,
-            "note": "本日判断(25MA乖離-3.9%・⚡好調・堅調)"
-          }
-        ]
-      },
-      {
-        "code": "9627",
-        "name": "アインホールディングス",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-07",
-        "seed_price": 5432.0,
-        "seed_grade": "✅順調",
-        "ref_high": 5432.0,
-        "ma5": 5351.6,
-        "ma25": 5705.64,
-        "last_close": 5432.0,
-        "last_date": "2026-10-07",
-        "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "本日判断",
-        "history": [
-          {
-            "date": "2026-10-07",
-            "close": 5432.0,
-            "note": "本日判断(25MA乖離-4.8%・✅順調・堅調)"
-          }
-        ]
-      },
-      {
-        "code": "2801",
-        "name": "キッコーマン",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-07",
-        "seed_price": 1742.0,
-        "seed_grade": "✅順調",
-        "ref_high": 1742.0,
-        "ma5": 1692.5,
-        "ma25": 1708.6,
-        "last_close": 1742.0,
-        "last_date": "2026-10-07",
-        "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "本日判断",
-        "history": [
-          {
-            "date": "2026-10-07",
-            "close": 1742.0,
-            "note": "本日判断(25MA乖離2.0%・✅順調・堅調)"
-          }
-        ]
-      },
-      {
-        "code": "2685",
-        "name": "AND ST HD Co.Ltd.",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-07",
-        "seed_price": 3020.0,
-        "seed_grade": "⚠減速",
-        "ref_high": 3020.0,
-        "ma5": 3015.6,
-        "ma25": 3169.92,
-        "last_close": 3020.0,
-        "last_date": "2026-10-07",
-        "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "本日判断",
-        "history": [
-          {
-            "date": "2026-10-07",
-            "close": 3020.0,
-            "note": "本日判断(25MA乖離-4.7%・⚠減速・堅調)"
-          }
-        ]
-      },
-      {
-        "code": "2815",
-        "name": "ARIAKE JAPAN Co., Ltd.",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-07",
-        "seed_price": 5120.0,
-        "seed_grade": "⚠減速",
-        "ref_high": 5120.0,
-        "ma5": 5054.0,
-        "ma25": 5247.2,
-        "last_close": 5120.0,
-        "last_date": "2026-10-07",
-        "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "本日判断",
-        "history": [
-          {
-            "date": "2026-10-07",
-            "close": 5120.0,
-            "note": "本日判断(25MA乖離-2.4%・⚠減速・堅調)"
-          }
-        ]
-      },
-      {
-        "code": "4928",
-        "name": "Noevir Holdings Co., Ltd.",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-07",
-        "seed_price": 4460.0,
-        "seed_grade": "⚠減速",
-        "ref_high": 4460.0,
-        "ma5": 4441.0,
-        "ma25": 4713.4,
-        "last_close": 4460.0,
-        "last_date": "2026-10-07",
-        "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "本日判断",
-        "history": [
-          {
-            "date": "2026-10-07",
-            "close": 4460.0,
-            "note": "本日判断(25MA乖離-5.4%・⚠減速・堅調)"
-          }
-        ]
-      },
-      {
-        "code": "3498",
-        "name": "Kasumigaseki Capital Co., Ltd.",
-        "branch": "granville_oshime",
-        "watch_class": "即断",
-        "seed_day": "2026-10-07",
-        "seed_price": 7780.0,
-        "seed_grade": "🔥絶好調",
-        "ref_high": 7780.0,
-        "ma5": 7460.0,
-        "ma25": 7406.0,
-        "last_close": 7780.0,
-        "last_date": "2026-10-07",
-        "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "本日判断",
-        "history": [
-          {
-            "date": "2026-10-07",
-            "close": 7780.0,
-            "note": "本日判断(25MA乖離5.0%・🔥絶好調・堅調)"
-          }
-        ]
-      },
-      {
-        "code": "2334",
-        "name": "Eole, Inc.",
-        "branch": "granville_oshime",
-        "watch_class": "即断",
-        "seed_day": "2026-10-07",
-        "seed_price": 590.0,
-        "seed_grade": "🔥絶好調",
-        "ref_high": 590.0,
-        "ma5": 578.8,
-        "ma25": 574.24,
-        "last_close": 590.0,
-        "last_date": "2026-10-07",
-        "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "本日判断",
-        "history": [
-          {
-            "date": "2026-10-07",
-            "close": 590.0,
-            "note": "本日判断(25MA乖離2.7%・🔥絶好調・堅調)"
-          }
-        ]
+        ],
+        "closed_day": "2026-10-08",
+        "closed_reason": "反発失敗"
       },
       {
         "code": "290A",
@@ -103767,51 +104091,30 @@
         "seed_price": 1500.0,
         "seed_grade": "判定保留(変則決算)",
         "ref_high": 1500.0,
-        "ma5": 1453.4,
-        "ma25": 1455.28,
-        "last_close": 1500.0,
-        "last_date": "2026-10-07",
-        "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "本日判断",
+        "ma5": 1446.4,
+        "ma25": 1450.28,
+        "last_close": 1374.0,
+        "last_date": "2026-10-08",
+        "days_watched": 1,
+        "dist_to_zone_pct": 4.8,
+        "status": "invalidated",
+        "status_reason": "反発失敗",
+        "signal": null,
         "history": [
           {
             "date": "2026-10-07",
             "close": 1500.0,
             "note": "本日判断(25MA乖離3.1%・判定保留(変則決算)・堅調)"
-          }
-        ]
-      },
-      {
-        "code": "7354",
-        "name": "Direct Marketing MiX Inc.",
-        "branch": "granville_rebound",
-        "watch_class": "即断",
-        "seed_day": "2026-10-07",
-        "seed_price": 362.0,
-        "seed_grade": "✅順調",
-        "ref_high": 362.0,
-        "ma5": 358.2,
-        "ma25": 382.24,
-        "last_close": 362.0,
-        "last_date": "2026-10-07",
-        "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
-        "status": "judge_now",
-        "status_reason": null,
-        "signal": "本日判断",
-        "history": [
+          },
           {
-            "date": "2026-10-07",
-            "close": 362.0,
-            "note": "本日判断(25MA乖離-5.3%・✅順調・堅調)"
+            "date": "2026-10-08",
+            "close": 1374.0,
+            "note": "invalidated:反発失敗"
           }
-        ]
-      }
-    ],
-    "closed": [
+        ],
+        "closed_day": "2026-10-08",
+        "closed_reason": "反発失敗"
+      },
       {
         "code": "558A",
         "name": "SQUEEZE Inc.",
@@ -104574,678 +104877,6 @@
           {
             "date": "2026-10-07",
             "close": 6251.0,
-            "note": "expired:即断期限切れ"
-          }
-        ],
-        "closed_day": "2026-10-07",
-        "closed_reason": "即断期限切れ"
-      },
-      {
-        "code": "5110",
-        "name": "Sumitomo Rubber Industries, Ltd.",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-01",
-        "seed_price": 2022.0,
-        "seed_grade": "業績データ取得不可(経常益予想非開示)",
-        "ref_high": 2043.5,
-        "ma5": 2011.4,
-        "ma25": 2049.3,
-        "last_close": 2043.5,
-        "last_date": "2026-10-07",
-        "days_watched": 4,
-        "dist_to_zone_pct": -4.0,
-        "status": "expired",
-        "status_reason": "即断期限切れ",
-        "signal": null,
-        "history": [
-          {
-            "date": "2026-10-01",
-            "close": 2022.0,
-            "note": "本日判断(25MA乖離-3.3%・業績データ取得不可(経常益予想非開示)・レンジ様子見)"
-          },
-          {
-            "date": "2026-10-02",
-            "close": 1979.5,
-            "note": "確認中(seed割れ注意)"
-          },
-          {
-            "date": "2026-10-05",
-            "close": 1999.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-06",
-            "close": 2013.0,
-            "note": "確認中(seed割れ)（再点灯 2026-10-06）"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 2043.5,
-            "note": "expired:即断期限切れ／再点灯 2026-10-07"
-          }
-        ],
-        "closed_day": "2026-10-07",
-        "closed_reason": "即断期限切れ"
-      },
-      {
-        "code": "4385",
-        "name": "Mercari, Inc.",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-01",
-        "seed_price": 3620.0,
-        "seed_grade": "業績データ取得不可(経常益予想非開示)",
-        "ref_high": 3620.0,
-        "ma5": 3574.6,
-        "ma25": 3883.84,
-        "last_close": 3600.0,
-        "last_date": "2026-10-07",
-        "days_watched": 4,
-        "dist_to_zone_pct": -3.47,
-        "status": "expired",
-        "status_reason": "即断期限切れ",
-        "signal": null,
-        "history": [
-          {
-            "date": "2026-10-01",
-            "close": 3620.0,
-            "note": "本日判断(25MA乖離-10.5%・業績データ取得不可(経常益予想非開示)・レンジ様子見)"
-          },
-          {
-            "date": "2026-10-02",
-            "close": 3546.0,
-            "note": "確認中(seed割れ注意)"
-          },
-          {
-            "date": "2026-10-05",
-            "close": 3556.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-06",
-            "close": 3551.0,
-            "note": "確認中(seed割れ)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 3600.0,
-            "note": "expired:即断期限切れ"
-          }
-        ],
-        "closed_day": "2026-10-07",
-        "closed_reason": "即断期限切れ"
-      },
-      {
-        "code": "4912",
-        "name": "Lion Corporation",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-01",
-        "seed_price": 1740.0,
-        "seed_grade": "業績データ取得不可(経常益予想非開示)",
-        "ref_high": 1754.5,
-        "ma5": 1737.5,
-        "ma25": 1771.5,
-        "last_close": 1754.5,
-        "last_date": "2026-10-07",
-        "days_watched": 4,
-        "dist_to_zone_pct": -4.0,
-        "status": "expired",
-        "status_reason": "即断期限切れ",
-        "signal": null,
-        "history": [
-          {
-            "date": "2026-10-01",
-            "close": 1740.0,
-            "note": "本日判断(25MA乖離-3.1%・業績データ取得不可(経常益予想非開示)・レンジ様子見)"
-          },
-          {
-            "date": "2026-10-02",
-            "close": 1726.0,
-            "note": "確認中(seed割れ注意)"
-          },
-          {
-            "date": "2026-10-05",
-            "close": 1728.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-06",
-            "close": 1739.0,
-            "note": "確認中(seed割れ)（再点灯 2026-10-06）"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 1754.5,
-            "note": "expired:即断期限切れ"
-          }
-        ],
-        "closed_day": "2026-10-07",
-        "closed_reason": "即断期限切れ"
-      },
-      {
-        "code": "3591",
-        "name": "WACOAL HOLDINGS CORP",
-        "branch": "choruko_reversal",
-        "watch_class": "即断",
-        "seed_day": "2026-10-01",
-        "seed_price": 3709.0,
-        "seed_grade": "🔻悪化",
-        "ref_high": 3709.0,
-        "ma5": 3612.8,
-        "ma25": 3932.2,
-        "last_close": 3559.0,
-        "last_date": "2026-10-07",
-        "days_watched": 4,
-        "dist_to_zone_pct": 0.05,
-        "status": "expired",
-        "status_reason": "即断期限切れ",
-        "signal": null,
-        "history": [
-          {
-            "date": "2026-10-01",
-            "close": 3709.0,
-            "note": "本日判断(25MA乖離-8.3%・🔻悪化・レンジ様子見)"
-          },
-          {
-            "date": "2026-10-02",
-            "close": 3605.0,
-            "note": "確認中(seed割れ注意)"
-          },
-          {
-            "date": "2026-10-05",
-            "close": 3573.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-06",
-            "close": 3618.0,
-            "note": "確認中(seed割れ)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 3559.0,
-            "note": "expired:即断期限切れ"
-          }
-        ],
-        "closed_day": "2026-10-07",
-        "closed_reason": "即断期限切れ"
-      },
-      {
-        "code": "6834",
-        "name": "Seikoh Giken Co., Ltd.",
-        "branch": "granville_oshime",
-        "watch_class": "即断",
-        "seed_day": "2026-10-01",
-        "seed_price": 6420.0,
-        "seed_grade": "🔥絶好調",
-        "ref_high": 7370.0,
-        "ma5": 6966.0,
-        "ma25": 5759.8,
-        "last_close": 7270.0,
-        "last_date": "2026-10-07",
-        "days_watched": 4,
-        "dist_to_zone_pct": -2.68,
-        "status": "expired",
-        "status_reason": "即断期限切れ",
-        "signal": null,
-        "history": [
-          {
-            "date": "2026-10-01",
-            "close": 6420.0,
-            "note": "本日判断(25MA乖離+17.4%・🔥絶好調・レンジ様子見)"
-          },
-          {
-            "date": "2026-10-02",
-            "close": 6850.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-05",
-            "close": 6920.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-06",
-            "close": 7370.0,
-            "note": "確認中（再点灯 2026-10-06）"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 7270.0,
-            "note": "expired:即断期限切れ"
-          }
-        ],
-        "closed_day": "2026-10-07",
-        "closed_reason": "即断期限切れ"
-      },
-      {
-        "code": "4919",
-        "name": "ミルボン",
-        "branch": "granville_oshime",
-        "watch_class": "即断",
-        "seed_day": "2026-10-01",
-        "seed_price": 3290.0,
-        "seed_grade": "⚡好調",
-        "ref_high": 3320.0,
-        "ma5": 3262.0,
-        "ma25": 3211.6,
-        "last_close": 3320.0,
-        "last_date": "2026-10-07",
-        "days_watched": 4,
-        "dist_to_zone_pct": -4.0,
-        "status": "expired",
-        "status_reason": "即断期限切れ",
-        "signal": null,
-        "history": [
-          {
-            "date": "2026-10-01",
-            "close": 3290.0,
-            "note": "本日判断(25MA乖離+2.3%・⚡好調・レンジ様子見)"
-          },
-          {
-            "date": "2026-10-02",
-            "close": 3215.0,
-            "note": "確認中(seed割れ注意)"
-          },
-          {
-            "date": "2026-10-05",
-            "close": 3250.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-06",
-            "close": 3235.0,
-            "note": "確認中(seed割れ)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 3320.0,
-            "note": "expired:即断期限切れ"
-          }
-        ],
-        "closed_day": "2026-10-07",
-        "closed_reason": "即断期限切れ"
-      },
-      {
-        "code": "6023",
-        "name": "ダイハツインフィニアース",
-        "branch": "granville_oshime",
-        "watch_class": "即断",
-        "seed_day": "2026-10-01",
-        "seed_price": 3355.0,
-        "seed_grade": "⚡好調",
-        "ref_high": 3400.0,
-        "ma5": 3348.0,
-        "ma25": 3251.64,
-        "last_close": 3400.0,
-        "last_date": "2026-10-07",
-        "days_watched": 4,
-        "dist_to_zone_pct": -4.0,
-        "status": "expired",
-        "status_reason": "即断期限切れ",
-        "signal": null,
-        "history": [
-          {
-            "date": "2026-10-01",
-            "close": 3355.0,
-            "note": "本日判断(25MA乖離+5.0%・⚡好調・レンジ様子見)"
-          },
-          {
-            "date": "2026-10-02",
-            "close": 3320.0,
-            "note": "確認中(seed割れ注意)"
-          },
-          {
-            "date": "2026-10-05",
-            "close": 3305.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-06",
-            "close": 3360.0,
-            "note": "確認中（再点灯 2026-10-06）"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 3400.0,
-            "note": "expired:即断期限切れ"
-          }
-        ],
-        "closed_day": "2026-10-07",
-        "closed_reason": "即断期限切れ"
-      },
-      {
-        "code": "6668",
-        "name": "Adtec Plasma Technology Co., Ltd.",
-        "branch": "granville_oshime",
-        "watch_class": "即断",
-        "seed_day": "2026-10-01",
-        "seed_price": 4815.0,
-        "seed_grade": "⚡好調",
-        "ref_high": 5020.0,
-        "ma5": 4926.0,
-        "ma25": 4236.0,
-        "last_close": 4940.0,
-        "last_date": "2026-10-07",
-        "days_watched": 4,
-        "dist_to_zone_pct": -2.45,
-        "status": "expired",
-        "status_reason": "即断期限切れ",
-        "signal": null,
-        "history": [
-          {
-            "date": "2026-10-01",
-            "close": 4815.0,
-            "note": "本日判断(25MA乖離+18.1%・⚡好調・レンジ様子見)"
-          },
-          {
-            "date": "2026-10-02",
-            "close": 4845.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-05",
-            "close": 5020.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-06",
-            "close": 5010.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 4940.0,
-            "note": "expired:即断期限切れ"
-          }
-        ],
-        "closed_day": "2026-10-07",
-        "closed_reason": "即断期限切れ"
-      },
-      {
-        "code": "8022",
-        "name": "Mizuno Corporation",
-        "branch": "granville_oshime",
-        "watch_class": "即断",
-        "seed_day": "2026-10-01",
-        "seed_price": 4190.0,
-        "seed_grade": "⚡好調",
-        "ref_high": 4330.0,
-        "ma5": 4257.0,
-        "ma25": 4096.4,
-        "last_close": 4330.0,
-        "last_date": "2026-10-07",
-        "days_watched": 4,
-        "dist_to_zone_pct": -4.0,
-        "status": "expired",
-        "status_reason": "即断期限切れ",
-        "signal": null,
-        "history": [
-          {
-            "date": "2026-10-01",
-            "close": 4190.0,
-            "note": "本日判断(25MA乖離+3.1%・⚡好調・レンジ様子見)"
-          },
-          {
-            "date": "2026-10-02",
-            "close": 4210.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-05",
-            "close": 4300.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-06",
-            "close": 4255.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 4330.0,
-            "note": "expired:即断期限切れ"
-          }
-        ],
-        "closed_day": "2026-10-07",
-        "closed_reason": "即断期限切れ"
-      },
-      {
-        "code": "5985",
-        "name": "SUNCALL CORPORATION",
-        "branch": "granville_oshime",
-        "watch_class": "即断",
-        "seed_day": "2026-10-01",
-        "seed_price": 2480.0,
-        "seed_grade": "✅順調",
-        "ref_high": 2877.0,
-        "ma5": 2620.0,
-        "ma25": 2269.16,
-        "last_close": 2877.0,
-        "last_date": "2026-10-07",
-        "days_watched": 4,
-        "dist_to_zone_pct": -4.0,
-        "status": "expired",
-        "status_reason": "即断期限切れ",
-        "signal": null,
-        "history": [
-          {
-            "date": "2026-10-01",
-            "close": 2480.0,
-            "note": "本日判断(25MA乖離+12.3%・✅順調・レンジ様子見)"
-          },
-          {
-            "date": "2026-10-02",
-            "close": 2484.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-05",
-            "close": 2546.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-06",
-            "close": 2713.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 2877.0,
-            "note": "expired:即断期限切れ"
-          }
-        ],
-        "closed_day": "2026-10-07",
-        "closed_reason": "即断期限切れ"
-      },
-      {
-        "code": "3993",
-        "name": "PKSHA Technology, Inc.",
-        "branch": "granville_oshime",
-        "watch_class": "即断",
-        "seed_day": "2026-10-01",
-        "seed_price": 3245.0,
-        "seed_grade": "業績データ取得不可",
-        "ref_high": 3385.0,
-        "ma5": 3318.0,
-        "ma25": 3195.0,
-        "last_close": 3385.0,
-        "last_date": "2026-10-07",
-        "days_watched": 4,
-        "dist_to_zone_pct": -4.0,
-        "status": "expired",
-        "status_reason": "即断期限切れ",
-        "signal": null,
-        "history": [
-          {
-            "date": "2026-10-01",
-            "close": 3245.0,
-            "note": "本日判断(25MA乖離+2.0%・業績データ取得不可・レンジ様子見)"
-          },
-          {
-            "date": "2026-10-02",
-            "close": 3270.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-05",
-            "close": 3325.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-06",
-            "close": 3365.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 3385.0,
-            "note": "expired:即断期限切れ／再点灯 2026-10-07"
-          }
-        ],
-        "closed_day": "2026-10-07",
-        "closed_reason": "即断期限切れ"
-      },
-      {
-        "code": "6810",
-        "name": "Maxell, Ltd.",
-        "branch": "granville_oshime",
-        "watch_class": "即断",
-        "seed_day": "2026-10-01",
-        "seed_price": 2603.0,
-        "seed_grade": "取得不可",
-        "ref_high": 2668.0,
-        "ma5": 2626.0,
-        "ma25": 2563.44,
-        "last_close": 2633.0,
-        "last_date": "2026-10-07",
-        "days_watched": 4,
-        "dist_to_zone_pct": -2.72,
-        "status": "expired",
-        "status_reason": "即断期限切れ",
-        "signal": null,
-        "history": [
-          {
-            "date": "2026-10-01",
-            "close": 2603.0,
-            "note": "本日判断(25MA乖離+2.7%・取得不可・レンジ様子見)"
-          },
-          {
-            "date": "2026-10-02",
-            "close": 2592.0,
-            "note": "確認中(seed割れ注意)"
-          },
-          {
-            "date": "2026-10-05",
-            "close": 2634.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-06",
-            "close": 2668.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 2633.0,
-            "note": "expired:即断期限切れ"
-          }
-        ],
-        "closed_day": "2026-10-07",
-        "closed_reason": "即断期限切れ"
-      },
-      {
-        "code": "3778",
-        "name": "さくらインターネット",
-        "branch": "granville_oshime",
-        "watch_class": "即断",
-        "seed_day": "2026-10-01",
-        "seed_price": 4000.0,
-        "seed_grade": "業績データ取得不可",
-        "ref_high": 4000.0,
-        "ma5": 3945.0,
-        "ma25": 3742.0,
-        "last_close": 3965.0,
-        "last_date": "2026-10-07",
-        "days_watched": 4,
-        "dist_to_zone_pct": -3.15,
-        "status": "expired",
-        "status_reason": "即断期限切れ",
-        "signal": null,
-        "history": [
-          {
-            "date": "2026-10-01",
-            "close": 4000.0,
-            "note": "本日判断(25MA乖離+8.2%・業績データ取得不可・レンジ様子見)"
-          },
-          {
-            "date": "2026-10-02",
-            "close": 3930.0,
-            "note": "確認中(seed割れ注意)"
-          },
-          {
-            "date": "2026-10-05",
-            "close": 3895.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-06",
-            "close": 3935.0,
-            "note": "確認中(seed割れ)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 3965.0,
-            "note": "expired:即断期限切れ"
-          }
-        ],
-        "closed_day": "2026-10-07",
-        "closed_reason": "即断期限切れ"
-      },
-      {
-        "code": "4392",
-        "name": "ＦＩＧ",
-        "branch": "granville_rebound",
-        "watch_class": "即断",
-        "seed_day": "2026-10-01",
-        "seed_price": 915.0,
-        "seed_grade": "🔥絶好調",
-        "ref_high": 916.0,
-        "ma5": 910.6,
-        "ma25": 987.24,
-        "last_close": 897.0,
-        "last_date": "2026-10-07",
-        "days_watched": 4,
-        "dist_to_zone_pct": -1.97,
-        "status": "expired",
-        "status_reason": "即断期限切れ",
-        "signal": null,
-        "history": [
-          {
-            "date": "2026-10-01",
-            "close": 915.0,
-            "note": "本日判断(25MA乖離-9.8%・🔥絶好調・レンジ様子見)"
-          },
-          {
-            "date": "2026-10-02",
-            "close": 912.0,
-            "note": "確認中(seed割れ注意)"
-          },
-          {
-            "date": "2026-10-05",
-            "close": 916.0,
-            "note": "確認中"
-          },
-          {
-            "date": "2026-10-06",
-            "close": 913.0,
-            "note": "確認中(seed割れ)"
-          },
-          {
-            "date": "2026-10-07",
-            "close": 897.0,
             "note": "expired:即断期限切れ"
           }
         ],

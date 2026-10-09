@@ -6146,8 +6146,161 @@
         "summary": "グランビルrebound局面(下げすぎリバーサル)。fit2/5(rsi_le30,ma200_up) ファンダ取得不可 RSI20 乖離25日-10.8% 5日-8.7% 20日高値比-17.9% 分類:なし(機械判定) ファンダ不明"
       }
     ],
-    "ai_momentum": [],
-    "ai_reversal": []
+    "ai_momentum": [
+      {
+        "code": "2760",
+        "name": "東京エレクトロンデバイス",
+        "branch": "ai_momentum",
+        "branch_type": "method",
+        "score": 9,
+        "signals": [
+          "M1",
+          "M3"
+        ],
+        "sector": "substrate",
+        "sector_label": "🔬基板・素材",
+        "proc": "装置・商社",
+        "wave": "3",
+        "close": 5030.0,
+        "dev25": 15.12,
+        "dev75": 21.86,
+        "vol_ratio20": 2.37,
+        "rsi14": 78.75,
+        "pos52w": 106.78,
+        "ret5_pct": 10.55,
+        "ret20_pct": 27.18,
+        "perfect_order": true,
+        "scored_at": "2026-10-09T18:18:25+09:00",
+        "source": "ai_scan_v1.0"
+      },
+      {
+        "code": "3131",
+        "name": "シンデンハイテックス",
+        "branch": "ai_momentum",
+        "branch_type": "method",
+        "score": 5,
+        "signals": [
+          "M3"
+        ],
+        "sector": "substrate",
+        "sector_label": "🔬基板・素材",
+        "proc": "装置・商社",
+        "wave": "3",
+        "close": 8880.0,
+        "dev25": 22.04,
+        "dev75": 62.95,
+        "vol_ratio20": 1.44,
+        "rsi14": 86.07,
+        "pos52w": 101.29,
+        "ret5_pct": 11.84,
+        "ret20_pct": 39.62,
+        "perfect_order": true,
+        "scored_at": "2026-10-09T18:18:25+09:00",
+        "source": "ai_scan_v1.0"
+      },
+      {
+        "code": "3374",
+        "name": "内外テック",
+        "branch": "ai_momentum",
+        "branch_type": "method",
+        "score": 5,
+        "signals": [
+          "M3"
+        ],
+        "sector": "substrate",
+        "sector_label": "🔬基板・素材",
+        "proc": "装置・商社",
+        "wave": "3",
+        "close": 5440.0,
+        "dev25": 21.79,
+        "dev75": 39.44,
+        "vol_ratio20": 1.18,
+        "rsi14": 84.25,
+        "pos52w": 100.59,
+        "ret5_pct": 8.15,
+        "ret20_pct": 36.34,
+        "perfect_order": true,
+        "scored_at": "2026-10-09T18:18:25+09:00",
+        "source": "ai_scan_v1.0"
+      },
+      {
+        "code": "6227",
+        "name": "AIメカテック",
+        "branch": "ai_momentum",
+        "branch_type": "method",
+        "score": 5,
+        "signals": [
+          "M3"
+        ],
+        "sector": "substrate",
+        "sector_label": "🔬基板・素材",
+        "proc": "装置・商社",
+        "wave": "3",
+        "close": 9230.0,
+        "dev25": 34.53,
+        "dev75": 37.03,
+        "vol_ratio20": 1.34,
+        "rsi14": 89.31,
+        "pos52w": 98.98,
+        "ret5_pct": 16.1,
+        "ret20_pct": 42.0,
+        "perfect_order": true,
+        "scored_at": "2026-10-09T18:18:25+09:00",
+        "source": "ai_scan_v1.0"
+      }
+    ],
+    "ai_reversal": [
+      {
+        "code": "6643",
+        "name": "戸上電機製作所",
+        "branch": "ai_reversal",
+        "branch_type": "method",
+        "score": 4,
+        "signals": [
+          "R1"
+        ],
+        "sector": "energy_mgmt",
+        "sector_label": "📡エネマネ・計量",
+        "proc": "中流",
+        "wave": "1b",
+        "close": 5510.0,
+        "dev25": -2.01,
+        "dev75": -0.65,
+        "vol_ratio20": 0.69,
+        "rsi14": 51.39,
+        "pos52w": 51.26,
+        "ret5_pct": -1.43,
+        "ret20_pct": -2.82,
+        "perfect_order": true,
+        "scored_at": "2026-10-09T18:18:25+09:00",
+        "source": "ai_scan_v1.0"
+      },
+      {
+        "code": "9432",
+        "name": "NTT",
+        "branch": "ai_reversal",
+        "branch_type": "method",
+        "score": 4,
+        "signals": [
+          "R1"
+        ],
+        "sector": "optical",
+        "sector_label": "🌐光通信",
+        "proc": "下流",
+        "wave": "2",
+        "close": 172.9,
+        "dev25": -0.44,
+        "dev75": 7.38,
+        "vol_ratio20": 0.8,
+        "rsi14": 38.95,
+        "pos52w": 80.8,
+        "ret5_pct": 1.77,
+        "ret20_pct": 0.52,
+        "perfect_order": true,
+        "scored_at": "2026-10-09T18:18:25+09:00",
+        "source": "ai_scan_v1.0"
+      }
+    ]
   },
   "positions": {
     "storage_note": "【分離方針 2026-07-20確定】ポジション実データ（保有・損益）は個人金融データのため公開リポジトリに置かない。唯一の正は Google Drive『SBI』フォルダの非公開 positions.json。この公開master.jsonのpositionsは空雛形を維持する。閲覧・更新はCoworkセッション（Driveコネクタ認証付き）のみ。",
@@ -7171,11 +7324,11 @@
         "ripen_triggered": 0
       },
       "ai_scan": {
-        "run_at": "2026-10-08T18:19:31+09:00",
-        "base_day": "2026-10-08",
+        "run_at": "2026-10-09T18:18:25+09:00",
+        "base_day": "2026-10-09",
         "status": "done",
-        "n_m": 0,
-        "n_r": 0,
+        "n_m": 4,
+        "n_r": 2,
         "universe_n": 74,
         "fetched_n": 72,
         "skipped_n": 2,
@@ -106541,18 +106694,18 @@
     "universe_n": 74,
     "fetched_n": 72,
     "skipped_n": 2,
-    "base_day": "2026-10-08",
+    "base_day": "2026-10-09",
     "sectors": {
       "energy_mgmt": {
         "label": "📡エネマネ・計量",
         "wave": "1b",
         "n": 7,
-        "above25_pct": 42.9,
-        "above75_pct": 42.9,
-        "median_dev25": -2.23,
-        "median_ret20": -3.63,
+        "above25_pct": 42.86,
+        "above75_pct": 42.86,
+        "median_dev25": -2.01,
+        "median_ret20": -2.02,
         "signals_m": 0,
-        "signals_r": 0,
+        "signals_r": 1,
         "wave_on": false
       },
       "cooling": {
@@ -106560,9 +106713,9 @@
         "wave": "2",
         "n": 12,
         "above25_pct": 50.0,
-        "above75_pct": 33.3,
-        "median_dev25": -0.06,
-        "median_ret20": 0.68,
+        "above75_pct": 33.33,
+        "median_dev25": 0.87,
+        "median_ret20": 2.16,
         "signals_m": 0,
         "signals_r": 0,
         "wave_on": true
@@ -106571,23 +106724,23 @@
         "label": "🌐光通信",
         "wave": "2",
         "n": 11,
-        "above25_pct": 90.9,
-        "above75_pct": 63.6,
-        "median_dev25": 6.59,
-        "median_ret20": 6.45,
+        "above25_pct": 90.91,
+        "above75_pct": 63.64,
+        "median_dev25": 6.67,
+        "median_ret20": 15.47,
         "signals_m": 0,
-        "signals_r": 0,
+        "signals_r": 1,
         "wave_on": true
       },
       "substrate": {
         "label": "🔬基板・素材",
         "wave": "3",
         "n": 42,
-        "above25_pct": 90.5,
-        "above75_pct": 54.8,
-        "median_dev25": 6.66,
-        "median_ret20": 6.54,
-        "signals_m": 0,
+        "above25_pct": 88.1,
+        "above75_pct": 64.29,
+        "median_dev25": 7.53,
+        "median_ret20": 13.33,
+        "signals_m": 4,
         "signals_r": 0,
         "wave_on": true
       }
@@ -106604,6 +106757,13 @@
         "base_day": "2026-10-08",
         "n_m": 0,
         "n_r": 0,
+        "overflow_m": 0,
+        "overflow_r": 0
+      },
+      {
+        "base_day": "2026-10-09",
+        "n_m": 4,
+        "n_r": 2,
         "overflow_m": 0,
         "overflow_r": 0
       }

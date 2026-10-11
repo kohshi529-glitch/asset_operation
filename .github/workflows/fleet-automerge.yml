@@ -1,0 +1,56 @@
+# fleet-automerge: 夜間・朝のルーティンが出す PR を scripts/validate_fleet_pr.py で検証し、合格なら自動マージ、不合格なら needs-human ラベルとコメントで人に回す。
+# 対象は head が claude/ で始まる PR だけ。maint/ ブランチ・ボード・手動コミットは触らない。
+name: fleet-automerge
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+concurrency:
+  group: fleet-automerge          # 直列（同時に 2 本マージしない）
+  cancel-in-progress: false
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+jobs:
+  validate-and-merge:
+    if: startsWith(github.head_ref, 'claude/')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: validate
+        id: v
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+          BRANCH: ${{ github.head_ref }}
+          AUTHOR: ${{ github.event.pull_request.user.login }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          BASE=$(git merge-base origin/main "$HEAD")
+          set +e
+          python3 scripts/validate_fleet_pr.py --base "$BASE" --head "$HEAD" --title "$TITLE" --branch "$BRANCH" --author "$AUTHOR" | tee result.txt
+          echo "rc=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+      - name: merge
+        id: m
+        if: steps.v.outputs.rc == '0'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.FLEET_MERGE_TOKEN || github.token }}
+        run: gh pr merge "${{ github.event.pull_request.number }}" --merge --delete-branch --repo "${{ github.repository }}"
+      - name: hold for human
+        if: steps.v.outputs.rc == '1' || steps.m.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create needs-human --color D93F0B --description "fleet-automerge が止めた PR（人が見る）" --repo "${{ github.repository }}" 2>/dev/null || true
+          { echo "🛑 fleet-automerge: 自動マージを見送りました。内容を確認して手動でマージ／クローズしてください。"; echo; echo '~~~'; cat result.txt; echo '~~~'; if [ "${{ steps.m.outcome }}" = "failure" ]; then echo; echo "（検証は合格したがマージに失敗 — main との競合の可能性。ブランチを更新して再実行）"; fi; } > comment.md
+          gh pr comment "${{ github.event.pull_request.number }}" --body-file comment.md --repo "${{ github.repository }}"
+          gh pr edit "${{ github.event.pull_request.number }}" --add-label needs-human --repo "${{ github.repository }}"
+          exit 1
+      - name: skipped (manual PR)
+        if: steps.v.outputs.rc == '2'
+        run: echo "手動運用の PR のため何もしない"; cat result.txt

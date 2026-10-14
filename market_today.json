@@ -1,35 +1,35 @@
 {
- "generated_at": "2026-10-14T06:37:41.112309+09:00",
+ "generated_at": "2026-10-15T06:34:59+09:00",
  "source": "morning_compass_v10",
- "run_at_jst": "2026-10-14 06:37",
- "date": "2026-10-14",
- "market_mode": "レンジ様子見",
+ "run_at_jst": "2026-10-15 06:34",
+ "date": "2026-10-15",
+ "market_mode": "弱気",
  "method_guidance": {
-  "kenmo_momentum": "先物は+0.6%で寄りやや強いが米株は小幅安。寄り直後は追わず、押しが止まった銘柄のみ小ロット。",
-  "kenmo_newhigh": "前日日経-1.8%の後で戻り局面。新高値ブレイクは出来高を伴うもののみ、追随は控えめ。",
-  "choruko_reversal": "前日急落の反発局面。寄り後に下げ止まりを確認した候補に限定。",
-  "stf_kakuhen": "寄り天リスクあり。初動の出来高を伴う陽線確認まで待機。",
-  "tenbagger_x": "地合いは中立。IPO・新興は新規を絞り監視中心。",
-  "daytrade": "ギャップ小〜中で値幅は出やすい。ロット半分で寄り直後の方向確認後に。",
-  "semicon_miniswing": "SOX-0.2%で方向感なし。強気モードではないためVWAP±0.5%積極帯は使わず見送り寄り。"
+  "kenmo_momentum": "新規は見送り寄り。大取-1.5%・SOX-4.3%で寄り後の押し目待ち、買うなら小ロットで逆指値厳守。",
+  "kenmo_newhigh": "高値更新の追随は不可。寄り高値掴み回避、引けまで値持ちを確認してから。",
+  "choruko_reversal": "急落初動のため落ちるナイフ警戒。寄り30分は様子見、反転確認後のみ検討。",
+  "stf_kakuhen": "初動確認銘柄のみ。半導体・AI関連は除外、内需・ディフェンシブ優先。",
+  "tenbagger_x": "IPO新規参加は地合い悪化で慎重。初値形成を見てから。",
+  "daytrade": "完全不関与。寄り前の方向感は下だが値幅荒く見送り。",
+  "semicon_miniswing": "見送り（SOX-4.3%・VWAP積極帯は使わない）。"
  },
- "pattern": "先物乖離（先物+0.6%・米株小幅安）",
- "note": "米株は小動きだが日経先物は現物比+0.6%。WTI94ドル台と中東リスクで寄り高値掴みに注意。F&G取得不可。",
+ "pattern": "半導体主導リスクオフ（AIトレード疲労）",
+ "note": "SOX-4.3%・ナスダック-1.9%・大取-1.5%と半導体主導の売り。ダウ横ばい（循環物色）。寄りの窓下げ警戒、半導体関連の押し目買いは見送り。",
  "indicators": {
-  "nikkei": 67777.3,
-  "night_futures": 68205,
-  "night_futures_asof": "2026-10-14 06:37 JST",
-  "night_gap_pct": 0.63,
-  "dow_pct": -0.35,
-  "nasdaq_pct": -0.15,
-  "sp500_pct": -0.02,
-  "sox": 12208.79,
-  "sox_pct": -0.23,
-  "vix": 15.27,
+  "nikkei": 67744.07,
+  "night_futures": 66740,
+  "night_futures_asof": "2026-10-15 06:34 JST",
+  "night_gap_pct": -1.48,
+  "dow_pct": -0.09,
+  "nasdaq_pct": -1.88,
+  "sp500_pct": -1.11,
+  "sox": 11684.3825,
+  "sox_pct": -4.3,
+  "vix": 16.87,
   "fear_greed": null,
-  "usdjpy": 158.342,
-  "wti": 94.14,
-  "wti_pct": 0.43
+  "usdjpy": 158.27,
+  "wti": 95.09,
+  "wti_pct": 1.01
  },
  "data_health": {
   "sox": "tv_scanner",
@@ -41,8 +41,8 @@
   "rate_limited": true,
   "tv_scanner": {
    "used": true,
-   "asof": "06:37 JST",
-   "update_mode": "delayed_streaming_600/900",
+   "asof": "06:34 JST",
+   "update_mode": "delayed_streaming_600/900(米指標・先物)・streaming(日経・ドル円)",
    "empty": []
   },
   "sources": {}
@@ -51,7 +51,7 @@
   "us_settled": true,
   "us_close_jst": "05:00",
   "night_settled": true,
-  "run_at_jst": "06:37",
+  "run_at_jst": "06:34",
   "excluded": []
  }
 }

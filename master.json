@@ -6218,85 +6218,7 @@
         "summary": "グランビルrebound局面(リバーサル)。fit1/5(ma200_up) fund0/3 経常/営業利益成長-12.1%(2027/03) RSI32 乖離25日-10.3% 5日-12.8% 20日高値比-15.3% 分類:なし(機械判定)"
       }
     ],
-    "ai_momentum": [
-      {
-        "code": "2760",
-        "name": "東京エレクトロンデバイス",
-        "branch": "ai_momentum",
-        "branch_type": "method",
-        "score": 9,
-        "signals": [
-          "M1",
-          "M3"
-        ],
-        "sector": "substrate",
-        "sector_label": "🔬基板・素材",
-        "proc": "装置・商社",
-        "wave": "3",
-        "close": 5170.0,
-        "dev25": 16.26,
-        "dev75": 24.56,
-        "vol_ratio20": 2.0,
-        "rsi14": 80.79,
-        "pos52w": 104.75,
-        "ret5_pct": 7.71,
-        "ret20_pct": 25.79,
-        "perfect_order": true,
-        "scored_at": "2026-10-14T18:17:45+09:00",
-        "source": "ai_scan_v1.0"
-      },
-      {
-        "code": "8159",
-        "name": "立花エレテック",
-        "branch": "ai_momentum",
-        "branch_type": "method",
-        "score": 9,
-        "signals": [
-          "M1",
-          "M3"
-        ],
-        "sector": "substrate",
-        "sector_label": "🔬基板・素材",
-        "proc": "装置・商社",
-        "wave": "3",
-        "close": 4770.0,
-        "dev25": 12.46,
-        "dev75": 23.93,
-        "vol_ratio20": 2.24,
-        "rsi14": 76.96,
-        "pos52w": 103.7,
-        "ret5_pct": 10.16,
-        "ret20_pct": 18.8,
-        "perfect_order": true,
-        "scored_at": "2026-10-14T18:17:45+09:00",
-        "source": "ai_scan_v1.0"
-      },
-      {
-        "code": "9824",
-        "name": "泉州電業",
-        "branch": "ai_momentum",
-        "branch_type": "method",
-        "score": 5,
-        "signals": [
-          "M3"
-        ],
-        "sector": "optical",
-        "sector_label": "🌐光通信",
-        "proc": "下流",
-        "wave": "2",
-        "close": 8570.0,
-        "dev25": 7.12,
-        "dev75": 20.23,
-        "vol_ratio20": 1.24,
-        "rsi14": 65.38,
-        "pos52w": 101.9,
-        "ret5_pct": 2.88,
-        "ret20_pct": 11.3,
-        "perfect_order": true,
-        "scored_at": "2026-10-14T18:17:45+09:00",
-        "source": "ai_scan_v1.0"
-      }
-    ],
+    "ai_momentum": [],
     "ai_reversal": []
   },
   "positions": {
@@ -7297,10 +7219,10 @@
         "ripen_triggered": 0
       },
       "ai_scan": {
-        "run_at": "2026-10-14T18:17:45+09:00",
-        "base_day": "2026-10-14",
+        "run_at": "2026-10-15T18:17:38+09:00",
+        "base_day": "2026-10-15",
         "status": "done",
-        "n_m": 3,
+        "n_m": 0,
         "n_r": 0,
         "universe_n": 74,
         "fetched_n": 72,
@@ -117228,16 +117150,16 @@
     "universe_n": 74,
     "fetched_n": 72,
     "skipped_n": 2,
-    "base_day": "2026-10-14",
+    "base_day": "2026-10-15",
     "sectors": {
       "energy_mgmt": {
         "label": "📡エネマネ・計量",
         "wave": "1b",
         "n": 7,
-        "above25_pct": 42.86,
-        "above75_pct": 42.86,
-        "median_dev25": -1.69,
-        "median_ret20": 0.73,
+        "above25_pct": 14.29,
+        "above75_pct": 14.29,
+        "median_dev25": -6.25,
+        "median_ret20": 1.69,
         "signals_m": 0,
         "signals_r": 0,
         "wave_on": false
@@ -117246,37 +117168,37 @@
         "label": "❄️冷却・空調",
         "wave": "2",
         "n": 12,
-        "above25_pct": 66.67,
-        "above75_pct": 33.33,
-        "median_dev25": 2.02,
-        "median_ret20": 3.63,
+        "above25_pct": 25.0,
+        "above75_pct": 25.0,
+        "median_dev25": -1.82,
+        "median_ret20": 1.36,
         "signals_m": 0,
         "signals_r": 0,
-        "wave_on": true
+        "wave_on": false
       },
       "optical": {
         "label": "🌐光通信",
         "wave": "2",
         "n": 11,
-        "above25_pct": 81.82,
-        "above75_pct": 54.55,
-        "median_dev25": 4.59,
-        "median_ret20": 7.26,
-        "signals_m": 1,
+        "above25_pct": 27.27,
+        "above75_pct": 36.36,
+        "median_dev25": -2.24,
+        "median_ret20": 3.08,
+        "signals_m": 0,
         "signals_r": 0,
-        "wave_on": true
+        "wave_on": false
       },
       "substrate": {
         "label": "🔬基板・素材",
         "wave": "3",
         "n": 42,
-        "above25_pct": 76.19,
-        "above75_pct": 54.76,
-        "median_dev25": 3.9,
-        "median_ret20": 7.96,
-        "signals_m": 2,
+        "above25_pct": 28.57,
+        "above75_pct": 33.33,
+        "median_dev25": -4.79,
+        "median_ret20": 2.69,
+        "signals_m": 0,
         "signals_r": 0,
-        "wave_on": true
+        "wave_on": false
       }
     },
     "log": [
@@ -117311,6 +117233,13 @@
       {
         "base_day": "2026-10-14",
         "n_m": 3,
+        "n_r": 0,
+        "overflow_m": 0,
+        "overflow_r": 0
+      },
+      {
+        "base_day": "2026-10-15",
+        "n_m": 0,
         "n_r": 0,
         "overflow_m": 0,
         "overflow_r": 0

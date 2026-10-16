@@ -240,8 +240,8 @@ details.cfold>summary{cursor:pointer;color:#7fe3d6;font-size:12.5px;font-weight:
 .earnchip.warn{color:#e8a35b;background:#3d2817;border-color:#6b4a24}
 .earnchip.karte{color:#e8c766;background:#2e2a17;border-color:#5c5324}
 .earnchip.unknown{color:#8fb3ad;background:#1d3a40;border-color:#33565c}
-/* D13: 決算カウントダウン帯（カード最上段・📈文脈/🕯形態のチップとは別の段・別の色） */
-.earnband{display:block;margin:-11px -12px 9px -12px;padding:7px 12px;font-size:13px;font-weight:800;line-height:1.35;color:#fff;border-bottom:2px solid}
+/* D13/D14: 決算カウントダウン帯（コード・現在値の行の直後・📈文脈/🕯形態のチップとは別の段・別の色。D14 で最上段からこの位置へ） */
+.earnband{display:block;margin:6px 0 2px;padding:7px 10px;border-radius:8px;font-size:13px;font-weight:800;line-height:1.35;color:#fff;border:2px solid}
 .earnband.crit{background:#b3261e;border-color:#ff8a80}
 .earnband.warn{background:#a04a00;border-color:#ffb74d}
 .earnband.react{background:#5b2d8e;border-color:#ce93d8}
@@ -1100,7 +1100,7 @@ function card5(v){
   const r4=v.judgeHtml||'';
   const r5=v.propHtml?`<div class='srow s5'>${v.propHtml}</div>`:''; // 提案なしは行ごと省略
   const r6=v.bodyHtml||'';
-  return `<div class='scard${v.dim?' dim':''}${v.bad?' order-bad':''}'>${r0}${r1}${r2}${r2b}${r3}${r4}${r5}${r6}</div>`;
+  return `<div class='scard${v.dim?' dim':''}${v.bad?' order-bad':''}'>${r1}${r0}${r2}${r2b}${r3}${r4}${r5}${r6}</div>`;
 }
 // 手法ラベルチップ（5手法名）。
 function methodLabelChip(key){
@@ -2081,8 +2081,8 @@ function renderLegend(){
     <h3>🕯 ローソク足形態チップ</h3>
     <div class='note'>直近6本のOHLC（pool_bars.json・base_day 足まで）から機械判定。実体＝|終値−始値|、値幅＝高値−安値、平均実体＝直前5本の実体平均。文脈「下落後」＝直前5日−3%以下または前日終値＜MA10×0.98、「上昇後」＝直前5日+3%以上または（前日終値＞MA10×1.02 かつ 20日高値の97%以上）。窓（上放れ／下放れ）は連続本数で1つだけ出す（1本＝上放れ／下放れ、2本＝2本連続、3本以上＝三空）。形態は「兆し」であり、翌日の確認足と文脈で判断する。形態ごとの成績は ①-8 v1.31 の記録が4週たまってから検証（V4）。</div>
     ${pat.map(prow).join('')}
-    <h3>🚨 決算カウントダウン帯（D13）</h3>
-    <div class='note'>カードの最上段に出る色帯。grades.json の次回決算日（nx）と端末の今日から JPX 休業日表で残営業日を数える（通信なし）。<b>🚨赤</b>＝本日／明日が決算（引け後発表の可能性）、<b>⏰橙</b>＝決算まで 2〜5 営業日、<b>📉紫</b>＝本日が決算反応日（前営業日の引け後に発表）、<b>❓灰</b>＝次回決算日が取れていない（🧳保有タブのみ。不明は安全ではない）。📈文脈・🕯形態のチップとは別の段・別の色にしてあるのは、2026-10-15〜16 に保有銘柄の決算カウントダウンが同系色のチップに埋もれて流し読みされ、決算跨ぎのストップ安（−20.7%）を止められなかったため。帯は rulebook 教訓⑲「決算は天井。決算反応日の引けまでに撤収・持ち越さない」の提示であり、判定・提案・順位は変えない。🧳保有タブでは登録銘柄の決算を一覧で先頭に出す。</div>
+    <h3>🚨 決算カウントダウン帯（D13・D14）</h3>
+    <div class='note'>各カードの「コード・銘柄名・現在値」の行の直後に出る枠付きの色帯（D14 で最上段から移動: 上下どちらのカードの帯か読み取りにくかったため）。grades.json の次回決算日（nx）と端末の今日から JPX 休業日表で残営業日を数える（通信なし）。<b>🚨赤</b>＝本日／明日が決算（引け後発表の可能性）、<b>⏰橙</b>＝決算まで 2〜5 営業日、<b>📉紫</b>＝本日が決算反応日（前営業日の引け後に発表）、<b>❓灰</b>＝次回決算日が取れていない（🧳保有タブのみ。不明は安全ではない）。📈文脈・🕯形態のチップとは別の段・別の色にしてあるのは、2026-10-15〜16 に保有銘柄の決算カウントダウンが同系色のチップに埋もれて流し読みされ、決算跨ぎのストップ安（−20.7%）を止められなかったため。帯は rulebook 教訓⑲「決算は天井。決算反応日の引けまでに撤収・持ち越さない」の提示であり、判定・提案・順位は変えない。🧳保有タブでは登録銘柄の決算を一覧で先頭に出す。</div>
     <h3>既存の凡例</h3>
     <div class='note'>業績グレード（🚀確変11-13／🔥絶好調8-10／⚡好調5-7／✅順調3-4／➖横ばい2／⚠減速0-1／🔻悪化）、値頃感（💎割安6-7／🟢値頃5／⚪妥当3-4／🟡やや割高2／🔴過熱0-1）、ゲート判定（✅陽線／✅十字線反転／❌上髭／❌陰線／－SKIP）は、タブバー下の折りたたみ凡例を参照。</div>
     <a class='totop' onclick='scrollTop()'>▲タブへ</a>

@@ -240,6 +240,16 @@ details.cfold>summary{cursor:pointer;color:#7fe3d6;font-size:12.5px;font-weight:
 .earnchip.warn{color:#e8a35b;background:#3d2817;border-color:#6b4a24}
 .earnchip.karte{color:#e8c766;background:#2e2a17;border-color:#5c5324}
 .earnchip.unknown{color:#8fb3ad;background:#1d3a40;border-color:#33565c}
+/* D13: 決算カウントダウン帯（カード最上段・📈文脈/🕯形態のチップとは別の段・別の色） */
+.earnband{display:block;margin:-11px -12px 9px -12px;padding:7px 12px;font-size:13px;font-weight:800;line-height:1.35;color:#fff;border-bottom:2px solid}
+.earnband.crit{background:#b3261e;border-color:#ff8a80}
+.earnband.warn{background:#a04a00;border-color:#ffb74d}
+.earnband.react{background:#5b2d8e;border-color:#ce93d8}
+.earnband.unk{background:#37474f;border-color:#90a4ae}
+.holdearn{margin:10px 0 6px;padding:9px 11px;border-radius:9px;font-size:13px;line-height:1.5;background:#2a0f0d;border:1px solid #b3261e;color:#ffd7d3}
+.holdearn.ok{background:#14262b;border-color:#2b5159;color:#b8d2cf}
+.holdearn b{color:#fff}
+.holdearn .rule{display:block;margin-top:4px;font-size:12px;color:#ffc9c4}
 /* 注意チップ列（D2）: 業績×型の相性・重複・走った後・大陽線・地合い。判定は変えず表示のみ */
 .scard .s2b{display:flex;flex-wrap:wrap;gap:4px 6px;margin-top:3px}
 .cauchip{display:inline-block;font-size:11px;font-weight:600;border-radius:5px;padding:1px 7px;border:1px solid;white-space:nowrap}
@@ -859,6 +869,58 @@ function earningsChip(c){
   if(n>=10&&n<=20)  return `<span class='earnchip karte'>📋カルテ窓${esc(dt)}(残${esc(n)}営業日)</span>`;
   return ''; // 4〜9営業日・21営業日以上 → 出さない（3行目ごと省略）
 }
+// ===== D13: 決算カウントダウン帯（全カード最上段・一段重い警告。判定・順位・通信先は変えない） =====
+// 残営業日は grades.json の nx（①-8 が kabutan から取った次回決算日）と端末の今日から、MKTCAL の JPX 休業日表で数える（通信なし）。
+// 当日=0・翌営業日=1・…。過去日は負（-1＝前営業日が発表日＝今日が決算反応日）。表の範囲外の日付は土日だけ除いた概算。
+function earnDaysFromNx(nx){
+  if(!nx||!/^\d{4}-\d{2}-\d{2}$/.test(String(nx))) return null;
+  const today=new Date(); today.setHours(0,0,0,0);
+  const s=String(nx), ts=MKTCAL.iso(today);
+  if(s===ts) return 0;
+  let n=0, x=today;
+  if(s>ts){ while(MKTCAL.iso(x)<s){ x=MKTCAL.nextBiz(x); n++; if(n>400) return null; } return n; }
+  while(MKTCAL.iso(x)>s){ x=MKTCAL.prevBiz(x); n--; if(n<-400) return null; }
+  return n;
+}
+// 帯HTML（空文字＝出さない）。優先順: grades.json の nx → 当夜結果の決算チップ文字列（残n営業日）。
+function earnBand(code,earnHtml){
+  let n=null, mmdd=null;
+  const g=gradesOf(code);
+  if(g&&g.nx){ n=earnDaysFromNx(g.nx); if(n!=null){ const dm=String(g.nx).match(/(\d{4})-(\d{2})-(\d{2})/); mmdd=dm?`${dm[2]}/${dm[3]}`:null; } }
+  if(n==null&&earnHtml){ const m=String(earnHtml).match(/決算(?:直前)?\s*(\d{1,2}\/\d{1,2})?\(残(\d+)営業日\)/); if(m){ n=parseInt(m[2],10); mmdd=m[1]||null; } }
+  if(n==null) return '';
+  const dt=mmdd?' '+esc(mmdd):'';
+  if(n===0)  return `<div class='earnband crit'>🚨 本日決算${dt}（引け後発表の可能性）— 跨ぐか手仕舞うかを今夜決める（教訓⑲）</div>`;
+  if(n===1)  return `<div class='earnband crit'>🚨 明日決算${dt} — 決算反応日の引けまでに撤収・持ち越さない（教訓⑲）</div>`;
+  if(n>=2&&n<=5) return `<div class='earnband warn'>⏰ 決算${dt}まで あと${esc(n)}営業日 — 反応日の引けまでに撤収する前提で（教訓⑲）</div>`;
+  if(n===-1) return `<div class='earnband react'>📉 本日は決算反応日（発表${dt}）— 引けまでに撤収するか、持ち越す理由を決める（教訓⑲）</div>`;
+  return '';
+}
+// 🧳保有タブ上部の一覧（保有銘柄の決算を名指しで。候補カードより先に目に入る位置）
+function holdEarnSummary(codes){
+  const crit=[], warn=[], react=[], unk=[]; let nearest=null;
+  codes.forEach(c=>{
+    const g=gradesOf(c); const nx=g&&g.nx; const n=nx?earnDaysFromNx(nx):null;
+    const nm=holdNameOf(c,null,{})||''; const lab=`<b>${esc(c)}</b>${nm?' '+esc(nm):''}`;
+    const dm=nx?String(nx).slice(5).replace('-','/'):'';
+    if(n==null){ unk.push(lab); return; }
+    if(n===0)      crit.push(`${lab} 本日決算 ${esc(dm)}`);
+    else if(n===1) crit.push(`${lab} 明日決算 ${esc(dm)}`);
+    else if(n<=5&&n>=2) warn.push(`${lab} 決算 ${esc(dm)} あと${esc(n)}営業日`);
+    else if(n===-1) react.push(`${lab} 本日が決算反応日（発表 ${esc(dm)}）`);
+    if(n>=0&&(nearest==null||n<nearest.n)) nearest={n:n,lab:lab,dm:dm};
+  });
+  const rule=`<span class='rule'>rulebook ⑲: 決算は天井。決算反応日の引けまでに撤収・持ち越さない。持ち越すなら理由を戦績PJに記録。SL 未登録の玉は実弾ボードで確認</span>`;
+  if(crit.length||warn.length||react.length||unk.length){
+    const parts=[];
+    if(crit.length)  parts.push(`🚨 ${crit.join('／')}`);
+    if(react.length) parts.push(`📉 ${react.join('／')}`);
+    if(warn.length)  parts.push(`⏰ ${warn.join('／')}`);
+    if(unk.length)   parts.push(`❓ 決算日不明: ${unk.join('／')}（kabutan の決算発表予定で確認。不明は安全ではない）`);
+    return `<div class='holdearn'>${parts.join('<br>')}${rule}</div>`;
+  }
+  return `<div class='holdearn ok'>決算跨ぎ: 該当なし${nearest?`（最短 ${nearest.lab} ${esc(nearest.dm)} あと${esc(nearest.n)}営業日）`:'（次回決算日 未取得）'}</div>`;
+}
 // ===== 注意チップ（D1/D2・2026-09-14 入口精度分析の反映。判定・順位は一切変えず表示のみ） =====
 // 根拠: selection_precision_20260914.md（指名450件・T+5の生の値動き）
 //  ・順張り（ケンモメ/新高値/転換/STF）は業績⚡以上が効く。逆張り（ちょる子/リバ）は🚀🔥の高成長株ほど続落（-2.5%/13%）
@@ -1028,6 +1090,9 @@ function cautionChips(code,branches,opts){
 }
 // 統一5行カード。v = {code,name,close,methodHtml,cautionHtml,earnHtml,judgeHtml,propHtml,bodyHtml,dim,bad}
 function card5(v){
+  let r0=''; try{ r0=earnBand(v.code,v.earnHtml); }catch(e){ r0=''; }
+  if(!r0&&v.unkBand) r0=`<div class='earnband unk'>❓ 次回決算日 不明 — kabutan の決算発表予定で確認（不明は安全ではない）</div>`;
+  if(r0&&v.earnHtml&&String(v.earnHtml).indexOf('earnchip warn')>=0) v=Object.assign({},v,{earnHtml:''});
   const r1=`<div class='srow s1'><span class='code'>${esc(fld(v.code))}</span><span class='cname'>${esc(fld(v.name))}</span>${priceChip(v)}</div>`;
   const r2=(v.methodHtml)?`<div class='srow s2'>${v.methodHtml}</div>`:`<div class='srow s2'></div>`;
   const r2b=v.cautionHtml?`<div class='srow s2b'>${v.cautionHtml}</div>`:''; // 注意チップ列（D2）。無ければ省略
@@ -1035,7 +1100,7 @@ function card5(v){
   const r4=v.judgeHtml||'';
   const r5=v.propHtml?`<div class='srow s5'>${v.propHtml}</div>`:''; // 提案なしは行ごと省略
   const r6=v.bodyHtml||'';
-  return `<div class='scard${v.dim?' dim':''}${v.bad?' order-bad':''}'>${r1}${r2}${r2b}${r3}${r4}${r5}${r6}</div>`;
+  return `<div class='scard${v.dim?' dim':''}${v.bad?' order-bad':''}'>${r0}${r1}${r2}${r2b}${r3}${r4}${r5}${r6}</div>`;
 }
 // 手法ラベルチップ（5手法名）。
 function methodLabelChip(key){
@@ -2016,6 +2081,8 @@ function renderLegend(){
     <h3>🕯 ローソク足形態チップ</h3>
     <div class='note'>直近6本のOHLC（pool_bars.json・base_day 足まで）から機械判定。実体＝|終値−始値|、値幅＝高値−安値、平均実体＝直前5本の実体平均。文脈「下落後」＝直前5日−3%以下または前日終値＜MA10×0.98、「上昇後」＝直前5日+3%以上または（前日終値＞MA10×1.02 かつ 20日高値の97%以上）。窓（上放れ／下放れ）は連続本数で1つだけ出す（1本＝上放れ／下放れ、2本＝2本連続、3本以上＝三空）。形態は「兆し」であり、翌日の確認足と文脈で判断する。形態ごとの成績は ①-8 v1.31 の記録が4週たまってから検証（V4）。</div>
     ${pat.map(prow).join('')}
+    <h3>🚨 決算カウントダウン帯（D13）</h3>
+    <div class='note'>カードの最上段に出る色帯。grades.json の次回決算日（nx）と端末の今日から JPX 休業日表で残営業日を数える（通信なし）。<b>🚨赤</b>＝本日／明日が決算（引け後発表の可能性）、<b>⏰橙</b>＝決算まで 2〜5 営業日、<b>📉紫</b>＝本日が決算反応日（前営業日の引け後に発表）、<b>❓灰</b>＝次回決算日が取れていない（🧳保有タブのみ。不明は安全ではない）。📈文脈・🕯形態のチップとは別の段・別の色にしてあるのは、2026-10-15〜16 に保有銘柄の決算カウントダウンが同系色のチップに埋もれて流し読みされ、決算跨ぎのストップ安（−20.7%）を止められなかったため。帯は rulebook 教訓⑲「決算は天井。決算反応日の引けまでに撤収・持ち越さない」の提示であり、判定・提案・順位は変えない。🧳保有タブでは登録銘柄の決算を一覧で先頭に出す。</div>
     <h3>既存の凡例</h3>
     <div class='note'>業績グレード（🚀確変11-13／🔥絶好調8-10／⚡好調5-7／✅順調3-4／➖横ばい2／⚠減速0-1／🔻悪化）、値頃感（💎割安6-7／🟢値頃5／⚪妥当3-4／🟡やや割高2／🔴過熱0-1）、ゲート判定（✅陽線／✅十字線反転／❌上髭／❌陰線／－SKIP）は、タブバー下の折りたたみ凡例を参照。</div>
     <a class='totop' onclick='scrollTop()'>▲タブへ</a>
@@ -2083,8 +2150,9 @@ function holdCard(code,NG,POOL){
     if(lines) hl=`<details class='headline'><summary>📌ヘッドライン</summary><div class='hlbody'>${esc(lines)}</div></details>`;
   }else{ const p=PROF&&PROF[String(code)]; if(p&&p.gyotai) hl=`<details class='headline'><summary>📌ヘッドライン</summary><div class='hlbody'>${esc('業態: '+p.gyotai)}</div></details>`; }
   const meta=`<div class='smeta'>${px.close!=null?`現在値 ${esc(fmtPrice(px.close))}円（${esc(px.day||'—')}・${esc(px.src||'—')}）`:'現在値 取得不可（pool_bars／grades に無し）'}${name==null?'　銘柄名 未取得':''}</div>`;
+  const gq=gradesOf(code); const unk=!(gq&&gq.nx)&&!(ng&&earningsInfo(ng)&&earningsInfo(ng).n!=null);
   return card5({code:code,name:name||'—',close:px.close,
-    methodHtml:methodHtml, cautionHtml:caution, earnHtml:holdEarnChip(code,ng), judgeHtml:judgeHtml, propHtml:'', bodyHtml:meta+hl});
+    methodHtml:methodHtml, cautionHtml:caution, earnHtml:holdEarnChip(code,ng), judgeHtml:judgeHtml, propHtml:'', bodyHtml:meta+hl, unkBand:unk});
 }
 function renderHold(d,runs){
   return safeSection('sec-hold','🧳 保有',()=>{
@@ -2103,8 +2171,9 @@ function renderHold(d,runs){
     if(!codes.length){ body=`<div class='empty'>保有コードが未登録です。上の欄にコードを入れて「追加」を押してください。</div>`; }
     else{
       const inPool=codes.filter(c=>NG[c]).length;
+      let es=''; try{ es=holdEarnSummary(codes); }catch(e){ es=''; }
       body=`<div class='ngsum'><span class='ngchip'>登録 <b>${codes.length}</b></span><span class='ngchip'>候補プール内 <b>${inPool}</b></span><span class='ngchip'>候補外 <b>${codes.length-inPool}</b></span></div>`
-        + codes.map(c=>holdCard(c,NG,POOL)).join('');
+        + es + codes.map(c=>holdCard(c,NG,POOL)).join('');
     }
     const r=runs.night_gate;
     const fresh=(r&&r.status==='done')?`ゲート最終実行 <b>${esc(r.trading_day)}</b>${GRADES_DAY?`／grades <b>${esc(GRADES_DAY)}</b>`:''}`:'';

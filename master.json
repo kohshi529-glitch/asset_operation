@@ -1440,34 +1440,34 @@
   },
   "market": {
     "latest": {
-      "date": "2026-10-16",
-      "market_mode": "レンジ様子見",
+      "date": "2026-10-19",
+      "market_mode": "弱気",
       "method_guidance": {
-        "kenmo_momentum": "日経-4.9%の急落後で先物は+2.1%の戻り。寄り高値掴みを避け、寄り後30分の値持ちを確認してから小ロットのみ。",
-        "kenmo_newhigh": "原油+3%・地政学リスクで寄り高の追随は不可。引けまで値持ちを確認してから。",
-        "choruko_reversal": "急落後の自律反発局面。反転確認済みの銘柄のみ検討、落ちるナイフは引き続き警戒。",
-        "stf_kakuhen": "初動確認銘柄のみ。半導体・AI関連は除外、内需・ディフェンシブ優先。",
-        "tenbagger_x": "IPO新規参加は地合い不安定のため慎重。初値形成を見てから。",
-        "daytrade": "完全不関与。窓上げ後の値幅荒く見送り。",
-        "semicon_miniswing": "見送り（SOX-0.9%・VWAP積極帯は使わない）。"
+        "kenmo_momentum": "大取-2.1%安・SOX-3.8%でギャップダウン想定。新規は見送り、寄り後の下げ止まり確認まで入らない。",
+        "kenmo_newhigh": "地合い悪化で新高値ブレイクは失敗しやすい。見送り。",
+        "choruko_reversal": "急落初動はナイフ。寄り後30分の底打ち確認と出来高減少を見てから小ロットのみ。",
+        "stf_kakuhen": "半導体・AI関連は除外。内需・ディフェンシブで初動確認済みのみ。",
+        "tenbagger_x": "IPO新規参加は見送り。初値形成と地合いの落ち着きを確認してから。",
+        "daytrade": "完全不関与。窓下げ後の値幅荒く見送り。",
+        "semicon_miniswing": "見送り（SOX-3.8%・VWAP積極帯は使わない）。"
       },
-      "pattern": "先物乖離（急落後の戻り）＋地政学ショック型（原油+3%）",
-      "note": "日経は10/15に-4.9%の64,426円。大取は65,790円(+2.1%)と戻すが、WTI+3.0%で寄り高値掴み警戒（モード1段階引き下げ）。",
+      "pattern": "半導体主導リスクオフ（ナスダック・SOX急落＋先物ギャップダウン）",
+      "note": "金曜NYでナスダック-2.1%・SOX-3.8%・VIX+21%(20.0)。大取は現物比-2.1%(63,925)で寄りはギャップダウン、日経は10/16に+1.4%の65,324円から反落見込み。",
       "indicators": {
-        "nikkei": 64425.73,
-        "night_futures": 65790,
-        "night_futures_asof": "2026-10-16 06:34 JST",
-        "night_gap_pct": 2.12,
-        "dow_pct": 1.08,
-        "nasdaq_pct": 0.08,
-        "sp500_pct": 0.33,
-        "sox": 11581.2153,
-        "sox_pct": -0.88,
-        "vix": 16.46,
+        "nikkei": 65324.07,
+        "night_futures": 63925,
+        "night_futures_asof": "2026-10-19 06:34 JST（TV遅延600秒）",
+        "night_gap_pct": -2.14,
+        "dow_pct": -0.34,
+        "nasdaq_pct": -2.14,
+        "sp500_pct": -1.09,
+        "sox": 11137.2867,
+        "sox_pct": -3.83,
+        "vix": 19.99,
         "fear_greed": null,
-        "usdjpy": 157.963,
-        "wti": 97.97,
-        "wti_pct": 3.03
+        "usdjpy": 157.976,
+        "wti": 99.02,
+        "wti_pct": 1.07
       },
       "data_health": {
         "sox": "tv_scanner",
@@ -1494,6 +1494,60 @@
       }
     },
     "history": [
+      {
+        "date": "2026-10-19",
+        "market_mode": "弱気",
+        "method_guidance": {
+          "kenmo_momentum": "大取-2.1%安・SOX-3.8%でギャップダウン想定。新規は見送り、寄り後の下げ止まり確認まで入らない。",
+          "kenmo_newhigh": "地合い悪化で新高値ブレイクは失敗しやすい。見送り。",
+          "choruko_reversal": "急落初動はナイフ。寄り後30分の底打ち確認と出来高減少を見てから小ロットのみ。",
+          "stf_kakuhen": "半導体・AI関連は除外。内需・ディフェンシブで初動確認済みのみ。",
+          "tenbagger_x": "IPO新規参加は見送り。初値形成と地合いの落ち着きを確認してから。",
+          "daytrade": "完全不関与。窓下げ後の値幅荒く見送り。",
+          "semicon_miniswing": "見送り（SOX-3.8%・VWAP積極帯は使わない）。"
+        },
+        "pattern": "半導体主導リスクオフ（ナスダック・SOX急落＋先物ギャップダウン）",
+        "note": "金曜NYでナスダック-2.1%・SOX-3.8%・VIX+21%(20.0)。大取は現物比-2.1%(63,925)で寄りはギャップダウン、日経は10/16に+1.4%の65,324円から反落見込み。",
+        "indicators": {
+          "nikkei": 65324.07,
+          "night_futures": 63925,
+          "night_futures_asof": "2026-10-19 06:34 JST（TV遅延600秒）",
+          "night_gap_pct": -2.14,
+          "dow_pct": -0.34,
+          "nasdaq_pct": -2.14,
+          "sp500_pct": -1.09,
+          "sox": 11137.2867,
+          "sox_pct": -3.83,
+          "vix": 19.99,
+          "fear_greed": null,
+          "usdjpy": 157.976,
+          "wti": 99.02,
+          "wti_pct": 1.07
+        },
+        "data_health": {
+          "sox": "tv_scanner",
+          "vix": "tv_scanner",
+          "fear_greed": null,
+          "night_futures": "tv_scanner",
+          "night_source": "TV:CME:NIY1!",
+          "wti": "tv_scanner",
+          "rate_limited": true,
+          "tv_scanner": {
+            "used": true,
+            "asof": "06:34 JST",
+            "update_mode": "streaming/delayed_streaming_600-900",
+            "empty": []
+          },
+          "sources": {}
+        },
+        "settlement": {
+          "us_settled": true,
+          "us_close_jst": "05:00",
+          "night_settled": true,
+          "run_at_jst": "06:34",
+          "excluded": []
+        }
+      },
       {
         "date": "2026-10-16",
         "market_mode": "レンジ様子見",
@@ -2412,55 +2466,6 @@
           "us_close_jst": "05:00",
           "night_settled": true,
           "run_at_jst": "06:32",
-          "excluded": []
-        }
-      },
-      {
-        "date": "2026-09-11",
-        "market_mode": "弱気",
-        "method_guidance": {
-          "kenmo_momentum": "夜間先物は現物比-2.11%の大幅ギャップダウン、SOXも-2.66%と主力全面安。新規モメンタムエントリーは見送り、地合い回復を待つ。",
-          "kenmo_newhigh": "地政学リスクで全面安のため新高値追いは完全見送り。ボラティリティ収束まで待機。",
-          "choruko_reversal": "VIX17.84(+8.38%)・F&G35(Fear)と弱気優勢。急落からの短期リバーサル狙いは通常よりサイズ縮小で慎重に対応。",
-          "stf_kakuhen": "ドル円154.36円(+0.51%)、地政学ショックで初動は寄り後の値固め確認を最優先。無理な仕掛けは見送り推奨。",
-          "tenbagger_x": "618A KOMPEITO本日上場(公開価格1,600円)。市況悪化下での初値形成のため需給に厳重注意、飛びつきは回避。",
-          "daytrade": "夜間先物-2.11%・WTI+8.20%の地政学ショック型で乱高下必至。無理な逆張り・大玉は完全回避しルール厳守に徹する。",
-          "semicon_miniswing": "SOX-2.66%と主力急落、弱気モードにつきVWAP追随は見送り。寄り確認後も様子見継続。"
-        },
-        "pattern": "地政学ショック型(米国・イラン軍事衝突が継続悪化、WTI+8.20%の103.93ドルへ大幅続伸しホルムズ海峡封鎖懸念が深刻化。NYダウ-0.60%/ナスダック-0.65%/S&P500-0.59%と全面安、SOXは-2.66%と半導体が主導安、VIXは+8.38%の17.84まで急伸。夜間先物は現物比-2.11%の大幅ギャップダウン)",
-        "note": "米イラン軍事衝突の深刻化でWTIが103ドル台に急伸(2日連続の急伸で地政学リスクプレミアム拡大)、夜間先物は現物比-2.11%の大幅ギャップダウン。寄り付きから全面安・ボラティリティ急拡大に厳重警戒。",
-        "indicators": {
-          "nikkei": 65270.95,
-          "night_futures": 63895.0,
-          "night_futures_asof": "2026-09-11 05:59 JST",
-          "night_gap_pct": -2.108,
-          "dow_pct": -0.604,
-          "nasdaq_pct": -0.654,
-          "sp500_pct": -0.585,
-          "sox": 11614.17,
-          "sox_pct": -2.658,
-          "vix": 17.84,
-          "fear_greed": {
-            "value": 35,
-            "label": "Fear"
-          },
-          "usdjpy": 154.36,
-          "wti": 103.93,
-          "wti_pct": 8.204
-        },
-        "data_health": {
-          "sox": "api",
-          "vix": "api",
-          "fear_greed": "search_snippet",
-          "night_futures": "api_niy",
-          "night_source": "NIY=F",
-          "wti": "api"
-        },
-        "settlement": {
-          "us_settled": true,
-          "us_close_jst": "05:00",
-          "night_settled": true,
-          "run_at_jst": "06:35",
           "excluded": []
         }
       }
@@ -7203,11 +7208,11 @@
         "source": "①-9 v5.3"
       },
       "morning_compass": {
-        "generated_at": "2026-10-16T06:34:59+09:00",
-        "trading_day": "2026-10-16",
+        "generated_at": "2026-10-19T06:34:30+09:00",
+        "trading_day": "2026-10-19",
         "status": "done",
         "source": "morning_compass_v10",
-        "memo": "run_at=2026-10-16T06:34:59+09:00; Yahoo全9本429(待機60s+再試行)→TVスキャナで補完",
+        "memo": "run_at=2026-10-19T06:34:30+09:00; Yahoo全9本429(待機60s+再試行)→TVスキャナで全指標補完",
         "missing": [
           "fear_greed"
         ]

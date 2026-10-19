@@ -15,7 +15,7 @@ OWNER = "kohshi529-glitch"
 # cand: candidates.* で変えてよい子キー。runs: pipeline.runs.* で変えてよい子キー。
 # max_lines: master.json の変更行数（追加＋削除）の上限（実績最大の約1.5倍。異常なふくらみの検知用。書式破壊は別途「往復一致」で見る）。
 POLICY = {
-  "night-gate":   dict(files=["master.json","grades.json","pool_bars.json","night_gate_today.json","night_gate_board.md","gate_history/*.json"],
+  "night-gate":   dict(files=["master.json","grades.json","pool_bars.json","night_gate_today.json","night_gate_board.md","gate_history/*.json","earnings_calendar.json"],
                        keys={"night_gate","gyoseki_cache","valuation_cache","profile_cache","earnings_log","rights_cache","pipeline"},
                        cand=set(), runs={"night_gate"}, max_lines=70000),
   "nightly ①-S1": dict(files=["master.json"], keys={"candidates","pipeline"}, cand={"kenmo_momentum","kenmo_newhigh"}, runs={"kenmo_momentum","kenmo_newhigh"}, max_lines=1000),
@@ -32,8 +32,9 @@ POLICY = {
   "stf":          dict(files=["master.json"], keys={"candidates","stf_log","pipeline"}, cand={"stf_kakuhen"}, runs={"stf_weekly"}, max_lines=10000),
 }
 # 派生ファイルのサイズ上限（暴走検知用。2026-10-11 実測: grades 385KB・pool_bars 352KB・night_gate_today 74KB・gate_history 516KB／日・gate_track 1.9MB・surge_log 80KB の約 1.5〜2 倍）。
+# 2026-10-19: earnings_calendar.json（①-8 v1.43 の派生ファイル・次回決算日と過去の発表日。初回実測 86KB・889 銘柄）を night-gate の許可ファイルに追加。上限 300KB。
 # 正典側の上限（①-8 V13(d) の grades 350KB 等）は正典の自己検証に委ね、ここでは「桁違い」だけを止める。無いものは上限なし（JSON として読めればよい）。
-SIZE_CAPS = {"grades.json": 700_000, "pool_bars.json": 700_000, "market_today.json": 50_000, "ai_scan_today.json": 200_000, "night_gate_today.json": 300_000, "gate_track.json": 4_000_000, "surge_log.json": 500_000}
+SIZE_CAPS = {"grades.json": 700_000, "pool_bars.json": 700_000, "earnings_calendar.json": 300_000, "market_today.json": 50_000, "ai_scan_today.json": 200_000, "night_gate_today.json": 300_000, "gate_track.json": 4_000_000, "surge_log.json": 500_000}
 GATE_HISTORY_CAP = 1_200_000
 
 def git(*a):

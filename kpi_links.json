@@ -1,0 +1,144 @@
+{
+  "meta": {
+    "version": 0,
+    "generated_at": "2026-10-20T13:30:00+09:00",
+    "note": "銘柄→業態タイプ・会社KPI・指標・trade_map・顧客対応の対応表。measured（r・n・lag・測定日）は R-E が四半期ごとに更新し、それ以外はメンテナンスPR。measured が無い／閾値未満（n<8 または |r|<0.5）の指標は表示に使わない",
+    "thresholds": {
+      "min_n": 8,
+      "min_abs_r": 0.5
+    }
+  },
+  "stocks": {
+    "6954": {
+      "name": "ファナック",
+      "type": "export_mfg",
+      "subtype": "robotics_cnc",
+      "company_kpi": {
+        "segment_sales_q": "四半期セグメント売上（FA・ロボット・ロボマシン）",
+        "orders_q": "受注高（短信）"
+      },
+      "trade_map": [
+        {
+          "hs6": "847950",
+          "label": "産業用ロボット",
+          "code9": "貿易統計の品目表で確定",
+          "ports": [],
+          "port_candidates": [
+            "横浜港",
+            "東京港",
+            "成田空港"
+          ],
+          "countries": [
+            "CN",
+            "US",
+            "DE",
+            "KR"
+          ],
+          "measure": [
+            "value",
+            "qty",
+            "unit_price"
+          ],
+          "status": "候補・未測定"
+        },
+        {
+          "hs6": "853710",
+          "label": "数値制御装置（NC）",
+          "code9": "貿易統計の品目表で確定",
+          "ports": [],
+          "port_candidates": [
+            "成田空港",
+            "横浜港"
+          ],
+          "countries": [
+            "CN",
+            "TW",
+            "DE",
+            "US"
+          ],
+          "measure": [
+            "value",
+            "qty"
+          ],
+          "status": "候補・未測定"
+        },
+        {
+          "hs6": "8501",
+          "label": "サーボモータ（HS 8501 系の細分）",
+          "code9": "貿易統計の品目表で確定",
+          "ports": [],
+          "port_candidates": [],
+          "countries": [],
+          "measure": [
+            "value"
+          ],
+          "status": "候補・未測定"
+        },
+        {
+          "hs6": "845710",
+          "label": "マシニングセンタ（ロボドリル）",
+          "code9": "貿易統計の品目表で確定",
+          "ports": [],
+          "port_candidates": [
+            "横浜港",
+            "東京港"
+          ],
+          "countries": [
+            "CN",
+            "US"
+          ],
+          "measure": [
+            "value",
+            "qty"
+          ],
+          "status": "候補・未測定"
+        }
+      ],
+      "external": [
+        "jmtba_m",
+        "jara_m",
+        "customs_export"
+      ],
+      "customers": [],
+      "measured": {}
+    },
+    "8194": {
+      "name": "ライフコーポレーション",
+      "type": "retail_monthly",
+      "company_kpi": {
+        "sales_m_all": "月次売上（全店）",
+        "sales_m_same": "月次売上（既存店前年比）",
+        "customers_m": "客数",
+        "ticket_m": "客単価"
+      },
+      "trade_map": [],
+      "external": [
+        "commerce_stats_m",
+        "jcb_now",
+        "consumer_sentiment_m",
+        "weather"
+      ],
+      "customers": [],
+      "measured": {}
+    },
+    "598A": {
+      "name": "チャットプラス",
+      "type": "saas",
+      "company_kpi": {
+        "arr": "ARR（決算説明資料）",
+        "accounts": "アカウント数",
+        "arpa": "サービス別 年間単価",
+        "churn": "解約率（数値未開示＝null）"
+      },
+      "trade_map": [],
+      "external": [
+        "tankan_sw_invest",
+        "peer_saas_q",
+        "job_posts"
+      ],
+      "customers": [],
+      "measured": {},
+      "note": "上場2年未満のため進捗モデルは履歴不足。着地はARR持ち越し（期首ARR÷4＋フロー4.1%）"
+    }
+  }
+}

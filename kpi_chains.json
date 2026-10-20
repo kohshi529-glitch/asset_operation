@@ -1,0 +1,769 @@
+{
+  "meta": {
+    "version": 0,
+    "generated_at": "2026-10-20T13:30:00+09:00",
+    "note": "業態タイプ辞書・指標ID体系・公表日の固定表。公開情報のみ。更新はメンテナンスPRで全置換。無人ルーティンは読むだけ。相関は kpi_links.json の measured に測定値がある指標だけを使う",
+    "principles": [
+      "推定で埋めない（取れない値は null）",
+      "公開物には測定値（r・n）付きの指標だけを出す",
+      "規約で二次利用が制限される情報源は値の転記のみ・出典名を公開物に書かない",
+      "定義変更（HS改正・調査変更）は version を上げ、接続表の無い系列は別系列として扱う"
+    ]
+  },
+  "types": {
+    "saas": {
+      "label": "SaaS・ストック型",
+      "landing": "carry",
+      "company_kpi": [
+        "arr",
+        "accounts",
+        "arpa",
+        "churn",
+        "nrr"
+      ],
+      "external": [
+        "tankan_sw_invest",
+        "peer_saas_q",
+        "job_posts"
+      ],
+      "note": "ストック売上≈(期首ARR+期末ARR)/2/4+フロー。利益は費用先行で読めない"
+    },
+    "order_mfg": {
+      "label": "受注型製造（機械・装置・部品）",
+      "landing": "backlog",
+      "company_kpi": [
+        "orders_q",
+        "backlog_q",
+        "bb_ratio"
+      ],
+      "external": [
+        "jmtba_m",
+        "machinery_orders_m",
+        "seaj_m",
+        "jeita_m",
+        "ism_pmi",
+        "customs_export"
+      ],
+      "note": "受注残÷リードタイムで翌期。通関で当期の出荷"
+    },
+    "construction": {
+      "label": "建設・サブコン",
+      "landing": "backlog",
+      "company_kpi": [
+        "orders_q",
+        "backlog_q",
+        "orders_m"
+      ],
+      "external": [
+        "housing_starts_m",
+        "construction_orders_m",
+        "dc_starts"
+      ],
+      "note": "手持工事高が1年先の売上をほぼ決める。利益率は資材・労務費"
+    },
+    "retail_monthly": {
+      "label": "小売・外食・サービス（月次売上型）",
+      "landing": "monthly",
+      "company_kpi": [
+        "sales_m_all",
+        "sales_m_same",
+        "customers_m",
+        "ticket_m"
+      ],
+      "external": [
+        "commerce_stats_m",
+        "dept_store_m",
+        "jff_m",
+        "jnto_m",
+        "consumer_sentiment_m",
+        "jcb_now",
+        "weather"
+      ],
+      "note": "四半期の2/3が月次で先に分かる"
+    },
+    "staffing": {
+      "label": "人材・求人広告",
+      "landing": "monthly",
+      "company_kpi": [
+        "sales_m",
+        "postings_m"
+      ],
+      "external": [
+        "job_ads_m",
+        "jobs_ratio_m",
+        "tankan_employment"
+      ],
+      "note": ""
+    },
+    "materials": {
+      "label": "素材・化学・商社・海運（市況型）",
+      "landing": "price_volume",
+      "company_kpi": [
+        "volume_q",
+        "price_q",
+        "sensitivity"
+      ],
+      "external": [
+        "lme_copper",
+        "crude",
+        "naphtha",
+        "iron_ore",
+        "bdi",
+        "scfi",
+        "fx_usdjpy",
+        "china_pmi"
+      ],
+      "note": "短信の感応度表×市況で試算"
+    },
+    "finance": {
+      "label": "金融・ネット証券（残高型）",
+      "landing": "monthly",
+      "company_kpi": [
+        "accounts_m",
+        "aum_m",
+        "turnover_m"
+      ],
+      "external": [
+        "tse_turnover_m",
+        "rates"
+      ],
+      "note": "残高型は精度が高い"
+    },
+    "auto": {
+      "label": "自動車・部品",
+      "landing": "monthly",
+      "company_kpi": [
+        "production_m",
+        "sales_m"
+      ],
+      "external": [
+        "jada_reg_m",
+        "car_model_reg_m",
+        "us_saar",
+        "china_cpca",
+        "fx_usdjpy"
+      ],
+      "note": "車名別登録台数で部品採用モデル別に"
+    },
+    "pharma_pharmacy": {
+      "label": "製薬・調剤",
+      "landing": "seasonal",
+      "company_kpi": [
+        "prescriptions_m",
+        "stores"
+      ],
+      "external": [
+        "dispensing_cost_m",
+        "drug_price_revision",
+        "approvals"
+      ],
+      "note": "改定年は構造変化"
+    },
+    "game_app": {
+      "label": "ゲーム・アプリ",
+      "landing": "seasonal",
+      "company_kpi": [
+        "dau",
+        "downloads"
+      ],
+      "external": [
+        "app_rank_d",
+        "cero_list"
+      ],
+      "note": "運営型は高精度"
+    },
+    "ai_energy": {
+      "label": "AI特需: エネマネ・計量",
+      "landing": "backlog",
+      "company_kpi": [
+        "orders_q",
+        "backlog_q"
+      ],
+      "external": [
+        "hyperscaler_capex_q",
+        "vertiv_orders_q",
+        "jema_heavy_m",
+        "occto_grid",
+        "customs_import_dc"
+      ],
+      "note": "スマートメーターは別の川"
+    },
+    "ai_cooling": {
+      "label": "AI特需: 冷却・空調",
+      "landing": "backlog",
+      "company_kpi": [
+        "orders_q",
+        "backlog_q",
+        "bb_ratio"
+      ],
+      "external": [
+        "hyperscaler_capex_q",
+        "nvidia_dc_q",
+        "vertiv_orders_q",
+        "dc_starts",
+        "gc_orders_m",
+        "customs_import_dc"
+      ],
+      "note": "サブコンは手持工事高・部材はBBレシオ"
+    },
+    "ai_optical": {
+      "label": "AI特需: 光通信",
+      "landing": "backlog",
+      "company_kpi": [
+        "orders_q"
+      ],
+      "external": [
+        "nvidia_dc_q",
+        "us_optical_q",
+        "cn_optical_q",
+        "jeita_m",
+        "tw_odm_rev_m"
+      ],
+      "note": "上流素材は1〜2Q遅れ"
+    },
+    "ai_substrate": {
+      "label": "AI特需: 基板・素材・装置商社",
+      "landing": "backlog",
+      "company_kpi": [
+        "orders_q",
+        "backlog_q",
+        "utilization"
+      ],
+      "external": [
+        "tsmc_rev_m",
+        "nvidia_dc_q",
+        "seaj_m",
+        "semi_wwsems_m",
+        "kr_exports_20d",
+        "tw_odm_rev_m",
+        "customs_export"
+      ],
+      "note": "AI比率を銘柄ごとに持つ"
+    },
+    "export_mfg": {
+      "label": "輸出製造（通関で出荷を読む型）",
+      "landing": "customs",
+      "company_kpi": [
+        "segment_sales_q",
+        "orders_q"
+      ],
+      "external": [
+        "customs_export",
+        "jmtba_m",
+        "jara_m"
+      ],
+      "note": "品目×港×国の trade_map を測定で決める"
+    }
+  },
+  "indicators": {
+    "tsmc_rev_m": {
+      "label": "台湾 大手ファウンドリ 月次売上",
+      "kind": "customer_monthly",
+      "freq": "M",
+      "release": "翌月10日前後",
+      "source_type": "海外開示",
+      "public": true,
+      "fetch": "未検証"
+    },
+    "tw_odm_rev_m": {
+      "label": "台湾 ODM 各社 月次売上（AIサーバー出荷の同時指標）",
+      "kind": "customer_monthly",
+      "freq": "M",
+      "release": "翌月5〜10日",
+      "source_type": "海外開示",
+      "public": true,
+      "fetch": "未検証"
+    },
+    "hyperscaler_capex_q": {
+      "label": "ハイパースケーラー4社 設備投資とガイダンス",
+      "kind": "demand",
+      "freq": "Q",
+      "release": "1/4/7/10月下旬",
+      "source_type": "海外開示",
+      "public": true,
+      "fetch": "PRで入力"
+    },
+    "nvidia_dc_q": {
+      "label": "GPU大手 データセンター売上・ガイダンス・製品世代",
+      "kind": "demand",
+      "freq": "Q",
+      "release": "2/5/8/11月下旬",
+      "source_type": "海外開示",
+      "public": true,
+      "fetch": "PRで入力"
+    },
+    "vertiv_orders_q": {
+      "label": "DC電源・冷却大手 受注・バックログ",
+      "kind": "demand",
+      "freq": "Q",
+      "release": "四半期",
+      "source_type": "海外開示",
+      "public": true,
+      "fetch": "PRで入力"
+    },
+    "us_optical_q": {
+      "label": "米国 光部品大手 決算・ガイダンス",
+      "kind": "peer",
+      "freq": "Q",
+      "release": "四半期",
+      "source_type": "海外開示",
+      "public": true,
+      "fetch": "PRで入力"
+    },
+    "cn_optical_q": {
+      "label": "中国 光モジュール大手 決算",
+      "kind": "peer",
+      "freq": "Q",
+      "release": "四半期",
+      "source_type": "海外開示",
+      "public": true,
+      "fetch": "PRで入力"
+    },
+    "kr_exports_20d": {
+      "label": "韓国 輸出速報（1〜20日）",
+      "kind": "demand",
+      "freq": "M",
+      "release": "月21日前後",
+      "source_type": "海外統計",
+      "public": true,
+      "fetch": "未検証"
+    },
+    "seaj_m": {
+      "label": "日本製半導体製造装置 月次販売額",
+      "kind": "industry",
+      "freq": "M",
+      "release": "翌月下旬",
+      "source_type": "団体統計",
+      "public": "規約確認",
+      "fetch": "未検証"
+    },
+    "semi_wwsems_m": {
+      "label": "世界半導体装置 出荷統計",
+      "kind": "industry",
+      "freq": "M",
+      "release": "翌々月",
+      "source_type": "団体統計",
+      "public": "規約確認",
+      "fetch": "未検証"
+    },
+    "jeita_m": {
+      "label": "電子部品 月次出荷",
+      "kind": "industry",
+      "freq": "M",
+      "release": "翌々月",
+      "source_type": "団体統計",
+      "public": "規約確認",
+      "fetch": "未検証"
+    },
+    "jema_heavy_m": {
+      "label": "重電機器 受注統計",
+      "kind": "industry",
+      "freq": "M",
+      "release": "翌月",
+      "source_type": "団体統計",
+      "public": "規約確認",
+      "fetch": "未検証"
+    },
+    "jmtba_m": {
+      "label": "工作機械 受注（速報）",
+      "kind": "industry",
+      "freq": "M",
+      "release": "翌月中旬",
+      "source_type": "団体統計",
+      "public": "規約確認",
+      "fetch": "未検証"
+    },
+    "jara_m": {
+      "label": "産業用ロボット 受注・生産・出荷",
+      "kind": "industry",
+      "freq": "M/Q",
+      "release": "翌月〜翌四半期",
+      "source_type": "団体統計",
+      "public": "規約確認",
+      "fetch": "未検証"
+    },
+    "machinery_orders_m": {
+      "label": "機械受注統計",
+      "kind": "industry",
+      "freq": "M",
+      "release": "翌々月中旬",
+      "source_type": "公的統計",
+      "public": true,
+      "fetch": "未検証"
+    },
+    "housing_starts_m": {
+      "label": "建築着工統計（用途別・都道府県別）",
+      "kind": "industry",
+      "freq": "M",
+      "release": "翌月末",
+      "source_type": "公的統計",
+      "public": true,
+      "fetch": "未検証"
+    },
+    "construction_orders_m": {
+      "label": "建設工事受注動態統計",
+      "kind": "industry",
+      "freq": "M",
+      "release": "翌月末",
+      "source_type": "公的統計",
+      "public": true,
+      "fetch": "未検証"
+    },
+    "dc_starts": {
+      "label": "国内データセンター 着工・受電（調査会社・広域機関）",
+      "kind": "demand",
+      "freq": "不定期",
+      "release": "不定期",
+      "source_type": "団体・調査会社",
+      "public": "規約確認",
+      "fetch": "PRで入力"
+    },
+    "occto_grid": {
+      "label": "系統連系申込・電力需要（広域機関）",
+      "kind": "demand",
+      "freq": "M",
+      "release": "月次",
+      "source_type": "公的〜団体",
+      "public": "規約確認",
+      "fetch": "未検証"
+    },
+    "gc_orders_m": {
+      "label": "大手ゼネコン 月次受注速報",
+      "kind": "peer",
+      "freq": "M",
+      "release": "翌月上旬",
+      "source_type": "会社開示",
+      "public": true,
+      "fetch": "未検証"
+    },
+    "customs_export": {
+      "label": "通関統計（輸出・品目×税関×相手国）",
+      "kind": "shipment",
+      "freq": "M",
+      "release": "速報 翌月下旬・確報 その後（財務省公表スケジュール）",
+      "source_type": "公的統計",
+      "public": true,
+      "fetch": "未検証（CSV）",
+      "hs_version": "HS2022（2027年1月に改正予定）"
+    },
+    "customs_import_dc": {
+      "label": "通関統計（輸入・演算装置8471系／冷却8415系／電源8504系・航空貨物）",
+      "kind": "domestic_demand",
+      "freq": "M",
+      "release": "速報 翌月下旬",
+      "source_type": "公的統計",
+      "public": true,
+      "fetch": "未検証（CSV）"
+    },
+    "commerce_stats_m": {
+      "label": "商業動態統計",
+      "kind": "industry",
+      "freq": "M",
+      "release": "翌月末",
+      "source_type": "公的統計",
+      "public": true,
+      "fetch": "未検証"
+    },
+    "dept_store_m": {
+      "label": "百貨店売上 月次",
+      "kind": "industry",
+      "freq": "M",
+      "release": "翌月下旬",
+      "source_type": "団体統計",
+      "public": "規約確認",
+      "fetch": "未検証"
+    },
+    "jff_m": {
+      "label": "外食産業 月次",
+      "kind": "industry",
+      "freq": "M",
+      "release": "翌月下旬",
+      "source_type": "団体統計",
+      "public": "規約確認",
+      "fetch": "未検証"
+    },
+    "jnto_m": {
+      "label": "訪日外客数",
+      "kind": "demand",
+      "freq": "M",
+      "release": "翌月中旬",
+      "source_type": "公的〜団体",
+      "public": true,
+      "fetch": "未検証"
+    },
+    "consumer_sentiment_m": {
+      "label": "消費者態度指数",
+      "kind": "demand",
+      "freq": "M",
+      "release": "当月末〜翌月初",
+      "source_type": "公的統計",
+      "public": true,
+      "fetch": "未検証"
+    },
+    "jcb_now": {
+      "label": "カード決済 消費指数（公開版・月2回）",
+      "kind": "demand",
+      "freq": "半月",
+      "release": "月2回",
+      "source_type": "民間指標",
+      "public": "規約確認",
+      "fetch": "未検証"
+    },
+    "weather": {
+      "label": "気温・天候（季節商材）",
+      "kind": "demand",
+      "freq": "D",
+      "release": "日次",
+      "source_type": "公的統計",
+      "public": true,
+      "fetch": "未検証"
+    },
+    "job_ads_m": {
+      "label": "求人広告件数",
+      "kind": "industry",
+      "freq": "M",
+      "release": "翌月",
+      "source_type": "団体統計",
+      "public": "規約確認",
+      "fetch": "未検証"
+    },
+    "jobs_ratio_m": {
+      "label": "有効求人倍率",
+      "kind": "industry",
+      "freq": "M",
+      "release": "翌月末",
+      "source_type": "公的統計",
+      "public": true,
+      "fetch": "未検証"
+    },
+    "tankan_sw_invest": {
+      "label": "短観 ソフトウェア投資計画",
+      "kind": "demand",
+      "freq": "Q",
+      "release": "4/7/10/12月",
+      "source_type": "公的統計",
+      "public": true,
+      "fetch": "未検証"
+    },
+    "tankan_employment": {
+      "label": "短観 雇用判断DI",
+      "kind": "demand",
+      "freq": "Q",
+      "release": "4/7/10/12月",
+      "source_type": "公的統計",
+      "public": true,
+      "fetch": "未検証"
+    },
+    "peer_saas_q": {
+      "label": "決算期が先行する同業SaaSのARR成長率・ガイダンス",
+      "kind": "peer",
+      "freq": "Q",
+      "release": "四半期",
+      "source_type": "会社開示",
+      "public": true,
+      "fetch": "kabutan 四半期表（既存経路）"
+    },
+    "job_posts": {
+      "label": "採用ページの求人数（費用側の先行）",
+      "kind": "activity",
+      "freq": "随時",
+      "release": "随時",
+      "source_type": "会社サイト",
+      "public": true,
+      "fetch": "未検証"
+    },
+    "ism_pmi": {
+      "label": "米 ISM 製造業PMI",
+      "kind": "demand",
+      "freq": "M",
+      "release": "月初",
+      "source_type": "海外統計",
+      "public": true,
+      "fetch": "未検証"
+    },
+    "china_pmi": {
+      "label": "中国 製造業PMI",
+      "kind": "demand",
+      "freq": "M",
+      "release": "月末〜月初",
+      "source_type": "海外統計",
+      "public": true,
+      "fetch": "未検証"
+    },
+    "lme_copper": {
+      "label": "銅 LME",
+      "kind": "price",
+      "freq": "D",
+      "release": "日次",
+      "source_type": "市況",
+      "public": "規約確認",
+      "fetch": "⑤のスキャナ経路で検証"
+    },
+    "crude": {
+      "label": "原油 WTI",
+      "kind": "price",
+      "freq": "D",
+      "release": "日次",
+      "source_type": "市況",
+      "public": "規約確認",
+      "fetch": "⑤で取得済み"
+    },
+    "naphtha": {
+      "label": "ナフサ",
+      "kind": "price",
+      "freq": "M",
+      "release": "月次",
+      "source_type": "市況",
+      "public": "規約確認",
+      "fetch": "未検証"
+    },
+    "iron_ore": {
+      "label": "鉄鉱石",
+      "kind": "price",
+      "freq": "D",
+      "release": "日次",
+      "source_type": "市況",
+      "public": "規約確認",
+      "fetch": "未検証"
+    },
+    "bdi": {
+      "label": "バルチック海運指数",
+      "kind": "price",
+      "freq": "D",
+      "release": "日次",
+      "source_type": "市況",
+      "public": "規約確認",
+      "fetch": "未検証"
+    },
+    "scfi": {
+      "label": "上海コンテナ運賃指数",
+      "kind": "price",
+      "freq": "W",
+      "release": "週次",
+      "source_type": "市況",
+      "public": "規約確認",
+      "fetch": "未検証"
+    },
+    "fx_usdjpy": {
+      "label": "ドル円",
+      "kind": "price",
+      "freq": "D",
+      "release": "日次",
+      "source_type": "市況",
+      "public": true,
+      "fetch": "⑤で取得済み"
+    },
+    "tse_turnover_m": {
+      "label": "東証 売買代金 月次",
+      "kind": "industry",
+      "freq": "M",
+      "release": "翌月上旬",
+      "source_type": "公的〜団体",
+      "public": "規約確認",
+      "fetch": "未検証"
+    },
+    "rates": {
+      "label": "金利（10年国債）",
+      "kind": "price",
+      "freq": "D",
+      "release": "日次",
+      "source_type": "市況",
+      "public": true,
+      "fetch": "未検証"
+    },
+    "jada_reg_m": {
+      "label": "新車登録台数（全体）",
+      "kind": "industry",
+      "freq": "M",
+      "release": "翌月1日",
+      "source_type": "団体統計",
+      "public": "規約確認",
+      "fetch": "未検証"
+    },
+    "car_model_reg_m": {
+      "label": "車名別 新車販売台数",
+      "kind": "industry",
+      "freq": "M",
+      "release": "翌月6日前後",
+      "source_type": "団体統計",
+      "public": "規約確認",
+      "fetch": "未検証"
+    },
+    "us_saar": {
+      "label": "米 自動車販売年率",
+      "kind": "demand",
+      "freq": "M",
+      "release": "月初",
+      "source_type": "海外統計",
+      "public": true,
+      "fetch": "未検証"
+    },
+    "china_cpca": {
+      "label": "中国 乗用車販売",
+      "kind": "demand",
+      "freq": "M/W",
+      "release": "月初・週次",
+      "source_type": "海外団体",
+      "public": "規約確認",
+      "fetch": "未検証"
+    },
+    "dispensing_cost_m": {
+      "label": "調剤医療費（概算）",
+      "kind": "industry",
+      "freq": "M",
+      "release": "翌々月",
+      "source_type": "公的統計",
+      "public": true,
+      "fetch": "未検証"
+    },
+    "drug_price_revision": {
+      "label": "薬価改定率",
+      "kind": "regulation",
+      "freq": "年〜2年",
+      "release": "年度",
+      "source_type": "公的",
+      "public": true,
+      "fetch": "PRで入力"
+    },
+    "approvals": {
+      "label": "医薬品・医療機器 承認",
+      "kind": "event",
+      "freq": "随時",
+      "release": "随時",
+      "source_type": "公的",
+      "public": true,
+      "fetch": "未検証"
+    },
+    "app_rank_d": {
+      "label": "アプリ ランキング",
+      "kind": "activity",
+      "freq": "D",
+      "release": "日次",
+      "source_type": "プラットフォーム",
+      "public": "規約確認",
+      "fetch": "未検証"
+    },
+    "cero_list": {
+      "label": "ゲーム レーティング審査通過",
+      "kind": "event",
+      "freq": "随時",
+      "release": "随時",
+      "source_type": "団体",
+      "public": "規約確認",
+      "fetch": "未検証"
+    }
+  },
+  "release_calendar_fixed": {
+    "note": "①-8 の📆カレンダー（⑤ v11 予定）に写す固定表。範囲外は「日程表なし」",
+    "customs_prelim_2026": {
+      "note": "財務省の公表スケジュールで確定してから入れる（本版は未入力）"
+    },
+    "tw_monthly": "毎月10日",
+    "nvidia_q": {
+      "note": "IRの発表日で確定してから入れる（本版は未入力）"
+    },
+    "hyperscaler_q": {
+      "note": "各社IRの発表日で確定してから入れる（本版は未入力）"
+    }
+  }
+}

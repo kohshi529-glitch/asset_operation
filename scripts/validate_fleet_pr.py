@@ -29,14 +29,16 @@ POLICY = {
   "ipo":          dict(files=["master.json"], keys={"ipo","catalyst_schedule","pipeline"}, cand=set(), runs={"ipo"}, max_lines=1000),
   "surge-log":    dict(files=["surge_log.json"], keys=set(), cand=set(), runs=set(), max_lines=0),
   "earn-stats":   dict(files=["earnings_stats.json"], keys=set(), cand=set(), runs=set(), max_lines=0),
+  "kpi-company":  dict(files=["kpi_series.json"], keys=set(), cand=set(), runs=set(), max_lines=0),
   "gate-track":   dict(files=["gate_track.json"], keys=set(), cand=set(), runs=set(), max_lines=0),
   "stf":          dict(files=["master.json"], keys={"candidates","stf_log","pipeline"}, cand={"stf_kakuhen"}, runs={"stf_weekly"}, max_lines=10000),
 }
 # 派生ファイルのサイズ上限（暴走検知用。2026-10-11 実測: grades 385KB・pool_bars 352KB・night_gate_today 74KB・gate_history 516KB／日・gate_track 1.9MB・surge_log 80KB の約 1.5〜2 倍）。
 # 2026-10-19: earnings_calendar.json（①-8 v1.43 の派生ファイル・次回決算日と過去の発表日。初回実測 86KB・889 銘柄）を night-gate の許可ファイルに追加。上限 300KB。
 # 2026-10-20: R-C 決算反応統計（接頭辞 earn-stats・週次）が書く earnings_stats.json を追加。master.json は書かない（max_lines=0）。上限 300KB。
+# 2026-10-21: R-B 決算 KPI 取込（接頭辞 kpi-company・火〜土 06:00）が書く kpi_series.json を追加。master.json は書かない。上限 1MB。
 # 正典側の上限（①-8 V13(d) の grades 350KB 等）は正典の自己検証に委ね、ここでは「桁違い」だけを止める。無いものは上限なし（JSON として読めればよい）。
-SIZE_CAPS = {"grades.json": 700_000, "pool_bars.json": 700_000, "earnings_calendar.json": 300_000, "earnings_stats.json": 300_000, "market_today.json": 50_000, "ai_scan_today.json": 200_000, "night_gate_today.json": 300_000, "gate_track.json": 4_000_000, "surge_log.json": 500_000}
+SIZE_CAPS = {"grades.json": 700_000, "pool_bars.json": 700_000, "earnings_calendar.json": 300_000, "earnings_stats.json": 300_000, "kpi_series.json": 1_000_000, "market_today.json": 50_000, "ai_scan_today.json": 200_000, "night_gate_today.json": 300_000, "gate_track.json": 4_000_000, "surge_log.json": 500_000}
 GATE_HISTORY_CAP = 1_200_000
 
 def git(*a):

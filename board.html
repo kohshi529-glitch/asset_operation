@@ -240,6 +240,11 @@ details.cfold>summary{cursor:pointer;color:#7fe3d6;font-size:12.5px;font-weight:
 .earnchip.warn{color:#e8a35b;background:#3d2817;border-color:#6b4a24}
 .earnchip.karte{color:#e8c766;background:#2e2a17;border-color:#5c5324}
 .earnchip.unknown{color:#8fb3ad;background:#1d3a40;border-color:#33565c}
+/* D16: 📐進捗チップ（計画比の乖離%。①-9 v5.4 の試算。遅れ≤−10 は橙、上振れ≥+10 は緑、それ以外は灰） */
+.pgchip{display:inline-block;font-size:12px;padding:2px 7px;border-radius:999px;border:1px solid;margin:2px 4px 0 0}
+.pgchip.lag{color:#ffd9b3;background:#4a2a00;border-color:#a04a00}
+.pgchip.up{color:#c8f5d0;background:#0f3a1c;border-color:#2e8b57}
+.pgchip.flat{color:#b8d2cf;background:#14262b;border-color:#2b5159}
 /* D13/D14: 決算カウントダウン帯（コード・現在値の行の直後・📈文脈/🕯形態のチップとは別の段・別の色。D14 で最上段からこの位置へ） */
 .earnband{display:block;margin:6px 0 2px;padding:7px 10px;border-radius:8px;font-size:13px;font-weight:800;line-height:1.35;color:#fff;border:2px solid}
 .earnband.crit{background:#b3261e;border-color:#ff8a80}
@@ -890,6 +895,12 @@ function pxdChip(code){
   const dm=String(g.pxd).slice(5).replace('-','/');
   return `<span class='earnchip unknown' title='前年同期の発表日（実績）。今期の日程は未発表＝会社 IR で確認'>📅前年同期 ${esc(dm)} 発表・今期未発表</span>`;
 }
+// D16: 進捗チップ。grades.json の pg（計画比の乖離%・経常ベースの試算。null なら出さない）
+function pgChip(code){
+  const g=gradesOf(code); if(!g||g.pg==null||isNaN(Number(g.pg))) return '';
+  const p=Number(g.pg); const cls=p<=-10?'lag':(p>=10?'up':'flat'); const lab=p<=-10?'遅れ':(p>=10?'上振れ':'計画圏');
+  return `<span class='pgchip ${cls}' title='進捗モデル: 今期累計を前年・前々年の同時点進捗率で割り戻した着地試算と会社計画の乖離（試算・予想ではない）'>📐計画比 ${p>0?'+':''}${esc(p.toFixed(1))}%・${lab}</span>`;
+}
 // 帯HTML（空文字＝出さない）。優先順: grades.json の nx → 当夜結果の決算チップ文字列（残n営業日）。
 function earnBand(code,earnHtml){
   let n=null, mmdd=null;
@@ -1109,7 +1120,8 @@ function card5(v){
   const r1=`<div class='srow s1'><span class='code'>${esc(fld(v.code))}</span><span class='cname'>${esc(fld(v.name))}</span>${priceChip(v)}</div>`;
   const r2=(v.methodHtml)?`<div class='srow s2'>${v.methodHtml}</div>`:`<div class='srow s2'></div>`;
   const r2b=v.cautionHtml?`<div class='srow s2b'>${v.cautionHtml}</div>`:''; // 注意チップ列（D2）。無ければ省略
-  const r3=v.earnHtml?`<div class='srow s3'>${v.earnHtml}</div>`:''; // 該当なしは行ごと省略
+  let pgc=''; try{ pgc=pgChip(v.code); }catch(e){ pgc=''; }
+  const r3=(v.earnHtml||pgc)?`<div class='srow s3'>${v.earnHtml||''}${pgc}</div>`:''; // 該当なしは行ごと省略（D16: 📐進捗チップも同じ行）
   const r4=v.judgeHtml||'';
   const r5=v.propHtml?`<div class='srow s5'>${v.propHtml}</div>`:''; // 提案なしは行ごと省略
   const r6=v.bodyHtml||'';
@@ -2094,6 +2106,8 @@ function renderLegend(){
     <h3>🕯 ローソク足形態チップ</h3>
     <div class='note'>直近6本のOHLC（pool_bars.json・base_day 足まで）から機械判定。実体＝|終値−始値|、値幅＝高値−安値、平均実体＝直前5本の実体平均。文脈「下落後」＝直前5日−3%以下または前日終値＜MA10×0.98、「上昇後」＝直前5日+3%以上または（前日終値＞MA10×1.02 かつ 20日高値の97%以上）。窓（上放れ／下放れ）は連続本数で1つだけ出す（1本＝上放れ／下放れ、2本＝2本連続、3本以上＝三空）。形態は「兆し」であり、翌日の確認足と文脈で判断する。形態ごとの成績は ①-8 v1.31 の記録が4週たまってから検証（V4）。</div>
     ${pat.map(prow).join('')}
+    <h3>📐 進捗チップ（D16）</h3>
+    <div class='note'>grades.json の <b>pg</b>（①-9 の進捗モデル: 今期の累計を前年・前々年の同時点進捗率で割り戻した着地試算と、会社計画の乖離%。経常ベース・無ければ売上）。<b>橙＝遅れ（−10% 以下）</b>、<b>緑＝上振れ（+10% 以上）</b>、灰＝計画圏。試算であり予想ではない。上場 2 年未満・決算期変更直後は履歴不足で出ない。判定・提案・順位は変えない。</div>
     <h3>🚨 決算カウントダウン帯（D13・D14）</h3>
     <div class='note'>各カードの「コード・銘柄名・現在値」の行の直後に出る枠付きの色帯（D14 で最上段から移動: 上下どちらのカードの帯か読み取りにくかったため）。grades.json の次回決算日（nx）と端末の今日から JPX 休業日表で残営業日を数える（通信なし）。<b>🚨赤</b>＝本日／明日が決算（引け後発表の可能性）、<b>⏰橙</b>＝決算まで 2〜5 営業日、<b>📉紫</b>＝本日が決算反応日（前営業日の引け後に発表）、<b>❓灰</b>＝次回決算日が取れていない（🧳保有タブのみ。不明は安全ではない）。D15: 次回決算日が未発表の銘柄には、前年同期の発表日（実績。grades.json の pxd）を「📅前年同期 MM/DD 発表・今期未発表」の灰チップで添える（予定ではない。今期の日程は会社 IR で確認）。📈文脈・🕯形態のチップとは別の段・別の色にしてあるのは、2026-10-15〜16 に保有銘柄の決算カウントダウンが同系色のチップに埋もれて流し読みされ、決算跨ぎのストップ安（−20.7%）を止められなかったため。帯は rulebook 教訓⑲「決算は天井。決算反応日の引けまでに撤収・持ち越さない」の提示であり、判定・提案・順位は変えない。🧳保有タブでは登録銘柄の決算を一覧で先頭に出す。</div>
     <h3>既存の凡例</h3>

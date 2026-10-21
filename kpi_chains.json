@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": 0,
-    "generated_at": "2026-10-20T13:30:00+09:00",
+    "version": 1,
+    "generated_at": "2026-10-21T13:40:00+09:00",
     "note": "業態タイプ辞書・指標ID体系・公表日の固定表。公開情報のみ。更新はメンテナンスPRで全置換。無人ルーティンは読むだけ。相関は kpi_links.json の measured に測定値がある指標だけを使う",
     "principles": [
       "推定で埋めない（取れない値は null）",
@@ -751,6 +751,16 @@
       "source_type": "団体",
       "public": "規約確認",
       "fetch": "未検証"
+    },
+    "tw_rev_m": {
+      "label": "台湾上場企業 月次売上（tw_universe 各社）",
+      "kind": "customer_monthly",
+      "freq": "M",
+      "release": "翌月10日まで",
+      "source_type": "海外開示（取引所公開データ）",
+      "public": true,
+      "fetch": "R-D v1.0（初回で検証）",
+      "series_key": "tw_rev_m:{tw}"
     }
   },
   "release_calendar_fixed": {
@@ -765,5 +775,169 @@
     "hyperscaler_q": {
       "note": "各社IRの発表日で確定してから入れる（本版は未入力）"
     }
+  },
+  "tw_universe": {
+    "note": "台湾上場企業（上市）の月次売上を R-D が取り込む対象。コードと役割は公開情報。コードは取引所の上場会社一覧で確認してから使う（未確認のコードは R-D が『該当なし』として記録）",
+    "unit": "NT$千元",
+    "release": "翌月10日まで",
+    "companies": [
+      {
+        "tw": "2330",
+        "name": "台積電",
+        "role": "foundry",
+        "ai_sectors": [
+          "ai_substrate",
+          "ai_optical",
+          "ai_cooling",
+          "ai_energy"
+        ],
+        "note": "川上の共通指標"
+      },
+      {
+        "tw": "2317",
+        "name": "鴻海",
+        "role": "odm",
+        "ai_sectors": [
+          "ai_cooling",
+          "ai_energy",
+          "ai_optical"
+        ]
+      },
+      {
+        "tw": "2382",
+        "name": "廣達",
+        "role": "odm",
+        "ai_sectors": [
+          "ai_cooling",
+          "ai_energy",
+          "ai_optical"
+        ]
+      },
+      {
+        "tw": "6669",
+        "name": "緯穎",
+        "role": "odm",
+        "ai_sectors": [
+          "ai_cooling",
+          "ai_energy",
+          "ai_optical"
+        ]
+      },
+      {
+        "tw": "3231",
+        "name": "緯創",
+        "role": "odm",
+        "ai_sectors": [
+          "ai_cooling",
+          "ai_energy"
+        ]
+      },
+      {
+        "tw": "2356",
+        "name": "英業達",
+        "role": "odm",
+        "ai_sectors": [
+          "ai_cooling",
+          "ai_energy"
+        ]
+      },
+      {
+        "tw": "2308",
+        "name": "台達電",
+        "role": "power_cooling",
+        "ai_sectors": [
+          "ai_energy",
+          "ai_cooling"
+        ]
+      },
+      {
+        "tw": "3017",
+        "name": "奇鋐",
+        "role": "cooling",
+        "ai_sectors": [
+          "ai_cooling"
+        ]
+      },
+      {
+        "tw": "3324",
+        "name": "雙鴻",
+        "role": "cooling",
+        "ai_sectors": [
+          "ai_cooling"
+        ]
+      },
+      {
+        "tw": "8046",
+        "name": "南電",
+        "role": "substrate",
+        "ai_sectors": [
+          "ai_substrate"
+        ]
+      },
+      {
+        "tw": "3037",
+        "name": "欣興",
+        "role": "substrate",
+        "ai_sectors": [
+          "ai_substrate"
+        ]
+      },
+      {
+        "tw": "3189",
+        "name": "景碩",
+        "role": "substrate",
+        "ai_sectors": [
+          "ai_substrate"
+        ]
+      },
+      {
+        "tw": "2383",
+        "name": "台光電",
+        "role": "ccl",
+        "ai_sectors": [
+          "ai_substrate"
+        ]
+      },
+      {
+        "tw": "6274",
+        "name": "台燿",
+        "role": "ccl",
+        "ai_sectors": [
+          "ai_substrate"
+        ]
+      },
+      {
+        "tw": "2368",
+        "name": "金像電",
+        "role": "pcb",
+        "ai_sectors": [
+          "ai_substrate"
+        ]
+      },
+      {
+        "tw": "2345",
+        "name": "智邦",
+        "role": "switch",
+        "ai_sectors": [
+          "ai_optical"
+        ]
+      },
+      {
+        "tw": "3711",
+        "name": "日月光投控",
+        "role": "packaging",
+        "ai_sectors": [
+          "ai_substrate"
+        ]
+      },
+      {
+        "tw": "2449",
+        "name": "京元電子",
+        "role": "test",
+        "ai_sectors": [
+          "ai_substrate"
+        ]
+      }
+    ]
   }
 }

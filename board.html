@@ -919,7 +919,8 @@ function pxdChip(code){
   const g=gradesOf(code); if(!g||!g.pxd||!/^\d{4}-\d{2}-\d{2}$/.test(String(g.pxd))) return '';
   if(g.nx){ const n=earnDaysFromNx(g.nx); if(n!=null&&n>=-1) return ''; }   // 次回日が生きている（当日〜将来、または反応日）なら出さない
   const dm=String(g.pxd).slice(5).replace('-','/');
-  return `<span class='earnchip unknown' title='前年同期の発表日（実績）。今期の日程は未発表＝会社 IR で確認'>📅前年同期 ${esc(dm)} 発表・今期未発表</span>`;
+  const lx=g.lx&&/^\d{4}-\d{2}-\d{2}$/.test(String(g.lx))?String(g.lx).slice(5).replace('-','/'):null;
+  return `<span class='earnchip unknown' title='D19: 直近の発表日と、前年に次回を発表した日（どちらも実績）。今期の日程は未発表＝会社 IR で確認'>📅${lx?`直近 ${esc(lx)} 発表・`:''}前年は次回 ${esc(dm)}・今期未発表</span>`;
 }
 // D16: 進捗チップ。grades.json の pg（計画比の乖離%・経常ベースの試算。null なら出さない）
 function pgChip(code){
@@ -941,6 +942,23 @@ function earnBand(code,earnHtml){
   if(n===-1) return `<div class='earnband react'>📉 本日は決算反応日（発表${dt}）— 引けまでに撤収するか、持ち越す理由を決める（教訓⑲）</div>`;
   return '';
 }
+// D19（2026-10-24）: 次回決算日が未発表の銘柄の説明文。grades.json の lx（直近の発表日・実績）と pxd（①-8 v1.47: 次回の前年同期の発表日・実績）から組む。
+// 戻り値 {text, near}: near=true は pxd（前年の実績日）が今日から 10 営業日以内＝「前年実績では近い・会社の日程は未確認」。推定ではなく前年の事実。
+function unkEarnInfo(code){
+  const g=gradesOf(code)||{};
+  const ok=(d)=>d&&/^\d{4}-\d{2}-\d{2}$/.test(String(d));
+  const md=(d)=>String(d).slice(5).replace('-','/');
+  const lx=ok(g.lx)?g.lx:null, px=ok(g.pxd)?g.pxd:null;
+  let near=false;
+  if(px){ const y=new Date().getFullYear(); // 前年実績日を今年の暦に写し、残営業日を数える（±45日の窓で今年／来年を選ぶ）
+    const cands=[px.replace(/^\d{4}/,String(y)), px.replace(/^\d{4}/,String(y+1))];
+    for(const c of cands){ const n=earnDaysFromNx(c); if(n!=null&&n>=0&&n<=10){ near=true; break; } } }
+  const parts=[];
+  if(lx) parts.push(`直近 ${md(lx)} 発表済み`);
+  if(px) parts.push(`前年は次回を ${md(px)} に発表`);
+  const text=parts.length?parts.join('・'):'発表実績も無し';
+  return {text,near,lx,px};
+}
 // 🧳保有タブ上部の一覧（保有銘柄の決算を名指しで。候補カードより先に目に入る位置）
 function holdEarnSummary(codes){
   const crit=[], warn=[], react=[], unk=[]; let nearest=null;
@@ -948,7 +966,7 @@ function holdEarnSummary(codes){
     const g=gradesOf(c); const nx=g&&g.nx; const n=nx?earnDaysFromNx(nx):null;
     const nm=holdNameOf(c,null,{})||''; const lab=`<b>${esc(c)}</b>${nm?' '+esc(nm):''}`;
     const dm=nx?String(nx).slice(5).replace('-','/'):'';
-    if(n==null){ const px=g&&g.pxd&&/^\d{4}-\d{2}-\d{2}$/.test(String(g.pxd))?String(g.pxd).slice(5).replace('-','/'):null; unk.push(px?`${lab}（前年同期 ${esc(px)} 発表）`:lab); return; }
+    if(n==null){ const u=unkEarnInfo(c); unk.push(`${u.near?'⏰':''}${lab}（${esc(u.text)}${u.near?'・前年実績では近い':''}）`); return; }
     if(n===0)      crit.push(`${lab} 本日決算 ${esc(dm)}`);
     else if(n===1) crit.push(`${lab} 明日決算 ${esc(dm)}`);
     else if(n<=5&&n>=2) warn.push(`${lab} 決算 ${esc(dm)} あと${esc(n)}営業日`);
@@ -961,7 +979,7 @@ function holdEarnSummary(codes){
     if(crit.length)  parts.push(`🚨 ${crit.join('／')}`);
     if(react.length) parts.push(`📉 ${react.join('／')}`);
     if(warn.length)  parts.push(`⏰ ${warn.join('／')}`);
-    if(unk.length)   parts.push(`❓ 次回決算日 未発表: ${unk.join('／')}（今期の日程は会社 IR で確認。不明は安全ではない）`);
+    if(unk.length)   parts.push(`❓ 次回決算日 未発表: ${unk.join('／')}（今期の日程は会社 IR で確認。⏰は前年の実績日が 10 営業日以内＝近いが未確認）`);
     return `<div class='holdearn'>${parts.join('<br>')}${rule}</div>`;
   }
   return `<div class='holdearn ok'>決算跨ぎ: 該当なし${nearest?`（最短 ${nearest.lab} ${esc(nearest.dm)} あと${esc(nearest.n)}営業日）`:'（次回決算日 未取得）'}</div>`;
@@ -1136,8 +1154,10 @@ function cautionChips(code,branches,opts){
 // 統一5行カード。v = {code,name,close,methodHtml,cautionHtml,earnHtml,judgeHtml,propHtml,bodyHtml,dim,bad}
 function card5(v){
   let r0=''; try{ r0=earnBand(v.code,v.earnHtml); }catch(e){ r0=''; }
-  if(!r0&&v.unkBand){ let px=null; try{ const g=gradesOf(v.code); px=g&&g.pxd&&/^\d{4}-\d{2}-\d{2}$/.test(String(g.pxd))?String(g.pxd).slice(5).replace('-','/'):null; }catch(e){ px=null; }
-    r0=`<div class='earnband unk'>❓ 次回決算日 未発表${px?`（前年同期 ${esc(px)} 発表）`:''} — 今期の日程は会社 IR で確認（不明は安全ではない）</div>`;
+  if(!r0&&v.unkBand){ let u={text:'発表実績も無し',near:false}; try{ u=unkEarnInfo(v.code); }catch(e){}
+    r0=u.near
+      ?`<div class='earnband warn'>⏰❓ 次回決算日 未発表 — ${esc(u.text)}。前年実績では近い・会社の日程は未確認（IR で確認。不明は安全ではない）</div>`
+      :`<div class='earnband unk'>❓ 次回決算日 未発表 — ${esc(u.text)}（今期の日程は会社 IR で確認。不明は安全ではない）</div>`;
     if(v.earnHtml&&/earnchip unknown/.test(String(v.earnHtml))) v=Object.assign({},v,{earnHtml:''}); }
   if(r0&&v.earnHtml&&String(v.earnHtml).indexOf('earnchip warn')>=0) v=Object.assign({},v,{earnHtml:''});
   if(!r0){ let pc=''; try{ pc=pxdChip(v.code); }catch(e){ pc=''; }
@@ -2137,6 +2157,8 @@ function renderLegend(){
     <div class='note'>grades.json の <b>pg</b>（①-9 の進捗モデル: 今期の累計を前年・前々年の同時点進捗率で割り戻した着地試算と、会社計画の乖離%。経常ベース・無ければ売上）。<b>橙＝遅れ（−10% 以下）</b>、<b>緑＝上振れ（+10% 以上）</b>、灰＝計画圏。試算であり予想ではない。上場 2 年未満・決算期変更直後は履歴不足で出ない。判定・提案・順位は変えない。</div>
     <h3>🤷 売上圧縮チップ（D17）</h3>
     <div class='note'>🤷PER圧縮（D4）の売上版。①-9 v5.5 が valuation_cache の <b>value_gap_sales</b>（grades.json では <b>vgs</b>）に書く: 通期予想の売上成長 ≥15% ∧ 株価が26週で±10%以内・レンジ25%以内 ∧ <b>PSR</b>（時価総額÷売上）が1年前の 0.8 倍以下。利益の代わりに売上で測るので、利益率が動いても壊れず、<b>PER が出ない赤字期の成長企業</b>でも判定できる（PER圧縮はこの型を拾えない）。PER が算出できない銘柄で立ったときは「<b>売上圧縮・赤字期</b>」と橙枠で強調する。両方立てば「PER＋売上圧縮」。1年前の PSR は「1年前の終値×発行済株式数÷前期売上」で、売上は会社予想（今）と実績（前期）を使う。①-9 が前期売上を取り直した銘柄から順に埋まる（未取得は出ない）。候補の型であり推奨ではない。判定・提案・順位は変えない。</div>
+    <h3>❓ 次回決算日が未発表の銘柄（D19）</h3>
+    <div class='note'>①-8 v1.47 が grades.json に書く <b>lx</b>（直近の発表日・実績）と <b>pxd</b>（<b>次回</b>の前年同期の発表日・実績。v1.46 までは「今日の 1 年前」に最も近い実績日で、決算直後の銘柄では終わった決算の前年を指していた）から、「直近 MM/DD 発表済み・前年は次回を MM/DD に発表」と書く。前年の実績日が今日から 10 営業日以内なら <b>⏰❓橙</b>＝「前年実績では近い・会社の日程は未確認」。会社が日程を公表して nx が入れば従来の 🚨/⏰/📉 帯に切り替わる。前年の日付は事実であって今期の予定ではない（推定しない）。決算直後の銘柄（lx が最近）に ❓が出るのは正常で、次回まで時間がある合図。判定・提案・順位は変えない。</div>
     <h3>🚨 決算カウントダウン帯（D13・D14）</h3>
     <div class='note'>各カードの「コード・銘柄名・現在値」の行の直後に出る枠付きの色帯（D14 で最上段から移動: 上下どちらのカードの帯か読み取りにくかったため）。grades.json の次回決算日（nx）と端末の今日から JPX 休業日表で残営業日を数える（通信なし）。<b>🚨赤</b>＝本日／明日が決算（引け後発表の可能性）、<b>⏰橙</b>＝決算まで 2〜5 営業日、<b>📉紫</b>＝本日が決算反応日（前営業日の引け後に発表）、<b>❓灰</b>＝次回決算日が取れていない（🧳保有タブのみ。不明は安全ではない）。D15: 次回決算日が未発表の銘柄には、前年同期の発表日（実績。grades.json の pxd）を「📅前年同期 MM/DD 発表・今期未発表」の灰チップで添える（予定ではない。今期の日程は会社 IR で確認）。📈文脈・🕯形態のチップとは別の段・別の色にしてあるのは、2026-10-15〜16 に保有銘柄の決算カウントダウンが同系色のチップに埋もれて流し読みされ、決算跨ぎのストップ安（−20.7%）を止められなかったため。帯は rulebook 教訓⑲「決算は天井。決算反応日の引けまでに撤収・持ち越さない」の提示であり、判定・提案・順位は変えない。🧳保有タブでは登録銘柄の決算を一覧で先頭に出す。</div>
     <h3>既存の凡例</h3>

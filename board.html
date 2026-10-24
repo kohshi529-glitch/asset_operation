@@ -285,7 +285,10 @@ details.cfold>summary{cursor:pointer;color:#7fe3d6;font-size:12.5px;font-weight:
 .lg .lmean{font-size:12px;color:#8fb3ad;line-height:1.5;margin-top:2px}
 .secchip{display:inline-block;font-size:11px;font-weight:500;color:#8fb3ad;background:#17262a;border:1px solid #2b444a;border-radius:5px;padding:1px 7px;white-space:nowrap}
 footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
-/* D4（2026-09-23・sato型の視点）: 🤷PER圧縮／🏦資産バリュー／PER×業種中央値／4色トリアージ／熟成枠。判定・順位は変えず表示のみ */
+/* D4（2026-09-23・sato型の視点）: 🤷PER圧縮／🏦資産バリュー／PER×業種中央値／4色トリアージ／熟成枠。判定・順位は変えず表示のみ。D17（2026-10-24）で🤷に売上圧縮（PSR版）を追加 */
+/* D17（2026-10-24）: 🤷売上圧縮（PSR版・①-9 v5.5 value_gap_sales）。PER が使えない赤字期の成長候補を拾う。.vgs=売上版、.vgloss=赤字期の強調。表示のみ */
+.vgchip.vgs{color:#a7d0e0;background:#1f2e40;border-color:#3f5f7a}
+.vgchip.vgloss{border-color:#f0a35a;box-shadow:0 0 0 1px #f0a35a33}
 .vgchip{display:inline-block;font-size:11px;font-weight:700;color:#c9a7e0;background:#2a2340;border:1px solid #4a3f6b;border-radius:5px;padding:1px 7px;white-space:nowrap;vertical-align:middle}
 .bankchip{display:inline-block;font-size:11px;font-weight:700;color:#7fc8e8;background:#132a3a;border:1px solid #275470;border-radius:5px;padding:1px 7px;white-space:nowrap;vertical-align:middle}
 .divchip{display:inline-block;font-size:10px;font-weight:500;color:#c8d6a0;background:#1f2a14;border:1px solid #3c5222;border-radius:5px;padding:1px 6px;white-space:nowrap;vertical-align:middle}
@@ -612,21 +615,44 @@ const VAL_FLAG_LABEL={'バリュートラップ疑い':'トラップ疑い','⚠
 function num1(x){ const v=Number(x); return isFinite(v)?(Math.round(v*10)/10):null; }
 function gradesOf(code){ return (GRADES&&GRADES[String(code)])||null; }
 // 🤷PER圧縮: valuation_cache[code].value_gap.flag を正とし、無ければ grades.json の vg。数値は value_gap から（無ければ絵文字だけ）。
+// D17: 🤷売上圧縮（PSR版）: valuation_cache[code].value_gap_sales.flag を正とし、無ければ grades.json の vgs。PER が出ない（赤字・PSR代替）銘柄で売上圧縮が立てば「赤字期」を添える。
 function vgChip(code){
   const v=VALUATION&&VALUATION[String(code)];
+  const g=gradesOf(code);
   const vg=v&&v.value_gap;
   let flag=(vg&&typeof vg.flag==='boolean')?vg.flag:null;
-  if(flag==null){ const g=gradesOf(code); if(g&&typeof g.vg==='boolean') flag=g.vg; }
-  if(flag!==true) return '';
-  let txt='';
-  if(vg){
-    const p1=num1(vg.per_1y), p0=num1(vg.per_now), ch=num1(vg.chg26w);
-    const per=(p1!=null&&p0!=null)?` ${p1}→${p0}倍`:'';
-    const chg=(ch!=null)?`・26週${ch>0?'+':''}${ch}%`:'';
-    txt=per+chg;
+  if(flag==null){ if(g&&typeof g.vg==='boolean') flag=g.vg; }
+  const vs=v&&v.value_gap_sales;
+  let sflag=(vs&&typeof vs.flag==='boolean')?vs.flag:null;
+  if(sflag==null){ if(g&&typeof g.vgs==='boolean') sflag=g.vgs; }
+  if(flag!==true && sflag!==true) return '';
+  const chg=(src)=>{ const ch=src?num1(src.chg26w):null; return (ch!=null)?`・26週${ch>0?'+':''}${ch}%`:''; };
+  // 赤字期の判定: PER が算出できない（null／0以下）か PSR代替フラグ。推定はしない（材料が無ければ付けない）
+  const per=(v&&v.metrics&&typeof v.metrics.per==='number')?v.metrics.per:((g&&typeof g.per==='number')?g.per:null);
+  const psrAlt=!!(v&&Array.isArray(v.flags)&&v.flags.some(f=>String(f).indexOf('PSR代替')>=0));
+  const loss=(sflag===true)&&(per==null||per<=0||psrAlt);
+  if(flag===true && sflag===true){
+    const p1=num1(vg&&vg.per_1y), p0=num1(vg&&vg.per_now), s1=num1(vs&&vs.psr_1y), s0=num1(vs&&vs.psr_now);
+    const t1=(p1!=null&&p0!=null)?` PER ${p1}→${p0}`:'', t2=(s1!=null&&s0!=null)?`・PSR ${s1}→${s0}`:'';
+    const rel=(vg&&vg.sector_rel===true)?'・同業比でも安い':'';
+    return `<span class='vgchip' title='PER圧縮と売上圧縮の両方（①-9 value_gap／value_gap_sales）: 成長≥15%∧26週横ばい∧倍率が1年前の0.8倍以下${esc(rel)}。候補の型であり推奨ではない'>🤷<span class='vgfull'>PER＋売上圧縮${esc(t1+t2+chg(vg))}</span></span>`;
   }
-  const rel=(vg&&vg.sector_rel===true)?'・同業比でも安い':'';
-  return `<span class='vgchip' title='PER圧縮（①-9 v5 value_gap）: 増益≥15%∧26週横ばい∧PERが1年前の0.8倍以下${esc(rel)}。候補の型であり推奨ではない'>🤷<span class='vgfull'>PER圧縮${esc(txt)}</span></span>`;
+  if(flag===true){
+    let txt='';
+    if(vg){ const p1=num1(vg.per_1y), p0=num1(vg.per_now); txt=((p1!=null&&p0!=null)?` ${p1}→${p0}倍`:'')+chg(vg); }
+    const rel=(vg&&vg.sector_rel===true)?'・同業比でも安い':'';
+    return `<span class='vgchip' title='PER圧縮（①-9 v5 value_gap）: 増益≥15%∧26週横ばい∧PERが1年前の0.8倍以下${esc(rel)}。候補の型であり推奨ではない'>🤷<span class='vgfull'>PER圧縮${esc(txt)}</span></span>`;
+  }
+  // 売上圧縮のみ
+  let txt='';
+  if(vs){ const s1=num1(vs.psr_1y), s0=num1(vs.psr_now); txt=((s1!=null&&s0!=null)?` PSR ${s1}→${s0}倍`:'')+chg(vs); }
+  const sg=(vs&&vs.sales_growth!=null)?`・売上+${num1(vs.sales_growth)}%`:'';
+  const cls='vgchip vgs'+(loss?' vgloss':'');
+  const tag=loss?'売上圧縮・赤字期':'売上圧縮';
+  const ttl=loss
+    ?'売上圧縮（①-9 v5.5 value_gap_sales・PSR版）: 売上成長≥15%∧26週横ばい∧PSRが1年前の0.8倍以下。PER が出ない赤字期の成長企業＝PER圧縮では拾えない型。候補の型であり推奨ではない'
+    :'売上圧縮（①-9 v5.5 value_gap_sales・PSR版）: 売上成長≥15%∧26週横ばい∧PSRが1年前の0.8倍以下。利益率が動いても壊れない売上版の圧縮。候補の型であり推奨ではない';
+  return `<span class='${cls}' title='${ttl}'>🤷<span class='vgfull'>${tag}${esc(txt+sg)}</span></span>`;
 }
 // 🏦資産バリュー: ネットキャッシュ比率 nc（%）。valuation_cache.static.nc を正とし、無ければ grades.json の nc。≥100→🏦🏦、≥50→🏦。
 function bankChip(code){
@@ -1991,10 +2017,10 @@ function renderWatch(d,runs){
     const ripT=ripen.filter(e=>e.status==='triggered');
     const ripW=ripen.filter(e=>e.status!=='triggered');
     const sum=`<div class='ngsum'>
+      <span class='ngchip' title='①-12 v1.2 熟成枠（🤷PER圧縮の銘柄を60営業日の窓でカタリスト待ち）'>🤷熟成 <b>${ripen.length}</b>${ripT.length?`（トリガー <b>${ripT.length}</b>）`:''}</span>
       <span class='ngchip pass'>🔻押し目到達 <b>${pr.length}</b></span>
       <span class='ngchip'>🎯本日判断 <b>${jn.length}</b></span>
       <span class='ngchip'>👀監視 <b>${wa.length}</b></span>
-      <span class='ngchip' title='①-12 v1.2 熟成枠（🤷PER圧縮の銘柄を60営業日の窓でカタリスト待ち）'>🤷熟成 <b>${ripen.length}</b>${ripT.length?`（トリガー <b>${ripT.length}</b>）`:''}</span>
     </div>`;
     const note=`<div class='cpnote'>①-8提案を買い時レジームで分類し日足で追跡。待ち=押し目待ち／即断=当日判断／両面=両方／熟成=🤷PER圧縮の銘柄を60営業日の窓でカタリスト（出来高ブレイク・🔁👥📦開示・上方修正）待ち。判定行は 状態｜当夜ゲート判定｜業績｜値頃感。注意チップ（🧲業績追い風／⚠高成長×急落／⛔押し目×ちょるリバ重複／⌛待機・🏃走った後／⚠当日大陽線／🌧地合い×逆張り／業種）は入口精度分析（2026-09-14）の実測に基づく表示で、選定・判定は変えない。📈トレンド文脈（MA との位置・向き）と🕯ローソク足形態（赤三兵・カラカサ・包み足・はらみ足・明けの明星 等。直近6本から機械判定。緑=強気の兆し／赤=弱気の兆し／灰=文脈なし）も同じく表示のみ。ヘッドライン（業態・いま・調子・水準）はゲートと同じ情報源（当夜の night_gate.results）。全て提案であり最終判断はユーザー。</div>`;
     const sec=(title,arr,emptyMsg)=>`<div class='section' style='margin:14px 0'>
@@ -2011,10 +2037,11 @@ function renderWatch(d,runs){
       <div class='mhead'><span class='mname'>🤷 熟成（PER圧縮×カタリスト待ち・トリガー済み→窓の残り順）</span><span class='cnt'>${ripen.length}件</span></div>
       ${ripen.length?ripSorted.map(x=>ripenCard(x,NG,PROF,baseDay)).join(''):`<div class='empty'>熟成の監視銘柄なし（①-12 v1.2 と grades.json の vg が揃うと入る）</div>`}
     </div>`;
-    const body=sec('🔻 押し目到達（買い場の合図）',pr,'押し目到達なし')
+    // D18（2026-10-24・ユーザー指示）: ブロックの表示順を 熟成 → 押し目到達 → 本日判断 → 監視 に変更（表示順のみ。分類・判定・各ブロック内の並びは不変）
+    const body=ripSec
+      + sec('🔻 押し目到達（買い場の合図）',pr,'押し目到達なし')
       + sec('🎯 本日判断・確認中（即断型・業績×水準の良い順）',jn,'本日判断なし')
       + sec('👀 監視継続（押し目待ち・近い順）',wa,'監視中なし')
-      + ripSec
       + (other.length?sec('その他',other,''):'');
     const closed=Array.isArray(wl.closed)?wl.closed.slice(-15).reverse():[];
     const closedHTML=closed.length
@@ -2108,6 +2135,8 @@ function renderLegend(){
     ${pat.map(prow).join('')}
     <h3>📐 進捗チップ（D16）</h3>
     <div class='note'>grades.json の <b>pg</b>（①-9 の進捗モデル: 今期の累計を前年・前々年の同時点進捗率で割り戻した着地試算と、会社計画の乖離%。経常ベース・無ければ売上）。<b>橙＝遅れ（−10% 以下）</b>、<b>緑＝上振れ（+10% 以上）</b>、灰＝計画圏。試算であり予想ではない。上場 2 年未満・決算期変更直後は履歴不足で出ない。判定・提案・順位は変えない。</div>
+    <h3>🤷 売上圧縮チップ（D17）</h3>
+    <div class='note'>🤷PER圧縮（D4）の売上版。①-9 v5.5 が valuation_cache の <b>value_gap_sales</b>（grades.json では <b>vgs</b>）に書く: 通期予想の売上成長 ≥15% ∧ 株価が26週で±10%以内・レンジ25%以内 ∧ <b>PSR</b>（時価総額÷売上）が1年前の 0.8 倍以下。利益の代わりに売上で測るので、利益率が動いても壊れず、<b>PER が出ない赤字期の成長企業</b>でも判定できる（PER圧縮はこの型を拾えない）。PER が算出できない銘柄で立ったときは「<b>売上圧縮・赤字期</b>」と橙枠で強調する。両方立てば「PER＋売上圧縮」。1年前の PSR は「1年前の終値×発行済株式数÷前期売上」で、売上は会社予想（今）と実績（前期）を使う。①-9 が前期売上を取り直した銘柄から順に埋まる（未取得は出ない）。候補の型であり推奨ではない。判定・提案・順位は変えない。</div>
     <h3>🚨 決算カウントダウン帯（D13・D14）</h3>
     <div class='note'>各カードの「コード・銘柄名・現在値」の行の直後に出る枠付きの色帯（D14 で最上段から移動: 上下どちらのカードの帯か読み取りにくかったため）。grades.json の次回決算日（nx）と端末の今日から JPX 休業日表で残営業日を数える（通信なし）。<b>🚨赤</b>＝本日／明日が決算（引け後発表の可能性）、<b>⏰橙</b>＝決算まで 2〜5 営業日、<b>📉紫</b>＝本日が決算反応日（前営業日の引け後に発表）、<b>❓灰</b>＝次回決算日が取れていない（🧳保有タブのみ。不明は安全ではない）。D15: 次回決算日が未発表の銘柄には、前年同期の発表日（実績。grades.json の pxd）を「📅前年同期 MM/DD 発表・今期未発表」の灰チップで添える（予定ではない。今期の日程は会社 IR で確認）。📈文脈・🕯形態のチップとは別の段・別の色にしてあるのは、2026-10-15〜16 に保有銘柄の決算カウントダウンが同系色のチップに埋もれて流し読みされ、決算跨ぎのストップ安（−20.7%）を止められなかったため。帯は rulebook 教訓⑲「決算は天井。決算反応日の引けまでに撤収・持ち越さない」の提示であり、判定・提案・順位は変えない。🧳保有タブでは登録銘柄の決算を一覧で先頭に出す。</div>
     <h3>既存の凡例</h3>

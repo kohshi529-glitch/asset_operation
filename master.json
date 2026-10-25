@@ -7842,13 +7842,13 @@
         ]
       },
       "watch_tracker": {
-        "generated_at": "2026-10-23T12:42:57+00:00",
+        "generated_at": "2026-10-25T12:42:44+00:00",
         "trading_day": "2026-10-23",
         "status": "done",
         "source": "watch_tracker",
-        "memo": "run_at=2026-10-23T21:42:57+09:00; base_day=2026-10-23(①-8追従)。日足取得 成功228/228。再点灯23。新規シード125。熟成: 新規登録0(vg true 7)。days_watchedは実取引日カレンダー基準。",
-        "seeded": 125,
-        "active": 176,
+        "memo": "run_at=2026-10-25T21:42:44+09:00; base_day=2026-10-23(①-8追従・night_gate_today.json base_day=2026-10-23)。日足取得 成功209/209。再点灯114。新規シード8。熟成: 新規登録0(vg true 7)。同日再実行(冪等)。days_watchedは実取引日カレンダー基準。",
+        "seeded": 8,
+        "active": 182,
         "ripen_active": 7,
         "ripen_triggered": 0
       },
@@ -132528,7 +132528,7 @@
     }
   ],
   "watchlist": {
-    "updated_at": "2026-10-23T21:42:57+09:00",
+    "updated_at": "2026-10-25T21:42:44+09:00",
     "base_day": "2026-10-23",
     "entries": [
       {
@@ -132545,7 +132545,7 @@
         "last_close": 2625.0,
         "last_date": "2026-10-23",
         "days_watched": 9,
-        "dist_to_zone_pct": 0.13,
+        "dist_to_zone_pct": -0.13,
         "status": "pullback_ready",
         "status_reason": null,
         "signal": "押し目到達（相場待ち）",
@@ -132573,7 +132573,7 @@
           {
             "date": "2026-10-23",
             "close": 2625.0,
-            "note": "押し目到達（相場待ち） （再点灯 2026-10-23）"
+            "note": "押し目到達（相場待ち）（再点灯 2026-10-23）"
           }
         ]
       },
@@ -132591,7 +132591,7 @@
         "last_close": 2551.0,
         "last_date": "2026-10-23",
         "days_watched": 9,
-        "dist_to_zone_pct": 0.4,
+        "dist_to_zone_pct": -0.4,
         "status": "pullback_ready",
         "status_reason": null,
         "signal": "押し目到達（相場待ち）",
@@ -132637,10 +132637,10 @@
         "last_close": 2050.5,
         "last_date": "2026-10-23",
         "days_watched": 9,
-        "dist_to_zone_pct": -2.24,
+        "dist_to_zone_pct": 2.24,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-2.2%)",
+        "signal": "押し目待ち中(あと2.2%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -132665,7 +132665,7 @@
           {
             "date": "2026-10-23",
             "close": 2050.5,
-            "note": "押し目待ち中(ゾーンまで+-2.2%)"
+            "note": "押し目待ち中(あと2.2%)"
           }
         ]
       },
@@ -132683,10 +132683,10 @@
         "last_close": 2155.0,
         "last_date": "2026-10-23",
         "days_watched": 9,
-        "dist_to_zone_pct": -1.02,
+        "dist_to_zone_pct": 1.02,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-1.0%)",
+        "signal": "押し目待ち中(あと1.0%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -132711,7 +132711,7 @@
           {
             "date": "2026-10-23",
             "close": 2155.0,
-            "note": "押し目待ち中(ゾーンまで+-1.0%)"
+            "note": "押し目待ち中(あと1.0%)"
           }
         ]
       },
@@ -132729,10 +132729,10 @@
         "last_close": 1905.0,
         "last_date": "2026-10-23",
         "days_watched": 9,
-        "dist_to_zone_pct": -2.03,
+        "dist_to_zone_pct": 2.03,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-2.0%)",
+        "signal": "押し目待ち中(あと2.0%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -132757,7 +132757,7 @@
           {
             "date": "2026-10-23",
             "close": 1905.0,
-            "note": "押し目待ち中(ゾーンまで+-2.0%)"
+            "note": "押し目待ち中(あと2.0%)"
           }
         ]
       },
@@ -132775,10 +132775,10 @@
         "last_close": 2610.0,
         "last_date": "2026-10-23",
         "days_watched": 9,
-        "dist_to_zone_pct": 2.99,
+        "dist_to_zone_pct": -2.99,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目ゾーン内（条件未達: 25MA割れ）",
+        "signal": "押し目ゾーン内（条件未達: 25MA下 or -8%超）",
         "history": [
           {
             "date": "2026-10-19",
@@ -132803,7 +132803,7 @@
           {
             "date": "2026-10-23",
             "close": 2610.0,
-            "note": "押し目ゾーン内（条件未達: 25MA割れ）"
+            "note": "押し目ゾーン内（条件未達: 25MA下 or -8%超）"
           }
         ]
       },
@@ -132821,10 +132821,10 @@
         "last_close": 4745.0,
         "last_date": "2026-10-23",
         "days_watched": 8,
-        "dist_to_zone_pct": -3.49,
+        "dist_to_zone_pct": 3.49,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-3.5%)",
+        "signal": "押し目待ち中(あと3.5%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -132849,7 +132849,7 @@
           {
             "date": "2026-10-23",
             "close": 4745.0,
-            "note": "押し目待ち中(ゾーンまで+-3.5%)"
+            "note": "押し目待ち中(あと3.5%)"
           }
         ]
       },
@@ -132867,10 +132867,10 @@
         "last_close": 4330.0,
         "last_date": "2026-10-23",
         "days_watched": 8,
-        "dist_to_zone_pct": -2.89,
+        "dist_to_zone_pct": 2.89,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-2.9%)",
+        "signal": "押し目待ち中(あと2.9%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -132895,7 +132895,7 @@
           {
             "date": "2026-10-23",
             "close": 4330.0,
-            "note": "押し目待ち中(ゾーンまで+-2.9%)"
+            "note": "押し目待ち中(あと2.9%)"
           }
         ]
       },
@@ -132913,10 +132913,10 @@
         "last_close": 2309.5,
         "last_date": "2026-10-23",
         "days_watched": 8,
-        "dist_to_zone_pct": -0.24,
+        "dist_to_zone_pct": 0.24,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-0.2%)",
+        "signal": "押し目待ち中(あと0.2%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -132941,7 +132941,7 @@
           {
             "date": "2026-10-23",
             "close": 2309.5,
-            "note": "押し目待ち中(ゾーンまで+-0.2%)"
+            "note": "押し目待ち中(あと0.2%)"
           }
         ]
       },
@@ -132959,10 +132959,10 @@
         "last_close": 3440.0,
         "last_date": "2026-10-23",
         "days_watched": 8,
-        "dist_to_zone_pct": -1.49,
+        "dist_to_zone_pct": 1.49,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-1.5%)",
+        "signal": "押し目待ち中(あと1.5%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -132987,7 +132987,7 @@
           {
             "date": "2026-10-23",
             "close": 3440.0,
-            "note": "押し目待ち中(ゾーンまで+-1.5%)"
+            "note": "押し目待ち中(あと1.5%)"
           }
         ]
       },
@@ -133005,10 +133005,10 @@
         "last_close": 4290.0,
         "last_date": "2026-10-23",
         "days_watched": 8,
-        "dist_to_zone_pct": -3.66,
+        "dist_to_zone_pct": 3.66,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-3.7%)",
+        "signal": "押し目待ち中(あと3.7%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -133033,7 +133033,7 @@
           {
             "date": "2026-10-23",
             "close": 4290.0,
-            "note": "押し目待ち中(ゾーンまで+-3.7%)"
+            "note": "押し目待ち中(あと3.7%)"
           }
         ]
       },
@@ -133051,10 +133051,10 @@
         "last_close": 1495.0,
         "last_date": "2026-10-23",
         "days_watched": 8,
-        "dist_to_zone_pct": -2.46,
+        "dist_to_zone_pct": 2.46,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-2.5%)",
+        "signal": "押し目待ち中(あと2.5%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -133079,7 +133079,7 @@
           {
             "date": "2026-10-23",
             "close": 1495.0,
-            "note": "押し目待ち中(ゾーンまで+-2.5%)"
+            "note": "押し目待ち中(あと2.5%)"
           }
         ]
       },
@@ -133097,10 +133097,10 @@
         "last_close": 1900.5,
         "last_date": "2026-10-23",
         "days_watched": 7,
-        "dist_to_zone_pct": -2.28,
+        "dist_to_zone_pct": 2.28,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-2.3%)",
+        "signal": "押し目待ち中(あと2.3%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -133125,7 +133125,7 @@
           {
             "date": "2026-10-23",
             "close": 1900.5,
-            "note": "押し目待ち中(ゾーンまで+-2.3%)"
+            "note": "押し目待ち中(あと2.3%)"
           }
         ]
       },
@@ -133143,10 +133143,10 @@
         "last_close": 602.0,
         "last_date": "2026-10-23",
         "days_watched": 6,
-        "dist_to_zone_pct": -3.84,
+        "dist_to_zone_pct": 3.84,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-3.8%)",
+        "signal": "押し目待ち中(あと3.8%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -133171,7 +133171,7 @@
           {
             "date": "2026-10-23",
             "close": 602.0,
-            "note": "押し目待ち中(ゾーンまで+-3.8%)"
+            "note": "押し目待ち中(あと3.8%)"
           }
         ]
       },
@@ -133189,10 +133189,10 @@
         "last_close": 1112.0,
         "last_date": "2026-10-23",
         "days_watched": 6,
-        "dist_to_zone_pct": -2.88,
+        "dist_to_zone_pct": 2.88,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-2.9%)",
+        "signal": "押し目待ち中(あと2.9%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -133217,7 +133217,7 @@
           {
             "date": "2026-10-23",
             "close": 1112.0,
-            "note": "押し目待ち中(ゾーンまで+-2.9%) （再点灯 2026-10-23）"
+            "note": "押し目待ち中(あと2.9%)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -133235,10 +133235,10 @@
         "last_close": 3760.0,
         "last_date": "2026-10-23",
         "days_watched": 6,
-        "dist_to_zone_pct": -3.36,
+        "dist_to_zone_pct": 3.36,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-3.4%)",
+        "signal": "押し目待ち中(あと3.4%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -133263,7 +133263,7 @@
           {
             "date": "2026-10-23",
             "close": 3760.0,
-            "note": "押し目待ち中(ゾーンまで+-3.4%) （再点灯 2026-10-23）"
+            "note": "押し目待ち中(あと3.4%)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -133281,10 +133281,10 @@
         "last_close": 1675.0,
         "last_date": "2026-10-23",
         "days_watched": 6,
-        "dist_to_zone_pct": -3.31,
+        "dist_to_zone_pct": 3.31,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-3.3%)",
+        "signal": "押し目待ち中(あと3.3%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -133309,7 +133309,7 @@
           {
             "date": "2026-10-23",
             "close": 1675.0,
-            "note": "押し目待ち中(ゾーンまで+-3.3%)"
+            "note": "押し目待ち中(あと3.3%)"
           }
         ]
       },
@@ -133327,10 +133327,10 @@
         "last_close": 4860.0,
         "last_date": "2026-10-23",
         "days_watched": 6,
-        "dist_to_zone_pct": -2.32,
+        "dist_to_zone_pct": 2.32,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-2.3%)",
+        "signal": "押し目待ち中(あと2.3%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -133355,7 +133355,7 @@
           {
             "date": "2026-10-23",
             "close": 4860.0,
-            "note": "押し目待ち中(ゾーンまで+-2.3%) （再点灯 2026-10-23）"
+            "note": "押し目待ち中(あと2.3%)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -133373,10 +133373,10 @@
         "last_close": 3736.0,
         "last_date": "2026-10-23",
         "days_watched": 6,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-4.0%)",
+        "signal": "押し目待ち中(あと4.0%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -133401,7 +133401,7 @@
           {
             "date": "2026-10-23",
             "close": 3736.0,
-            "note": "押し目待ち中(ゾーンまで+-4.0%)"
+            "note": "押し目待ち中(あと4.0%)"
           }
         ]
       },
@@ -133419,10 +133419,10 @@
         "last_close": 3036.0,
         "last_date": "2026-10-23",
         "days_watched": 6,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-4.0%)／再加速",
+        "signal": "押し目待ち中(あと4.0%)／再加速",
         "history": [
           {
             "date": "2026-10-19",
@@ -133447,7 +133447,7 @@
           {
             "date": "2026-10-23",
             "close": 3036.0,
-            "note": "押し目待ち中(ゾーンまで+-4.0%)／再加速"
+            "note": "押し目待ち中(あと4.0%)／再加速"
           }
         ]
       },
@@ -133465,10 +133465,10 @@
         "last_close": 4020.0,
         "last_date": "2026-10-23",
         "days_watched": 5,
-        "dist_to_zone_pct": 7.58,
+        "dist_to_zone_pct": -7.58,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目ゾーン内（条件未達: 25MA割れ）",
+        "signal": "押し目ゾーン内（条件未達: 25MA下 or -8%超）",
         "history": [
           {
             "date": "2026-10-19",
@@ -133493,7 +133493,7 @@
           {
             "date": "2026-10-23",
             "close": 4020.0,
-            "note": "押し目ゾーン内（条件未達: 25MA割れ）"
+            "note": "押し目ゾーン内（条件未達: 25MA下 or -8%超）"
           }
         ]
       },
@@ -133511,10 +133511,10 @@
         "last_close": 570.0,
         "last_date": "2026-10-23",
         "days_watched": 5,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-4.0%)／再加速",
+        "signal": "押し目待ち中(あと4.0%)／再加速",
         "history": [
           {
             "date": "2026-10-19",
@@ -133539,7 +133539,7 @@
           {
             "date": "2026-10-23",
             "close": 570.0,
-            "note": "押し目待ち中(ゾーンまで+-4.0%)／再加速 （再点灯 2026-10-23）"
+            "note": "押し目待ち中(あと4.0%)／再加速（再点灯 2026-10-23）"
           }
         ]
       },
@@ -133557,10 +133557,10 @@
         "last_close": 3070.0,
         "last_date": "2026-10-23",
         "days_watched": 5,
-        "dist_to_zone_pct": -1.97,
+        "dist_to_zone_pct": 1.97,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-2.0%)",
+        "signal": "押し目待ち中(あと2.0%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -133585,7 +133585,7 @@
           {
             "date": "2026-10-23",
             "close": 3070.0,
-            "note": "押し目待ち中(ゾーンまで+-2.0%)"
+            "note": "押し目待ち中(あと2.0%)"
           }
         ]
       },
@@ -133603,10 +133603,10 @@
         "last_close": 2722.0,
         "last_date": "2026-10-23",
         "days_watched": 5,
-        "dist_to_zone_pct": -0.47,
+        "dist_to_zone_pct": 0.47,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-0.5%)",
+        "signal": "押し目待ち中(あと0.5%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -133631,7 +133631,7 @@
           {
             "date": "2026-10-23",
             "close": 2722.0,
-            "note": "押し目待ち中(ゾーンまで+-0.5%)"
+            "note": "押し目待ち中(あと0.5%)"
           }
         ]
       },
@@ -133649,7 +133649,7 @@
         "last_close": 2265.0,
         "last_date": "2026-10-23",
         "days_watched": 5,
-        "dist_to_zone_pct": 0.87,
+        "dist_to_zone_pct": -0.87,
         "status": "pullback_ready",
         "status_reason": null,
         "signal": "押し目到達（相場待ち）",
@@ -133695,10 +133695,10 @@
         "last_close": 810.0,
         "last_date": "2026-10-23",
         "days_watched": 5,
-        "dist_to_zone_pct": -1.51,
+        "dist_to_zone_pct": 1.51,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-1.5%)",
+        "signal": "押し目待ち中(あと1.5%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -133723,7 +133723,7 @@
           {
             "date": "2026-10-23",
             "close": 810.0,
-            "note": "押し目待ち中(ゾーンまで+-1.5%)"
+            "note": "押し目待ち中(あと1.5%)"
           }
         ]
       },
@@ -133741,10 +133741,10 @@
         "last_close": 147.0,
         "last_date": "2026-10-23",
         "days_watched": 5,
-        "dist_to_zone_pct": -0.73,
+        "dist_to_zone_pct": 0.73,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-0.7%)",
+        "signal": "押し目待ち中(あと0.7%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -133769,7 +133769,7 @@
           {
             "date": "2026-10-23",
             "close": 147.0,
-            "note": "押し目待ち中(ゾーンまで+-0.7%)"
+            "note": "押し目待ち中(あと0.7%)"
           }
         ]
       },
@@ -133787,10 +133787,10 @@
         "last_close": 3075.0,
         "last_date": "2026-10-23",
         "days_watched": 5,
-        "dist_to_zone_pct": -0.72,
+        "dist_to_zone_pct": 0.72,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-0.7%)",
+        "signal": "押し目待ち中(あと0.7%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -133815,7 +133815,7 @@
           {
             "date": "2026-10-23",
             "close": 3075.0,
-            "note": "押し目待ち中(ゾーンまで+-0.7%)"
+            "note": "押し目待ち中(あと0.7%)"
           }
         ]
       },
@@ -133833,10 +133833,10 @@
         "last_close": 7990.0,
         "last_date": "2026-10-23",
         "days_watched": 5,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-4.0%)／再加速",
+        "signal": "押し目待ち中(あと4.0%)／再加速",
         "history": [
           {
             "date": "2026-10-19",
@@ -133861,7 +133861,7 @@
           {
             "date": "2026-10-23",
             "close": 7990.0,
-            "note": "押し目待ち中(ゾーンまで+-4.0%)／再加速"
+            "note": "押し目待ち中(あと4.0%)／再加速"
           }
         ]
       },
@@ -133879,10 +133879,10 @@
         "last_close": 1662.0,
         "last_date": "2026-10-23",
         "days_watched": 5,
-        "dist_to_zone_pct": -0.07,
+        "dist_to_zone_pct": 0.07,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-0.1%)",
+        "signal": "押し目待ち中(あと0.1%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -133907,7 +133907,7 @@
           {
             "date": "2026-10-23",
             "close": 1662.0,
-            "note": "押し目待ち中(ゾーンまで+-0.1%)"
+            "note": "押し目待ち中(あと0.1%)"
           }
         ]
       },
@@ -133925,10 +133925,10 @@
         "last_close": 2168.0,
         "last_date": "2026-10-23",
         "days_watched": 5,
-        "dist_to_zone_pct": -3.65,
+        "dist_to_zone_pct": 3.65,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-3.6%)",
+        "signal": "押し目待ち中(あと3.6%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -133953,7 +133953,7 @@
           {
             "date": "2026-10-23",
             "close": 2168.0,
-            "note": "押し目待ち中(ゾーンまで+-3.6%)"
+            "note": "押し目待ち中(あと3.6%)"
           }
         ]
       },
@@ -134017,10 +134017,10 @@
         "last_close": 6520.0,
         "last_date": "2026-10-23",
         "days_watched": 4,
-        "dist_to_zone_pct": -0.17,
+        "dist_to_zone_pct": 0.17,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-0.2%)",
+        "signal": "押し目待ち中(あと0.2%)",
         "history": [
           {
             "date": "2026-10-19",
@@ -134045,7 +134045,7 @@
           {
             "date": "2026-10-23",
             "close": 6520.0,
-            "note": "押し目待ち中(ゾーンまで+-0.2%) （再点灯 2026-10-23）"
+            "note": "押し目待ち中(あと0.2%)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -134099,7 +134099,7 @@
           {
             "date": "2026-10-23",
             "close": 1317.0,
-            "note": "出来高0.44倍"
+            "note": "出来高0.44倍／熟成監視中"
           }
         ],
         "vg_false_nights": 0
@@ -134154,7 +134154,7 @@
           {
             "date": "2026-10-23",
             "close": 570.0,
-            "note": "出来高1.21倍"
+            "note": "出来高1.21倍／熟成監視中"
           }
         ],
         "vg_false_nights": 0
@@ -134209,7 +134209,7 @@
           {
             "date": "2026-10-23",
             "close": 718.0,
-            "note": "出来高0.80倍"
+            "note": "出来高0.80倍／熟成監視中"
           }
         ],
         "vg_false_nights": 0
@@ -134264,7 +134264,7 @@
           {
             "date": "2026-10-23",
             "close": 4297.0,
-            "note": "出来高0.78倍"
+            "note": "出来高0.78倍／熟成監視中"
           }
         ],
         "vg_false_nights": 0
@@ -134319,7 +134319,7 @@
           {
             "date": "2026-10-23",
             "close": 4025.0,
-            "note": "出来高0.70倍"
+            "note": "出来高0.70倍／熟成監視中"
           }
         ],
         "vg_false_nights": 0
@@ -134374,7 +134374,7 @@
           {
             "date": "2026-10-23",
             "close": 1573.0,
-            "note": "出来高0.84倍"
+            "note": "出来高0.84倍／熟成監視中"
           }
         ],
         "vg_false_nights": 0
@@ -134429,7 +134429,7 @@
           {
             "date": "2026-10-23",
             "close": 1862.0,
-            "note": "出来高0.69倍"
+            "note": "出来高0.69倍／熟成監視中"
           }
         ],
         "vg_false_nights": 0
@@ -134448,7 +134448,7 @@
         "last_close": 895.7000122070312,
         "last_date": "2026-10-23",
         "days_watched": 3,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "確認中",
@@ -134489,7 +134489,7 @@
         "last_close": 2734.0,
         "last_date": "2026-10-23",
         "days_watched": 3,
-        "dist_to_zone_pct": -3.82,
+        "dist_to_zone_pct": 3.82,
         "status": "judge_now",
         "status_reason": null,
         "signal": "確認中",
@@ -134530,7 +134530,7 @@
         "last_close": 3465.0,
         "last_date": "2026-10-23",
         "days_watched": 3,
-        "dist_to_zone_pct": -3.86,
+        "dist_to_zone_pct": 3.86,
         "status": "judge_now",
         "status_reason": null,
         "signal": "確認中",
@@ -134571,7 +134571,7 @@
         "last_close": 6380.0,
         "last_date": "2026-10-23",
         "days_watched": 3,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "確認中",
@@ -134612,7 +134612,7 @@
         "last_close": 3619.0,
         "last_date": "2026-10-23",
         "days_watched": 3,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "確認中",
@@ -134653,10 +134653,10 @@
         "last_close": 174.8000030517578,
         "last_date": "2026-10-23",
         "days_watched": 3,
-        "dist_to_zone_pct": -2.19,
+        "dist_to_zone_pct": 2.19,
         "status": "judge_now",
         "status_reason": null,
-        "signal": "確認中（seed割れ・-5%以内）",
+        "signal": "確認中（seed割れ・-1.3%）",
         "history": [
           {
             "date": "2026-10-20",
@@ -134676,7 +134676,7 @@
           {
             "date": "2026-10-23",
             "close": 174.8000030517578,
-            "note": "確認中（seed割れ・-5%以内）"
+            "note": "確認中（seed割れ・-1.3%）"
           }
         ]
       },
@@ -134694,10 +134694,10 @@
         "last_close": 1991.0,
         "last_date": "2026-10-23",
         "days_watched": 2,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-4.0%)",
+        "signal": "押し目待ち中(あと4.0%)／再加速",
         "history": [
           {
             "date": "2026-10-21",
@@ -134712,7 +134712,7 @@
           {
             "date": "2026-10-23",
             "close": 1991.0,
-            "note": "押し目待ち中(ゾーンまで+-4.0%)"
+            "note": "押し目待ち中(あと4.0%)／再加速"
           }
         ]
       },
@@ -134730,10 +134730,10 @@
         "last_close": 2386.0,
         "last_date": "2026-10-23",
         "days_watched": 2,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-4.0%)",
+        "signal": "押し目待ち中(あと4.0%)／再加速",
         "history": [
           {
             "date": "2026-10-21",
@@ -134748,7 +134748,7 @@
           {
             "date": "2026-10-23",
             "close": 2386.0,
-            "note": "押し目待ち中(ゾーンまで+-4.0%)"
+            "note": "押し目待ち中(あと4.0%)／再加速"
           }
         ]
       },
@@ -134766,10 +134766,10 @@
         "last_close": 1747.0,
         "last_date": "2026-10-23",
         "days_watched": 2,
-        "dist_to_zone_pct": -2.79,
+        "dist_to_zone_pct": 2.79,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-2.8%)",
+        "signal": "押し目待ち中(あと2.8%)",
         "history": [
           {
             "date": "2026-10-21",
@@ -134784,7 +134784,7 @@
           {
             "date": "2026-10-23",
             "close": 1747.0,
-            "note": "押し目待ち中(ゾーンまで+-2.8%)"
+            "note": "押し目待ち中(あと2.8%)"
           }
         ]
       },
@@ -134802,7 +134802,7 @@
         "last_close": 1400.0,
         "last_date": "2026-10-23",
         "days_watched": 2,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "確認中",
@@ -134820,7 +134820,7 @@
           {
             "date": "2026-10-23",
             "close": 1400.0,
-            "note": "確認中 （再点灯 2026-10-23）"
+            "note": "確認中（再点灯 2026-10-23）"
           }
         ]
       },
@@ -134838,10 +134838,10 @@
         "last_close": 6147.0,
         "last_date": "2026-10-23",
         "days_watched": 2,
-        "dist_to_zone_pct": 0.89,
+        "dist_to_zone_pct": -0.89,
         "status": "judge_now",
         "status_reason": null,
-        "signal": "確認中（seed割れ・-5%以内）",
+        "signal": "確認中（seed割れ・-4.8%）",
         "history": [
           {
             "date": "2026-10-21",
@@ -134856,7 +134856,7 @@
           {
             "date": "2026-10-23",
             "close": 6147.0,
-            "note": "確認中（seed割れ・-5%以内） （再点灯 2026-10-23）"
+            "note": "確認中（seed割れ・-4.8%）（再点灯 2026-10-23）"
           }
         ]
       },
@@ -134874,7 +134874,7 @@
         "last_close": 1711.0,
         "last_date": "2026-10-23",
         "days_watched": 2,
-        "dist_to_zone_pct": -3.78,
+        "dist_to_zone_pct": 3.78,
         "status": "judge_now",
         "status_reason": null,
         "signal": "確認中",
@@ -134910,10 +134910,10 @@
         "last_close": 2498.0,
         "last_date": "2026-10-23",
         "days_watched": 2,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-4.0%)",
+        "signal": "押し目待ち中(あと4.0%)／再加速",
         "history": [
           {
             "date": "2026-10-21",
@@ -134928,7 +134928,7 @@
           {
             "date": "2026-10-23",
             "close": 2498.0,
-            "note": "押し目待ち中(ゾーンまで+-4.0%)"
+            "note": "押し目待ち中(あと4.0%)／再加速"
           }
         ]
       },
@@ -134946,7 +134946,7 @@
         "last_close": 1920.0,
         "last_date": "2026-10-23",
         "days_watched": 2,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "確認中",
@@ -134964,7 +134964,7 @@
           {
             "date": "2026-10-23",
             "close": 1920.0,
-            "note": "確認中 （再点灯 2026-10-23）"
+            "note": "確認中（再点灯 2026-10-23）"
           }
         ]
       },
@@ -134982,10 +134982,10 @@
         "last_close": 1104.0,
         "last_date": "2026-10-23",
         "days_watched": 2,
-        "dist_to_zone_pct": 0.78,
+        "dist_to_zone_pct": -0.78,
         "status": "judge_now",
         "status_reason": null,
-        "signal": "確認中（seed割れ・-5%以内）",
+        "signal": "確認中（seed割れ・-4.7%）",
         "history": [
           {
             "date": "2026-10-21",
@@ -135000,7 +135000,7 @@
           {
             "date": "2026-10-23",
             "close": 1104.0,
-            "note": "確認中（seed割れ・-5%以内） （再点灯 2026-10-23）"
+            "note": "確認中（seed割れ・-4.7%）（再点灯 2026-10-23）"
           }
         ]
       },
@@ -135018,10 +135018,10 @@
         "last_close": 2371.0,
         "last_date": "2026-10-23",
         "days_watched": 2,
-        "dist_to_zone_pct": -1.49,
+        "dist_to_zone_pct": 1.49,
         "status": "judge_now",
         "status_reason": null,
-        "signal": "確認中（seed割れ・-5%以内）",
+        "signal": "確認中（seed割れ・-2.5%）",
         "history": [
           {
             "date": "2026-10-21",
@@ -135036,7 +135036,7 @@
           {
             "date": "2026-10-23",
             "close": 2371.0,
-            "note": "確認中（seed割れ・-5%以内） （再点灯 2026-10-23）"
+            "note": "確認中（seed割れ・-2.5%）（再点灯 2026-10-23）"
           }
         ]
       },
@@ -135054,10 +135054,10 @@
         "last_close": 2200.0,
         "last_date": "2026-10-23",
         "days_watched": 2,
-        "dist_to_zone_pct": -1.77,
+        "dist_to_zone_pct": 1.77,
         "status": "judge_now",
         "status_reason": null,
-        "signal": "確認中（seed割れ・-5%以内）",
+        "signal": "確認中（seed割れ・-1.7%）",
         "history": [
           {
             "date": "2026-10-21",
@@ -135072,7 +135072,7 @@
           {
             "date": "2026-10-23",
             "close": 2200.0,
-            "note": "確認中（seed割れ・-5%以内）"
+            "note": "確認中（seed割れ・-1.7%）"
           }
         ]
       },
@@ -135090,10 +135090,10 @@
         "last_close": 881.0,
         "last_date": "2026-10-23",
         "days_watched": 2,
-        "dist_to_zone_pct": -3.56,
+        "dist_to_zone_pct": 3.56,
         "status": "judge_now",
         "status_reason": null,
-        "signal": "確認中（seed割れ・-5%以内）",
+        "signal": "確認中（seed割れ・-0.5%）",
         "history": [
           {
             "date": "2026-10-21",
@@ -135108,7 +135108,7 @@
           {
             "date": "2026-10-23",
             "close": 881.0,
-            "note": "確認中（seed割れ・-5%以内） （再点灯 2026-10-23）"
+            "note": "確認中（seed割れ・-0.5%）（再点灯 2026-10-23）"
           }
         ]
       },
@@ -135126,7 +135126,7 @@
         "last_close": 1407.0,
         "last_date": "2026-10-23",
         "days_watched": 2,
-        "dist_to_zone_pct": 0.78,
+        "dist_to_zone_pct": -0.78,
         "status": "judge_now",
         "status_reason": null,
         "signal": "確認中",
@@ -135162,7 +135162,7 @@
         "last_close": 773.0,
         "last_date": "2026-10-23",
         "days_watched": 2,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "確認中",
@@ -135180,7 +135180,7 @@
           {
             "date": "2026-10-23",
             "close": 773.0,
-            "note": "確認中 （再点灯 2026-10-23）"
+            "note": "確認中（再点灯 2026-10-23）"
           }
         ]
       },
@@ -135198,10 +135198,10 @@
         "last_close": 885.0,
         "last_date": "2026-10-23",
         "days_watched": 2,
-        "dist_to_zone_pct": 0.88,
+        "dist_to_zone_pct": -0.88,
         "status": "judge_now",
         "status_reason": null,
-        "signal": "確認中（seed割れ・-5%以内）",
+        "signal": "確認中（seed割れ・-4.8%）",
         "history": [
           {
             "date": "2026-10-21",
@@ -135216,7 +135216,7 @@
           {
             "date": "2026-10-23",
             "close": 885.0,
-            "note": "確認中（seed割れ・-5%以内） （再点灯 2026-10-23）"
+            "note": "確認中（seed割れ・-4.8%）（再点灯 2026-10-23）"
           }
         ]
       },
@@ -135234,7 +135234,7 @@
         "last_close": 2011.0,
         "last_date": "2026-10-23",
         "days_watched": 2,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "確認中",
@@ -135252,7 +135252,7 @@
           {
             "date": "2026-10-23",
             "close": 2011.0,
-            "note": "確認中 （再点灯 2026-10-23）"
+            "note": "確認中（再点灯 2026-10-23）"
           }
         ]
       },
@@ -135270,7 +135270,7 @@
         "last_close": 2470.0,
         "last_date": "2026-10-23",
         "days_watched": 2,
-        "dist_to_zone_pct": -0.5,
+        "dist_to_zone_pct": 0.5,
         "status": "judge_now",
         "status_reason": null,
         "signal": "確認中",
@@ -135306,10 +135306,10 @@
         "last_close": 805.0,
         "last_date": "2026-10-23",
         "days_watched": 2,
-        "dist_to_zone_pct": -1.61,
+        "dist_to_zone_pct": 1.61,
         "status": "judge_now",
         "status_reason": null,
-        "signal": "確認中（seed割れ・-5%以内）",
+        "signal": "確認中（seed割れ・-2.4%）",
         "history": [
           {
             "date": "2026-10-21",
@@ -135324,7 +135324,7 @@
           {
             "date": "2026-10-23",
             "close": 805.0,
-            "note": "確認中（seed割れ・-5%以内）"
+            "note": "確認中（seed割れ・-2.4%）"
           }
         ]
       },
@@ -135342,7 +135342,7 @@
         "last_close": 769.0,
         "last_date": "2026-10-23",
         "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "確認中",
@@ -135373,7 +135373,7 @@
         "last_close": 125100.0,
         "last_date": "2026-10-23",
         "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "確認中",
@@ -135404,10 +135404,10 @@
         "last_close": 3155.0,
         "last_date": "2026-10-23",
         "days_watched": 1,
-        "dist_to_zone_pct": -3.7,
+        "dist_to_zone_pct": 3.7,
         "status": "judge_now",
         "status_reason": null,
-        "signal": "確認中（seed割れ・-5%以内）",
+        "signal": "確認中（seed割れ・-0.3%）",
         "history": [
           {
             "date": "2026-10-22",
@@ -135417,7 +135417,7 @@
           {
             "date": "2026-10-23",
             "close": 3155.0,
-            "note": "確認中（seed割れ・-5%以内）"
+            "note": "確認中（seed割れ・-0.3%）"
           }
         ]
       },
@@ -135435,10 +135435,10 @@
         "last_close": 3180.0,
         "last_date": "2026-10-23",
         "days_watched": 1,
-        "dist_to_zone_pct": -3.85,
+        "dist_to_zone_pct": 3.85,
         "status": "judge_now",
         "status_reason": null,
-        "signal": "確認中（seed割れ・-5%以内）",
+        "signal": "確認中（seed割れ・-0.2%）",
         "history": [
           {
             "date": "2026-10-22",
@@ -135448,7 +135448,7 @@
           {
             "date": "2026-10-23",
             "close": 3180.0,
-            "note": "確認中（seed割れ・-5%以内）"
+            "note": "確認中（seed割れ・-0.2%）"
           }
         ]
       },
@@ -135466,10 +135466,10 @@
         "last_close": 4255.0,
         "last_date": "2026-10-23",
         "days_watched": 1,
-        "dist_to_zone_pct": -3.37,
+        "dist_to_zone_pct": 3.37,
         "status": "judge_now",
         "status_reason": null,
-        "signal": "確認中（seed割れ・-5%以内）",
+        "signal": "確認中（seed割れ・-0.7%）",
         "history": [
           {
             "date": "2026-10-22",
@@ -135479,7 +135479,7 @@
           {
             "date": "2026-10-23",
             "close": 4255.0,
-            "note": "確認中（seed割れ・-5%以内）"
+            "note": "確認中（seed割れ・-0.7%）"
           }
         ]
       },
@@ -135497,7 +135497,7 @@
         "last_close": 2595.0,
         "last_date": "2026-10-23",
         "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "確認中",
@@ -135528,7 +135528,7 @@
         "last_close": 117800.0,
         "last_date": "2026-10-23",
         "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "確認中",
@@ -135559,7 +135559,7 @@
         "last_close": 128000.0,
         "last_date": "2026-10-23",
         "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "確認中",
@@ -135590,7 +135590,7 @@
         "last_close": 81400.0,
         "last_date": "2026-10-23",
         "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "確認中",
@@ -135621,7 +135621,7 @@
         "last_close": 91300.0,
         "last_date": "2026-10-23",
         "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "確認中",
@@ -135652,7 +135652,7 @@
         "last_close": 67000.0,
         "last_date": "2026-10-23",
         "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "確認中",
@@ -135683,7 +135683,7 @@
         "last_close": 4740.0,
         "last_date": "2026-10-23",
         "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "確認中",
@@ -135714,7 +135714,7 @@
         "last_close": 942.0999755859375,
         "last_date": "2026-10-23",
         "days_watched": 1,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "確認中",
@@ -135745,15 +135745,15 @@
         "last_close": 923.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-4.0%)",
+        "signal": "押し目待ち中(あと4.0%)",
         "history": [
           {
             "date": "2026-10-23",
             "close": 923.0,
-            "note": "押し目待ち中(ゾーンまで+-4.0%)"
+            "note": "押し目待ち中(あと4.0%)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -135771,7 +135771,7 @@
         "last_close": 12290.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-15.7%・5日レンジ位置0%・🚀確変・弱気)",
@@ -135779,7 +135779,7 @@
           {
             "date": "2026-10-23",
             "close": 12290.0,
-            "note": "本日判断(25MA乖離-15.7%・5日レンジ位置0%・🚀確変・弱気)"
+            "note": "本日判断(25MA乖離-15.7%・5日レンジ位置0%・🚀確変・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -135797,7 +135797,7 @@
         "last_close": 2474.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-11.8%・5日レンジ位置0%・🔥絶好調・弱気)",
@@ -135805,7 +135805,7 @@
           {
             "date": "2026-10-23",
             "close": 2474.0,
-            "note": "本日判断(25MA乖離-11.8%・5日レンジ位置0%・🔥絶好調・弱気)"
+            "note": "本日判断(25MA乖離-11.8%・5日レンジ位置0%・🔥絶好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -135823,7 +135823,7 @@
         "last_close": 3000.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-8.3%・5日レンジ位置0%・🔥絶好調・弱気)",
@@ -135831,7 +135831,7 @@
           {
             "date": "2026-10-23",
             "close": 3000.0,
-            "note": "本日判断(25MA乖離-8.3%・5日レンジ位置0%・🔥絶好調・弱気)"
+            "note": "本日判断(25MA乖離-8.3%・5日レンジ位置0%・🔥絶好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -135849,7 +135849,7 @@
         "last_close": 4118.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-11.8%・5日レンジ位置0%・🔥絶好調・弱気)",
@@ -135857,7 +135857,7 @@
           {
             "date": "2026-10-23",
             "close": 4118.0,
-            "note": "本日判断(25MA乖離-11.8%・5日レンジ位置0%・🔥絶好調・弱気)"
+            "note": "本日判断(25MA乖離-11.8%・5日レンジ位置0%・🔥絶好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -135875,7 +135875,7 @@
         "last_close": 4895.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-18.1%・5日レンジ位置4%・🔥絶好調・弱気)",
@@ -135883,7 +135883,7 @@
           {
             "date": "2026-10-23",
             "close": 4895.0,
-            "note": "本日判断(25MA乖離-18.1%・5日レンジ位置4%・🔥絶好調・弱気)"
+            "note": "本日判断(25MA乖離-18.1%・5日レンジ位置4%・🔥絶好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -135901,7 +135901,7 @@
         "last_close": 2029.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-4.6%・5日レンジ位置100%・🔥絶好調・弱気)",
@@ -135909,7 +135909,7 @@
           {
             "date": "2026-10-23",
             "close": 2029.0,
-            "note": "本日判断(25MA乖離-4.6%・5日レンジ位置100%・🔥絶好調・弱気)"
+            "note": "本日判断(25MA乖離-4.6%・5日レンジ位置100%・🔥絶好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -135927,7 +135927,7 @@
         "last_close": 923.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-12.4%・5日レンジ位置0%・🔥絶好調・弱気)",
@@ -135935,7 +135935,7 @@
           {
             "date": "2026-10-23",
             "close": 923.0,
-            "note": "本日判断(25MA乖離-12.4%・5日レンジ位置0%・🔥絶好調・弱気)"
+            "note": "本日判断(25MA乖離-12.4%・5日レンジ位置0%・🔥絶好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -135953,7 +135953,7 @@
         "last_close": 1874.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-13.7%・5日レンジ位置0%・🔥絶好調・弱気)",
@@ -135961,7 +135961,7 @@
           {
             "date": "2026-10-23",
             "close": 1874.0,
-            "note": "本日判断(25MA乖離-13.7%・5日レンジ位置0%・🔥絶好調・弱気)"
+            "note": "本日判断(25MA乖離-13.7%・5日レンジ位置0%・🔥絶好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -135979,7 +135979,7 @@
         "last_close": 1029.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-9.1%・5日レンジ位置0%・⚠減速・弱気)",
@@ -135987,7 +135987,7 @@
           {
             "date": "2026-10-23",
             "close": 1029.0,
-            "note": "本日判断(25MA乖離-9.1%・5日レンジ位置0%・⚠減速・弱気)"
+            "note": "本日判断(25MA乖離-9.1%・5日レンジ位置0%・⚠減速・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136005,7 +136005,7 @@
         "last_close": 6889.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-9.3%・5日レンジ位置0%・⚡好調・弱気)",
@@ -136013,7 +136013,7 @@
           {
             "date": "2026-10-23",
             "close": 6889.0,
-            "note": "本日判断(25MA乖離-9.3%・5日レンジ位置0%・⚡好調・弱気)"
+            "note": "本日判断(25MA乖離-9.3%・5日レンジ位置0%・⚡好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136031,7 +136031,7 @@
         "last_close": 5720.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-16.2%・5日レンジ位置0%・⚡好調・弱気)",
@@ -136039,7 +136039,7 @@
           {
             "date": "2026-10-23",
             "close": 5720.0,
-            "note": "本日判断(25MA乖離-16.2%・5日レンジ位置0%・⚡好調・弱気)"
+            "note": "本日判断(25MA乖離-16.2%・5日レンジ位置0%・⚡好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136057,7 +136057,7 @@
         "last_close": 5371.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-8.5%・5日レンジ位置0%・⚡好調・弱気)",
@@ -136065,7 +136065,7 @@
           {
             "date": "2026-10-23",
             "close": 5371.0,
-            "note": "本日判断(25MA乖離-8.5%・5日レンジ位置0%・⚡好調・弱気)"
+            "note": "本日判断(25MA乖離-8.5%・5日レンジ位置0%・⚡好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136083,7 +136083,7 @@
         "last_close": 2717.5,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-17.1%・5日レンジ位置0%・⚡好調・弱気)",
@@ -136091,7 +136091,7 @@
           {
             "date": "2026-10-23",
             "close": 2717.5,
-            "note": "本日判断(25MA乖離-17.1%・5日レンジ位置0%・⚡好調・弱気)"
+            "note": "本日判断(25MA乖離-17.1%・5日レンジ位置0%・⚡好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136109,7 +136109,7 @@
         "last_close": 2618.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-14.0%・5日レンジ位置0%・⚡好調・弱気)",
@@ -136117,7 +136117,7 @@
           {
             "date": "2026-10-23",
             "close": 2618.0,
-            "note": "本日判断(25MA乖離-14.0%・5日レンジ位置0%・⚡好調・弱気)"
+            "note": "本日判断(25MA乖離-14.0%・5日レンジ位置0%・⚡好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136135,7 +136135,7 @@
         "last_close": 4570.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-14.5%・5日レンジ位置0%・⚡好調・弱気)",
@@ -136143,7 +136143,7 @@
           {
             "date": "2026-10-23",
             "close": 4570.0,
-            "note": "本日判断(25MA乖離-14.5%・5日レンジ位置0%・⚡好調・弱気)"
+            "note": "本日判断(25MA乖離-14.5%・5日レンジ位置0%・⚡好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136161,7 +136161,7 @@
         "last_close": 1865.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-4.3%・5日レンジ位置10%・⚡好調・弱気)",
@@ -136169,7 +136169,7 @@
           {
             "date": "2026-10-23",
             "close": 1865.0,
-            "note": "本日判断(25MA乖離-4.3%・5日レンジ位置10%・⚡好調・弱気)"
+            "note": "本日判断(25MA乖離-4.3%・5日レンジ位置10%・⚡好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136187,7 +136187,7 @@
         "last_close": 5660.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-17.3%・5日レンジ位置0%・⚡好調・弱気)",
@@ -136195,7 +136195,7 @@
           {
             "date": "2026-10-23",
             "close": 5660.0,
-            "note": "本日判断(25MA乖離-17.3%・5日レンジ位置0%・⚡好調・弱気)"
+            "note": "本日判断(25MA乖離-17.3%・5日レンジ位置0%・⚡好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136213,7 +136213,7 @@
         "last_close": 1381.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-16.0%・5日レンジ位置0%・⚡好調・弱気)",
@@ -136221,7 +136221,7 @@
           {
             "date": "2026-10-23",
             "close": 1381.0,
-            "note": "本日判断(25MA乖離-16.0%・5日レンジ位置0%・⚡好調・弱気)"
+            "note": "本日判断(25MA乖離-16.0%・5日レンジ位置0%・⚡好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136239,7 +136239,7 @@
         "last_close": 2019.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-17.8%・5日レンジ位置0%・✅順調・弱気)",
@@ -136247,7 +136247,7 @@
           {
             "date": "2026-10-23",
             "close": 2019.0,
-            "note": "本日判断(25MA乖離-17.8%・5日レンジ位置0%・✅順調・弱気)"
+            "note": "本日判断(25MA乖離-17.8%・5日レンジ位置0%・✅順調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136265,7 +136265,7 @@
         "last_close": 3292.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-15.6%・5日レンジ位置0%・✅順調・弱気)",
@@ -136273,7 +136273,7 @@
           {
             "date": "2026-10-23",
             "close": 3292.0,
-            "note": "本日判断(25MA乖離-15.6%・5日レンジ位置0%・✅順調・弱気)"
+            "note": "本日判断(25MA乖離-15.6%・5日レンジ位置0%・✅順調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136291,7 +136291,7 @@
         "last_close": 1211.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-2.7%・5日レンジ位置50%・✅順調・弱気)",
@@ -136299,7 +136299,7 @@
           {
             "date": "2026-10-23",
             "close": 1211.0,
-            "note": "本日判断(25MA乖離-2.7%・5日レンジ位置50%・✅順調・弱気)"
+            "note": "本日判断(25MA乖離-2.7%・5日レンジ位置50%・✅順調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136317,7 +136317,7 @@
         "last_close": 3165.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-11.2%・5日レンジ位置0%・✅順調・弱気)",
@@ -136325,7 +136325,7 @@
           {
             "date": "2026-10-23",
             "close": 3165.0,
-            "note": "本日判断(25MA乖離-11.2%・5日レンジ位置0%・✅順調・弱気)"
+            "note": "本日判断(25MA乖離-11.2%・5日レンジ位置0%・✅順調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136343,7 +136343,7 @@
         "last_close": 2948.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-4.8%・5日レンジ位置15%・✅順調・弱気)",
@@ -136351,7 +136351,7 @@
           {
             "date": "2026-10-23",
             "close": 2948.0,
-            "note": "本日判断(25MA乖離-4.8%・5日レンジ位置15%・✅順調・弱気)"
+            "note": "本日判断(25MA乖離-4.8%・5日レンジ位置15%・✅順調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136369,7 +136369,7 @@
         "last_close": 7701.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-10.6%・5日レンジ位置0%・✅順調・弱気)",
@@ -136377,7 +136377,7 @@
           {
             "date": "2026-10-23",
             "close": 7701.0,
-            "note": "本日判断(25MA乖離-10.6%・5日レンジ位置0%・✅順調・弱気)"
+            "note": "本日判断(25MA乖離-10.6%・5日レンジ位置0%・✅順調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136395,7 +136395,7 @@
         "last_close": 3511.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-12.7%・5日レンジ位置0%・✅順調・弱気)",
@@ -136403,7 +136403,7 @@
           {
             "date": "2026-10-23",
             "close": 3511.0,
-            "note": "本日判断(25MA乖離-12.7%・5日レンジ位置0%・✅順調・弱気)"
+            "note": "本日判断(25MA乖離-12.7%・5日レンジ位置0%・✅順調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136421,7 +136421,7 @@
         "last_close": 1434.5,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離+1.0%・5日レンジ位置100%・✅順調・弱気)",
@@ -136429,7 +136429,7 @@
           {
             "date": "2026-10-23",
             "close": 1434.5,
-            "note": "本日判断(25MA乖離+1.0%・5日レンジ位置100%・✅順調・弱気)"
+            "note": "本日判断(25MA乖離+1.0%・5日レンジ位置100%・✅順調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136447,7 +136447,7 @@
         "last_close": 1960.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-12.4%・5日レンジ位置0%・✅順調・弱気)",
@@ -136455,7 +136455,7 @@
           {
             "date": "2026-10-23",
             "close": 1960.0,
-            "note": "本日判断(25MA乖離-12.4%・5日レンジ位置0%・✅順調・弱気)"
+            "note": "本日判断(25MA乖離-12.4%・5日レンジ位置0%・✅順調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136473,7 +136473,7 @@
         "last_close": 6500.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-5.5%・5日レンジ位置100%・✅順調・弱気)",
@@ -136481,7 +136481,7 @@
           {
             "date": "2026-10-23",
             "close": 6500.0,
-            "note": "本日判断(25MA乖離-5.5%・5日レンジ位置100%・✅順調・弱気)"
+            "note": "本日判断(25MA乖離-5.5%・5日レンジ位置100%・✅順調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136499,7 +136499,7 @@
         "last_close": 1235.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離+0.7%・5日レンジ位置100%・➖横ばい・弱気)",
@@ -136507,7 +136507,7 @@
           {
             "date": "2026-10-23",
             "close": 1235.0,
-            "note": "本日判断(25MA乖離+0.7%・5日レンジ位置100%・➖横ばい・弱気)"
+            "note": "本日判断(25MA乖離+0.7%・5日レンジ位置100%・➖横ばい・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136525,7 +136525,7 @@
         "last_close": 4666.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-12.1%・5日レンジ位置0%・➖横ばい・弱気)",
@@ -136533,7 +136533,7 @@
           {
             "date": "2026-10-23",
             "close": 4666.0,
-            "note": "本日判断(25MA乖離-12.1%・5日レンジ位置0%・➖横ばい・弱気)"
+            "note": "本日判断(25MA乖離-12.1%・5日レンジ位置0%・➖横ばい・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136551,7 +136551,7 @@
         "last_close": 1760.5,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-2.0%・5日レンジ位置88%・➖横ばい・弱気)",
@@ -136559,7 +136559,7 @@
           {
             "date": "2026-10-23",
             "close": 1760.5,
-            "note": "本日判断(25MA乖離-2.0%・5日レンジ位置88%・➖横ばい・弱気)"
+            "note": "本日判断(25MA乖離-2.0%・5日レンジ位置88%・➖横ばい・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136577,7 +136577,7 @@
         "last_close": 573.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-11.6%・5日レンジ位置0%・🔻悪化・弱気)",
@@ -136585,7 +136585,7 @@
           {
             "date": "2026-10-23",
             "close": 573.0,
-            "note": "本日判断(25MA乖離-11.6%・5日レンジ位置0%・🔻悪化・弱気)"
+            "note": "本日判断(25MA乖離-11.6%・5日レンジ位置0%・🔻悪化・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136603,7 +136603,7 @@
         "last_close": 2415.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-16.2%・5日レンジ位置0%・🔻悪化・弱気)",
@@ -136611,7 +136611,7 @@
           {
             "date": "2026-10-23",
             "close": 2415.0,
-            "note": "本日判断(25MA乖離-16.2%・5日レンジ位置0%・🔻悪化・弱気)"
+            "note": "本日判断(25MA乖離-16.2%・5日レンジ位置0%・🔻悪化・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136629,7 +136629,7 @@
         "last_close": 4018.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-12.1%・5日レンジ位置0%・🔻悪化・弱気)",
@@ -136637,7 +136637,7 @@
           {
             "date": "2026-10-23",
             "close": 4018.0,
-            "note": "本日判断(25MA乖離-12.1%・5日レンジ位置0%・🔻悪化・弱気)"
+            "note": "本日判断(25MA乖離-12.1%・5日レンジ位置0%・🔻悪化・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136655,7 +136655,7 @@
         "last_close": 1327.5,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-7.7%・5日レンジ位置0%・⚠減速・弱気)",
@@ -136663,7 +136663,7 @@
           {
             "date": "2026-10-23",
             "close": 1327.5,
-            "note": "本日判断(25MA乖離-7.7%・5日レンジ位置0%・⚠減速・弱気)"
+            "note": "本日判断(25MA乖離-7.7%・5日レンジ位置0%・⚠減速・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136681,7 +136681,7 @@
         "last_close": 3120.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-11.7%・5日レンジ位置0%・⚠減速・弱気)",
@@ -136689,7 +136689,7 @@
           {
             "date": "2026-10-23",
             "close": 3120.0,
-            "note": "本日判断(25MA乖離-11.7%・5日レンジ位置0%・⚠減速・弱気)"
+            "note": "本日判断(25MA乖離-11.7%・5日レンジ位置0%・⚠減速・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136707,7 +136707,7 @@
         "last_close": 2028.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-8.0%・5日レンジ位置0%・🔻悪化・弱気)",
@@ -136715,7 +136715,7 @@
           {
             "date": "2026-10-23",
             "close": 2028.0,
-            "note": "本日判断(25MA乖離-8.0%・5日レンジ位置0%・🔻悪化・弱気)"
+            "note": "本日判断(25MA乖離-8.0%・5日レンジ位置0%・🔻悪化・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136733,7 +136733,7 @@
         "last_close": 6240.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-15.5%・5日レンジ位置0%・🔻悪化・弱気)",
@@ -136741,7 +136741,7 @@
           {
             "date": "2026-10-23",
             "close": 6240.0,
-            "note": "本日判断(25MA乖離-15.5%・5日レンジ位置0%・🔻悪化・弱気)"
+            "note": "本日判断(25MA乖離-15.5%・5日レンジ位置0%・🔻悪化・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136759,7 +136759,7 @@
         "last_close": 10630.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-6.8%・5日レンジ位置32%・⚠減速・弱気)",
@@ -136767,7 +136767,7 @@
           {
             "date": "2026-10-23",
             "close": 10630.0,
-            "note": "本日判断(25MA乖離-6.8%・5日レンジ位置32%・⚠減速・弱気)"
+            "note": "本日判断(25MA乖離-6.8%・5日レンジ位置32%・⚠減速・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136785,7 +136785,7 @@
         "last_close": 2241.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-12.0%・5日レンジ位置0%・🔻悪化・弱気)",
@@ -136793,7 +136793,7 @@
           {
             "date": "2026-10-23",
             "close": 2241.0,
-            "note": "本日判断(25MA乖離-12.0%・5日レンジ位置0%・🔻悪化・弱気)"
+            "note": "本日判断(25MA乖離-12.0%・5日レンジ位置0%・🔻悪化・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136811,7 +136811,7 @@
         "last_close": 4130.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-7.6%・5日レンジ位置45%・⚠減速・弱気)",
@@ -136819,7 +136819,7 @@
           {
             "date": "2026-10-23",
             "close": 4130.0,
-            "note": "本日判断(25MA乖離-7.6%・5日レンジ位置45%・⚠減速・弱気)"
+            "note": "本日判断(25MA乖離-7.6%・5日レンジ位置45%・⚠減速・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136837,7 +136837,7 @@
         "last_close": 1531.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-9.9%・5日レンジ位置0%・取得不可・弱気)",
@@ -136845,7 +136845,7 @@
           {
             "date": "2026-10-23",
             "close": 1531.0,
-            "note": "本日判断(25MA乖離-9.9%・5日レンジ位置0%・取得不可・弱気)"
+            "note": "本日判断(25MA乖離-9.9%・5日レンジ位置0%・取得不可・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136863,7 +136863,7 @@
         "last_close": 2894.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-14.6%・5日レンジ位置0%・取得不可・弱気)",
@@ -136871,7 +136871,7 @@
           {
             "date": "2026-10-23",
             "close": 2894.0,
-            "note": "本日判断(25MA乖離-14.6%・5日レンジ位置0%・取得不可・弱気)"
+            "note": "本日判断(25MA乖離-14.6%・5日レンジ位置0%・取得不可・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136889,7 +136889,7 @@
         "last_close": 2024.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-20.8%・5日レンジ位置0%・業績データ取得不可(売上/経常欠損)・弱気)",
@@ -136897,7 +136897,7 @@
           {
             "date": "2026-10-23",
             "close": 2024.0,
-            "note": "本日判断(25MA乖離-20.8%・5日レンジ位置0%・業績データ取得不可(売上/経常欠損)・弱気)"
+            "note": "本日判断(25MA乖離-20.8%・5日レンジ位置0%・業績データ取得不可(売上/経常欠損)・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136915,7 +136915,7 @@
         "last_close": 1713.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-12.3%・5日レンジ位置0%・取得不可・弱気)",
@@ -136923,7 +136923,7 @@
           {
             "date": "2026-10-23",
             "close": 1713.0,
-            "note": "本日判断(25MA乖離-12.3%・5日レンジ位置0%・取得不可・弱気)"
+            "note": "本日判断(25MA乖離-12.3%・5日レンジ位置0%・取得不可・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136941,7 +136941,7 @@
         "last_close": 3850.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-25.2%・5日レンジ位置0%・業績データ取得不可(売上/経常欠損)・弱気)",
@@ -136949,7 +136949,7 @@
           {
             "date": "2026-10-23",
             "close": 3850.0,
-            "note": "本日判断(25MA乖離-25.2%・5日レンジ位置0%・業績データ取得不可(売上/経常欠損)・弱気)"
+            "note": "本日判断(25MA乖離-25.2%・5日レンジ位置0%・業績データ取得不可(売上/経常欠損)・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136967,7 +136967,7 @@
         "last_close": 46560.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-14.7%・5日レンジ位置0%・業績データ取得不可・弱気)",
@@ -136975,7 +136975,7 @@
           {
             "date": "2026-10-23",
             "close": 46560.0,
-            "note": "本日判断(25MA乖離-14.7%・5日レンジ位置0%・業績データ取得不可・弱気)"
+            "note": "本日判断(25MA乖離-14.7%・5日レンジ位置0%・業績データ取得不可・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -136993,7 +136993,7 @@
         "last_close": 988.7999877929688,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-7.5%・5日レンジ位置0%・業績データ取得不可・弱気)",
@@ -137001,7 +137001,7 @@
           {
             "date": "2026-10-23",
             "close": 988.7999877929688,
-            "note": "本日判断(25MA乖離-7.5%・5日レンジ位置0%・業績データ取得不可・弱気)"
+            "note": "本日判断(25MA乖離-7.5%・5日レンジ位置0%・業績データ取得不可・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137019,7 +137019,7 @@
         "last_close": 1611.5,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-12.0%・5日レンジ位置0%・業績データ取得不可・弱気)",
@@ -137027,7 +137027,7 @@
           {
             "date": "2026-10-23",
             "close": 1611.5,
-            "note": "本日判断(25MA乖離-12.0%・5日レンジ位置0%・業績データ取得不可・弱気)"
+            "note": "本日判断(25MA乖離-12.0%・5日レンジ位置0%・業績データ取得不可・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137045,7 +137045,7 @@
         "last_close": 1775.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-15.0%・5日レンジ位置0%・業績データ取得不可・弱気)",
@@ -137053,7 +137053,7 @@
           {
             "date": "2026-10-23",
             "close": 1775.0,
-            "note": "本日判断(25MA乖離-15.0%・5日レンジ位置0%・業績データ取得不可・弱気)"
+            "note": "本日判断(25MA乖離-15.0%・5日レンジ位置0%・業績データ取得不可・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137071,7 +137071,7 @@
         "last_close": 6654.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-11.9%・5日レンジ位置0%・業績データ取得不可・弱気)",
@@ -137079,7 +137079,7 @@
           {
             "date": "2026-10-23",
             "close": 6654.0,
-            "note": "本日判断(25MA乖離-11.9%・5日レンジ位置0%・業績データ取得不可・弱気)"
+            "note": "本日判断(25MA乖離-11.9%・5日レンジ位置0%・業績データ取得不可・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137097,7 +137097,7 @@
         "last_close": 2313.5,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-13.0%・5日レンジ位置0%・業績データ取得不可・弱気)",
@@ -137105,7 +137105,7 @@
           {
             "date": "2026-10-23",
             "close": 2313.5,
-            "note": "本日判断(25MA乖離-13.0%・5日レンジ位置0%・業績データ取得不可・弱気)"
+            "note": "本日判断(25MA乖離-13.0%・5日レンジ位置0%・業績データ取得不可・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137123,7 +137123,7 @@
         "last_close": 1018.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-11.2%・5日レンジ位置0%・業績データ取得不可・弱気)",
@@ -137131,7 +137131,7 @@
           {
             "date": "2026-10-23",
             "close": 1018.0,
-            "note": "本日判断(25MA乖離-11.2%・5日レンジ位置0%・業績データ取得不可・弱気)"
+            "note": "本日判断(25MA乖離-11.2%・5日レンジ位置0%・業績データ取得不可・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137149,7 +137149,7 @@
         "last_close": 1980.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-13.5%・5日レンジ位置19%・🔥絶好調・弱気)",
@@ -137157,7 +137157,7 @@
           {
             "date": "2026-10-23",
             "close": 1980.0,
-            "note": "本日判断(25MA乖離-13.5%・5日レンジ位置19%・🔥絶好調・弱気)"
+            "note": "本日判断(25MA乖離-13.5%・5日レンジ位置19%・🔥絶好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137175,7 +137175,7 @@
         "last_close": 5980.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-11.0%・5日レンジ位置6%・🔥絶好調・弱気)",
@@ -137183,7 +137183,7 @@
           {
             "date": "2026-10-23",
             "close": 5980.0,
-            "note": "本日判断(25MA乖離-11.0%・5日レンジ位置6%・🔥絶好調・弱気)"
+            "note": "本日判断(25MA乖離-11.0%・5日レンジ位置6%・🔥絶好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137201,7 +137201,7 @@
         "last_close": 6275.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-17.9%・5日レンジ位置0%・🔥絶好調・弱気)",
@@ -137209,7 +137209,7 @@
           {
             "date": "2026-10-23",
             "close": 6275.0,
-            "note": "本日判断(25MA乖離-17.9%・5日レンジ位置0%・🔥絶好調・弱気)"
+            "note": "本日判断(25MA乖離-17.9%・5日レンジ位置0%・🔥絶好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137227,7 +137227,7 @@
         "last_close": 1791.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-3.5%・5日レンジ位置0%・🔥絶好調・弱気)",
@@ -137235,7 +137235,7 @@
           {
             "date": "2026-10-23",
             "close": 1791.0,
-            "note": "本日判断(25MA乖離-3.5%・5日レンジ位置0%・🔥絶好調・弱気)"
+            "note": "本日判断(25MA乖離-3.5%・5日レンジ位置0%・🔥絶好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137253,7 +137253,7 @@
         "last_close": 8512.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-19.4%・5日レンジ位置0%・🔥絶好調・弱気)",
@@ -137261,7 +137261,7 @@
           {
             "date": "2026-10-23",
             "close": 8512.0,
-            "note": "本日判断(25MA乖離-19.4%・5日レンジ位置0%・🔥絶好調・弱気)"
+            "note": "本日判断(25MA乖離-19.4%・5日レンジ位置0%・🔥絶好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137279,7 +137279,7 @@
         "last_close": 4485.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-16.3%・5日レンジ位置0%・🔥絶好調・弱気)",
@@ -137287,7 +137287,7 @@
           {
             "date": "2026-10-23",
             "close": 4485.0,
-            "note": "本日判断(25MA乖離-16.3%・5日レンジ位置0%・🔥絶好調・弱気)"
+            "note": "本日判断(25MA乖離-16.3%・5日レンジ位置0%・🔥絶好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137305,7 +137305,7 @@
         "last_close": 2240.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-12.6%・5日レンジ位置0%・🔥絶好調・弱気)",
@@ -137313,7 +137313,7 @@
           {
             "date": "2026-10-23",
             "close": 2240.0,
-            "note": "本日判断(25MA乖離-12.6%・5日レンジ位置0%・🔥絶好調・弱気)"
+            "note": "本日判断(25MA乖離-12.6%・5日レンジ位置0%・🔥絶好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137331,7 +137331,7 @@
         "last_close": 15520.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-14.7%・5日レンジ位置0%・🔥絶好調・弱気)",
@@ -137339,7 +137339,7 @@
           {
             "date": "2026-10-23",
             "close": 15520.0,
-            "note": "本日判断(25MA乖離-14.7%・5日レンジ位置0%・🔥絶好調・弱気)"
+            "note": "本日判断(25MA乖離-14.7%・5日レンジ位置0%・🔥絶好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137357,7 +137357,7 @@
         "last_close": 2534.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-20.8%・5日レンジ位置0%・⚡好調・弱気)",
@@ -137365,7 +137365,7 @@
           {
             "date": "2026-10-23",
             "close": 2534.0,
-            "note": "本日判断(25MA乖離-20.8%・5日レンジ位置0%・⚡好調・弱気)"
+            "note": "本日判断(25MA乖離-20.8%・5日レンジ位置0%・⚡好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137383,7 +137383,7 @@
         "last_close": 3631.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-15.5%・5日レンジ位置0%・⚠減速・弱気)",
@@ -137391,7 +137391,7 @@
           {
             "date": "2026-10-23",
             "close": 3631.0,
-            "note": "本日判断(25MA乖離-15.5%・5日レンジ位置0%・⚠減速・弱気)"
+            "note": "本日判断(25MA乖離-15.5%・5日レンジ位置0%・⚠減速・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137409,7 +137409,7 @@
         "last_close": 18400.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-20.5%・5日レンジ位置0%・⚡好調・弱気)",
@@ -137417,7 +137417,7 @@
           {
             "date": "2026-10-23",
             "close": 18400.0,
-            "note": "本日判断(25MA乖離-20.5%・5日レンジ位置0%・⚡好調・弱気)"
+            "note": "本日判断(25MA乖離-20.5%・5日レンジ位置0%・⚡好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137435,7 +137435,7 @@
         "last_close": 5610.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-21.0%・5日レンジ位置0%・⚡好調・弱気)",
@@ -137443,7 +137443,7 @@
           {
             "date": "2026-10-23",
             "close": 5610.0,
-            "note": "本日判断(25MA乖離-21.0%・5日レンジ位置0%・⚡好調・弱気)"
+            "note": "本日判断(25MA乖離-21.0%・5日レンジ位置0%・⚡好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137461,7 +137461,7 @@
         "last_close": 2571.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-7.0%・5日レンジ位置0%・✅順調・弱気)",
@@ -137469,7 +137469,7 @@
           {
             "date": "2026-10-23",
             "close": 2571.0,
-            "note": "本日判断(25MA乖離-7.0%・5日レンジ位置0%・✅順調・弱気)"
+            "note": "本日判断(25MA乖離-7.0%・5日レンジ位置0%・✅順調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137487,7 +137487,7 @@
         "last_close": 5070.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-7.7%・5日レンジ位置0%・✅順調・弱気)",
@@ -137495,7 +137495,7 @@
           {
             "date": "2026-10-23",
             "close": 5070.0,
-            "note": "本日判断(25MA乖離-7.7%・5日レンジ位置0%・✅順調・弱気)"
+            "note": "本日判断(25MA乖離-7.7%・5日レンジ位置0%・✅順調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137513,7 +137513,7 @@
         "last_close": 2078.5,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-13.0%・5日レンジ位置0%・🔻悪化・弱気)",
@@ -137521,7 +137521,7 @@
           {
             "date": "2026-10-23",
             "close": 2078.5,
-            "note": "本日判断(25MA乖離-13.0%・5日レンジ位置0%・🔻悪化・弱気)"
+            "note": "本日判断(25MA乖離-13.0%・5日レンジ位置0%・🔻悪化・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137539,7 +137539,7 @@
         "last_close": 3130.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-18.6%・5日レンジ位置0%・➖横ばい・弱気)",
@@ -137547,7 +137547,7 @@
           {
             "date": "2026-10-23",
             "close": 3130.0,
-            "note": "本日判断(25MA乖離-18.6%・5日レンジ位置0%・➖横ばい・弱気)"
+            "note": "本日判断(25MA乖離-18.6%・5日レンジ位置0%・➖横ばい・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137565,7 +137565,7 @@
         "last_close": 7600.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-10.2%・5日レンジ位置0%・業績データ取得不可・弱気)",
@@ -137573,7 +137573,7 @@
           {
             "date": "2026-10-23",
             "close": 7600.0,
-            "note": "本日判断(25MA乖離-10.2%・5日レンジ位置0%・業績データ取得不可・弱気)"
+            "note": "本日判断(25MA乖離-10.2%・5日レンジ位置0%・業績データ取得不可・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137591,15 +137591,15 @@
         "last_close": 2124.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "watching",
         "status_reason": null,
-        "signal": "押し目待ち中(ゾーンまで+-4.0%)",
+        "signal": "押し目待ち中(あと4.0%)",
         "history": [
           {
             "date": "2026-10-23",
             "close": 2124.0,
-            "note": "押し目待ち中(ゾーンまで+-4.0%)"
+            "note": "押し目待ち中(あと4.0%)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137617,7 +137617,7 @@
         "last_close": 8620.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離+1.8%・5日レンジ位置100%・🚀確変・弱気)",
@@ -137625,7 +137625,7 @@
           {
             "date": "2026-10-23",
             "close": 8620.0,
-            "note": "本日判断(25MA乖離+1.8%・5日レンジ位置100%・🚀確変・弱気)"
+            "note": "本日判断(25MA乖離+1.8%・5日レンジ位置100%・🚀確変・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137643,7 +137643,7 @@
         "last_close": 992.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-15.8%・5日レンジ位置0%・🚀確変・弱気)",
@@ -137651,7 +137651,7 @@
           {
             "date": "2026-10-23",
             "close": 992.0,
-            "note": "本日判断(25MA乖離-15.8%・5日レンジ位置0%・🚀確変・弱気)"
+            "note": "本日判断(25MA乖離-15.8%・5日レンジ位置0%・🚀確変・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137669,7 +137669,7 @@
         "last_close": 1484.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-17.2%・5日レンジ位置5%・🔥絶好調・弱気)",
@@ -137677,7 +137677,7 @@
           {
             "date": "2026-10-23",
             "close": 1484.0,
-            "note": "本日判断(25MA乖離-17.2%・5日レンジ位置5%・🔥絶好調・弱気)"
+            "note": "本日判断(25MA乖離-17.2%・5日レンジ位置5%・🔥絶好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137695,7 +137695,7 @@
         "last_close": 3732.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-19.3%・5日レンジ位置0%・🔥絶好調・弱気)",
@@ -137703,7 +137703,7 @@
           {
             "date": "2026-10-23",
             "close": 3732.0,
-            "note": "本日判断(25MA乖離-19.3%・5日レンジ位置0%・🔥絶好調・弱気)"
+            "note": "本日判断(25MA乖離-19.3%・5日レンジ位置0%・🔥絶好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137721,7 +137721,7 @@
         "last_close": 9770.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-11.4%・5日レンジ位置0%・⚡好調・弱気)",
@@ -137729,7 +137729,7 @@
           {
             "date": "2026-10-23",
             "close": 9770.0,
-            "note": "本日判断(25MA乖離-11.4%・5日レンジ位置0%・⚡好調・弱気)"
+            "note": "本日判断(25MA乖離-11.4%・5日レンジ位置0%・⚡好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137747,7 +137747,7 @@
         "last_close": 750.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-6.5%・5日レンジ位置61%・⚡好調・弱気)",
@@ -137755,7 +137755,7 @@
           {
             "date": "2026-10-23",
             "close": 750.0,
-            "note": "本日判断(25MA乖離-6.5%・5日レンジ位置61%・⚡好調・弱気)"
+            "note": "本日判断(25MA乖離-6.5%・5日レンジ位置61%・⚡好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137773,7 +137773,7 @@
         "last_close": 1040.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-11.4%・5日レンジ位置100%・⚡好調・弱気)",
@@ -137781,7 +137781,7 @@
           {
             "date": "2026-10-23",
             "close": 1040.0,
-            "note": "本日判断(25MA乖離-11.4%・5日レンジ位置100%・⚡好調・弱気)"
+            "note": "本日判断(25MA乖離-11.4%・5日レンジ位置100%・⚡好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137799,7 +137799,7 @@
         "last_close": 1618.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-9.5%・5日レンジ位置29%・⚡好調・弱気)",
@@ -137807,7 +137807,7 @@
           {
             "date": "2026-10-23",
             "close": 1618.0,
-            "note": "本日判断(25MA乖離-9.5%・5日レンジ位置29%・⚡好調・弱気)"
+            "note": "本日判断(25MA乖離-9.5%・5日レンジ位置29%・⚡好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137825,7 +137825,7 @@
         "last_close": 4230.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-17.9%・5日レンジ位置0%・⚡好調・弱気)",
@@ -137833,7 +137833,7 @@
           {
             "date": "2026-10-23",
             "close": 4230.0,
-            "note": "本日判断(25MA乖離-17.9%・5日レンジ位置0%・⚡好調・弱気)"
+            "note": "本日判断(25MA乖離-17.9%・5日レンジ位置0%・⚡好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137851,7 +137851,7 @@
         "last_close": 2662.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-13.4%・5日レンジ位置0%・⚡好調・弱気)",
@@ -137859,7 +137859,7 @@
           {
             "date": "2026-10-23",
             "close": 2662.0,
-            "note": "本日判断(25MA乖離-13.4%・5日レンジ位置0%・⚡好調・弱気)"
+            "note": "本日判断(25MA乖離-13.4%・5日レンジ位置0%・⚡好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137877,7 +137877,7 @@
         "last_close": 3070.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-17.3%・5日レンジ位置2%・⚡好調・弱気)",
@@ -137885,7 +137885,7 @@
           {
             "date": "2026-10-23",
             "close": 3070.0,
-            "note": "本日判断(25MA乖離-17.3%・5日レンジ位置2%・⚡好調・弱気)"
+            "note": "本日判断(25MA乖離-17.3%・5日レンジ位置2%・⚡好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137903,7 +137903,7 @@
         "last_close": 1863.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-13.2%・5日レンジ位置0%・⚡好調・弱気)",
@@ -137911,7 +137911,7 @@
           {
             "date": "2026-10-23",
             "close": 1863.0,
-            "note": "本日判断(25MA乖離-13.2%・5日レンジ位置0%・⚡好調・弱気)"
+            "note": "本日判断(25MA乖離-13.2%・5日レンジ位置0%・⚡好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137929,7 +137929,7 @@
         "last_close": 878.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-10.8%・5日レンジ位置26%・🔻悪化・弱気)",
@@ -137937,7 +137937,7 @@
           {
             "date": "2026-10-23",
             "close": 878.0,
-            "note": "本日判断(25MA乖離-10.8%・5日レンジ位置26%・🔻悪化・弱気)"
+            "note": "本日判断(25MA乖離-10.8%・5日レンジ位置26%・🔻悪化・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137955,7 +137955,7 @@
         "last_close": 1700.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-22.8%・5日レンジ位置0%・➖横ばい・弱気)",
@@ -137963,7 +137963,7 @@
           {
             "date": "2026-10-23",
             "close": 1700.0,
-            "note": "本日判断(25MA乖離-22.8%・5日レンジ位置0%・➖横ばい・弱気)"
+            "note": "本日判断(25MA乖離-22.8%・5日レンジ位置0%・➖横ばい・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -137981,7 +137981,7 @@
         "last_close": 1879.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-17.3%・5日レンジ位置0%・⚠減速・弱気)",
@@ -137989,7 +137989,7 @@
           {
             "date": "2026-10-23",
             "close": 1879.0,
-            "note": "本日判断(25MA乖離-17.3%・5日レンジ位置0%・⚠減速・弱気)"
+            "note": "本日判断(25MA乖離-17.3%・5日レンジ位置0%・⚠減速・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -138007,7 +138007,7 @@
         "last_close": 2845.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-20.2%・5日レンジ位置0%・業績データ取得不可・弱気)",
@@ -138015,7 +138015,7 @@
           {
             "date": "2026-10-23",
             "close": 2845.0,
-            "note": "本日判断(25MA乖離-20.2%・5日レンジ位置0%・業績データ取得不可・弱気)"
+            "note": "本日判断(25MA乖離-20.2%・5日レンジ位置0%・業績データ取得不可・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -138033,7 +138033,7 @@
         "last_close": 7840.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-22.0%・5日レンジ位置0%・業績データ取得不可・弱気)",
@@ -138041,7 +138041,7 @@
           {
             "date": "2026-10-23",
             "close": 7840.0,
-            "note": "本日判断(25MA乖離-22.0%・5日レンジ位置0%・業績データ取得不可・弱気)"
+            "note": "本日判断(25MA乖離-22.0%・5日レンジ位置0%・業績データ取得不可・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -138059,7 +138059,7 @@
         "last_close": 689.2999877929688,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-16.1%・5日レンジ位置0%・業績データ取得不可・弱気)",
@@ -138067,7 +138067,7 @@
           {
             "date": "2026-10-23",
             "close": 689.2999877929688,
-            "note": "本日判断(25MA乖離-16.1%・5日レンジ位置0%・業績データ取得不可・弱気)"
+            "note": "本日判断(25MA乖離-16.1%・5日レンジ位置0%・業績データ取得不可・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -138085,7 +138085,7 @@
         "last_close": 4037.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-18.5%・5日レンジ位置0%・🚀確変・弱気)",
@@ -138093,7 +138093,7 @@
           {
             "date": "2026-10-23",
             "close": 4037.0,
-            "note": "本日判断(25MA乖離-18.5%・5日レンジ位置0%・🚀確変・弱気)"
+            "note": "本日判断(25MA乖離-18.5%・5日レンジ位置0%・🚀確変・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -138111,7 +138111,7 @@
         "last_close": 4340.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-4.2%・5日レンジ位置0%・🔥絶好調・弱気)",
@@ -138119,7 +138119,7 @@
           {
             "date": "2026-10-23",
             "close": 4340.0,
-            "note": "本日判断(25MA乖離-4.2%・5日レンジ位置0%・🔥絶好調・弱気)"
+            "note": "本日判断(25MA乖離-4.2%・5日レンジ位置0%・🔥絶好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -138137,7 +138137,7 @@
         "last_close": 2137.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-10.1%・5日レンジ位置6%・🔥絶好調・弱気)",
@@ -138145,7 +138145,7 @@
           {
             "date": "2026-10-23",
             "close": 2137.0,
-            "note": "本日判断(25MA乖離-10.1%・5日レンジ位置6%・🔥絶好調・弱気)"
+            "note": "本日判断(25MA乖離-10.1%・5日レンジ位置6%・🔥絶好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -138163,7 +138163,7 @@
         "last_close": 32340.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-9.3%・5日レンジ位置0%・🔥絶好調・弱気)",
@@ -138171,7 +138171,7 @@
           {
             "date": "2026-10-23",
             "close": 32340.0,
-            "note": "本日判断(25MA乖離-9.3%・5日レンジ位置0%・🔥絶好調・弱気)"
+            "note": "本日判断(25MA乖離-9.3%・5日レンジ位置0%・🔥絶好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -138189,7 +138189,7 @@
         "last_close": 3591.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-7.2%・5日レンジ位置0%・🔥絶好調・弱気)",
@@ -138197,7 +138197,7 @@
           {
             "date": "2026-10-23",
             "close": 3591.0,
-            "note": "本日判断(25MA乖離-7.2%・5日レンジ位置0%・🔥絶好調・弱気)"
+            "note": "本日判断(25MA乖離-7.2%・5日レンジ位置0%・🔥絶好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -138215,7 +138215,7 @@
         "last_close": 8030.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-4.4%・5日レンジ位置0%・⚡好調・弱気)",
@@ -138223,7 +138223,7 @@
           {
             "date": "2026-10-23",
             "close": 8030.0,
-            "note": "本日判断(25MA乖離-4.4%・5日レンジ位置0%・⚡好調・弱気)"
+            "note": "本日判断(25MA乖離-4.4%・5日レンジ位置0%・⚡好調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -138241,7 +138241,7 @@
         "last_close": 1200.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-10.4%・5日レンジ位置60%・✅順調・弱気)",
@@ -138249,7 +138249,7 @@
           {
             "date": "2026-10-23",
             "close": 1200.0,
-            "note": "本日判断(25MA乖離-10.4%・5日レンジ位置60%・✅順調・弱気)"
+            "note": "本日判断(25MA乖離-10.4%・5日レンジ位置60%・✅順調・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -138267,7 +138267,7 @@
         "last_close": 753.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離-10.6%・5日レンジ位置0%・業績データ取得不可・弱気)",
@@ -138275,7 +138275,7 @@
           {
             "date": "2026-10-23",
             "close": 753.0,
-            "note": "本日判断(25MA乖離-10.6%・5日レンジ位置0%・業績データ取得不可・弱気)"
+            "note": "本日判断(25MA乖離-10.6%・5日レンジ位置0%・業績データ取得不可・弱気)（再点灯 2026-10-23）"
           }
         ]
       },
@@ -138293,7 +138293,7 @@
         "last_close": 4150.0,
         "last_date": "2026-10-23",
         "days_watched": 0,
-        "dist_to_zone_pct": -4.0,
+        "dist_to_zone_pct": 4.0,
         "status": "judge_now",
         "status_reason": null,
         "signal": "本日判断(25MA乖離+12.1%・5日レンジ位置100%・業績データ取得不可・弱気)",
@@ -138301,78 +138301,168 @@
           {
             "date": "2026-10-23",
             "close": 4150.0,
-            "note": "本日判断(25MA乖離+12.1%・5日レンジ位置100%・業績データ取得不可・弱気)"
+            "note": "本日判断(25MA乖離+12.1%・5日レンジ位置100%・業績データ取得不可・弱気)（再点灯 2026-10-23）"
+          }
+        ]
+      },
+      {
+        "code": "8393",
+        "name": "Miyazaki Bank Ltd.",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-23",
+        "seed_price": 2311.0,
+        "seed_grade": "⚡好調",
+        "ref_high": 2311.0,
+        "ma5": 2394.0,
+        "ma25": 2717.8,
+        "last_close": 2311.0,
+        "last_date": "2026-10-23",
+        "days_watched": 0,
+        "dist_to_zone_pct": 4.0,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "本日判断(25MA乖離-15.0%・5日レンジ位置0%・⚡好調・弱気)",
+        "history": [
+          {
+            "date": "2026-10-23",
+            "close": 2311.0,
+            "note": "本日判断(25MA乖離-15.0%・5日レンジ位置0%・⚡好調・弱気)"
+          }
+        ]
+      },
+      {
+        "code": "7381",
+        "name": "CCI Group, Inc.",
+        "branch": "choruko_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-23",
+        "seed_price": 1084.0,
+        "seed_grade": "取得不可",
+        "ref_high": 1084.0,
+        "ma5": 1148.0,
+        "ma25": 1280.56,
+        "last_close": 1084.0,
+        "last_date": "2026-10-23",
+        "days_watched": 0,
+        "dist_to_zone_pct": 4.0,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "本日判断(25MA乖離-15.3%・5日レンジ位置0%・取得不可・弱気)",
+        "history": [
+          {
+            "date": "2026-10-23",
+            "close": 1084.0,
+            "note": "本日判断(25MA乖離-15.3%・5日レンジ位置0%・取得不可・弱気)"
+          }
+        ]
+      },
+      {
+        "code": "5302",
+        "name": "日本カーボン",
+        "branch": "ai_reversal",
+        "watch_class": "即断",
+        "seed_day": "2026-10-23",
+        "seed_price": 4905.0,
+        "seed_grade": "➖横ばい",
+        "ref_high": 4905.0,
+        "ma5": 4973.0,
+        "ma25": 5107.0,
+        "last_close": 4905.0,
+        "last_date": "2026-10-23",
+        "days_watched": 0,
+        "dist_to_zone_pct": 4.0,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "本日判断(25MA乖離-4.0%・5日レンジ位置3%・➖横ばい・弱気)",
+        "history": [
+          {
+            "date": "2026-10-23",
+            "close": 4905.0,
+            "note": "本日判断(25MA乖離-4.0%・5日レンジ位置3%・➖横ばい・弱気)"
+          }
+        ]
+      },
+      {
+        "code": "8360",
+        "name": "Yamanashi Chuo Bank, Ltd.",
+        "branch": "granville_rebound",
+        "watch_class": "即断",
+        "seed_day": "2026-10-23",
+        "seed_price": 1208.0,
+        "seed_grade": "取得不可",
+        "ref_high": 1208.0,
+        "ma5": 1270.8,
+        "ma25": 1429.12,
+        "last_close": 1208.0,
+        "last_date": "2026-10-23",
+        "days_watched": 0,
+        "dist_to_zone_pct": 4.0,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "本日判断(25MA乖離-15.5%・5日レンジ位置0%・取得不可・弱気)",
+        "history": [
+          {
+            "date": "2026-10-23",
+            "close": 1208.0,
+            "note": "本日判断(25MA乖離-15.5%・5日レンジ位置0%・取得不可・弱気)"
+          }
+        ]
+      },
+      {
+        "code": "8704",
+        "name": "トレイダーズホールディングス",
+        "branch": "changepoint",
+        "watch_class": "即断",
+        "seed_day": "2026-10-23",
+        "seed_price": 1291.0,
+        "seed_grade": "⚡好調",
+        "ref_high": 1291.0,
+        "ma5": 1294.2,
+        "ma25": 1367.96,
+        "last_close": 1291.0,
+        "last_date": "2026-10-23",
+        "days_watched": 0,
+        "dist_to_zone_pct": 4.0,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "本日判断(25MA乖離-5.6%・5日レンジ位置42%・⚡好調・弱気)",
+        "history": [
+          {
+            "date": "2026-10-23",
+            "close": 1291.0,
+            "note": "本日判断(25MA乖離-5.6%・5日レンジ位置42%・⚡好調・弱気)"
+          }
+        ]
+      },
+      {
+        "code": "3993",
+        "name": "PKSHA Technology, Inc.",
+        "branch": "changepoint🔔",
+        "watch_class": "即断",
+        "seed_day": "2026-10-23",
+        "seed_price": 3700.0,
+        "seed_grade": "業績データ取得不可",
+        "ref_high": 3700.0,
+        "ma5": 3626.0,
+        "ma25": 3369.0,
+        "last_close": 3700.0,
+        "last_date": "2026-10-23",
+        "days_watched": 0,
+        "dist_to_zone_pct": 4.0,
+        "status": "judge_now",
+        "status_reason": null,
+        "signal": "本日判断(25MA乖離+9.8%・5日レンジ位置100%・業績データ取得不可・弱気)",
+        "history": [
+          {
+            "date": "2026-10-23",
+            "close": 3700.0,
+            "note": "本日判断(25MA乖離+9.8%・5日レンジ位置100%・業績データ取得不可・弱気)"
           }
         ]
       }
     ],
     "closed": [
-      {
-        "code": "8366",
-        "name": "Shiga Bank, Ltd.",
-        "branch": "granville_rebound",
-        "watch_class": "即断",
-        "seed_day": "2026-10-21",
-        "seed_price": 2694.0,
-        "seed_grade": "取得不可",
-        "ref_high": 2694.0,
-        "ma5": 2632.0,
-        "ma25": 2915.6,
-        "last_close": 2481.0,
-        "last_date": "2026-10-23",
-        "days_watched": 2,
-        "dist_to_zone_pct": 4.24,
-        "status": "invalidated",
-        "status_reason": "反発失敗",
-        "signal": "反発失敗",
-        "history": [
-          {
-            "date": "2026-10-21",
-            "close": 2694.0,
-            "note": "本日判断(25MA乖離-8.5%・5日レンジ位置23%・取得不可・レンジ様子見)"
-          },
-          {
-            "date": "2026-10-22",
-            "close": 2573.0,
-            "note": "確認中（seed割れ・-5%以内）"
-          }
-        ],
-        "closed_day": "2026-10-23",
-        "closed_reason": "反発失敗"
-      },
-      {
-        "code": "8368",
-        "name": "Hyakugo Bank, Ltd.",
-        "branch": "granville_rebound",
-        "watch_class": "即断",
-        "seed_day": "2026-10-21",
-        "seed_price": 2186.0,
-        "seed_grade": "取得不可",
-        "ref_high": 2186.0,
-        "ma5": 2135.0,
-        "ma25": 2435.24,
-        "last_close": 2014.0,
-        "last_date": "2026-10-23",
-        "days_watched": 2,
-        "dist_to_zone_pct": 4.2,
-        "status": "invalidated",
-        "status_reason": "反発失敗",
-        "signal": "反発失敗",
-        "history": [
-          {
-            "date": "2026-10-21",
-            "close": 2186.0,
-            "note": "本日判断(25MA乖離-11.3%・5日レンジ位置34%・取得不可・レンジ様子見)"
-          },
-          {
-            "date": "2026-10-22",
-            "close": 2089.0,
-            "note": "確認中（seed割れ・-5%以内）"
-          }
-        ],
-        "closed_day": "2026-10-23",
-        "closed_reason": "反発失敗"
-      },
       {
         "code": "4382",
         "name": "HEROZ, Inc.",
@@ -139002,6 +139092,50 @@
         "status": "invalidated",
         "status_reason": "25MA割れ2日",
         "signal": "25MA割れ2日",
+        "history": [],
+        "closed_day": "2026-10-23",
+        "closed_reason": "25MA割れ2日"
+      },
+      {
+        "code": "7567",
+        "name": "Sakae Electronics Corp.",
+        "branch": "kenmo_newhigh",
+        "watch_class": "待ち",
+        "seed_day": "2026-10-23",
+        "seed_price": 617.0,
+        "seed_grade": "🚀確変",
+        "ref_high": 617.0,
+        "ma5": 626.2,
+        "ma25": 633.16,
+        "last_close": 617.0,
+        "last_date": "2026-10-23",
+        "days_watched": 0,
+        "dist_to_zone_pct": 4.0,
+        "status": "invalidated",
+        "status_reason": "25MA割れ2日",
+        "signal": null,
+        "history": [],
+        "closed_day": "2026-10-23",
+        "closed_reason": "25MA割れ2日"
+      },
+      {
+        "code": "4272",
+        "name": "Nippon Kayaku Co., Ltd.",
+        "branch": "granville_tenkan",
+        "watch_class": "待ち",
+        "seed_day": "2026-10-23",
+        "seed_price": 2036.5,
+        "seed_grade": "✅順調",
+        "ref_high": 2036.5,
+        "ma5": 2099.0,
+        "ma25": 2112.8,
+        "last_close": 2036.5,
+        "last_date": "2026-10-23",
+        "days_watched": 0,
+        "dist_to_zone_pct": 4.0,
+        "status": "invalidated",
+        "status_reason": "25MA割れ2日",
+        "signal": null,
         "history": [],
         "closed_day": "2026-10-23",
         "closed_reason": "25MA割れ2日"

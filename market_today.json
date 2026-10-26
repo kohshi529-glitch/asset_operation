@@ -1,35 +1,35 @@
 {
- "generated_at": "2026-10-26T06:40:00+09:00",
+ "generated_at": "2026-10-27T06:39:50+09:00",
  "source": "morning_compass_v10",
- "run_at_jst": "2026-10-26 06:37",
- "date": "2026-10-26",
- "market_mode": "軟調",
+ "run_at_jst": "2026-10-27 06:39",
+ "date": "2026-10-27",
+ "market_mode": "堅調",
  "method_guidance": {
-  "kenmo_momentum": "新規は厳選。ダウ-1.2%・原油+3.8%の逆風で寄り直後の追随は避け、押し目待ち。",
-  "kenmo_newhigh": "高値掴み警戒。寄り成行は避け、前場の値動き確認後に絞って検討。",
-  "choruko_reversal": "地合い軟調のため逆張りは寄り後の下げ止まり確認が条件。ロットは抑える。",
+  "kenmo_momentum": "先物+1.05%・SOX+2.8%で追い風。寄り直後の追随は避け、押し目で厳選して検討。",
+  "kenmo_newhigh": "ギャップ高の寄り成行は高値掴み警戒。前場の値動き確認後に絞る。",
+  "choruko_reversal": "地合い改善で反発余地。下げ止まり確認後、ロット抑えめで。",
   "stf_kakuhen": "初動は出来高を伴うものに限定。寄りの上ヒゲ追随は見送り。",
-  "tenbagger_x": "IPO・新興は地合い悪化時に売られやすい。初値形成後の需給確認を優先。",
-  "daytrade": "完全不関与方針を維持。原油高・VIX19台で寄りのブレが大きく、見送り寄り。",
-  "semicon_miniswing": "SOXは+0.4%と底堅いが積極帯は使わず、VWAP±0.5%内の押しのみ小さく検討。"
+  "tenbagger_x": "IPO・新興は地合い好転で需給改善。初値形成後の値動き確認を優先。",
+  "daytrade": "完全不関与方針を維持。WTI100ドル台で地政学リスク残存。",
+  "semicon_miniswing": "SOX+2.8%の反発で積極帯(VWAP±0.5%)を使用可。寄り高後の押しを小さく狙う。"
  },
- "pattern": "地政学ショック型（原油急伸＋ダウ下落／半導体は底堅い）",
- "note": "WTI+3.8%（103ドル台）とダウ-1.2%で寄り高値掴み警戒。先物は週末据え置き値でギャップ小。",
+ "pattern": "半導体主導リスクオン（SOX急反発＋先物高／原油は100ドル台で高止まり）",
+ "note": "先物+1.05%のギャップアップ想定だがWTI101.8ドルと高水準で寄り高値掴み警戒。F&G取得不可。",
  "indicators": {
-  "nikkei": 62692.94,
-  "night_futures": 62640,
-  "night_futures_asof": "2026-10-26 06:37 JST",
-  "night_gap_pct": -0.084,
-  "dow_pct": -1.23,
-  "nasdaq_pct": -0.21,
-  "sp500_pct": -0.52,
-  "sox": 10779.4642,
-  "sox_pct": 0.44,
-  "vix": 19.45,
+  "nikkei": 62189.43,
+  "night_futures": 62840,
+  "night_futures_asof": "2026-10-27 06:39 JST（TV遅延600秒）",
+  "night_gap_pct": 1.05,
+  "dow_pct": 0.28,
+  "nasdaq_pct": 0.82,
+  "sp500_pct": 0.7,
+  "sox": 11083.4697,
+  "sox_pct": 2.82,
+  "vix": 18.39,
   "fear_greed": null,
-  "usdjpy": 156.978,
-  "wti": 103.27,
-  "wti_pct": 3.82
+  "usdjpy": 157.444,
+  "wti": 101.76,
+  "wti_pct": -1.46
  },
  "data_health": {
   "sox": "tv_scanner",
@@ -41,7 +41,7 @@
   "rate_limited": true,
   "tv_scanner": {
    "used": true,
-   "asof": "06:37 JST",
+   "asof": "06:39 JST",
    "update_mode": "delayed_streaming_600/900,streaming",
    "empty": []
   },
@@ -51,7 +51,7 @@
   "us_settled": true,
   "us_close_jst": "05:00",
   "night_settled": true,
-  "run_at_jst": "06:37",
+  "run_at_jst": "06:39",
   "excluded": []
  }
 }

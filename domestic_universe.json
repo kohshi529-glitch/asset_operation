@@ -1,0 +1,596 @@
+{
+ "meta": {
+  "version": 1,
+  "generated_at": "2026-10-28T06:40:00+09:00",
+  "note": "内需 固定ユニバース。①-S4 内需スキャンの対象。公開情報（銘柄コードと業態区分）のみ。業態で選んだ主要銘柄の一覧であり保有・売買の情報は含まない。更新はメンテナンス PR で全置換",
+  "sectors": {
+   "retail_general": {
+    "label": "🏬総合小売・百貨店",
+    "role": "ローテ初動で買われやすい大型（指数寄与）"
+   },
+   "supermarket": {
+    "label": "🛒食品スーパー",
+    "role": "値上げ転嫁と既存店売上が軸のディフェンシブ"
+   },
+   "drug": {
+    "label": "💊ドラッグ・調剤",
+    "role": "再編と出店の成長＋ディフェンシブ"
+   },
+   "specialty": {
+    "label": "👕専門店・100均・家電・HC",
+    "role": "消費の質（節約／高付加価値）が出る"
+   },
+   "restaurant": {
+    "label": "🍜外食",
+    "role": "客数×単価・インバウンド・人件費"
+   },
+   "food": {
+    "label": "🥫食品・日用品",
+    "role": "値上げ・円高メリット・海外比率"
+   },
+   "leisure": {
+    "label": "🎢レジャー・サービス",
+    "role": "インバウンド・国内消費の体温計"
+   },
+   "housing": {
+    "label": "🏠住宅・不動産",
+    "role": "金利感応・含み益・再開発"
+   },
+   "infra": {
+    "label": "🚃鉄道・通信・公益",
+    "role": "内需の最奥（金利・規制・配当）"
+   }
+  },
+  "benchmarks": {
+   "1306": "TOPIX連動ETF（市場ベンチ）",
+   "1321": "日経225連動ETF（AI・半導体寄りの指数）"
+  }
+ },
+ "stocks": [
+  {
+   "code": "3382",
+   "name": "セブン＆アイ・ホールディングス",
+   "sector": "retail_general"
+  },
+  {
+   "code": "8267",
+   "name": "イオン",
+   "sector": "retail_general"
+  },
+  {
+   "code": "3099",
+   "name": "三越伊勢丹ホールディングス",
+   "sector": "retail_general"
+  },
+  {
+   "code": "8233",
+   "name": "高島屋",
+   "sector": "retail_general"
+  },
+  {
+   "code": "3086",
+   "name": "J.フロント リテイリング",
+   "sector": "retail_general"
+  },
+  {
+   "code": "8252",
+   "name": "丸井グループ",
+   "sector": "retail_general"
+  },
+  {
+   "code": "7532",
+   "name": "パン・パシフィック・インターナショナルHD",
+   "sector": "retail_general"
+  },
+  {
+   "code": "9843",
+   "name": "ニトリホールディングス",
+   "sector": "retail_general"
+  },
+  {
+   "code": "8194",
+   "name": "ライフコーポレーション",
+   "sector": "supermarket"
+  },
+  {
+   "code": "8276",
+   "name": "平和堂",
+   "sector": "supermarket"
+  },
+  {
+   "code": "9948",
+   "name": "アークス",
+   "sector": "supermarket"
+  },
+  {
+   "code": "8279",
+   "name": "ヤオコー",
+   "sector": "supermarket"
+  },
+  {
+   "code": "3038",
+   "name": "神戸物産",
+   "sector": "supermarket"
+  },
+  {
+   "code": "7512",
+   "name": "イオン北海道",
+   "sector": "supermarket"
+  },
+  {
+   "code": "2742",
+   "name": "ハローズ",
+   "sector": "supermarket"
+  },
+  {
+   "code": "3391",
+   "name": "ツルハホールディングス",
+   "sector": "drug"
+  },
+  {
+   "code": "9989",
+   "name": "サンドラッグ",
+   "sector": "drug"
+  },
+  {
+   "code": "3349",
+   "name": "コスモス薬品",
+   "sector": "drug"
+  },
+  {
+   "code": "3088",
+   "name": "マツキヨココカラ＆カンパニー",
+   "sector": "drug"
+  },
+  {
+   "code": "7649",
+   "name": "スギホールディングス",
+   "sector": "drug"
+  },
+  {
+   "code": "9627",
+   "name": "アインホールディングス",
+   "sector": "drug"
+  },
+  {
+   "code": "3148",
+   "name": "クリエイトSDホールディングス",
+   "sector": "drug"
+  },
+  {
+   "code": "9983",
+   "name": "ファーストリテイリング",
+   "sector": "specialty"
+  },
+  {
+   "code": "8227",
+   "name": "しまむら",
+   "sector": "specialty"
+  },
+  {
+   "code": "7453",
+   "name": "良品計画",
+   "sector": "specialty"
+  },
+  {
+   "code": "2782",
+   "name": "セリア",
+   "sector": "specialty"
+  },
+  {
+   "code": "7564",
+   "name": "ワークマン",
+   "sector": "specialty"
+  },
+  {
+   "code": "2670",
+   "name": "エービーシー・マート",
+   "sector": "specialty"
+  },
+  {
+   "code": "7545",
+   "name": "西松屋チェーン",
+   "sector": "specialty"
+  },
+  {
+   "code": "3092",
+   "name": "ZOZO",
+   "sector": "specialty"
+  },
+  {
+   "code": "7606",
+   "name": "ユナイテッドアローズ",
+   "sector": "specialty"
+  },
+  {
+   "code": "8282",
+   "name": "ケーズホールディングス",
+   "sector": "specialty"
+  },
+  {
+   "code": "3048",
+   "name": "ビックカメラ",
+   "sector": "specialty"
+  },
+  {
+   "code": "7419",
+   "name": "ノジマ",
+   "sector": "specialty"
+  },
+  {
+   "code": "2730",
+   "name": "エディオン",
+   "sector": "specialty"
+  },
+  {
+   "code": "8218",
+   "name": "コメリ",
+   "sector": "specialty"
+  },
+  {
+   "code": "3050",
+   "name": "DCMホールディングス",
+   "sector": "specialty"
+  },
+  {
+   "code": "7516",
+   "name": "コーナン商事",
+   "sector": "specialty"
+  },
+  {
+   "code": "3028",
+   "name": "アルペン",
+   "sector": "specialty"
+  },
+  {
+   "code": "3197",
+   "name": "すかいらーくホールディングス",
+   "sector": "restaurant"
+  },
+  {
+   "code": "7581",
+   "name": "サイゼリヤ",
+   "sector": "restaurant"
+  },
+  {
+   "code": "7550",
+   "name": "ゼンショーホールディングス",
+   "sector": "restaurant"
+  },
+  {
+   "code": "2702",
+   "name": "日本マクドナルドホールディングス",
+   "sector": "restaurant"
+  },
+  {
+   "code": "9861",
+   "name": "吉野家ホールディングス",
+   "sector": "restaurant"
+  },
+  {
+   "code": "9887",
+   "name": "松屋フーズホールディングス",
+   "sector": "restaurant"
+  },
+  {
+   "code": "3563",
+   "name": "FOOD & LIFE COMPANIES",
+   "sector": "restaurant"
+  },
+  {
+   "code": "2695",
+   "name": "くら寿司",
+   "sector": "restaurant"
+  },
+  {
+   "code": "3397",
+   "name": "トリドールホールディングス",
+   "sector": "restaurant"
+  },
+  {
+   "code": "3087",
+   "name": "ドトール・日レスホールディングス",
+   "sector": "restaurant"
+  },
+  {
+   "code": "7630",
+   "name": "壱番屋",
+   "sector": "restaurant"
+  },
+  {
+   "code": "9936",
+   "name": "王将フードサービス",
+   "sector": "restaurant"
+  },
+  {
+   "code": "3091",
+   "name": "ブロンコビリー",
+   "sector": "restaurant"
+  },
+  {
+   "code": "2914",
+   "name": "日本たばこ産業",
+   "sector": "food"
+  },
+  {
+   "code": "2502",
+   "name": "アサヒグループホールディングス",
+   "sector": "food"
+  },
+  {
+   "code": "2503",
+   "name": "キリンホールディングス",
+   "sector": "food"
+  },
+  {
+   "code": "2587",
+   "name": "サントリー食品インターナショナル",
+   "sector": "food"
+  },
+  {
+   "code": "2802",
+   "name": "味の素",
+   "sector": "food"
+  },
+  {
+   "code": "2801",
+   "name": "キッコーマン",
+   "sector": "food"
+  },
+  {
+   "code": "2269",
+   "name": "明治ホールディングス",
+   "sector": "food"
+  },
+  {
+   "code": "2897",
+   "name": "日清食品ホールディングス",
+   "sector": "food"
+  },
+  {
+   "code": "2875",
+   "name": "東洋水産",
+   "sector": "food"
+  },
+  {
+   "code": "2229",
+   "name": "カルビー",
+   "sector": "food"
+  },
+  {
+   "code": "2267",
+   "name": "ヤクルト本社",
+   "sector": "food"
+  },
+  {
+   "code": "2809",
+   "name": "キユーピー",
+   "sector": "food"
+  },
+  {
+   "code": "2810",
+   "name": "ハウス食品グループ本社",
+   "sector": "food"
+  },
+  {
+   "code": "2002",
+   "name": "日清製粉グループ本社",
+   "sector": "food"
+  },
+  {
+   "code": "4452",
+   "name": "花王",
+   "sector": "food"
+  },
+  {
+   "code": "8113",
+   "name": "ユニ・チャーム",
+   "sector": "food"
+  },
+  {
+   "code": "4912",
+   "name": "ライオン",
+   "sector": "food"
+  },
+  {
+   "code": "4911",
+   "name": "資生堂",
+   "sector": "food"
+  },
+  {
+   "code": "4927",
+   "name": "ポーラ・オルビスホールディングス",
+   "sector": "food"
+  },
+  {
+   "code": "4661",
+   "name": "オリエンタルランド",
+   "sector": "leisure"
+  },
+  {
+   "code": "9602",
+   "name": "東宝",
+   "sector": "leisure"
+  },
+  {
+   "code": "4681",
+   "name": "リゾートトラスト",
+   "sector": "leisure"
+  },
+  {
+   "code": "9603",
+   "name": "エイチ・アイ・エス",
+   "sector": "leisure"
+  },
+  {
+   "code": "9616",
+   "name": "共立メンテナンス",
+   "sector": "leisure"
+  },
+  {
+   "code": "4680",
+   "name": "ラウンドワン",
+   "sector": "leisure"
+  },
+  {
+   "code": "1925",
+   "name": "大和ハウス工業",
+   "sector": "housing"
+  },
+  {
+   "code": "1928",
+   "name": "積水ハウス",
+   "sector": "housing"
+  },
+  {
+   "code": "8801",
+   "name": "三井不動産",
+   "sector": "housing"
+  },
+  {
+   "code": "8802",
+   "name": "三菱地所",
+   "sector": "housing"
+  },
+  {
+   "code": "8830",
+   "name": "住友不動産",
+   "sector": "housing"
+  },
+  {
+   "code": "3003",
+   "name": "ヒューリック",
+   "sector": "housing"
+  },
+  {
+   "code": "3289",
+   "name": "東急不動産ホールディングス",
+   "sector": "housing"
+  },
+  {
+   "code": "3231",
+   "name": "野村不動産ホールディングス",
+   "sector": "housing"
+  },
+  {
+   "code": "8804",
+   "name": "東京建物",
+   "sector": "housing"
+  },
+  {
+   "code": "1808",
+   "name": "長谷工コーポレーション",
+   "sector": "housing"
+  },
+  {
+   "code": "1878",
+   "name": "大東建託",
+   "sector": "housing"
+  },
+  {
+   "code": "3291",
+   "name": "飯田グループホールディングス",
+   "sector": "housing"
+  },
+  {
+   "code": "1911",
+   "name": "住友林業",
+   "sector": "housing"
+  },
+  {
+   "code": "9020",
+   "name": "東日本旅客鉄道",
+   "sector": "infra"
+  },
+  {
+   "code": "9021",
+   "name": "西日本旅客鉄道",
+   "sector": "infra"
+  },
+  {
+   "code": "9022",
+   "name": "東海旅客鉄道",
+   "sector": "infra"
+  },
+  {
+   "code": "9005",
+   "name": "東急",
+   "sector": "infra"
+  },
+  {
+   "code": "9007",
+   "name": "小田急電鉄",
+   "sector": "infra"
+  },
+  {
+   "code": "9001",
+   "name": "東武鉄道",
+   "sector": "infra"
+  },
+  {
+   "code": "9008",
+   "name": "京王電鉄",
+   "sector": "infra"
+  },
+  {
+   "code": "9042",
+   "name": "阪急阪神ホールディングス",
+   "sector": "infra"
+  },
+  {
+   "code": "9041",
+   "name": "近鉄グループホールディングス",
+   "sector": "infra"
+  },
+  {
+   "code": "9433",
+   "name": "KDDI",
+   "sector": "infra"
+  },
+  {
+   "code": "9432",
+   "name": "日本電信電話",
+   "sector": "infra"
+  },
+  {
+   "code": "9434",
+   "name": "ソフトバンク",
+   "sector": "infra"
+  },
+  {
+   "code": "9531",
+   "name": "東京ガス",
+   "sector": "infra"
+  },
+  {
+   "code": "9532",
+   "name": "大阪ガス",
+   "sector": "infra"
+  },
+  {
+   "code": "9501",
+   "name": "東京電力ホールディングス",
+   "sector": "infra"
+  },
+  {
+   "code": "9503",
+   "name": "関西電力",
+   "sector": "infra"
+  },
+  {
+   "code": "9502",
+   "name": "中部電力",
+   "sector": "infra"
+  },
+  {
+   "code": "9064",
+   "name": "ヤマトホールディングス",
+   "sector": "infra"
+  },
+  {
+   "code": "9143",
+   "name": "SGホールディングス",
+   "sector": "infra"
+  }
+ ]
+}

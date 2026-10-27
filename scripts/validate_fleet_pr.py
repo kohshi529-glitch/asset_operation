@@ -24,7 +24,7 @@ POLICY = {
   "cpwatch":      dict(files=["master.json"], keys={"changepoint_watch","pipeline"}, cand=set(), runs={"changepoint_watch"}, max_lines=12000),
   "watch ①-12":   dict(files=["master.json"], keys={"watchlist","pipeline"}, cand=set(), runs={"watch_tracker"}, max_lines=12000),
   "ai-scan":      dict(files=["master.json","ai_scan_today.json"], keys={"candidates","ai_scan","pipeline"}, cand={"ai_momentum","ai_reversal"}, runs={"ai_scan"}, max_lines=1000),
-  "dm-scan":      dict(files=["master.json","dm_scan_today.json"], keys={"candidates","dm_scan","pipeline"}, cand={"dm_momentum","dm_reversal"}, runs={"dm_scan"}, max_lines=1200),
+  "dm-scan":      dict(files=["master.json","dm_scan_today.json"], keys={"candidates","dm_scan","pipeline"}, cand={"dm_momentum","dm_reversal"}, runs={"dm_scan"}, max_lines=2000),
   "morning ⑤":    dict(files=["master.json","market_today.json"], keys={"market","pipeline"}, cand=set(), runs={"morning_compass"}, max_lines=500),
   "eval":         dict(files=["master.json"], keys={"gyoseki_cache","valuation_cache","night_gate","pipeline"}, cand=set(), runs={"gyoseki_update"}, max_lines=40000),
   "ipo":          dict(files=["master.json"], keys={"ipo","catalyst_schedule","pipeline"}, cand=set(), runs={"ipo"}, max_lines=1000),

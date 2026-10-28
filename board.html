@@ -317,8 +317,13 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 .rot .big{font-size:22px;font-weight:800}.rot .pos{color:#9be37a}.rot .neg{color:#ff9a9a}.rot .lbl{font-size:11px;color:#9fb3c8}
 .rotbars{display:flex;align-items:flex-end;gap:2px;height:46px;margin:4px 0 2px;padding:0 4px;border-bottom:1px solid #2b3d4f}
 .rotbars i{display:block;width:6px;background:#48e0b0;border-radius:1px 1px 0 0}.rotbars i.n{background:#ff8c8c;border-radius:0 0 1px 1px}
-.gychip{display:inline-block;font-size:10.5px;font-weight:600;border-radius:5px;padding:1px 6px;margin-right:3px;border:1px solid #3a4a5a;background:#1b2630;color:#d7e3ee}
-.gychip.na{color:#778;border-style:dashed}
+.dmchip{display:inline-block;font-size:10.5px;font-weight:600;border-radius:5px;padding:1px 6px;margin-right:3px;border:1px solid #3a4a5a;background:#1b2630;color:#d7e3ee}
+.dmchip.na{color:#778;border-style:dashed}
+/* D23: スキャン銘柄カード（scard 共通）。ステージチップを s2 行頭に、遷移の矢印を添える */
+.scard .stg{font-size:12px;padding:2px 8px}
+.scard .stgfrom{font-size:11px;color:#9fb3c8}
+.stgd>summary{padding:8px 4px;border-bottom:1px solid #1d3a40}
+.stgd .scard{padding-left:14px}
 /* D22: スキャン鮮度チップ（①-S3／①-S4）。base_day が直近営業日なら緑、1 営業日前は黄、2 日以上は赤、無ければ灰 */
 .frchip{display:inline-flex;gap:6px;align-items:baseline;font-size:11.5px;font-weight:700;border-radius:6px;padding:3px 9px;margin:2px 6px 6px 0;border:1px solid #3a4a5a;background:#1b2630;color:#d7e3ee}
 .frchip.f0{border-color:#48e0b0;color:#48e0b0}.frchip.f1{border-color:#e8c766;color:#e8c766}.frchip.f2{border-color:#ff8c8c;color:#ff8c8c}.frchip.fx{border-color:#555;color:#889}
@@ -379,7 +384,7 @@ details.stgd summary{cursor:pointer;font-weight:700;padding:4px 0}
 <div id='panel-methods' class='panel'></div>
 <div id='panel-granville' class='panel'></div>
 <div id='panel-legend' class='panel'></div>
-<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21/D22 2026-10-28）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
+<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
 </div>
 <button class='fab' id='backtab' onclick='scrollToTabbar()' aria-label='タブバーへ戻る'>▲タブへ戻る</button>
 <script>
@@ -1833,7 +1838,33 @@ function stageChip(s,withSince){
   const tip=`${STG_DESC[s.stage]||''}｜ケース ${s.case||'—'}（閾値 ${s.th!=null?s.th:'—'}日）・静か ${s.sleep_days!=null?s.sleep_days:'—'}日・RS20 ${s.rs20!=null?(s.rs20>0?'+':'')+num1(s.rs20):'—'}%・このステージ ${s.stage_since||'—'} から${s.days_in_stage!=null?'（'+s.days_in_stage+'営業日）':''}${s.fetched===false?'・⚠日足未取得 '+(s.stale_since||''):''}`;
   return `<span class='stg ${cls}' title='${esc(tip)}'>${esc(s.stage)}${hist}${withSince&&s.days_in_stage!=null?` <span class='hist'>${esc(s.days_in_stage)}日</span>`:''}${s.fetched===false?' ⚠':''}</span>`;
 }
-function stgRow(s,isTr){
+// ===== D23: スキャン銘柄カード（AI特需・内需の全銘柄・候補・焼き入れ・遷移に共通）。ウォッチタブと同じ card5（scard）の 6 行構成 =====
+// 1 行目 コード・銘柄名・終値 ／ 決算帯（grades の nx から自動）／ 2 行目 ステージ（← 前ステージ）・ブランチ・score・業態・信号・静か n日/閾値・ステージ n日目
+// 2 行目b 📈文脈🕯形態（pool_bars にある銘柄のみ）・手法チップ・🚪ゲート（内需）／ 4 行目 RS20 / ゲート / 業績 / 値頃感 ／ 5 行目 チャート数値 ／ 末尾 ステージ開始日・履歴
+function scanCard(s,o){
+  o=o||{}; const code=String(s.code); const sep=`<span class='ssep'>/</span>`;
+  const secChip=`<span class='memochip'>${esc(s.sector_label||s.sector||'')}${s.proc?'/'+esc(s.proc):''}${s.wave?' '+esc(s.wave)+'波':''}</span>`;
+  const brName=o.branch||s.in_candidates||null; const br=brName?branchChip(brName):'';
+  const score=(o.score!=null)?`<span class='memochip' title='スキャンのスコア（並び順専用・手法間で比較しない）'>score ${esc(o.score)}</span>`:'';
+  const sig=(s.signals||[]).map(x=>`<span class='aisig'>${esc(x)}</span>`).join('');
+  const sleep=(s.sleep_days!=null)?`<span class='memochip' title='静かな営業日の連続数／🍖熟成中に要る閾値（ケース ${esc(s.case||'—')}）'>静か ${esc(s.sleep_days)}日${s.th!=null?'／'+esc(s.th):''}</span>`:'';
+  const since=(s.days_in_stage!=null)?`<span class='memochip' title='このステージになった日 ${esc(s.stage_since||'—')}'>ステージ ${esc(s.days_in_stage)}日目</span>`:'';
+  const from=(o.tr&&s.prev_stage&&s.prev_stage!==s.stage)?`<span class='stgfrom'>← ${esc(s.prev_stage)}</span>`:'';
+  const methodHtml=stageChip(s,false)+from+br+score+secChip+sig+sleep+since;
+  let caution=''; try{ caution=cautionChips(code,[brName||'ai_momentum']); }catch(e){ caution=''; }
+  const cautionHtml=caution+(o.dm?dmMethodChips(s):'');
+  const rs=(s.rs20!=null)?`<span class='vtxt' title='20日リターン − ユニバース中央値（相対強弱）'>RS20 <b class='hl'>${s.rs20>0?'+':''}${esc(num1(s.rs20))}%</b></span>`:`<span class='vtxt'>RS20 —</span>`;
+  const gateHtml=s.gate?`<span class='vchip' title='当夜の ①-8 ゲート結果'>🚪${esc(s.gate)}</span>`:`<span class='vtxt' title='当夜のゲート判定なし（pool外／未評価）'>—</span>`;
+  const judgeHtml=`<div class='srow s4'>${rs}${sep}${gateHtml}${sep}${gyosekiChip(code)}${sep}${valuationChip(code)}${vgChip(code)}</div>`;
+  const parts=[]; const put=(l,x,u)=>{ if(x!=null) parts.push(`<span class='vtxt'>${l} ${esc(x)}${u||''}</span>`); };
+  put('25MA',num1(s.dev25),'%'); put(esc(s.long_ma_kind||'長期'),num1(s.dev_long),'%'); put('20日',num1(s.ret20_pct),'%'); put('レンジ20',num1(s.range20_pct),'%'); put('ATR比',num1(s.atr_contract)); put('52週',(s.pos52w!=null?Math.round(s.pos52w):null),'%'); put('出来高',num1(s.vol_ratio20),'倍'); if(s.hist_tag&&s.bars_n!=null) put('足',s.bars_n,'本');
+  const propHtml=parts.join(sep);
+  const hist=(Array.isArray(s.history)?s.history:[]).slice(-3).map(h=>`${esc(h.d)} ${esc(h.from||'—')}→${esc(h.to)}`).join('、');
+  const bodyHtml=`<div class='smeta'>ステージ開始 ${esc(s.stage_since||'—')}${hist?'　履歴 '+hist:''}${s.fetched===false?'　⚠日足未取得（'+esc(s.stale_since||'')+' の値）':''}</div>`;
+  return card5({code:code,name:s.name,close:s.close,methodHtml:methodHtml,cautionHtml:cautionHtml,earnHtml:'',judgeHtml:judgeHtml,propHtml:propHtml,bodyHtml:bodyHtml,bad:false});
+}
+function stgRow(s,isTr){ return scanCard(s,{tr:isTr}); }
+function stgRowLegacy(s,isTr){
   const rs=s.rs20!=null?`<span class='${s.rs20>=0?'rsp':'rsm'}'>RS20 ${s.rs20>0?'+':''}${esc(num1(s.rs20))}%</span>`:'';
   const tr=isTr&&s.prev_stage?`<span class='m'>${esc(s.prev_stage)}→</span>`:'';
   const inC=s.in_candidates?`<span class='brchip'>${esc(branchLabel(s.in_candidates))}</span>`:'';
@@ -1851,7 +1882,7 @@ function renderAiStages(){
   const trs=st.filter(s=>s.transition).sort((x,y)=>STG_ORDER.indexOf(x.stage)-STG_ORDER.indexOf(y.stage)||String(x.code).localeCompare(String(y.code)));
   const trHtml=`<div class='cpsec'><h3>🔁 当夜の遷移（${trs.length}件）</h3>${trs.length?trs.map(s=>stgRow(s,true)).join(''):`<div class='empty'>${a.prev_missing||(a.sectors&&false)?'初回実行（前夜の状態なし）':'当夜の遷移なし'}</div>`}</div>`;
   const groups=STG_ORDER.map(k=>{ const g=st.filter(s=>(s.stage||'❔取得不可')===k).sort((x,y)=>(y.sleep_days||0)-(x.sleep_days||0)||String(x.code).localeCompare(String(y.code))); if(!g.length) return ''; const open=(k==='🔥初動'||k==='🍖熟成中')?' open':''; return `<details class='stgd'${open}><summary><span class='stg ${STG_CLASS[k]||''}'>${esc(k)}</span> ${esc(g.length)}件 <span class='meta'>${esc(STG_DESC[k]||'')}</span></summary>${g.map(s=>stgRow(s,false)).join('')}</details>`; }).join('');
-  return `<div class='cpsec'>${title}${head}${ripHtml}</div>${trHtml}<div class='cpsec'><h3>📚 ステージ別一覧（静かな日数の多い順）</h3><div class='meta'>短履歴＝日足 235 本未満で 200MA の代わりに 75MA（60〜74 本は 25MA）で判定。一年足が無いことを理由に除外・保留はしない（保留は 60 本未満の 🐄 のみ）。</div>${groups}</div>`;
+  return `<div class='cpsec'>${title}${head}${ripHtml}</div>${trHtml}<div class='cpsec'><h3>📚 ステージ別一覧（静かな日数の多い順）</h3><div class='meta'>各カードはウォッチタブと同じ構成（1 行目 コード・銘柄・終値／決算帯／2 行目 ステージ・業態・信号・静かな日数／4 行目 RS20・ゲート・業績・値頃感／5 行目 チャート数値）。短履歴＝日足 235 本未満で 200MA の代わりに 75MA（60〜74 本は 25MA）で判定。一年足が無いことを理由に除外・保留はしない（保留は 60 本未満の 🐄 のみ）。</div>${groups}</div>`;
 }
 function renderAiScan(d){
   const sc=d.ai_scan||null; const cm=(d.candidates&&d.candidates.ai_momentum)||[]; const cr=(d.candidates&&d.candidates.ai_reversal)||[];
@@ -1906,24 +1937,21 @@ function dmGyChips(s){
   // grades.json の射影（①-S4 が status に写した gy/val/per/vg/vgs）。無ければ「未評価」＝プール外（候補になって ①-8 のプールに入るまで ①-9 は評価しない）
   if(!s) return '';
   const na=(s.gy==null&&s.val==null&&s.per==null);
-  if(na) return `<span class='gychip na' title='grades.json に無い＝①-8 のプール外。候補になってプールに入ると ①-9 が評価する'>業績・値頃感 未評価</span>`;
+  if(na) return `<span class='dmchip na' title='grades.json に無い＝①-8 のプール外。候補になってプールに入ると ①-9 が評価する'>業績・値頃感 未評価</span>`;
   let h='';
-  if(s.gy!=null) h+=`<span class='gychip' title='業績グレード（13点）${s.gys!=null?' '+esc(s.gys)+'点':''}'>${esc(s.gy)}</span>`;
-  if(s.val!=null) h+=`<span class='gychip' title='値頃感（7点）${s.vals!=null?' '+esc(s.vals)+'点':''}'>${esc(s.val)}</span>`;
-  if(s.per!=null) h+=`<span class='gychip'>PER ${esc(num1(s.per))}${s.pbr!=null?'・PBR '+esc(num1(s.pbr)):''}</span>`;
+  if(s.gy!=null) h+=`<span class='dmchip' title='業績グレード（13点）${s.gys!=null?' '+esc(s.gys)+'点':''}'>${esc(s.gy)}</span>`;
+  if(s.val!=null) h+=`<span class='dmchip' title='値頃感（7点）${s.vals!=null?' '+esc(s.vals)+'点':''}'>${esc(s.val)}</span>`;
+  if(s.per!=null) h+=`<span class='dmchip'>PER ${esc(num1(s.per))}${s.pbr!=null?'・PBR '+esc(num1(s.pbr)):''}</span>`;
   h+=vgChip(String(s.code));
-  if(s.dva!=null) h+=`<span class='gychip' title='年間配当（予想）'>💴${esc(s.dva)}</span>`;
+  if(s.dva!=null) h+=`<span class='dmchip' title='年間配当（予想）'>💴${esc(s.dva)}</span>`;
   return h;
 }
 function dmMethodChips(s){
   const m=Array.isArray(s&&s.methods)?s.methods:[]; let h=m.map(k=>branchChip(k)).join('');
-  if(s&&s.gate) h+=`<span class='gychip' title='当夜の ①-8 ゲート結果'>🚪${esc(s.gate)}</span>`;
+  if(s&&s.gate) h+=`<span class='dmchip' title='当夜の ①-8 ゲート結果'>🚪${esc(s.gate)}</span>`;
   return h;
 }
-function dmRow(s,isTr){
-  // stgRow（ステージ行）＋ 業績・値頃感・手法チップ
-  return stgRow(s,isTr).replace(/<\/div>$/, `<span style='flex-basis:100%'></span>${dmGyChips(s)}${dmMethodChips(s)}</div>`);
-}
+function dmRow(s,isTr){ return scanCard(s,{tr:isTr,dm:true}); }
 // ===== D22: スキャン鮮度（①-S3 AI特需／①-S4 内需）。today の端末時刻と JPX 休業日表から「期待される base_day」を出し、実際の base_day との営業日差で色分け。通信なし・判定は変えない =====
 function scanExpectedDay(){
   // 平日 20:00 JST 以降なら今日、それより前（または休場）は直近の前営業日が「今夜あるべき base_day」
@@ -1985,9 +2013,9 @@ function renderDmScan(d){
     const groups=STG_ORDER.map(k=>{ const g=st.filter(s=>(s.stage||'❔取得不可')===k).sort((x,y)=>(y.sleep_days||0)-(x.sleep_days||0)||String(x.code).localeCompare(String(y.code))); if(!g.length) return ''; const open=(k==='🔥初動'||k==='🍖熟成中')?' open':''; return `<details class='stgd'${open}><summary><span class='stg ${STG_CLASS[k]||''}'>${esc(k)}</span> ${esc(g.length)}件 <span class='meta'>${esc(STG_DESC[k]||'')}</span></summary>${g.map(s=>dmRow(s,false)).join('')}</details>`; }).join('');
     stages=`<div class='cpsec'><h3>🥩 熟成ステータス（全銘柄・①-S4 v1.0）</h3>${head}${ripHtml}</div>${trHtml}`;
     // 候補（当夜の M/R）。status 行から描く（master.json の candidates と一致・V2）
-    const candSec=(title,arr,br)=>{ const rows=arr.length?[...arr].sort((x,y)=>(y.score||0)-(x.score||0)||String(x.code).localeCompare(String(y.code))).map(c=>{ const s=smap[String(c.code)]||c; return dmRow(Object.assign({},s,{signals:c.signals||s.signals}),false).replace("<div class='stgrow'>",`<div class='stgrow'><span class='brchip'>${esc(branchLabel(br))}</span><span class='memochip' title='①-S4 のスコア（並び順専用）'>score ${esc(c.score)}</span>`); }).join(''):`<div class='empty'>当夜の該当なし</div>`; return `<div class='cpsec'><h3>${title}（${arr.length}件）</h3>${rows}</div>`; };
+    const candSec=(title,arr,br)=>{ const rows=arr.length?[...arr].sort((x,y)=>(y.score||0)-(x.score||0)||String(x.code).localeCompare(String(y.code))).map(c=>{ const s=smap[String(c.code)]||c; return scanCard(Object.assign({},s,{signals:c.signals||s.signals}),{dm:true,branch:br,score:c.score}); }).join(''):`<div class='empty'>当夜の該当なし</div>`; return `<div class='cpsec'><h3>${title}（${arr.length}件）</h3>${rows}</div>`; };
     stages+=candSec('🏠 順張り候補 dm_momentum',cm,'dm_momentum')+candSec('🏠 逆張り候補 dm_reversal',cr,'dm_reversal');
-    stages+=`<div class='cpsec'><h3>📚 ステージ別一覧（静かな日数の多い順・全 ${esc(st.length)} 銘柄）</h3><div class='meta'>短履歴＝日足 235 本未満で 200MA の代わりに 75MA で判定。各行の 2 段目は業績・値頃感（grades.json・プール外は未評価）と当夜の手法候補・ゲート結果。</div>${groups}</div>`;
+    stages+=`<div class='cpsec'><h3>📚 ステージ別一覧（静かな日数の多い順・全 ${esc(st.length)} 銘柄）</h3><div class='meta'>各カードはウォッチタブと同じ構成。4 行目に RS20・🚪ゲート・業績・値頃感、2 行目b に 📈文脈🕯形態（プール在籍の銘柄のみ）と当夜の手法チップ。プール外の銘柄は業績・値頃感が「未評価」（候補になってプールに入ると ①-9 が評価）。</div>${groups}</div>`;
   } else {
     stages=`<div class='cpsec'><h3>🥩 熟成ステータス（全銘柄・①-S4 v1.0）</h3><div class='empty'>dm_scan_today.json に status がありません（初回実行前、または取得失敗）。</div></div>`;
   }
@@ -2310,6 +2338,8 @@ function renderLegend(){
     ${tr.map(row).join('')}
     <h3>💴 配当・🎁優待・📆権利対象（D8）</h3>
     <div class='note'>💴チップ＝①-8 v1.38 が kabutan の既読ページから読んだ予想配当（年間または中間／期末）と、minkabu の優待ページで確かめた優待の有無・優待権利月（grades.json の fy/rm/dvi/dvf/dva/yt/ym）。未取得の銘柄には出ない（初回は保有・PASS から順に埋まる）。<br>📆権利対象チップ＝今日〜次の営業日に権利付き最終日／権利落ち日があり、かつその月がこの銘柄の権利月（配当または優待）に含まれるときだけ出る。「現在値→落ち後目安（−x円・−y%）」は該当する配当を現在値から引いたもので、公表値からの計算（推定ではない）。優待分は含まないので、🎁付きの銘柄は目安より大きく落ちうる。「直近5日 ±z%」は権利取り前に上がってきた幅（pool_bars の直近5本）で、落ち後に剥落しうる分の目安。SL との比較は出さない（stop の反映は実弾ボード側の運用に依存するため）。権利月が未取得の銘柄は「📆権利月不明」。権利月が違う銘柄には何も出ない（＝今回の権利落ちの影響は限定的）。</div>
+    <h3>🧩 スキャン銘柄カードの統一（D23）</h3>
+    <div class='note'>AI特需・内需タブの全銘柄一覧・候補・焼き入れ・遷移を、ウォッチタブと同じカード（1 行目 コード・銘柄名・終値／決算帯／2 行目 ステージチップ（遷移は「← 前ステージ」）・ブランチ・score・業態・信号・静か n日／閾値・ステージ n日目／2 行目b 📈文脈🕯形態（pool_bars にある銘柄のみ）と内需の手法チップ・🚪ゲート／4 行目 RS20・ゲート・業績・値頃感・🤷／5 行目 25MA・長期線・20日・レンジ・ATR比・52週・出来高／末尾 ステージ開始日と直近 3 回の履歴）に統一。業績・値頃感チップは他タブと同じ ①-9 のキャッシュから出すので、プール外の銘柄は「未評価」。表示であり判定・順位は変えない。</div>
     <h3>🕒 スキャン鮮度チップ（D22）</h3>
     <div class='note'>①-S3 AI特需／①-S4 内需の鮮度。<b>base_day</b>（日足の最終日）と「今夜あるべき base_day」（端末の時刻が平日 20:00 以降なら当日、それ以前・休場なら前営業日。JPX 休業日表で数える・通信なし）の営業日差で色分け: <b>🟢最新</b>＝差 0、<b>🟡1営業日前</b>、<b>🔴n営業日前</b>＝2 日以上（スキャンが止まっている・PR 未マージ・取得失敗が続いている等。原因はこのボードでは判定しない）、<b>⚪未実行</b>＝記録なし。小さく「生成」（ai_scan_today／dm_scan_today の generated_at）・版・status 件数。ページ最上部にも同じチップを 2 つ出す。表示であり判定・順位は変えない。</div>
     <h3>🏠 内需タブ・ローテーション計（D21）</h3>

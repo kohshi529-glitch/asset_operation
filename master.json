@@ -6935,6 +6935,69 @@
         "rs20": -12.15,
         "hist_tag": null
       }
+    ],
+    "dm_momentum": [],
+    "dm_reversal": [
+      {
+        "code": "7630",
+        "name": "壱番屋",
+        "branch": "dm_reversal",
+        "branch_type": "method",
+        "score": 4,
+        "signals": [
+          "R1"
+        ],
+        "sector": "restaurant",
+        "sector_label": "🍜外食",
+        "proc": null,
+        "wave": null,
+        "close": 1043.0,
+        "dev25": -2.38,
+        "dev75": 3.92,
+        "vol_ratio20": 0.66,
+        "rsi14": 55.28,
+        "pos52w": 57.83,
+        "ret5_pct": -1.79,
+        "ret20_pct": -6.71,
+        "perfect_order": true,
+        "scored_at": "2026-10-28T23:10:00+09:00",
+        "source": "dm_scan_v1.2",
+        "stage": "🥩底練り",
+        "stage_since": "2026-10-28",
+        "sleep_days": 16,
+        "rs20": -8.75,
+        "hist_tag": null
+      },
+      {
+        "code": "9503",
+        "name": "関西電力",
+        "branch": "dm_reversal",
+        "branch_type": "method",
+        "score": 4,
+        "signals": [
+          "R1"
+        ],
+        "sector": "infra",
+        "sector_label": "🚃鉄道・通信・公益",
+        "proc": null,
+        "wave": null,
+        "close": 2708.0,
+        "dev25": 0.05,
+        "dev75": 3.74,
+        "vol_ratio20": 0.77,
+        "rsi14": 56.72,
+        "pos52w": 60.32,
+        "ret5_pct": -0.81,
+        "ret20_pct": 2.5,
+        "perfect_order": true,
+        "scored_at": "2026-10-28T23:10:00+09:00",
+        "source": "dm_scan_v1.2",
+        "stage": "🥩底練り",
+        "stage_since": "2026-10-28",
+        "sleep_days": 20,
+        "rs20": 0.45,
+        "hist_tag": null
+      }
     ]
   },
   "positions": {
@@ -7902,6 +7965,22 @@
         "n_transition": 0,
         "n_ripen": 0,
         "version": "v1.4"
+      },
+      "dm_scan": {
+        "run_at": "2026-10-28T23:10:00+09:00",
+        "base_day": "2026-10-28",
+        "status": "done",
+        "n_m": 0,
+        "n_r": 2,
+        "universe_n": 109,
+        "fetched_n": 108,
+        "skipped_n": 1,
+        "skipped": {
+          "8279": "fetch:empty(yfinance・日足0本)"
+        },
+        "n_transition": 0,
+        "n_ripen": 0,
+        "version": "v1.2"
       }
     },
     "verified": {
@@ -154748,6 +154827,259 @@
         "🕸閑散": 15,
         "🐄上場直後": 0,
         "❔取得不可": 2
+      },
+      "short_history_n": 0,
+      "transitions": [],
+      "ripen_codes": [],
+      "prev_missing": true
+    }
+  },
+  "dm_scan": {
+    "universe_n": 109,
+    "fetched_n": 108,
+    "skipped_n": 1,
+    "base_day": "2026-10-28",
+    "rotation": {
+      "base_day": "2026-10-28",
+      "dm_med20": 2.04,
+      "dm_med5": -1.78,
+      "dm_above25_pct": 46.3,
+      "ai_med20": -5.01,
+      "ai_med5": -0.7,
+      "ai_base_day": "2026-10-28",
+      "rot20": 7.05,
+      "rot5": -1.09,
+      "dm_vs_topix": 3.31,
+      "ai_vs_nk": -2.9,
+      "bench_1306_ret20": -1.27,
+      "bench_1321_ret20": -2.11,
+      "bench_1306_ret5": -1.32,
+      "bench_1321_ret5": -1.01,
+      "rot20_chg5": null
+    },
+    "sectors": {
+      "retail_general": {
+        "label": "🏬総合小売・百貨店",
+        "role": "ローテ初動で買われやすい大型（指数寄与）",
+        "n": 8,
+        "above25_pct": 62.5,
+        "above75_pct": 25.0,
+        "median_dev25": 1.46,
+        "median_ret20": 2.77,
+        "signals_m": 0,
+        "signals_r": 0,
+        "wave_on": true,
+        "stage_counts": {
+          "🍽": 1,
+          "🔥": 0,
+          "🍖": 2,
+          "🥩": 3,
+          "🗑": 2,
+          "🕸": 0,
+          "🐄": 0,
+          "❔": 0
+        }
+      },
+      "supermarket": {
+        "label": "🛒食品スーパー",
+        "role": "値上げ転嫁と既存店売上が軸のディフェンシブ",
+        "n": 6,
+        "above25_pct": 0.0,
+        "above75_pct": 16.7,
+        "median_dev25": -2.92,
+        "median_ret20": -5.76,
+        "signals_m": 0,
+        "signals_r": 0,
+        "wave_on": false,
+        "stage_counts": {
+          "🍽": 0,
+          "🔥": 0,
+          "🍖": 2,
+          "🥩": 3,
+          "🗑": 1,
+          "🕸": 0,
+          "🐄": 0,
+          "❔": 1
+        }
+      },
+      "drug": {
+        "label": "💊ドラッグ・調剤",
+        "role": "再編と出店の成長＋ディフェンシブ",
+        "n": 7,
+        "above25_pct": 28.6,
+        "above75_pct": 0.0,
+        "median_dev25": -0.89,
+        "median_ret20": 1.63,
+        "signals_m": 0,
+        "signals_r": 0,
+        "wave_on": false,
+        "stage_counts": {
+          "🍽": 0,
+          "🔥": 0,
+          "🍖": 4,
+          "🥩": 3,
+          "🗑": 0,
+          "🕸": 0,
+          "🐄": 0,
+          "❔": 0
+        }
+      },
+      "specialty": {
+        "label": "👕専門店・100均・家電・HC",
+        "role": "消費の質（節約／高付加価値）が出る",
+        "n": 17,
+        "above25_pct": 47.1,
+        "above75_pct": 47.1,
+        "median_dev25": -0.12,
+        "median_ret20": -0.47,
+        "signals_m": 0,
+        "signals_r": 0,
+        "wave_on": false,
+        "stage_counts": {
+          "🍽": 4,
+          "🔥": 1,
+          "🍖": 3,
+          "🥩": 9,
+          "🗑": 0,
+          "🕸": 0,
+          "🐄": 0,
+          "❔": 0
+        }
+      },
+      "restaurant": {
+        "label": "🍜外食",
+        "role": "客数×単価・インバウンド・人件費",
+        "n": 13,
+        "above25_pct": 76.9,
+        "above75_pct": 76.9,
+        "median_dev25": 3.68,
+        "median_ret20": 8.81,
+        "signals_m": 0,
+        "signals_r": 1,
+        "wave_on": true,
+        "stage_counts": {
+          "🍽": 6,
+          "🔥": 2,
+          "🍖": 2,
+          "🥩": 2,
+          "🗑": 0,
+          "🕸": 1,
+          "🐄": 0,
+          "❔": 0
+        }
+      },
+      "food": {
+        "label": "🥫食品・日用品",
+        "role": "値上げ・円高メリット・海外比率",
+        "n": 19,
+        "above25_pct": 42.1,
+        "above75_pct": 57.9,
+        "median_dev25": -0.21,
+        "median_ret20": 3.03,
+        "signals_m": 0,
+        "signals_r": 0,
+        "wave_on": false,
+        "stage_counts": {
+          "🍽": 6,
+          "🔥": 1,
+          "🍖": 8,
+          "🥩": 4,
+          "🗑": 0,
+          "🕸": 0,
+          "🐄": 0,
+          "❔": 0
+        }
+      },
+      "leisure": {
+        "label": "🎢レジャー・サービス",
+        "role": "インバウンド・国内消費の体温計",
+        "n": 6,
+        "above25_pct": 50.0,
+        "above75_pct": 50.0,
+        "median_dev25": -0.49,
+        "median_ret20": 2.93,
+        "signals_m": 0,
+        "signals_r": 0,
+        "wave_on": true,
+        "stage_counts": {
+          "🍽": 3,
+          "🔥": 0,
+          "🍖": 1,
+          "🥩": 1,
+          "🗑": 0,
+          "🕸": 1,
+          "🐄": 0,
+          "❔": 0
+        }
+      },
+      "housing": {
+        "label": "🏠住宅・不動産",
+        "role": "金利感応・含み益・再開発",
+        "n": 13,
+        "above25_pct": 53.8,
+        "above75_pct": 7.7,
+        "median_dev25": 0.2,
+        "median_ret20": 2.02,
+        "signals_m": 0,
+        "signals_r": 0,
+        "wave_on": true,
+        "stage_counts": {
+          "🍽": 0,
+          "🔥": 1,
+          "🍖": 4,
+          "🥩": 8,
+          "🗑": 0,
+          "🕸": 0,
+          "🐄": 0,
+          "❔": 0
+        }
+      },
+      "infra": {
+        "label": "🚃鉄道・通信・公益",
+        "role": "内需の最奥（金利・規制・配当）",
+        "n": 19,
+        "above25_pct": 36.8,
+        "above75_pct": 26.3,
+        "median_dev25": -0.99,
+        "median_ret20": 0.35,
+        "signals_m": 0,
+        "signals_r": 1,
+        "wave_on": false,
+        "stage_counts": {
+          "🍽": 0,
+          "🔥": 0,
+          "🍖": 10,
+          "🥩": 9,
+          "🗑": 0,
+          "🕸": 0,
+          "🐄": 0,
+          "❔": 0
+        }
+      }
+    },
+    "log": [
+      {
+        "base_day": "2026-10-28",
+        "n_m": 0,
+        "n_r": 2,
+        "overflow_m": 0,
+        "overflow_r": 0,
+        "n_ripen": 0,
+        "n_transition": 0
+      }
+    ],
+    "stage": {
+      "version": "v1.2",
+      "base_day": "2026-10-28",
+      "counts": {
+        "🍽食べ時": 20,
+        "🔥初動": 5,
+        "🍖熟成中": 36,
+        "🥩底練り": 42,
+        "🗑期限切れ": 3,
+        "🕸閑散": 2,
+        "🐄上場直後": 0,
+        "❔取得不可": 1
       },
       "short_history_n": 0,
       "transitions": [],

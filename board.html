@@ -399,7 +399,7 @@ details.stgd summary{cursor:pointer;font-weight:700;padding:4px 0}
 <div id='panel-methods' class='panel'></div>
 <div id='panel-granville' class='panel'></div>
 <div id='panel-legend' class='panel'></div>
-<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28 ＋ D24/D25 2026-10-31）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
+<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28 ＋ D24/D25 2026-10-31 ＋ D26 2026-11-01）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
 </div>
 <button class='fab' id='backtab' onclick='scrollToTabbar()' aria-label='タブバーへ戻る'>▲タブへ戻る</button>
 <script>
@@ -1909,15 +1909,15 @@ function renderAiScan(d){
   const sc=d.ai_scan||null; const cm=(d.candidates&&d.candidates.ai_momentum)||[]; const cr=(d.candidates&&d.candidates.ai_reversal)||[];
   const SMAP=aiStatusMap();
   const NG={}; (((d.night_gate&&d.night_gate.results)||[])).forEach(r=>{ if(r&&r.code!=null) NG[String(r.code)]=r; });
-  const note=`<div class='cpnote'>①-S3 AI特需スキャン（平日 18:15）が固定ユニバース 74 銘柄（ai_universe.json＝エネマネ・冷却空調・光通信・基板素材の 2 波・3 波）をチャート条件だけで順張り（M1 新高値ブレイク／M2 転換初動／M3 再上昇）と逆張り（R1 押し目／R2 リバウンド／R3 深押し反発）に分け、①-8（20:30）が別ブランチ ai_momentum／ai_reversal として同じゲート・鮮度・提案で扱う。「波」はセクター内で 25MA を上回る銘柄の割合と 20 日リターン中央値から点灯させる表示で、抽出条件には使わない。業績条件は入れていないので、業績グレード（🔻⚠）と値頃感は別軸として横に出す。D20: ①-S3 v1.1 が全 74 銘柄に付ける熟成ステージ（🔥初動／🍖熟成中／🥩底練り／🍽食べ時／🕸閑散／🗑期限切れ／🐄上場直後）と当夜の遷移・🍖→🔥 の焼き入れを ai_scan_today.json から描く。焼き入れは記録のみで候補ではない。全て候補・記録であり最終判断はユーザー。</div>`;
+  const note=`<div class='cpnote'>①-S3 AI特需スキャン（平日 18:15）が固定ユニバース 103 銘柄（ai_universe.json v2＝エネマネ・冷却空調・光通信・基板素材の 2 波・3 波 74 ＋ 🏢大型・指数寄与 29。大型は AI 相場の激動で指数と一緒に売られた日をちょる子式の逆張り R2/R3 で拾う対象）をチャート条件だけで順張り（M1 新高値ブレイク／M2 転換初動／M3 再上昇）と逆張り（R1 押し目／R2 リバウンド／R3 深押し反発）に分け、①-8（20:30）が別ブランチ ai_momentum／ai_reversal として同じゲート・鮮度・提案で扱う。「波」はセクター内で 25MA を上回る銘柄の割合と 20 日リターン中央値から点灯させる表示で、抽出条件には使わない。業績条件は入れていないので、業績グレード（🔻⚠）と値頃感は別軸として横に出す。D20: ①-S3 v1.1 が全 74 銘柄に付ける熟成ステージ（🔥初動／🍖熟成中／🥩底練り／🍽食べ時／🕸閑散／🗑期限切れ／🐄上場直後）と当夜の遷移・🍖→🔥 の焼き入れを ai_scan_today.json から描く。焼き入れは記録のみで候補ではない。全て候補・記録であり最終判断はユーザー。</div>`;
   const runsA=(d.pipeline&&d.pipeline.runs)||{};
   const freshA=scanFreshChip('🤖①-S3',AI_TODAY||(sc?{base_day:sc.base_day}:null),runsA.ai_scan,(AI_TODAY&&Array.isArray(AI_TODAY.status))?`status ${AI_TODAY.status.length}件`:'status なし');
   if(!sc&&!cm.length&&!cr.length) return note+freshA+`<div class='empty'>①-S3 AI特需スキャンの実行記録がありません（ai_scan 未作成）。</div>`;
   let waves='';
   if(sc&&sc.sectors){
-    const order=['energy_mgmt','cooling','optical','substrate'];
+    const order=['energy_mgmt','cooling','optical','substrate','large_cap'];
     waves=`<div class='cpsec'><h3>波の点灯（base_day ${esc(sc.base_day||'—')}・ユニバース ${esc(sc.universe_n||'—')}・取得 ${esc(sc.fetched_n||'—')}）</h3>`+
-      order.filter(k=>sc.sectors[k]).map(k=>{ const s=sc.sectors[k]; return `<span class='aiwave${s.wave_on?' on':''}' title='25MA 上回り率 ${esc(num1(s.above25_pct))}%・75MA ${esc(num1(s.above75_pct))}%・25MA 乖離中央値 ${esc(num1(s.median_dev25))}%・20日リターン中央値 ${esc(num1(s.median_ret20))}%・当夜の該当 順張り${esc(s.signals_m)}／逆張り${esc(s.signals_r)}'>${esc(s.label||k)}${s.wave&&s.wave!=='—'?` ${esc(s.wave)}波`:''} ${s.wave_on?'● 点灯':'○'} ${esc(num1(s.above25_pct))}%</span>`; }).join('')+
+      order.filter(k=>sc.sectors[k]).concat(Object.keys(sc.sectors).filter(k=>order.indexOf(k)<0)).map(k=>{ const s=sc.sectors[k]; return `<span class='aiwave${s.wave_on?' on':''}' title='25MA 上回り率 ${esc(num1(s.above25_pct))}%・75MA ${esc(num1(s.above75_pct))}%・25MA 乖離中央値 ${esc(num1(s.median_dev25))}%・20日リターン中央値 ${esc(num1(s.median_ret20))}%・当夜の該当 順張り${esc(s.signals_m)}／逆張り${esc(s.signals_r)}'>${esc(s.label||k)}${s.wave&&s.wave!=='—'?` ${esc(s.wave)}波`:''} ${s.wave_on?'● 点灯':'○'} ${esc(num1(s.above25_pct))}%</span>`; }).join('')+
       `<div class='meta'>● 点灯＝25MA 上回り率 50% 以上かつ 20 日リターン中央値がプラス。数字は 25MA 上回り率。</div></div>`;
   }
   const row=(c)=>{
@@ -2448,6 +2448,8 @@ function renderLegend(){
     ${tr.map(row).join('')}
     <h3>💴 配当・🎁優待・📆権利対象（D8）</h3>
     <div class='note'>💴チップ＝①-8 v1.38 が kabutan の既読ページから読んだ予想配当（年間または中間／期末）と、minkabu の優待ページで確かめた優待の有無・優待権利月（grades.json の fy/rm/dvi/dvf/dva/yt/ym）。未取得の銘柄には出ない（初回は保有・PASS から順に埋まる）。<br>📆権利対象チップ＝今日〜次の営業日に権利付き最終日／権利落ち日があり、かつその月がこの銘柄の権利月（配当または優待）に含まれるときだけ出る。「現在値→落ち後目安（−x円・−y%）」は該当する配当を現在値から引いたもので、公表値からの計算（推定ではない）。優待分は含まないので、🎁付きの銘柄は目安より大きく落ちうる。「直近5日 ±z%」は権利取り前に上がってきた幅（pool_bars の直近5本）で、落ち後に剥落しうる分の目安。SL との比較は出さない（stop の反映は実弾ボード側の運用に依存するため）。権利月が未取得の銘柄は「📆権利月不明」。権利月が違う銘柄には何も出ない（＝今回の権利落ちの影響は限定的）。</div>
+    <h3>🏢 AI特需ユニバース v2（D26）</h3>
+    <div class='note'>ai_universe.json v2 で 🏢大型・指数寄与 29 銘柄（装置 6857・8035・6146・6920・7735・6525／電機SI 6501・6702・6701・6503・6758／素材部品 3436・6723・6762・6971・6988・7741／電線光 5803・5801・5802／投資通信 9984・9433・9434／電力重電 7011・9501・9503／FA 6861・6954・6594）を追加。狙いは AI 界隈の激動で指数と一緒に売られた大型を、ちょる子式（プライム・時価総額 1000 億↑・RSI≤30・乖離 ≤−10%）に近い ①-S3 の逆張り R2（25MA 乖離 ≤−8%・RSI≤35・200MA 上向き）／R3（乖離 ≤−15%・52 週下位・反発陽線）で拾うこと。順張り・熟成ステージも同じ器で付く。AI 特需タブの「波の点灯」に 🏢 が 1 枠増える。判定・順位は変えない。</div>
     <h3>🔔🪜🇺🇸 アンソロタブの追加表示（D25）</h3>
     <div class='note'>①-S5 v1.1 の 3 つの追加を表示。🔔 カタリスト＝数値閾値（T1 米株 ±4%／出来高2倍・T2 ANT 初取得／±8%・T3 層中央値 ±3%／ベンチ比 ±5pt クロス・T4 銘柄 ±5%／出来高2.5倍・T5 IPO ステップの予定日 3 営業日前〜翌日・T6 M1／焼き入れ／🗑遷移）に当たった事実の転記で、評価の言葉は付けない。🪜 IPO ステップ＝anthropic_universe.json の 9 段（S-1 機密提出→取引所→公開 S-1→ロードショー→公開価格→上場→1 週間→クワイエット期間終了→観測終了）を日付の到来で緑（到達）／黄（次）に塗る。status の確定（公式）／報道／未定は JSON の転記で、更新はメンテナンス PR。🇺🇸 米関連株＝NVDA・AMD・INTC・MU・DELL・MSFT（S-1 提出日に上昇）と AMZN・GOOGL（大株主）の前夜終値・前日比・基準 10/23 比。棒は「米インフラ − 日本①ベータ」。いずれも指標であり候補・判定の対象ではない。</div>
     <h3>🧬 アンソロタブ（D24・期間限定）</h3>

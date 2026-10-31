@@ -1,0 +1,128 @@
+{
+  "meta": {
+    "version": 1,
+    "generated_at": "2026-10-31T19:00:00+09:00",
+    "note": "アンソロ（Anthropic IPO）関連 固定ユニバース。①-S5 アンソロスキャン（期間限定）の対象。公開情報（銘柄コード・層区分・報道で確認できる関連の根拠）のみ。保有・売買の情報は含まない。更新はメンテナンス PR で全置換。終了日を過ぎたら ①-S5 は PR を出さず停止通知だけ",
+    "event": {
+      "s1_public_day": "2026-10-26",
+      "ref_day": "2026-10-26",
+      "ref_note": "公開版 S-1 提出（米東部 10/26 寄付前）。日本株の反応は 10/27 から。基準終値＝2026-10-26（東京）",
+      "roadshow_week": "2026-11-09",
+      "listing_expected": "2026-11-16",
+      "listing_note": "報道ベース（WSJ）。確定日は未公表。ticker ANT（予定）",
+      "ticker": "ANT",
+      "start_day": "2026-11-02",
+      "end_day": "2026-12-18"
+    },
+    "sectors": {
+      "l1_beta": {
+        "label": "🧬①ベータ層",
+        "role": "10/27 に実際に指数を押し上げた AI・半導体大型。反応は素直で織り込みも早い"
+      },
+      "l2_partner": {
+        "label": "🤝②提携・採用層",
+        "role": "Anthropic との提携・採用・アクセス権が報道で名指しされた企業（出資関係なし）。名前が出た日に跳ねる型"
+      },
+      "l3_direct": {
+        "label": "🎯③直接保有層",
+        "role": "Anthropic 優先株を組み入れる東証上場 ETF（比率 0.47%）。上場後は時価に置き換わる"
+      }
+    },
+    "benchmarks": {
+      "1321": "日経225連動ETF（AI・半導体寄りの指数）",
+      "1306": "TOPIX連動ETF（市場ベンチ）"
+    }
+  },
+  "stocks": [
+    {
+      "code": "6857",
+      "name": "アドバンテスト",
+      "sector": "l1_beta",
+      "basis": "10/27 日経平均の押し上げ寄与（報道）"
+    },
+    {
+      "code": "8035",
+      "name": "東京エレクトロン",
+      "sector": "l1_beta",
+      "basis": "10/27 日経平均の押し上げ寄与（報道）"
+    },
+    {
+      "code": "9984",
+      "name": "ソフトバンクグループ",
+      "sector": "l1_beta",
+      "basis": "10/27 日経平均の押し上げ寄与（報道）"
+    },
+    {
+      "code": "4062",
+      "name": "イビデン",
+      "sector": "l1_beta",
+      "basis": "10/27 日経平均の押し上げ寄与（報道）。AI ユニバースと重複"
+    },
+    {
+      "code": "6701",
+      "name": "NEC",
+      "sector": "l2_partner",
+      "basis": "2026-04-23 グローバルパートナー（日本企業初）"
+    },
+    {
+      "code": "6702",
+      "name": "富士通",
+      "sector": "l2_partner",
+      "basis": "2026-05-27 戦略的パートナーシップ"
+    },
+    {
+      "code": "6501",
+      "name": "日立製作所",
+      "sector": "l2_partner",
+      "basis": "2026-05-19 全従業員約 10 万人に Claude 導入"
+    },
+    {
+      "code": "8306",
+      "name": "三菱UFJフィナンシャル・グループ",
+      "sector": "l2_partner",
+      "basis": "Claude Mythos アクセス権取得（報道）"
+    },
+    {
+      "code": "8316",
+      "name": "三井住友フィナンシャルグループ",
+      "sector": "l2_partner",
+      "basis": "Claude Mythos アクセス権取得（報道）"
+    },
+    {
+      "code": "8411",
+      "name": "みずほフィナンシャルグループ",
+      "sector": "l2_partner",
+      "basis": "Claude Mythos アクセス権取得（報道）・数万人規模で活用"
+    },
+    {
+      "code": "4704",
+      "name": "トレンドマイクロ",
+      "sector": "l2_partner",
+      "basis": "2026-04-15 戦略提携（サイバー攻撃対策）"
+    },
+    {
+      "code": "6752",
+      "name": "パナソニックHD",
+      "sector": "l2_partner",
+      "basis": "CES2025 戦略提携・ウェルネス「Umi」。AI ユニバースと重複"
+    },
+    {
+      "code": "4307",
+      "name": "野村総合研究所",
+      "sector": "l2_partner",
+      "basis": "2025-11 Amazon Bedrock 向け Anthropic 認定リセラー（国内初）・2026-02-24 拡大"
+    },
+    {
+      "code": "4755",
+      "name": "楽天グループ",
+      "sector": "l2_partner",
+      "basis": "Claude API 採用（業務・新サービス）"
+    },
+    {
+      "code": "408A",
+      "name": "iシェアーズ AI グローバル・イノベーション アクティブ ETF（ベストAI）",
+      "sector": "l3_direct",
+      "basis": "Anthropic 優先株（Series G）0.47% 組入（運用会社開示）。ETF のため grades は無し"
+    }
+  ]
+}

@@ -25,6 +25,7 @@ POLICY = {
   "watch ①-12":   dict(files=["master.json"], keys={"watchlist","pipeline"}, cand=set(), runs={"watch_tracker"}, max_lines=12000),
   "ai-scan":      dict(files=["master.json","ai_scan_today.json"], keys={"candidates","ai_scan","pipeline"}, cand={"ai_momentum","ai_reversal"}, runs={"ai_scan"}, max_lines=1000),
   "dm-scan":      dict(files=["master.json","dm_scan_today.json"], keys={"candidates","dm_scan","pipeline"}, cand={"dm_momentum","dm_reversal"}, runs={"dm_scan"}, max_lines=2000),
+  "an-scan":      dict(files=["master.json","an_scan_today.json"], keys={"candidates","an_scan","pipeline"}, cand={"an_momentum","an_reversal"}, runs={"an_scan"}, max_lines=800),
   "morning ⑤":    dict(files=["master.json","market_today.json"], keys={"market","pipeline"}, cand=set(), runs={"morning_compass"}, max_lines=500),
   "eval":         dict(files=["master.json"], keys={"gyoseki_cache","valuation_cache","night_gate","pipeline"}, cand=set(), runs={"gyoseki_update"}, max_lines=40000),
   "ipo":          dict(files=["master.json"], keys={"ipo","catalyst_schedule","pipeline"}, cand=set(), runs={"ipo"}, max_lines=1000),
@@ -41,8 +42,9 @@ POLICY = {
 # 2026-10-21: R-B 決算 KPI 取込（接頭辞 kpi-company・火〜土 06:00）が書く kpi_series.json を追加。master.json は書かない。上限 1MB。
 # 2026-10-24: R-D 先行データ取込（接頭辞 kpi-ingest・月木 07:30）を追加。同じ kpi_series.json（external セクション）と次版以降の kpi_events.json（上限 300KB）を許可。master.json は書かない。
 # 2026-10-28: ①-S4 内需スキャン（接頭辞 dm-scan・平日 18:55）を追加。①-S3 と同じ器で固定ユニバース domestic_universe.json（109 銘柄）を見る。master.json は candidates.dm_momentum／dm_reversal・dm_scan・pipeline.runs.dm_scan のみ。dm_scan_today.json（全銘柄のステータス・上限 300KB）。
+# 2026-10-31: ①-S5 アンソロスキャン（接頭辞 an-scan・平日 19:20・期間限定 11/02〜12/18）を追加。①-S4 と同じ器で固定ユニバース anthropic_universe.json（15 銘柄・3 層）を見る。master.json は candidates.an_momentum／an_reversal・an_scan・pipeline.runs.an_scan のみ。an_scan_today.json（上限 100KB）。終了日後は PR を出さない。
 # 正典側の上限（①-8 V13(d) の grades 350KB 等）は正典の自己検証に委ね、ここでは「桁違い」だけを止める。無いものは上限なし（JSON として読めればよい）。
-SIZE_CAPS = {"grades.json": 700_000, "pool_bars.json": 700_000, "earnings_calendar.json": 300_000, "earnings_stats.json": 300_000, "kpi_series.json": 1_000_000, "kpi_events.json": 300_000, "market_today.json": 50_000, "ai_scan_today.json": 200_000, "dm_scan_today.json": 300_000, "night_gate_today.json": 300_000, "gate_track.json": 4_000_000, "surge_log.json": 500_000}
+SIZE_CAPS = {"grades.json": 700_000, "pool_bars.json": 700_000, "earnings_calendar.json": 300_000, "earnings_stats.json": 300_000, "kpi_series.json": 1_000_000, "kpi_events.json": 300_000, "market_today.json": 50_000, "ai_scan_today.json": 200_000, "dm_scan_today.json": 300_000, "an_scan_today.json": 100_000, "night_gate_today.json": 300_000, "gate_track.json": 4_000_000, "surge_log.json": 500_000}
 GATE_HISTORY_CAP = 1_200_000
 
 def git(*a):

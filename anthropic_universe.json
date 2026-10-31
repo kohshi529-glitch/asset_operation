@@ -1,8 +1,8 @@
 {
   "meta": {
-    "version": 1,
-    "generated_at": "2026-10-31T19:00:00+09:00",
-    "note": "アンソロ（Anthropic IPO）関連 固定ユニバース。①-S5 アンソロスキャン（期間限定）の対象。公開情報（銘柄コード・層区分・報道で確認できる関連の根拠）のみ。保有・売買の情報は含まない。更新はメンテナンス PR で全置換。終了日を過ぎたら ①-S5 は PR を出さず停止通知だけ",
+    "version": 2,
+    "generated_at": "2026-10-31T19:30:00+09:00",
+    "note": "アンソロ（Anthropic IPO）関連 固定ユニバース v2。①-S5 アンソロスキャン（期間限定）の対象。日本株 15（3 層）＋米関連株ウォッチ 8（指標のみ・候補にしない）＋IPO 進捗ステップ＋カタリスト閾値。公開情報のみ。保有・売買の情報は含まない。更新はメンテナンス PR で全置換（ステップの確定・日付変更も PR）",
     "event": {
       "s1_public_day": "2026-10-26",
       "ref_day": "2026-10-26",
@@ -12,7 +12,9 @@
       "listing_note": "報道ベース（WSJ）。確定日は未公表。ticker ANT（予定）",
       "ticker": "ANT",
       "start_day": "2026-11-02",
-      "end_day": "2026-12-18"
+      "end_day": "2026-12-18",
+      "us_ref_day": "2026-10-23",
+      "us_ref_note": "米関連株の基準＝公開版 S-1 提出（10/26 寄付前）の直前の米国終値 2026-10-23（金）"
     },
     "sectors": {
       "l1_beta": {
@@ -31,6 +33,167 @@
     "benchmarks": {
       "1321": "日経225連動ETF（AI・半導体寄りの指数）",
       "1306": "TOPIX連動ETF（市場ベンチ）"
+    },
+    "us_watch": {
+      "note": "米関連株ウォッチ。指標として推移を見るだけ（候補・status に入れない・ステージ判定しない）。10/26 に S-1 提出で上昇した銘柄＋Anthropic の大株主・クラウド供給元。取得は日本株と同じ標準の作法（接尾辞なし）。19:20 JST 実行時の最新足＝前夜の米国終値",
+      "groups": {
+        "infra": "🧱AIインフラ（10/26 に上昇）",
+        "investor": "🏦大株主・クラウド供給元",
+        "ipo": "🧬本体"
+      },
+      "tickers": [
+        {
+          "t": "NVDA",
+          "name": "NVIDIA",
+          "group": "infra",
+          "basis": "10/26 +2.4%（S-1 提出日）"
+        },
+        {
+          "t": "AMD",
+          "name": "AMD",
+          "group": "infra",
+          "basis": "10/26 +2.8%"
+        },
+        {
+          "t": "INTC",
+          "name": "Intel",
+          "group": "infra",
+          "basis": "10/26 +4%超"
+        },
+        {
+          "t": "MU",
+          "name": "Micron",
+          "group": "infra",
+          "basis": "10/26 +3%"
+        },
+        {
+          "t": "DELL",
+          "name": "Dell",
+          "group": "infra",
+          "basis": "10/26 +3%"
+        },
+        {
+          "t": "MSFT",
+          "name": "Microsoft",
+          "group": "infra",
+          "basis": "10/26 +1.5%（Azure 経由の提携）"
+        },
+        {
+          "t": "AMZN",
+          "name": "Amazon",
+          "group": "investor",
+          "basis": "Anthropic 大株主・AWS（Bedrock）"
+        },
+        {
+          "t": "GOOGL",
+          "name": "Alphabet",
+          "group": "investor",
+          "basis": "Anthropic 大株主・Google Cloud／TPU"
+        }
+      ],
+      "ant": {
+        "t": "ANT",
+        "name": "Anthropic",
+        "group": "ipo",
+        "basis": "上場後のみ。名前に Anthropic を含むときだけ採用"
+      }
+    },
+    "ipo_steps": {
+      "note": "IPO 進捗ステップ。status は confirmed（公式・複数報道で確定）／reported（報道ベースの見込み）／pending（未定）。日付と status の更新はメンテナンス PR（ルーティンは日付の到来を数えるだけで、自分で確定しない）",
+      "steps": [
+        {
+          "id": "s1_conf",
+          "label": "S-1 機密提出",
+          "date": "2026-06-01",
+          "status": "confirmed",
+          "note": "SEC に登録届出書ドラフトを機密提出"
+        },
+        {
+          "id": "exchange",
+          "label": "取引所選定（Nasdaq）",
+          "date": "2026-09-13",
+          "status": "reported",
+          "note": "Bloomberg・Reuters 報道。会社はコメントせず"
+        },
+        {
+          "id": "s1_public",
+          "label": "公開版 S-1 提出",
+          "date": "2026-10-26",
+          "status": "confirmed",
+          "note": "ticker ANT 予定。基準日"
+        },
+        {
+          "id": "roadshow",
+          "label": "ロードショー開始",
+          "date": "2026-11-09",
+          "status": "reported",
+          "note": "11/9 の週（Bloomberg 10/1）。開始時に S-1/A で仮条件（価格レンジ）が出るのが通例"
+        },
+        {
+          "id": "pricing",
+          "label": "公開価格決定",
+          "date": "2026-11-13",
+          "status": "pending",
+          "note": "上場前営業日が通例。日付は仮（上場見込み 11/16 の前営業日）"
+        },
+        {
+          "id": "listing",
+          "label": "上場・初値",
+          "date": "2026-11-16",
+          "status": "reported",
+          "note": "WSJ 報道「早ければ 11/16」。ANT の日足が取れた日を実測で記録"
+        },
+        {
+          "id": "post_1w",
+          "label": "上場 1 週間",
+          "date": "2026-11-23",
+          "status": "pending",
+          "note": "初値後の需給が落ち着く目安"
+        },
+        {
+          "id": "quiet_end",
+          "label": "クワイエット期間終了（引受証券の初期化）",
+          "date": "2026-12-11",
+          "status": "pending",
+          "note": "上場 25 日後が通例。日付は仮"
+        },
+        {
+          "id": "period_end",
+          "label": "①-S5 観測終了",
+          "date": "2026-12-18",
+          "status": "confirmed",
+          "note": "終了日。タスク削除"
+        }
+      ]
+    },
+    "triggers": {
+      "note": "カタリスト通知の閾値（数字で判定・言葉で評価しない）。ここでのみ変える",
+      "T1_us_move": {
+        "abs_ret1_pct": 4.0,
+        "vol_ratio20": 2.0,
+        "desc": "米関連株の 1 日 ±4% 以上 または 出来高 20 日比 2 倍以上"
+      },
+      "T2_ant": {
+        "abs_ret1_pct": 8.0,
+        "desc": "ANT の日足が初めて取れた夜（上場確認）／1 日 ±8% 以上"
+      },
+      "T3_layer": {
+        "abs_med_ret1_pct": 3.0,
+        "vs_bench_cross_pt": 5.0,
+        "desc": "層別中央値の 1 日 ±3% 以上／ベンチ比（since_ref）が ±5pt を上下に抜けた夜"
+      },
+      "T4_stock": {
+        "abs_ret1_pct": 5.0,
+        "vol_ratio20": 2.5,
+        "desc": "ユニバース銘柄の 1 日 ±5% 以上 または 出来高 2.5 倍以上"
+      },
+      "T5_step": {
+        "days_before": 3,
+        "desc": "IPO ステップの予定日 3 営業日前・当日・翌営業日（日付の到来のみ）"
+      },
+      "T6_signal": {
+        "desc": "M1 新高値ブレイク／🍖→🔥 焼き入れ／🗑期限切れ への遷移"
+      }
     }
   },
   "stocks": [

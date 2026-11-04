@@ -8136,8 +8136,8 @@
         "active_candidates": 21
       },
       "changepoint_watch": {
-        "generated_at": "2026-11-02T19:25+09:00",
-        "trading_day": "2026-11-02",
+        "generated_at": "2026-11-04T19:30+09:00",
+        "trading_day": "2026-11-04",
         "status": "done",
         "pool_counts": {
           "shinne_w": 14,
@@ -8149,44 +8149,41 @@
         "evaluated": 72,
         "stale_or_unavailable": 2,
         "signals": {
-          "bell_bell": 1,
-          "bell": 4,
-          "sub_signal_only": 2
+          "bell_bell": 2,
+          "bell": 3,
+          "sub_signal_only": 0
         },
-        "catalyst_found": 0,
-        "catalyst_codes": [],
-        "earnings_radar_run": true,
-        "earnings_radar_note": "base_day(2026-11-02)は月曜のためSTEP2.5実施。⚠決算接近: 4475/4483(11/05)。📋10〜20営業日候補なし。",
+        "catalyst_found": 2,
+        "catalyst_codes": [
+          "218A",
+          "4259"
+        ],
+        "earnings_radar_run": false,
+        "earnings_radar_note": "base_day(2026-11-04)は水曜のためSTEP2.5スキップ。",
         "associative_propagation": {
-          "triggered_today": true,
+          "triggered_today": false,
           "active": true,
-          "reason": "saas_wで4478が🔔🔔(D2＋窓内D3/D1)・日経-0.33%(+2%以下)→assoc_relax発動(11-04〜11-10)。10-30発動分(〜11-09)・10-28発動分(〜11-05)・10-29発動分(〜11-06)も有効。"
+          "reason": "saas_wに🔔🔔なし→新規発動なし。10-28発動(〜11-05)・10-29発動(〜11-06)・10-30発動(〜11-09)・11-02発動(11-04〜11-10)が有効。"
         },
-        "nikkei_return_pct": -0.33,
-        "market_context": "平常日(日経-0.33%)",
+        "nikkei_return_pct": -1.42,
+        "market_context": "平常日(日経-1.42%)",
         "pl3_summary": {
           "pending": 1,
-          "open": 2,
+          "open": 3,
           "closed": 107,
           "nofill": 13,
           "invalid": 21,
           "matured_of_20": 107,
           "new_pending_today": [
-            "PL3-2026-11-02-4478"
+            "PL3-2026-11-04-593A"
           ],
           "filled_today": [
             "4478"
           ],
           "nofill_today": [],
-          "closed_today": [
-            "9343(SL)",
-            "9308(トレール)",
-            "593A(トレール)"
-          ],
-          "invalid_today": [
-            "7695"
-          ],
-          "deleted_by_cap": 3
+          "closed_today": [],
+          "invalid_today": [],
+          "deleted_by_cap": 0
         },
         "assoc_effectiveness": {
           "n_true": 6,
@@ -8194,7 +8191,7 @@
           "assoc_null": 0,
           "verdict": "判定不能"
         },
-        "memo": "run_at=2026-11-02T19:25+09:00(通常実行); base_day=2026-11-02(月曜)。評価72銘柄・取得不可2(5660,7317)。master.jsonは実測indent=2。",
+        "memo": "run_at=2026-11-04T19:30+09:00(通常実行); base_day=2026-11-04(水曜)。評価72銘柄・取得不可2(5660,7317)。master.jsonは実測indent=2。",
         "source": "changepoint_watch",
         "stale_detail": [
           {
@@ -13477,179 +13474,118 @@
     },
     "results": [
       {
-        "code": "4478",
-        "name": "freee K.K.",
-        "close": 4645.0,
+        "code": "593A",
+        "name": "Tier IV, Inc.",
+        "close": 2670.0,
         "detectors": [
-          "D2"
+          "D3",
+          "D4"
         ],
         "signal": "🔔🔔",
-        "vol_ratio": 1.41,
-        "dev25": 21.05,
-        "w52_pos": 100.0,
-        "excess_pct": 1.31,
+        "vol_ratio": 0.87,
+        "dev25": 23.79,
+        "w52_pos": 66.5,
+        "excess_pct": 12.39,
         "beta_context": false,
-        "earnings_within": 6,
+        "earnings_within": 7,
         "catalyst": null,
         "catalyst_time": null,
         "catalyst_headline": null,
-        "relax_active": true,
+        "relax_active": false,
         "assoc_only": false,
-        "note": "当日+0.98%・市場超過+1.31pt(平常日)。D2(60日高値更新)単独の当日発火だが窓内にD3(10-28/10-30)・D1(10-29)があり5営業日以内2検知器以上=saas_w🔔🔔。D2は単独では採用されず窓内複合による格上げ。4営業日連続発火で独立性は低い。次回決算2026/11/11(6営業日後=決算前ラン文脈・加点材料ではない)。材料: なし(テクニカル起点)。",
-        "scored_at": "2026-11-02T19:25+09:00"
+        "note": "当日+10.97%・市場超過+12.39pt(平常日・日経-1.42%)。上方向・個別性あり。",
+        "scored_at": "2026-11-04T19:30+09:00"
       },
       {
         "code": "4259",
         "name": "エクサウィザーズ",
-        "close": 752.0,
+        "close": 721.0,
         "detectors": [
           "D3"
         ],
         "signal": "🔔",
-        "vol_ratio": 2.46,
-        "dev25": -7.32,
-        "w52_pos": 23.21,
-        "excess_pct": -3.87,
+        "vol_ratio": 1.54,
+        "dev25": -10.46,
+        "w52_pos": 19.4,
+        "excess_pct": -2.71,
         "beta_context": false,
-        "earnings_within": null,
-        "catalyst": null,
-        "catalyst_time": null,
-        "catalyst_headline": null,
+        "earnings_within": 5,
+        "catalyst": "特需・大口",
+        "catalyst_time": "2026-11-04T08:30",
+        "catalyst_headline": "エクサウィザーズ、ふくおかフィナンシャルグループの「AIファースト」の組織変革に向け業務提携を強化",
         "relax_active": true,
         "assoc_only": false,
-        "note": "当日-4.20%(下方向)。D3(スクイーズ放れ)だが下方向=仮想エントリー対象外・退避警報のみ。決算2026/11/11。材料: なし。",
-        "scored_at": "2026-11-02T19:25+09:00"
-      },
-      {
-        "code": "4483",
-        "name": "JMDC",
-        "close": 3540.0,
-        "detectors": [
-          "D3"
-        ],
-        "signal": "🔔",
-        "vol_ratio": 1.15,
-        "dev25": -4.01,
-        "w52_pos": 44.58,
-        "excess_pct": -3.74,
-        "beta_context": false,
-        "earnings_within": 2,
-        "catalyst": null,
-        "catalyst_time": null,
-        "catalyst_headline": null,
-        "relax_active": true,
-        "assoc_only": false,
-        "note": "当日-4.07%(下方向)。D3だが下方向=PL3対象外・退避警報のみ。⚠決算直前(2026/11/05=2営業日後・教訓⑲)。材料: なし。",
-        "scored_at": "2026-11-02T19:25+09:00"
-      },
-      {
-        "code": "5027",
-        "name": "AnyMind Group",
-        "close": 726.0,
-        "detectors": [
-          "D3"
-        ],
-        "signal": "🔔",
-        "vol_ratio": 0.74,
-        "dev25": -7.69,
-        "w52_pos": 77.01,
-        "excess_pct": -2.74,
-        "beta_context": false,
-        "earnings_within": null,
-        "catalyst": null,
-        "catalyst_time": null,
-        "catalyst_headline": null,
-        "relax_active": false,
-        "assoc_only": false,
-        "note": "当日-3.07%(下方向)。D3だが下方向=PL3対象外・退避警報のみ。決算2026/11/13。材料: なし(10-27/28のMeta提携は対象窓外)。",
-        "scored_at": "2026-11-02T19:25+09:00"
+        "note": "当日-4.12%・市場超過-2.71pt(平常日・日経-1.42%)。下方向=PL3対象外(退避警報のみ)。",
+        "scored_at": "2026-11-04T19:30+09:00"
       },
       {
         "code": "265A",
-        "name": "エイチエムコム",
-        "close": 698.0,
+        "name": "Hmcomm Inc.",
+        "close": 662.0,
         "detectors": [
           "D3"
         ],
         "signal": "🔔",
-        "vol_ratio": 2.03,
-        "dev25": -6.25,
-        "w52_pos": 17.12,
-        "excess_pct": -2.86,
+        "vol_ratio": 1.42,
+        "dev25": -10.56,
+        "w52_pos": 11.7,
+        "excess_pct": -3.74,
         "beta_context": false,
-        "earnings_within": null,
+        "earnings_within": 7,
         "catalyst": null,
         "catalyst_time": null,
         "catalyst_headline": null,
         "relax_active": false,
         "assoc_only": false,
-        "note": "当日-3.19%(下方向)。D3だが下方向=PL3対象外・退避警報のみ。売買代金0.29億円と低流動。決算2026/11/13。材料: なし。",
-        "scored_at": "2026-11-02T19:25+09:00"
-      }
-    ],
-    "log": [
-      {
-        "trading_day": "2026-09-16",
-        "code": "9308",
-        "pool": "shinne_w",
-        "detectors": [
-          "D1",
-          "D2"
-        ],
-        "signal": "🔔🔔",
-        "beta_context": false,
-        "relax_active": false,
-        "assoc_only": false,
-        "catalyst": null,
-        "catalyst_time": null,
-        "note": "D1∧D2同日複合によりdefault規則で🔔🔔自動成立(出来高が20日平均比3.22倍の陽線で60日高値更新、w52_pos=100)。当日+3.86%(市場超過+3.17pt・平常日)で個別性あり。次回決算日程はkabutan.jp/stock/financeに予定日表示なし(取得不可)。catalyst判定(窓09-15 15:00〜09-16場中)で新規開示は確認できずcatalyst=null(テクニカル起点)。翌営業日に指値2232.0で仮想エントリー待ち。"
+        "note": "当日-5.16%・市場超過-3.74pt(平常日・日経-1.42%)。下方向=PL3対象外(退避警報のみ)。",
+        "scored_at": "2026-11-04T19:30+09:00"
       },
       {
-        "trading_day": "2026-09-16",
-        "code": "4187",
-        "pool": "stf_w",
+        "code": "5803",
+        "name": "フジクラ",
+        "close": 3680.0,
+        "detectors": [
+          "D3"
+        ],
+        "signal": "🔔🔔",
+        "vol_ratio": 1.24,
+        "dev25": -21.7,
+        "w52_pos": 19.6,
+        "excess_pct": -4.23,
+        "beta_context": false,
+        "earnings_within": 4,
+        "catalyst": null,
+        "catalyst_time": null,
+        "catalyst_headline": null,
+        "relax_active": false,
+        "assoc_only": false,
+        "note": "当日-5.64%・市場超過-4.23pt(平常日・日経-1.42%)。下方向=PL3対象外(退避警報のみ)。",
+        "scored_at": "2026-11-04T19:30+09:00"
+      },
+      {
+        "code": "218A",
+        "name": "Liberaware",
+        "close": 789.0,
         "detectors": [
           "D3"
         ],
         "signal": "🔔",
+        "vol_ratio": 3.07,
+        "dev25": -17.66,
+        "w52_pos": 4.9,
+        "excess_pct": -4.66,
         "beta_context": false,
+        "earnings_within": null,
+        "catalyst": "その他開示",
+        "catalyst_time": "2026-11-04T13:00",
+        "catalyst_headline": "Liberaware、「IBIS」の新型アンテナ実証実験にて無線通信距離「約1.9km」を達成",
         "relax_active": false,
         "assoc_only": false,
-        "catalyst": null,
-        "catalyst_time": null,
-        "note": "D3単独発火(20日リターン標準偏差が過去120日分布の下位3.33%水準・当日|騰落率|3.27%>3%)。窓内(09-09〜09-15)に発火履歴なく🔔単独維持。当日+3.27%(市場超過+2.57pt・平常日)で個別性あり。次回決算発表日2026-10-09(約17営業日後、切迫なし)。catalyst判定(窓09-15 15:00〜09-16場中)で新規開示は確認できずcatalyst=null(テクニカル起点、直近ニュースは08-21のレーティング記事で窓外)。翌営業日に指値4110.0で仮想エントリー待ち。"
-      },
-      {
-        "trading_day": "2026-09-16",
-        "code": "5136",
-        "pool": "ipo_secondary_w",
-        "detectors": [
-          "D2"
-        ],
-        "signal": "🔔🔔",
-        "beta_context": false,
-        "relax_active": false,
-        "assoc_only": false,
-        "catalyst": null,
-        "catalyst_time": null,
-        "earnings_conflict": true,
-        "note": "本日D2単独(60日高値更新継続、w52_pos=100)+窓内09-15のD1∧D2複合歴により5営業日以内複合発火(2検知器以上)でdefault規則により🔔🔔。当日+1.09%(市場超過+0.40pt・平常日)。catalyst判定(窓09-15 15:00〜09-16場中)で新規開示は確認できずcatalyst=null(テクニカル起点、ただし場中の値動きは09-15上方修正材料の余韻)。重要: kabutan.jp/stock/newsで2026-09-16 15:30(本日引け後)に【Delayed】FY2026 Q3決算(3-7月期)開示を確認。翌営業日(09-17)はこの決算発表の翌営業日=PEAD反応日に該当するため、本日分の新規発火は⛔PL3除外(決算翌営業日・教訓⑲、T+1条件に literal 該当)。ログ記録のみ、pl3_trackへの新規pending登録なし。なお前日(09-15)発火分の紙ログ(PL3-2026-09-15-5136)は本日安値2210が指値2290以下で指値到達し約定(entry=2290.0、別記)。"
-      },
-      {
-        "trading_day": "2026-09-16",
-        "code": "4180",
-        "pool": "saas_w",
-        "detectors": [
-          "D2"
-        ],
-        "signal": "-",
-        "beta_context": false,
-        "relax_active": false,
-        "assoc_only": false,
-        "catalyst": null,
-        "catalyst_time": null,
-        "note": "D2単独は記録のみ(saas_w規則、D3/D4不成立、relax非有効のためD2複合考慮なし)。当日+0.26%。市場超過-0.43pt。"
-      },
+        "note": "当日-6.07%・市場超過-4.66pt(平常日・日経-1.42%)。下方向=PL3対象外(退避警報のみ)。",
+        "scored_at": "2026-11-04T19:30+09:00"
+      }
+    ],
+    "log": [
       {
         "trading_day": "2026-09-17",
         "code": "218A",
@@ -19380,6 +19316,94 @@
         ],
         "karte_candidate_10_20d": [],
         "note": "月曜のためSTEP2.5実施。saas_w20銘柄中、日程取得15(最近接4475/4483=11/05で2営業日先)。⚠決算接近: 4475 11/05・4483 11/05。10〜20営業日の📋カルテ候補は該当なし(最遠478A 11/16=9営業日先)。日程不明(推定なし): 5574,4382,4165,4443,3994,4375。"
+      },
+      {
+        "trading_day": "2026-11-04",
+        "code": "593A",
+        "pool": "ipo_secondary_w",
+        "detectors": [
+          "D3",
+          "D4"
+        ],
+        "signal": "🔔🔔",
+        "beta_context": false,
+        "relax_active": false,
+        "assoc_only": false,
+        "excess_pct": 12.39,
+        "catalyst": null,
+        "catalyst_time": null,
+        "earnings_within": 7,
+        "note": "当日+10.97%・市場超過+12.39pt(平常日・日経-1.42%)。上方向。窓内検知器=D3+D4。D3は上場浅く短縮判定。"
+      },
+      {
+        "trading_day": "2026-11-04",
+        "code": "4259",
+        "pool": "saas_w",
+        "detectors": [
+          "D3"
+        ],
+        "signal": "🔔",
+        "beta_context": false,
+        "relax_active": true,
+        "assoc_only": false,
+        "excess_pct": -2.71,
+        "catalyst": "特需・大口",
+        "catalyst_time": "2026-11-04T08:30",
+        "earnings_within": 5,
+        "note": "当日-4.12%・市場超過-2.71pt(平常日・日経-1.42%)。下方向の発火=PL3対象外(ログ・退避警報のみ)。",
+        "catalyst_headline": "エクサウィザーズ、ふくおかフィナンシャルグループの「AIファースト」の組織変革に向け業務提携を強化"
+      },
+      {
+        "trading_day": "2026-11-04",
+        "code": "265A",
+        "pool": "ipo_secondary_w",
+        "detectors": [
+          "D3"
+        ],
+        "signal": "🔔",
+        "beta_context": false,
+        "relax_active": false,
+        "assoc_only": false,
+        "excess_pct": -3.74,
+        "catalyst": null,
+        "catalyst_time": null,
+        "earnings_within": 7,
+        "note": "当日-5.16%・市場超過-3.74pt(平常日・日経-1.42%)。下方向の発火=PL3対象外(ログ・退避警報のみ)。"
+      },
+      {
+        "trading_day": "2026-11-04",
+        "code": "5803",
+        "pool": "stf_w",
+        "detectors": [
+          "D3"
+        ],
+        "signal": "🔔🔔",
+        "beta_context": false,
+        "relax_active": false,
+        "assoc_only": false,
+        "excess_pct": -4.23,
+        "catalyst": null,
+        "catalyst_time": null,
+        "earnings_within": 4,
+        "note": "当日-5.64%・市場超過-4.23pt(平常日・日経-1.42%)。下方向の発火=PL3対象外(ログ・退避警報のみ)。窓内検知器=D3+D4。"
+      },
+      {
+        "trading_day": "2026-11-04",
+        "code": "218A",
+        "pool": "ipo_secondary_w",
+        "detectors": [
+          "D3"
+        ],
+        "signal": "🔔",
+        "beta_context": false,
+        "relax_active": false,
+        "assoc_only": false,
+        "excess_pct": -4.66,
+        "catalyst": "その他開示",
+        "catalyst_time": "2026-11-04T13:00",
+        "earnings_within": null,
+        "note": "当日-6.07%・市場超過-4.66pt(平常日・日経-1.42%)。下方向の発火=PL3対象外(ログ・退避警報のみ)。",
+        "catalyst_headline": "Liberaware、「IBIS」の新型アンテナ実証実験にて無線通信距離「約1.9km」を達成"
       }
     ],
     "pl3_track": [
@@ -23958,10 +23982,10 @@
         "pnl_pct": null,
         "max_fav_pct": null,
         "max_adv_pct": null,
-        "note": "2026-10-29発火。検知器D1(窓内D3/D4)。次回決算2026/11/11。材料: その他開示(2026-10-28T16:00)。翌営業日に指値4385.0で仮想エントリー待ち。 同銘柄に10-28発火の建玉(同日SL決済済)あり・同銘柄の連続発火。 | [2026-10-30処理] 始値4405.0・安値4375.0で約定(entry=4385.0)。初期SL=4075.0。T+10=2026-11-16。 | [2026-10-30処理] open継続。次営業日適用SL=4366.3・peak=4645.0・含み損益4.9% | [2026-11-02処理] open継続。次営業日適用SL=4375.7・peak=4655.0・含み損益5.93%",
-        "current_sl": 4375.7,
-        "peak": 4655.0,
-        "unrealized_pnl_pct": 5.93
+        "note": "2026-10-29発火。検知器D1(窓内D3/D4)。次回決算2026/11/11。材料: その他開示(2026-10-28T16:00)。翌営業日に指値4385.0で仮想エントリー待ち。 同銘柄に10-28発火の建玉(同日SL決済済)あり・同銘柄の連続発火。 | [2026-10-30処理] 始値4405.0・安値4375.0で約定(entry=4385.0)。初期SL=4075.0。T+10=2026-11-16。 | [2026-10-30処理] open継続。次営業日適用SL=4366.3・peak=4645.0・含み損益4.9% | [2026-11-02処理] open継続。次営業日適用SL=4375.7・peak=4655.0・含み損益5.93% | [2026-11-04処理] open継続。次営業日適用SL=4385.1・peak=4665.0・含み損益4.45%",
+        "current_sl": 4385.1,
+        "peak": 4665.0,
+        "unrealized_pnl_pct": 4.45
       },
       {
         "id": "PL3-2026-10-30-4478",
@@ -23994,10 +24018,10 @@
         "pnl_pct": null,
         "max_fav_pct": null,
         "max_adv_pct": null,
-        "note": "2026-10-30発火。当日D2(60日高値更新)+D3(スクイーズ放れ+4.90%)＋窓内D1/D4の複合。日経-2.12%の全面安の日に市場超過+7.02ptで個別性あり。次回決算2026/11/11(7営業日後=決算前ラン文脈・加点材料ではない)。材料: なし(テクニカル起点)。同銘柄の連続発火(10-28/10-29にも建玉あり)で独立性は低い。翌営業日に指値4600.0で仮想エントリー待ち。 | [2026-11-02処理] 始値4530.0・安値4415.0で約定(entry=4530.0)。初期SL=4375.0。T+10=2026-11-17。 | [2026-11-02処理] open継続。次営業日適用SL=4375.7・peak=4655.0・含み損益2.54%",
-        "current_sl": 4375.7,
-        "peak": 4655.0,
-        "unrealized_pnl_pct": 2.54
+        "note": "2026-10-30発火。当日D2(60日高値更新)+D3(スクイーズ放れ+4.90%)＋窓内D1/D4の複合。日経-2.12%の全面安の日に市場超過+7.02ptで個別性あり。次回決算2026/11/11(7営業日後=決算前ラン文脈・加点材料ではない)。材料: なし(テクニカル起点)。同銘柄の連続発火(10-28/10-29にも建玉あり)で独立性は低い。翌営業日に指値4600.0で仮想エントリー待ち。 | [2026-11-02処理] 始値4530.0・安値4415.0で約定(entry=4530.0)。初期SL=4375.0。T+10=2026-11-17。 | [2026-11-02処理] open継続。次営業日適用SL=4375.7・peak=4655.0・含み損益2.54% | [2026-11-04処理] open継続。次営業日適用SL=4385.1・peak=4665.0・含み損益1.1%",
+        "current_sl": 4385.1,
+        "peak": 4665.0,
+        "unrealized_pnl_pct": 1.1
       },
       {
         "id": "PL3-2026-10-30-7695",
@@ -24048,6 +24072,42 @@
         "assoc_only": false,
         "fire_close": 4645.0,
         "fire_low": 4415.0,
+        "status": "open",
+        "entry_date": "2026-11-04",
+        "entry_price": 4600.0,
+        "initial_sl": 4415.0,
+        "r_per_share": 185.0,
+        "t10_date": "2026-11-18",
+        "exit_date": null,
+        "exit_price": null,
+        "exit_reason": null,
+        "r_multiple": null,
+        "pnl_pct": null,
+        "max_fav_pct": null,
+        "max_adv_pct": null,
+        "note": "2026-11-02発火。D2単独(窓内D3/D1との複合で🔔🔔)・当日+0.98%・市場超過+1.31pt(平常日)。次回決算2026/11/11(6営業日後)。材料: なし(テクニカル起点)。同銘柄の4営業日連続発火で既存建玉2件と独立性は低い。翌営業日に指値4645.0で仮想エントリー待ち。 | [2026-11-04処理] 始値4600.0・安値4500.0で約定(entry=4600.0)。初期SL=4415.0。T+10=2026-11-18。 | [2026-11-04処理] open継続。次営業日適用SL=4415.0・peak=4665.0・含み損益-0.43%",
+        "current_sl": 4415.0,
+        "peak": 4665.0,
+        "unrealized_pnl_pct": -0.43
+      },
+      {
+        "id": "PL3-2026-11-04-593A",
+        "code": "593A",
+        "name": "Tier IV, Inc.",
+        "pool": "ipo_secondary_w",
+        "fire_date": "2026-11-04",
+        "signal": "🔔🔔",
+        "detectors": [
+          "D3",
+          "D4"
+        ],
+        "catalyst": null,
+        "catalyst_time": null,
+        "beta_context": false,
+        "relax_active": false,
+        "assoc_only": false,
+        "fire_close": 2670.0,
+        "fire_low": 2356.0,
         "status": "pending",
         "entry_date": null,
         "entry_price": null,
@@ -24061,7 +24121,7 @@
         "pnl_pct": null,
         "max_fav_pct": null,
         "max_adv_pct": null,
-        "note": "2026-11-02発火。D2単独(窓内D3/D1との複合で🔔🔔)・当日+0.98%・市場超過+1.31pt(平常日)。次回決算2026/11/11(6営業日後)。材料: なし(テクニカル起点)。同銘柄の4営業日連続発火で既存建玉2件と独立性は低い。翌営業日に指値4645.0で仮想エントリー待ち。"
+        "note": "2026-11-04発火。D3(上場浅く短縮判定)+D4(寄付ギャップ+6.23%・終値レンジ上位)=初動の型。当日+10.97%・市場超過+12.39pt(日経-1.42%の下落日に逆行高)で個別性あり。次回決算2026/11/13(7営業日後=決算前ラン文脈・加点材料ではない)。材料: なし(テクニカル起点)。翌営業日に指値2670.0で仮想エントリー待ち。当日+11%の急騰後であり指値が届かず不約定になる可能性が高い(追撃禁止)。"
       }
     ]
   },

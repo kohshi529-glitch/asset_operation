@@ -1440,34 +1440,34 @@
   },
   "market": {
     "latest": {
-      "date": "2026-11-04",
+      "date": "2026-11-05",
       "market_mode": "堅調",
       "method_guidance": {
-        "kenmo_momentum": "CME先物+0.23%（63,225・現物比+143円）と小幅高。寄り直後は飛び付かず、日経が前営業日終値63,082円を維持する確認後に参入。",
-        "kenmo_newhigh": "SOX+2.63%・ナスダック+0.83%で半導体主導の追い風。ただしダウ-0.38%・VIX20超で選別的、出来高を伴う新高値ブレイクのみ。",
-        "choruko_reversal": "SOX反発で下げ一服の局面。逆張りは売られ過ぎ条件を通常どおり厳格に適用し、寄り直後のナイフ掴みは回避。",
-        "stf_kakuhen": "WTI約97ドル（+0.45%）は前週の104ドルから低下しコスト面は緩和。確変初動は寄り後の出来高と強さ確認が前提。",
-        "tenbagger_x": "本日4日に656A Allganize上場、5日655A LTV-X、6日658A estie。初値後の過熱を追わず、セカンダリーの押し目待ち。",
-        "daytrade": "完全不関与デイトレは通常運用。祝日明けで寄り値幅が大きくなりやすく、ロットは抑えめ。",
-        "semicon_miniswing": "SOX+2.63%の反発でVWAP±0.5%の積極帯。ただし直近のSOX急落（-7.2%）後の戻りで寄り高値掴みに注意、押し目優先。"
+        "kenmo_momentum": "CME先物63,220（現物比+1,032円・+1.66%）と明確なギャップアップ想定。寄り直後は飛び付かず、前営業日終値62,188円を上回って維持する確認後に参入。",
+        "kenmo_newhigh": "ダウ+3.03%・S&P+1.58%で地合いは追い風だが、SOX-3.13%と半導体が逆行。出来高を伴う新高値のうち半導体以外を優先。",
+        "choruko_reversal": "日経は前日-1.42%の後で反発局面。逆張りは売られ過ぎ条件を厳格に適用、寄り高の戻り売りに巻き込まれる銘柄は見送り。",
+        "stf_kakuhen": "WTI-7.9%（88.5ドル）でコスト面は大きく緩和。確変初動は寄り後の出来高と強さ確認が前提。",
+        "tenbagger_x": "5日655A LTV-X・6日658A estie上場。初値後の過熱を追わず、セカンダリーの押し目待ち。",
+        "daytrade": "完全不関与デイトレは通常運用。ギャップアップで寄り値幅が大きくなりやすくロット抑えめ。",
+        "semicon_miniswing": "SOX-3.13%で半導体は逆風。VWAP±0.5%の積極帯は適用せず、寄り後の押し目確認まで見送り寄り。"
       },
-      "pattern": "半導体主導リスクオン（急落後の反発・VIX警戒圏）",
-      "note": "SOX+2.63%・ナスダック+0.83%・先物+0.23%で寄りは小幅高想定。ダウ-0.38%・VIX20.83（警戒圏）・USDJPY158.7と円安進行、F&G・地政学ヘッドラインは取得不可。祝日明け（11/3休場）で日経は前営業日11/2終値比の評価。",
+      "pattern": "ダウ・内需主導リスクオン（半導体逆行・原油急落）",
+      "note": "先物+1.66%・ダウ+3.03%・VIX16.6（20%低下）・WTI-7.9%で寄りは大幅高想定だが、SOX-3.13%で日経の半導体寄与は重し。F&G・地政学ヘッドラインは取得不可。",
       "indicators": {
-        "nikkei": 63081.64,
-        "night_futures": 63225,
-        "night_futures_asof": "2026-11-04 06:38 JST（TV遅延600秒）",
-        "night_gap_pct": 0.23,
-        "dow_pct": -0.38,
-        "nasdaq_pct": 0.83,
-        "sp500_pct": 0.36,
-        "sox": 10600.4,
-        "sox_pct": 2.63,
-        "vix": 20.83,
+        "nikkei": 62188.41,
+        "night_futures": 63220,
+        "night_futures_asof": "2026-11-05 06:40 JST（TV遅延600秒）",
+        "night_gap_pct": 1.66,
+        "dow_pct": 3.03,
+        "nasdaq_pct": 1.44,
+        "sp500_pct": 1.58,
+        "sox": 10268.7,
+        "sox_pct": -3.13,
+        "vix": 16.61,
         "fear_greed": null,
-        "usdjpy": 158.725,
-        "wti": 96.89,
-        "wti_pct": 0.45
+        "usdjpy": 158.409,
+        "wti": 88.52,
+        "wti_pct": -7.88
       },
       "data_health": {
         "sox": "tv_scanner",
@@ -1479,7 +1479,7 @@
         "rate_limited": true,
         "tv_scanner": {
           "used": true,
-          "asof": "06:38 JST",
+          "asof": "06:40 JST",
           "update_mode": "delayed_streaming_600/900・streaming",
           "empty": []
         },
@@ -1489,11 +1489,65 @@
         "us_settled": true,
         "us_close_jst": "06:00",
         "night_settled": true,
-        "run_at_jst": "06:39",
+        "run_at_jst": "06:40",
         "excluded": []
       }
     },
     "history": [
+      {
+        "date": "2026-11-05",
+        "market_mode": "堅調",
+        "method_guidance": {
+          "kenmo_momentum": "CME先物63,220（現物比+1,032円・+1.66%）と明確なギャップアップ想定。寄り直後は飛び付かず、前営業日終値62,188円を上回って維持する確認後に参入。",
+          "kenmo_newhigh": "ダウ+3.03%・S&P+1.58%で地合いは追い風だが、SOX-3.13%と半導体が逆行。出来高を伴う新高値のうち半導体以外を優先。",
+          "choruko_reversal": "日経は前日-1.42%の後で反発局面。逆張りは売られ過ぎ条件を厳格に適用、寄り高の戻り売りに巻き込まれる銘柄は見送り。",
+          "stf_kakuhen": "WTI-7.9%（88.5ドル）でコスト面は大きく緩和。確変初動は寄り後の出来高と強さ確認が前提。",
+          "tenbagger_x": "5日655A LTV-X・6日658A estie上場。初値後の過熱を追わず、セカンダリーの押し目待ち。",
+          "daytrade": "完全不関与デイトレは通常運用。ギャップアップで寄り値幅が大きくなりやすくロット抑えめ。",
+          "semicon_miniswing": "SOX-3.13%で半導体は逆風。VWAP±0.5%の積極帯は適用せず、寄り後の押し目確認まで見送り寄り。"
+        },
+        "pattern": "ダウ・内需主導リスクオン（半導体逆行・原油急落）",
+        "note": "先物+1.66%・ダウ+3.03%・VIX16.6（20%低下）・WTI-7.9%で寄りは大幅高想定だが、SOX-3.13%で日経の半導体寄与は重し。F&G・地政学ヘッドラインは取得不可。",
+        "indicators": {
+          "nikkei": 62188.41,
+          "night_futures": 63220,
+          "night_futures_asof": "2026-11-05 06:40 JST（TV遅延600秒）",
+          "night_gap_pct": 1.66,
+          "dow_pct": 3.03,
+          "nasdaq_pct": 1.44,
+          "sp500_pct": 1.58,
+          "sox": 10268.7,
+          "sox_pct": -3.13,
+          "vix": 16.61,
+          "fear_greed": null,
+          "usdjpy": 158.409,
+          "wti": 88.52,
+          "wti_pct": -7.88
+        },
+        "data_health": {
+          "sox": "tv_scanner",
+          "vix": "tv_scanner",
+          "fear_greed": null,
+          "night_futures": "tv_scanner",
+          "night_source": "TV:CME:NIY1!",
+          "wti": "tv_scanner",
+          "rate_limited": true,
+          "tv_scanner": {
+            "used": true,
+            "asof": "06:40 JST",
+            "update_mode": "delayed_streaming_600/900・streaming",
+            "empty": []
+          },
+          "sources": {}
+        },
+        "settlement": {
+          "us_settled": true,
+          "us_close_jst": "06:00",
+          "night_settled": true,
+          "run_at_jst": "06:40",
+          "excluded": []
+        }
+      },
       {
         "date": "2026-11-04",
         "market_mode": "堅調",
@@ -2485,55 +2539,6 @@
           "us_close_jst": "05:00",
           "night_settled": true,
           "run_at_jst": "06:34",
-          "excluded": []
-        }
-      },
-      {
-        "date": "2026-10-01",
-        "market_mode": "レンジ様子見",
-        "method_guidance": {
-          "kenmo_momentum": "大取ナイト+0.54%は小幅高も、NYダウ-0.86%で地合いは割れ気味。寄り後の出来高を確認し、押し目限定で追随。",
-          "kenmo_newhigh": "日経は前日+1.94%で高値圏。新高値ブレイクは出来高を伴う銘柄に絞り、寄り天に注意。",
-          "choruko_reversal": "VIX16.34は中立、F&G29は恐怖圏。逆張りは小ロット・分割で継続。",
-          "stf_kakuhen": "マクロは方向感に乏しく個別材料優先。確変判定は通常運用。",
-          "tenbagger_x": "直近のBB期限銘柄なし。既存銘柄はセカンダリー観察継続。",
-          "daytrade": "完全不関与方針を継続。",
-          "semicon_miniswing": "SOXは横ばい(±0.0%)で方向感なし。VWAP±0.5%の積極帯は使わず、押し目限定・見送り寄り。"
-        },
-        "pattern": "先物乖離",
-        "note": "大取ナイト+0.54%(67,115)に対しNYダウ-0.86%、SOX横ばい、F&G29(恐怖)と材料が割れる。日経は前日+1.94%で高値圏のため寄り高値掴みに注意。WTI+1.07%(90.34)。",
-        "indicators": {
-          "nikkei": 66753.72,
-          "night_futures": 67115.0,
-          "night_futures_asof": "2026-10-01 05:59 JST",
-          "night_gap_pct": 0.54,
-          "dow_pct": -0.86,
-          "nasdaq_pct": 0.24,
-          "sp500_pct": -0.25,
-          "sox": 12628.62,
-          "sox_pct": -0.0,
-          "vix": 16.34,
-          "fear_greed": {
-            "value": 29.2,
-            "label": "Fear"
-          },
-          "usdjpy": 157.33,
-          "wti": 90.34,
-          "wti_pct": 1.07
-        },
-        "data_health": {
-          "sox": "api",
-          "vix": "api",
-          "fear_greed": "search_snippet",
-          "night_futures": "api_niy",
-          "night_source": "NIY=F",
-          "wti": "api"
-        },
-        "settlement": {
-          "us_settled": true,
-          "us_close_jst": "05:00",
-          "night_settled": true,
-          "run_at_jst": "06:35",
           "excluded": []
         }
       }
@@ -8176,14 +8181,15 @@
         "source": "①-9 v5.5"
       },
       "morning_compass": {
-        "generated_at": "2026-11-04T06:39:17.083355+09:00",
-        "trading_day": "2026-11-04",
+        "generated_at": "2026-11-05T06:40:31.390168+09:00",
+        "trading_day": "2026-11-05",
         "status": "done",
         "source": "morning_compass_v10",
-        "memo": "run_at=2026-11-04T06:39:17.083355+09:00",
+        "memo": "run_at=2026-11-05T06:40:31.390168+09:00",
         "missing": [
           "fear_greed",
-          "地政学ヘッドライン"
+          "地政学ヘッドライン",
+          "API(Yahoo)8/9本429→TV補完"
         ]
       },
       "watch_tracker": {

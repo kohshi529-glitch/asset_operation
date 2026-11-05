@@ -8,6 +8,10 @@ fleet PR validator — 夜間・朝のルーティンが出す PR を、正典�
 """
 import argparse, json, re, subprocess, sys, fnmatch
 
+# 2026-11-05: python の json.dumps は NaN／Infinity を書けてしまうが、ブラウザの JSON.parse は受け付けない（①-8 の adx14=NaN で候補ボードが master.json 取得失敗になった）。全 JSON を strict に読む。
+def _reject_const(c):
+    raise ValueError(f"非標準の定数 {c} が含まれている（NaN／Infinity は null にして書く）")
+
 OWNER = "kohshi529-glitch"
 
 # 接頭辞ごとの許可表。正典の厳守条項（変更してよいキー・ファイル）と 2026-10 までの実績から転記。
@@ -55,7 +59,7 @@ def show(ref, path):
     return r.stdout if r.returncode == 0 else None
 
 def detect_indent(raw):
-    try: obj = json.loads(raw)
+    try: obj = json.loads(raw, parse_constant=_reject_const)
     except Exception: return None, None
     body = raw.rstrip("\n")  # 末尾改行の有無は書式破壊とみなさない（ルーティンにより付く／付かないが混在。差分は 1 行）
     for w in (1, 2, 4):
@@ -137,8 +141,8 @@ def main():
         if f.endswith(".json") and f != "master.json":
             raw = show(a.head, f)
             if raw is None: notes.append(f"{f}: 削除"); continue
-            try: json.loads(raw)
-            except Exception as e: fails.append(f"{f} が JSON として読めない: {e}")
+            try: json.loads(raw, parse_constant=_reject_const)
+            except Exception as e: fails.append(f"{f} が JSON として読めない（NaN／Infinity はブラウザの JSON.parse で落ちるため不可）: {e}")
             cap = SIZE_CAPS.get(f) or (GATE_HISTORY_CAP if f.startswith("gate_history/") else None)
             if cap and len(raw.encode("utf-8")) > cap: fails.append(f"{f} が上限 {cap} バイトを超えている（{len(raw.encode('utf-8'))}）")
 

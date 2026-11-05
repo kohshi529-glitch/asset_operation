@@ -399,7 +399,7 @@ details.stgd summary{cursor:pointer;font-weight:700;padding:4px 0}
 <div id='panel-methods' class='panel'></div>
 <div id='panel-granville' class='panel'></div>
 <div id='panel-legend' class='panel'></div>
-<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28 ＋ D24/D25 2026-10-31 ＋ D26 2026-11-01）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
+<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28 ＋ D24/D25 2026-10-31 ＋ D26 2026-11-01 ＋ D27 2026-11-05）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
 </div>
 <button class='fab' id='backtab' onclick='scrollToTabbar()' aria-label='タブバーへ戻る'>▲タブへ戻る</button>
 <script>
@@ -2592,6 +2592,7 @@ function render(d){
   PROF=(d&&d.profile_cache&&typeof d.profile_cache==='object')?d.profile_cache:{};
   try{ MODE=(d.market&&d.market.latest&&d.market.latest.market_mode)||null; }catch(e){ MODE=null; }
   document.getElementById('src').innerHTML="<span class='live'>● LIVE</span> GitHubの最新 master.json を表示中";
+  if(MASTER_FIXED>0){ try{ document.getElementById('src').innerHTML+=`<div style='margin-top:4px'><span class='frchip f1' title='master.json に JSON 規格外の NaN／Infinity があり null として読んだ。書いたルーティン側の不具合（validator が次回から止める）'>⚠ 規格外の値 ${MASTER_FIXED} 件を null として読み込み</span></div>`; }catch(e){} }
   try{ const rr=(d.pipeline&&d.pipeline.runs)||{}; document.getElementById('src').innerHTML+=`<div style='margin-top:4px'>${scanFreshChip('🤖S3',AI_TODAY||((d.ai_scan&&d.ai_scan.base_day)?{base_day:d.ai_scan.base_day}:null),rr.ai_scan,null)}${scanFreshChip('🏠S4',DM_TODAY||((d.dm_scan&&d.dm_scan.base_day)?{base_day:d.dm_scan.base_day}:null),rr.dm_scan,null)}${(d.an_scan||AN_TODAY)?scanFreshChip('🧬S5',AN_TODAY||((d.an_scan&&d.an_scan.base_day)?{base_day:d.an_scan.base_day}:null),rr.an_scan,null):''}</div>`; }catch(e){}
 
   // 市場モードバッジ（date付き）
@@ -2744,14 +2745,21 @@ function normalizeGrades(j){
   }catch(e){}
   return out;
 }
+// D27: python の json.dumps が書く NaN／Infinity（JSON 規格外）で JSON.parse が落ち、「取得失敗」と表示された（2026-11-05 ①-8 の adx14=NaN）。
+// 取得と解析を分け、規格外の定数は null に読み替えてから解析する（値の意味は「取れていない」＝null と同じ）。読み替えた件数は src 行に出す。
+let MASTER_FIXED=0;
+function parseMasterText(t){
+  try{ return JSON.parse(t); }
+  catch(e){ const t2=t.replace(/:\s*(-?Infinity|NaN)(?=\s*[,}\]])/g,m=>{ MASTER_FIXED++; return ': null'; }); if(MASTER_FIXED>0){ try{ return JSON.parse(t2); }catch(e2){ throw new Error('JSON 解析失敗（規格外の定数 '+MASTER_FIXED+' 件を null にしても不可）: '+e2.message.slice(0,120)); } } throw new Error('JSON 解析失敗: '+String(e.message).slice(0,160)); }
+}
 Promise.all([
-  fetch(RAW_URL,{cache:"no-store"}).then(r=>r.ok?r.json():Promise.reject(r.status)),
+  fetch(RAW_URL,{cache:"no-store"}).then(r=>r.ok?r.text():Promise.reject('HTTP '+r.status)).then(parseMasterText),
   fetch(BARS_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>(j&&j.bars&&typeof j.bars==='object')?j.bars:{}).catch(()=>({})),
   fetch(GRADES_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).then(normalizeGrades).catch(()=>normalizeGrades(null)),
   fetch(AI_TODAY_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
   fetch(DM_TODAY_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
   fetch(AN_TODAY_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null)
 ]).then(([d,bars,g,ai,dm,an])=>{ BARS=bars||{}; GRADES=(g&&g.stocks)||{}; SPM=(g&&g.spm)||{}; GRADES_DAY=(g&&g.day)||null; IXMETA=(g&&g.ixmeta)||null; AI_TODAY=(ai&&typeof ai==='object')?ai:null; DM_TODAY=(dm&&typeof dm==='object')?dm:null; AN_TODAY=(an&&typeof an==='object')?an:null; render(d); })
-.catch(e=>{document.getElementById('src').innerHTML="<span class='snap'>● 取得失敗</span> master.jsonを取得できませんでした。再読み込みしてください。("+esc(e)+")";});
+.catch(e=>{document.getElementById('src').innerHTML="<span class='snap'>● 取得失敗</span> master.json の取得または描画に失敗しました。再読み込みしてください。("+esc((e&&e.stack)||e).slice(0,400)+")";});
 </script>
 </body></html>

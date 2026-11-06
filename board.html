@@ -338,6 +338,13 @@ footer{color:#8fb3ad;font-size:12px;text-align:center;margin-top:30px}
 .step.next .l{color:#ffe08a;font-weight:700}.step .n{color:#9fb3c8;font-size:11.5px;flex-basis:100%;padding-left:94px}
 .ustab{width:100%;border-collapse:collapse;font-size:12px;margin:4px 0}.ustab th,.ustab td{padding:4px 6px;border-bottom:1px solid #1d3a40;text-align:right;white-space:nowrap}.ustab th{color:#9fb3c8;font-weight:600}.ustab td:first-child,.ustab th:first-child{text-align:left}
 .ustab .g{color:#9fb3c8;font-size:11px}
+ /* D28: 打率 */
+.sigax{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.sigax button{font-size:12px;border-radius:8px;padding:5px 9px;border:1px solid #2b3d4f;background:#122029;color:#d7e3ee;cursor:pointer}
+.sigax button.on{border-color:#48e0b0;color:#48e0b0;font-weight:700}
+.sigtab{width:100%;border-collapse:collapse;font-size:12px;margin:4px 0}.sigtab th,.sigtab td{padding:4px 6px;border-bottom:1px solid #1d3a40;text-align:right;white-space:nowrap}.sigtab th{color:#9fb3c8;font-weight:600;position:sticky;top:0;background:#0b1620}.sigtab td:first-child,.sigtab th:first-child{text-align:left;white-space:normal}
+.sigtab tr.thin td{color:#6b7c8c}.sigtab tr.thin td:first-child::after{content:' 参考';font-size:10px;color:#6b7c8c}
+.sigbar{display:inline-block;height:8px;border-radius:2px;background:#48e0b0;vertical-align:middle;margin-left:4px}.sigbar.n{background:#ff6b6b}
 .frchip{display:inline-flex;gap:6px;align-items:baseline;font-size:11.5px;font-weight:700;border-radius:6px;padding:3px 9px;margin:2px 6px 6px 0;border:1px solid #3a4a5a;background:#1b2630;color:#d7e3ee}
 .frchip.f0{border-color:#48e0b0;color:#48e0b0}.frchip.f1{border-color:#e8c766;color:#e8c766}.frchip.f2{border-color:#ff8c8c;color:#ff8c8c}.frchip.fx{border-color:#555;color:#889}
 .frchip small{font-weight:500;color:#9fb3c8}
@@ -377,6 +384,7 @@ details.stgd summary{cursor:pointer;font-weight:700;padding:4px 0}
 <button id='tab-ai' onclick="switchTab('ai')">🤖AI特需</button>
 <button id='tab-dm' onclick="switchTab('dm')">🏠内需</button>
 <button id='tab-an' onclick="switchTab('an')">🧬アンソロ</button>
+<button id='tab-sig' onclick="switchTab('sig')">📈打率</button>
 <button id='tab-hold' onclick="switchTab('hold')">🧳保有</button>
 <button id='tab-changepoint' onclick="switchTab('changepoint')">🔔変化点</button>
 <button id='tab-methods' onclick="switchTab('methods')">📋5手法</button>
@@ -394,12 +402,13 @@ details.stgd summary{cursor:pointer;font-weight:700;padding:4px 0}
 <div id='panel-ai' class='panel'></div>
 <div id='panel-dm' class='panel'></div>
 <div id='panel-an' class='panel'></div>
+<div id='panel-sig' class='panel'></div>
 <div id='panel-hold' class='panel'></div>
 <div id='panel-changepoint' class='panel'></div>
 <div id='panel-methods' class='panel'></div>
 <div id='panel-granville' class='panel'></div>
 <div id='panel-legend' class='panel'></div>
-<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28 ＋ D24/D25 2026-10-31 ＋ D26 2026-11-01 ＋ D27 2026-11-05）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
+<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28 ＋ D24/D25 2026-10-31 ＋ D26 2026-11-01 ＋ D27 2026-11-05 ＋ D28 2026-11-06）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
 </div>
 <button class='fab' id='backtab' onclick='scrollToTabbar()' aria-label='タブバーへ戻る'>▲タブへ戻る</button>
 <script>
@@ -489,6 +498,9 @@ let DM_TODAY = null;
 // D24: ①-S5 アンソロスキャン v1.0（期間限定 2026-11-02〜12-18）が毎夜全置換する公開ファイル（15 銘柄・3 層のステータス・イベント計の推移）。取得失敗しても描画は続く。
 const AN_TODAY_URL = "https://kohshi529-glitch.github.io/asset_operation/an_scan_today.json";
 let AN_TODAY = null;
+// D28: ①-13 打率台帳が毎夜全置換する集計（判定の軸・掛け合わせごとの n・hit5・CI・avg）。台帳本体（signal_log/）はボードでは読まない
+const SIG_STATS_URL = "https://kohshi529-glitch.github.io/asset_operation/signal_stats.json";
+let SIG_STATS = null;
 let BARS = {};      // code -> [[d,o,h,l,c],...]
 let GRADES = {};    // grades.json の stocks（code -> {per,spm,vg,nc,eqr,sec,...}）
 let SPM = {};       // grades.json の meta.sector_per_median（業種 -> [中央値PER, 母数n]）
@@ -851,7 +863,7 @@ function scrollToTabbar(){
   scrollToY(absTop(tb)-TAB_OFFSET);
 }
 function switchTab(which){
-  ['nightgate','changepoint','methods','granville','ai','dm','an','watch','hold','legend'].forEach(t=>{
+  ['nightgate','changepoint','methods','granville','ai','dm','an','sig','watch','hold','legend'].forEach(t=>{
     const p=document.getElementById('panel-'+t), b=document.getElementById('tab-'+t);
     if(!p||!b)return;
     const on=(t===which);
@@ -2065,6 +2077,33 @@ function renderAnEvent(a){
     ${log.length?`<div class='rotbars'>${bars}</div><div class='meta'>直近 ${esc(Math.min(40,log.length))} 営業日の「①ベータ − 日経ETF」（基準日比の差・緑＝関連株が指数より強い・赤＝弱い）。数字と推移だけで「期待で上がった／出尽くし」の判定はしない。</div>`:`<div class='meta'>推移は 2 夜目から。</div>`}
   </div>`;
 }
+// ===== D28: 📈打率 タブ（①-13 打率台帳の集計 signal_stats.json） =====
+const SIG_AXES=[['verdict','ゲート判定'],['ctx','文脈'],['pattern','形態'],['gy','業績'],['val','値頃感'],['stage','熟成ステージ'],['branch','手法ブランチ'],['entry_type','発注型'],['adx','ADX帯'],['dev25','25MA乖離帯'],['rs20','RS20'],['sleep','寝た日数'],['case','ケース'],['perfect_order','PO'],['proposed','提案の有無'],['src','出所']];
+let SIG_AXIS='verdict', SIG_H='5';
+function sigCellRow(label,c,h){ const hit=c['hit'+h], ci=c['ci'+h], avg=c['avg'+h], n=(h==='15'?c.n15:c.n)||0; const thin=c.thin||n<30; const w=(hit==null)?0:Math.round(Math.min(100,hit)*0.6); return `<tr class='${thin?'thin':''}'><td>${esc(label)}</td><td>${esc(n)}</td><td>${hit==null?'—':esc(num1(hit))+'%'}<span class='sigbar${hit!=null&&hit<50?' n':''}' style='width:${w}px'></span></td><td>${ci==null?'—':'±'+esc(num1(ci))}</td><td class='${avg>=0?'pos':'neg'}'>${avg==null?'—':(avg>0?'+':'')+esc(num1(avg))}%</td><td>${h==='5'?(c.ex5==null?'—':(c.ex5>0?'+':'')+esc(num1(c.ex5))+'pt'):(c.mfe15_avg==null?'—':'+'+esc(num1(c.mfe15_avg))+'/'+esc(num1(c.mae15_avg))+'%')}</td></tr>`; }
+function sigTable(obj,h,sortKey){ const rows=Object.entries(obj||{}); if(!rows.length) return `<div class='empty'>この軸はまだ行がありません（熟成ステージは scan 行が T+5 に達する 11 月中旬から）。</div>`; rows.sort((a,b)=>{ const na=(h==='15'?a[1].n15:a[1].n)||0, nb=(h==='15'?b[1].n15:b[1].n)||0; if(sortKey==='n') return nb-na; const ha=a[1]['hit'+h], hb=b[1]['hit'+h]; return (hb==null?-1:hb)-(ha==null?-1:ha)||nb-na; }); return `<div style='overflow-x:auto;max-height:420px;overflow-y:auto'><table class='sigtab'><thead><tr><th>値</th><th>n</th><th>hit T+${esc(h)}</th><th>95%CI</th><th>avg T+${esc(h)}</th><th>${h==='5'?'vs 日経':'MFE/MAE 15'}</th></tr></thead><tbody>${rows.map(([k,c])=>sigCellRow(k,c,h)).join('')}</tbody></table></div>`; }
+function sigRender(){ const p=document.getElementById('sig-body'); if(!p||!SIG_STATS) return; const ax=SIG_STATS.axes||{}; p.innerHTML=sigTable(ax[SIG_AXIS],SIG_H,'n'); document.querySelectorAll('.sigax button[data-ax]').forEach(b=>b.classList.toggle('on',b.dataset.ax===SIG_AXIS)); document.querySelectorAll('.sigax button[data-h]').forEach(b=>b.classList.toggle('on',b.dataset.h===SIG_H)); }
+function sigSetAxis(a){ SIG_AXIS=a; sigRender(); }
+function sigSetH(h){ SIG_H=h; sigRender(); }
+function renderSigStats(d){
+  const runs=(d.pipeline&&d.pipeline.runs)||{}; const s=SIG_STATS; const m=(s&&s.meta)||{};
+  const note=`<div class='cpnote'>①-13 打率台帳（平日 21:40）が、毎夜の判定（①-8 ゲート判定 7 種・文脈 ctx・形態 patterns・業績・値頃感・手法ブランチ、①-S3/S4/S5 の熟成ステージ・RS20）を 1 行ずつ台帳に残し、5 営業日後・15 営業日後に <b>T+1／T+5／T+15 の終値リターン</b>と期間中の最大上昇／最大下落を埋め戻す。ここに出るのはその集計。<b>hit＝T+n 終値が判定日終値を上回った割合（定義）</b>で、約定・SL・滑りを含まない「判定直後の値動きの事実」。①-11 の仮想約定（R 倍数）とは別物。n&lt;30 は参考値（灰色）。評価・推奨ではない。売買判断はユーザー。</div>`;
+  const fresh=scanFreshChip('📈①-13',s?{base_day:m.base_day,generated_at:m.generated_at,version:m.version}:null,runs.signal_log,s?`台帳 ${esc(m.rows_total||0)} 行・T+5 ${esc(m.rows_t5||0)}・T+15 ${esc(m.rows_t15||0)}・${esc(m.nights||0)} 夜`:'stats なし');
+  if(!s) return note+fresh+`<div class='empty'>signal_stats.json がありません（①-13 の初回実行前、または取得失敗）。初回は手動実行で 9/24 以降のゲート判定が遡及されます。</div>`;
+  const b=(s.baseline&&s.baseline.all)||{}; const sign=(v,u)=>v==null?'—':`<span class='${v>=0?'pos':'neg'}'>${v>0?'+':''}${esc(num1(v))}${u||''}</span>`;
+  const base=`<div class='cpsec'><h3>基準（全行・${esc(m.first_day||'—')}〜${esc(m.last_day||'—')}）</h3><div class='rot'><span class='big'>${b.hit5==null?'—':esc(num1(b.hit5))+'%'}</span><span class='lbl'>hit T+5（n${esc(b.n||0)}・±${esc(num1(b.ci5))}）</span><span>${sign(b.avg5,'%')}<span class='lbl'> avg T+5</span></span><span>${sign(s.baseline.nk_avg5,'%')}<span class='lbl'> 日経 avg T+5</span></span><span>${b.hit15==null?'—':esc(num1(b.hit15))+'%'}<span class='lbl'> hit T+15（n${esc(b.n15||0)}）</span></span><span>${sign(b.avg15,'%')}<span class='lbl'> avg T+15</span></span></div><div class='meta'>出所別の行数: ${esc(Object.entries(m.src_counts||{}).map(([k,v])=>k+' '+v).join('・')||'—')}。基準より高い／低いセルを見る用途。基準そのものは相場環境で動く。</div></div>`;
+  const axBtns=`<div class='sigax'>${SIG_AXES.map(([k,l])=>`<button data-ax='${k}' onclick="sigSetAxis('${k}')">${esc(l)}</button>`).join('')}</div><div class='sigax'><span class='meta'>期間:</span><button data-h='5' onclick="sigSetH('5')">T+5</button><button data-h='15' onclick="sigSetH('15')">T+15</button></div>`;
+  const axes=`<div class='cpsec'><h3>軸ごと（n の多い順）</h3>${axBtns}<div id='sig-body'></div></div>`;
+  const combos=s.combos||{}; const flat=[]; Object.entries(combos).forEach(([ck,obj])=>Object.entries(obj||{}).forEach(([k,c])=>{ if((c.n||0)>=30&&c.hit5!=null) flat.push([ck+'｜'+k,c]); }));
+  flat.sort((a,b)=>b[1].hit5-a[1].hit5||b[1].n-a[1].n);
+  const top=flat.slice(0,12), bot=flat.slice(-12).reverse();
+  const tbl=(rows,h)=>rows.length?`<div style='overflow-x:auto'><table class='sigtab'><thead><tr><th>掛け合わせ</th><th>n</th><th>hit T+5</th><th>95%CI</th><th>avg T+5</th><th>vs 日経</th></tr></thead><tbody>${rows.map(([k,c])=>sigCellRow(k,c,'5')).join('')}</tbody></table></div>`:`<div class='empty'>n≥30 の掛け合わせがまだありません。</div>`;
+  const combo=`<div class='cpsec'><h3>掛け合わせ（2 軸・n≥30・T+5）</h3><div class='meta'>hit5 の高い順 12</div>${tbl(top)}<div class='meta' style='margin-top:8px'>hit5 の低い順 12</div>${tbl(bot)}<div class='meta'>${esc(flat.length)} セルが n≥30。掛け合わせの n は薄いので CI の幅を見る。</div></div>`;
+  const tr=s.triples||{}; const tflat=[]; Object.entries(tr).forEach(([ck,obj])=>Object.entries(obj||{}).forEach(([k,c])=>{ if((c.n||0)>=30&&c.hit5!=null) tflat.push([ck+'｜'+k,c]); })); tflat.sort((a,b)=>b[1].hit5-a[1].hit5||b[1].n-a[1].n);
+  const triple=`<div class='cpsec'><h3>3 軸（n≥30 のみ・T+5）</h3>${tflat.length?tbl(tflat.slice(0,15)):`<div class='empty'>n≥30 の 3 軸セルはまだありません。</div>`}</div>`;
+  setTimeout(sigRender,0);
+  return note+fresh+base+axes+combo+triple;
+}
 function renderAnTriggers(a){
   const tr=(a&&Array.isArray(a.triggers))?a.triggers:[]; const log=(a&&Array.isArray(a.trigger_log))?a.trigger_log:[];
   const KIND={T1:'🇺🇸米株',T2:'🧬ANT',T3:'層',T4:'銘柄',T5:'🪜ステップ',T6:'信号'};
@@ -2448,6 +2487,8 @@ function renderLegend(){
     ${tr.map(row).join('')}
     <h3>💴 配当・🎁優待・📆権利対象（D8）</h3>
     <div class='note'>💴チップ＝①-8 v1.38 が kabutan の既読ページから読んだ予想配当（年間または中間／期末）と、minkabu の優待ページで確かめた優待の有無・優待権利月（grades.json の fy/rm/dvi/dvf/dva/yt/ym）。未取得の銘柄には出ない（初回は保有・PASS から順に埋まる）。<br>📆権利対象チップ＝今日〜次の営業日に権利付き最終日／権利落ち日があり、かつその月がこの銘柄の権利月（配当または優待）に含まれるときだけ出る。「現在値→落ち後目安（−x円・−y%）」は該当する配当を現在値から引いたもので、公表値からの計算（推定ではない）。優待分は含まないので、🎁付きの銘柄は目安より大きく落ちうる。「直近5日 ±z%」は権利取り前に上がってきた幅（pool_bars の直近5本）で、落ち後に剥落しうる分の目安。SL との比較は出さない（stop の反映は実弾ボード側の運用に依存するため）。権利月が未取得の銘柄は「📆権利月不明」。権利月が違う銘柄には何も出ない（＝今回の権利落ちの影響は限定的）。</div>
+    <h3>📈 打率タブ（D28）</h3>
+    <div class='note'>①-13 打率台帳（平日 21:40）の集計 signal_stats.json を表示。台帳は「判定 1 件＝1 行」で、ゲート判定（PASS／FAIL_*）・文脈・形態・業績・値頃感・手法ブランチ・熟成ステージ・RS20 を判定日に記録し、T+1／T+5／T+15 の終値リターンと 15 日間の最大上昇／最大下落を後から埋める。hit＝T+n 終値が判定日終値を上回った割合（定義）。約定・SL・滑りを含まないので ①-11 の R 倍数とは別物。n&lt;30 は参考値として灰色。基準（全体・日経）との差で読む。初回は 2026-09-24 以降のゲート判定を遡及、熟成ステージは 11/6 以降の蓄積。評価・推奨ではない。</div>
     <h3>🏢 AI特需ユニバース v2（D26）</h3>
     <div class='note'>ai_universe.json v2 で 🏢大型・指数寄与 29 銘柄（装置 6857・8035・6146・6920・7735・6525／電機SI 6501・6702・6701・6503・6758／素材部品 3436・6723・6762・6971・6988・7741／電線光 5803・5801・5802／投資通信 9984・9433・9434／電力重電 7011・9501・9503／FA 6861・6954・6594）を追加。狙いは AI 界隈の激動で指数と一緒に売られた大型を、ちょる子式（プライム・時価総額 1000 億↑・RSI≤30・乖離 ≤−10%）に近い ①-S3 の逆張り R2（25MA 乖離 ≤−8%・RSI≤35・200MA 上向き）／R3（乖離 ≤−15%・52 週下位・反発陽線）で拾うこと。順張り・熟成ステージも同じ器で付く。AI 特需タブの「波の点灯」に 🏢 が 1 枠増える。判定・順位は変えない。</div>
     <h3>🔔🪜🇺🇸 アンソロタブの追加表示（D25）</h3>
@@ -2691,6 +2732,7 @@ function render(d){
   try{ document.getElementById('panel-ai').innerHTML=renderAiScan(d); }catch(e){ document.getElementById('panel-ai').innerHTML=`<div class='empty'>🤖AI特需タブの描画エラー: ${esc((e&&e.message)||e)}</div>`; }
   try{ document.getElementById('panel-dm').innerHTML=renderDmScan(d); }catch(e){ document.getElementById('panel-dm').innerHTML=`<div class='empty'>🏠内需タブの描画エラー: ${esc((e&&e.message)||e)}</div>`; }
   try{ document.getElementById('panel-an').innerHTML=renderAnScan(d); }catch(e){ document.getElementById('panel-an').innerHTML=`<div class='empty'>🧬アンソロタブの描画エラー: ${esc((e&&e.message)||e)}</div>`; }
+  try{ document.getElementById('panel-sig').innerHTML=renderSigStats(d); }catch(e){ document.getElementById('panel-sig').innerHTML=`<div class='empty'>📈打率タブの描画エラー: ${esc((e&&e.message)||e)}</div>`; }
 
   // ===== タブ③: 📋5手法銘柄（既存「手法別ボード」を移設・ロジック不変） =====
   const jump1=`<div class='jump'>
@@ -2758,8 +2800,9 @@ Promise.all([
   fetch(GRADES_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).then(normalizeGrades).catch(()=>normalizeGrades(null)),
   fetch(AI_TODAY_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
   fetch(DM_TODAY_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
-  fetch(AN_TODAY_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null)
-]).then(([d,bars,g,ai,dm,an])=>{ BARS=bars||{}; GRADES=(g&&g.stocks)||{}; SPM=(g&&g.spm)||{}; GRADES_DAY=(g&&g.day)||null; IXMETA=(g&&g.ixmeta)||null; AI_TODAY=(ai&&typeof ai==='object')?ai:null; DM_TODAY=(dm&&typeof dm==='object')?dm:null; AN_TODAY=(an&&typeof an==='object')?an:null; render(d); })
+  fetch(AN_TODAY_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
+  fetch(SIG_STATS_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null)
+]).then(([d,bars,g,ai,dm,an,sg])=>{ BARS=bars||{}; GRADES=(g&&g.stocks)||{}; SPM=(g&&g.spm)||{}; GRADES_DAY=(g&&g.day)||null; IXMETA=(g&&g.ixmeta)||null; AI_TODAY=(ai&&typeof ai==='object')?ai:null; DM_TODAY=(dm&&typeof dm==='object')?dm:null; AN_TODAY=(an&&typeof an==='object')?an:null; SIG_STATS=(sg&&typeof sg==='object')?sg:null; render(d); })
 .catch(e=>{document.getElementById('src').innerHTML="<span class='snap'>● 取得失敗</span> master.json の取得または描画に失敗しました。再読み込みしてください。("+esc((e&&e.stack)||e).slice(0,400)+")";});
 </script>
 </body></html>

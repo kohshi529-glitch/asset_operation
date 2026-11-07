@@ -1,0 +1,106 @@
+{
+ "meta": {
+  "version": 1,
+  "updated": "2026-11-07",
+  "note": "SR 観測（⑤ v11）が読む公開日程。保有銘柄の期日は載せない。status: confirmed＝公式日程／reported＝報道・通例（要確認）。追加・修正はメンテナンス PR",
+  "kinds": [
+   "BOJ",
+   "FOMC",
+   "SQ",
+   "US_CPI",
+   "US_JOBS",
+   "TOPIX_STEP",
+   "JPX_FLOWS",
+   "MSCI",
+   "US_POLITICS",
+   "OTHER"
+  ]
+ },
+ "events": [
+  {
+   "date": "2026-11-12",
+   "kind": "US_POLITICS",
+   "what": "米民主党会合（〜11/14・報道）",
+   "status": "reported"
+  },
+  {
+   "date": "2026-11-13",
+   "kind": "SQ",
+   "what": "11月限 SQ（第2金曜）",
+   "status": "confirmed"
+  },
+  {
+   "date": "2026-11-13",
+   "kind": "US_CPI",
+   "what": "米 10月 CPI（通例 第2週・要確認）",
+   "status": "reported"
+  },
+  {
+   "date": "2026-11-19",
+   "kind": "OTHER",
+   "what": "NVIDIA 決算（通例 11月第3週・要確認）",
+   "status": "reported"
+  },
+  {
+   "date": "2026-12-04",
+   "kind": "US_JOBS",
+   "what": "米 11月 雇用統計（第1金曜）",
+   "status": "reported"
+  },
+  {
+   "date": "2026-12-08",
+   "kind": "FOMC",
+   "what": "FOMC（〜12/9）",
+   "status": "confirmed"
+  },
+  {
+   "date": "2026-12-10",
+   "kind": "US_CPI",
+   "what": "米 11月 CPI（要確認）",
+   "status": "reported"
+  },
+  {
+   "date": "2026-12-11",
+   "kind": "SQ",
+   "what": "12月限 メジャー SQ（第2金曜）",
+   "status": "confirmed"
+  },
+  {
+   "date": "2026-12-17",
+   "kind": "BOJ",
+   "what": "日銀金融政策決定会合（〜12/18）",
+   "status": "confirmed"
+  },
+  {
+   "date": "2027-01-08",
+   "kind": "US_JOBS",
+   "what": "米 12月 雇用統計",
+   "status": "reported"
+  },
+  {
+   "date": "2027-01-21",
+   "kind": "BOJ",
+   "what": "日銀金融政策決定会合（〜1/22・要確認）",
+   "status": "reported"
+  },
+  {
+   "date": "2027-01-26",
+   "kind": "FOMC",
+   "what": "FOMC（〜1/27・要確認）",
+   "status": "reported"
+  },
+  {
+   "date": "2027-01-29",
+   "kind": "TOPIX_STEP",
+   "what": "TOPIX 段階的ウエイト低減（四半期末・通例）",
+   "status": "reported"
+  }
+ ],
+ "weekly": [
+  {
+   "kind": "JPX_FLOWS",
+   "dow": "Thu",
+   "what": "JPX 投資主体別売買動向（木曜公表）"
+  }
+ ]
+}

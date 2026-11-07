@@ -37,10 +37,11 @@ h1{font-size:22px;margin:6px 0 2px}
 .kpi .l{font-size:10.5px;color:#8fb3ad;margin-top:0;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media (max-width:480px){ .kpis{grid-template-columns:repeat(4,1fr);gap:5px} .kpi{padding:4px 6px} .kpi .n{font-size:15px} .kpi .l{font-size:10px} }
 /* メインタブバー（JS切替・ページ遷移なし）。スクロールしても上部に残す。 */
-.maintabs{position:sticky;top:0;z-index:20;display:flex;gap:8px;background:#0d1b1e;padding:10px 0;border-bottom:1px solid #1d3a40;margin-bottom:14px}
+.maintabs{position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;gap:8px;background:#0d1b1e;padding:10px 0;border-bottom:1px solid #1d3a40;margin-bottom:14px}
 .maintabs button{flex:1 0 auto;white-space:nowrap;background:#12292e;border:1px solid #1d3a40;color:#e6f4f1;padding:10px 12px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:background .12s,border-color .12s}
 /* D5: タブが7つになったので、狭い画面では横スクロール（縦書きに潰さない） */
-@media (max-width:560px){ .maintabs{overflow-x:auto;-webkit-overflow-scrolling:touch;gap:6px;scrollbar-width:none} .maintabs::-webkit-scrollbar{display:none} .maintabs button{flex:0 0 auto;padding:8px 10px;font-size:13px} }
+/* D29: スマホは横スクロールをやめて折り返し（ゲート〜凡例の全タブを 1 画面で選べる）。sticky は維持。 */
+@media (max-width:560px){ .maintabs{flex-wrap:wrap;gap:6px;padding:8px 0;row-gap:6px} .maintabs button{flex:0 1 auto;padding:7px 9px;font-size:12.5px;border-radius:8px;line-height:1.2} }
 .maintabs button.active{background:#123d33;border-color:#1fb6a6;color:#7fe3d6}
 .panel{display:none}.panel.active{display:block}
 /* ジャンプボタン行（横スクロール可のチップ型） */
@@ -408,7 +409,7 @@ details.stgd summary{cursor:pointer;font-weight:700;padding:4px 0}
 <div id='panel-methods' class='panel'></div>
 <div id='panel-granville' class='panel'></div>
 <div id='panel-legend' class='panel'></div>
-<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28 ＋ D24/D25 2026-10-31 ＋ D26 2026-11-01 ＋ D27 2026-11-05 ＋ D28 2026-11-06）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
+<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28 ＋ D24/D25 2026-10-31 ＋ D26 2026-11-01 ＋ D27 2026-11-05 ＋ D28 2026-11-06 ＋ D29 2026-11-08）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
 </div>
 <button class='fab' id='backtab' onclick='scrollToTabbar()' aria-label='タブバーへ戻る'>▲タブへ戻る</button>
 <script>
@@ -2487,6 +2488,8 @@ function renderLegend(){
     ${tr.map(row).join('')}
     <h3>💴 配当・🎁優待・📆権利対象（D8）</h3>
     <div class='note'>💴チップ＝①-8 v1.38 が kabutan の既読ページから読んだ予想配当（年間または中間／期末）と、minkabu の優待ページで確かめた優待の有無・優待権利月（grades.json の fy/rm/dvi/dvf/dva/yt/ym）。未取得の銘柄には出ない（初回は保有・PASS から順に埋まる）。<br>📆権利対象チップ＝今日〜次の営業日に権利付き最終日／権利落ち日があり、かつその月がこの銘柄の権利月（配当または優待）に含まれるときだけ出る。「現在値→落ち後目安（−x円・−y%）」は該当する配当を現在値から引いたもので、公表値からの計算（推定ではない）。優待分は含まないので、🎁付きの銘柄は目安より大きく落ちうる。「直近5日 ±z%」は権利取り前に上がってきた幅（pool_bars の直近5本）で、落ち後に剥落しうる分の目安。SL との比較は出さない（stop の反映は実弾ボード側の運用に依存するため）。権利月が未取得の銘柄は「📆権利月不明」。権利月が違う銘柄には何も出ない（＝今回の権利落ちの影響は限定的）。</div>
+    <h3>📱 タブバーの折り返し（D29）</h3>
+    <div class='note'>タブバーを横スクロールではなく折り返し表示にし（全幅。560px 以下は詰め表示）、🚪ゲート〜📖凡例の 11 タブを 1 画面で選べるようにした。上端固定（sticky）は維持。他は不変。</div>
     <h3>📈 打率タブ（D28）</h3>
     <div class='note'>①-13 打率台帳（平日 21:40）の集計 signal_stats.json を表示。台帳は「判定 1 件＝1 行」で、ゲート判定（PASS／FAIL_*）・文脈・形態・業績・値頃感・手法ブランチ・熟成ステージ・RS20 を判定日に記録し、T+1／T+5／T+15 の終値リターンと 15 日間の最大上昇／最大下落を後から埋める。hit＝T+n 終値が判定日終値を上回った割合（定義）。約定・SL・滑りを含まないので ①-11 の R 倍数とは別物。n&lt;30 は参考値として灰色。基準（全体・日経）との差で読む。初回は 2026-09-24 以降のゲート判定を遡及、熟成ステージは 11/6 以降の蓄積。評価・推奨ではない。</div>
     <h3>🏢 AI特需ユニバース v2（D26）</h3>

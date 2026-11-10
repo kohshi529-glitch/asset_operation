@@ -1440,146 +1440,304 @@
   },
   "market": {
     "latest": {
-      "date": "2026-11-10",
-      "market_mode": "強気ギャップアップ",
+      "date": "2026-11-11",
+      "market_mode": "軟調",
       "method_guidance": {
-        "kenmo_momentum": "急落後の戻り局面。寄りの飛びつきは避け、前夜ゲート通過銘柄のみ押しで検討。ギャップ幅が大きく損切り幅を要確認。",
-        "kenmo_newhigh": "指数は高値圏から遠く新高値銘柄は限定的。ゲート通過かつ出来高伴う銘柄のみ。寄り高値掴みは見送り。",
-        "choruko_reversal": "急落の反発一巡後の戻り売り・逆張りは慎重。反転確認（寄り後30分）まで待ち、押し目は小ロット。",
-        "stf_kakuhen": "先物+3.6%の窓開け。初動は寄り直後の値動き確認後に限定し、追随は小ロット。",
-        "tenbagger_x": "IPO関連はBB期限・上場日のアラート確認を優先。地合い好転だが寄り値の過熱に注意。",
-        "daytrade": "完全不関与デイトレは寄り直後のボラ過大のため見送り寄り。引け前の落ち着きを待つ。",
-        "semicon_miniswing": "SOX+6.9%で強気モード。VWAP±0.5%の積極帯で押し目検討。ただしSOXは25日線下で戻り局面（上値重い想定）。"
+        "kenmo_momentum": "前日+2.87%急伸後で先物−0.6%＝寄り反落想定。寄り天を避け、前場押し目で出来高を伴う再上昇のみ。",
+        "kenmo_newhigh": "新高値ブレイク銘柄は寄りの利確売りを一巡させてから。高値更新後の初押しを待つ。",
+        "choruko_reversal": "指数は急騰直後でリバーサル対象は少ない。前日売られた内需・REIT（−0.8%）の下げ止まり確認程度。",
+        "stf_kakuhen": "①AI半導体群が1M相対−16.7ptと劣後継続。確変初動の判定は見送り寄り、出来高急増銘柄の監視のみ。",
+        "tenbagger_x": "HiJoJo（657A）BB本日11/11締切・TOKIUM（664A）BB〜11/13。Anthropic IPO価格決定11/13予定（pending）でグロース資金の動向に注意。",
+        "daytrade": "寄りギャップダウン後の戻り方向を見極め。前日高値圏の戻り売りに注意、逆張りは小ロット。",
+        "semicon_miniswing": "SOX−0.35%・25日線データ欠損。軟調モードのため見送り。"
       },
-      "pattern": "半導体主導リスクオン（急落後のリバウンド）",
-      "note": "先物+3.6%・SOX+6.9%の急反発だがSOXは25日線下・VIX約20と高止まり。寄り高値掴みに警戒（前週は-6%急落直後）。",
+      "pattern": "先物乖離（前日現物急伸の反動）",
+      "note": "日経は前日+2.87%（60,459）と急伸したが、NY小幅安を受け先物は60,085（−0.62%）。寄りは反落スタート想定、前日上昇分の利確に注意。",
       "indicators": {
-        "nikkei": 58775.28,
-        "night_futures": 60865.0,
-        "night_futures_asof": "2026-11-10 06:37 JST",
-        "night_gap_pct": 3.56,
-        "dow_pct": 2.15,
-        "nasdaq_pct": 2.74,
-        "sp500_pct": 2.35,
-        "sox": 10033.93,
-        "sox_pct": 6.85,
-        "vix": 19.92,
+        "nikkei": 60459.36,
+        "night_futures": 60085,
+        "night_futures_asof": "2026-11-11 06:41 JST",
+        "night_gap_pct": -0.62,
+        "dow_pct": -0.3,
+        "nasdaq_pct": -0.74,
+        "sp500_pct": -0.38,
+        "sox": 9998.33,
+        "sox_pct": -0.35,
+        "vix": 19.46,
         "fear_greed": null,
-        "usdjpy": 157.93,
-        "wti": 87.08,
-        "wti_pct": -4.13
+        "usdjpy": 158.77,
+        "wti": 86.43,
+        "wti_pct": -0.48
       },
       "data_health": {
-        "sox": "api",
-        "vix": "api",
+        "sox": "tv_scanner",
+        "vix": "tv_scanner",
         "fear_greed": null,
-        "night_futures": "api_niy",
-        "night_source": "NIY=F",
-        "wti": "api",
-        "rate_limited": false,
+        "night_futures": "tv_scanner",
+        "night_source": "TV:CME:NIY1!",
+        "wti": "tv_scanner",
+        "rate_limited": true,
         "tv_scanner": {
           "used": true,
-          "asof": "06:37 JST",
-          "update_mode": "streaming/delayed",
+          "asof": "06:41 JST",
+          "update_mode": "streaming/delayed_streaming_600-900",
           "empty": []
         },
         "sources": {
-          "nikkei": "TV scanner TVC:NI225（yfinanceに11/9足なし）"
+          "all": "Yahoo query1 9本すべてHTTP 429（60秒待機後の再試行も0本）→ TV scanner で9本取得",
+          "ose_check": "OSE:NK2251! 60060（-0.66%）・API代替値との乖離0.04%"
         }
       },
       "settlement": {
         "us_settled": true,
         "us_close_jst": "06:00",
         "night_settled": true,
-        "run_at_jst": "06:37",
+        "run_at_jst": "06:43",
         "excluded": []
       },
       "sr": {
-        "d": "2026-11-10",
+        "d": "2026-11-11",
         "regime": "R-A",
         "status": "暫定",
         "g": {
           "g1": {
-            "w": -6.8,
-            "m1": -17.6,
-            "m3": -16.7,
-            "m6": -23.5
+            "w": -5.4,
+            "m1": -16.7,
+            "m3": -16.4,
+            "m6": -24.0
           },
           "g2": {
-            "w": -0.3,
-            "m1": 2.4,
-            "m3": 6.5,
-            "m6": 17.9
+            "w": 0.4,
+            "m1": 3.2,
+            "m3": 6.0,
+            "m6": 19.2
           },
           "g3": {
-            "w": 1.5,
-            "m1": 4.1,
-            "m3": 2.9,
-            "m6": 12.0
+            "w": 1.8,
+            "m1": 4.4,
+            "m3": 4.4,
+            "m6": 12.5
           },
           "g4": {
-            "w": 2.6,
-            "m1": 10.6,
-            "m3": 9.3,
+            "w": 0.7,
+            "m1": 8.6,
+            "m3": 8.1,
             "m6": 7.3
           },
           "g5": {
-            "w": 1.5,
-            "m1": 7.5,
-            "m3": 1.9,
-            "m6": -13.3
+            "w": 1.0,
+            "m1": 7.0,
+            "m3": 2.8,
+            "m6": -10.7
           },
           "g6": {
-            "w": 4.0,
+            "w": 4.1,
             "m1": 6.2,
-            "m3": 2.6,
-            "m6": -1.6
+            "m3": 2.7,
+            "m6": -3.7
           },
           "g7": {
-            "w": -6.7,
-            "m1": -0.5,
-            "m3": 0.2,
-            "m6": -7.3
+            "w": -6.5,
+            "m1": -0.2,
+            "m3": 0.0,
+            "m6": -5.0
           },
           "g8": {
-            "w": 5.0,
-            "m1": 10.1,
-            "m3": 5.1,
+            "w": 3.6,
+            "m1": 8.9,
+            "m3": 4.7,
             "m6": 9.6
           }
         },
         "bench": {
-          "topix_1d": 3.47,
-          "nk_1d": 2.33,
-          "growth_1d": 0.37,
-          "nt_approx": 14.62
+          "topix_1d": 2.09,
+          "nk_1d": 2.87,
+          "growth_1d": 3.59,
+          "nt_approx": 14.73
         },
         "macro": {
-          "jp10y": 2.665,
-          "us10y": 4.88,
-          "usdjpy": 157.934,
-          "usdjpy_1m": 0.09,
-          "sox_1d": 6.85,
-          "sox_above_25d": false,
-          "wti": 87.08
+          "jp10y": 2.671,
+          "us10y": 4.998,
+          "usdjpy": 158.77,
+          "usdjpy_1m": 0.62,
+          "sox_1d": -0.35,
+          "sox_above_25d": null,
+          "wti": 86.43
         },
         "signal": "なし",
-        "events": [],
+        "events": [
+          {
+            "date": "2026-11-12",
+            "kind": "US_POLITICS",
+            "what": "米民主党会合（〜11/14・報道）",
+            "status": "reported"
+          }
+        ],
         "experts": {
           "bull": null,
           "bear": null
         },
         "sources": {
-          "groups": "TOPIX-17 ETF 代替（TV scanner・⑧空運=9201/9202平均）",
+          "groups": "TOPIX-17 ETF 代替（TV scanner・⑧=1489/1343/空運9201・9202平均の単純平均）",
           "fallback_yf": [],
           "missing": [
-            "experts(スニペット古く不採用)",
+            "sox_ma25(Yahoo 429・yfinance導入未完了)",
+            "experts(前営業日以降のスニペットなし)",
             "内需株50/外需株50(ETF不在)"
           ]
         }
       }
     },
     "history": [
+      {
+        "date": "2026-11-11",
+        "market_mode": "軟調",
+        "method_guidance": {
+          "kenmo_momentum": "前日+2.87%急伸後で先物−0.6%＝寄り反落想定。寄り天を避け、前場押し目で出来高を伴う再上昇のみ。",
+          "kenmo_newhigh": "新高値ブレイク銘柄は寄りの利確売りを一巡させてから。高値更新後の初押しを待つ。",
+          "choruko_reversal": "指数は急騰直後でリバーサル対象は少ない。前日売られた内需・REIT（−0.8%）の下げ止まり確認程度。",
+          "stf_kakuhen": "①AI半導体群が1M相対−16.7ptと劣後継続。確変初動の判定は見送り寄り、出来高急増銘柄の監視のみ。",
+          "tenbagger_x": "HiJoJo（657A）BB本日11/11締切・TOKIUM（664A）BB〜11/13。Anthropic IPO価格決定11/13予定（pending）でグロース資金の動向に注意。",
+          "daytrade": "寄りギャップダウン後の戻り方向を見極め。前日高値圏の戻り売りに注意、逆張りは小ロット。",
+          "semicon_miniswing": "SOX−0.35%・25日線データ欠損。軟調モードのため見送り。"
+        },
+        "pattern": "先物乖離（前日現物急伸の反動）",
+        "note": "日経は前日+2.87%（60,459）と急伸したが、NY小幅安を受け先物は60,085（−0.62%）。寄りは反落スタート想定、前日上昇分の利確に注意。",
+        "indicators": {
+          "nikkei": 60459.36,
+          "night_futures": 60085,
+          "night_futures_asof": "2026-11-11 06:41 JST",
+          "night_gap_pct": -0.62,
+          "dow_pct": -0.3,
+          "nasdaq_pct": -0.74,
+          "sp500_pct": -0.38,
+          "sox": 9998.33,
+          "sox_pct": -0.35,
+          "vix": 19.46,
+          "fear_greed": null,
+          "usdjpy": 158.77,
+          "wti": 86.43,
+          "wti_pct": -0.48
+        },
+        "data_health": {
+          "sox": "tv_scanner",
+          "vix": "tv_scanner",
+          "fear_greed": null,
+          "night_futures": "tv_scanner",
+          "night_source": "TV:CME:NIY1!",
+          "wti": "tv_scanner",
+          "rate_limited": true,
+          "tv_scanner": {
+            "used": true,
+            "asof": "06:41 JST",
+            "update_mode": "streaming/delayed_streaming_600-900",
+            "empty": []
+          },
+          "sources": {
+            "all": "Yahoo query1 9本すべてHTTP 429（60秒待機後の再試行も0本）→ TV scanner で9本取得",
+            "ose_check": "OSE:NK2251! 60060（-0.66%）・API代替値との乖離0.04%"
+          }
+        },
+        "settlement": {
+          "us_settled": true,
+          "us_close_jst": "06:00",
+          "night_settled": true,
+          "run_at_jst": "06:43",
+          "excluded": []
+        },
+        "sr": {
+          "d": "2026-11-11",
+          "regime": "R-A",
+          "status": "暫定",
+          "g": {
+            "g1": {
+              "w": -5.4,
+              "m1": -16.7,
+              "m3": -16.4,
+              "m6": -24.0
+            },
+            "g2": {
+              "w": 0.4,
+              "m1": 3.2,
+              "m3": 6.0,
+              "m6": 19.2
+            },
+            "g3": {
+              "w": 1.8,
+              "m1": 4.4,
+              "m3": 4.4,
+              "m6": 12.5
+            },
+            "g4": {
+              "w": 0.7,
+              "m1": 8.6,
+              "m3": 8.1,
+              "m6": 7.3
+            },
+            "g5": {
+              "w": 1.0,
+              "m1": 7.0,
+              "m3": 2.8,
+              "m6": -10.7
+            },
+            "g6": {
+              "w": 4.1,
+              "m1": 6.2,
+              "m3": 2.7,
+              "m6": -3.7
+            },
+            "g7": {
+              "w": -6.5,
+              "m1": -0.2,
+              "m3": 0.0,
+              "m6": -5.0
+            },
+            "g8": {
+              "w": 3.6,
+              "m1": 8.9,
+              "m3": 4.7,
+              "m6": 9.6
+            }
+          },
+          "bench": {
+            "topix_1d": 2.09,
+            "nk_1d": 2.87,
+            "growth_1d": 3.59,
+            "nt_approx": 14.73
+          },
+          "macro": {
+            "jp10y": 2.671,
+            "us10y": 4.998,
+            "usdjpy": 158.77,
+            "usdjpy_1m": 0.62,
+            "sox_1d": -0.35,
+            "sox_above_25d": null,
+            "wti": 86.43
+          },
+          "signal": "なし",
+          "events": [
+            {
+              "date": "2026-11-12",
+              "kind": "US_POLITICS",
+              "what": "米民主党会合（〜11/14・報道）",
+              "status": "reported"
+            }
+          ],
+          "experts": {
+            "bull": null,
+            "bear": null
+          },
+          "sources": {
+            "groups": "TOPIX-17 ETF 代替（TV scanner・⑧=1489/1343/空運9201・9202平均の単純平均）",
+            "fallback_yf": [],
+            "missing": [
+              "sox_ma25(Yahoo 429・yfinance導入未完了)",
+              "experts(前営業日以降のスニペットなし)",
+              "内需株50/外需株50(ETF不在)"
+            ]
+          }
+        }
+      },
       {
         "date": "2026-11-10",
         "market_mode": "強気ギャップアップ",
@@ -2769,52 +2927,6 @@
           "us_close_jst": "05:00",
           "night_settled": true,
           "run_at_jst": "10:48",
-          "excluded": []
-        }
-      },
-      {
-        "date": "2026-10-08",
-        "market_mode": "レンジ様子見",
-        "method_guidance": {
-          "kenmo_momentum": "米株全面安・NIY先物-0.33%で寄りは弱含み想定。ブレイク初動は出来高確認後、ロット抑えめで。",
-          "kenmo_newhigh": "日経は7万円近辺の高値圏から反落。新高値銘柄は寄り付きを追わず押し目待ち。",
-          "choruko_reversal": "寄り下げ後の反発狙いは確認足後に限定。戻り売り圧力に注意。",
-          "stf_kakuhen": "先物ギャップ-0.3%程度で過熱感は薄いが、初動確認が取れる銘柄のみ。",
-          "tenbagger_x": "IPOアラート該当なし(9334 10/13上場)。観察継続。",
-          "daytrade": "完全不関与デイトレは通常運用。寄り直後の乱高下に注意。",
-          "semicon_miniswing": "SOX-1.15%と半導体が軟化。VWAP±0.5%積極帯は見送り、押し目確認のみ。"
-        },
-        "pattern": "半導体主導リスクオフ(SOX下落・ナスダックは小幅安)",
-        "note": "SOX-1.15%・ダウ-0.66%・NIY先物-0.33%で寄りは軟調気味。ただしVIX15で落ち着き、原油安・為替158円は下支え。F&Gは取得不可。",
-        "indicators": {
-          "nikkei": 70035.71,
-          "night_futures": 69805.0,
-          "night_futures_asof": "2026-10-08 05:59 JST",
-          "night_gap_pct": -0.33,
-          "dow_pct": -0.66,
-          "nasdaq_pct": -0.22,
-          "sp500_pct": -0.22,
-          "sox": 13066.15,
-          "sox_pct": -1.15,
-          "vix": 15.08,
-          "fear_greed": null,
-          "usdjpy": 158.03,
-          "wti": 88.94,
-          "wti_pct": -0.56
-        },
-        "data_health": {
-          "sox": "api",
-          "vix": "api",
-          "fear_greed": null,
-          "night_futures": "api_niy",
-          "night_source": "NIY=F",
-          "wti": "api"
-        },
-        "settlement": {
-          "us_settled": true,
-          "us_close_jst": "05:00",
-          "night_settled": true,
-          "run_at_jst": "06:34",
           "excluded": []
         }
       }
@@ -8406,13 +8518,14 @@
         "source": "①-9 v5.5"
       },
       "morning_compass": {
-        "generated_at": "2026-11-10T06:38:27+09:00",
-        "trading_day": "2026-11-10",
+        "generated_at": "2026-11-11T06:43:15+09:00",
+        "trading_day": "2026-11-11",
         "status": "done",
         "source": "morning_compass_v11",
-        "memo": "run_at=2026-11-10T06:38:27+09:00",
+        "memo": "run_at=2026-11-11T06:43:15+09:00",
         "missing": [
           "fear_greed",
+          "sox_ma25",
           "experts"
         ]
       },

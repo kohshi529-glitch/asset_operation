@@ -161,6 +161,29 @@ details.cfold>summary{cursor:pointer;color:#7fe3d6;font-size:12.5px;font-weight:
 .ostat.ok{color:#48e0b0;background:#123d33;border-color:#1f6b57}
 .ostat.wait{color:#e8c766;background:#2e2a17;border-color:#5c5324}
 .ostat.bad{color:#e88a8a;background:#2e1a1a;border-color:#6b2f2f}
+/* D30: ⏸位置不適／⏸トラップ疑い（PASS は残し理由だけ見せる。①-11 は発注しない） */
+.ostat.hold{color:#ffb074;background:#3a2412;border-color:#7a4a1c}
+/* D30: 勢いフラグ（①-9 v5.6 momentum.flags）・トラップ疑い・RS20・十字線種 */
+.mvflag{display:inline-block;font-size:10px;font-weight:700;border-radius:4px;padding:0 5px;margin-left:3px;border:1px solid;white-space:nowrap}
+.mvflag.w{color:#ffab91;background:#3a1f16;border-color:#7a3a2a}
+.mvflag.u{color:#9be7c4;background:#143328;border-color:#1f6b57}
+.mvflag.t{color:#ff8a80;background:#4a1414;border-color:#b3261e}
+.mvflag.i{color:#b0bec5;background:#263238;border-color:#546e7a}
+.rschip{display:inline-block;font-size:10px;font-weight:700;border-radius:4px;padding:0 5px;margin-left:4px;border:1px solid #3b4e5a;color:#9fc5d8;background:#15232b;white-space:nowrap}
+.rschip.lag{color:#ffab91;border-color:#7a3a2a;background:#3a1f16}
+.rschip.str{color:#9be7c4;border-color:#1f6b57;background:#143328}
+.dojichip{display:inline-block;font-size:10px;font-weight:700;border-radius:4px;padding:0 5px;margin-left:4px;border:1px solid #5c5324;color:#e8c766;background:#2e2a17;white-space:nowrap}
+.dojichip.bear{color:#e88a8a;border-color:#6b2f2f;background:#2e1a1a}
+.rpband{margin:8px 0 6px;padding:8px 10px;border-radius:10px;border:2px solid #7a4a1c;background:#241a10}
+.rpband h4{margin:0 0 4px;font-size:13px;color:#ffb074}
+.rpband .rpnote{font-size:11px;color:#b9a48a;margin:2px 0 4px}
+.rprow{font-size:12px;line-height:1.45;padding:3px 0;border-top:1px dashed #3d2d1a;color:#f1e4d2}
+.rprow .code{margin-right:4px}
+.rprow.crit{color:#ffd0cc}.rprow.react{color:#e5c6f5}
+.rpcal{font-size:11px;color:#cdb79a;margin-top:4px}
+.rpcal summary{cursor:pointer;color:#ffb074}
+.rpcal .cal{margin:2px 0 0 6px;line-height:1.5}
+
 .devchip{display:inline-block;font-size:11px;font-weight:600;color:#8fb3ad;background:#1d3a40;border:1px solid #33565c;border-radius:5px;padding:1px 7px;margin-left:6px;white-space:nowrap}
 /* ===== 🕒 バックナンバー行（ゲート履歴への深リンク。改修: PRボードのバックナンバー機能） ===== */
 .bnrow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:2px 0 10px}
@@ -409,7 +432,7 @@ details.stgd summary{cursor:pointer;font-weight:700;padding:4px 0}
 <div id='panel-methods' class='panel'></div>
 <div id='panel-granville' class='panel'></div>
 <div id='panel-legend' class='panel'></div>
-<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28 ＋ D24/D25 2026-10-31 ＋ D26 2026-11-01 ＋ D27 2026-11-05 ＋ D28 2026-11-06 ＋ D29 2026-11-08）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
+<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28 ＋ D24/D25 2026-10-31 ＋ D26 2026-11-01 ＋ D27 2026-11-05 ＋ D28 2026-11-06 ＋ D29 2026-11-08 ＋ D30 2026-11-11）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
 </div>
 <button class='fab' id='backtab' onclick='scrollToTabbar()' aria-label='タブバーへ戻る'>▲タブへ戻る</button>
 <script>
@@ -502,6 +525,9 @@ let AN_TODAY = null;
 // D28: ①-13 打率台帳が毎夜全置換する集計（判定の軸・掛け合わせごとの n・hit5・CI・avg）。台帳本体（signal_log/）はボードでは読まない
 const SIG_STATS_URL = "https://kohshi529-glitch.github.io/asset_operation/signal_stats.json";
 let SIG_STATS = null;
+// D30: ①-8 が毎夜書く軽量ファイル night_gate_today.json（proposals と、v1.48 からの recent_pass＝直近 20 営業日の提案銘柄と決算チップ）。取得失敗しても描画は続く（帯が前夜分の履歴から組まれる）
+const NGT_URL = "https://kohshi529-glitch.github.io/asset_operation/night_gate_today.json";
+let NGT = null;
 let BARS = {};      // code -> [[d,o,h,l,c],...]
 let GRADES = {};    // grades.json の stocks（code -> {per,spm,vg,nc,eqr,sec,...}）
 let SPM = {};       // grades.json の meta.sector_per_median（業種 -> [中央値PER, 母数n]）
@@ -545,6 +571,12 @@ const GY_CATS = [
 ];
 // チップ後方に小さく併記する表示専用フラグ（gyoseki_spec.display_flags）。他フラグ（内部注記）は出さない。
 const GY_FLAGS_SHOW = ['質注意','赤字・上限適用','税引前代替'];
+// D30: ①-9 v5.6 の勢いフラグ（gyoseki_cache[code].momentum.flags ＝ flags にも同じ文字列）。グレードは変えない。チップで横付け
+const MV_FLAGS={'⚠減速':'w','⚠進捗遅れ':'w','⚠下期依存':'w','🔼加速':'u','🔼進捗先行':'u','勢い判定矛盾':'i'};
+const MV_TIP={'⚠減速':'売上の伸びが前期の半分未満、または四半期 YoY が 2 四半期連続で低下し計画の伸びを下回る（①-9 v5.6 STEP 5.6）','⚠進捗遅れ':'進捗モデルの計画比が −10% 以下（前年ペース比の試算）','⚠下期依存':'通期計画の達成に、前年の残期間より +25% 超の伸びが要る','🔼加速':'四半期 YoY が 2 四半期連続で上昇し計画の伸び以上','🔼進捗先行':'進捗モデルの計画比が +10% 以上','勢い判定矛盾':'減速と加速が同時に成立（計算誤りの疑い・①-9 の記録）'};
+function mvFlagChips(flags){ if(!Array.isArray(flags)) return ''; return flags.filter(f=>MV_FLAGS[f]).map(f=>`<span class='mvflag ${MV_FLAGS[f]}' title='${esc(MV_TIP[f]||'')}'>${esc(f)}</span>`).join(''); }
+// grades.json の gyf（①-8 v1.48 が写す）。null＝未評価（出さない）・[]＝評価済みで該当なし
+function mvFlagChipsFromGrades(code){ const g=gradesOf(code); if(!g||!Array.isArray(g.gyf)) return ''; return mvFlagChips(g.gyf); }
 // 銘柄コード→業績グレードチップHTML。該当なし＝「－未評価」、判定保留＝「⏸判定保留」、取得不可＝「－業績不明」。
 function gyosekiChip(code){
   const key=(code==null)?'':String(code);
@@ -576,7 +608,7 @@ function gyosekiChip(code){
   return `<span class='gychip ${cat.cls}' title='業績グレード ${esc(cat.name)}${score==null?'':' '+score+'/13'}'>`
        + `<span class='gyfull'>${cat.emoji}${esc(cat.name)}${esc(scoreTxt)}</span>`
        + `<span class='gymini'>${cat.emoji}${esc(scoreNum)}</span>`
-       + `</span>${flagTxt}`;
+       + `</span>${flagTxt}${mvFlagChips(flags)||mvFlagChipsFromGrades(code)}`;
 }
 
 // ===== ヘッドライン【調子】マークの表示時正規化（改修1。master.json は書き換えない） =====
@@ -682,6 +714,8 @@ const VAL_CATS=[
 // チップ後方に小さく併記する表示専用フラグ。バリュートラップ疑いは短縮表記。
 const VAL_FLAGS_SHOW=['バリュートラップ疑い','⚠資産バリュートラップ疑い','PSR代替','ROE欠損','減益でPEG無効'];
 const VAL_FLAG_LABEL={'バリュートラップ疑い':'トラップ疑い','⚠資産バリュートラップ疑い':'資産トラップ疑い'};
+// D30: ①-9 v5.6 のトラップ判定（valuation_cache[code].trap.flag ＝ flags にも同じ文字列。grades.json の trp にも写る）。割安 × 52週安値圏 × 減速 × 25MA 下向き
+function trapChip(code,flags){ let f=null; if(Array.isArray(flags)){ if(flags.indexOf('⚠トラップ疑い')>=0) f='⚠トラップ疑い'; else if(flags.indexOf('ℹ安値圏の割安')>=0) f='ℹ安値圏の割安'; } if(!f){ const g=gradesOf(code); if(g&&(g.trp==='⚠トラップ疑い'||g.trp==='ℹ安値圏の割安')) f=g.trp; } if(!f) return ''; const t=f==='⚠トラップ疑い'?'値頃感 💎/🟢 ∧ 52週位置 <15% ∧ ⚠減速 または ⚠下期依存 ∧ 25日線乖離 <0（①-9 v5.6 STEP 6.7）。「株価が下がったから割安」の形':'値頃感 💎/🟢 ∧ 52週位置 <15%（減速は無い）。情報のみ'; return `<span class='mvflag ${f==='⚠トラップ疑い'?'t':'i'}' title='${esc(t)}'>${esc(f)}</span>`; }
 // ===== D4: 第2層チップ（🤷PER圧縮／🏦資産バリュー／PER×業種中央値）。①-9 v5 の valuation_cache と ①-8 の grades.json から。表示のみ =====
 function num1(x){ const v=Number(x); return isFinite(v)?(Math.round(v*10)/10):null; }
 function gradesOf(code){ return (GRADES&&GRADES[String(code)])||null; }
@@ -840,7 +874,7 @@ function valuationChip(code){
   return `<span class='valchip ${cat.cls}' title='値頃感 ${esc(cat.name)}${score==null?'':' '+scoreNum+'/7'}'>`
        + `<span class='valfull'>${cat.emoji}${esc(cat.name)}${esc(scoreTxt)}</span>`
        + `<span class='valmini'>${cat.emoji}${esc(scoreNum)}</span>`
-       + `</span>${flagTxt}${d4Chips(code)}`;
+       + `</span>${flagTxt}${trapChip(code,flags)}${d4Chips(code)}`;
 }
 // （単元金額チップは改修2aで廃止。valuation_cache.metrics.tan_yen は不使用。）
 
@@ -929,10 +963,14 @@ function priceChip(c){
     : `<span class='sprice'>${esc(f)}<span class='yen'>円</span></span>`;
 }
 // 4行目：判定チップ／業績グレード＋スコア／値頃感グレード＋スコア の3つを横並び（スラッシュ区切り）。
-function judgeRow(verdictHtml,code){
+function judgeRow(verdictHtml,code,c){
   const sep=`<span class='ssep'>/</span>`;
-  return `<div class='srow s4'>${verdictHtml||''}${sep}${gyosekiChip(code)}${sep}${valuationChip(code)}</div>`;
+  return `<div class='srow s4'>${verdictHtml||''}${dojiChip(c)}${rsChip(c)}${sep}${gyosekiChip(code)}${sep}${valuationChip(code)}</div>`;
 }
+// D30: 対 TOPIX 相対（①-8 v1.48 が 1306 の日足から rs20/rs5 を results に写す。無ければ出さない）。順張りで −5pt 未満は ⚠市場に劣後、逆張りで +5pt 超は ℹ相対強い（表示のみ）
+function rsChip(c){ if(!c||c.rs20==null||isNaN(Number(c.rs20))) return ''; const v=Number(c.rs20); const tags=Array.isArray(c.tags)?c.tags:[]; const lag=tags.some(t=>String(t).indexOf('市場に劣後')>=0)||(v<-5&&['momentum','oshime'].indexOf(c.entry_type)>=0); const str=tags.some(t=>String(t).indexOf('相対強い')>=0)||(v>5&&['reversal','changepoint'].indexOf(c.entry_type)>=0); const cls=lag?'lag':(str?'str':''); return `<span class='rschip ${cls}' title='20営業日リターン − TOPIX（1306）の20営業日リターン（pt）。rs5 ${c.rs5!=null?(Number(c.rs5)>0?'+':'')+num1(c.rs5):'—'}pt'>${lag?'⚠劣後 ':(str?'ℹ相対強 ':'')}RS20 ${v>0?'+':''}${esc(num1(v))}pt</span>`; }
+// D30: PASS_DOJI の十字線種（①-8 v1.48 trend.doji）。トウバ・下放れ直後・決算反応直後は提案にならない（⛔型不一致）
+function dojiChip(c){ if(!c||c.verdict!=='PASS_DOJI'||!c.doji||typeof c.doji!=='object') return ''; const d=c.doji; const bear=d.type==='トウバ'||d.gap_before===true||d.post_earnings===true; const why=[d.type||'十字線', d.gap_before?'下放れ直後':null, d.post_earnings?'決算反応直後':null].filter(Boolean).join('・'); return `<span class='dojichip ${bear?'bear':''}' title='十字線の種類と直前の文脈（①-8 v1.48）。トンボ・足長・小十字だけ確認足型の提案になる'>🕯${esc(why)}</span>`; }
 // ===== 決算チップの一本化（改修3。1銘柄1個。残営業日数で排他）。master.json は書き換えない。 =====
 // 複数フィールド（earnings_flag / earnings_within / 発表日+窓残り営業日）から {n, mmdd, unknown, fallback} を抽出。
 function earningsInfo(c){
@@ -1652,8 +1690,10 @@ function orderStatusChip(c){
   if(s.indexOf('✅')>=0) return '';
   let cls='ostat';
   if(s.indexOf('⛔')>=0) cls+=' bad';
-  else if(s.indexOf('⏳')>=0) cls+=' wait';
-  return `<span class='${cls}'>${esc(s)}</span>`;
+  else if(s.indexOf('⏸')>=0) cls+=' hold';   // D30: 位置不適／トラップ疑い（①-8 v1.48。PASS は残す・①-11 は発注しない）
+  else if(s.indexOf('⏳')>=0) cls+=' wait';   // 待機／確認足待ち（十字線は逆指値そのものが確認足）
+  const tip=s.indexOf('⏸')>=0?'①-8 v1.48: 順張りは 25日線上 かつ 52週位置 30% 以上、押し目は 25日線が上向き、逆張りはトラップ疑いなし——を満たさない提案。候補から消さず理由を見せる。機械ファンドは発注しない':(s.indexOf('確認足')>=0?'十字線（トンボ・足長・小十字）の夜は高値＋1呼値の逆指値＝確認足。抜けなければ約定せず 1 夜で消える':'');
+  return `<span class='${cls}'${tip?` title='${esc(tip)}'`:''}>${esc(s)}</span>`;
 }
 // （旧 deviationChip は改修6の ngDevLabel に置き換え。乖離は型別に「終値指値/現値比±/型不明」で表示。）
 // ⛔（型不一致・要確認）＝発注対象外。カード枠線色を変える。
@@ -1707,7 +1747,7 @@ function ngPassCard(c){
     methodHtml:entryMarkChips(c),          // 行2：手法/型チップ（複数branchをマージ列挙）
     cautionHtml:cautionChips(c.code,entryBranches(c)), // 行2b：注意チップ（D1/D2）
     earnHtml:earningsChip(c),              // 行3：決算チップ1個（改修3。無ければ省略）
-    judgeHtml:judgeRow(gateChipGuarded(c),c.code), // 行4：ゲート判定｜業績｜値頃感
+    judgeHtml:judgeRow(gateChipGuarded(c),c.code,c), // 行4：ゲート判定｜🕯十字線種｜RS20｜業績｜値頃感（D30）
     propHtml:ngProposal(c),                // 行5：提案・乖離・SL（改修6。無ければ省略）
     bodyHtml:hl,
     bad:isOrderBad(c)});
@@ -1830,6 +1870,7 @@ function renderNightGate(d,runs){
     return `<section class='mth' id='sec-ng'>
       <div class='mhead'><span>🚪</span><span class='mname'>🚪 ナイトゲート</span><span class='cnt'>${passes.length}通過</span></div>
       ${sum}
+      <div id='rpband'></div>
       ${ngBackNumbers(ng,day)}
       ${passHTML}
       ${negHTML}
@@ -1837,6 +1878,54 @@ function renderNightGate(d,runs){
       <a class='totop' onclick='scrollTop()'>▲タブへ</a>
     </section>`;
   });
+}
+
+
+// ===== D30: 🧾 直近提案の決算接近 帯（穴 1-A）＋ プール全体の決算カレンダー（穴 1-B） =====
+// 「決算接近の警告が提案（PASS）の行にしか付かず、FAIL の夜に消える」を塞ぐ。直近 20 営業日に提案に出た銘柄＝「入っている可能性のある銘柄」を、
+// 当夜の判定と無関係に並べる。保有情報は使わない（公開の提案履歴だけ）。残営業日は grades.json の nx と端末の今日から MKTCAL で数える（通信なし）。
+// 出所: ①-8 v1.48 の night_gate_today.json recent_pass を正とし、無い間（v1.47 以前）は 当夜の提案 ＋ 直近 3 夜の gate_history/*.json の proposals から組む。
+const RP_WINDOW_BD = 20;
+function rpStage(n){ if(n==null) return {k:'unk',o:5,lab:'❓'}; if(n===0||n===1) return {k:'crit',o:0,lab:'🚨'}; if(n===-1) return {k:'react',o:1,lab:'📉'}; if(n>=2&&n<=5) return {k:'warn',o:2,lab:'⏰'}; if(n>=10&&n<=20) return {k:'karte',o:3,lab:'📋'}; return {k:'none',o:4,lab:''}; }
+function rpRowsFromProposals(props,day){ const out={}; (props||[]).forEach(p=>{ if(!p||p.code==null) return; const k=String(p.code); const cur=out[k]; if(!cur||String(day)>String(cur.last_pass_day)){ out[k]={code:k,name:p.name,last_pass_day:day,entry_type:p.entry_type,entry_price:p.entry_price,order_status:p.order_status,n_pass:(cur?cur.n_pass:0)+1}; } else cur.n_pass++; }); return out; }
+function rpBandHtml(rows,src,ng,day){
+  const NGM={}; (((ng&&ng.results)||[])).forEach(r=>{ if(r&&r.code!=null) NGM[String(r.code)]=r; });
+  const items=(rows||[]).map(r=>{ const g=gradesOf(r.code); const nx=g&&g.nx?String(g.nx):null; const n=nx?earnDaysFromNx(nx):null; const st=rpStage(nx?n:null); const v=NGM[r.code]; return Object.assign({},r,{nx:nx,n:n,st:st,verdict_today:v?v.verdict:null,name:r.name||(v&&v.name)||(g&&g.n)||''}); });
+  const shown=items.filter(x=>x.st.o<=3).sort((a,b)=>(a.st.o-b.st.o)||(String(b.last_pass_day)<String(a.last_pass_day)?-1:(String(b.last_pass_day)>String(a.last_pass_day)?1:0))||(a.code<b.code?-1:1));
+  const mm=d=>d?String(d).slice(5).replace('-','/'):'—';
+  const unk=items.filter(x=>x.st.k==='unk').length;
+  const line=x=>{ const dn=x.n==null?'日程不明':(x.n===-1?`決算反応日（発表 ${mm(x.nx)}）`:(x.n===0?`本日決算 ${mm(x.nx)}`:`決算 ${mm(x.nx)}（残 ${x.n} 営業日）`)); const pr=x.entry_price!=null?`${esc(x.entry_type||'')} ${esc(x.entry_price)}`:'—'; return `<div class='rprow ${x.st.k}'>${x.st.lab} <span class='code'>${esc(x.code)}</span>${esc(x.name)}｜最後の提案 ${esc(mm(x.last_pass_day))}（${pr}${x.order_status?'・'+esc(x.order_status):''}${x.n_pass>1?'・'+esc(x.n_pass)+'回':''}）｜${esc(dn)}｜当夜 ${esc(x.verdict_today||'評価外')}</div>`; };
+  const nearest=items.filter(x=>x.n!=null&&x.n>=0).sort((a,b)=>a.n-b.n)[0]||null;
+  const head=`<h4>🧾 直近提案の決算接近 <span class='rpnote'>（直近 ${RP_WINDOW_BD} 営業日に提案に出た ${items.length} 銘柄・${src}）</span></h4>`;
+  const RP_SHOW=12; const top=shown.slice(0,RP_SHOW), rest=shown.slice(RP_SHOW);
+  const cnt=k=>items.filter(x=>x.st.k===k).length;
+  const body=shown.length?(top.map(line).join('')+(rest.length?`<details class='rpcal'><summary>他 ${esc(rest.length)} 件（🚨${esc(cnt('crit'))}・📉${esc(cnt('react'))}・⏰${esc(cnt('warn'))}・📋${esc(cnt('karte'))}）</summary>${rest.map(line).join('')}</details>`:'')):`<div class='rprow'>該当なし${nearest?`（最短 ${esc(nearest.code)} ${esc(nearest.name)} ${esc(mm(nearest.nx))} あと ${esc(nearest.n)} 営業日）`:''}</div>`;
+  const note=`<div class='rpnote'>候補だった銘柄の日程であり、保有の有無とは無関係（保有情報は使っていない）。当夜 FAIL でも載る。🚨 当日/明日・📉 反応日・⏰ 残 2〜5・📋 カルテ窓 10〜20。日程不明 ${esc(unk)} 件。教訓⑲: 決算は天井になりうる。</div>`;
+  return `<div class='rpband'>${head}${body}${note}${rpPoolCalHtml(ng)}</div>`;
+}
+// 穴 1-B: プール全体（night_gate.pool ∪ 当夜 results）の決算カレンダー。grades.json の nx だけ（取得 0 本）。市場の決算クラスタの厚み
+function rpPoolCalHtml(ng){
+  try{
+    const codes={}; Object.keys((ng&&ng.pool)||{}).forEach(k=>codes[String(k)]=1); (((ng&&ng.results)||[])).forEach(r=>{ if(r&&r.code!=null) codes[String(r.code)]=1; });
+    const b={m1:[],d0:[],d1:[],d2:[],w2:[]}; let tot=0, unk=0;
+    Object.keys(codes).forEach(c=>{ tot++; const g=gradesOf(c); const nx=g&&g.nx?String(g.nx):null; if(!nx){ unk++; return; } const n=earnDaysFromNx(nx); if(n==null){ unk++; return; } if(n===-1) b.m1.push(c); else if(n===0) b.d0.push(c); else if(n===1) b.d1.push(c); else if(n>=2&&n<=5) b.d2.push(c); else if(n>=6&&n<=10) b.w2.push(c); });
+    const L=(arr)=>arr.length?arr.sort().join(' '):'—';
+    return `<details class='rpcal'><summary>プール全体 ${esc(tot)} 銘柄の決算カレンダー: 反応日 ${esc(b.m1.length)}・本日 ${esc(b.d0.length)}・明日 ${esc(b.d1.length)}・2〜5 日 ${esc(b.d2.length)}・6〜10 日 ${esc(b.w2.length)}・不明 ${esc(unk)}</summary><div class='cal'>📉 反応日: ${esc(L(b.m1))}<br>🚨 本日: ${esc(L(b.d0))}<br>🚨 明日: ${esc(L(b.d1))}<br>⏰ 2〜5 営業日: ${esc(L(b.d2))}<br>📅 6〜10 営業日: ${esc(L(b.w2))}</div></details>`;
+  }catch(e){ return ''; }
+}
+// 帯の組み立て: recent_pass があればそれ（同期）。無ければ当夜の提案で即描画し、直近 3 夜の gate_history を非同期で足して描き直す
+function rpRender(ng,day){
+  const el=document.getElementById('rpband'); if(!el) return;
+  if(NGT&&Array.isArray(NGT.recent_pass)){ el.innerHTML=rpBandHtml(NGT.recent_pass,'①-8 v1.48 recent_pass',ng,day); return; }
+  const res=((ng&&ng.results)||[]).filter(r=>r&&r.entry_price!=null);
+  let rows=rpRowsFromProposals(res,day);
+  el.innerHTML=rpBandHtml(Object.values(rows),'当夜分のみ・履歴を読込中',ng,day);
+  const ds=ngLogDates(ng).filter(x=>x>=HISTORY_START&&x<String(day)).slice(0,3);
+  if(!ds.length){ el.innerHTML=rpBandHtml(Object.values(rows),'当夜分のみ（v1.48 反映前）',ng,day); return; }
+  Promise.all(ds.map(dd=>fetch(HISTORY_BASE+dd+'.json',{cache:"no-store"}).then(r=>r.ok?r.json():null).then(h=>({dd:dd,h:h})).catch(()=>({dd:dd,h:null})))).then(hs=>{
+    let got=0; hs.forEach(({dd,h})=>{ if(!h||!Array.isArray(h.proposals)) return; got++; const add=rpRowsFromProposals(h.proposals,dd); Object.keys(add).forEach(k=>{ const a=add[k], c=rows[k]; if(!c){ rows[k]=a; } else { c.n_pass+=a.n_pass; if(String(a.last_pass_day)>String(c.last_pass_day)) Object.assign(c,{last_pass_day:a.last_pass_day,entry_type:a.entry_type,entry_price:a.entry_price,order_status:a.order_status}); } }); });
+    el.innerHTML=rpBandHtml(Object.values(rows),`当夜＋直近 ${got} 夜（v1.48 反映前・20 営業日窓は未満）`,ng,day);
+  }).catch(()=>{});
 }
 
 // ===== ②🔔変化点ウォッチ（changepoint_watch を描画。データ欠如に耐える） =====
@@ -2488,6 +2577,8 @@ function renderLegend(){
     ${tr.map(row).join('')}
     <h3>💴 配当・🎁優待・📆権利対象（D8）</h3>
     <div class='note'>💴チップ＝①-8 v1.38 が kabutan の既読ページから読んだ予想配当（年間または中間／期末）と、minkabu の優待ページで確かめた優待の有無・優待権利月（grades.json の fy/rm/dvi/dvf/dva/yt/ym）。未取得の銘柄には出ない（初回は保有・PASS から順に埋まる）。<br>📆権利対象チップ＝今日〜次の営業日に権利付き最終日／権利落ち日があり、かつその月がこの銘柄の権利月（配当または優待）に含まれるときだけ出る。「現在値→落ち後目安（−x円・−y%）」は該当する配当を現在値から引いたもので、公表値からの計算（推定ではない）。優待分は含まないので、🎁付きの銘柄は目安より大きく落ちうる。「直近5日 ±z%」は権利取り前に上がってきた幅（pool_bars の直近5本）で、落ち後に剥落しうる分の目安。SL との比較は出さない（stop の反映は実弾ボード側の運用に依存するため）。権利月が未取得の銘柄は「📆権利月不明」。権利月が違う銘柄には何も出ない（＝今回の権利落ちの影響は限定的）。</div>
+    <h3>🧾 直近提案の決算接近 帯・入口の穴 4 つのチップ（D30）</h3>
+    <div class='note'>3798（2026-11-10 照合）で見えていなかった 6 点のうち、ボード側で出せるもの。(1) 🚪ゲートタブ先頭の 🧾 帯＝直近 20 営業日に提案に出た銘柄の決算接近を、当夜の判定（PASS／FAIL）と無関係に並べる（保有情報は使わない＝候補だった銘柄の日程）。折りたたみでプール全体の決算カレンダー（反応日／本日／明日／2〜5 日／6〜10 日の件数とコード）。残営業日は grades.json の nx から端末内で計算。(2) 業績チップの右に ①-9 v5.6 の勢いフラグ <span class='mvflag w'>⚠減速</span><span class='mvflag w'>⚠進捗遅れ</span><span class='mvflag w'>⚠下期依存</span><span class='mvflag u'>🔼加速</span><span class='mvflag u'>🔼進捗先行</span>（四半期表と進捗モデルからの機械判定。グレードは変えない）。(3) 値頃感チップの右に <span class='mvflag t'>⚠トラップ疑い</span>（💎/🟢 ∧ 52週位置 &lt;15% ∧ 減速 ∧ 25日線下向き）／<span class='mvflag i'>ℹ安値圏の割安</span>（情報）。(4) ①-8 v1.48 の order_status <span class='ostat hold'>⏸位置不適</span>（順張りが 25日線下 または 52週位置 30% 未満／押し目が 25日線下向き）・<span class='ostat hold'>⏸トラップ疑い・確認足待ち</span>（逆張り）・<span class='ostat wait'>⏳確認足待ち</span>（十字線＝高値＋1呼値の逆指値が確認足）。PASS は残し、理由だけ見せる。機械ファンドは ⏸ を発注しない。(5) 4 行目に <span class='rschip'>RS20 ±x pt</span>（対 TOPIX 1306 の 20 日相対。順張りで −5 未満は ⚠劣後、逆張りで +5 超は ℹ相対強）と、PASS_DOJI の <span class='dojichip'>🕯トンボ</span>／<span class='dojichip bear'>🕯トウバ・下放れ直後</span>（トウバ・下放れ直後・決算反応直後は提案にならない）。いずれも表示であり判定・順位は変えない。閾値は暫定で、📈打率タブ（①-13 v1.1）の実測で見直す。</div>
     <h3>📱 タブバーの折り返し（D29）</h3>
     <div class='note'>タブバーを横スクロールではなく折り返し表示にし（全幅。560px 以下は詰め表示）、🚪ゲート〜📖凡例の 11 タブを 1 画面で選べるようにした。上端固定（sticky）は維持。他は不変。</div>
     <h3>📈 打率タブ（D28）</h3>
@@ -2729,6 +2820,7 @@ function render(d){
 
   // ===== タブ①: 🚪ナイトゲート（デフォルト表示） =====
   document.getElementById('panel-nightgate').innerHTML=renderNightGate(d,runs);
+  try{ const _r=((d.night_gate&&d.night_gate.results)||[]); const _day=(_r[0]&&(_r[0].base_day||String(_r[0].scored_at||'').slice(0,10)))||null; rpRender(d.night_gate,_day); }catch(e){ console.log('[D30] rpband', e); }
 
   // ===== タブ②: 🔔変化点ウォッチ =====
   document.getElementById('panel-changepoint').innerHTML=renderChangepoint(d,runs);
@@ -2804,8 +2896,9 @@ Promise.all([
   fetch(AI_TODAY_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
   fetch(DM_TODAY_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
   fetch(AN_TODAY_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
-  fetch(SIG_STATS_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null)
-]).then(([d,bars,g,ai,dm,an,sg])=>{ BARS=bars||{}; GRADES=(g&&g.stocks)||{}; SPM=(g&&g.spm)||{}; GRADES_DAY=(g&&g.day)||null; IXMETA=(g&&g.ixmeta)||null; AI_TODAY=(ai&&typeof ai==='object')?ai:null; DM_TODAY=(dm&&typeof dm==='object')?dm:null; AN_TODAY=(an&&typeof an==='object')?an:null; SIG_STATS=(sg&&typeof sg==='object')?sg:null; render(d); })
+  fetch(SIG_STATS_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
+  fetch(NGT_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null)
+]).then(([d,bars,g,ai,dm,an,sg,ngt])=>{ NGT=(ngt&&typeof ngt==='object')?ngt:null; BARS=bars||{}; GRADES=(g&&g.stocks)||{}; SPM=(g&&g.spm)||{}; GRADES_DAY=(g&&g.day)||null; IXMETA=(g&&g.ixmeta)||null; AI_TODAY=(ai&&typeof ai==='object')?ai:null; DM_TODAY=(dm&&typeof dm==='object')?dm:null; AN_TODAY=(an&&typeof an==='object')?an:null; SIG_STATS=(sg&&typeof sg==='object')?sg:null; render(d); })
 .catch(e=>{document.getElementById('src').innerHTML="<span class='snap'>● 取得失敗</span> master.json の取得または描画に失敗しました。再読み込みしてください。("+esc((e&&e.stack)||e).slice(0,400)+")";});
 </script>
 </body></html>

@@ -1,7 +1,7 @@
 {
  "meta": {
   "version": 1,
-  "updated": "2026-11-07",
+  "updated": "2026-11-12",
   "note": "SR 観測（⑤ v11）が読む公開日程。保有銘柄の期日は載せない。status: confirmed＝公式日程／reported＝報道・通例（要確認）。追加・修正はメンテナンス PR",
   "kinds": [
    "BOJ",
@@ -18,6 +18,12 @@
  },
  "events": [
   {
+   "date": "2026-11-10",
+   "kind": "US_CPI",
+   "what": "米 10月 CPI（11/10 発表済・コア +0.3% 上振れ）",
+   "status": "confirmed"
+  },
+  {
    "date": "2026-11-12",
    "kind": "US_POLITICS",
    "what": "米民主党会合（〜11/14・報道）",
@@ -28,12 +34,6 @@
    "kind": "SQ",
    "what": "11月限 SQ（第2金曜）",
    "status": "confirmed"
-  },
-  {
-   "date": "2026-11-13",
-   "kind": "US_CPI",
-   "what": "米 10月 CPI（通例 第2週・要確認）",
-   "status": "reported"
   },
   {
    "date": "2026-11-19",

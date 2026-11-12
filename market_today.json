@@ -1,53 +1,54 @@
 {
- "generated_at": "2026-11-12T06:39:14+09:00",
+ "generated_at": "2026-11-13T06:38:50+09:00",
  "source": "morning_compass_v11",
- "run_at_jst": "2026-11-12 06:36",
- "date": "2026-11-12",
- "market_mode": "強気ギャップアップ",
+ "run_at_jst": "2026-11-13 06:36",
+ "date": "2026-11-13",
+ "market_mode": "レンジ様子見",
  "method_guidance": {
-  "kenmo_momentum": "SOX+5.7%・先物+1.2%で地合い追い風。ただし寄り付きのGU分は追わず、初押し後の高値更新のみ採用。",
-  "kenmo_newhigh": "日経は依然高値から−15%圏で新高値銘柄は限定的。内需・医薬・空運など相対強い群の新値に絞る。",
-  "choruko_reversal": "①AI半導体は3M相対−16pt級の深い下落からの戻り局面。25日線（SOX）未回復のため打診は小さく、損切り位置を明確に。",
-  "stf_kakuhen": "半導体周辺の出来高急増初動は監視。GU後の陰線包みは見送り。",
-  "tenbagger_x": "直近IPO（660A/658A等）は全体リスクオンで資金が戻りやすいが、11/13 SQ・Anthropic価格決定前で値幅警戒。",
-  "daytrade": "寄り後15分は様子見、VWAP上の押し目のみ。前場はGU埋めの売りに注意。",
-  "semicon_miniswing": "強気モード: VWAP±0.5%積極帯。ただしSOXは25日線（約11,053）下、戻り売りに注意し利確は早め。"
+  "kenmo_momentum": "先物は現物比+0.74%だが米3指数小反落・米10年5.14%急伸。寄り後30分の押し目耐性を確認してから。追いかけ買いは控えめに",
+  "kenmo_newhigh": "新高値は内需ディフェンシブ・空運・高配当（④⑧優位）に偏在。AI半導体系の新高値ブレイクは信頼度低",
+  "choruko_reversal": "①AI半導体の1M相対-16.8ptと売られ過ぎ圏。SOX25日線下のため反発は短期の戻り取りに限定し、損切り位置を先に決める",
+  "stf_kakuhen": "SQ当日で寄り付きの需給ノイズ大。確変初動の判定は前場後半以降の出来高で",
+  "tenbagger_x": "グロース250が前日-2.65%と弱い。IPO・小型成長は新規見送り寄り、既存は逆指値厳守",
+  "daytrade": "SQ値決定後の寄り直後は値幅が出やすい。方向が定まるまで様子見、VWAP基準で小ロット",
+  "semicon_miniswing": "レンジ判定のため積極帯なし。SOX25日線(10,968)下・-0.54%で新規は見送り寄り"
  },
- "pattern": "半導体主導リスクオン",
- "note": "SOX+5.7%・先物+1.2%で強気GUも、SOXは25日線未回復・米10年5.00%/JGB10年2.78%の金利高・ドル円159.8（160目前）と11/13 SQ・米CPI前で高値掴み警戒",
+ "pattern": "先物乖離（AIトレード疲労併存）",
+ "note": "先物は現物終値比+0.74%の上方乖離だが、米10年5.14%（+13.7bp）急伸・WTI+2.7%・SQ当日。寄り高後の失速に注意",
  "indicators": {
-  "nikkei": 61248.59,
-  "night_futures": 61985.0,
-  "night_futures_asof": "2026-11-12 06:25 JST",
-  "night_gap_pct": 1.2,
-  "dow_pct": 0.49,
-  "nasdaq_pct": 1.6,
-  "sp500_pct": 1.31,
-  "sox": 10564.11,
-  "sox_pct": 5.66,
-  "vix": 17.49,
+  "nikkei": 60819.14,
+  "night_futures": 61270.0,
+  "night_futures_asof": "2026-11-13 06:25 JST",
+  "night_gap_pct": 0.74,
+  "dow_pct": -0.36,
+  "nasdaq_pct": -0.39,
+  "sp500_pct": -0.35,
+  "sox": 10506.67,
+  "sox_pct": -0.54,
+  "vix": 18.7,
   "fear_greed": null,
-  "usdjpy": 159.821,
-  "wti": 86.39,
-  "wti_pct": 0.41
+  "usdjpy": 159.872,
+  "wti": 88.86,
+  "wti_pct": 2.69
  },
  "data_health": {
+  "nikkei": "tv_scanner",
   "sox": "api",
   "vix": "api",
   "fear_greed": null,
   "night_futures": "api_niy",
   "night_source": "NIY=F",
   "wti": "api",
-  "rate_limited": false,
+  "rate_limited": true,
   "tv_scanner": {
    "used": true,
-   "asof": "06:39 JST",
-   "update_mode": "delayed_streaming_1200(TSE)/streaming(金利・為替)",
+   "asof": "06:37 JST",
+   "update_mode": "streaming(NI225)",
    "empty": []
   },
   "sources": {
-   "nikkei": "yfinance fast_info(regularMarketPrice 11/11引け)＋TV:TVC:NI225で照合。前日終値は日足11/10",
-   "usdjpy": "yfinance fast_info(前日終値158.704)"
+   "nikkei": "yfinance ^N225 の最新足が 2026-11-11 止まり（11-12 足欠落）→ TV scanner TVC:NI225 で前営業日終値を補完。query1 直接再取得は HTTP 429",
+   "ose_check": "TV OSE:NK2251! 61210（API NIY=F 61270 と乖離0.1%）"
   }
  },
  "settlement": {
@@ -58,82 +59,76 @@
   "excluded": []
  },
  "sr": {
-  "d": "2026-11-12",
+  "d": "2026-11-13",
   "regime": "R-A",
   "status": "暫定",
   "g": {
    "g1": {
-    "w": -5.0,
-    "m1": -16.0,
-    "m3": -16.6,
-    "m6": -21.8
+    "w": -1.9,
+    "m1": -16.8,
+    "m3": -18.2,
+    "m6": -23.1
    },
    "g2": {
-    "w": -0.3,
-    "m1": 1.7,
-    "m3": 4.2,
-    "m6": 18.5
+    "w": -1.3,
+    "m1": -0.3,
+    "m3": 4.5,
+    "m6": 17.6
    },
    "g3": {
-    "w": 2.2,
-    "m1": 4.8,
-    "m3": 4.1,
-    "m6": 13.2
+    "w": 1.5,
+    "m1": 4.7,
+    "m3": 4.0,
+    "m6": 13.3
    },
    "g4": {
-    "w": -1.3,
-    "m1": 7.5,
-    "m3": 7.0,
-    "m6": 5.4
+    "w": -1.0,
+    "m1": 8.7,
+    "m3": 10.8,
+    "m6": 7.2
    },
    "g5": {
-    "w": 0.3,
-    "m1": 6.2,
-    "m3": 2.9,
-    "m6": -9.7
+    "w": 0.4,
+    "m1": 8.3,
+    "m3": 5.8,
+    "m6": -7.9
    },
    "g6": {
-    "w": 3.0,
-    "m1": 5.5,
-    "m3": 3.8,
-    "m6": -4.8
+    "w": 3.2,
+    "m1": 6.0,
+    "m3": 4.7,
+    "m6": -4.3
    },
    "g7": {
-    "w": -5.4,
-    "m1": -0.7,
-    "m3": 0.9,
-    "m6": -6.7
+    "w": -1.1,
+    "m1": -0.4,
+    "m3": 3.7,
+    "m6": -5.8
    },
    "g8": {
-    "w": 1.3,
-    "m1": 7.5,
-    "m3": 4.8,
-    "m6": 7.7
+    "w": 2.0,
+    "m1": 9.2,
+    "m3": 6.8,
+    "m6": 9.1
    }
   },
   "bench": {
-   "topix_1d": 0.83,
-   "nk_1d": 1.31,
-   "growth_1d": 0.32,
-   "nt_approx": 14.8
+   "topix_1d": 0.1,
+   "nk_1d": -0.7,
+   "growth_1d": -2.65,
+   "nt_approx": 14.68
   },
   "macro": {
-   "jp10y": 2.779,
-   "us10y": 5,
-   "usdjpy": 159.821,
-   "usdjpy_1m": 1.01,
-   "sox_1d": 5.66,
+   "jp10y": 2.805,
+   "us10y": 5.137,
+   "usdjpy": 159.872,
+   "usdjpy_1m": 0.82,
+   "sox_1d": -0.54,
    "sox_above_25d": false,
-   "wti": 86.39
+   "wti": 88.86
   },
   "signal": "なし",
   "events": [
-   {
-    "date": "2026-11-12",
-    "kind": "US_POLITICS",
-    "what": "米民主党会合（〜11/14・報道）",
-    "status": "reported"
-   },
    {
     "date": "2026-11-13",
     "kind": "SQ",
@@ -142,15 +137,15 @@
    },
    {
     "date": "2026-11-13",
-    "kind": "US_CPI",
-    "what": "米 10月 CPI（通例 第2週・要確認）",
-    "status": "reported"
-   },
-   {
-    "date": "2026-11-13",
     "kind": "ANTHROPIC_IPO",
     "what": "Anthropic IPO: 公開価格決定",
     "status": "pending"
+   },
+   {
+    "date": "2026-11-16",
+    "kind": "ANTHROPIC_IPO",
+    "what": "Anthropic IPO: 上場・初値",
+    "status": "reported"
    }
   ],
   "experts": {
@@ -164,7 +159,7 @@
     "experts(前営業日以降のスニペットなし)",
     "内需株50/外需株50(ETF不在)"
    ],
-   "sox_ma25": "yfinance ^SOX 3mo 直近25本平均 11052.55"
+   "sox_ma25": "yfinance ^SOX 3mo 直近25本平均 10967.87"
   }
  }
 }

@@ -1,0 +1,93 @@
+{
+ "meta": {
+  "version": 1,
+  "asof": "2026-11-13",
+  "note": "自前指標（own-KPI）の固定リスト。メンター正典 第12章「自前指標台帳」の対象。公開情報（銘柄コード・KPI 名）のみで保有・売買の情報は含まない。更新はメンテナンス PR で全置換。R-B 決算 KPI 取込 が own_kpi_today.json を書く。type: earnings_lead＝業績の先行指標型／nav_rate＝P/NAV と金利型／event_lead＝イベント先行指標型／tbd＝主張待ち",
+  "alert_thresholds": {
+   "8830": {
+    "p_nav_low": 0.5,
+    "p_nav_high": 0.7
+   },
+   "2484": {
+    "cash_oku_min": 150,
+    "ret1_pct": 8.0
+   },
+   "3563": {
+    "overseas_margin_drop_pt": 2.0,
+    "domestic_sss_min": 100.0
+   },
+   "REIT": {
+    "yield_spread_range_years": 1
+   },
+   "note": "初期値。変更は本ファイルの全置換で（口頭で変えない）"
+  }
+ },
+ "items": [
+  {
+   "code": "3563",
+   "name": "FOOD & LIFE COMPANIES",
+   "type": "earnings_lead",
+   "fy_end": "09",
+   "kpis": [
+    "na_stores",
+    "us_plan_announce",
+    "overseas_margin",
+    "overseas_stores",
+    "domestic_sss",
+    "fy_guidance",
+    "valuation"
+   ]
+  },
+  {
+   "code": "8830",
+   "name": "住友不動産",
+   "type": "nav_rate",
+   "fy_end": "03",
+   "kpis": [
+    "stock_ratio",
+    "rent_vs_interest",
+    "occupancy",
+    "debt_profile",
+    "p_nav",
+    "shareholder_return",
+    "jgb_rel",
+    "price_position"
+   ]
+  },
+  {
+   "code": "2484",
+   "name": "出前館",
+   "type": "event_lead",
+   "fy_end": "08",
+   "kpis": [
+    "holder_5pct",
+    "agm_items",
+    "parent_stance",
+    "cash_burn",
+    "q_profit",
+    "dilution",
+    "price_reaction",
+    "holders"
+   ]
+  },
+  {
+   "code": "REIT",
+   "name": "東証REIT指数",
+   "type": "nav_rate",
+   "fy_end": null,
+   "proxy": "1343",
+   "kpis": [
+    "reit_p_nav",
+    "reit_yield_spread",
+    "reit_rel_topix"
+   ]
+  },
+  {
+   "code": "5532",
+   "name": "リアルゲイト",
+   "type": "tbd",
+   "fy_end": "06",
+   "kpis": []
+  }
+ ]
+}

@@ -36,7 +36,7 @@ POLICY = {
   "ipo":          dict(files=["master.json"], keys={"ipo","catalyst_schedule","pipeline"}, cand=set(), runs={"ipo"}, max_lines=1000),
   "surge-log":    dict(files=["surge_log.json"], keys=set(), cand=set(), runs=set(), max_lines=0),
   "earn-stats":   dict(files=["earnings_stats.json"], keys=set(), cand=set(), runs=set(), max_lines=0),
-  "kpi-company":  dict(files=["kpi_series.json"], keys=set(), cand=set(), runs=set(), max_lines=0),
+  "kpi-company":  dict(files=["kpi_series.json","own_kpi_today.json"], keys=set(), cand=set(), runs=set(), max_lines=0),
   "kpi-ingest":   dict(files=["kpi_series.json","kpi_events.json"], keys=set(), cand=set(), runs=set(), max_lines=0),
   "gate-track":   dict(files=["gate_track.json"], keys=set(), cand=set(), runs=set(), max_lines=0),
   "stf":          dict(files=["master.json"], keys={"candidates","stf_log","pipeline"}, cand={"stf_kakuhen"}, runs={"stf_weekly"}, max_lines=10000),
@@ -45,13 +45,14 @@ POLICY = {
 # 2026-10-19: earnings_calendar.json（①-8 v1.43 の派生ファイル・次回決算日と過去の発表日。初回実測 86KB・889 銘柄）を night-gate の許可ファイルに追加。上限 300KB。
 # 2026-10-20: R-C 決算反応統計（接頭辞 earn-stats・週次）が書く earnings_stats.json を追加。master.json は書かない（max_lines=0）。上限 300KB。
 # 2026-10-21: R-B 決算 KPI 取込（接頭辞 kpi-company・火〜土 06:00）が書く kpi_series.json を追加。master.json は書かない。上限 1MB。
+# 2026-11-13: 自前指標（own-KPI・メンター正典 第12章）: R-B が own_kpi_today.json も書く（上限 200KB）。own_kpi_universe.json は固定リスト（メンテナンス PR で全置換）。
 # 2026-10-24: R-D 先行データ取込（接頭辞 kpi-ingest・月木 07:30）を追加。同じ kpi_series.json（external セクション）と次版以降の kpi_events.json（上限 300KB）を許可。master.json は書かない。
 # 2026-10-28: ①-S4 内需スキャン（接頭辞 dm-scan・平日 18:55）を追加。①-S3 と同じ器で固定ユニバース domestic_universe.json（109 銘柄）を見る。master.json は candidates.dm_momentum／dm_reversal・dm_scan・pipeline.runs.dm_scan のみ。dm_scan_today.json（全銘柄のステータス・上限 300KB）。
 # 2026-11-07: ⑤ v11 SR 観測モジュール（8 群の相対・レジーム暫定・イベント・専門家）。market_today.json に sr セクション（上限 120KB に引き上げ）・sr_log.json（毎朝 1 要素追記・≤300KB）を morning ⑤ の許可ファイルに追加。sr_calendar.json は読み取り専用（更新はメンテナンス PR）。
 # 2026-11-06: ①-13 打率台帳（接頭辞 signal-log・平日 21:40）を追加。判定（ゲート・手法・業績・値頃・文脈・熟成）と T+1/5/15 の値動きを結ぶ台帳 signal_log/YYYY-MM.json（≤6MB・追記と埋め戻しのみ）と集計 signal_stats.json（≤400KB・全置換）。master.json は pipeline.runs.signal_log のみ。
 # 2026-10-31: ①-S5 アンソロスキャン（接頭辞 an-scan・平日 19:20・期間限定 11/02〜12/18）を追加。①-S4 と同じ器で固定ユニバース anthropic_universe.json（15 銘柄・3 層）を見る。master.json は candidates.an_momentum／an_reversal・an_scan・pipeline.runs.an_scan のみ。an_scan_today.json（上限 100KB）。終了日後は PR を出さない。
 # 正典側の上限（①-8 V13(d) の grades 350KB 等）は正典の自己検証に委ね、ここでは「桁違い」だけを止める。無いものは上限なし（JSON として読めればよい）。
-SIZE_CAPS = {"grades.json": 700_000, "pool_bars.json": 700_000, "earnings_calendar.json": 300_000, "earnings_stats.json": 300_000, "kpi_series.json": 1_000_000, "kpi_events.json": 300_000, "market_today.json": 120_000, "sr_log.json": 300_000, "ai_scan_today.json": 200_000, "dm_scan_today.json": 300_000, "an_scan_today.json": 100_000, "signal_stats.json": 400_000, "night_gate_today.json": 300_000, "gate_track.json": 4_000_000, "surge_log.json": 500_000}
+SIZE_CAPS = {"grades.json": 700_000, "pool_bars.json": 700_000, "earnings_calendar.json": 300_000, "earnings_stats.json": 300_000, "kpi_series.json": 1_000_000, "kpi_events.json": 300_000, "market_today.json": 120_000, "sr_log.json": 300_000, "ai_scan_today.json": 200_000, "dm_scan_today.json": 300_000, "an_scan_today.json": 100_000, "signal_stats.json": 400_000, "night_gate_today.json": 300_000, "gate_track.json": 4_000_000, "surge_log.json": 500_000, "own_kpi_today.json": 200_000}
 GATE_HISTORY_CAP = 1_200_000
 SIGNAL_LOG_CAP = 6_000_000
 

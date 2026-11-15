@@ -7931,10 +7931,10 @@
         ]
       },
       "night_gate": {
-        "generated_at": "2026-11-13T20:30:00+09:00",
+        "generated_at": "2026-11-15T20:30:00+09:00",
         "trading_day": "2026-11-13",
         "base_day": "2026-11-13",
-        "mode": "normal",
+        "mode": "holiday_prep",
         "status": "done",
         "pool_size": 505,
         "evaluated": 506,
@@ -7949,7 +7949,7 @@
         "valuations_computed": 90,
         "stale_gate_count": 88,
         "proposals_generated": 50,
-        "memo": "run_at=2026-11-13T20:30:00+09:00 mode=normal(v1.48,新規セッション/無人実行)。base_day=2026-11-13(金)。week_open=true(翌営業日11/16=月)のため STEP4.8 実行。候補は main の candidates 全手法+グランビル3枠+変化点🔔+ai_*(scored_atがbase_day当日分)+熟成トリガー(value_gap)。dm_*/an_*はspec未定義のため不使用。未マージPR由来0件。業績グレード再計算は未実施(キャッシュ値使用・📊/📢/📉検出はrecalc_queueへ)。値頃感はPASS/PASS_DOJIを当日終値で再計算。T+1/T+2に権利落ちが無いため rights_cache は未更新。決算予定は東証一覧3ファイルから付与。開示はkabutan適時開示一覧。",
+        "memo": "run_at=2026-11-13T20:30:00+09:00 mode=normal(v1.48,新規セッション/無人実行)。base_day=2026-11-13(金)。week_open=true(翌営業日11/16=月)のため STEP4.8 実行。候補は main の candidates 全手法+グランビル3枠+変化点🔔+ai_*(scored_atがbase_day当日分)+熟成トリガー(value_gap)。dm_*/an_*はspec未定義のため不使用。未マージPR由来0件。業績グレード再計算は未実施(キャッシュ値使用・📊/📢/📉検出はrecalc_queueへ)。値頃感はPASS/PASS_DOJIを当日終値で再計算。T+1/T+2に権利落ちが無いため rights_cache は未更新。決算予定は東証一覧3ファイルから付与。開示はkabutan適時開示一覧。 ／ 追記 run_at=2026-11-15T20:30:00+09:00 mode=休日準備(日曜・翌営業日11/16月)。base_day=2026-11-13据え置き。Yahoo日足を全506銘柄再取得し金曜取得分と照合: 493一致・13銘柄で引け後に高値/安値が確定修正(3691/3696/3927/4047/4259/4554/5027/5101/5136/5233/5985/6769/8368)。verdictは全件不変、uwahige_ratioを更新、5233の逆指値4098→4099・SL3851.2→3852.1・上限4139→4140に訂正。週末開示22件(11/13 20:30〜11/15)のうちプール該当は6191のみ(既に⚡材料後出し)。保有0銘柄(trade_master_20261114_1219)。gate_history/2026-11-13.jsonは既存のため不変。",
         "source": "night_gate"
       },
       "gyoseki_update": {
@@ -31286,7 +31286,7 @@
           "⚡材料後出し"
         ],
         "close": 717.0,
-        "uwahige_ratio": 0.57,
+        "uwahige_ratio": 0.56,
         "order_hint": null,
         "sl_hint": null,
         "order_status": null,
@@ -31476,7 +31476,7 @@
         "verdict": "FAIL_UWAHIGE",
         "tags": [],
         "close": 2659.0,
-        "uwahige_ratio": 0.46,
+        "uwahige_ratio": 0.51,
         "order_hint": null,
         "sl_hint": null,
         "order_status": null,
@@ -33238,7 +33238,7 @@
           "📑TOPIX低減対象（次 01/29 第2回/8）"
         ],
         "close": 2157.0,
-        "uwahige_ratio": 0.33,
+        "uwahige_ratio": 0.35,
         "order_hint": null,
         "sl_hint": null,
         "order_status": null,
@@ -47482,7 +47482,7 @@
         "verdict": "FAIL_INSEN",
         "tags": [],
         "close": 837.0,
-        "uwahige_ratio": 0.27,
+        "uwahige_ratio": 0.26,
         "order_hint": null,
         "sl_hint": null,
         "order_status": null,
@@ -49375,7 +49375,7 @@
           "📑TOPIX低減対象（次 01/29 第2回/8）"
         ],
         "close": 1857.0,
-        "uwahige_ratio": 0.1,
+        "uwahige_ratio": 0.09,
         "order_hint": null,
         "sl_hint": null,
         "order_status": null,
@@ -51660,9 +51660,9 @@
           "📐進捗 上振れ 14.1%"
         ],
         "close": 4083.0,
-        "uwahige_ratio": 0.14,
-        "order_hint": "momentum 逆指値4098 上限4139 想定損失幅6.0%。",
-        "sl_hint": 3851.2,
+        "uwahige_ratio": 0.15,
+        "order_hint": "momentum 逆指値4099 上限4140 想定損失幅6.0%。",
+        "sl_hint": 3852.1,
         "order_status": "⏸位置不適(25MA下 -1.78%)",
         "deviation_pct": 0.4,
         "earnings_flag": "⚠日程不明",
@@ -51709,9 +51709,9 @@
         ],
         "scored_at": "2026-11-13T20:30:00+09:00",
         "entry_type": "momentum",
-        "entry_price": 4098,
-        "sl_price": 3851.2,
-        "cap_price": 4139.0,
+        "entry_price": 4099,
+        "sl_price": 3852.1,
+        "cap_price": 4140.0,
         "tan": 100.0,
         "base_day": "2026-11-13",
         "headline": {
@@ -51719,7 +51719,7 @@
           "いま": "終値4,083円・直近5日-3.61%（材料未確認）",
           "調子": "🔻悪化（2/13） — 質注意・経常減益-26.1%・🔼進捗先行",
           "水準": "🟡やや割高（2.0/7）— PER8.74倍・PEG—・52週48.0% ／ 💰単元40.8万円",
-          "戦略": "当日高値超えの逆指値4098円で順張り参戦を検討。上限4139円・SL3851.2円目安（⏸位置不適(25MA下 -1.78%)）"
+          "戦略": "当日高値超えの逆指値4099円で順張り参戦を検討。上限4140円・SL3852.1円目安（⏸位置不適(25MA下 -1.78%)）"
         }
       },
       {
@@ -55946,7 +55946,7 @@
           "📑TOPIX低減対象（次 01/29 第2回/8）"
         ],
         "close": 1769.0,
-        "uwahige_ratio": 0.53,
+        "uwahige_ratio": 0.54,
         "order_hint": null,
         "sl_hint": null,
         "order_status": null,
@@ -57081,7 +57081,7 @@
         "verdict": "FAIL_UWAHIGE",
         "tags": [],
         "close": 934.0,
-        "uwahige_ratio": 0.87,
+        "uwahige_ratio": 0.88,
         "order_hint": null,
         "sl_hint": null,
         "order_status": null,
@@ -57204,7 +57204,7 @@
           "⚡材料後出し"
         ],
         "close": 1280.0,
-        "uwahige_ratio": 0.63,
+        "uwahige_ratio": 0.6,
         "order_hint": null,
         "sl_hint": null,
         "order_status": null,
@@ -59769,7 +59769,7 @@
         "verdict": "FAIL_INSEN",
         "tags": [],
         "close": 2059.0,
-        "uwahige_ratio": 0.35,
+        "uwahige_ratio": 0.34,
         "order_hint": null,
         "sl_hint": null,
         "order_status": null,

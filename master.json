@@ -8129,254 +8129,6 @@
     "note": "IPOウォッチリスト（①-4テンバガーX IPOチェックが毎晩更新・⑤モーニングコンパスが参照）。三層スキーマ: 固定プロフィール(code/name/status/score/verdict/listed_date/offer_price/first_price/profile) + live(close/vs_first_pct/vs_offer_pct/volume_trend/entry_watch/updated_at、読取不可はnull) + log([{d:MM-DD,t:イベント1行80字以内}]直近10件) + digest(古い経緯を1行120字以内に要約)。日次追記文はlog/digestへ圧縮し要点のみ保持。観察終了銘柄はhistory(1行要約)へ移動。",
     "watchlist": [
       {
-        "code": "593A",
-        "name": "ティアフォー",
-        "status": "セカンダリー観察中",
-        "score": 11,
-        "verdict": "👀様子見",
-        "listed_date": "2026-07-22",
-        "offer_price": 1085,
-        "first_price": 1009,
-        "profile": "自動運転OSS「Autoware」提供。売上急成長も研究開発先行で赤字継続",
-        "live": {
-          "close": 2108,
-          "vs_first_pct": 108.9,
-          "vs_offer_pct": 94.3,
-          "volume_trend": "639.1万株",
-          "entry_watch": true,
-          "updated_at": "10-16"
-        },
-        "log": [
-          {
-            "d": "07-31",
-            "t": "終値1,011円(+0.2%)。レンジ収束の兆し、entry_watch非該当継続"
-          },
-          {
-            "d": "08-05",
-            "t": "終値1,009円。07-31〜08-05の3営業日1,009-1,016円で値固め、entry_watch起立"
-          },
-          {
-            "d": "08-12",
-            "t": "終値1,008円(前日比+10.9%)。地合い改善で反発、初値比-0.1%まで戻す"
-          },
-          {
-            "d": "08-14",
-            "t": "3Q決算発表。売上52億・営業損失68億(赤字継続)、通期売上84.8億予想(+32.4%)。終値998円(-0.1%)"
-          },
-          {
-            "d": "08-20",
-            "t": "ルネサスと協業発表(SDV向けAIネイティブ基盤)でストップ高1,033円(+17.0%)。08-21終値1,057円(+2.3%)で続伸"
-          },
-          {
-            "d": "08-28",
-            "t": "ルネサスとのSDV向けAIネイティブ基盤協業(8/20発表)の思惑続伸で本日ストップ高1,999円(+25.0%)。前回(08-21)比+89.1%"
-          },
-          {
-            "d": "09-03",
-            "t": "終値3,570円。TOPIX採用思惑・IPO需給妙味で続伸し上場来高値更新"
-          },
-          {
-            "d": "09-04",
-            "t": "終値2,870円(-19.6%)。前日高値3,570円から急反落、利益確定売り優勢"
-          },
-          {
-            "d": "09-11",
-            "t": "終値2,134円(前回09-04比-25.6%)。祭り相場の利益確定売り継続、9/11地合い悪化(日経-1,259円)も重なる"
-          },
-          {
-            "d": "10-09",
-            "t": "終値2,316円(前回09-25比+18.0%、10/9は前日比-6.5%)。新規IRは確認できず"
-          }
-        ],
-        "digest": "想定1015→上限1085円で公募。7軸11pt。07-22上場,初値1009円(-7.0%)。07-23,24乱高下、07-28沈静化、07-29反発1,055円。"
-      },
-      {
-        "code": "603A",
-        "name": "アイ・グリッド・ソリューションズ",
-        "status": "セカンダリー観察中",
-        "score": 17,
-        "verdict": "🔥強注目",
-        "listed_date": "2026-07-29",
-        "offer_price": 770,
-        "first_price": 953,
-        "profile": "分散型エネルギー資源統合PF(GX/エナジートレーディング)。ROE27.6%・増収増益",
-        "live": {
-          "close": 887,
-          "vs_first_pct": -6.9,
-          "vs_offer_pct": 15.2,
-          "volume_trend": "61.9万株",
-          "entry_watch": true,
-          "updated_at": "10-16"
-        },
-        "log": [
-          {
-            "d": "07-30",
-            "t": "終値774円(-6.8%)。初値から約-18.8%調整しentry_watch起立"
-          },
-          {
-            "d": "07-31",
-            "t": "終値700円(-12.1%)。安値700円、出来高158万株、entry_watch継続"
-          },
-          {
-            "d": "08-05",
-            "t": "終値765円(+5.1%)。公募比-0.6%まで戻す"
-          },
-          {
-            "d": "08-07",
-            "t": "終値799円(前日比+6.1%)。反発し公募比+3.8%まで回復"
-          },
-          {
-            "d": "08-10",
-            "t": "終値848円(前日比+6.1%)。公募比+10.1%まで上昇し年初来高値圏"
-          },
-          {
-            "d": "08-14",
-            "t": "26/6期決算:売上257.0億(+27.6%)営業益35.8億経常益28.7億 増収増益。終値851円(-1.1%)"
-          },
-          {
-            "d": "08-21",
-            "t": "終値876円(前日比+11.6%)。出来高97万株に増加も材料は確認できず"
-          },
-          {
-            "d": "08-28",
-            "t": "終値1,038円(前日比+16.9%)。前回(08-21)比+18.5%上昇も個別の新規材料は確認できず、8/28は地合い全体反発日"
-          },
-          {
-            "d": "09-04",
-            "t": "終値1,145円(前回08-28比+10.3%)。新規IRは確認できず、地合いの底堅さが背景か"
-          },
-          {
-            "d": "09-11",
-            "t": "終値841円(前回09-04比-26.6%)。個別材料は確認できず、9/11の地合い悪化(日経-1,259円)による全面安か"
-          }
-        ],
-        "digest": "想定710→仮条件740-770(+8.5%)→上限770円で公募、主幹事野村。25/6期売上229億・経常+80.0%。07-29上場、初値953円(公募+23.8%)、終値830円。"
-      },
-      {
-        "code": "604A",
-        "name": "ビーエイブル",
-        "status": "セカンダリー観察中",
-        "score": 14,
-        "verdict": "⚡注目",
-        "listed_date": "2026-07-29",
-        "offer_price": 700,
-        "first_price": 1212,
-        "profile": "原発廃炉・再エネO&M・健康・料飲の複合企業。営業益+68.6%、予想PER約6.7倍",
-        "live": {
-          "close": 1440,
-          "vs_first_pct": 18.8,
-          "vs_offer_pct": 105.7,
-          "volume_trend": "109.8万株",
-          "entry_watch": true,
-          "updated_at": "10-16"
-        },
-        "log": [
-          {
-            "d": "07-29",
-            "t": "上場日、買い気配持ち越しで初値未形成（差引約137万株の買い超）"
-          },
-          {
-            "d": "07-30",
-            "t": "初値1,212円形成(公募+73.1%)、高値1,314円。終値1,063円(松井確定値)"
-          },
-          {
-            "d": "07-31",
-            "t": "終値954円(-10.3%)。安値930円でday1高値比-29.2%、entry_watch起立"
-          },
-          {
-            "d": "08-04",
-            "t": "終値908円(-8.6%)。安値881円まで下押し、出来高121万株"
-          },
-          {
-            "d": "08-12",
-            "t": "終値1,016円(前日比+8.9%)。地合い改善で反発、公募比+45.1%まで上昇"
-          },
-          {
-            "d": "08-13",
-            "t": "終値962円(前日比-5.3%)。前日+8.9%反発分の一部剥落、新規IRは確認できず"
-          },
-          {
-            "d": "09-04",
-            "t": "終値1,308円(前回08-28比+21.0%)。年初来高値1,435円を記録、新規IRは確認できず"
-          },
-          {
-            "d": "09-11",
-            "t": "終値1,175円(前回09-04比-10.2%)。個別材料は確認できず、9/11の地合い悪化による下落"
-          },
-          {
-            "d": "09-14",
-            "t": "27/8期税引き益+30%目標を発表。9/15終値1,565円(前日比+23.7%)へ急伸"
-          },
-          {
-            "d": "09-18",
-            "t": "終値1,410円(前回09-11比+20.0%)。09-14材料の追い風続くも高値からは反落"
-          }
-        ],
-        "digest": "仮条件660-700円→上限700円で07-21決定。2026/7期営業益11.3億(+68.6%)・予想PER約6.7倍と割安。吸収額約26億の小型で流動性やや限定。07-27 BB申込終了、上場待ちへ"
-      },
-      {
-        "code": "607A",
-        "name": "エブリー",
-        "status": "セカンダリー観察中",
-        "score": 10,
-        "verdict": "👀様子見",
-        "listed_date": "2026-08-04",
-        "offer_price": 230,
-        "first_price": 294,
-        "profile": "レシピ動画「デリッシュキッチン」(月間3,100万超)運営・広告事業。黒字転換",
-        "live": {
-          "close": 229,
-          "vs_first_pct": -22.1,
-          "vs_offer_pct": -0.4,
-          "volume_trend": "33.1万株",
-          "entry_watch": true,
-          "updated_at": "10-16"
-        },
-        "log": [
-          {
-            "d": "07-31",
-            "t": "購入申込期間(07-28〜31)最終日。前回記録07-24はBB仮条件提示期間終了日と判明し修正"
-          },
-          {
-            "d": "08-04",
-            "t": "上場。初値294円(公募+27.8%)、高値307円、安値235円、終値240円(公募+4.3%)。高値比-21.8%でentry_watch起立"
-          },
-          {
-            "d": "08-10",
-            "t": "終値232円(前日比+6.9%)。公募割れ解消、公募比+0.9%に転換"
-          },
-          {
-            "d": "08-12",
-            "t": "終値255円(前日比+9.9%)。本日決算発表予定日と重なり上昇、詳細開示内容は取得不可"
-          },
-          {
-            "d": "08-13",
-            "t": "終値226円(前日比-11.4%)。08-12決算判明:26/6期経常3.18億黒字(前期0.30億赤字)、27/6期予想+61.3%増の5.13億で最高益更新見通し"
-          },
-          {
-            "d": "08-28",
-            "t": "終値245円(前日比+5.6%)。前回(08-21)比+11.9%も新規IRは確認できず"
-          },
-          {
-            "d": "09-04",
-            "t": "「retail HUB」をアークスグループへ導入決定のIRで急伸、終値317円(前回08-28比+29.4%)、年初来高値更新"
-          },
-          {
-            "d": "09-11",
-            "t": "終値240円(前回09-04比-24.3%)。個別材料は確認できず、9/11の地合い悪化(日経-1,259円)による下落"
-          },
-          {
-            "d": "09-18",
-            "t": "終値278円(前回09-11比+15.8%)。個別の新規IRは確認できず、地合い反発か"
-          },
-          {
-            "d": "10-16",
-            "t": "終値229円(前回09-25比-18.5%)。個別の新規IRは確認できず"
-          }
-        ],
-        "digest": "上場承認06-30→仮条件220-230円→07-27上限230円決定。08-04上場予定・主幹事SMBC日興。想定PSR約0.95倍と割安、遡及登録でBB需要は未追跡"
-      },
-      {
         "code": "618A",
         "name": "KOMPEITO",
         "status": "セカンダリー観察中",
@@ -8387,12 +8139,12 @@
         "first_price": 1480,
         "profile": "設置型社食「オフィスでやさい」運営。野菜・惣菜を自販機型冷蔵庫で職場提供、米国展開も",
         "live": {
-          "close": 1766,
-          "vs_first_pct": 19.3,
-          "vs_offer_pct": 10.4,
-          "volume_trend": "103.0万株",
+          "close": 2075,
+          "vs_first_pct": 40.2,
+          "vs_offer_pct": 29.7,
+          "volume_trend": "34.5万株",
           "entry_watch": false,
-          "updated_at": "10-16"
+          "updated_at": "11-13"
         },
         "log": [
           {
@@ -8410,6 +8162,10 @@
           {
             "d": "09-11",
             "t": "上場。初値1,480円(公募-7.5%)、地合い急変(日経平均-1,259円)の逆風下で終値1,670円(公募+4.4%)まで戻す"
+          },
+          {
+            "d": "11-13",
+            "t": "終値2,075円(前回記録10-16比+17.5%)。公募比+29.7%、個別の新規IRは確認できず"
           }
         ]
       },
@@ -8424,12 +8180,12 @@
         "first_price": 310,
         "profile": "施設インテリア・内装の企画設計から施工・家具什器提供を一貫対応するソリューション企業",
         "live": {
-          "close": 310,
-          "vs_first_pct": 0.0,
-          "vs_offer_pct": 1.6,
-          "volume_trend": "57.4万株",
+          "close": 305,
+          "vs_first_pct": -1.6,
+          "vs_offer_pct": 0.0,
+          "volume_trend": "40.3万株",
           "entry_watch": false,
-          "updated_at": "10-16"
+          "updated_at": "11-13"
         },
         "log": [
           {
@@ -8465,12 +8221,12 @@
         "first_price": 1554,
         "profile": "音源ライツPF「Audiostock」運営。著作権収入急伸、営業利益率25%超の高収益",
         "live": {
-          "close": 1201,
-          "vs_first_pct": -22.7,
-          "vs_offer_pct": 13.3,
-          "volume_trend": "14.3万株",
+          "close": 1139,
+          "vs_first_pct": -26.7,
+          "vs_offer_pct": 7.5,
+          "volume_trend": "11.6万株",
           "entry_watch": true,
-          "updated_at": "10-16"
+          "updated_at": "11-13"
         },
         "log": [
           {
@@ -8514,12 +8270,12 @@
         "first_price": 620,
         "profile": "ゴルフ場カートナビ・広告配信、保育施設支援、健康見守りサービスの複合企業",
         "live": {
-          "close": 492,
-          "vs_first_pct": -20.6,
-          "vs_offer_pct": -24.3,
-          "volume_trend": "2.5万株",
-          "entry_watch": false,
-          "updated_at": "10-16"
+          "close": 405,
+          "vs_first_pct": -34.7,
+          "vs_offer_pct": -37.7,
+          "volume_trend": "1.7万株",
+          "entry_watch": true,
+          "updated_at": "11-13"
         },
         "log": [
           {
@@ -8545,6 +8301,10 @@
           {
             "d": "10-16",
             "t": "終値492円(前回09-18比-12.0%)。個別の新規IRは確認できず"
+          },
+          {
+            "d": "11-13",
+            "t": "終値405円(前回記録10-16比-17.7%)。初日高値624円比-35%でentry_watch起立(スコア9の様子見)"
           }
         ]
       },
@@ -8559,12 +8319,12 @@
         "first_price": 607,
         "profile": "不動産コンサル・企画開発・仲介・運用・ファンド事業を手掛ける総合不動産企業",
         "live": {
-          "close": 589,
-          "vs_first_pct": -3.0,
-          "vs_offer_pct": 7.1,
-          "volume_trend": "68.9万株",
-          "entry_watch": false,
-          "updated_at": "10-16"
+          "close": 523,
+          "vs_first_pct": -13.8,
+          "vs_offer_pct": -4.9,
+          "volume_trend": "3.8万株",
+          "entry_watch": true,
+          "updated_at": "11-13"
         },
         "log": [
           {
@@ -8590,6 +8350,10 @@
           {
             "d": "09-25",
             "t": "株価データ取得不可。検索結果が09-18上場初日データのみで9/25分を確認できず、前回値(09-18)を保持"
+          },
+          {
+            "d": "11-13",
+            "t": "終値523円(前回記録10-16比-11.2%)、公募割れ。初値607円比-13.8%でentry_watch起立"
           }
         ]
       },
@@ -8604,12 +8368,12 @@
         "first_price": 1244,
         "profile": "駐車場マーケットプレイス「akippa」運営最大手。増収続くが売出比率85%で需給に懸念",
         "live": {
-          "close": 1198,
-          "vs_first_pct": -3.7,
-          "vs_offer_pct": 110.2,
-          "volume_trend": "81.8万株",
+          "close": 1098,
+          "vs_first_pct": -11.7,
+          "vs_offer_pct": 92.6,
+          "volume_trend": "18.6万株",
           "entry_watch": true,
-          "updated_at": "10-16"
+          "updated_at": "11-13"
         },
         "log": [
           {
@@ -8643,6 +8407,10 @@
           {
             "d": "10-16",
             "t": "終値1,198円(前回10-09比-21.5%)。個別の新規IRは確認できず"
+          },
+          {
+            "d": "11-13",
+            "t": "3Q決算発表予定11/10(内容は取得不可)。終値1,098円(10-16比-8.3%)"
           }
         ]
       },
@@ -8657,12 +8425,12 @@
         "first_price": 2230,
         "profile": "医療機関向けDX支援(クリニック向けSaaS約6,000施設導入)・広告配信の複合企業",
         "live": {
-          "close": 3135,
-          "vs_first_pct": 40.6,
-          "vs_offer_pct": 123.9,
-          "volume_trend": "143.9万株",
-          "entry_watch": false,
-          "updated_at": "10-16"
+          "close": 2072,
+          "vs_first_pct": -7.1,
+          "vs_offer_pct": 48.0,
+          "volume_trend": "9.2万株",
+          "entry_watch": true,
+          "updated_at": "11-13"
         },
         "log": [
           {
@@ -8688,6 +8456,10 @@
           {
             "d": "10-09",
             "t": "終値2,990円(前回09-25比+41.6%、10/9は前日比+20.1%)。個別材料は確認できず"
+          },
+          {
+            "d": "11-13",
+            "t": "終値2,072円(前回記録10-16比-33.9%)で初値割れ。高値圏から大幅調整しentry_watch起立"
           }
         ]
       },
@@ -8702,12 +8474,12 @@
         "first_price": 1760,
         "profile": "成果報酬型リワード広告「SKYFLAG」運営。売上CAGR41%・ROE高水準",
         "live": {
-          "close": 1541,
-          "vs_first_pct": -12.4,
-          "vs_offer_pct": 2.7,
-          "volume_trend": "89.9万株",
+          "close": 1172,
+          "vs_first_pct": -33.4,
+          "vs_offer_pct": -21.9,
+          "volume_trend": "44.4万株",
           "entry_watch": true,
-          "updated_at": "10-16"
+          "updated_at": "11-13"
         },
         "log": [
           {
@@ -8729,6 +8501,10 @@
           {
             "d": "09-18",
             "t": "終値1,555円(前日比+2.1%)。初値比-11.6%でentry_watch起立(日中高値は取得不可のため初値比で判定)"
+          },
+          {
+            "d": "11-13",
+            "t": "終値1,172円(前回記録10-16比-23.9%)で公募割れ(-21.9%)。個別の新規IRは確認できず"
           }
         ]
       },
@@ -8743,12 +8519,12 @@
         "first_price": 1206,
         "profile": "中堅・中小企業向けコンサル＋士業法人向け人材派遣の持株会社。名証ネクスト上場",
         "live": {
-          "close": null,
-          "vs_first_pct": null,
-          "vs_offer_pct": null,
-          "volume_trend": "取得不可",
+          "close": 879,
+          "vs_first_pct": -27.1,
+          "vs_offer_pct": 22.1,
+          "volume_trend": "閑散(700株)",
           "entry_watch": true,
-          "updated_at": "10-16"
+          "updated_at": "11-13"
         },
         "log": [
           {
@@ -8770,6 +8546,10 @@
           {
             "d": "09-25",
             "t": "株価データ取得不可。取得値の基準日を特定できず確定できず、前回値(09-18)を保持"
+          },
+          {
+            "d": "11-13",
+            "t": "終値879円(11/13 14:43最終約定)。前回確定値09-18終値1,010円比-13.0%、出来高僅少"
           }
         ]
       },
@@ -8784,12 +8564,12 @@
         "first_price": 2030,
         "profile": "建設業向け写真管理DX「蔵衛門」。デバイス×AIクラウドで現場記録業務を効率化、導入約11万社",
         "live": {
-          "close": 2000,
-          "vs_first_pct": -1.5,
-          "vs_offer_pct": 35.1,
-          "volume_trend": "408.9万株",
+          "close": 1675,
+          "vs_first_pct": -17.5,
+          "vs_offer_pct": 13.2,
+          "volume_trend": "12.4万株",
           "entry_watch": true,
-          "updated_at": "10-16"
+          "updated_at": "11-13"
         },
         "log": [
           {
@@ -8811,6 +8591,10 @@
           {
             "d": "10-16",
             "t": "終値2,000円(前日比-12.9%)。初日高値比-14.7%でentry_watch起立"
+          },
+          {
+            "d": "11-13",
+            "t": "終値1,675円(前回記録10-16比-16.3%)。初値比-17.5%、個別の新規IRは確認できず"
           }
         ]
       },
@@ -8825,12 +8609,12 @@
         "first_price": 800,
         "profile": "障害者就労継続支援B型事業所を運営。TOKYO PRO Marketから名証ネクスト・福証Q-Boardへ鞍替え上場",
         "live": {
-          "close": 665,
-          "vs_first_pct": -16.9,
-          "vs_offer_pct": 27.9,
-          "volume_trend": "2.0万株",
+          "close": 619,
+          "vs_first_pct": -22.6,
+          "vs_offer_pct": 19.0,
+          "volume_trend": "閑散(900株)",
           "entry_watch": true,
-          "updated_at": "10-16"
+          "updated_at": "11-13"
         },
         "log": [
           {
@@ -8870,12 +8654,12 @@
         "first_price": 3760,
         "profile": "AI活用の再開発用地の仕入販売、AIシステム/エージェント開発",
         "live": {
-          "close": null,
-          "vs_first_pct": null,
-          "vs_offer_pct": null,
-          "volume_trend": null,
-          "entry_watch": false,
-          "updated_at": "10-16"
+          "close": 3965,
+          "vs_first_pct": 5.5,
+          "vs_offer_pct": -1.9,
+          "volume_trend": "28.7万株",
+          "entry_watch": true,
+          "updated_at": "11-13"
         },
         "log": [
           {
@@ -8897,26 +8681,30 @@
           {
             "d": "10-30",
             "t": "上場。初値3,760円(公募-6.9%)、高値3,965円、終値3,640円(松井・Monex 15:30値)。11/06終値は取得不可"
+          },
+          {
+            "d": "11-13",
+            "t": "11/06上場来安値3,310円(初日高値比-16.5%)でentry_watch起立。11/13終値3,965円"
           }
         ]
       },
       {
         "code": "653A",
         "name": "MabGenesis",
-        "status": "セカンダリー観察中(初値取得不可)",
+        "status": "セカンダリー観察中",
         "score": "取得不可",
         "verdict": "取得不可(Iの部未評価)",
         "listed_date": "2026-11-02",
         "offer_price": 830,
-        "first_price": null,
+        "first_price": 763,
         "profile": "取得不可(次回実行で7軸評価)",
         "live": {
-          "close": null,
-          "vs_first_pct": null,
-          "vs_offer_pct": null,
-          "volume_trend": null,
-          "entry_watch": false,
-          "updated_at": "10-16"
+          "close": 609,
+          "vs_first_pct": -20.2,
+          "vs_offer_pct": -26.6,
+          "volume_trend": "80.4万株",
+          "entry_watch": true,
+          "updated_at": "11-13"
         },
         "log": [
           {
@@ -8926,26 +8714,34 @@
           {
             "d": "11-02",
             "t": "上場。公開価格830円(想定902円より低位)。初値は736円の可能性あるも確認不可、終値696円説あり(要確認)"
+          },
+          {
+            "d": "11-13",
+            "t": "初値763円(公募-8.1%・みんかぶ)、初日高値841円。11/12安値543円、11/13終値609円"
+          },
+          {
+            "d": "11-13",
+            "t": "初日高値比-10%超の調整でentry_watch起立(検討開始の合図、推奨ではない)"
           }
         ]
       },
       {
         "code": "656A",
         "name": "Allganize Holdings",
-        "status": "セカンダリー観察中(初値取得不可)",
+        "status": "セカンダリー観察中",
         "score": "取得不可",
         "verdict": "取得不可(Iの部未評価)",
         "listed_date": "2026-11-04",
         "offer_price": 1260,
-        "first_price": null,
+        "first_price": 1351,
         "profile": "取得不可(次回実行で7軸評価)",
         "live": {
-          "close": null,
-          "vs_first_pct": null,
-          "vs_offer_pct": null,
-          "volume_trend": null,
-          "entry_watch": false,
-          "updated_at": "10-16"
+          "close": 1159,
+          "vs_first_pct": -14.2,
+          "vs_offer_pct": -8.0,
+          "volume_trend": "84.9万株",
+          "entry_watch": true,
+          "updated_at": "11-13"
         },
         "log": [
           {
@@ -8955,26 +8751,34 @@
           {
             "d": "11-04",
             "t": "上場予定日。公開価格1,260円。初値・終値は取得不可"
+          },
+          {
+            "d": "11-13",
+            "t": "初値1,351円(公募+7.2%)、初日高値1,392円・終値1,250円。11/13終値1,159円"
+          },
+          {
+            "d": "11-13",
+            "t": "初日高値比-16.7%でentry_watch起立。11/06上場来安値1,032円"
           }
         ]
       },
       {
         "code": "655A",
         "name": "LTV-X",
-        "status": "セカンダリー観察中(初値取得不可)",
+        "status": "セカンダリー観察中",
         "score": "取得不可",
         "verdict": "取得不可(Iの部未評価)",
         "listed_date": "2026-11-05",
         "offer_price": 570,
-        "first_price": null,
+        "first_price": 700,
         "profile": "取得不可(次回実行で7軸評価)",
         "live": {
-          "close": null,
-          "vs_first_pct": null,
-          "vs_offer_pct": null,
-          "volume_trend": null,
-          "entry_watch": false,
-          "updated_at": "10-16"
+          "close": 537,
+          "vs_first_pct": -23.3,
+          "vs_offer_pct": -5.8,
+          "volume_trend": "0.95万株",
+          "entry_watch": true,
+          "updated_at": "11-13"
         },
         "log": [
           {
@@ -8984,26 +8788,34 @@
           {
             "d": "11-05",
             "t": "名証ネクスト上場予定日。公開価格570円(仮条件550-570)。初値・終値は取得不可"
+          },
+          {
+            "d": "11-13",
+            "t": "初値700円(公募+22.8%)、上場来高値725円(11/05)。11/13終値537円で公募割れ"
+          },
+          {
+            "d": "11-13",
+            "t": "初日高値比-25.9%でentry_watch起立。11/10上場来安値516円"
           }
         ]
       },
       {
         "code": "658A",
         "name": "estie",
-        "status": "セカンダリー観察中(初値取得不可)",
+        "status": "セカンダリー観察中",
         "score": "取得不可",
         "verdict": "取得不可(Iの部未評価)",
         "listed_date": "2026-11-06",
         "offer_price": 1100,
-        "first_price": null,
+        "first_price": 1015,
         "profile": "取得不可(次回実行で7軸評価)",
         "live": {
-          "close": null,
-          "vs_first_pct": null,
-          "vs_offer_pct": null,
-          "volume_trend": null,
-          "entry_watch": false,
-          "updated_at": "10-16"
+          "close": 716,
+          "vs_first_pct": -29.5,
+          "vs_offer_pct": -34.9,
+          "volume_trend": "29.6万株",
+          "entry_watch": true,
+          "updated_at": "11-13"
         },
         "log": [
           {
@@ -9013,26 +8825,34 @@
           {
             "d": "11-06",
             "t": "上場予定日。公開価格1,100円(想定1,070円から上振れ)。初値・終値は取得不可"
+          },
+          {
+            "d": "11-13",
+            "t": "初値1,015円(公募-7.7%)。11/09上場来高値1,075円→11/13上場来安値704円"
+          },
+          {
+            "d": "11-13",
+            "t": "11/13終値716円(公募比-34.9%)。高値比-33%でentry_watch起立"
           }
         ]
       },
       {
         "code": "660A",
         "name": "RECEPTIONIST",
-        "status": "上場承認(BB前)",
+        "status": "セカンダリー観察中",
         "score": "取得不可",
         "verdict": "取得不可(Iの部未精査)",
         "listed_date": "2026-11-10",
         "offer_price": 850,
-        "first_price": null,
+        "first_price": 1012,
         "profile": "クラウド受付「RECEPTIONIST」提供。受付SaaS首位(シェア14.3%)、2期連続経常黒字",
         "live": {
-          "close": null,
-          "vs_first_pct": null,
-          "vs_offer_pct": null,
-          "volume_trend": null,
-          "entry_watch": false,
-          "updated_at": "10-16"
+          "close": 871,
+          "vs_first_pct": -13.9,
+          "vs_offer_pct": 2.5,
+          "volume_trend": "523.1万株",
+          "entry_watch": true,
+          "updated_at": "11-13"
         },
         "log": [
           {
@@ -9046,6 +8866,14 @@
           {
             "d": "10-29",
             "t": "公開価格850円(みんかぶ掲載・仮条件820-850、公式未確認)。11/10上場予定"
+          },
+          {
+            "d": "11-13",
+            "t": "11/10上場。初値1,012円(公募+19.1%・松井)、初日安値860円"
+          },
+          {
+            "d": "11-13",
+            "t": "11/13上場来高値1,088円から急反落し終値871円(高値比-20%)。entry_watch起立"
           }
         ]
       },
@@ -9065,7 +8893,7 @@
           "vs_offer_pct": null,
           "volume_trend": null,
           "entry_watch": false,
-          "updated_at": "10-16"
+          "updated_at": "11-13"
         },
         "log": [
           {
@@ -9075,17 +8903,21 @@
           {
             "d": "11-06",
             "t": "仮条件決定日だが価格帯は取得不可(想定1,620円)。BB11/9-11/13 10:30、公開価格決定11/16、上場11/25"
+          },
+          {
+            "d": "11-13",
+            "t": "仮条件1,570-1,620円(想定1,620円)判明。BB11/13終了、価格決定11/16、申込11/17-20"
           }
         ]
       },
       {
         "code": "657A",
         "name": "HiJoJo Partners",
-        "status": "上場承認(BB中)",
+        "status": "上場承認(購入申込中)",
         "score": null,
         "verdict": "取得不可",
         "listed_date": "2026-11-20",
-        "offer_price": null,
+        "offer_price": 560,
         "first_price": null,
         "profile": "米国未上場ユニコーン株等を対象とするファンドの組成・販売・運用。主幹事みずほ",
         "live": {
@@ -9094,12 +8926,266 @@
           "vs_offer_pct": null,
           "volume_trend": null,
           "entry_watch": false,
-          "updated_at": "11-06"
+          "updated_at": "11-13"
         },
         "log": [
           {
             "d": "11-04",
             "t": "仮条件決定550-560円(想定537.5円)。BB11/5-11/11、価格決定11/12、上場11/20。7軸スコアは財務未確認で取得不可"
+          },
+          {
+            "d": "11-13",
+            "t": "公開価格560円(仮条件上限)で決定。購入申込11/13-11/18、上場11/20、主幹事みずほ"
+          }
+        ]
+      },
+      {
+        "code": "667A",
+        "name": "ジャパンホームシールド",
+        "status": "上場承認(BB中)",
+        "score": "取得不可",
+        "verdict": "取得不可",
+        "listed_date": "2026-11-30",
+        "offer_price": null,
+        "first_price": null,
+        "profile": "地盤調査・地盤工事・建物検査。東証スタンダード、主幹事野村",
+        "live": {
+          "close": null,
+          "vs_first_pct": null,
+          "vs_offer_pct": null,
+          "volume_trend": null,
+          "entry_watch": false,
+          "updated_at": "11-13"
+        },
+        "log": [
+          {
+            "d": "11-13",
+            "t": "検知(承認日取得不可)。仮条件1,220-1,240円(想定1,220円)、BB11/12-17、価格決定11/18、上場11/30"
+          }
+        ]
+      },
+      {
+        "code": "669A",
+        "name": "M&Aロイヤルアドバイザリー",
+        "status": "上場承認(BB前)",
+        "score": "取得不可",
+        "verdict": "取得不可",
+        "listed_date": "2026-12-03",
+        "offer_price": null,
+        "first_price": null,
+        "profile": "M&A仲介。東証グロース、主幹事野村、想定時価総額70.2億円",
+        "live": {
+          "close": null,
+          "vs_first_pct": null,
+          "vs_offer_pct": null,
+          "volume_trend": null,
+          "entry_watch": false,
+          "updated_at": "11-13"
+        },
+        "log": [
+          {
+            "d": "11-13",
+            "t": "10/29承認を遅れて検知。想定210円、仮条件11/16決定、BB11/17-20、価格11/24、上場12/03"
+          }
+        ]
+      },
+      {
+        "code": "673A",
+        "name": "NOTA",
+        "status": "上場承認(BB前)",
+        "score": "取得不可",
+        "verdict": "取得不可",
+        "listed_date": "2026-12-09",
+        "offer_price": null,
+        "first_price": null,
+        "profile": "事業内容は取得不可(Iの部未確認)。東証グロース",
+        "live": {
+          "close": null,
+          "vs_first_pct": null,
+          "vs_offer_pct": null,
+          "volume_trend": null,
+          "entry_watch": false,
+          "updated_at": "11-13"
+        },
+        "log": [
+          {
+            "d": "11-13",
+            "t": "11/06承認を検知。仮条件11/20決定予定、BB11/24-27、申込12/01-04、上場12/09"
+          }
+        ]
+      },
+      {
+        "code": "674A",
+        "name": "Beyont",
+        "status": "上場承認(BB前)",
+        "score": "取得不可",
+        "verdict": "取得不可",
+        "listed_date": "2026-12-11",
+        "offer_price": null,
+        "first_price": null,
+        "profile": "事業内容は取得不可(Iの部未確認)。東証グロース、主幹事大和",
+        "live": {
+          "close": null,
+          "vs_first_pct": null,
+          "vs_offer_pct": null,
+          "volume_trend": null,
+          "entry_watch": false,
+          "updated_at": "11-13"
+        },
+        "log": [
+          {
+            "d": "11-13",
+            "t": "11/10承認を検知。BB11/26-12/02、申込12/04-09、上場12/11"
+          }
+        ]
+      },
+      {
+        "code": "5840",
+        "name": "日本総険",
+        "status": "上場承認(BB前)",
+        "score": "取得不可",
+        "verdict": "取得不可",
+        "listed_date": "2026-12-14",
+        "offer_price": null,
+        "first_price": null,
+        "profile": "事業内容は取得不可(Iの部未確認)。福証Q-Board",
+        "live": {
+          "close": null,
+          "vs_first_pct": null,
+          "vs_offer_pct": null,
+          "volume_trend": null,
+          "entry_watch": false,
+          "updated_at": "11-13"
+        },
+        "log": [
+          {
+            "d": "11-13",
+            "t": "検知(承認日取得不可)。BB11/27-12/03、申込12/07-10、上場12/14"
+          }
+        ]
+      },
+      {
+        "code": "676A",
+        "name": "スマートニュース",
+        "status": "上場承認(BB前)",
+        "score": "取得不可",
+        "verdict": "取得不可",
+        "listed_date": "2026-12-15",
+        "offer_price": null,
+        "first_price": null,
+        "profile": "ニュースアプリ運営。公募なし売出808万株、想定時価総額約430億円",
+        "live": {
+          "close": null,
+          "vs_first_pct": null,
+          "vs_offer_pct": null,
+          "volume_trend": null,
+          "entry_watch": false,
+          "updated_at": "11-13"
+        },
+        "log": [
+          {
+            "d": "11-13",
+            "t": "11/12承認を検知。仮条件11/30、BB11/30-12/04、価格12/07、上場12/15。主幹事三菱UFJMS他"
+          }
+        ]
+      },
+      {
+        "code": "679A",
+        "name": "WHI Holdings",
+        "status": "上場承認(BB前)",
+        "score": "取得不可",
+        "verdict": "取得不可",
+        "listed_date": "2026-12-15",
+        "offer_price": null,
+        "first_price": null,
+        "profile": "事業内容は取得不可(Iの部未確認)。東証プライム",
+        "live": {
+          "close": null,
+          "vs_first_pct": null,
+          "vs_offer_pct": null,
+          "volume_trend": null,
+          "entry_watch": false,
+          "updated_at": "11-13"
+        },
+        "log": [
+          {
+            "d": "11-13",
+            "t": "検知(承認日取得不可)。想定2,465円(報道)、仮条件11/30、BB12/01-04、上場12/15"
+          }
+        ]
+      },
+      {
+        "code": "677A",
+        "name": "FOLIOホールディングス",
+        "status": "上場承認(BB前)",
+        "score": "取得不可",
+        "verdict": "取得不可",
+        "listed_date": "2026-12-17",
+        "offer_price": null,
+        "first_price": null,
+        "profile": "投資・資産運用サービス。東証グロース、共同主幹事大和/日興/SBI/UBS",
+        "live": {
+          "close": null,
+          "vs_first_pct": null,
+          "vs_offer_pct": null,
+          "volume_trend": null,
+          "entry_watch": false,
+          "updated_at": "11-13"
+        },
+        "log": [
+          {
+            "d": "11-13",
+            "t": "11/12承認を検知。BB12/02-08、申込12/10-15、上場12/17"
+          }
+        ]
+      },
+      {
+        "code": "680A",
+        "name": "パイフォトニクス",
+        "status": "上場承認(BB前)",
+        "score": "取得不可",
+        "verdict": "取得不可",
+        "listed_date": "2026-12-17",
+        "offer_price": null,
+        "first_price": null,
+        "profile": "事業内容は取得不可(Iの部未確認)。名証ネクスト",
+        "live": {
+          "close": null,
+          "vs_first_pct": null,
+          "vs_offer_pct": null,
+          "volume_trend": null,
+          "entry_watch": false,
+          "updated_at": "11-13"
+        },
+        "log": [
+          {
+            "d": "11-13",
+            "t": "検知(承認日取得不可)。BB12/02-08、申込12/10-15、上場12/17"
+          }
+        ]
+      },
+      {
+        "code": "681A",
+        "name": "Berry",
+        "status": "上場承認(BB前)",
+        "score": "取得不可",
+        "verdict": "取得不可",
+        "listed_date": "2026-12-18",
+        "offer_price": null,
+        "first_price": null,
+        "profile": "事業内容は取得不可(Iの部未確認)。東証グロース",
+        "live": {
+          "close": null,
+          "vs_first_pct": null,
+          "vs_offer_pct": null,
+          "volume_trend": null,
+          "entry_watch": false,
+          "updated_at": "11-13"
+        },
+        "log": [
+          {
+            "d": "11-13",
+            "t": "検知(承認日取得不可)。想定870円(報道)、BB12/01-08、申込12/10-15、上場12/18"
           }
         ]
       }
@@ -9112,52 +9198,44 @@
         "first_multiple": 2.11,
         "final_verdict": "取得不可",
         "summary": "初値2,284円(公募比2.11倍)から調整。10/16終値1,242円(公募比+15.0%)。上場後62営業日で観察終了"
+      },
+      {
+        "code": "593A",
+        "name": "ティアフォー",
+        "listed_date": "2026-07-22",
+        "first_multiple": 0.93,
+        "final_verdict": "👀様子見",
+        "summary": "上場76営業日で観察終了。初値1,009円(公募割れ)→11/13終値2,033円(公募比+87.4%)。ルネサス協業で急騰後調整"
+      },
+      {
+        "code": "603A",
+        "name": "アイ・グリッド・ソリューションズ",
+        "listed_date": "2026-07-29",
+        "first_multiple": 1.24,
+        "final_verdict": "🔥強注目",
+        "summary": "上場71営業日で観察終了。初値953円(公募+23.8%)→11/13終値631円(公募比-18.1%)。増収増益も株価は軟調"
+      },
+      {
+        "code": "604A",
+        "name": "ビーエイブル",
+        "listed_date": "2026-07-29",
+        "first_multiple": 1.73,
+        "final_verdict": "⚡注目",
+        "summary": "上場71営業日で観察終了。初値1,212円(公募+73.1%)→11/13終値1,102円(公募比+57.4%)。高値1,565円から調整"
+      },
+      {
+        "code": "607A",
+        "name": "エブリー",
+        "listed_date": "2026-08-04",
+        "first_multiple": 1.28,
+        "final_verdict": "👀様子見",
+        "summary": "上場67営業日で観察終了。初値294円(公募+27.8%)→11/13終値168円(公募比-27.0%)。最高益見通しも下落基調"
       }
     ]
   },
   "catalyst_schedule": {
     "note": "重要日程（決算・IPO・BB期限・マクロ・地政学）。書き込みは①-4（IPO系）が担当、⑤の日程追記は将来復活予定。過ぎた日付のurgencyはnormalへ落とす。エントリ: {date,type,title,urgency(red/normal),related_codes,source}",
     "events": [
-      {
-        "date": "2026-10-28",
-        "type": "bb_deadline",
-        "title": "トグルHD(652A) 購入申込期間末 10/28(BB10/23-10/28・公開価格4,040円確定)。次回実行(11/01)前に締まる",
-        "urgency": "normal",
-        "related_codes": [
-          "652A"
-        ],
-        "source": "kabutan 2026-10-22・松井証券IPO(週次チェック2026-10-25)"
-      },
-      {
-        "date": "2026-10-29",
-        "type": "bb_deadline",
-        "title": "RECEPTIONIST(660A) BB申込期限 10/29(BB10/23-10/29・仮条件決定済、価格帯は取得不可)。次回実行前に締まる",
-        "urgency": "normal",
-        "related_codes": [
-          "660A"
-        ],
-        "source": "松井証券/web検索(週次チェック2026-10-25・JPX公式は403)"
-      },
-      {
-        "date": "2026-10-30",
-        "type": "ipo_listing",
-        "title": "トグルホールディングス(652A) 東証グロース上場予定",
-        "urgency": "normal",
-        "related_codes": [
-          "652A"
-        ],
-        "source": "みんかぶ/各IPOサイト(週次チェック2026-10-04時点web検索)"
-      },
-      {
-        "date": "2026-10-30",
-        "type": "price_decision",
-        "title": "RECEPTIONIST(660A) 公募・売出価格決定予定(松井証券記載)。決定価格は取得不可",
-        "urgency": "normal",
-        "related_codes": [
-          "660A"
-        ],
-        "source": "web検索(週次チェック2026-11-01・JPX公式は403)"
-      },
       {
         "date": "2026-11-02",
         "type": "ipo_listing",
@@ -9222,7 +9300,7 @@
         "date": "2026-11-11",
         "type": "bb_deadline",
         "title": "HiJoJo Partners(657A) BB申込期限 11/11(仮条件550-560円・BB11/5-11/11)。次回実行(11/15)前に締まる",
-        "urgency": "red",
+        "urgency": "normal",
         "related_codes": [
           "657A"
         ],
@@ -9242,7 +9320,7 @@
         "date": "2026-11-13",
         "type": "bb_deadline",
         "title": "TOKIUM(664A) BB申込期限 11/13 10:30(BB11/9-11/13・仮条件の価格帯は取得不可)。次回実行(11/15)前に締まる",
-        "urgency": "red",
+        "urgency": "normal",
         "related_codes": [
           "664A"
         ],
@@ -9259,6 +9337,46 @@
         "source": "web検索(週次チェック2026-11-08・JPX公式は403)"
       },
       {
+        "date": "2026-11-16",
+        "type": "price_decision",
+        "title": "M&Aロイヤルアドバイザリー(669A) 仮条件決定予定(想定210円)",
+        "urgency": "normal",
+        "related_codes": [
+          "669A"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
+      },
+      {
+        "date": "2026-11-17",
+        "type": "bb_deadline",
+        "title": "ジャパンホームシールド(667A) BB申込期限 11/17(仮条件1,220-1,240円)。次回実行(11/22)前に締まる",
+        "urgency": "red",
+        "related_codes": [
+          "667A"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
+      },
+      {
+        "date": "2026-11-18",
+        "type": "bb_deadline",
+        "title": "HiJoJo Partners(657A) 購入申込期限 11/18(公開価格560円確定)。次回実行前に締まる",
+        "urgency": "red",
+        "related_codes": [
+          "657A"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
+      },
+      {
+        "date": "2026-11-18",
+        "type": "price_decision",
+        "title": "ジャパンホームシールド(667A) 公開価格決定予定",
+        "urgency": "normal",
+        "related_codes": [
+          "667A"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
+      },
+      {
         "date": "2026-11-20",
         "type": "ipo_listing",
         "title": "HiJoJo Partners(657A) 東証グロース上場予定",
@@ -9269,6 +9387,46 @@
         "source": "web検索(週次チェック2026-11-08・JPX公式は403)"
       },
       {
+        "date": "2026-11-20",
+        "type": "bb_deadline",
+        "title": "M&Aロイヤルアドバイザリー(669A) BB申込期限 11/20(BB11/17-20・仮条件は11/16決定)。次回実行前に締まる",
+        "urgency": "red",
+        "related_codes": [
+          "669A"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
+      },
+      {
+        "date": "2026-11-20",
+        "type": "bb_deadline",
+        "title": "TOKIUM(664A) 購入申込期限 11/20(申込11/17-20・仮条件1,570-1,620円)。次回実行前に締まる",
+        "urgency": "red",
+        "related_codes": [
+          "664A"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
+      },
+      {
+        "date": "2026-11-20",
+        "type": "price_decision",
+        "title": "NOTA(673A) 仮条件決定予定",
+        "urgency": "normal",
+        "related_codes": [
+          "673A"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
+      },
+      {
+        "date": "2026-11-24",
+        "type": "price_decision",
+        "title": "M&Aロイヤルアドバイザリー(669A) 公開価格決定予定",
+        "urgency": "normal",
+        "related_codes": [
+          "669A"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
+      },
+      {
         "date": "2026-11-25",
         "type": "ipo_listing",
         "title": "TOKIUM(664A) 東証グロース上場予定",
@@ -9277,6 +9435,162 @@
           "664A"
         ],
         "source": "JPX(新規上場会社情報)・ipokabu(週次チェック2026-10-16時点)"
+      },
+      {
+        "date": "2026-11-25",
+        "type": "bb_deadline",
+        "title": "ジャパンホームシールド(667A) 購入申込期限 11/25",
+        "urgency": "normal",
+        "related_codes": [
+          "667A"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
+      },
+      {
+        "date": "2026-11-27",
+        "type": "bb_deadline",
+        "title": "NOTA(673A) BB申込期限 11/27(BB11/24-27)",
+        "urgency": "normal",
+        "related_codes": [
+          "673A"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
+      },
+      {
+        "date": "2026-11-30",
+        "type": "ipo_listing",
+        "title": "ジャパンホームシールド(667A) 東証スタンダード上場予定",
+        "urgency": "normal",
+        "related_codes": [
+          "667A"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
+      },
+      {
+        "date": "2026-11-30",
+        "type": "price_decision",
+        "title": "スマートニュース(676A)・WHI Holdings(679A) 仮条件決定予定",
+        "urgency": "normal",
+        "related_codes": [
+          "676A",
+          "679A"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
+      },
+      {
+        "date": "2026-12-02",
+        "type": "bb_deadline",
+        "title": "Beyont(674A) BB申込期限 12/02(BB11/26-12/02)",
+        "urgency": "normal",
+        "related_codes": [
+          "674A"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
+      },
+      {
+        "date": "2026-12-03",
+        "type": "bb_deadline",
+        "title": "日本総険(5840) BB申込期限 12/03(BB11/27-12/03)",
+        "urgency": "normal",
+        "related_codes": [
+          "5840"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
+      },
+      {
+        "date": "2026-12-03",
+        "type": "ipo_listing",
+        "title": "M&Aロイヤルアドバイザリー(669A) 東証グロース上場予定",
+        "urgency": "normal",
+        "related_codes": [
+          "669A"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
+      },
+      {
+        "date": "2026-12-04",
+        "type": "bb_deadline",
+        "title": "スマートニュース(676A)・WHI Holdings(679A) BB申込期限 12/04",
+        "urgency": "normal",
+        "related_codes": [
+          "676A",
+          "679A"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
+      },
+      {
+        "date": "2026-12-08",
+        "type": "bb_deadline",
+        "title": "FOLIO HD(677A)・パイフォトニクス(680A)・Berry(681A) BB申込期限 12/08",
+        "urgency": "normal",
+        "related_codes": [
+          "677A",
+          "680A",
+          "681A"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
+      },
+      {
+        "date": "2026-12-09",
+        "type": "ipo_listing",
+        "title": "NOTA(673A) 東証グロース上場予定",
+        "urgency": "normal",
+        "related_codes": [
+          "673A"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
+      },
+      {
+        "date": "2026-12-11",
+        "type": "ipo_listing",
+        "title": "Beyont(674A) 東証グロース上場予定",
+        "urgency": "normal",
+        "related_codes": [
+          "674A"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
+      },
+      {
+        "date": "2026-12-14",
+        "type": "ipo_listing",
+        "title": "日本総険(5840) 福証Q-Board上場予定",
+        "urgency": "normal",
+        "related_codes": [
+          "5840"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
+      },
+      {
+        "date": "2026-12-15",
+        "type": "ipo_listing",
+        "title": "スマートニュース(676A)東証グロース・WHI Holdings(679A)東証プライム 上場予定",
+        "urgency": "normal",
+        "related_codes": [
+          "676A",
+          "679A"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
+      },
+      {
+        "date": "2026-12-17",
+        "type": "ipo_listing",
+        "title": "FOLIO HD(677A)東証グロース・パイフォトニクス(680A)名証ネクスト 上場予定",
+        "urgency": "normal",
+        "related_codes": [
+          "677A",
+          "680A"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
+      },
+      {
+        "date": "2026-12-18",
+        "type": "ipo_listing",
+        "title": "Berry(681A) 東証グロース上場予定",
+        "urgency": "normal",
+        "related_codes": [
+          "681A"
+        ],
+        "source": "松井証券IPO一覧/web検索(週次チェック2026-11-15・JPX公式は403)"
       }
     ]
   },

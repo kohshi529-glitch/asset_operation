@@ -7974,12 +7974,12 @@
         ]
       },
       "watch_tracker": {
-        "generated_at": "2026-11-13T12:42:11Z",
+        "generated_at": "2026-11-15T12:42:10Z",
         "trading_day": "2026-11-13",
         "status": "done",
         "source": "watch_tracker",
-        "memo": "run_at=2026-11-13T12:42:11Z; base_day=2026-11-13(①-8追従)。新規シード35・再点灯15。日足取得 成功181/181。closed 40(待機期限切れ1/即断期限切れ32/25MA割れ2日3/反発失敗4)。熟成: 新規登録1(vg true 13)・トリガー0。",
-        "seeded": 35,
+        "memo": "run_at=2026-11-15T12:42:10Z; base_day=2026-11-13(①-8追従・休日準備モード)。新規シード0・再点灯15。日足取得 成功141/141。closed移動0。熟成: 新規登録0(vg true 13)・トリガー0・指名済み退避0(9048は11/16以降に退避)。同一入力の再計算で signal 変化なし。",
+        "seeded": 0,
         "active": 141,
         "ripen_active": 15,
         "ripen_triggered": 0
@@ -206872,7 +206872,7 @@
     }
   ],
   "watchlist": {
-    "updated_at": "2026-11-13T12:41:45Z",
+    "updated_at": "2026-11-15T12:42:10Z",
     "base_day": "2026-11-13",
     "entries": [
       {

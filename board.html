@@ -163,6 +163,9 @@ details.cfold>summary{cursor:pointer;color:#7fe3d6;font-size:12.5px;font-weight:
 .ostat.bad{color:#e88a8a;background:#2e1a1a;border-color:#6b2f2f}
 /* D30: ⏸位置不適／⏸トラップ疑い（PASS は残し理由だけ見せる。①-11 は発注しない） */
 .ostat.hold{color:#ffb074;background:#3a2412;border-color:#7a4a1c}
+/* D31: 直近決算日（実績）。チャートの反応と見比べる基準。5 営業日以内は少し強く */
+.earnchip.past{color:#9fb8c8;background:#17222b;border-color:#2f4552}
+.earnchip.past.recent{color:#cfe3f0;border-color:#4d7a95;background:#1a2e3b}
 /* D30: 勢いフラグ（①-9 v5.6 momentum.flags）・トラップ疑い・RS20・十字線種 */
 .mvflag{display:inline-block;font-size:10px;font-weight:700;border-radius:4px;padding:0 5px;margin-left:3px;border:1px solid;white-space:nowrap}
 .mvflag.w{color:#ffab91;background:#3a1f16;border-color:#7a3a2a}
@@ -432,7 +435,7 @@ details.stgd summary{cursor:pointer;font-weight:700;padding:4px 0}
 <div id='panel-methods' class='panel'></div>
 <div id='panel-granville' class='panel'></div>
 <div id='panel-legend' class='panel'></div>
-<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28 ＋ D24/D25 2026-10-31 ＋ D26 2026-11-01 ＋ D27 2026-11-05 ＋ D28 2026-11-06 ＋ D29 2026-11-08 ＋ D30 2026-11-11）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
+<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28 ＋ D24/D25 2026-10-31 ＋ D26 2026-11-01 ＋ D27 2026-11-05 ＋ D28 2026-11-06 ＋ D29 2026-11-08 ＋ D30 2026-11-11 ＋ D31 2026-11-16）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
 </div>
 <button class='fab' id='backtab' onclick='scrollToTabbar()' aria-label='タブバーへ戻る'>▲タブへ戻る</button>
 <script>
@@ -1031,6 +1034,17 @@ function pxdChip(code){
   const lx=g.lx&&/^\d{4}-\d{2}-\d{2}$/.test(String(g.lx))?String(g.lx).slice(5).replace('-','/'):null;
   return `<span class='earnchip unknown' title='D19: 直近の発表日と、前年に次回を発表した日（どちらも実績）。今期の日程は未発表＝会社 IR で確認'>📅${lx?`直近 ${esc(lx)} 発表・`:''}前年は次回 ${esc(dm)}・今期未発表</span>`;
 }
+// D31: 直近決算日チップ。grades.json の lx（①-8 が kabutan の決算履歴から取った直近の発表日・実績）。今日から何営業日前かを MKTCAL で数える（通信なし）。
+// 決算直後の値動きをチャートと見比べるための基準日。将来日・不正な日付は出さない。pxdChip（D19）が「直近 発表」を既に出している行では重複させない。
+function lastEarnChip(code,earnHtml){
+  const g=gradesOf(code); if(!g||!g.lx||!/^\d{4}-\d{2}-\d{2}$/.test(String(g.lx))) return '';
+  if(earnHtml&&String(earnHtml).indexOf('直近 ')>=0) return '';
+  const n=earnDaysFromNx(g.lx); if(n==null||n>0) return '';
+  const back=-n; const mmdd=String(g.lx).slice(5).replace('-','/');
+  const when=back===0?'本日発表':`${back}営業日前`;
+  const sameNx=g.nx&&String(g.nx)===String(g.lx);
+  return `<span class='earnchip past${back<=5?' recent':''}' title='直近の決算発表日（実績・grades.json lx）。発表翌営業日が反応日。${sameNx?'次回日程は未更新（nx が同じ日付）':''}'>📅直近決算 ${esc(mmdd)}（${esc(when)}）</span>`;
+}
 // D16: 進捗チップ。grades.json の pg（計画比の乖離%・経常ベースの試算。null なら出さない）
 function pgChip(code){
   const g=gradesOf(code); if(!g||g.pg==null||isNaN(Number(g.pg))) return '';
@@ -1276,7 +1290,9 @@ function card5(v){
   const r2=(v.methodHtml)?`<div class='srow s2'>${v.methodHtml}</div>`:`<div class='srow s2'></div>`;
   const r2b=v.cautionHtml?`<div class='srow s2b'>${v.cautionHtml}</div>`:''; // 注意チップ列（D2）。無ければ省略
   let pgc=''; try{ pgc=pgChip(v.code); }catch(e){ pgc=''; }
-  const r3=(v.earnHtml||pgc)?`<div class='srow s3'>${v.earnHtml||''}${pgc}</div>`:''; // 該当なしは行ごと省略（D16: 📐進捗チップも同じ行）
+  let lec=''; try{ lec=lastEarnChip(v.code,v.earnHtml); }catch(e){ lec=''; } // D31: 直近決算日（実績）
+  if(lec&&v.earnHtml&&/⚠決算接近/.test(String(v.earnHtml))){ const g=gradesOf(v.code); if(g&&g.nx&&g.lx&&String(g.nx)===String(g.lx)) v=Object.assign({},v,{earnHtml:''}); } // D31: 発表済み（nx＝lx）の古い「⚠決算接近」は出さない
+  const r3=(v.earnHtml||pgc||lec)?`<div class='srow s3'>${lec}${v.earnHtml||''}${pgc}</div>`:''; // 該当なしは行ごと省略（D16: 📐進捗チップも同じ行・D31: 📅直近決算を先頭に）
   const r4=v.judgeHtml||'';
   const r5=v.propHtml?`<div class='srow s5'>${v.propHtml}</div>`:''; // 提案なしは行ごと省略
   const r6=v.bodyHtml||'';
@@ -2577,6 +2593,8 @@ function renderLegend(){
     ${tr.map(row).join('')}
     <h3>💴 配当・🎁優待・📆権利対象（D8）</h3>
     <div class='note'>💴チップ＝①-8 v1.38 が kabutan の既読ページから読んだ予想配当（年間または中間／期末）と、minkabu の優待ページで確かめた優待の有無・優待権利月（grades.json の fy/rm/dvi/dvf/dva/yt/ym）。未取得の銘柄には出ない（初回は保有・PASS から順に埋まる）。<br>📆権利対象チップ＝今日〜次の営業日に権利付き最終日／権利落ち日があり、かつその月がこの銘柄の権利月（配当または優待）に含まれるときだけ出る。「現在値→落ち後目安（−x円・−y%）」は該当する配当を現在値から引いたもので、公表値からの計算（推定ではない）。優待分は含まないので、🎁付きの銘柄は目安より大きく落ちうる。「直近5日 ±z%」は権利取り前に上がってきた幅（pool_bars の直近5本）で、落ち後に剥落しうる分の目安。SL との比較は出さない（stop の反映は実弾ボード側の運用に依存するため）。権利月が未取得の銘柄は「📆権利月不明」。権利月が違う銘柄には何も出ない（＝今回の権利落ちの影響は限定的）。</div>
+    <h3>📅 直近決算日チップ（D31）</h3>
+    <div class='note'>全カードの 3 行目先頭に <span class='earnchip past'>📅直近決算 11/06（6営業日前）</span> を常時表示。grades.json の lx（①-8 が kabutan の決算履歴から取った直近の発表日・実績）と端末の今日から JPX 休業日表で営業日を数える。発表翌営業日が反応日なので、決算後の値動きをチャートと見比べる基準になる。5 営業日以内は <span class='earnchip past recent'>📅直近決算 11/13（1営業日前）</span> と少し強く出す。将来日・日付不明の銘柄には出さない。次回日程が未発表で D19 の「📅直近 … 発表・前年は次回 …」が出ている行では重複させない。表示のみで判定・順位は変えない。</div>
     <h3>🧾 直近提案の決算接近 帯・入口の穴 4 つのチップ（D30）</h3>
     <div class='note'>3798（2026-11-10 照合）で見えていなかった 6 点のうち、ボード側で出せるもの。(1) 🚪ゲートタブ先頭の 🧾 帯＝直近 20 営業日に提案に出た銘柄の決算接近を、当夜の判定（PASS／FAIL）と無関係に並べる（保有情報は使わない＝候補だった銘柄の日程）。折りたたみでプール全体の決算カレンダー（反応日／本日／明日／2〜5 日／6〜10 日の件数とコード）。残営業日は grades.json の nx から端末内で計算。(2) 業績チップの右に ①-9 v5.6 の勢いフラグ <span class='mvflag w'>⚠減速</span><span class='mvflag w'>⚠進捗遅れ</span><span class='mvflag w'>⚠下期依存</span><span class='mvflag u'>🔼加速</span><span class='mvflag u'>🔼進捗先行</span>（四半期表と進捗モデルからの機械判定。グレードは変えない）。(3) 値頃感チップの右に <span class='mvflag t'>⚠トラップ疑い</span>（💎/🟢 ∧ 52週位置 &lt;15% ∧ 減速 ∧ 25日線下向き）／<span class='mvflag i'>ℹ安値圏の割安</span>（情報）。(4) ①-8 v1.48 の order_status <span class='ostat hold'>⏸位置不適</span>（順張りが 25日線下 または 52週位置 30% 未満／押し目が 25日線下向き）・<span class='ostat hold'>⏸トラップ疑い・確認足待ち</span>（逆張り）・<span class='ostat wait'>⏳確認足待ち</span>（十字線＝高値＋1呼値の逆指値が確認足）。PASS は残し、理由だけ見せる。機械ファンドは ⏸ を発注しない。(5) 4 行目に <span class='rschip'>RS20 ±x pt</span>（対 TOPIX 1306 の 20 日相対。順張りで −5 未満は ⚠劣後、逆張りで +5 超は ℹ相対強）と、PASS_DOJI の <span class='dojichip'>🕯トンボ</span>／<span class='dojichip bear'>🕯トウバ・下放れ直後</span>（トウバ・下放れ直後・決算反応直後は提案にならない）。いずれも表示であり判定・順位は変えない。閾値は暫定で、📈打率タブ（①-13 v1.1）の実測で見直す。</div>
     <h3>📱 タブバーの折り返し（D29）</h3>

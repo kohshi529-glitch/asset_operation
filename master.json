@@ -1440,37 +1440,37 @@
   },
   "market": {
     "latest": {
-      "date": "2026-11-16",
-      "market_mode": "軟調",
+      "date": "2026-11-17",
+      "market_mode": "弱気",
+      "pattern": "半導体主導リスクオフ（AIトレード疲労）",
       "method_guidance": {
-        "kenmo_momentum": "先物は週末据え置きで現物比-0.13%と小幅だが、SOX-3.4%・NAS-0.9%で半導体主導の売り。寄り後の値持ちを確認するまで新規は控えめに",
-        "kenmo_newhigh": "新高値は④内需ディフェンシブ・⑧空運/高配当に偏在（1M相対上位）。AI半導体系の新高値ブレイクは信頼度低",
-        "choruko_reversal": "①AI半導体は1M相対-17pt前後の売られ過ぎ圏だがSOX25日線(10,871)下で再下落。反発狙いは後場の下げ止まり確認後、損切り位置を先に決める",
-        "stf_kakuhen": "軟調地合いでは確変初動のダマシが増える。出来高急増＋前場高値維持を条件に絞る",
-        "tenbagger_x": "グロース250 1M-8.2%と弱含み。Anthropic上場（報道ベース11/16）でAI関連のテーマ思惑は出得るが、小型IPOの新規は見送り寄り・既存は逆指値厳守",
-        "daytrade": "寄り直後は半導体主力の売り先行が想定され値幅大。方向が定まるまで様子見、VWAP基準で小ロット",
-        "semicon_miniswing": "見送り（SOX-3.4%・25日線下）"
+        "kenmo_momentum": "SOX-5.3%・NAS-2.5%・VIX22.9で半導体主導の売り再燃。先物は現物比-0.87%（59,145）で続落寄り。新規モメンタムは見送り、保有は逆指値厳守",
+        "kenmo_newhigh": "新高値は⑧テーマ（空運・高配当）・④内需ディフェンシブに偏在（1M相対上位）。①AI半導体系のブレイクは信頼度低・見送り",
+        "choruko_reversal": "①AI半導体は1M相対-15.9pt・SOX25日線(10,766)を約11%下回る売られ過ぎ圏だが下落継続中。寄りの投げ一巡と後場の下げ止まり確認までは手を出さない",
+        "stf_kakuhen": "弱気地合いで確変初動のダマシ増。出来高急増＋前場高値維持の両条件を満たすもの以外は見送り",
+        "tenbagger_x": "グロース250 前日-2.3%・1M-6.2%と弱い。小型IPOの新規は見送り、既存は逆指値厳守",
+        "daytrade": "寄り直後のギャップダウン後の値幅は大きくなりやすい。ロットを落とし、VWAP回復を確認してからの短期のみ",
+        "semicon_miniswing": "見送り（弱気モード・SOX-5.3%で25日線下）"
       },
-      "pattern": "半導体主導リスクオフ",
-      "note": "SOX-3.43%（25日線10,871を下回ったまま）で東京の半導体主力に売り圧力。先物は週末据え置き値（11/14 06:55）で週末材料は未反映",
+      "note": "米半導体急落（SOX-5.3%）＋VIX22.9に跳ね上がり、日経は前日-2.4%に続き先物も現物比-0.9%。AI半導体の追撃売りに警戒、内需・ディフェンシブへの資金逃避の継続に注目",
       "indicators": {
-        "nikkei": 61142.35,
-        "night_futures": 61065.0,
-        "night_futures_asof": "2026-11-14 06:55 JST",
-        "night_gap_pct": -0.13,
-        "dow_pct": 0.1,
-        "nasdaq_pct": -0.91,
-        "sp500_pct": -0.4,
-        "sox": 10146.32,
-        "sox_pct": -3.43,
-        "vix": 19.3,
+        "nikkei": 59661.8,
+        "night_futures": 59145.0,
+        "night_futures_asof": "2026-11-17 06:27 JST",
+        "night_gap_pct": -0.87,
+        "dow_pct": -1.41,
+        "nasdaq_pct": -2.49,
+        "sp500_pct": -1.92,
+        "sox": 9610.65,
+        "sox_pct": -5.28,
+        "vix": 22.91,
         "fear_greed": null,
-        "usdjpy": 159.6,
-        "wti": 88.56,
-        "wti_pct": -0.2
+        "usdjpy": 159.456,
+        "wti": 85.31,
+        "wti_pct": -3.67
       },
       "data_health": {
-        "nikkei": "api",
+        "nikkei": "tv_scanner",
         "sox": "api",
         "vix": "api",
         "fear_greed": null,
@@ -1479,14 +1479,17 @@
         "wti": "api",
         "rate_limited": false,
         "tv_scanner": {
-          "used": false,
-          "asof": null,
-          "update_mode": null,
+          "used": true,
+          "asof": "06:37 JST",
+          "update_mode": "TVC:NI225=streaming",
           "empty": []
         },
         "sources": {
-          "usdjpy": "yfinance JPY=X 最新足 2026-11-15（週明けの早朝取引分）",
-          "night_futures": "NIY=F 週末据え置き値（asof 2026-11-14 06:55 JST）"
+          "nikkei": "yfinance ^N225 の最新足が 2026-11-13（前営業日 11-16 の足が欠落）のため TV scanner TVC:NI225 の close を採用"
+        },
+        "cross_check": {
+          "ose_nk2251": 59200,
+          "diff_vs_api_pct_of_spot": 0.09
         }
       },
       "settlement": {
@@ -1497,83 +1500,76 @@
         "excluded": []
       },
       "sr": {
-        "d": "2026-11-16",
+        "d": "2026-11-17",
         "regime": "R-A",
         "status": "暫定",
         "g": {
           "g1": {
-            "w": 6.8,
-            "m1": -16.9,
-            "m3": -19.4,
-            "m6": -24.3
+            "w": -3.4,
+            "m1": -15.9,
+            "m3": -22.3,
+            "m6": -19.4
           },
           "g2": {
-            "w": -3.4,
-            "m1": 1.8,
-            "m3": 5.3,
-            "m6": 18.6
+            "w": 0.3,
+            "m1": 1.5,
+            "m3": 5.4,
+            "m6": 13.7
           },
           "g3": {
-            "w": 0.0,
-            "m1": 4.1,
-            "m3": 3.8,
-            "m6": 13.0
+            "w": 3.3,
+            "m1": 5.2,
+            "m3": 5.3,
+            "m6": 7.4
           },
           "g4": {
-            "w": -4.7,
-            "m1": 9.6,
-            "m3": 11.6,
-            "m6": 8.1
+            "w": 1.3,
+            "m1": 8.2,
+            "m3": 13.2,
+            "m6": 7.1
           },
           "g5": {
-            "w": -2.0,
-            "m1": 9.3,
-            "m3": 6.4,
-            "m6": -7.3
+            "w": 0.9,
+            "m1": 8.0,
+            "m3": 5.9,
+            "m6": -4.2
           },
           "g6": {
-            "w": 0.3,
-            "m1": 3.9,
-            "m3": 3.9,
-            "m6": -5.1
+            "w": 0.6,
+            "m1": 3.6,
+            "m3": 4.2,
+            "m6": -1.6
           },
           "g7": {
-            "w": -0.3,
-            "m1": -1.9,
-            "m3": 3.4,
-            "m6": -6.2
+            "w": 2.1,
+            "m1": -1.2,
+            "m3": 1.7,
+            "m6": -4.9
           },
           "g8": {
-            "w": -4.3,
-            "m1": 9.9,
-            "m3": 7.0,
-            "m6": 9.3
+            "w": -0.3,
+            "m1": 10.0,
+            "m3": 8.3,
+            "m6": 10.3
           }
         },
         "bench": {
-          "topix_1d": 0.29,
-          "nk_1d": 0.53,
-          "growth_1d": -0.51,
-          "nt_approx": 14.72
+          "topix_1d": -1.11,
+          "nk_1d": -2.42,
+          "growth_1d": -2.26,
+          "nt_approx": 14.52
         },
         "macro": {
-          "jp10y": 2.859,
-          "us10y": 5.139,
-          "usdjpy": 159.6,
-          "usdjpy_1m": 1.03,
-          "sox_1d": -3.43,
+          "jp10y": 2.888,
+          "us10y": 5.129,
+          "usdjpy": 159.456,
+          "usdjpy_1m": 0.94,
+          "sox_1d": -5.28,
           "sox_above_25d": false,
-          "wti": 88.56
+          "wti": 85.31
         },
         "signal": "なし",
-        "events": [
-          {
-            "date": "2026-11-16",
-            "kind": "ANTHROPIC_IPO",
-            "what": "Anthropic IPO: 上場・初値",
-            "status": "reported"
-          }
-        ],
+        "events": [],
         "experts": {
           "bull": null,
           "bear": null
@@ -1582,14 +1578,160 @@
           "groups": "TOPIX-17 ETF 代替（TV scanner・⑧=1489/1343/空運9201・9202平均の単純平均）",
           "fallback_yf": [],
           "missing": [
-            "experts(前営業日以降のスニペットなし・検索結果は2025年記事)",
+            "experts(前営業日以降のスニペットなし・検索結果は11月上旬以前の記事)",
             "内需株50/外需株50(ETF不在)"
           ],
-          "sox_ma25": "yfinance ^SOX 3mo 直近25本平均 10870.83"
+          "sox_ma25": "yfinance ^SOX 3mo 直近25本平均 10765.78"
         }
       }
     },
     "history": [
+      {
+        "date": "2026-11-17",
+        "market_mode": "弱気",
+        "pattern": "半導体主導リスクオフ（AIトレード疲労）",
+        "method_guidance": {
+          "kenmo_momentum": "SOX-5.3%・NAS-2.5%・VIX22.9で半導体主導の売り再燃。先物は現物比-0.87%（59,145）で続落寄り。新規モメンタムは見送り、保有は逆指値厳守",
+          "kenmo_newhigh": "新高値は⑧テーマ（空運・高配当）・④内需ディフェンシブに偏在（1M相対上位）。①AI半導体系のブレイクは信頼度低・見送り",
+          "choruko_reversal": "①AI半導体は1M相対-15.9pt・SOX25日線(10,766)を約11%下回る売られ過ぎ圏だが下落継続中。寄りの投げ一巡と後場の下げ止まり確認までは手を出さない",
+          "stf_kakuhen": "弱気地合いで確変初動のダマシ増。出来高急増＋前場高値維持の両条件を満たすもの以外は見送り",
+          "tenbagger_x": "グロース250 前日-2.3%・1M-6.2%と弱い。小型IPOの新規は見送り、既存は逆指値厳守",
+          "daytrade": "寄り直後のギャップダウン後の値幅は大きくなりやすい。ロットを落とし、VWAP回復を確認してからの短期のみ",
+          "semicon_miniswing": "見送り（弱気モード・SOX-5.3%で25日線下）"
+        },
+        "note": "米半導体急落（SOX-5.3%）＋VIX22.9に跳ね上がり、日経は前日-2.4%に続き先物も現物比-0.9%。AI半導体の追撃売りに警戒、内需・ディフェンシブへの資金逃避の継続に注目",
+        "indicators": {
+          "nikkei": 59661.8,
+          "night_futures": 59145.0,
+          "night_futures_asof": "2026-11-17 06:27 JST",
+          "night_gap_pct": -0.87,
+          "dow_pct": -1.41,
+          "nasdaq_pct": -2.49,
+          "sp500_pct": -1.92,
+          "sox": 9610.65,
+          "sox_pct": -5.28,
+          "vix": 22.91,
+          "fear_greed": null,
+          "usdjpy": 159.456,
+          "wti": 85.31,
+          "wti_pct": -3.67
+        },
+        "data_health": {
+          "nikkei": "tv_scanner",
+          "sox": "api",
+          "vix": "api",
+          "fear_greed": null,
+          "night_futures": "api_niy",
+          "night_source": "NIY=F",
+          "wti": "api",
+          "rate_limited": false,
+          "tv_scanner": {
+            "used": true,
+            "asof": "06:37 JST",
+            "update_mode": "TVC:NI225=streaming",
+            "empty": []
+          },
+          "sources": {
+            "nikkei": "yfinance ^N225 の最新足が 2026-11-13（前営業日 11-16 の足が欠落）のため TV scanner TVC:NI225 の close を採用"
+          },
+          "cross_check": {
+            "ose_nk2251": 59200,
+            "diff_vs_api_pct_of_spot": 0.09
+          }
+        },
+        "settlement": {
+          "us_settled": true,
+          "us_close_jst": "06:00",
+          "night_settled": true,
+          "run_at_jst": "06:39",
+          "excluded": []
+        },
+        "sr": {
+          "d": "2026-11-17",
+          "regime": "R-A",
+          "status": "暫定",
+          "g": {
+            "g1": {
+              "w": -3.4,
+              "m1": -15.9,
+              "m3": -22.3,
+              "m6": -19.4
+            },
+            "g2": {
+              "w": 0.3,
+              "m1": 1.5,
+              "m3": 5.4,
+              "m6": 13.7
+            },
+            "g3": {
+              "w": 3.3,
+              "m1": 5.2,
+              "m3": 5.3,
+              "m6": 7.4
+            },
+            "g4": {
+              "w": 1.3,
+              "m1": 8.2,
+              "m3": 13.2,
+              "m6": 7.1
+            },
+            "g5": {
+              "w": 0.9,
+              "m1": 8.0,
+              "m3": 5.9,
+              "m6": -4.2
+            },
+            "g6": {
+              "w": 0.6,
+              "m1": 3.6,
+              "m3": 4.2,
+              "m6": -1.6
+            },
+            "g7": {
+              "w": 2.1,
+              "m1": -1.2,
+              "m3": 1.7,
+              "m6": -4.9
+            },
+            "g8": {
+              "w": -0.3,
+              "m1": 10.0,
+              "m3": 8.3,
+              "m6": 10.3
+            }
+          },
+          "bench": {
+            "topix_1d": -1.11,
+            "nk_1d": -2.42,
+            "growth_1d": -2.26,
+            "nt_approx": 14.52
+          },
+          "macro": {
+            "jp10y": 2.888,
+            "us10y": 5.129,
+            "usdjpy": 159.456,
+            "usdjpy_1m": 0.94,
+            "sox_1d": -5.28,
+            "sox_above_25d": false,
+            "wti": 85.31
+          },
+          "signal": "なし",
+          "events": [],
+          "experts": {
+            "bull": null,
+            "bear": null
+          },
+          "sources": {
+            "groups": "TOPIX-17 ETF 代替（TV scanner・⑧=1489/1343/空運9201・9202平均の単純平均）",
+            "fallback_yf": [],
+            "missing": [
+              "experts(前営業日以降のスニペットなし・検索結果は11月上旬以前の記事)",
+              "内需株50/外需株50(ETF不在)"
+            ],
+            "sox_ma25": "yfinance ^SOX 3mo 直近25本平均 10765.78"
+          }
+        }
+      },
       {
         "date": "2026-11-16",
         "market_mode": "軟調",
@@ -3175,60 +3317,6 @@
           "usdjpy": 157.976,
           "wti": 99.02,
           "wti_pct": 1.07
-        },
-        "data_health": {
-          "sox": "tv_scanner",
-          "vix": "tv_scanner",
-          "fear_greed": null,
-          "night_futures": "tv_scanner",
-          "night_source": "TV:CME:NIY1!",
-          "wti": "tv_scanner",
-          "rate_limited": true,
-          "tv_scanner": {
-            "used": true,
-            "asof": "06:34 JST",
-            "update_mode": "streaming/delayed_streaming_600-900",
-            "empty": []
-          },
-          "sources": {}
-        },
-        "settlement": {
-          "us_settled": true,
-          "us_close_jst": "05:00",
-          "night_settled": true,
-          "run_at_jst": "06:34",
-          "excluded": []
-        }
-      },
-      {
-        "date": "2026-10-16",
-        "market_mode": "レンジ様子見",
-        "method_guidance": {
-          "kenmo_momentum": "日経-4.9%の急落後で先物は+2.1%の戻り。寄り高値掴みを避け、寄り後30分の値持ちを確認してから小ロットのみ。",
-          "kenmo_newhigh": "原油+3%・地政学リスクで寄り高の追随は不可。引けまで値持ちを確認してから。",
-          "choruko_reversal": "急落後の自律反発局面。反転確認済みの銘柄のみ検討、落ちるナイフは引き続き警戒。",
-          "stf_kakuhen": "初動確認銘柄のみ。半導体・AI関連は除外、内需・ディフェンシブ優先。",
-          "tenbagger_x": "IPO新規参加は地合い不安定のため慎重。初値形成を見てから。",
-          "daytrade": "完全不関与。窓上げ後の値幅荒く見送り。",
-          "semicon_miniswing": "見送り（SOX-0.9%・VWAP積極帯は使わない）。"
-        },
-        "pattern": "先物乖離（急落後の戻り）＋地政学ショック型（原油+3%）",
-        "note": "日経は10/15に-4.9%の64,426円。大取は65,790円(+2.1%)と戻すが、WTI+3.0%で寄り高値掴み警戒（モード1段階引き下げ）。",
-        "indicators": {
-          "nikkei": 64425.73,
-          "night_futures": 65790,
-          "night_futures_asof": "2026-10-16 06:34 JST",
-          "night_gap_pct": 2.12,
-          "dow_pct": 1.08,
-          "nasdaq_pct": 0.08,
-          "sp500_pct": 0.33,
-          "sox": 11581.2153,
-          "sox_pct": -0.88,
-          "vix": 16.46,
-          "fear_greed": null,
-          "usdjpy": 157.963,
-          "wti": 97.97,
-          "wti_pct": 3.03
         },
         "data_health": {
           "sox": "tv_scanner",
@@ -8276,14 +8364,15 @@
         "source": "①-9 v5.6.1"
       },
       "morning_compass": {
-        "generated_at": "2026-11-16T06:39:28+09:00",
-        "trading_day": "2026-11-16",
+        "generated_at": "2026-11-17T06:39:19+09:00",
+        "trading_day": "2026-11-17",
         "status": "done",
         "source": "morning_compass_v11",
-        "memo": "run_at=2026-11-16T06:39:28+09:00",
+        "memo": "run_at=2026-11-17T06:39:19+09:00",
         "missing": [
           "fear_greed",
-          "experts"
+          "experts",
+          "nikkei(yfinance足欠落→TV scanner代替)"
         ]
       },
       "watch_tracker": {

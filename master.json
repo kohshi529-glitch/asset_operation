@@ -7766,7 +7766,70 @@
       }
     ],
     "an_momentum": [],
-    "an_reversal": []
+    "an_reversal": [
+      {
+        "code": "4704",
+        "name": "トレンドマイクロ",
+        "branch": "an_reversal",
+        "branch_type": "method",
+        "score": 4,
+        "signals": [
+          "R1"
+        ],
+        "sector": "l2_partner",
+        "sector_label": "🤝②提携・採用層",
+        "proc": null,
+        "wave": null,
+        "close": 7133.0,
+        "dev25": 0.41,
+        "dev75": 8.9,
+        "vol_ratio20": 0.57,
+        "rsi14": 41.06,
+        "pos52w": 74.13,
+        "ret5_pct": 6.64,
+        "ret20_pct": 1.36,
+        "perfect_order": true,
+        "scored_at": "2026-11-17T19:25:17+09:00",
+        "source": "an_scan_v1.1",
+        "stage": "🍽食べ時",
+        "stage_since": "2026-11-13",
+        "sleep_days": 0,
+        "rs20": 18.02,
+        "hist_tag": null,
+        "ret_since_ref_pct": -5.71
+      },
+      {
+        "code": "4307",
+        "name": "野村総合研究所",
+        "branch": "an_reversal",
+        "branch_type": "method",
+        "score": 4,
+        "signals": [
+          "R1"
+        ],
+        "sector": "l2_partner",
+        "sector_label": "🤝②提携・採用層",
+        "proc": null,
+        "wave": null,
+        "close": 6017.0,
+        "dev25": 0.15,
+        "dev75": 12.0,
+        "vol_ratio20": 0.7,
+        "rsi14": 44.98,
+        "pos52w": 86.54,
+        "ret5_pct": 1.25,
+        "ret20_pct": 1.71,
+        "perfect_order": true,
+        "scored_at": "2026-11-17T19:25:17+09:00",
+        "source": "an_scan_v1.1",
+        "stage": "🍽食べ時",
+        "stage_since": "2026-11-13",
+        "sleep_days": 0,
+        "rs20": 18.37,
+        "hist_tag": null,
+        "ret_since_ref_pct": -4.28
+      }
+    ]
   },
   "positions": {
     "storage_note": "【分離方針 2026-07-20確定】ポジション実データ（保有・損益）は個人金融データのため公開リポジトリに置かない。唯一の正は Google Drive『SBI』フォルダの非公開 positions.json。この公開master.jsonのpositionsは空雛形を維持する。閲覧・更新はCoworkセッション（Driveコネクタ認証付き）のみ。",
@@ -8723,16 +8786,16 @@
         }
       },
       "an_scan": {
-        "run_at": "2026-11-16T19:25:43+09:00",
-        "base_day": "2026-11-16",
+        "run_at": "2026-11-17T19:25:17+09:00",
+        "base_day": "2026-11-17",
         "status": "done",
         "n_m": 0,
-        "n_r": 0,
+        "n_r": 2,
         "universe_n": 15,
         "fetched_n": 15,
         "n_transition": 0,
         "n_ripen": 0,
-        "n_triggers": 11,
+        "n_triggers": 9,
         "phase": "unknown",
         "version": "v1.1"
       }
@@ -217761,96 +217824,96 @@
     "universe_n": 15,
     "fetched_n": 15,
     "skipped_n": 0,
-    "base_day": "2026-11-16",
+    "base_day": "2026-11-17",
     "period": {
       "start_day": "2026-11-02",
       "end_day": "2026-12-18",
-      "days_left": 23
+      "days_left": 22
     },
     "event": {
-      "base_day": "2026-11-16",
+      "base_day": "2026-11-17",
       "phase": "unknown",
       "ref_day": "2026-10-26",
       "layers": {
         "l1_beta": {
           "n": 4,
-          "med_since_ref": -16.16,
-          "med_ret1": -7.62,
-          "med_ret5": -1.83,
-          "med_ret20": -26.06,
-          "med_dev25": -20.33,
+          "med_since_ref": -19.66,
+          "med_ret1": -4.17,
+          "med_ret5": -13.82,
+          "med_ret20": -28.39,
+          "med_dev25": -22.04,
           "above25_pct": 0.0,
           "best": {
             "code": "8035",
             "name": "東京エレクトロン",
-            "ret_since_ref_pct": -3.47
+            "ret_since_ref_pct": -4.97
           },
           "worst": {
             "code": "4062",
             "name": "イビデン",
-            "ret_since_ref_pct": -32.25
+            "ret_since_ref_pct": -36.61
           }
         },
         "l2_partner": {
           "n": 10,
-          "med_since_ref": -3.35,
-          "med_ret1": 0.44,
-          "med_ret5": 2.29,
-          "med_ret20": -1.51,
-          "med_dev25": 0.81,
-          "above25_pct": 50.0,
+          "med_since_ref": -5.0,
+          "med_ret1": -2.12,
+          "med_ret5": -0.79,
+          "med_ret20": -4.82,
+          "med_dev25": -2.8,
+          "above25_pct": 40.0,
           "best": {
             "code": "8411",
             "name": "みずほフィナンシャルグループ",
-            "ret_since_ref_pct": 10.96
+            "ret_since_ref_pct": 5.91
           },
           "worst": {
             "code": "6702",
             "name": "富士通",
-            "ret_since_ref_pct": -21.78
+            "ret_since_ref_pct": -23.62
           }
         },
         "l3_direct": {
           "n": 1,
-          "med_since_ref": -11.54,
-          "med_ret1": -6.31,
-          "med_ret5": 4.55,
-          "med_ret20": -18.12,
-          "med_dev25": -12.09,
+          "med_since_ref": -13.42,
+          "med_ret1": -2.13,
+          "med_ret5": -4.05,
+          "med_ret20": -18.68,
+          "med_dev25": -12.79,
           "above25_pct": 0.0,
           "best": {
             "code": "408A",
             "name": "iシェアーズ AI グローバル・イノベーション アクティブ ETF（ベストAI）",
-            "ret_since_ref_pct": -11.54
+            "ret_since_ref_pct": -13.42
           },
           "worst": {
             "code": "408A",
             "name": "iシェアーズ AI グローバル・イノベーション アクティブ ETF（ベストAI）",
-            "ret_since_ref_pct": -11.54
+            "ret_since_ref_pct": -13.42
           }
         }
       },
-      "bench_1321_since_ref": -3.99,
-      "bench_1306_since_ref": -1.79,
-      "bench_1321_ret5": 1.88,
-      "bench_1321_ret20": -8.6,
-      "bench_1306_ret5": 2.19,
-      "bench_1306_ret20": -4.08,
-      "l1_vs_nk": -12.17,
-      "l2_vs_topix": -1.56,
-      "ai_med20": -17.11,
-      "ai_base_day": "2026-11-16",
-      "l1_vs_ai20": -8.95,
+      "bench_1321_since_ref": -5.26,
+      "bench_1306_since_ref": -3.32,
+      "bench_1321_ret5": -2.46,
+      "bench_1321_ret20": -9.21,
+      "bench_1306_ret5": -1.46,
+      "bench_1306_ret20": -5.29,
+      "l1_vs_nk": -14.4,
+      "l2_vs_topix": -1.68,
+      "ai_med20": -17.75,
+      "ai_base_day": "2026-11-17",
+      "l1_vs_ai20": -10.64,
       "ant": null,
-      "days_since_ref": 14,
-      "days_left": 23,
-      "us_infra_vs_l1": -0.9
+      "days_since_ref": 15,
+      "days_left": 22,
+      "us_infra_vs_l1": -2.37
     },
     "us_summary": {
-      "us_day": "2026-11-13",
-      "infra_med_since_ref": -17.06,
-      "investor_med_since_ref": -0.06,
-      "us_infra_vs_l1": -0.9,
+      "us_day": "2026-11-16",
+      "infra_med_since_ref": -22.03,
+      "investor_med_since_ref": -3.74,
+      "us_infra_vs_l1": -2.37,
       "fetched_n": 8
     },
     "ipo": {
@@ -217859,7 +217922,7 @@
         "label": "上場 1 週間",
         "date": "2026-11-23",
         "status": "pending",
-        "days_to": 5
+        "days_to": 4
       },
       "last_step": {
         "id": "listing",
@@ -217869,18 +217932,16 @@
       },
       "listing_observed": false
     },
-    "triggers_n": 11,
+    "triggers_n": 9,
     "triggers_ids": [
       "T1",
       "T1",
+      "T1",
+      "T1",
+      "T1",
+      "T1",
       "T3",
-      "T3",
       "T4",
-      "T4",
-      "T4",
-      "T4",
-      "T4",
-      "T5",
       "T5"
     ],
     "sectors": {
@@ -217890,8 +217951,8 @@
         "n": 4,
         "above25_pct": 0.0,
         "above75_pct": 0.0,
-        "median_dev25": -20.33,
-        "median_ret20": -26.06,
+        "median_dev25": -22.04,
+        "median_ret20": -28.39,
         "signals_m": 0,
         "signals_r": 0,
         "stage_counts": {
@@ -217910,12 +217971,12 @@
         "label": "🤝②提携・採用層",
         "role": "Anthropic との提携・採用・アクセス権が報道で名指しされた企業（出資関係なし）。名前が出た日に跳ねる型",
         "n": 10,
-        "above25_pct": 50.0,
+        "above25_pct": 40.0,
         "above75_pct": 20.0,
-        "median_dev25": 0.81,
-        "median_ret20": -1.51,
+        "median_dev25": -2.8,
+        "median_ret20": -4.82,
         "signals_m": 0,
-        "signals_r": 0,
+        "signals_r": 2,
         "stage_counts": {
           "🍽": 2,
           "🔥": 0,
@@ -217934,8 +217995,8 @@
         "n": 1,
         "above25_pct": 0.0,
         "above75_pct": 0.0,
-        "median_dev25": -12.09,
-        "median_ret20": -18.12,
+        "median_dev25": -12.79,
+        "median_ret20": -18.68,
         "signals_m": 0,
         "signals_r": 0,
         "stage_counts": {
@@ -218031,11 +218092,19 @@
         "n_ripen": 0,
         "n_transition": 0,
         "phase": "unknown"
+      },
+      {
+        "base_day": "2026-11-17",
+        "n_m": 0,
+        "n_r": 2,
+        "n_ripen": 0,
+        "n_transition": 0,
+        "phase": "unknown"
       }
     ],
     "stage": {
       "version": "v1.1",
-      "base_day": "2026-11-16",
+      "base_day": "2026-11-17",
       "counts": {
         "🍽": 2,
         "🔥": 0,

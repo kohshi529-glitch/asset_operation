@@ -186,6 +186,21 @@ details.cfold>summary{cursor:pointer;color:#7fe3d6;font-size:12.5px;font-weight:
 .rpcal{font-size:11px;color:#cdb79a;margin-top:4px}
 .rpcal summary{cursor:pointer;color:#ffb074}
 .rpcal .cal{margin:2px 0 0 6px;line-height:1.5}
+/* D32: 🧭SR タブ — 8 群ヒート・レジーム帯・底入れ表 */
+.srwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:4px}
+.srheat{border-collapse:collapse;font-size:11px;min-width:100%}
+.srheat td:first-child,.srheat th:first-child{position:sticky;left:0;background:#0f1c23;z-index:1;max-width:120px;overflow:hidden;text-overflow:ellipsis}
+.srheat th,.srheat td{padding:3px 4px;border-bottom:1px solid #263238;text-align:right;white-space:nowrap}
+.srheat th{color:#90a4ae;font-weight:600;text-align:right}.srheat td:first-child,.srheat th:first-child{text-align:left}
+.srheat .lead{color:#9be7c4;font-weight:700}.srheat .lag{color:#ff8a80;font-weight:700}
+.srheat .role{font-size:10px;border-radius:4px;padding:0 4px;border:1px solid #3b4e5a;color:#b0bec5}
+.srheat .role.uke{color:#9be7c4;border-color:#1f6b57;background:#143328}.srheat .role.shin{color:#ff8a80;border-color:#b3261e;background:#4a1414}
+.srcell{display:inline-block;min-width:44px;border-radius:4px;padding:0 4px}
+.srcell.p3{background:#1b5e20;color:#e8f5e9}.srcell.p2{background:#2e7d32;color:#e8f5e9}.srcell.p1{background:#1f4a2a;color:#c8e6c9}.srcell.z{background:#263238;color:#cfd8dc}.srcell.n1{background:#5a2a1f;color:#ffccbc}.srcell.n2{background:#8e2a1f;color:#ffe0db}.srcell.n3{background:#b71c1c;color:#ffebee}
+.srreg{margin:6px 0;padding:6px 10px;border-radius:10px;border:2px solid #3b4e5a;background:#15232b;font-size:12px}
+.srreg b{font-size:14px;color:#ffd166}
+.srbot td.ok{color:#9be7c4;font-weight:700}.srbot td.ng{color:#607d8b}.srbot tr.cand td:first-child{color:#ffd166;font-weight:700}
+.srdiv{color:#ffb074;font-weight:700}
 
 .devchip{display:inline-block;font-size:11px;font-weight:600;color:#8fb3ad;background:#1d3a40;border:1px solid #33565c;border-radius:5px;padding:1px 7px;margin-left:6px;white-space:nowrap}
 /* ===== 🕒 バックナンバー行（ゲート履歴への深リンク。改修: PRボードのバックナンバー機能） ===== */
@@ -411,6 +426,7 @@ details.stgd summary{cursor:pointer;font-weight:700;padding:4px 0}
 <button id='tab-ai' onclick="switchTab('ai')">🤖AI特需</button>
 <button id='tab-dm' onclick="switchTab('dm')">🏠内需</button>
 <button id='tab-an' onclick="switchTab('an')">🧬アンソロ</button>
+<button id='tab-sr' onclick="switchTab('sr')">🧭SR</button>
 <button id='tab-sig' onclick="switchTab('sig')">📈打率</button>
 <button id='tab-hold' onclick="switchTab('hold')">🧳保有</button>
 <button id='tab-changepoint' onclick="switchTab('changepoint')">🔔変化点</button>
@@ -429,13 +445,14 @@ details.stgd summary{cursor:pointer;font-weight:700;padding:4px 0}
 <div id='panel-ai' class='panel'></div>
 <div id='panel-dm' class='panel'></div>
 <div id='panel-an' class='panel'></div>
+<div id='panel-sr' class='panel'></div>
 <div id='panel-sig' class='panel'></div>
 <div id='panel-hold' class='panel'></div>
 <div id='panel-changepoint' class='panel'></div>
 <div id='panel-methods' class='panel'></div>
 <div id='panel-granville' class='panel'></div>
 <div id='panel-legend' class='panel'></div>
-<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28 ＋ D24/D25 2026-10-31 ＋ D26 2026-11-01 ＋ D27 2026-11-05 ＋ D28 2026-11-06 ＋ D29 2026-11-08 ＋ D30 2026-11-11 ＋ D31 2026-11-16）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
+<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28 ＋ D24/D25 2026-10-31 ＋ D26 2026-11-01 ＋ D27 2026-11-05 ＋ D28 2026-11-06 ＋ D29 2026-11-08 ＋ D30 2026-11-11 ＋ D31 2026-11-16 ＋ D32 2026-11-19）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
 </div>
 <button class='fab' id='backtab' onclick='scrollToTabbar()' aria-label='タブバーへ戻る'>▲タブへ戻る</button>
 <script>
@@ -528,6 +545,9 @@ let AN_TODAY = null;
 // D28: ①-13 打率台帳が毎夜全置換する集計（判定の軸・掛け合わせごとの n・hit5・CI・avg）。台帳本体（signal_log/）はボードでは読まない
 const SIG_STATS_URL = "https://kohshi529-glitch.github.io/asset_operation/signal_stats.json";
 let SIG_STATS = null;
+// D32: ①-S6 SRスキャン v1.0（平日 19:05）が毎夜全置換する公開ファイル（8 群・82 銘柄のステータス・群の相対・底入れ判定・役割）。取得失敗しても描画は続く
+const SR_TODAY_URL = "https://kohshi529-glitch.github.io/asset_operation/sr_scan_today.json";
+let SR_TODAY = null;
 // D30: ①-8 が毎夜書く軽量ファイル night_gate_today.json（proposals と、v1.48 からの recent_pass＝直近 20 営業日の提案銘柄と決算チップ）。取得失敗しても描画は続く（帯が前夜分の履歴から組まれる）
 const NGT_URL = "https://kohshi529-glitch.github.io/asset_operation/night_gate_today.json";
 let NGT = null;
@@ -901,7 +921,7 @@ function scrollToTabbar(){
   scrollToY(absTop(tb)-TAB_OFFSET);
 }
 function switchTab(which){
-  ['nightgate','changepoint','methods','granville','ai','dm','an','sig','watch','hold','legend'].forEach(t=>{
+  ['nightgate','changepoint','methods','granville','ai','dm','an','sr','sig','watch','hold','legend'].forEach(t=>{
     const p=document.getElementById('panel-'+t), b=document.getElementById('tab-'+t);
     if(!p||!b)return;
     const on=(t===which);
@@ -2160,6 +2180,62 @@ function renderDmScan(d){
   }
   return note+freshD+rot+waves+stages;
 }
+
+// ===== D32: 🧭SR タブ（①-S6 SRスキャン v1.0・sr_scan_today.json）。内需タブと同じ部品＋8 群ヒート／レジーム帯／底入れ 5 条件 =====
+const SR_GORDER=['g1','g2','g3','g4','g5','g6','g7','g8'];
+const SR_BOT_LABEL=['#1 1W相対プラス転換','#2 ETF 25日線回復','#3 25MA上率 +20pt','#4 🥩→🍖 2件以上','#5 悪材料日に優位 2回'];
+function srCell(v){ if(v==null||isNaN(Number(v))) return `<span class='srcell z'>—</span>`; const x=Number(v); const c=x>=8?'p3':x>=4?'p2':x>0.5?'p1':x>-0.5?'z':x>-4?'n1':x>-8?'n2':'n3'; return `<span class='srcell ${c}'>${x>0?'+':''}${esc(num1(x))}</span>`; }
+function renderSrHeat(a){
+  const secs=(a&&a.sectors)||null; const rot=(a&&a.rotation)||{}; if(!secs) return `<div class='cpsec'><h3>🧭 8 群ヒート</h3><div class='empty'>sectors がありません。</div></div>`;
+  const rows=SR_GORDER.filter(g=>secs[g]).map(g=>{ const s=secs[g]; const r=s.rel_topix||{}; const e=s.etf_rel||{}; const lead=rot.leader_g===g, lag=rot.laggard_g===g; const role=s.regime_role; const rc=role==='受け皿'?'uke':(role==='震源'?'shin':''); const dv=s.divergence; const dvs=dv==null?'—':`${s.div_flag?"<span class='srdiv'>⚠":''}${dv>0?'+':''}${esc(num1(dv))}${s.div_flag?'</span>':''}`;
+    return `<tr><td><span class='${lead?'lead':(lag?'lag':'')}'>${esc(s.label||g)}</span>${lead?' 👑':(lag?' ⬇':'')}</td><td>${srCell(r.w)}</td><td>${srCell(r.m1)}</td><td>${srCell(r.m3)}</td><td>${srCell(e.w)}</td><td>${srCell(e.m1)}</td><td>${srCell(e.m3)}</td><td>${dvs}</td><td>${esc(num1(s.above25_pct))}%${s.etf_above25===true?' ✓':(s.etf_above25===false?' ✗':'')}</td><td>${role?`<span class='role ${rc}'>${esc(role)}</span>`:'—'}</td></tr>`; }).join('');
+  return `<div class='cpsec'><h3>🧭 8 群ヒート（対 TOPIX・pt）<span class='meta'> 左 3 列＝構成銘柄の中央値基準、右 3 列＝代替 ETF 基準（⑤ 朝刊と同じ考え方）。乖離 3pt 超は ⚠（ETF と主要銘柄で動きが違う＝大型 1〜2 社の偏り）</span></h3>
+  <div class='srwrap'><table class='srheat'><thead><tr><th>群</th><th>1W</th><th>1M</th><th>3M</th><th>ETF 1W</th><th>ETF 1M</th><th>ETF 3M</th><th>乖離</th><th>25MA上</th><th>役割</th></tr></thead><tbody>${rows}</tbody></table></div>
+  <div class='meta'>👑 首位（1M 構成銘柄基準）・⬇ 最下位。25MA上＝群内で 25 日線より上にいる銘柄の割合、✓/✗＝代替 ETF 自身が 25 日線の上か。数字と推移だけで「ローテーション入り」の判定語は出さない。</div></div>`;
+}
+function renderSrRegime(a){
+  const rg=(a&&a.regime)||null; const rot=(a&&a.rotation)||{}; const secs=(a&&a.sectors)||{};
+  const uke=SR_GORDER.filter(g=>secs[g]&&secs[g].regime_role==='受け皿').map(g=>secs[g].label.slice(0,1)); const shin=SR_GORDER.filter(g=>secs[g]&&secs[g].regime_role==='震源').map(g=>secs[g].label.slice(0,1));
+  const lab=g=>g&&secs[g]?secs[g].label:(g||'—');
+  if(!rg) return `<div class='srreg'>レジーム: — （market_today.sr が読めなかった夜。役割は表示しない）｜首位 ${esc(lab(rot.leader_g))}・最下位 ${esc(lab(rot.laggard_g))}</div>`;
+  return `<div class='srreg'>レジーム <b>${esc(rg.regime)}</b>（${esc(rg.status||'—')}・⑤ ${esc(rg.d||'')}）｜受け皿 ${uke.length?esc(uke.join('')):'—'}・震源 ${shin.length?esc(shin.join('')):'—'}｜首位 ${esc(lab(rot.leader_g))}・最下位 ${esc(lab(rot.laggard_g))}${rot.leader_changed===true?'・<span class="srdiv">首位交代</span>':(rot.leader_changed===false?'・首位継続':'')}｜底入れ候補 ${(rot.bottoming_candidates&&rot.bottoming_candidates.length)?esc(rot.bottoming_candidates.map(lab).join('・')):'なし'}
+  <div class='meta'>R-A リスクオフ／R-B リスクオン／R-C 金利主導（⑤ モーニングコンパス v11 が朝に書く暫定値）。役割は固定表（sr_universe.json の regime_role）。TOPIX ETF 20日 ${esc(num1(rot.bench_1306_ret20))}%・グロース250 ETF 20日 ${esc(num1(rot.bench_2516_ret20))}%</div></div>`;
+}
+function renderSrBottoming(a){
+  const secs=(a&&a.sectors)||null; if(!secs) return '';
+  const rows=SR_GORDER.filter(g=>secs[g]).map(g=>{ const s=secs[g]; const b=s.bottoming||{}; const hits=Array.isArray(b.hits)?b.hits:[]; const cells=[0,1,2,3,4].map(i=>`<td class='${hits[i]===true?'ok':'ng'}' title='${esc(SR_BOT_LABEL[i])}'>${hits[i]===true?'✅':'✗'}</td>`).join(''); return `<tr class='${b.candidate?'cand':''}'><td>${esc(s.label||g)}</td>${cells}<td><b>${esc(b.count==null?'—':b.count)}</b>/5${b.candidate?' 🪨候補':''}</td><td class='meta'>${esc(b.reason||'')}</td></tr>`; }).join('');
+  return `<div class='cpsec'><h3>🪨 底入れ判定（5 条件・機械判定）<span class='meta'> count ≥ 3 で候補。閾値はメンター正典 8-3b の初期値</span></h3>
+  <div class='srwrap'><table class='srheat srbot'><thead><tr><th>群</th><th>#1</th><th>#2</th><th>#3</th><th>#4</th><th>#5</th><th>count</th><th>備考</th></tr></thead><tbody>${rows}</tbody></table></div>
+  <div class='meta'>#1 1W 相対プラス転換（直近 5 営業日に ≤0 があり当夜 >0）／#2 代替 ETF が 25 日線を回復／#3 25MA 上回り率が 5 営業日前比 +20pt／#4 群内で 🥩底練り→🍖熟成中 の遷移 2 件以上／#5 TOPIX −1% 超の日に群中央値が TOPIX を上回った回数 ≥2。群の履歴（group_log）が 5 営業日たまるまで #1〜#3・#5 は「履歴不足」で ✗。</div></div>`;
+}
+function renderSrScan(d){
+  const sc=d.sr_scan||null; const cm=(d.candidates&&d.candidates.sr_momentum)||[]; const cr=(d.candidates&&d.candidates.sr_reversal)||[];
+  const a=SR_TODAY; const st=(a&&Array.isArray(a.status))?a.status:[]; const smap={}; st.forEach(s=>{ smap[String(s.code)]=s; });
+  const note=`<div class='cpnote'>①-S6 SRスキャン（平日 19:05）が SR 群 固定ユニバース 82 銘柄（sr_universe.json＝⑤ モーニングコンパスの SR 観測 8 群・TOPIX-17 ETF 代替に対応する主要銘柄）を ①-S3／①-S4 と同じチャート条件で順張り（M1〜M3）・逆張り（R1〜R3）に分け、全銘柄に熟成ステージを付ける。固有なのは群の相対（構成銘柄基準 vs ETF 基準）・底入れ 5 条件・レジーム役割。記録と表示であり、売買の指示・推奨ではない。</div>`;
+  const runs=(d.pipeline&&d.pipeline.runs)||{};
+  const fresh=scanFreshChip('🧭①-S6',a||(sc?{base_day:sc.base_day}:null),runs.sr_scan,st.length?`status ${st.length}件`:'status なし');
+  if(!sc&&!a&&!cm.length&&!cr.length) return note+fresh+`<div class='empty'>①-S6 SRスキャンの実行記録がありません（sr_scan 未作成）。</div>`;
+  const reg=renderSrRegime(a); const heat=renderSrHeat(a); const bot=renderSrBottoming(a);
+  let body='';
+  if(a&&st.length){
+    const cnt={}; st.forEach(s=>{ cnt[s.stage||'❔取得不可']=(cnt[s.stage||'❔取得不可']||0)+1; });
+    const head=`<div class='meta'>base_day ${esc(a.base_day||'—')}・${esc(st.length)} 銘柄・ユニバース中央値 20日 ${esc(num1(a.median_ret20_univ))}%｜`+STG_ORDER.filter(k=>cnt[k]).map(k=>`<span class='stg ${STG_CLASS[k]||''}'>${esc(k)} ${esc(cnt[k])}</span>`).join('')+`</div>`;
+    const rip=Array.isArray(a.ripen)?a.ripen:[];
+    const ripHtml=rip.length?`<div class='ripen'><b>🍖→🔥 焼き入れ（記録のみ・候補ではない）</b> ${rip.length}件`+rip.map(r=>{ const s=smap[String(r.code)]||r; return dmRow(Object.assign({},s,{prev_stage:r.from||s.prev_stage}),true); }).join('')+`</div>`:'';
+    // 遷移（群フィルタ）
+    const trs=st.filter(s=>s.transition);
+    const gsel=`<select onchange="document.querySelectorAll('#srtr .srtrow').forEach(r=>{r.style.display=(this.value==='all'||r.dataset.g===this.value)?'':'none';})"><option value='all'>全群</option>${SR_GORDER.filter(g=>a.sectors&&a.sectors[g]).map(g=>`<option value='${g}'>${esc(a.sectors[g].label)}</option>`).join('')}</select>`;
+    const trHtml=`<div class='cpsec' id='srtr'><h3>🔁 当夜の遷移（${trs.length}件） ${gsel}</h3>${trs.length?trs.sort((x,y)=>STG_ORDER.indexOf(x.stage)-STG_ORDER.indexOf(y.stage)||String(x.code).localeCompare(String(y.code))).map(s=>`<div class='srtrow' data-g='${esc(s.group||s.sector)}'>${dmRow(s,true)}</div>`).join(''):`<div class='empty'>当夜の遷移なし（初回は 0）</div>`}</div>`;
+    const candSec=(title,arr,br)=>{ const rows=arr.length?[...arr].sort((x,y)=>(y.score||0)-(x.score||0)||String(x.code).localeCompare(String(y.code))).map(c=>{ const s=smap[String(c.code)]||c; return scanCard(Object.assign({},s,{signals:c.signals||s.signals}),{dm:true,branch:br,score:c.score}); }).join(''):`<div class='empty'>当夜の該当なし</div>`; return `<div class='cpsec'><h3>${title}（${arr.length}件）</h3>${rows}</div>`; };
+    // 群内テーブル: 群 → rs20 降順
+    const groups=SR_GORDER.filter(g=>a.sectors&&a.sectors[g]).map(g=>{ const s=a.sectors[g]; const rows=st.filter(x=>(x.group||x.sector)===g).sort((x,y)=>((y.rs20==null?-999:y.rs20)-(x.rs20==null?-999:x.rs20))||String(x.code).localeCompare(String(y.code))); const sc8=s.stage_counts||{}; const open=(s.regime_role==='受け皿'||(s.bottoming&&s.bottoming.candidate))?' open':''; return `<details class='stgd'${open}><summary><b>${esc(s.label)}</b> ${esc(rows.length)}銘柄 <span class='meta'>1M ${s.rel_topix&&s.rel_topix.m1!=null?(s.rel_topix.m1>0?'+':'')+esc(num1(s.rel_topix.m1)):'—'}pt・25MA上 ${esc(num1(s.above25_pct))}%・🍽${esc(sc8['🍽']||0)} 🔥${esc(sc8['🔥']||0)} 🍖${esc(sc8['🍖']||0)} 🥩${esc(sc8['🥩']||0)} 🗑${esc(sc8['🗑']||0)} 🕸${esc(sc8['🕸']||0)}${s.regime_role?'・'+esc(s.regime_role):''}</span></summary>${rows.map(x=>dmRow(x,false)).join('')}</details>`; }).join('');
+    body=`<div class='cpsec'><h3>🥩 熟成ステータス（全銘柄・①-S6 v1.0）</h3>${head}${ripHtml}</div>${trHtml}`+candSec('🧭 順張り候補 sr_momentum',cm,'sr_momentum')+candSec('🧭 逆張り候補 sr_reversal',cr,'sr_reversal')+`<div class='cpsec'><h3>📚 群内テーブル（群 → RS20 降順・全 ${esc(st.length)} 銘柄）</h3><div class='meta'>各カードは内需タブと同じ構成（4 行目に RS20・🚪ゲート・業績・値頃感）。受け皿の群と底入れ候補の群は開いた状態。業績・値頃感は ①-9 の母集団に入ってから埋まる（v5.6.2 以降は SR ユニバース全銘柄が対象）。</div>${groups}</div>`;
+  } else {
+    body=`<div class='cpsec'><h3>🥩 熟成ステータス</h3><div class='empty'>sr_scan_today.json に status がありません（初回実行前、または取得失敗）。</div></div>`;
+  }
+  return note+fresh+reg+heat+bot+body;
+}
+
 // ===== D24: 🧬アンソロ タブ（①-S5 アンソロスキャン・期間限定）。内需タブと同じ部品＋イベント計 =====
 const AN_ORDER=['l1_beta','l2_partner','l3_direct'];
 function renderAnEvent(a){
@@ -2593,6 +2669,8 @@ function renderLegend(){
     ${tr.map(row).join('')}
     <h3>💴 配当・🎁優待・📆権利対象（D8）</h3>
     <div class='note'>💴チップ＝①-8 v1.38 が kabutan の既読ページから読んだ予想配当（年間または中間／期末）と、minkabu の優待ページで確かめた優待の有無・優待権利月（grades.json の fy/rm/dvi/dvf/dva/yt/ym）。未取得の銘柄には出ない（初回は保有・PASS から順に埋まる）。<br>📆権利対象チップ＝今日〜次の営業日に権利付き最終日／権利落ち日があり、かつその月がこの銘柄の権利月（配当または優待）に含まれるときだけ出る。「現在値→落ち後目安（−x円・−y%）」は該当する配当を現在値から引いたもので、公表値からの計算（推定ではない）。優待分は含まないので、🎁付きの銘柄は目安より大きく落ちうる。「直近5日 ±z%」は権利取り前に上がってきた幅（pool_bars の直近5本）で、落ち後に剥落しうる分の目安。SL との比較は出さない（stop の反映は実弾ボード側の運用に依存するため）。権利月が未取得の銘柄は「📆権利月不明」。権利月が違う銘柄には何も出ない（＝今回の権利落ちの影響は限定的）。</div>
+    <h3>🧭 SR タブ（D32）</h3>
+    <div class='note'>①-S6 SRスキャン v1.0（平日 19:05）が SR 群 固定ユニバース 82 銘柄（sr_universe.json・8 群＝⑤ モーニングコンパスの SR 観測と同じ TOPIX-17 ETF 代替）に ①-S3／①-S4 と同じ器を当て、sr_scan_today.json に書く。<b>レジーム帯</b>＝⑤ が朝に書く R-A リスクオフ／R-B リスクオン／R-C 金利主導 と、固定表による各群の役割（受け皿／震源／中立）、首位・最下位の群、底入れ候補。<b>8 群ヒート</b>＝対 TOPIX（1306）の相対 pt を、構成銘柄の中央値基準（左 3 列）と代替 ETF 基準（右 3 列）で併記。乖離 3pt 超は ⚠（ETF と主要銘柄で動きが違う＝大型 1〜2 社の偏り。どちらが正しいかは言わない）。<b>底入れ判定</b>＝メンター正典 8-3b の 5 条件を機械判定し count ≥ 3 で 🪨候補（群の履歴が 5 営業日たまるまで #1〜#3・#5 は ✗）。<b>群内テーブル</b>＝群 → RS20 降順。カードは内需タブと同じ部品。遷移は群で絞れる。すべて記録と表示であり、判定・提案・順位は変えない。</div>
     <h3>📅 直近決算日チップ（D31）</h3>
     <div class='note'>全カードの 3 行目先頭に <span class='earnchip past'>📅直近決算 11/06（6営業日前）</span> を常時表示。grades.json の lx（①-8 が kabutan の決算履歴から取った直近の発表日・実績）と端末の今日から JPX 休業日表で営業日を数える。発表翌営業日が反応日なので、決算後の値動きをチャートと見比べる基準になる。5 営業日以内は <span class='earnchip past recent'>📅直近決算 11/13（1営業日前）</span> と少し強く出す。将来日・日付不明の銘柄には出さない。次回日程が未発表で D19 の「📅直近 … 発表・前年は次回 …」が出ている行では重複させない。表示のみで判定・順位は変えない。</div>
     <h3>🧾 直近提案の決算接近 帯・入口の穴 4 つのチップ（D30）</h3>
@@ -2845,6 +2923,7 @@ function render(d){
   try{ document.getElementById('panel-ai').innerHTML=renderAiScan(d); }catch(e){ document.getElementById('panel-ai').innerHTML=`<div class='empty'>🤖AI特需タブの描画エラー: ${esc((e&&e.message)||e)}</div>`; }
   try{ document.getElementById('panel-dm').innerHTML=renderDmScan(d); }catch(e){ document.getElementById('panel-dm').innerHTML=`<div class='empty'>🏠内需タブの描画エラー: ${esc((e&&e.message)||e)}</div>`; }
   try{ document.getElementById('panel-an').innerHTML=renderAnScan(d); }catch(e){ document.getElementById('panel-an').innerHTML=`<div class='empty'>🧬アンソロタブの描画エラー: ${esc((e&&e.message)||e)}</div>`; }
+  try{ document.getElementById('panel-sr').innerHTML=renderSrScan(d); }catch(e){ document.getElementById('panel-sr').innerHTML=`<div class='empty'>🧭SRタブの描画エラー: ${esc((e&&e.message)||e)}</div>`; }
   try{ document.getElementById('panel-sig').innerHTML=renderSigStats(d); }catch(e){ document.getElementById('panel-sig').innerHTML=`<div class='empty'>📈打率タブの描画エラー: ${esc((e&&e.message)||e)}</div>`; }
 
   // ===== タブ③: 📋5手法銘柄（既存「手法別ボード」を移設・ロジック不変） =====
@@ -2915,8 +2994,9 @@ Promise.all([
   fetch(DM_TODAY_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
   fetch(AN_TODAY_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
   fetch(SIG_STATS_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
-  fetch(NGT_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null)
-]).then(([d,bars,g,ai,dm,an,sg,ngt])=>{ NGT=(ngt&&typeof ngt==='object')?ngt:null; BARS=bars||{}; GRADES=(g&&g.stocks)||{}; SPM=(g&&g.spm)||{}; GRADES_DAY=(g&&g.day)||null; IXMETA=(g&&g.ixmeta)||null; AI_TODAY=(ai&&typeof ai==='object')?ai:null; DM_TODAY=(dm&&typeof dm==='object')?dm:null; AN_TODAY=(an&&typeof an==='object')?an:null; SIG_STATS=(sg&&typeof sg==='object')?sg:null; render(d); })
+  fetch(NGT_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
+  fetch(SR_TODAY_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null)
+]).then(([d,bars,g,ai,dm,an,sg,ngt,sr])=>{ NGT=(ngt&&typeof ngt==='object')?ngt:null; SR_TODAY=(sr&&typeof sr==='object'&&Array.isArray(sr.status))?sr:null; BARS=bars||{}; GRADES=(g&&g.stocks)||{}; SPM=(g&&g.spm)||{}; GRADES_DAY=(g&&g.day)||null; IXMETA=(g&&g.ixmeta)||null; AI_TODAY=(ai&&typeof ai==='object')?ai:null; DM_TODAY=(dm&&typeof dm==='object')?dm:null; AN_TODAY=(an&&typeof an==='object')?an:null; SIG_STATS=(sg&&typeof sg==='object')?sg:null; render(d); })
 .catch(e=>{document.getElementById('src').innerHTML="<span class='snap'>● 取得失敗</span> master.json の取得または描画に失敗しました。再読み込みしてください。("+esc((e&&e.stack)||e).slice(0,400)+")";});
 </script>
 </body></html>

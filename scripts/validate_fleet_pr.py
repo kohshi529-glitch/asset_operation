@@ -46,6 +46,7 @@ POLICY = {
 # 2026-10-19: earnings_calendar.json（①-8 v1.43 の派生ファイル・次回決算日と過去の発表日。初回実測 86KB・889 銘柄）を night-gate の許可ファイルに追加。上限 300KB。
 # 2026-10-20: R-C 決算反応統計（接頭辞 earn-stats・週次）が書く earnings_stats.json を追加。master.json は書かない（max_lines=0）。上限 300KB。
 # 2026-10-21: R-B 決算 KPI 取込（接頭辞 kpi-company・火〜土 06:00）が書く kpi_series.json を追加。master.json は書かない。上限 1MB。
+# 2026-11-19: night_gate_today.json 300KB→400KB（実測 227KB・v1.48 の recent_pass 543 行に v1.49 の常駐観測 82 行が加わる）
 # 2026-11-19: grades.json 上限 700KB→850KB（実測 663KB・1,125 銘柄。①-9 v5.6.2 で SR 群ユニバース 41 銘柄が母集団に加わる＋①-8 の gyf/trp 列。①-8 側の V13(d) 650KB は次版で 800KB に）
 # 2026-11-18: ①-S6 SR スキャン（sr_universe.json 固定リスト → sr_scan_today.json。①-S3/S4 と同じ器。候補ブランチ sr_momentum/sr_reversal）
 # 2026-11-17: ①-4 IPO チェック v4.2 が初値後の経路（T+5/20/40/60・初値後高値・公募到達）を ipo_path.json に書く（上限 200KB・master.json は太らせない）
@@ -56,7 +57,7 @@ POLICY = {
 # 2026-11-06: ①-13 打率台帳（接頭辞 signal-log・平日 21:40）を追加。判定（ゲート・手法・業績・値頃・文脈・熟成）と T+1/5/15 の値動きを結ぶ台帳 signal_log/YYYY-MM.json（≤6MB・追記と埋め戻しのみ）と集計 signal_stats.json（≤400KB・全置換）。master.json は pipeline.runs.signal_log のみ。
 # 2026-10-31: ①-S5 アンソロスキャン（接頭辞 an-scan・平日 19:20・期間限定 11/02〜12/18）を追加。①-S4 と同じ器で固定ユニバース anthropic_universe.json（15 銘柄・3 層）を見る。master.json は candidates.an_momentum／an_reversal・an_scan・pipeline.runs.an_scan のみ。an_scan_today.json（上限 100KB）。終了日後は PR を出さない。
 # 正典側の上限（①-8 V13(d) の grades 350KB 等）は正典の自己検証に委ね、ここでは「桁違い」だけを止める。無いものは上限なし（JSON として読めればよい）。
-SIZE_CAPS = {"grades.json": 850_000, "pool_bars.json": 700_000, "earnings_calendar.json": 300_000, "earnings_stats.json": 300_000, "kpi_series.json": 1_000_000, "kpi_events.json": 300_000, "market_today.json": 120_000, "sr_log.json": 300_000, "ai_scan_today.json": 200_000, "dm_scan_today.json": 300_000, "an_scan_today.json": 100_000, "signal_stats.json": 400_000, "night_gate_today.json": 300_000, "gate_track.json": 4_000_000, "surge_log.json": 500_000, "own_kpi_today.json": 200_000, "ipo_path.json": 200_000, "sr_scan_today.json": 300_000}
+SIZE_CAPS = {"grades.json": 850_000, "pool_bars.json": 700_000, "earnings_calendar.json": 300_000, "earnings_stats.json": 300_000, "kpi_series.json": 1_000_000, "kpi_events.json": 300_000, "market_today.json": 120_000, "sr_log.json": 300_000, "ai_scan_today.json": 200_000, "dm_scan_today.json": 300_000, "an_scan_today.json": 100_000, "signal_stats.json": 400_000, "night_gate_today.json": 400_000, "gate_track.json": 4_000_000, "surge_log.json": 500_000, "own_kpi_today.json": 200_000, "ipo_path.json": 200_000, "sr_scan_today.json": 300_000}
 GATE_HISTORY_CAP = 1_200_000
 SIGNAL_LOG_CAP = 6_000_000
 

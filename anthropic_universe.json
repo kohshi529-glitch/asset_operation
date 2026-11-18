@@ -1,7 +1,7 @@
 {
  "meta": {
   "version": 2,
-  "generated_at": "2026-11-14T16:40:00+09:00",
+  "generated_at": "2026-11-19T06:40:00+09:00",
   "note": "アンソロ（Anthropic IPO）関連 固定ユニバース v2。①-S5 アンソロスキャン（期間限定）の対象。日本株 15（3 層）＋米関連株ウォッチ 8（指標のみ・候補にしない）＋IPO 進捗ステップ＋カタリスト閾値。公開情報のみ。保有・売買の情報は含まない。更新はメンテナンス PR で全置換（ステップの確定・日付変更も PR）",
   "event": {
    "s1_public_day": "2026-10-26",
@@ -12,10 +12,11 @@
    "listing_note": "IPO サイト・WSJ 報道（11/18 条件決定・11/19 初値）。確定は S-1 効力発生後。ticker ANT。仮条件 70〜78 ドル",
    "ticker": "ANT",
    "start_day": "2026-11-02",
-   "end_day": "2026-12-18",
+   "end_day": "2027-02-13",
    "us_ref_day": "2026-10-23",
    "us_ref_note": "米関連株の基準＝公開版 S-1 提出（10/26 寄付前）の直前の米国終値 2026-10-23（金）",
-   "pricing_expected": "2026-11-18"
+   "pricing_expected": "2026-11-18",
+   "end_note": "2026-11-19 延長（旧 12/18）: Amazon 影響層（S-9 Amazon Q4 決算・2027 年 1 月末〜2 月初）まで観測するため。メンター依頼 v0.1"
   },
   "sectors": {
    "l1_beta": {
@@ -97,10 +98,15 @@
     "name": "Anthropic",
     "group": "ipo",
     "basis": "上場後のみ。名前に Anthropic を含むときだけ採用"
+   },
+   "bench": {
+    "t": "QQQ",
+    "name": "Invesco QQQ（Nasdaq100 連動 ETF）",
+    "note": "AMZN の対 Nasdaq100 相対の基準。us_watch.tickers には入れない"
    }
   },
   "ipo_steps": {
-   "note": "IPO 進捗ステップ。status は confirmed（公式・複数報道で確定）／reported（報道ベースの見込み）／pending（未定）。日付と status の更新はメンテナンス PR（ルーティンは日付の到来を数えるだけで、自分で確定しない）",
+   "note": "IPO 進捗ステップ。status は confirmed（公式・複数報道で確定）／reported（報道ベースの見込み）／pending（未定）。日付と status の更新はメンテナンス PR（ルーティンは日付の到来を数えるだけで、自分で確定しない）。date が null のステップは「日付未確定」: reached=false・days_to=null で最後に並べる（①-S5 v1.2）",
    "steps": [
     {
      "id": "s1_conf",
@@ -145,6 +151,13 @@
      "note": "米 11/19（EST）Nasdaq 初値予定（IPO サイト・WSJ）。日本の反応は 11/20。ANT の日足が取れた日を実測で記録"
     },
     {
+     "id": "post_t5",
+     "label": "S-7 T+1〜T+5",
+     "date": "2026-11-25",
+     "status": "pending",
+     "note": "初値後高値（ipo_path の最大逆行と同じ定義）・β層／SBG の対日経。米 11/19 上場から 5 営業日目安"
+    },
+    {
      "id": "post_1w",
      "label": "上場 1 週間",
      "date": "2026-11-26",
@@ -159,11 +172,32 @@
      "note": "上場 25 日後が通例（11/19 ＋ 25 日）。日付は仮"
     },
     {
+     "id": "post_t20",
+     "label": "S-8 T+20",
+     "date": "2026-12-18",
+     "status": "pending",
+     "note": "公開価格・損益分岐との位置、Amazon 開示の有無"
+    },
+    {
      "id": "period_end",
      "label": "①-S5 観測終了",
-     "date": "2026-12-18",
+     "date": "2027-02-13",
      "status": "confirmed",
-     "note": "終了日。タスク削除"
+     "note": "観測終了（2026-11-19 に 12/18 から延長）"
+    },
+    {
+     "id": "amazon_q4",
+     "label": "S-9 Amazon Q4 決算",
+     "date": null,
+     "status": "pending",
+     "note": "2027 年 1 月末〜2 月初（通例）。会社告知で確定するまで date は null。12/31 マークの損益計上額"
+    },
+    {
+     "id": "lockup",
+     "label": "S-10 ロックアップ解除",
+     "date": null,
+     "status": "pending",
+     "note": "S-1 の規定日（通常 180 日・要確認）。確認できるまで null"
     }
    ]
   },
@@ -194,6 +228,93 @@
    },
    "T6_signal": {
     "desc": "M1 新高値ブレイク／🍖→🔥 焼き入れ／🗑期限切れ への遷移"
+   },
+   "T7_amazon_disclosure": {
+    "kinds": [
+     "8-K",
+     "S-1訂正",
+     "Form 4",
+     "13D",
+     "13G"
+    ],
+    "desc": "Amazon の転換・上限放棄・追加出資に関する開示（WebSearch スニペットで日付・種別が読めたものだけ。読めなければ記録しない）"
+   },
+   "T8_ant_lines": {
+    "lines": [
+     "ipo_price",
+     "breakeven",
+     "first_close"
+    ],
+    "desc": "ANT 終値が 公開価格 を下回る／損益分岐（book÷shares）を下回る／初値（上場初日終値）を回復 の 3 本線を、前夜との位置の変化で判定"
+   },
+   "T9_amzn_rel": {
+    "abs_rel_ndx_1d_pct": 3.0,
+    "desc": "AMZN の対 Nasdaq100（QQQ）1 日相対が ±3pt 超"
+   }
+  },
+  "amazon": {
+   "note": "Amazon 影響層の定数（開示値のみ・推定なし）。①-S5 v1.2 が ANT 終値と掛けて毎日再計算する。更新は開示（S-1 訂正・8-K・10-Q/10-K・13D）があったときにメンテナンス PR で全置換。status: confirmed＝一次開示の引用で確認／reported＝二次情報・要確認。null は未開示または未確認",
+   "shares_as_converted": {
+    "value": 3484128662,
+    "unit": "株",
+    "status": "confirmed",
+    "source": "S-1/A: Class N 1,920,511,218 株（募集直後）＋ 転換未了の社債分 1,563,617,444 株",
+    "asof": "2026-11-10"
+   },
+   "book_usd_b": {
+    "value": 238.7,
+    "unit": "10億ドル",
+    "status": "reported",
+    "source": "Amazon 2026 Q3 10-Q（9/30 時点）: 転換社債 公正価値 146.2（うち未実現益 140.3）＋ 優先株 92.5（メンター転記・優先株側は要確認）",
+    "asof": "2026-09-30"
+   },
+   "book_notes_usd_b": {
+    "value": 146.2,
+    "status": "confirmed",
+    "source": "Amazon 2026 Q3 10-Q 引用",
+    "asof": "2026-09-30"
+   },
+   "book_preferred_usd_b": {
+    "value": 92.5,
+    "status": "reported",
+    "source": "メンター転記（10-Q の該当箇所を要確認）",
+    "asof": "2026-09-30"
+   },
+   "pl_path_ratio": {
+    "value": 0.39,
+    "status": "reported",
+    "source": "優先株 92.5 ÷ 帳簿 238.7（損益計上経路の比率。帳簿更新で再計算）"
+   },
+   "breakeven_usd": {
+    "value": null,
+    "status": "computed",
+    "source": "book_usd_b ÷ shares_as_converted × 1e9（①-S5 が毎回計算。定数を置かない）"
+   },
+   "converted_at_ipo_shares": {
+    "value": 276827518,
+    "status": "confirmed",
+    "source": "S-1/A: 元本 5 億 7,930 万ドル分を Class N 276,827,518 株へ転換"
+   },
+   "cap_pct": {
+    "value": 12.0,
+    "status": "confirmed",
+    "source": "S-1/A: 所有上限 12%（上限を超える転換は行われない）"
+   },
+   "cap_waived": {
+    "value": false,
+    "status": "confirmed",
+    "source": "S-1/A: Amazon は本募集で上限放棄を選択していない",
+    "asof": "2026-11-10"
+   },
+   "stake_pct": {
+    "value": null,
+    "status": "unconfirmed",
+    "source": "メンター 14.7% と二次情報 15.7%（12.24B 株ベースの試算）が食い違う。開示の確定値が出るまで null"
+   },
+   "notes_pct_of_common_full_conv": {
+    "value": 12.6,
+    "status": "confirmed",
+    "source": "S-1/A: 社債を上限なしで全転換した場合の全普通株式に対する比率"
    }
   }
  },

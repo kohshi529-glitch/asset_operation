@@ -1440,34 +1440,34 @@
   },
   "market": {
     "latest": {
-      "date": "2026-11-19",
-      "market_mode": "レンジ様子見",
+      "date": "2026-11-20",
+      "market_mode": "弱気",
       "method_guidance": {
-        "kenmo_momentum": "先物は現物比-0.35%と小幅安、ダウ-1.1%／ナスダック+0.4%と米株は割れ。新規は寄り後30分の方向確認まで待ち、保有は逆指値厳守",
-        "kenmo_newhigh": "新高値は④内需ディフェンシブ・⑧空運に偏在（1M相対上位）。①AI半導体のブレイクはSOX25日線(10,582)の約9%下で信頼度低・見送り",
-        "choruko_reversal": "①AI半導体は1M相対-13.5ptの売られ過ぎ圏が継続、SOXは+0.1%と横ばい。寄りの投げ一巡と後場の下げ止まり確認後のみ小ロットで検討",
-        "stf_kakuhen": "VIX24.6と警戒圏。出来高急増＋前場高値維持の両条件を満たすもの以外は見送り",
-        "tenbagger_x": "グロース250は前日-1.3%・1W-9.4%と弱い。657A HiJoJo（11/20上場）は初値形成を見てから。新規IPOは見送り寄り",
-        "daytrade": "寄りは小幅安スタート想定。ロットを抑え、VWAP回復／割れを確認してからの短期のみ",
-        "semicon_miniswing": "見送り（レンジ様子見・SOX25日線下）。VWAP±0.5%積極帯は適用しない"
+        "kenmo_momentum": "米3指数-2%超・先物-2.9%の全面安。寄りの新規は見送り、既存ポジはOCO逆指値の位置を寄り前に確認",
+        "kenmo_newhigh": "新高値ブレイクは騙しになりやすい地合い。ギャップダウン後に高値更新を維持する銘柄のみ監視、新規は見送り基調",
+        "choruko_reversal": "大幅ギャップダウンでリバーサル候補は増えるが、VIX28超で下げ止まり確認前の逆張りは厳禁。前場の安値更新停止＋出来高ピーク後のみ検討",
+        "stf_kakuhen": "確変初動の判定は地合い悪化で信頼度低下。シグナルは記録のみ、エントリーは見送り推奨",
+        "tenbagger_x": "HiJoJo Partners(657A)本日上場（公開価格560円）。全面安の初値形成は荒れやすい、初日は観察のみ",
+        "daytrade": "寄り付きのギャップ埋め狙いは値幅大だが板が薄くなりやすい。ロット半分・損切り厳守",
+        "semicon_miniswing": "見送り（SOX-2.4%・25日線下、弱気モード）"
       },
-      "pattern": "グロース集中（ダウ-1.1%／ナスダック+0.4%）×原油急落(-4.5%)",
-      "note": "先物は現物比-0.35%（58,820）で小幅安スタート想定。VIX24.6と警戒圏が続く。米11/19のAnthropic上場（ANT）でAI関連の需給に注目",
+      "pattern": "半導体主導リスクオフ×先物乖離（先物-2.86%・SOX-2.4%・VIX28.4）",
+      "note": "先物57,745は現物終値59,444比-2.86%（-1,699円）で大幅ギャップダウン想定。VIX28.4で恐怖圏入り。米3指数そろって-2%超",
       "indicators": {
-        "nikkei": 59024.06,
-        "night_futures": 58820.0,
-        "night_futures_asof": "2026-11-19 06:25 JST",
-        "night_gap_pct": -0.35,
-        "dow_pct": -1.11,
-        "nasdaq_pct": 0.42,
-        "sp500_pct": -0.23,
-        "sox": 9652.8,
-        "sox_pct": 0.1,
-        "vix": 24.56,
+        "nikkei": 59443.99,
+        "night_futures": 57745.0,
+        "night_futures_asof": "2026-11-20 06:25 JST",
+        "night_gap_pct": -2.86,
+        "dow_pct": -2.19,
+        "nasdaq_pct": -2.25,
+        "sp500_pct": -2.02,
+        "sox": 9419.72,
+        "sox_pct": -2.41,
+        "vix": 28.44,
         "fear_greed": null,
-        "usdjpy": 159.369,
-        "wti": 82.14,
-        "wti_pct": -4.5
+        "usdjpy": 159.67,
+        "wti": 83.19,
+        "wti_pct": -0.08
       },
       "data_health": {
         "nikkei": "tv_scanner",
@@ -1480,104 +1480,91 @@
         "rate_limited": true,
         "tv_scanner": {
           "used": true,
-          "asof": "06:40 JST",
+          "asof": "06:37 JST",
           "update_mode": "TVC:NI225=streaming",
           "empty": []
         },
         "sources": {},
-        "notes": "yfinance crumb 429・^N225 11/18足がNaN → TVC:NI225で補完。F&Gスニペットに数値なし→VIX代替:警戒圏。OSEスニペット照合なし"
+        "notes": "yfinance crumb 429（crumbなしで継続取得成功）・^N225 11/19足が未収録 → TVC:NI225で補完。F&Gスニペットに数値なし→VIX代替:恐怖圏(28.44)。NY市況記事・地政学ヘッドライン: スニペット取得不可。OSEスニペット照合なし"
       },
       "settlement": {
         "us_settled": true,
         "us_close_jst": "06:00",
         "night_settled": true,
-        "run_at_jst": "06:40",
+        "run_at_jst": "06:38",
         "excluded": []
       },
       "sr": {
-        "d": "2026-11-19",
+        "d": "2026-11-20",
         "regime": "R-A",
         "status": "暫定",
         "g": {
           "g1": {
-            "w": -3.5,
-            "m1": -13.5,
-            "m3": -19.7,
-            "m6": -21.5
+            "w": -5.7,
+            "m1": -14.6,
+            "m3": -18.4,
+            "m6": -21.6
           },
           "g2": {
-            "w": 2.6,
-            "m1": 2.5,
-            "m3": 6.2,
-            "m6": 14.2
+            "w": 4.4,
+            "m1": 3.0,
+            "m3": 6.8,
+            "m6": 15.9
           },
           "g3": {
-            "w": -1.2,
-            "m1": 3.3,
-            "m3": 3.6,
-            "m6": 7.4
+            "w": -2.0,
+            "m1": 1.6,
+            "m3": 3.7,
+            "m6": 6.1
           },
           "g4": {
-            "w": 4.4,
-            "m1": 8.4,
-            "m3": 9.0,
-            "m6": 9.8
+            "w": 5.0,
+            "m1": 8.6,
+            "m3": 8.9,
+            "m6": 9.4
           },
           "g5": {
-            "w": 1.9,
-            "m1": 7.5,
-            "m3": 4.4,
-            "m6": -3.0
+            "w": 2.6,
+            "m1": 6.4,
+            "m3": 3.3,
+            "m6": -3.1
           },
           "g6": {
-            "w": -0.6,
-            "m1": 2.0,
-            "m3": 2.6,
-            "m6": -1.6
+            "w": -0.9,
+            "m1": 1.2,
+            "m3": 0.8,
+            "m6": -2.1
           },
           "g7": {
-            "w": -0.1,
-            "m1": -2.3,
-            "m3": -1.1,
-            "m6": -3.9
+            "w": -0.9,
+            "m1": -3.9,
+            "m3": -2.6,
+            "m6": -4.7
           },
           "g8": {
-            "w": 2.6,
-            "m1": 10.3,
-            "m3": 5.6,
-            "m6": 11.4
+            "w": 4.3,
+            "m1": 11.0,
+            "m3": 6.3,
+            "m6": 11.6
           }
         },
         "bench": {
-          "topix_1d": -0.64,
-          "nk_1d": 0.28,
-          "growth_1d": -1.26,
-          "nt_approx": 14.69
+          "topix_1d": 0.07,
+          "nk_1d": 0.71,
+          "growth_1d": -0.33,
+          "nt_approx": 14.78
         },
         "macro": {
-          "jp10y": 2.864,
-          "us10y": 5.068,
-          "usdjpy": 159.368,
-          "usdjpy_1m": 0.9,
-          "sox_1d": 0.1,
+          "jp10y": 2.843,
+          "us10y": 5.048,
+          "usdjpy": 159.676,
+          "usdjpy_1m": 0.8,
+          "sox_1d": -2.41,
           "sox_above_25d": false,
-          "wti": 82.14
+          "wti": 83.19
         },
         "signal": "なし",
-        "events": [
-          {
-            "kind": "OTHER",
-            "date": "2026-11-19",
-            "what": "Anthropic 上場・初値（Nasdaq ANT・米 11/19・日本の反応 11/20）",
-            "status": "reported"
-          },
-          {
-            "kind": "ANTHROPIC_IPO",
-            "date": "2026-11-19",
-            "what": "Anthropic IPO: 上場・初値",
-            "status": "reported"
-          }
-        ],
+        "events": [],
         "experts": {
           "bull": null,
           "bear": null
@@ -1589,11 +1576,152 @@
             "experts(前営業日以降のスニペットなし)",
             "内需株50/外需株50(ETF不在)"
           ],
-          "sox_ma25": "yfinance ^SOX 3mo 直近25本平均 10581.88"
+          "sox_ma25": "yfinance ^SOX 3mo 直近25本平均 10495.42"
         }
       }
     },
     "history": [
+      {
+        "date": "2026-11-20",
+        "market_mode": "弱気",
+        "method_guidance": {
+          "kenmo_momentum": "米3指数-2%超・先物-2.9%の全面安。寄りの新規は見送り、既存ポジはOCO逆指値の位置を寄り前に確認",
+          "kenmo_newhigh": "新高値ブレイクは騙しになりやすい地合い。ギャップダウン後に高値更新を維持する銘柄のみ監視、新規は見送り基調",
+          "choruko_reversal": "大幅ギャップダウンでリバーサル候補は増えるが、VIX28超で下げ止まり確認前の逆張りは厳禁。前場の安値更新停止＋出来高ピーク後のみ検討",
+          "stf_kakuhen": "確変初動の判定は地合い悪化で信頼度低下。シグナルは記録のみ、エントリーは見送り推奨",
+          "tenbagger_x": "HiJoJo Partners(657A)本日上場（公開価格560円）。全面安の初値形成は荒れやすい、初日は観察のみ",
+          "daytrade": "寄り付きのギャップ埋め狙いは値幅大だが板が薄くなりやすい。ロット半分・損切り厳守",
+          "semicon_miniswing": "見送り（SOX-2.4%・25日線下、弱気モード）"
+        },
+        "pattern": "半導体主導リスクオフ×先物乖離（先物-2.86%・SOX-2.4%・VIX28.4）",
+        "note": "先物57,745は現物終値59,444比-2.86%（-1,699円）で大幅ギャップダウン想定。VIX28.4で恐怖圏入り。米3指数そろって-2%超",
+        "indicators": {
+          "nikkei": 59443.99,
+          "night_futures": 57745.0,
+          "night_futures_asof": "2026-11-20 06:25 JST",
+          "night_gap_pct": -2.86,
+          "dow_pct": -2.19,
+          "nasdaq_pct": -2.25,
+          "sp500_pct": -2.02,
+          "sox": 9419.72,
+          "sox_pct": -2.41,
+          "vix": 28.44,
+          "fear_greed": null,
+          "usdjpy": 159.67,
+          "wti": 83.19,
+          "wti_pct": -0.08
+        },
+        "data_health": {
+          "nikkei": "tv_scanner",
+          "sox": "api",
+          "vix": "api",
+          "fear_greed": null,
+          "night_futures": "api_niy",
+          "night_source": "NIY=F",
+          "wti": "api",
+          "rate_limited": true,
+          "tv_scanner": {
+            "used": true,
+            "asof": "06:37 JST",
+            "update_mode": "TVC:NI225=streaming",
+            "empty": []
+          },
+          "sources": {},
+          "notes": "yfinance crumb 429（crumbなしで継続取得成功）・^N225 11/19足が未収録 → TVC:NI225で補完。F&Gスニペットに数値なし→VIX代替:恐怖圏(28.44)。NY市況記事・地政学ヘッドライン: スニペット取得不可。OSEスニペット照合なし"
+        },
+        "settlement": {
+          "us_settled": true,
+          "us_close_jst": "06:00",
+          "night_settled": true,
+          "run_at_jst": "06:38",
+          "excluded": []
+        },
+        "sr": {
+          "d": "2026-11-20",
+          "regime": "R-A",
+          "status": "暫定",
+          "g": {
+            "g1": {
+              "w": -5.7,
+              "m1": -14.6,
+              "m3": -18.4,
+              "m6": -21.6
+            },
+            "g2": {
+              "w": 4.4,
+              "m1": 3.0,
+              "m3": 6.8,
+              "m6": 15.9
+            },
+            "g3": {
+              "w": -2.0,
+              "m1": 1.6,
+              "m3": 3.7,
+              "m6": 6.1
+            },
+            "g4": {
+              "w": 5.0,
+              "m1": 8.6,
+              "m3": 8.9,
+              "m6": 9.4
+            },
+            "g5": {
+              "w": 2.6,
+              "m1": 6.4,
+              "m3": 3.3,
+              "m6": -3.1
+            },
+            "g6": {
+              "w": -0.9,
+              "m1": 1.2,
+              "m3": 0.8,
+              "m6": -2.1
+            },
+            "g7": {
+              "w": -0.9,
+              "m1": -3.9,
+              "m3": -2.6,
+              "m6": -4.7
+            },
+            "g8": {
+              "w": 4.3,
+              "m1": 11.0,
+              "m3": 6.3,
+              "m6": 11.6
+            }
+          },
+          "bench": {
+            "topix_1d": 0.07,
+            "nk_1d": 0.71,
+            "growth_1d": -0.33,
+            "nt_approx": 14.78
+          },
+          "macro": {
+            "jp10y": 2.843,
+            "us10y": 5.048,
+            "usdjpy": 159.676,
+            "usdjpy_1m": 0.8,
+            "sox_1d": -2.41,
+            "sox_above_25d": false,
+            "wti": 83.19
+          },
+          "signal": "なし",
+          "events": [],
+          "experts": {
+            "bull": null,
+            "bear": null
+          },
+          "sources": {
+            "groups": "TOPIX-17 ETF 代替（TV scanner・⑧=1489/1343/空運9201・9202平均の単純平均）",
+            "fallback_yf": [],
+            "missing": [
+              "experts(前営業日以降のスニペットなし)",
+              "内需株50/外需株50(ETF不在)"
+            ],
+            "sox_ma25": "yfinance ^SOX 3mo 直近25本平均 10495.42"
+          }
+        }
+      },
       {
         "date": "2026-11-19",
         "market_mode": "レンジ様子見",
@@ -3478,60 +3606,6 @@
             "used": true,
             "asof": "06:38 JST",
             "update_mode": "streaming/delayed_streaming_600/900",
-            "empty": []
-          },
-          "sources": {}
-        },
-        "settlement": {
-          "us_settled": true,
-          "us_close_jst": "05:00",
-          "night_settled": true,
-          "run_at_jst": "06:38",
-          "excluded": []
-        }
-      },
-      {
-        "date": "2026-10-22",
-        "market_mode": "堅調",
-        "method_guidance": {
-          "kenmo_momentum": "米株全面高・SOX+2.0%、大取は現物比+0.6%で寄りは小幅高から。寄り後の出来高確認でブレイク初動を厳選。",
-          "kenmo_newhigh": "地合いは追い風。出来高を伴う新高値ブレイクのみ。寄り高値掴みを避け押しを待つ。",
-          "choruko_reversal": "地合い良好で戻り基調。寄り30分の底値確認後に小ロット。",
-          "stf_kakuhen": "初動確認済みの半導体・AI関連を中心に選別して可。",
-          "tenbagger_x": "IPOは初値形成と地合いを確認してから。積極参加は選別的に。",
-          "daytrade": "完全不関与。",
-          "semicon_miniswing": "SOX+2.0%で追い風。VWAP±0.5%の積極帯を使用可（原油97ドル台の地政学リスクで寄り高は追わない）。"
-        },
-        "pattern": "半導体主導リスクオン",
-        "note": "米株全面高・SOX+2.0%、大取+0.6%で寄りは堅調。ただしWTI97ドル台の高止まりで寄り高値掴みは警戒。VIX16.7。",
-        "indicators": {
-          "nikkei": 64621.02,
-          "night_futures": 65015,
-          "night_futures_asof": "2026-10-22 06:38 JST（TV遅延600秒）",
-          "night_gap_pct": 0.61,
-          "dow_pct": 0.69,
-          "nasdaq_pct": 1.05,
-          "sp500_pct": 0.58,
-          "sox": 11505.56,
-          "sox_pct": 1.97,
-          "vix": 16.68,
-          "fear_greed": null,
-          "usdjpy": 158.073,
-          "wti": 97.15,
-          "wti_pct": -0.68
-        },
-        "data_health": {
-          "sox": "tv_scanner",
-          "vix": "tv_scanner",
-          "fear_greed": null,
-          "night_futures": "tv_scanner",
-          "night_source": "TV:CME:NIY1!",
-          "wti": "tv_scanner",
-          "rate_limited": true,
-          "tv_scanner": {
-            "used": true,
-            "asof": "06:38 JST",
-            "update_mode": "delayed_streaming_600/900",
             "empty": []
           },
           "sources": {}
@@ -9660,13 +9734,14 @@
         "source": "①-9 v5.6.1"
       },
       "morning_compass": {
-        "generated_at": "2026-11-19T06:40:56+09:00",
-        "trading_day": "2026-11-19",
+        "generated_at": "2026-11-20T06:38:55+09:00",
+        "trading_day": "2026-11-20",
         "status": "done",
         "source": "morning_compass_v11",
-        "memo": "run_at=2026-11-19T06:40:56+09:00",
+        "memo": "run_at=2026-11-20T06:38:55+09:00",
         "missing": [
-          "fear_greed"
+          "fear_greed",
+          "sr.experts"
         ]
       },
       "watch_tracker": {

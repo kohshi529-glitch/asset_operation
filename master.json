@@ -9166,13 +9166,13 @@
         ]
       },
       "watch_tracker": {
-        "generated_at": "2026-11-20T12:42:24Z",
+        "generated_at": "2026-11-22T12:42:05Z",
         "trading_day": "2026-11-20",
         "status": "done",
         "source": "watch_tracker",
-        "memo": "run_at=2026-11-20T12:42:24Z; base_day=2026-11-20(①-8追従)。新規シード3・再点灯5。日足取得 成功169/169。closed移動68。熟成: 新規登録0(vg true 13)・トリガー0・指名済み退避0。",
-        "seeded": 3,
-        "active": 101,
+        "memo": "run_at=2026-11-22T12:42:05Z; base_day=2026-11-20(①-8追従・night_gate_today未更新のため金曜セッションを冪等再計算)。新規シード1・再点灯4。日足取得 成功102/102。closed移動0。熟成: 新規登録0(vg true 13)・トリガー0・指名済み退避0。",
+        "seeded": 1,
+        "active": 102,
         "ripen_active": 13,
         "ripen_triggered": 0
       },
@@ -218722,7 +218722,7 @@
     }
   ],
   "watchlist": {
-    "updated_at": "2026-11-20T12:42:03Z",
+    "updated_at": "2026-11-22T12:42:05Z",
     "base_day": "2026-11-20",
     "entries": [
       {
@@ -223016,6 +223016,33 @@
             "date": "2026-11-20",
             "close": 415.0,
             "note": "本日判断／25MA乖離-12.9%・5日レンジ位置0%・🔻悪化・弱気"
+          }
+        ],
+        "fetch_fail_days": 0
+      },
+      {
+        "code": "5821",
+        "name": "Hirakawa Hewtech Corp.",
+        "branch": "kenmo_momentum",
+        "watch_class": "待ち",
+        "seed_day": "2026-11-20",
+        "seed_price": 3060.0,
+        "seed_grade": "⚡好調",
+        "ref_high": 3060.0,
+        "ma5": 3123.0,
+        "ma25": 3134.4,
+        "last_close": 3060.0,
+        "last_date": "2026-11-20",
+        "days_watched": 0,
+        "dist_to_zone_pct": 4.0,
+        "status": "watching",
+        "status_reason": null,
+        "signal": "押し目待ち中(あと4.0%)",
+        "history": [
+          {
+            "date": "2026-11-20",
+            "close": 3060.0,
+            "note": "押し目待ち中(あと4.0%)"
           }
         ],
         "fetch_fail_days": 0

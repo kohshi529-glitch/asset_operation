@@ -9166,12 +9166,12 @@
         ]
       },
       "watch_tracker": {
-        "generated_at": "2026-11-22T12:42:05Z",
+        "generated_at": "2026-11-23T12:41:46Z",
         "trading_day": "2026-11-20",
         "status": "done",
         "source": "watch_tracker",
-        "memo": "run_at=2026-11-22T12:42:05Z; base_day=2026-11-20(①-8追従・night_gate_today未更新のため金曜セッションを冪等再計算)。新規シード1・再点灯4。日足取得 成功102/102。closed移動0。熟成: 新規登録0(vg true 13)・トリガー0・指名済み退避0。",
-        "seeded": 1,
+        "memo": "run_at=2026-11-23T12:41:46Z; base_day=2026-11-20(①-8追従・11/23勤労感謝の日で休場・night_gate_today=11-20のため金曜セッションを冪等再計算)。新規シード0(11-20シード済み4件は維持)・再点灯4。日足取得 成功101/101銘柄(102エントリ)。closed移動0。熟成: 新規登録0(vg true 13・全件登録済み)・トリガー0・指名済み退避0。",
+        "seeded": 0,
         "active": 102,
         "ripen_active": 13,
         "ripen_triggered": 0
@@ -218722,7 +218722,7 @@
     }
   ],
   "watchlist": {
-    "updated_at": "2026-11-22T12:42:05Z",
+    "updated_at": "2026-11-23T12:41:46Z",
     "base_day": "2026-11-20",
     "entries": [
       {

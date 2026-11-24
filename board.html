@@ -452,7 +452,7 @@ details.stgd summary{cursor:pointer;font-weight:700;padding:4px 0}
 <div id='panel-methods' class='panel'></div>
 <div id='panel-granville' class='panel'></div>
 <div id='panel-legend' class='panel'></div>
-<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28 ＋ D24/D25 2026-10-31 ＋ D26 2026-11-01 ＋ D27 2026-11-05 ＋ D28 2026-11-06 ＋ D29 2026-11-08 ＋ D30 2026-11-11 ＋ D31 2026-11-16 ＋ D32 2026-11-19）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
+<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28 ＋ D24/D25 2026-10-31 ＋ D26 2026-11-01 ＋ D27 2026-11-05 ＋ D28 2026-11-06 ＋ D29 2026-11-08 ＋ D30 2026-11-11 ＋ D31 2026-11-16 ＋ D32 2026-11-19 ＋ D33 2026-11-25）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
 </div>
 <button class='fab' id='backtab' onclick='scrollToTabbar()' aria-label='タブバーへ戻る'>▲タブへ戻る</button>
 <script>
@@ -807,6 +807,23 @@ function perMedChip(code){
   if(med==null) return '';
   const hi=per>med;
   return `<span class='perchip' title='業種別PER中央値はプール在籍銘柄${n!=null?n+'銘柄':''}の中央値（全上場ではない）。人気化の目安（sato型の出口参考値）'>PER ${esc(num1(per))}倍／${esc(sec||'業種')}中央値 ${esc(num1(med))}倍${n!=null?'('+n+')':''}${hi?' ↑':''}</span>`;
+}
+// D33: 🤷PER圧縮の数値と業種中央値を 1 行の数値列で返す（ウォッチ 熟成カードの 5 行目と同じ書式を全カードで共有）。
+// 出所: valuation_cache[code].value_gap（per_1y→per_now・26週・増益）→ 無ければ metrics.per／grades.json の per。業種中央値は grades.json の spm → meta.sector_per_median[業種]。売上圧縮は value_gap_sales の psr。数値が無い項目は出さない（推定しない）
+function vgNumParts(code){
+  const v=VALUATION&&VALUATION[String(code)]; const g=gradesOf(code); const parts=[];
+  const vg=(v&&v.value_gap&&typeof v.value_gap==='object')?v.value_gap:null;
+  const vgs=(v&&v.value_gap_sales&&typeof v.value_gap_sales==='object')?v.value_gap_sales:null;
+  let per=(vg&&typeof vg.per_now==='number')?vg.per_now:((v&&v.metrics&&typeof v.metrics.per==='number')?v.metrics.per:((g&&typeof g.per==='number')?g.per:null));
+  const p1=(vg&&typeof vg.per_1y==='number')?vg.per_1y:null;
+  let med=(g&&typeof g.spm==='number')?g.spm:null; const sec=(g&&g.sec)||null;
+  if(med==null&&sec&&SPM&&SPM[sec]){ const e=SPM[sec]; med=Array.isArray(e)?(typeof e[0]==='number'?e[0]:null):(typeof e==='number'?e:null); }
+  if(per!=null&&per>0){ const rel=(med!=null&&med>0)?`（業種中央値 ${esc(num1(med))}倍・${per>med?'<span class="neg">上</span>':'<span class="pos">下</span>'}）`:''; parts.push(`<span class='vtxt' title='PER（予想）。→ の左は 1 年前の PER（①-9 value_gap）。業種中央値はプール在籍銘柄の中央値'>PER ${p1!=null?esc(num1(p1))+'→':''}<b class='hl'>${esc(num1(per))}倍</b>${rel}</span>`); }
+  else if(med!=null&&med>0){ parts.push(`<span class='vtxt' title='PER が出ない（赤字等）。業種中央値だけ'>PER —（業種中央値 ${esc(num1(med))}倍）</span>`); }
+  if(vg&&typeof vg.chg26w==='number') parts.push(`<span class='vtxt' title='26週の株価変化（横ばい判定の材料）'>26週 ${vg.chg26w>0?'+':''}${esc(num1(vg.chg26w))}%</span>`);
+  if(vg&&typeof vg.growth==='number') parts.push(`<span class='vtxt' title='通期予想の増益率（PER圧縮の材料）'>増益 ${vg.growth>0?'+':''}${esc(num1(vg.growth))}%</span>`);
+  if(vgs&&typeof vgs.psr_now==='number') parts.push(`<span class='vtxt' title='PSR（時価総額÷売上）。→ の左は 1 年前（①-9 value_gap_sales）'>PSR ${typeof vgs.psr_1y==='number'?esc(num1(vgs.psr_1y))+'→':''}<b class='hl'>${esc(num1(vgs.psr_now))}倍</b></span>`);
+  return parts;
 }
 // 💴配当・🎁優待（D8）: grades.json の rm(権利月)/dvi(中間)/dvf(期末)/dva(年間)/yt(優待)/ym(優待権利月)。①-8 v1.38 の rights_cache の射影。無ければ出さない
 function rightsOf(code){ const g=gradesOf(code); if(!g) return null; const has=['fy','rm','dvi','dvf','dva','yt','ym'].some(k=>g[k]!=null); return has?g:null; }
@@ -2017,6 +2034,7 @@ function scanCard(s,o){
   if(o.an&&s.ret1_pct!=null) parts.push(`<span class='vtxt' title='前日比'>前日 <b class='${s.ret1_pct>=0?'pos':'neg'}'>${s.ret1_pct>0?'+':''}${esc(num1(s.ret1_pct))}%</b></span>`);
   if(o.an&&s.ret_since_ref_pct!=null){ parts.push(`<span class='vtxt' title='基準日（S-1 公開 2026-10-26 の東京終値）比${s.hi_since_ref_pct!=null?'・期間中の最高終値 '+(s.hi_since_ref_pct>0?'+':'')+esc(num1(s.hi_since_ref_pct))+'%':''}${s.ret_since_ref_vs_1321!=null?'・日経ETF比 '+(s.ret_since_ref_vs_1321>0?'+':'')+esc(num1(s.ret_since_ref_vs_1321))+'pt':''}'>基準10/26比 <b class='${s.ret_since_ref_pct>=0?'pos':'neg'}'>${s.ret_since_ref_pct>0?'+':''}${esc(num1(s.ret_since_ref_pct))}%</b>${s.hi_since_ref_pct!=null?' <small>高 '+(s.hi_since_ref_pct>0?'+':'')+esc(num1(s.hi_since_ref_pct))+'%</small>':''}</span>`); }
   put('25MA',num1(s.dev25),'%'); put(esc(s.long_ma_kind||'長期'),num1(s.dev_long),'%'); put('20日',num1(s.ret20_pct),'%'); put('レンジ20',num1(s.range20_pct),'%'); put('ATR比',num1(s.atr_contract)); put('52週',(s.pos52w!=null?Math.round(s.pos52w):null),'%'); put('出来高',num1(s.vol_ratio20),'倍'); if(s.hist_tag&&s.bars_n!=null) put('足',s.bars_n,'本');
+  try{ vgNumParts(code).forEach(x=>parts.push(x)); }catch(x){} // D33: PER圧縮の数値と業種中央値（AI特需・内需・アンソロ・SR の全カード）
   const propHtml=parts.join(sep);
   const hist=(Array.isArray(s.history)?s.history:[]).slice(-3).map(h=>`${esc(h.d)} ${esc(h.from||'—')}→${esc(h.to)}`).join('、');
   const bodyHtml=`<div class='smeta'>ステージ開始 ${esc(s.stage_since||'—')}${hist?'　履歴 '+hist:''}${s.fetched===false?'　⚠日足未取得（'+esc(s.stale_since||'')+' の値）':''}</div>`;
@@ -2488,8 +2506,9 @@ function watchCard(e,NG,PROF){
   const methodHtml=`${watchClassChip(e.watch_class)}${e.branch?branchChip(e.branch):''}<span class='memochip'>経過${esc(days)}</span>`;
   // 行5: 監視の主要数値（縦カードなので横スクロール無し）。「押し目まで」は待ちアームの指標なので即断型では出さない。
   const hasPull=(e.watch_class==='待ち'||e.watch_class==='両面');
+  let vgp=[]; try{ vgp=vgNumParts(e.code); }catch(x){ vgp=[]; } // D33: PER圧縮の数値と業種中央値（熟成カードと同じ書式）
   const propHtml=(hasPull?`<span class='vtxt'>押し目まで <b class='hl'>${esc(dist)}</b></span>${sep}`:'')
-    +`<span class='vtxt'>高値比 ${esc(hpct)}</span>${sep}<span class='vtxt'>25MA比 ${esc(mapct)}</span>`;
+    +`<span class='vtxt'>高値比 ${esc(hpct)}</span>${sep}<span class='vtxt'>25MA比 ${esc(mapct)}</span>`+(vgp.length?sep+vgp.join(sep):'');
   // 行6: 要約コメント（①-12の signal 文＝水準・業績・市況の要約）＋シード情報
   const sig=(e.signal&&String(e.signal).trim())?`<div class='sum'>${esc(e.signal)}</div>`:'';
   const reason=(e.status_reason)?`<div class='sum'>${esc(e.status_reason)}</div>`:'';
@@ -2669,6 +2688,8 @@ function renderLegend(){
     ${tr.map(row).join('')}
     <h3>💴 配当・🎁優待・📆権利対象（D8）</h3>
     <div class='note'>💴チップ＝①-8 v1.38 が kabutan の既読ページから読んだ予想配当（年間または中間／期末）と、minkabu の優待ページで確かめた優待の有無・優待権利月（grades.json の fy/rm/dvi/dvf/dva/yt/ym）。未取得の銘柄には出ない（初回は保有・PASS から順に埋まる）。<br>📆権利対象チップ＝今日〜次の営業日に権利付き最終日／権利落ち日があり、かつその月がこの銘柄の権利月（配当または優待）に含まれるときだけ出る。「現在値→落ち後目安（−x円・−y%）」は該当する配当を現在値から引いたもので、公表値からの計算（推定ではない）。優待分は含まないので、🎁付きの銘柄は目安より大きく落ちうる。「直近5日 ±z%」は権利取り前に上がってきた幅（pool_bars の直近5本）で、落ち後に剥落しうる分の目安。SL との比較は出さない（stop の反映は実弾ボード側の運用に依存するため）。権利月が未取得の銘柄は「📆権利月不明」。権利月が違う銘柄には何も出ない（＝今回の権利落ちの影響は限定的）。</div>
+    <h3>🤷 PER圧縮の数値と業種中央値を全カードに（D33）</h3>
+    <div class='note'>ウォッチタブの 🤷熟成カードだけに出していた 5 行目の数値列「PER 1年前→今（業種中央値 m倍・上/下）／26週 ±%／増益 +%／PSR 1年前→今」を、ウォッチの 待ち・即断・両面 と 🤖AI特需・🏠内需・🧬アンソロ・🧭SR の全カードの数値行に加えた。出所は ①-9 の valuation_cache（value_gap／value_gap_sales／metrics.per）と grades.json（per・spm）。数値が無い項目は出さない。チップ（🤷・PER×業種中央値）はこれまでどおり判定行に残る。表示のみで判定・順位は変えない。</div>
     <h3>🧭 SR タブ（D32）</h3>
     <div class='note'>①-S6 SRスキャン v1.0（平日 19:05）が SR 群 固定ユニバース 82 銘柄（sr_universe.json・8 群＝⑤ モーニングコンパスの SR 観測と同じ TOPIX-17 ETF 代替）に ①-S3／①-S4 と同じ器を当て、sr_scan_today.json に書く。<b>レジーム帯</b>＝⑤ が朝に書く R-A リスクオフ／R-B リスクオン／R-C 金利主導 と、固定表による各群の役割（受け皿／震源／中立）、首位・最下位の群、底入れ候補。<b>8 群ヒート</b>＝対 TOPIX（1306）の相対 pt を、構成銘柄の中央値基準（左 3 列）と代替 ETF 基準（右 3 列）で併記。乖離 3pt 超は ⚠（ETF と主要銘柄で動きが違う＝大型 1〜2 社の偏り。どちらが正しいかは言わない）。<b>底入れ判定</b>＝メンター正典 8-3b の 5 条件を機械判定し count ≥ 3 で 🪨候補（群の履歴が 5 営業日たまるまで #1〜#3・#5 は ✗）。<b>群内テーブル</b>＝群 → RS20 降順。カードは内需タブと同じ部品。遷移は群で絞れる。すべて記録と表示であり、判定・提案・順位は変えない。</div>
     <h3>📅 直近決算日チップ（D31）</h3>

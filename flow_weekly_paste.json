@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "version": 1,
+  "note": "需給の週次統計の受け箱。JPX 公表値を Kohshi が転記する（メンテナンス PR で全置換）。①-S7 は読むだけで、取得できなかった週の穴埋めに使う。単位: 億円（投資部門別・信用残・裁定残）・%（空売り比率）。推定値は書かない。URL は書かない",
+  "how_to": "JPX「投資部門別売買状況」（毎週木曜・前週分）の二市場合計から 海外投資家・個人・信託銀行・事業法人 の差引（買い−売り）を億円で。「信用取引残高」の二市場合計（買残・売残）。「裁定取引に係る現物ポジション」の裁定買い残。週の金曜日付を week_end に"
+ },
+ "weeks": [
+  {
+   "week_end": "2026-11-14",
+   "investor_type": {
+    "foreign": null,
+    "individual": null,
+    "trust_bank": null,
+    "corporate": null
+   },
+   "margin_balance": {
+    "long": null,
+    "short": null
+   },
+   "arb_balance": {
+    "long": null
+   },
+   "short_sell_ratio_avg": null,
+   "note": "例（すべて null＝未転記）。値を入れたら note に出所の名称（JPX 投資部門別売買状況 等）"
+  }
+ ]
+}

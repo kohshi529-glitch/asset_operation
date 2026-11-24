@@ -7831,8 +7831,108 @@
         "ret_since_ref_pct": -43.36
       }
     ],
-    "sr_momentum": [],
+    "sr_momentum": [
+      {
+        "code": "4502",
+        "name": "武田薬品工業",
+        "branch": "sr_momentum",
+        "branch_type": "method",
+        "score": 5,
+        "signals": [
+          "M3"
+        ],
+        "sector": "g4",
+        "sector_label": "④内需ディフェンシブ",
+        "proc": null,
+        "wave": null,
+        "close": 7060.0,
+        "dev25": 6.33,
+        "dev75": 16.75,
+        "vol_ratio20": 1.36,
+        "rsi14": 63.9,
+        "pos52w": 100.87,
+        "ret5_pct": 1.77,
+        "ret20_pct": 10.5,
+        "perfect_order": true,
+        "scored_at": "2026-11-24T19:11:57+09:00",
+        "source": "sr_scan_v1.0",
+        "stage": "🍽食べ時",
+        "stage_since": "2026-11-18",
+        "sleep_days": 0,
+        "rs20": 13.6,
+        "hist_tag": null,
+        "group": "g4",
+        "gy": null,
+        "val": null
+      },
+      {
+        "code": "8309",
+        "name": "三井住友トラストグループ",
+        "branch": "sr_momentum",
+        "branch_type": "method",
+        "score": 4,
+        "signals": [
+          "M2"
+        ],
+        "sector": "g3",
+        "sector_label": "③金融",
+        "proc": null,
+        "wave": null,
+        "close": 1678.0,
+        "dev25": 1.08,
+        "dev75": -2.04,
+        "vol_ratio20": 1.49,
+        "rsi14": 54.7,
+        "pos52w": 79.6,
+        "ret5_pct": -6.07,
+        "ret20_pct": 4.88,
+        "perfect_order": false,
+        "scored_at": "2026-11-24T19:11:57+09:00",
+        "source": "sr_scan_v1.0",
+        "stage": "🥩底練り",
+        "stage_since": "2026-11-24",
+        "sleep_days": 5,
+        "rs20": 8.0,
+        "hist_tag": null,
+        "group": "g3",
+        "gy": null,
+        "val": null
+      }
+    ],
     "sr_reversal": [
+      {
+        "code": "2802",
+        "name": "味の素",
+        "branch": "sr_reversal",
+        "branch_type": "method",
+        "score": 4,
+        "signals": [
+          "R2"
+        ],
+        "sector": "g4",
+        "sector_label": "④内需ディフェンシブ",
+        "proc": null,
+        "wave": null,
+        "close": 4049.0,
+        "dev25": -13.16,
+        "dev75": -19.73,
+        "vol_ratio20": 1.03,
+        "rsi14": 23.1,
+        "pos52w": 25.37,
+        "ret5_pct": -1.7,
+        "ret20_pct": -20.04,
+        "perfect_order": false,
+        "scored_at": "2026-11-24T19:11:57+09:00",
+        "source": "sr_scan_v1.0",
+        "stage": "🗑期限切れ",
+        "stage_since": "2026-11-18",
+        "sleep_days": 0,
+        "rs20": -17.0,
+        "hist_tag": null,
+        "group": "g4",
+        "gy": "➖横ばい",
+        "val": "⚪妥当"
+      },
       {
         "code": "4062",
         "name": "イビデン",
@@ -7846,25 +7946,124 @@
         "sector_label": "①AI・半導体ハード",
         "proc": null,
         "wave": null,
-        "close": 4672.0,
-        "dev25": -37.48,
-        "dev75": -50.17,
-        "vol_ratio20": 1.16,
-        "rsi14": 18.2,
-        "pos52w": 18.42,
-        "ret5_pct": -23.25,
-        "ret20_pct": -45.66,
+        "close": 5372.0,
+        "dev25": -26.39,
+        "dev75": -42.46,
+        "vol_ratio20": 0.08,
+        "rsi14": 28.4,
+        "pos52w": 24.71,
+        "ret5_pct": -3.87,
+        "ret20_pct": -36.89,
         "perfect_order": false,
-        "scored_at": "2026-11-20T19:12:02+09:00",
+        "scored_at": "2026-11-24T19:11:57+09:00",
         "source": "sr_scan_v1.0",
         "stage": "🗑期限切れ",
         "stage_since": "2026-11-18",
         "sleep_days": 0,
-        "rs20": -41.2,
+        "rs20": -33.8,
         "hist_tag": null,
         "group": "g1",
         "gy": "🚀確変",
         "val": "🟢値頃"
+      },
+      {
+        "code": "4478",
+        "name": "フリー",
+        "branch": "sr_reversal",
+        "branch_type": "method",
+        "score": 4,
+        "signals": [
+          "R2"
+        ],
+        "sector": "g2",
+        "sector_label": "②ソフト・情報通信",
+        "proc": null,
+        "wave": null,
+        "close": 3095.0,
+        "dev25": -23.99,
+        "dev75": -17.48,
+        "vol_ratio20": 0.57,
+        "rsi14": 19.1,
+        "pos52w": 41.32,
+        "ret5_pct": -14.62,
+        "ret20_pct": -25.42,
+        "perfect_order": true,
+        "scored_at": "2026-11-24T19:11:57+09:00",
+        "source": "sr_scan_v1.0",
+        "stage": "🗑期限切れ",
+        "stage_since": "2026-11-18",
+        "sleep_days": 0,
+        "rs20": -22.3,
+        "hist_tag": null,
+        "group": "g2",
+        "gy": "取得不可",
+        "val": "⚪妥当"
+      },
+      {
+        "code": "4716",
+        "name": "日本オラクル",
+        "branch": "sr_reversal",
+        "branch_type": "method",
+        "score": 4,
+        "signals": [
+          "R1"
+        ],
+        "sector": "g2",
+        "sector_label": "②ソフト・情報通信",
+        "proc": null,
+        "wave": null,
+        "close": 9800.0,
+        "dev25": -1.48,
+        "dev75": 2.45,
+        "vol_ratio20": 0.5,
+        "rsi14": 48.0,
+        "pos52w": 31.58,
+        "ret5_pct": -2.97,
+        "ret20_pct": -2.0,
+        "perfect_order": true,
+        "scored_at": "2026-11-24T19:11:57+09:00",
+        "source": "sr_scan_v1.0",
+        "stage": "🥩底練り",
+        "stage_since": "2026-11-18",
+        "sleep_days": 21,
+        "rs20": 1.1,
+        "hist_tag": null,
+        "group": "g2",
+        "gy": null,
+        "val": null
+      },
+      {
+        "code": "6857",
+        "name": "アドバンテスト",
+        "branch": "sr_reversal",
+        "branch_type": "method",
+        "score": 3,
+        "signals": [
+          "R2"
+        ],
+        "sector": "g1",
+        "sector_label": "①AI・半導体ハード",
+        "proc": null,
+        "wave": null,
+        "close": 27275.0,
+        "dev25": -12.15,
+        "dev75": -18.83,
+        "vol_ratio20": 1.08,
+        "rsi14": 33.0,
+        "pos52w": 37.46,
+        "ret5_pct": 0.26,
+        "ret20_pct": -15.66,
+        "perfect_order": false,
+        "scored_at": "2026-11-24T19:11:57+09:00",
+        "source": "sr_scan_v1.0",
+        "stage": "🗑期限切れ",
+        "stage_since": "2026-11-18",
+        "sleep_days": 0,
+        "rs20": -12.6,
+        "hist_tag": null,
+        "group": "g1",
+        "gy": "🚀確変",
+        "val": "⚪妥当"
       }
     ]
   },
@@ -8842,15 +9041,15 @@
         "version": "v1.2"
       },
       "sr_scan": {
-        "run_at": "2026-11-20T19:12:02+09:00",
-        "base_day": "2026-11-20",
+        "run_at": "2026-11-24T19:11:57+09:00",
+        "base_day": "2026-11-24",
         "status": "done",
-        "n_m": 0,
-        "n_r": 1,
+        "n_m": 2,
+        "n_r": 5,
         "universe_n": 82,
         "fetched_n": 82,
         "skipped_n": 0,
-        "n_transition": 15,
+        "n_transition": 13,
         "n_ripen": 0,
         "version": "v1.0",
         "skipped": {}
@@ -233127,26 +233326,24 @@
     "universe_n": 82,
     "fetched_n": 82,
     "skipped_n": 0,
-    "base_day": "2026-11-20",
+    "base_day": "2026-11-24",
     "rotation": {
-      "base_day": "2026-11-20",
+      "base_day": "2026-11-24",
       "regime": "R-A",
       "regime_status": "暫定",
       "leader_g": "g4",
-      "laggard_g": "g1",
+      "laggard_g": "g7",
       "leader_changed": false,
-      "bench_1306_ret5": -7.05,
-      "bench_1306_ret20": -8.18,
-      "bench_1306_ret60": -8.94,
-      "bench_2516_ret5": -11.74,
-      "bench_2516_ret20": -14.51,
-      "bench_2516_ret60": -16.07,
+      "bench_1306_ret5": -3.65,
+      "bench_1306_ret20": -4.9,
+      "bench_1306_ret60": -6.78,
+      "bench_2516_ret5": -7.8,
+      "bench_2516_ret20": -12.71,
+      "bench_2516_ret60": -14.25,
       "bottoming_candidates": [],
       "div_flags": [
-        "g3",
-        "g4",
-        "g7",
-        "g8"
+        "g1",
+        "g7"
       ]
     },
     "sectors": {
@@ -233160,10 +233357,10 @@
         "n": 10,
         "above25_pct": 0.0,
         "above75_pct": 0.0,
-        "median_dev25": -18.19,
-        "median_ret20": -24.48,
+        "median_dev25": -8.06,
+        "median_ret20": -13.76,
         "signals_m": 0,
-        "signals_r": 1,
+        "signals_r": 3,
         "wave_on": false,
         "stage_counts": {
           "🍽": 0,
@@ -233176,29 +233373,29 @@
           "❔": 0
         },
         "rel_topix": {
-          "w": -6.81,
-          "m1": -16.3,
-          "m3": -23.59
+          "w": 5.25,
+          "m1": -8.86,
+          "m3": -17.73
         },
         "etf_rel": {
-          "w": -4.94,
-          "m1": -14.34,
-          "m3": -19.88
+          "w": -0.27,
+          "m1": -12.79,
+          "m3": -18.36
         },
-        "divergence": -1.96,
-        "div_flag": false,
+        "divergence": 3.93,
+        "div_flag": true,
         "etf_above25": false,
         "bottoming": {
-          "count": 0,
+          "count": 1,
           "hits": [
-            false,
+            true,
             false,
             false,
             false,
             false
           ],
           "candidate": false,
-          "reason": "履歴不足 3 日・悪材料日 1 日"
+          "reason": "履歴不足 4 日・悪材料日 1 日"
         },
         "regime_role": "震源"
       },
@@ -233209,34 +233406,34 @@
           "1626"
         ],
         "n": 10,
-        "above25_pct": 30.0,
+        "above25_pct": 20.0,
         "above75_pct": 40.0,
-        "median_dev25": -1.46,
-        "median_ret20": -4.3,
+        "median_dev25": -2.76,
+        "median_ret20": -3.35,
         "signals_m": 0,
-        "signals_r": 1,
+        "signals_r": 2,
         "wave_on": false,
         "stage_counts": {
-          "🍽": 3,
+          "🍽": 2,
           "🔥": 0,
-          "🍖": 1,
-          "🥩": 3,
+          "🍖": 2,
+          "🥩": 2,
           "🗑": 2,
-          "🕸": 1,
+          "🕸": 2,
           "🐄": 0,
           "❔": 0
         },
         "rel_topix": {
-          "w": 4.87,
-          "m1": 3.88,
-          "m3": 11.17
+          "w": -0.9,
+          "m1": 1.55,
+          "m3": 6.85
         },
         "etf_rel": {
-          "w": 4.2,
-          "m1": 2.09,
-          "m3": 7.84
+          "w": 0.8,
+          "m1": 0.01,
+          "m3": 5.59
         },
-        "divergence": 1.79,
+        "divergence": 1.54,
         "div_flag": false,
         "etf_above25": false,
         "bottoming": {
@@ -233249,7 +233446,7 @@
             false
           ],
           "candidate": false,
-          "reason": "履歴不足 3 日・悪材料日 1 日"
+          "reason": "履歴不足 4 日・悪材料日 1 日"
         },
         "regime_role": "中立"
       },
@@ -233261,35 +233458,35 @@
           "1632"
         ],
         "n": 10,
-        "above25_pct": 10.0,
+        "above25_pct": 30.0,
         "above75_pct": 10.0,
-        "median_dev25": -4.56,
-        "median_ret20": -2.07,
-        "signals_m": 0,
+        "median_dev25": -1.2,
+        "median_ret20": 0.4,
+        "signals_m": 1,
         "signals_r": 0,
         "wave_on": false,
         "stage_counts": {
           "🍽": 1,
           "🔥": 0,
           "🍖": 1,
-          "🥩": 5,
-          "🗑": 2,
-          "🕸": 1,
+          "🥩": 6,
+          "🗑": 0,
+          "🕸": 2,
           "🐄": 0,
           "❔": 0
         },
         "rel_topix": {
-          "w": -0.14,
-          "m1": 6.11,
-          "m3": 1.21
+          "w": -1.9,
+          "m1": 5.3,
+          "m3": 1.97
         },
         "etf_rel": {
-          "w": -0.69,
-          "m1": 3.08,
-          "m3": 3.76
+          "w": -1.36,
+          "m1": 3.93,
+          "m3": 4.59
         },
-        "divergence": 3.03,
-        "div_flag": true,
+        "divergence": 1.37,
+        "div_flag": false,
         "etf_above25": false,
         "bottoming": {
           "count": 0,
@@ -233301,7 +233498,7 @@
             false
           ],
           "candidate": false,
-          "reason": "履歴不足 3 日・悪材料日 1 日"
+          "reason": "履歴不足 4 日・悪材料日 1 日"
         },
         "regime_role": "受け皿"
       },
@@ -233316,35 +233513,35 @@
           "1628"
         ],
         "n": 12,
-        "above25_pct": 58.33,
+        "above25_pct": 50.0,
         "above75_pct": 58.33,
-        "median_dev25": 1.62,
-        "median_ret20": 6.55,
-        "signals_m": 0,
-        "signals_r": 0,
+        "median_dev25": 0.17,
+        "median_ret20": 2.5,
+        "signals_m": 1,
+        "signals_r": 1,
         "wave_on": true,
         "stage_counts": {
           "🍽": 5,
           "🔥": 0,
           "🍖": 0,
-          "🥩": 3,
+          "🥩": 4,
           "🗑": 3,
-          "🕸": 1,
+          "🕸": 0,
           "🐄": 0,
           "❔": 0
         },
         "rel_topix": {
-          "w": 5.12,
-          "m1": 14.72,
-          "m3": 12.65
+          "w": -0.36,
+          "m1": 7.41,
+          "m3": 9.05
         },
         "etf_rel": {
-          "w": 4.56,
-          "m1": 8.41,
-          "m3": 10.7
+          "w": 0.01,
+          "m1": 4.86,
+          "m3": 8.09
         },
-        "divergence": 6.31,
-        "div_flag": true,
+        "divergence": 2.55,
+        "div_flag": false,
         "etf_above25": true,
         "bottoming": {
           "count": 0,
@@ -233356,7 +233553,7 @@
             false
           ],
           "candidate": false,
-          "reason": "履歴不足 3 日・悪材料日 1 日"
+          "reason": "履歴不足 4 日・悪材料日 1 日"
         },
         "regime_role": "受け皿"
       },
@@ -233369,9 +233566,9 @@
         ],
         "n": 10,
         "above25_pct": 30.0,
-        "above75_pct": 60.0,
-        "median_dev25": -1.96,
-        "median_ret20": -0.44,
+        "above75_pct": 50.0,
+        "median_dev25": -1.84,
+        "median_ret20": -1.12,
         "signals_m": 0,
         "signals_r": 0,
         "wave_on": false,
@@ -233386,16 +233583,16 @@
           "❔": 0
         },
         "rel_topix": {
-          "w": 2.0,
-          "m1": 7.74,
-          "m3": 7.68
+          "w": -2.0,
+          "m1": 3.78,
+          "m3": 4.5
         },
         "etf_rel": {
-          "w": 0.39,
-          "m1": 5.54,
-          "m3": 4.62
+          "w": -1.42,
+          "m1": 2.1,
+          "m3": 2.85
         },
-        "divergence": 2.2,
+        "divergence": 1.68,
         "div_flag": false,
         "etf_above25": false,
         "bottoming": {
@@ -233408,7 +233605,7 @@
             false
           ],
           "candidate": false,
-          "reason": "履歴不足 3 日・悪材料日 1 日"
+          "reason": "履歴不足 4 日・悪材料日 1 日"
         },
         "regime_role": "中立"
       },
@@ -233422,9 +233619,9 @@
         ],
         "n": 12,
         "above25_pct": 16.67,
-        "above75_pct": 25.0,
-        "median_dev25": -4.66,
-        "median_ret20": -4.38,
+        "above75_pct": 33.33,
+        "median_dev25": -3.06,
+        "median_ret20": -3.34,
         "signals_m": 0,
         "signals_r": 0,
         "wave_on": false,
@@ -233432,23 +233629,23 @@
           "🍽": 0,
           "🔥": 0,
           "🍖": 0,
-          "🥩": 4,
-          "🗑": 5,
+          "🥩": 5,
+          "🗑": 4,
           "🕸": 3,
           "🐄": 0,
           "❔": 0
         },
         "rel_topix": {
-          "w": 2.03,
-          "m1": 3.8,
-          "m3": 0.45
+          "w": 1.07,
+          "m1": 1.56,
+          "m3": 0.0
         },
         "etf_rel": {
-          "w": -0.22,
-          "m1": 2.09,
-          "m3": 1.62
+          "w": -1.29,
+          "m1": 0.83,
+          "m3": 0.4
         },
-        "divergence": 1.71,
+        "divergence": 0.73,
         "div_flag": false,
         "etf_above25": false,
         "bottoming": {
@@ -233461,7 +233658,7 @@
             false
           ],
           "candidate": false,
-          "reason": "履歴不足 3 日・悪材料日 1 日"
+          "reason": "履歴不足 4 日・悪材料日 1 日"
         },
         "regime_role": "中立"
       },
@@ -233475,8 +233672,8 @@
         "n": 10,
         "above25_pct": 0.0,
         "above75_pct": 0.0,
-        "median_dev25": -12.14,
-        "median_ret20": -17.51,
+        "median_dev25": -12.12,
+        "median_ret20": -16.64,
         "signals_m": 0,
         "signals_r": 1,
         "wave_on": false,
@@ -233484,23 +233681,23 @@
           "🍽": 0,
           "🔥": 0,
           "🍖": 1,
-          "🥩": 1,
-          "🗑": 8,
+          "🥩": 2,
+          "🗑": 7,
           "🕸": 0,
           "🐄": 0,
           "❔": 0
         },
         "rel_topix": {
-          "w": -2.27,
-          "m1": -9.33,
-          "m3": -6.1
+          "w": -3.23,
+          "m1": -11.74,
+          "m3": -8.29
         },
         "etf_rel": {
-          "w": -0.31,
-          "m1": -3.11,
-          "m3": -1.65
+          "w": -2.72,
+          "m1": -5.78,
+          "m3": -2.78
         },
-        "divergence": -6.22,
+        "divergence": -5.96,
         "div_flag": true,
         "etf_above25": false,
         "bottoming": {
@@ -233513,7 +233710,7 @@
             false
           ],
           "candidate": false,
-          "reason": "履歴不足 3 日・悪材料日 1 日"
+          "reason": "履歴不足 4 日・悪材料日 1 日"
         },
         "regime_role": "中立"
       },
@@ -233525,35 +233722,35 @@
           "1343"
         ],
         "n": 8,
-        "above25_pct": 50.0,
+        "above25_pct": 37.5,
         "above75_pct": 37.5,
-        "median_dev25": -0.06,
-        "median_ret20": 1.09,
+        "median_dev25": -0.99,
+        "median_ret20": -1.18,
         "signals_m": 0,
         "signals_r": 0,
-        "wave_on": true,
+        "wave_on": false,
         "stage_counts": {
           "🍽": 3,
           "🔥": 0,
-          "🍖": 2,
-          "🥩": 1,
-          "🗑": 2,
+          "🍖": 0,
+          "🥩": 4,
+          "🗑": 1,
           "🕸": 0,
           "🐄": 0,
           "❔": 0
         },
         "rel_topix": {
-          "w": 6.48,
-          "m1": 9.27,
-          "m3": 1.46
+          "w": 1.68,
+          "m1": 3.72,
+          "m3": -2.59
         },
         "etf_rel": {
-          "w": 4.63,
-          "m1": 6.13,
-          "m3": 2.84
+          "w": 0.9,
+          "m1": 3.04,
+          "m3": 0.69
         },
-        "divergence": 3.14,
-        "div_flag": true,
+        "divergence": 0.68,
+        "div_flag": false,
         "etf_above25": false,
         "bottoming": {
           "count": 0,
@@ -233565,7 +233762,7 @@
             false
           ],
           "candidate": false,
-          "reason": "履歴不足 3 日・悪材料日 1 日"
+          "reason": "履歴不足 4 日・悪材料日 1 日"
         },
         "regime_role": "受け皿"
       }
@@ -233597,38 +233794,45 @@
         "overflow_r": 0,
         "n_ripen": 0,
         "n_transition": 15
+      },
+      {
+        "base_day": "2026-11-24",
+        "n_m": 2,
+        "n_r": 5,
+        "overflow_m": 0,
+        "overflow_r": 0,
+        "n_ripen": 0,
+        "n_transition": 13
       }
     ],
     "stage": {
       "version": "v1.0",
-      "base_day": "2026-11-20",
+      "base_day": "2026-11-24",
       "counts": {
-        "🍽食べ時": 13,
+        "🍽食べ時": 12,
         "🔥初動": 0,
-        "🍖熟成中": 6,
-        "🥩底練り": 25,
-        "🗑期限切れ": 32,
-        "🕸閑散": 6,
+        "🍖熟成中": 5,
+        "🥩底練り": 31,
+        "🗑期限切れ": 27,
+        "🕸閑散": 7,
         "🐄上場直後": 0,
         "❔取得不可": 0
       },
       "short_history_n": 0,
       "transitions": [
-        "3382 🍽食べ時→🥩底練り",
-        "4063 🥩底練り→🗑期限切れ",
-        "4307 🕸閑散→🍽食べ時",
-        "5401 🥩底練り→🍖熟成中",
-        "6367 🔥初動→🕸閑散",
-        "7013 🥩底練り→🗑期限切れ",
-        "7182 🕸閑散→🥩底練り",
-        "8031 🥩底練り→🗑期限切れ",
-        "8058 🕸閑散→🥩底練り",
-        "8306 🥩底練り→🗑期限切れ",
-        "8411 🕸閑散→🥩底練り",
-        "8601 🕸閑散→🥩底練り",
-        "8766 🕸閑散→🍽食べ時",
-        "8802 🕸閑散→🥩底練り",
-        "8830 🕸閑散→🥩底練り"
+        "4063 🗑期限切れ→🥩底練り",
+        "4519 🕸閑散→🥩底練り",
+        "4689 🥩底練り→🕸閑散",
+        "7013 🗑期限切れ→🥩底練り",
+        "8031 🗑期限切れ→🥩底練り",
+        "8306 🗑期限切れ→🥩底練り",
+        "8309 🕸閑散→🥩底練り",
+        "8411 🥩底練り→🕸閑散",
+        "8591 🗑期限切れ→🥩底練り",
+        "8604 🥩底練り→🕸閑散",
+        "8951 🍖熟成中→🥩底練り",
+        "8952 🍖熟成中→🥩底練り",
+        "9434 🍽食べ時→🍖熟成中"
       ],
       "ripen_codes": [],
       "prev_missing": false

@@ -19,7 +19,8 @@ setup_guide.html            ← 🛠 設定要領（ルーティン・正典・P
 market_today.json           ← ⑤ が毎朝書く当日の市場モード（派生ファイル）
 grades.json                 ← ①-8 が毎晩書く業績/値頃グレードの射影（派生ファイル）
 night_gate_today.json       ← ①-8 の当夜の提案（派生ファイル）
-pool_bars.json              ← ①-8 が書く候補プールの直近20本の日足（派生ファイル）
+pool_bars.json              ← ①-8 が書く候補プールの直近20本の日足（派生ファイル・毎晩全取り直し）
+corporate_actions_paste.json ← 分割・併合・消却・増資・社名/コード変更・上場廃止・決算期変更の受け箱（人が書く・①-9 が読む）
 gate_history/{date}.json    ← ①-8 の夜ごとの記録（不変・nominations / verdicts 同居）
 gate_track.json             ← ①-11 の仮想約定/決済・R 集計
 surge_log.json              ← ①-10 の急騰未検出ログ（週次）
@@ -27,6 +28,12 @@ method_cards.md             ← 5大手法カード（旧・手法別スクリ�
 render_master.py            ← master.json → index.html
 build_system_html.py        ← master.json.system_status → system.html
 ```
+
+## 日足の取得方式（データ整合・2026-11-26 明記）
+- **全ルーティンが毎晩「全取り直し」**で、増分追記は使わない。①-8 発注前ゲートはプール全銘柄の 1 年日足を毎晩取り直し、pool_bars.json にはその直近 20 本だけを書く（派生ファイル・前夜分に足さない）。①-S3／S4／S5／S6／S7 の各スキャンも毎晩 6 か月〜1 年分を取り直し、日足そのものは保存しない（status に指標だけ）。①-9 銘柄評価更新は 1 年日足を毎回取り直す（保存しない）
+- 日足の出所は Yahoo（yfinance 標準作法）。Yahoo は株式分割・併合を**遡及調整済み**の価格で返すので、25 日線・52 週高安・ドローダウンは分割日をまたいでも連続する。したがって「分割検知時の履歴の全取り直し」は不要（毎晩全取り直しで、調整済みの系列が毎回入る）
+- 分割・併合で壊れるのは**キャッシュした静的層**（1 株益・BPS・発行済株式数＝kabutan 取得時点の値）だけ。①-9 v5.7 以降は Yahoo の Stock Splits と受け箱（corporate_actions_paste.json）で検知して強制再取得し、整合するまで PER／PBR／PSR／PEG を null＋⚠分割未整合 にする。v5.7.1 以降は自前時価総額（終値×発行済株式数）と Yahoo の時価総額を照合し、±30% 超は ⚠時価総額不整合（分割・併合・消却・増資・株数誤りを一括で捕まえる）
+- 取得日は valuation_cache[code].static.fetched_at（静的層）と calculated_at（値頃感の計算日）。候補ボードはこれを「取得 MM/DD」で常時表示し、60 営業日超は 🕰、直近決算日より古ければ 📅未更新
 
 ## 公開範囲と鉄則
 

@@ -1,0 +1,26 @@
+{
+ "meta": {
+  "version": 1,
+  "updated": "2026-11-26",
+  "note": "コーポレートアクションの受け箱（splits_paste.json を統合・2026-11-26）。①-9 銘柄評価更新 v5.7.1 が読む。kind: split（分割）／reverse_split（併合）／buyback_cancel（自己株消却）／offering（増資・売出）／rename（社名・コード変更）／delist（上場廃止）／fy_change（決算期変更）。ratio は『後の株数 ÷ 前の株数』（1:2 分割＝2.0・5:1 併合＝0.2。株数が変わらない kind は null）。Kohshi またはメンターがメンテナンス PR で行を足す。推定値・URL・保有情報は書かない。①-9 は split／reverse_split を静的層の強制再取得と ⚠分割未整合 に使い、他の kind は通知（🧾）と記録にだけ使う",
+  "kinds": [
+   "split",
+   "reverse_split",
+   "buyback_cancel",
+   "offering",
+   "rename",
+   "delist",
+   "fy_change"
+  ]
+ },
+ "items": [
+  {
+   "code": "7649",
+   "name": "スギホールディングス",
+   "kind": "split",
+   "date": "2026-09-01",
+   "ratio": 2.0,
+   "note": "1:2 株式分割（効力発生日）。メンター照合 2026-11-26。①-9 v5.7 初回の Yahoo 検知で突き合わせる"
+  }
+ ]
+}

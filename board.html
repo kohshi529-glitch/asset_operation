@@ -163,6 +163,9 @@ details.cfold>summary{cursor:pointer;color:#7fe3d6;font-size:12.5px;font-weight:
 .ostat.bad{color:#e88a8a;background:#2e1a1a;border-color:#6b2f2f}
 /* D30: ⏸位置不適／⏸トラップ疑い（PASS は残し理由だけ見せる。①-11 は発注しない） */
 .ostat.hold{color:#ffb074;background:#3a2412;border-color:#7a4a1c}
+/* D34: 取得日チップ（静的層の取得日・値頃感の計算日）。60 営業日超は 🕰、直近決算より古ければ 📅未更新 */
+.agechip{display:inline-block;font-size:10px;border-radius:4px;padding:0 5px;margin-left:3px;border:1px solid #37474f;color:#90a4ae;background:#141e24;white-space:nowrap}
+.agechip.old{color:#ffcc80;border-color:#8d6e63;background:#2b2118}.agechip.stale{color:#ff8a80;border-color:#b3261e;background:#3a1414}
 /* D31: 直近決算日（実績）。チャートの反応と見比べる基準。5 営業日以内は少し強く */
 .earnchip.past{color:#9fb8c8;background:#17222b;border-color:#2f4552}
 .earnchip.past.recent{color:#cfe3f0;border-color:#4d7a95;background:#1a2e3b}
@@ -452,7 +455,7 @@ details.stgd summary{cursor:pointer;font-weight:700;padding:4px 0}
 <div id='panel-methods' class='panel'></div>
 <div id='panel-granville' class='panel'></div>
 <div id='panel-legend' class='panel'></div>
-<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28 ＋ D24/D25 2026-10-31 ＋ D26 2026-11-01 ＋ D27 2026-11-05 ＋ D28 2026-11-06 ＋ D29 2026-11-08 ＋ D30 2026-11-11 ＋ D31 2026-11-16 ＋ D32 2026-11-19 ＋ D33 2026-11-25）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
+<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28 ＋ D24/D25 2026-10-31 ＋ D26 2026-11-01 ＋ D27 2026-11-05 ＋ D28 2026-11-06 ＋ D29 2026-11-08 ＋ D30 2026-11-11 ＋ D31 2026-11-16 ＋ D32 2026-11-19 ＋ D33 2026-11-25 ＋ D34 2026-11-26）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
 </div>
 <button class='fab' id='backtab' onclick='scrollToTabbar()' aria-label='タブバーへ戻る'>▲タブへ戻る</button>
 <script>
@@ -736,6 +739,9 @@ const VAL_CATS=[
 ];
 // チップ後方に小さく併記する表示専用フラグ。バリュートラップ疑いは短縮表記。
 const VAL_FLAGS_SHOW=['バリュートラップ疑い','⚠資産バリュートラップ疑い','PSR代替','ROE欠損','減益でPEG無効'];
+// D34: ①-9 v5.7／v5.7.1 の整合フラグ（文字列の前方一致で拾う。括弧内の数値は ①-9 が付ける）
+const VAL_FLAGS_PREFIX=['⚠分割未整合','⚠時価総額不整合','⚠時価総額軽微'];
+function integrityFlagChips(flags){ if(!Array.isArray(flags)) return ''; return flags.filter(f=>VAL_FLAGS_PREFIX.some(p=>String(f).indexOf(p)===0)).map(f=>{ const s=String(f); const hard=s.indexOf('不整合')>=0||s.indexOf('未整合')>=0; return `<span class='mvflag ${hard?'t':'i'}' title='${esc(hard?'静的層（1株益・BPS・発行済株式数）が株価と整合していない。①-9 が再取得するまで PER・PBR・PSR・PEG は null':'自前時価総額と Yahoo の時価総額が 10〜30% ずれている（表示のみ・値はそのまま）')}'>${esc(s)}</span>`; }).join(''); }
 const VAL_FLAG_LABEL={'バリュートラップ疑い':'トラップ疑い','⚠資産バリュートラップ疑い':'資産トラップ疑い'};
 // D30: ①-9 v5.6 のトラップ判定（valuation_cache[code].trap.flag ＝ flags にも同じ文字列。grades.json の trp にも写る）。割安 × 52週安値圏 × 減速 × 25MA 下向き
 function trapChip(code,flags){ let f=null; if(Array.isArray(flags)){ if(flags.indexOf('⚠トラップ疑い')>=0) f='⚠トラップ疑い'; else if(flags.indexOf('ℹ安値圏の割安')>=0) f='ℹ安値圏の割安'; } if(!f){ const g=gradesOf(code); if(g&&(g.trp==='⚠トラップ疑い'||g.trp==='ℹ安値圏の割安')) f=g.trp; } if(!f) return ''; const t=f==='⚠トラップ疑い'?'値頃感 💎/🟢 ∧ 52週位置 <15% ∧ ⚠減速 または ⚠下期依存 ∧ 25日線乖離 <0（①-9 v5.6 STEP 6.7）。「株価が下がったから割安」の形':'値頃感 💎/🟢 ∧ 52週位置 <15%（減速は無い）。情報のみ'; return `<span class='mvflag ${f==='⚠トラップ疑い'?'t':'i'}' title='${esc(t)}'>${esc(f)}</span>`; }
@@ -892,6 +898,17 @@ function valScoreTxt(s){
   return Number.isInteger(s)?String(s):String(Math.round(s*10)/10);
 }
 // 銘柄コード→値頃感チップHTML。該当なし＝「－未評価」（グレー）。①-9 v2初回実行で埋まる。
+// D34: 取得日チップ。静的層 fetched_at（kabutan 取得日）と calculated_at（値頃感の計算日）から「取得 MM/DD」。60 営業日超は 🕰古い、直近決算日（grades の lx）より古ければ 📅未更新
+function ageChip(code,kind){
+  const v=VALUATION&&VALUATION[String(code)]; const g=gradesOf(code); let iso=null;
+  if(kind==='val'){ iso=(v&&v.calculated_at)||(g&&g.at)||null; } else { iso=(v&&v.static&&v.static.fetched_at)||null; }
+  if(!iso) return ''; const d=String(iso).slice(0,10); if(!/^\d{4}-\d{2}-\d{2}$/.test(d)) return '';
+  let n=null; try{ n=earnDaysFromNx(d); }catch(e){ n=null; } // 負＝過去。営業日で数える（JPX 休業日表）
+  const back=(n==null)?null:-n; const old=(back!=null&&back>60);
+  const lx=g&&g.lx?String(g.lx):null; const stale=(lx&&d<lx);
+  const lab=kind==='val'?'評価':'取得';
+  return `<span class='agechip ${stale?'stale':(old?'old':'')}' title='${esc(kind==='val'?'値頃感を計算した日（①-9 calculated_at）':'1株益・BPS・発行済株式数を kabutan から取った日（①-9 static.fetched_at）')}${back!=null?'・'+back+'営業日前':''}${stale?'・直近決算 '+esc(lx)+' より古い':''}'>${stale?'📅未更新 ':(old?'🕰 ':'')}${esc(lab)} ${esc(d.slice(5).replace('-','/'))}</span>`;
+}
 function valuationChip(code){
   const key=(code==null)?'':String(code);
   const v=VALUATION&&VALUATION[key];
@@ -914,7 +931,7 @@ function valuationChip(code){
   return `<span class='valchip ${cat.cls}' title='値頃感 ${esc(cat.name)}${score==null?'':' '+scoreNum+'/7'}'>`
        + `<span class='valfull'>${cat.emoji}${esc(cat.name)}${esc(scoreTxt)}</span>`
        + `<span class='valmini'>${cat.emoji}${esc(scoreNum)}</span>`
-       + `</span>${flagTxt}${trapChip(code,flags)}${d4Chips(code)}`;
+       + `</span>${flagTxt}${integrityFlagChips(flags)}${trapChip(code,flags)}${ageChip(code,'static')}${ageChip(code,'val')}${d4Chips(code)}`;
 }
 // （単元金額チップは改修2aで廃止。valuation_cache.metrics.tan_yen は不使用。）
 
@@ -2688,6 +2705,8 @@ function renderLegend(){
     ${tr.map(row).join('')}
     <h3>💴 配当・🎁優待・📆権利対象（D8）</h3>
     <div class='note'>💴チップ＝①-8 v1.38 が kabutan の既読ページから読んだ予想配当（年間または中間／期末）と、minkabu の優待ページで確かめた優待の有無・優待権利月（grades.json の fy/rm/dvi/dvf/dva/yt/ym）。未取得の銘柄には出ない（初回は保有・PASS から順に埋まる）。<br>📆権利対象チップ＝今日〜次の営業日に権利付き最終日／権利落ち日があり、かつその月がこの銘柄の権利月（配当または優待）に含まれるときだけ出る。「現在値→落ち後目安（−x円・−y%）」は該当する配当を現在値から引いたもので、公表値からの計算（推定ではない）。優待分は含まないので、🎁付きの銘柄は目安より大きく落ちうる。「直近5日 ±z%」は権利取り前に上がってきた幅（pool_bars の直近5本）で、落ち後に剥落しうる分の目安。SL との比較は出さない（stop の反映は実弾ボード側の運用に依存するため）。権利月が未取得の銘柄は「📆権利月不明」。権利月が違う銘柄には何も出ない（＝今回の権利落ちの影響は限定的）。</div>
+    <h3>🕰 取得日と整合フラグ（D34）</h3>
+    <div class='note'>値頃感チップの右に <span class='agechip'>取得 08/20</span>（1株益・BPS・発行済株式数を kabutan から取った日）と <span class='agechip'>評価 09/09</span>（値頃感を計算した日）を常時表示。60 営業日より古いと <span class='agechip old'>🕰 取得 08/20</span>、直近決算日より古いと <span class='agechip stale'>📅未更新 取得 08/20</span>（決算を通過したのに静的層が更新されていない）。①-9 v5.7 以降の整合フラグ <span class='mvflag t'>⚠分割未整合</span>（分割・併合の後で静的層が分割前のまま。PER 等は null）・<span class='mvflag t'>⚠時価総額不整合</span>（自前時価総額と Yahoo の時価総額が ±30% 超ずれ。PER 等は null）・<span class='mvflag i'>⚠時価総額軽微</span>（10〜30% ずれ・値はそのまま）も同じ場所に出す。古い取得日の銘柄は値頃感を鵜呑みにしないための印で、判定・順位は変えない。</div>
     <h3>🤷 PER圧縮の数値と業種中央値を全カードに（D33）</h3>
     <div class='note'>ウォッチタブの 🤷熟成カードだけに出していた 5 行目の数値列「PER 1年前→今（業種中央値 m倍・上/下）／26週 ±%／増益 +%／PSR 1年前→今」を、ウォッチの 待ち・即断・両面 と 🤖AI特需・🏠内需・🧬アンソロ・🧭SR の全カードの数値行に加えた。出所は ①-9 の valuation_cache（value_gap／value_gap_sales／metrics.per）と grades.json（per・spm）。数値が無い項目は出さない。チップ（🤷・PER×業種中央値）はこれまでどおり判定行に残る。表示のみで判定・順位は変えない。</div>
     <h3>🧭 SR タブ（D32）</h3>

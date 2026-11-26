@@ -6526,23 +6526,23 @@
         "sector_label": "🤝②提携・採用層",
         "proc": null,
         "wave": null,
-        "close": 6532.0,
-        "dev25": 7.44,
-        "dev75": 20.16,
-        "vol_ratio20": 1.32,
-        "rsi14": 60.17,
+        "close": 6640.0,
+        "dev25": 8.72,
+        "dev75": 21.54,
+        "vol_ratio20": 1.01,
+        "rsi14": 59.09,
         "pos52w": 100.0,
-        "ret5_pct": 8.56,
-        "ret20_pct": 3.91,
+        "ret5_pct": 13.78,
+        "ret20_pct": 6.67,
         "perfect_order": true,
-        "scored_at": "2026-11-25T19:50:00+09:00",
+        "scored_at": "2026-11-26T19:20:00+09:00",
         "source": "an_scan_v1.2",
         "stage": "🍽食べ時",
         "stage_since": "2026-11-20",
         "sleep_days": 0,
-        "rs20": 19.81,
+        "rs20": 20.72,
         "hist_tag": null,
-        "ret_since_ref_pct": 3.91
+        "ret_since_ref_pct": 5.63
       }
     ],
     "an_reversal": [],
@@ -7754,16 +7754,16 @@
         }
       },
       "an_scan": {
-        "run_at": "2026-11-25T19:50:00+09:00",
-        "base_day": "2026-11-25",
+        "run_at": "2026-11-26T19:20:00+09:00",
+        "base_day": "2026-11-26",
         "status": "done",
         "n_m": 1,
         "n_r": 0,
         "universe_n": 15,
         "fetched_n": 15,
-        "n_transition": 1,
+        "n_transition": 0,
         "n_ripen": 0,
-        "n_triggers": 16,
+        "n_triggers": 6,
         "phase": "post",
         "version": "v1.2"
       },
@@ -239048,95 +239048,95 @@
     "universe_n": 15,
     "fetched_n": 15,
     "skipped_n": 0,
-    "base_day": "2026-11-25",
+    "base_day": "2026-11-26",
     "period": {
       "start_day": "2026-11-02",
       "end_day": "2027-02-13",
-      "days_left": 53
+      "days_left": 52
     },
     "event": {
-      "base_day": "2026-11-25",
+      "base_day": "2026-11-26",
       "phase": "post",
       "ref_day": "2026-10-26",
       "layers": {
         "l1_beta": {
           "n": 4,
-          "med_since_ref": -30.16,
-          "med_ret1": -13.89,
-          "med_ret5": -11.65,
-          "med_ret20": -30.16,
-          "med_dev25": -26.67,
+          "med_since_ref": -26.09,
+          "med_ret1": 4.02,
+          "med_ret5": -10.71,
+          "med_ret20": -31.0,
+          "med_dev25": -21.24,
           "above25_pct": 0.0,
           "best": {
             "code": "8035",
             "name": "東京エレクトロン",
-            "ret_since_ref_pct": -14.11
+            "ret_since_ref_pct": -13.6
           },
           "worst": {
             "code": "4062",
             "name": "イビデン",
-            "ret_since_ref_pct": -45.3
+            "ret_since_ref_pct": -43.4
           }
         },
         "l2_partner": {
           "n": 10,
-          "med_since_ref": -7.94,
-          "med_ret1": -0.69,
-          "med_ret5": -2.34,
-          "med_ret20": -7.94,
-          "med_dev25": -5.11,
+          "med_since_ref": -7.53,
+          "med_ret1": 0.47,
+          "med_ret5": -0.53,
+          "med_ret20": -9.11,
+          "med_dev25": -4.78,
           "above25_pct": 20.0,
           "best": {
             "code": "4307",
             "name": "野村総合研究所",
-            "ret_since_ref_pct": 3.91
+            "ret_since_ref_pct": 5.63
           },
           "worst": {
             "code": "6752",
             "name": "パナソニックHD",
-            "ret_since_ref_pct": -23.92
+            "ret_since_ref_pct": -22.72
           }
         },
         "l3_direct": {
           "n": 1,
-          "med_since_ref": -21.23,
-          "med_ret1": -7.91,
-          "med_ret5": -9.02,
-          "med_ret20": -21.23,
-          "med_dev25": -16.4,
+          "med_since_ref": -19.15,
+          "med_ret1": 2.64,
+          "med_ret5": -8.01,
+          "med_ret20": -21.24,
+          "med_dev25": -13.33,
           "above25_pct": 0.0,
           "best": {
             "code": "408A",
             "name": "iシェアーズ AI グローバル・イノベーション アクティブ ETF（ベストAI）",
-            "ret_since_ref_pct": -21.23
+            "ret_since_ref_pct": -19.15
           },
           "worst": {
             "code": "408A",
             "name": "iシェアーズ AI グローバル・イノベーション アクティブ ETF（ベストAI）",
-            "ret_since_ref_pct": -21.23
+            "ret_since_ref_pct": -19.15
           }
         }
       },
-      "bench_1321_since_ref": -8.24,
-      "bench_1306_since_ref": -5.66,
-      "bench_1321_ret5": -3.14,
-      "bench_1321_ret20": -8.24,
-      "bench_1306_ret5": -2.42,
-      "bench_1306_ret20": -5.66,
-      "l1_vs_nk": -21.92,
-      "l2_vs_topix": -2.28,
-      "ai_med20": -17.15,
-      "ai_base_day": "2026-11-25",
-      "l1_vs_ai20": -13.01,
+      "bench_1321_since_ref": -7.63,
+      "bench_1306_since_ref": -5.69,
+      "bench_1321_ret5": -2.71,
+      "bench_1321_ret20": -9.19,
+      "bench_1306_ret5": -1.82,
+      "bench_1306_ret20": -6.18,
+      "l1_vs_nk": -18.46,
+      "l2_vs_topix": -1.84,
+      "ai_med20": -17.21,
+      "ai_base_day": "2026-11-26",
+      "l1_vs_ai20": -13.79,
       "ant": {
         "t": "ANT",
-        "day": "2026-11-24",
+        "day": "2026-11-25",
         "first_day": "2026-11-19",
-        "close": 81.91,
+        "close": 82.79,
         "first_close": 97.17,
-        "ret_since_first_pct": -15.7,
-        "bars_n": 4,
-        "ret1_pct": -6.54,
+        "ret_since_first_pct": -14.8,
+        "bars_n": 5,
+        "ret1_pct": 1.07,
         "name_check": [
           "Anthropic, PBC",
           "Anthropic, PBC"
@@ -239149,7 +239149,7 @@
         "ipo_price": null,
         "ipo_price_reason": "公開価格未登録",
         "vs_ipo_pct": null,
-        "vs_first_pct": -15.7,
+        "vs_first_pct": -14.8,
         "mcap_usd_b": null,
         "mcap_reason": "発行済株式数未登録"
       },
@@ -239158,60 +239158,50 @@
         "Anthropic, PBC",
         "Anthropic, PBC"
       ],
-      "days_since_ref": 20,
-      "days_left": 53,
-      "us_infra_vs_l1": 2.87,
-      "us_day": "2026-11-24"
+      "days_since_ref": 21,
+      "days_left": 52,
+      "us_infra_vs_l1": -4.27,
+      "us_day": "2026-11-25"
     },
     "us_summary": {
-      "us_day": "2026-11-24",
-      "infra_med_since_ref": -27.29,
-      "investor_med_since_ref": -5.56,
-      "us_infra_vs_l1": 2.87,
+      "us_day": "2026-11-25",
+      "infra_med_since_ref": -30.36,
+      "investor_med_since_ref": -8.08,
+      "us_infra_vs_l1": -4.27,
       "fetched_n": 8
     },
     "ipo": {
       "next_step": {
+        "id": "quiet_end",
+        "label": "クワイエット期間終了（引受証券の初期化）",
+        "date": "2026-12-14",
+        "status": "pending",
+        "days_to": 12
+      },
+      "last_step": {
         "id": "post_1w",
         "label": "上場 1 週間",
         "date": "2026-11-26",
-        "status": "pending",
-        "days_to": 1
-      },
-      "last_step": {
-        "id": "post_t5",
-        "label": "S-7 T+1〜T+5",
-        "date": "2026-11-25",
         "status": "pending"
       },
       "listing_observed": true
     },
     "amazon_summary": {
       "breakeven_usd": 68.51,
-      "stake_value_usd_b": 285.38,
-      "delta_vs_book_usd_b": 46.68,
-      "pl_portion_usd_b": 18.21,
+      "stake_value_usd_b": 288.45,
+      "delta_vs_book_usd_b": 49.75,
+      "pl_portion_usd_b": 19.4,
       "ant_vs_ipo_pct": null,
-      "ant_vs_first_pct": -15.7,
-      "amzn_rel_ndx_1d": 0.78
+      "ant_vs_first_pct": -14.8,
+      "amzn_rel_ndx_1d": -2.47
     },
-    "triggers_n": 16,
+    "triggers_n": 6,
     "triggers_ids": [
       "T1",
       "T1",
-      "T1",
-      "T1",
-      "T1",
-      "T1",
-      "T3",
       "T3",
       "T4",
-      "T4",
-      "T4",
-      "T4",
-      "T4",
-      "T4",
-      "T4",
+      "T5",
       "T5"
     ],
     "sectors": {
@@ -239221,10 +239211,10 @@
         "n": 4,
         "above25_pct": 0.0,
         "above75_pct": 0.0,
-        "median_dev25": -26.67,
-        "median_ret20": -30.16,
+        "median_dev25": -21.24,
+        "median_ret20": -31.0,
         "signals_m": 0,
-        "signals_r": 0,
+        "signals_r": 1,
         "stage_counts": {
           "🍽": 0,
           "🔥": 0,
@@ -239243,8 +239233,8 @@
         "n": 10,
         "above25_pct": 20.0,
         "above75_pct": 20.0,
-        "median_dev25": -5.11,
-        "median_ret20": -7.94,
+        "median_dev25": -4.78,
+        "median_ret20": -9.11,
         "signals_m": 1,
         "signals_r": 0,
         "stage_counts": {
@@ -239265,8 +239255,8 @@
         "n": 1,
         "above25_pct": 0.0,
         "above75_pct": 0.0,
-        "median_dev25": -16.4,
-        "median_ret20": -21.23,
+        "median_dev25": -13.33,
+        "median_ret20": -21.24,
         "signals_m": 0,
         "signals_r": 0,
         "stage_counts": {
@@ -239410,11 +239400,19 @@
         "n_ripen": 0,
         "n_transition": 1,
         "phase": "post"
+      },
+      {
+        "base_day": "2026-11-26",
+        "n_m": 1,
+        "n_r": 0,
+        "n_ripen": 0,
+        "n_transition": 0,
+        "phase": "post"
       }
     ],
     "stage": {
       "version": "v1.2",
-      "base_day": "2026-11-25",
+      "base_day": "2026-11-26",
       "counts": {
         "🍽": 2,
         "🔥": 0,
@@ -239426,9 +239424,7 @@
         "❔": 0
       },
       "short_history_n": 0,
-      "transitions": [
-        "8411 🕸閑散→🥩底練り"
-      ],
+      "transitions": [],
       "ripen_codes": [],
       "prev_missing": false
     }

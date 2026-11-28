@@ -277,6 +277,9 @@ details.cfold>summary{cursor:pointer;color:#7fe3d6;font-size:12.5px;font-weight:
 /* D36: ⏱連続n日 */
 .nomchip{display:inline-block;font-size:.72em;font-weight:600;padding:1px 6px;border-radius:999px;border:1px solid #2b3a52;color:#8fb3ad;margin-right:4px}
 .nomchip.rep{border-color:#5b7fb8;color:#9fc2ff;background:#17243a}
+/* D37: 系統タグ */
+.lin{display:inline-block;font-size:.72em;font-weight:600;padding:1px 6px;border-radius:999px;margin-right:4px;border:1px solid #2b3a52;color:#c9d2e3}
+.lin-A{border-color:#3f9b6e;color:#8fe3b4;background:#12291e}.lin-B{border-color:#8a7a2f;color:#f0d77a;background:#2a2510}.lin-X{border-color:#8a3a3a;color:#f0a0a0;background:#2a1414}
 /* 4行目：判定／業績／値頃感の3つを横並び。区切りはスラッシュ。 */
 .scard .s4 .ssep{color:#4f7b74;font-weight:400}
 .scard .s4 .vtxt{font-size:12.5px;color:#b7d6d0}
@@ -462,7 +465,7 @@ details.stgd summary{cursor:pointer;font-weight:700;padding:4px 0}
 <div id='panel-methods' class='panel'></div>
 <div id='panel-granville' class='panel'></div>
 <div id='panel-legend' class='panel'></div>
-<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28 ＋ D24/D25 2026-10-31 ＋ D26 2026-11-01 ＋ D27 2026-11-05 ＋ D28 2026-11-06 ＋ D29 2026-11-08 ＋ D30 2026-11-11 ＋ D31 2026-11-16 ＋ D32 2026-11-19 ＋ D33 2026-11-25 ＋ D34 2026-11-26 ＋ D35 2026-11-26 ＋ D36 2026-11-28）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
+<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28 ＋ D24/D25 2026-10-31 ＋ D26 2026-11-01 ＋ D27 2026-11-05 ＋ D28 2026-11-06 ＋ D29 2026-11-08 ＋ D30 2026-11-11 ＋ D31 2026-11-16 ＋ D32 2026-11-19 ＋ D33 2026-11-25 ＋ D34 2026-11-26 ＋ D35 2026-11-26 ＋ D36 2026-11-28 ＋ D37 2026-11-28）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
 </div>
 <button class='fab' id='backtab' onclick='scrollToTabbar()' aria-label='タブバーへ戻る'>▲タブへ戻る</button>
 <script>
@@ -560,6 +563,8 @@ const SR_TODAY_URL = "https://kohshi529-glitch.github.io/asset_operation/sr_scan
 let SR_TODAY = null;
 const FLOW_TODAY_URL = "https://kohshi529-glitch.github.io/asset_operation/flow_scan_today.json";
 let FLOW_TODAY = null; // D35: 前日比の補助（ret1_pct）
+const SECTOR_GROUP_URL = "https://kohshi529-glitch.github.io/asset_operation/sector_group_map.json";
+let SECTOR_GROUP = null; // D37: 33 業種 → SR 8 群（系統タグに使う）
 // D30: ①-8 が毎夜書く軽量ファイル night_gate_today.json（proposals と、v1.48 からの recent_pass＝直近 20 営業日の提案銘柄と決算チップ）。取得失敗しても描画は続く（帯が前夜分の履歴から組まれる）
 const NGT_URL = "https://kohshi529-glitch.github.io/asset_operation/night_gate_today.json";
 let NGT = null;
@@ -1785,8 +1790,26 @@ function nomAgeChip(c){
   const d=n+1; const cls='nomchip'+(n>=1?' rep':'');
   return `<span class='${cls}' title='①-8 nom_age=${n}（同じ提案が続いた夜数）。ラグ研究: 2〜3 日目の連続抽出は初回より平均 R が高い傾向（n は方式ごと・結論ではない）'>⏱${n===0?'初回':'連続'+d+'日'}</span>`;
 }
+// D37: ちょる子反転の系統タグ（メンター「ちょる子反転の系統分解」11/28・候補止まりの表示。PASS 条件・順位は変えない）
+// A 内需連続＝連続抽出 2 日以上 × ④内需ディフェンシブ／B 減速連続＝連続 2 日以上 × 業績 ⚠減速／X 除外候補＝初回抽出 × （🔻悪化 または ③金融 または 構造線 −3% 以内）。材料が無ければ付けない（推定しない）
+function lineageChip(c){
+  if(!c) return '';
+  const br=Array.isArray(c.branch)?c.branch:[c.branch];
+  if(br.indexOf('choruko_reversal')<0) return '';
+  const nom=(c.nom_age==null||c.nom_age==='')?null:Number(c.nom_age);
+  const grp=(SECTOR_GROUP&&c.sector)?(SECTOR_GROUP.map[String(c.sector)]||null):null;
+  const gy=String(c.gyoseki_grade||'');
+  // 構造線の深さ: 自身の entry_price/sl_price、無ければ night_gate_today の同コード提案から（PASS 以外は results 側が null）
+  let ep=Number(c.entry_price), sl=Number(c.sl_price);
+  if(!(ep>0&&sl>0)&&NGT&&Array.isArray(NGT.proposals)){ const p=NGT.proposals.find(x=>String(x.code)===String(c.code)&&x.branch==='choruko_reversal'); if(p){ ep=Number(p.entry_price); sl=Number(p.sl_price); } }
+  const depth=(isFinite(ep)&&isFinite(sl)&&ep>0&&sl>0)?(ep-sl)/ep*100:null;
+  const tags=[];
+  if(nom!=null&&nom>=1){ if(grp==='g4') tags.push(['A','A 内需連続','連続抽出 2 日以上 × ④内需ディフェンシブ（11/28 の切り分け: n=36・平均R +0.72・勝率 44%。候補止まり・検証前）']); if(gy.indexOf('⚠減速')>=0) tags.push(['B','B 減速連続','連続抽出 2 日以上 × 業績 ⚠減速（n=37・+0.76R・46%。候補止まり・検証前）']); }
+  if(nom===0){ const why=[]; if(gy.indexOf('👻')>=0||gy.indexOf('🔻')>=0||gy.indexOf('悪化')>=0) why.push('🔻悪化'); if(grp==='g3') why.push('③金融'); if(depth!=null&&depth<=3) why.push('構造線 −'+depth.toFixed(1)+'%'); if(why.length) tags.push(['X','X 除外候補','初回抽出 × '+why.join('・')+'（勝率 1 割未満の群。候補止まり・検証前。PASS は変えない）']); }
+  return tags.map(t=>`<span class='lin lin-${t[0]}' title='${esc(t[2])}'>🧬${esc(t[1])}</span>`).join('');
+}
 function orderStatusChip(c){
-  const nc=nomAgeChip(c);
+  const nc=nomAgeChip(c)+lineageChip(c);
   const st=c&&c.order_status;
   if(st==null||st==='') return nc;
   const s=String(st);
@@ -2740,6 +2763,8 @@ function renderLegend(){
     ${tr.map(row).join('')}
     <h3>💴 配当・🎁優待・📆権利対象（D8）</h3>
     <div class='note'>💴チップ＝①-8 v1.38 が kabutan の既読ページから読んだ予想配当（年間または中間／期末）と、minkabu の優待ページで確かめた優待の有無・優待権利月（grades.json の fy/rm/dvi/dvf/dva/yt/ym）。未取得の銘柄には出ない（初回は保有・PASS から順に埋まる）。<br>📆権利対象チップ＝今日〜次の営業日に権利付き最終日／権利落ち日があり、かつその月がこの銘柄の権利月（配当または優待）に含まれるときだけ出る。「現在値→落ち後目安（−x円・−y%）」は該当する配当を現在値から引いたもので、公表値からの計算（推定ではない）。優待分は含まないので、🎁付きの銘柄は目安より大きく落ちうる。「直近5日 ±z%」は権利取り前に上がってきた幅（pool_bars の直近5本）で、落ち後に剥落しうる分の目安。SL との比較は出さない（stop の反映は実弾ボード側の運用に依存するため）。権利月が未取得の銘柄は「📆権利月不明」。権利月が違う銘柄には何も出ない（＝今回の権利落ちの影響は限定的）。</div>
+    <h3>🧬 ちょる子反転の系統タグ（D37）</h3>
+    <div class='note'>ちょる子反転の提案カードにだけ付く。A 内需連続＝連続抽出 2 日以上 × ④内需ディフェンシブ、B 減速連続＝連続 2 日以上 × 業績 ⚠減速、X 除外候補＝初回抽出 ×（🔻悪化・③金融・構造線（損切り幅）−3% 以内 のいずれか）。11/28 の系統分解（ラグ研究 v1.3・ちょる子反転 604 件）で A・B は勝率 4 割台・平均 R 正、X は勝率 1 割未満だった組み合わせ。n=36〜37 の候補止まりで、①-14 v1.4 の期間分割と崩れ出口の検証を通るまで PASS 条件・順位は変えない。群は sector_group_map.json、業績は提案の業績グレード、構造線は提案の entry_price と sl_price から。材料が無い銘柄には付かない。</div>
     <h3>⏱ 連続抽出（D36）</h3>
     <div class='note'>ゲートの提案カードに「⏱初回」「⏱連続n日」。①-8 が提案ごとに持つ nom_age（同じ提案が何夜続いたか）をそのまま表示する。エントリーラグ研究 v1.1（11/27・PR #857）で、初回抽出より 2〜3 日目の連続抽出のほうが 10 日後の平均 R が高い傾向（ちょる子反転 −0.63→+0.20R・n=159）が出たため。表示だけで、PASS 条件・順位・注文は変えない。差は傾向止まり（上昇相場での検証なし）。</div>
     <h3>📉 前日終値と前日比（D35）</h3>
@@ -3075,8 +3100,9 @@ Promise.all([
   fetch(SIG_STATS_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
   fetch(NGT_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
   fetch(SR_TODAY_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
-  fetch(FLOW_TODAY_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null)
-]).then(([d,bars,g,ai,dm,an,sg,ngt,sr,fl])=>{ FLOW_TODAY=(fl&&typeof fl==='object'&&Array.isArray(fl.status))?fl:null; NGT=(ngt&&typeof ngt==='object')?ngt:null; SR_TODAY=(sr&&typeof sr==='object'&&Array.isArray(sr.status))?sr:null; BARS=bars||{}; GRADES=(g&&g.stocks)||{}; SPM=(g&&g.spm)||{}; GRADES_DAY=(g&&g.day)||null; IXMETA=(g&&g.ixmeta)||null; AI_TODAY=(ai&&typeof ai==='object')?ai:null; DM_TODAY=(dm&&typeof dm==='object')?dm:null; AN_TODAY=(an&&typeof an==='object')?an:null; SIG_STATS=(sg&&typeof sg==='object')?sg:null; render(d); })
+  fetch(FLOW_TODAY_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null),
+  fetch(SECTOR_GROUP_URL,{cache:"no-store"}).then(r=>r.ok?r.json():null).catch(()=>null)
+]).then(([d,bars,g,ai,dm,an,sg,ngt,sr,fl,sgm])=>{ FLOW_TODAY=(fl&&typeof fl==='object'&&Array.isArray(fl.status))?fl:null; SECTOR_GROUP=(sgm&&sgm.map)?sgm:null; NGT=(ngt&&typeof ngt==='object')?ngt:null; SR_TODAY=(sr&&typeof sr==='object'&&Array.isArray(sr.status))?sr:null; BARS=bars||{}; GRADES=(g&&g.stocks)||{}; SPM=(g&&g.spm)||{}; GRADES_DAY=(g&&g.day)||null; IXMETA=(g&&g.ixmeta)||null; AI_TODAY=(ai&&typeof ai==='object')?ai:null; DM_TODAY=(dm&&typeof dm==='object')?dm:null; AN_TODAY=(an&&typeof an==='object')?an:null; SIG_STATS=(sg&&typeof sg==='object')?sg:null; render(d); })
 .catch(e=>{document.getElementById('src').innerHTML="<span class='snap'>● 取得失敗</span> master.json の取得または描画に失敗しました。再読み込みしてください。("+esc((e&&e.stack)||e).slice(0,400)+")";});
 </script>
 </body></html>

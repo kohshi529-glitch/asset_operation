@@ -274,6 +274,9 @@ details.cfold>summary{cursor:pointer;color:#7fe3d6;font-size:12.5px;font-weight:
 .pchg{display:block;text-align:right;font-size:.6em;font-weight:600;color:#8fb3ad;white-space:nowrap;line-height:1.2;margin-top:1px}
 .pchg.up{color:#f87171}.pchg.dn{color:#4ade80}
 .pchgi{font-weight:600;color:#8fb3ad}.pchgi.up{color:#f87171}.pchgi.dn{color:#4ade80}
+/* D36: ⏱連続n日 */
+.nomchip{display:inline-block;font-size:.72em;font-weight:600;padding:1px 6px;border-radius:999px;border:1px solid #2b3a52;color:#8fb3ad;margin-right:4px}
+.nomchip.rep{border-color:#5b7fb8;color:#9fc2ff;background:#17243a}
 /* 4行目：判定／業績／値頃感の3つを横並び。区切りはスラッシュ。 */
 .scard .s4 .ssep{color:#4f7b74;font-weight:400}
 .scard .s4 .vtxt{font-size:12.5px;color:#b7d6d0}
@@ -459,7 +462,7 @@ details.stgd summary{cursor:pointer;font-weight:700;padding:4px 0}
 <div id='panel-methods' class='panel'></div>
 <div id='panel-granville' class='panel'></div>
 <div id='panel-legend' class='panel'></div>
-<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28 ＋ D24/D25 2026-10-31 ＋ D26 2026-11-01 ＋ D27 2026-11-05 ＋ D28 2026-11-06 ＋ D29 2026-11-08 ＋ D30 2026-11-11 ＋ D31 2026-11-16 ＋ D32 2026-11-19 ＋ D33 2026-11-25 ＋ D34 2026-11-26 ＋ D35 2026-11-26）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
+<footer>board.html（D3 2026-09-15 ＋ D4 2026-09-23 ＋ D5 2026-09-26 ＋ D9/D10/D11 2026-10-07 ＋ D12 2026-10-08 ＋ D17〜D20 2026-10-24/25 ＋ D21〜D23 2026-10-28 ＋ D24/D25 2026-10-31 ＋ D26 2026-11-01 ＋ D27 2026-11-05 ＋ D28 2026-11-06 ＋ D29 2026-11-08 ＋ D30 2026-11-11 ＋ D31 2026-11-16 ＋ D32 2026-11-19 ＋ D33 2026-11-25 ＋ D34 2026-11-26 ＋ D35 2026-11-26 ＋ D36 2026-11-28）／ 唯一の正 master.json から描画（grades.json・pool_bars.json は表示補助）。候補は各手法ルーティンのPRマージで更新される。🤷🏦・4色・熟成は表示であり判定・順位は変えない。</footer>
 </div>
 <button class='fab' id='backtab' onclick='scrollToTabbar()' aria-label='タブバーへ戻る'>▲タブへ戻る</button>
 <script>
@@ -1775,19 +1778,27 @@ function ngTagChips(c){
   return out.join('');
 }
 // 発注ステータスチップ（①-8 v1.6）。✅即時可/⏳待機/⛔型不一致・要確認。旧データ（null/空）は非表示。
+// D36: ⏱連続n日（①-8 の nom_age＝同じ提案が続いた夜数。0＝初回）。ラグ研究 v1.1（11/27）で「初回より 2〜3 日目の抽出が良い」傾向が出たため表示だけ足す（PASS 条件・順位は変えない）
+function nomAgeChip(c){
+  if(!c||c.nom_age==null||c.nom_age==='') return '';
+  const n=Number(c.nom_age); if(!isFinite(n)||n<0) return '';
+  const d=n+1; const cls='nomchip'+(n>=1?' rep':'');
+  return `<span class='${cls}' title='①-8 nom_age=${n}（同じ提案が続いた夜数）。ラグ研究: 2〜3 日目の連続抽出は初回より平均 R が高い傾向（n は方式ごと・結論ではない）'>⏱${n===0?'初回':'連続'+d+'日'}</span>`;
+}
 function orderStatusChip(c){
+  const nc=nomAgeChip(c);
   const st=c&&c.order_status;
-  if(st==null||st==='') return '';
+  if(st==null||st==='') return nc;
   const s=String(st);
   // ✅即時可は大半がこの状態で情報量が乏しいため表示しない（改修2b）。
   // ⏳待機・⛔型不一致・要確認は判断材料として引き続き表示する。
-  if(s.indexOf('✅')>=0) return '';
+  if(s.indexOf('✅')>=0) return nc;
   let cls='ostat';
   if(s.indexOf('⛔')>=0) cls+=' bad';
   else if(s.indexOf('⏸')>=0) cls+=' hold';   // D30: 位置不適／トラップ疑い（①-8 v1.48。PASS は残す・①-11 は発注しない）
   else if(s.indexOf('⏳')>=0) cls+=' wait';   // 待機／確認足待ち（十字線は逆指値そのものが確認足）
   const tip=s.indexOf('⏸')>=0?'①-8 v1.48: 順張りは 25日線上 かつ 52週位置 30% 以上、押し目は 25日線が上向き、逆張りはトラップ疑いなし——を満たさない提案。候補から消さず理由を見せる。機械ファンドは発注しない':(s.indexOf('確認足')>=0?'十字線（トンボ・足長・小十字）の夜は高値＋1呼値の逆指値＝確認足。抜けなければ約定せず 1 夜で消える':'');
-  return `<span class='${cls}'${tip?` title='${esc(tip)}'`:''}>${esc(s)}</span>`;
+  return nc+`<span class='${cls}'${tip?` title='${esc(tip)}'`:''}>${esc(s)}</span>`;
 }
 // （旧 deviationChip は改修6の ngDevLabel に置き換え。乖離は型別に「終値指値/現値比±/型不明」で表示。）
 // ⛔（型不一致・要確認）＝発注対象外。カード枠線色を変える。
@@ -2729,6 +2740,8 @@ function renderLegend(){
     ${tr.map(row).join('')}
     <h3>💴 配当・🎁優待・📆権利対象（D8）</h3>
     <div class='note'>💴チップ＝①-8 v1.38 が kabutan の既読ページから読んだ予想配当（年間または中間／期末）と、minkabu の優待ページで確かめた優待の有無・優待権利月（grades.json の fy/rm/dvi/dvf/dva/yt/ym）。未取得の銘柄には出ない（初回は保有・PASS から順に埋まる）。<br>📆権利対象チップ＝今日〜次の営業日に権利付き最終日／権利落ち日があり、かつその月がこの銘柄の権利月（配当または優待）に含まれるときだけ出る。「現在値→落ち後目安（−x円・−y%）」は該当する配当を現在値から引いたもので、公表値からの計算（推定ではない）。優待分は含まないので、🎁付きの銘柄は目安より大きく落ちうる。「直近5日 ±z%」は権利取り前に上がってきた幅（pool_bars の直近5本）で、落ち後に剥落しうる分の目安。SL との比較は出さない（stop の反映は実弾ボード側の運用に依存するため）。権利月が未取得の銘柄は「📆権利月不明」。権利月が違う銘柄には何も出ない（＝今回の権利落ちの影響は限定的）。</div>
+    <h3>⏱ 連続抽出（D36）</h3>
+    <div class='note'>ゲートの提案カードに「⏱初回」「⏱連続n日」。①-8 が提案ごとに持つ nom_age（同じ提案が何夜続いたか）をそのまま表示する。エントリーラグ研究 v1.1（11/27・PR #857）で、初回抽出より 2〜3 日目の連続抽出のほうが 10 日後の平均 R が高い傾向（ちょる子反転 −0.63→+0.20R・n=159）が出たため。表示だけで、PASS 条件・順位・注文は変えない。差は傾向止まり（上昇相場での検証なし）。</div>
     <h3>📉 前日終値と前日比（D35）</h3>
     <div class='note'>株価の下（ゲート・ウォッチ・熟成・🧳保有のカード）と「終値 x円」の後ろ（スキャン系のカード・ステージ行）に「前日 y円 ＋z円（＋w%）」を出す。上昇は赤・下落は緑（日本の慣行）。前日終値の出所は pool_bars.json の直近 2 本（①-8 が毎晩全取り直し・表示中の終値と最終足が同じ日のときだけ）、無ければ flow_scan_today／an_scan_today の前日比（同じ日の終値のときだけ）。どちらにも無い銘柄には出ない（推定しない）。</div>
     <h3>🕰 取得日と整合フラグ（D34）</h3>
